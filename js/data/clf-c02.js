@@ -91,7 +91,9 @@ var SOURCES = {
   natGateway:{label:'VPC NATゲートウェイ', url:'https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html'},
   stepFunctions:{label:'AWS Step Functions', url:'https://docs.aws.amazon.com/step-functions/latest/apireference/Welcome.html'},
   lightsail:{label:'Amazon Lightsail', url:'https://aws.amazon.com/lightsail/'},
-  ec2Ri:{label:'Amazon EC2 リザーブドインスタンス', url:'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html'}
+  ec2Ri:{label:'Amazon EC2 リザーブドインスタンス', url:'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html'},
+  batch:{label:'AWS Batch', url:'https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html'},
+  fsx:{label:'Amazon FSx', url:'https://docs.aws.amazon.com/fsx/'}
 };
 
 var VOCAB = [
@@ -174,7 +176,11 @@ var VOCAB = [
   {id:'v65', term:'Sustainability Pillar', domain:'concepts', source:SOURCES.wafSustainability, q:{text:'Well-Architected Frameworkの「持続可能性の柱」が重視する観点として正しいものはどれですか？', choices:['リソースの使用を最適化し、環境への影響（エネルギー消費等）を低減すること','DDoS攻撃からシステムを保護すること','料金を従量課金制にすること','複数のアベイラビリティーゾーンにインスタンスを分散配置すること'], correct:0, why:['正しい。持続可能性の柱は、クラウドワークロードが環境に与える影響を理解し、エネルギー消費や資源利用を最適化することに焦点を当てます。','これはセキュリティの柱（DDoS対策等）に関する内容です。','これは料金モデル（Pay-as-you-go）の説明であり、持続可能性の柱とは異なります。','これは信頼性の柱（高可用性設計）に関する内容です。']}},
   {id:'v66', term:'AWS Directory Service', domain:'security', source:SOURCES.directoryService, q:{text:'AWS Directory Serviceの役割として正しいものはどれですか？', choices:['Webアプリケーションへの攻撃をフィルタリングする','AWSクラウド上でMicrosoft Active Directoryを運用したり、既存のオンプレミスADと連携したりできるマネージド型ディレクトリサービス','暗号鍵を生成・管理する','DNSの名前解決を行う'], correct:1, why:['これはAWS WAFの説明です。','正しい。AWS Directory Serviceは、AWS Managed Microsoft ADの提供やAD Connectorによるオンプレミスとの連携など、複数の方式でディレクトリサービスを利用できるマネージド型サービスです。','これはAWS KMSの説明です。','これはAmazon Route 53の説明です。']}},
   {id:'v67', term:'Amazon EventBridge', domain:'tech', source:SOURCES.eventbridge, q:{text:'Amazon EventBridgeの役割として正しいものはどれですか？', choices:['リレーショナルデータベースを提供する','コンテナイメージを保存するレジストリ','AWSサービス・SaaSアプリケーション・自作アプリケーションからのイベントを受け取り、ルールに基づいて複数のターゲットにルーティングするサーバーレスのイベントバスサービス','仮想サーバーを提供するコンピューティングサービス'], correct:2, why:['これはAmazon RDSの説明です。','これはAmazon ECRの説明です。','正しい。EventBridgeは、イベントを受け取りルールに基づいてLambda等のターゲットにルーティングできる、サーバーレスのイベントバスサービスです。','これはAmazon EC2の説明です。']}},
-  {id:'v68', term:'AWS Cost and Usage Report (CUR)', domain:'billing', source:SOURCES.cur, q:{text:'AWS Cost and Usage Report (CUR)の説明として正しいものはどれですか？', choices:['AWSサポートへの問い合わせ履歴をまとめたレポート','コンプライアンス関連の第三者認証レポート','リソースのパフォーマンスメトリクスをまとめたレポート','AWSの利用状況・コストに関する最も詳細なデータセットで、指定したS3バケットに1日1回CSV形式等で出力される'], correct:3, why:['これはAWS Supportのケース履歴の説明であり、CURとは異なります。','これはAWS Artifactが提供するレポートの説明です。','これはAmazon CloudWatchの説明です。','正しい。CURは、利用した製品・使用タイプ・操作ごとの行を含む、AWSで利用可能な最も詳細なコスト・利用状況データセットで、指定のS3バケットに定期的に出力されます。']}}
+  {id:'v68', term:'AWS Cost and Usage Report (CUR)', domain:'billing', source:SOURCES.cur, q:{text:'AWS Cost and Usage Report (CUR)の説明として正しいものはどれですか？', choices:['AWSサポートへの問い合わせ履歴をまとめたレポート','コンプライアンス関連の第三者認証レポート','リソースのパフォーマンスメトリクスをまとめたレポート','AWSの利用状況・コストに関する最も詳細なデータセットで、指定したS3バケットに1日1回CSV形式等で出力される'], correct:3, why:['これはAWS Supportのケース履歴の説明であり、CURとは異なります。','これはAWS Artifactが提供するレポートの説明です。','これはAmazon CloudWatchの説明です。','正しい。CURは、利用した製品・使用タイプ・操作ごとの行を含む、AWSで利用可能な最も詳細なコスト・利用状況データセットで、指定のS3バケットに定期的に出力されます。']}},
+  {id:'v69', term:'AWS Batch', domain:'tech', source:SOURCES.batch, q:{text:'AWS Batchとは何ですか？', choices:['送信されたバッチジョブの量や要件に応じて、必要な量と種類のコンピューティングリソース（EC2やFargate等）を自動的にプロビジョニングして実行する、フルマネージドのバッチコンピューティングサービス','最大実行時間15分の短時間のイベント駆動型コードを実行するサーバーレスサービス','コンテナを実行するためのサーバー管理が不要なコンピューティングエンジン','需要に応じてEC2インスタンスの数を自動的に増減させるサービス'], correct:0, why:['正しい。AWS Batchは、送信されたジョブの量や要件に応じて最適な量・種類のコンピューティングリソースを自動的にプロビジョニングし、ジョブキューに基づいてバッチ処理を実行するフルマネージドサービスです。','これはAWS Lambdaの説明です（実行時間に上限があり、長時間のバッチ処理には不向きです）。','これはAWS Fargateの説明です。AWS BatchはFargate上でジョブを実行することもできますが、Fargate自体はジョブキューやスケジューリングの仕組みを持ちません。','これはAmazon EC2 Auto Scalingの説明です。']}},
+  {id:'v70', term:'Amazon FSx', domain:'tech', source:SOURCES.fsx, q:{text:'Amazon FSxとは何ですか？', choices:['単一のEC2インスタンスにのみアタッチできるブロックストレージ','Windows File Server・Lustre・NetApp ONTAP・OpenZFSなど、人気のファイルシステムをベースにしたフルマネージドの共有ファイルストレージを提供するサービス','非構造化オブジェクトを保存する高耐久なストレージサービス','Linux向けにAWSネイティブに構築されたNFS対応のフルマネージドファイルストレージサービス'], correct:1, why:['これはAmazon EBSの説明です。','正しい。Amazon FSxは、Windows File Server・Lustre・NetApp ONTAP・OpenZFSといった人気のファイルシステムをベースにした、フルマネージドの共有ファイルストレージを複数の種類から選んで利用できるサービスです。','これはAmazon S3の説明です。','これはAmazon EFSの説明です。']}},
+  {id:'v71', term:'Amazon Cognito', domain:'security', source:SOURCES.cognito, q:{text:'Amazon Cognitoの役割は何ですか？', choices:['AWSクラウド上でMicrosoft Active Directoryを運用するディレクトリサービス','AWSリソースへのアクセス権限を管理するサービス','Webアプリ・モバイルアプリにユーザーのサインアップ・サインイン機能や、外部IDプロバイダーとの連携によるアクセス制御を提供するサービス','機密情報（パスワードやAPIキー等）を安全に保管・ローテーションするサービス'], correct:2, why:['これはAWS Directory Serviceの説明です。','これはAWS IAMの説明です。IAMはAWSリソースへのアクセス権限を管理しますが、Cognitoは主にアプリのエンドユーザー向けの認証・認可を担います。','正しい。Amazon Cognitoは、ユーザープールによるサインアップ・サインイン機能や、IDプールによる外部IDプロバイダー（Google等）と連携したアクセス制御を提供するサービスです。','これはAWS Secrets Managerの説明です。']}},
+  {id:'v72', term:'Performance Efficiency Pillar', domain:'concepts', source:SOURCES.wafPerformance, q:{text:'Well-Architected Frameworkの「パフォーマンス効率の柱」が重視する観点として正しいものはどれですか？', choices:['先行投資を従量課金の運用費用に変換すること','障害発生時にもシステムを継続稼働させること','環境への影響（エネルギー消費等）を低減すること','コンピューティングリソースを効率的に使用し、需要やテクノロジーの進化に応じてその効率を維持する方法を選択すること'], correct:3, why:['これはクラウドの経済的メリット（CapEx/OpEx）に関する内容です。','これは信頼性の柱に関する内容です。','これは持続可能性の柱に関する内容です。','正しい。パフォーマンス効率の柱は、システムリソースを効率的に使用し、需要の変化やテクノロジーの進化に応じて効率を維持する方法の選択に焦点を当てます。']}}
 ];
 
 var PRACTICE = [
@@ -524,7 +530,46 @@ var PRACTICE = [
     why:['誤り。これはAWS Transit Gatewayの役割です。','誤り。NATゲートウェイは外部からのインバウンド接続の開始を許可しません。','誤り。これはAWS WAFの役割です。','正しい。NATゲートウェイは、プライベートサブネット内のインスタンスが外部サービスへアウトバウンド接続できるようにする一方、外部からの接続開始は許可しません。']},
   {id:'p111', domain:'tech', type:'multi', source:SOURCES.stepFunctions, text:'AWS Step Functionsの特徴として正しいものを2つ選択してください。',
     choices:['複数のAWS Lambda関数やその他のAWSサービスを順序立てて実行するワークフロー(ステートマシン)を構築できる','仮想サーバーのOSパッチ管理を行う','ワークフロー内の各ステップの再試行やエラーハンドリングを組み込みで管理できる','S3オブジェクトのストレージクラスを自動変更する'], correct:[0,2],
-    why:['正しい。Step Functionsは、Lambda関数等を組み合わせて順序立てて実行するワークフロー(ステートマシン)を視覚的に構築できます。','誤り。これはAWS Systems Managerの役割です。','正しい。Step Functionsはワークフロー内の各ステップの再試行(リトライ)やエラーハンドリングを組み込みの仕組みで管理できます。','誤り。これはAmazon S3のライフサイクルポリシーの役割です。']}
+    why:['正しい。Step Functionsは、Lambda関数等を組み合わせて順序立てて実行するワークフロー(ステートマシン)を視覚的に構築できます。','誤り。これはAWS Systems Managerの役割です。','正しい。Step Functionsはワークフロー内の各ステップの再試行(リトライ)やエラーハンドリングを組み込みの仕組みで管理できます。','誤り。これはAmazon S3のライフサイクルポリシーの役割です。']},
+  {id:'p112', domain:'concepts', type:'single', source:SOURCES.sixAdv, text:'オンプレミスでデータセンターを構築する場合と比較した、クラウドの経済的メリットとして正しいものはどれですか？',
+    choices:['サーバー等への大きな先行投資（資本費用）を、実際に使用した分だけ支払う運用費用に変換できる','全サービスが完全に無料になる','ハードウェアの保守は依然として利用者が行う必要がある','リージョンを問わず同一の料金になる'], correct:[0],
+    why:['正しい。クラウドでは先行投資（CapEx）を、使用量に応じた運用費用（OpEx）に変換できます。','誤り。クラウド利用には通常料金が発生します。','誤り。クラウドでは物理ハードウェアの保守はAWS側が担います。','誤り。料金はリージョンによって異なります。']},
+  {id:'p113', domain:'concepts', type:'single', source:SOURCES.migrationStrategies, text:'移行戦略の一つである「リホスト(Rehost)」の説明として正しいものはどれですか？',
+    choices:['アプリケーションのコードを大幅に変更し、クラウドネイティブな機能を活用できるように再設計する','アプリケーションをコードの変更を行わずに、そのままクラウドへ「リフト＆シフト」する','既存のライセンス製品を、クラウド上の別の製品に置き換える（購入し直す）','使用しなくなったアプリケーションを廃止する'], correct:[1],
+    why:['これは「リファクタリング/リアーキテクト(Refactor)」の説明です。','正しい。リホストはアプリケーションのコードを変更せずにそのままクラウドへ移行する「リフト＆シフト」のアプローチです。','これは「リパーチェス(Repurchase)」の説明です。','これは「リタイア(Retire)」の説明です。']},
+  {id:'p114', domain:'concepts', type:'multi', source:SOURCES.caf, text:'AWS Cloud Adoption Framework (CAF)が定義する観点（パースペクティブ）として正しいものを2つ選択してください。',
+    choices:['ビジネス(Business)パースペクティブ','ガバナンス(Governance)パースペクティブ','マーケティング(Marketing)パースペクティブ','営業(Sales)パースペクティブ'], correct:[0,1],
+    why:['正しい。AWS CAFは、ビジネス・人材・ガバナンス・プラットフォーム・セキュリティ・運用の観点でクラウド導入を整理するフレームワークで、ビジネスはその一つです。','正しい。ガバナンスもAWS CAFが定義する観点の一つです。','誤り。マーケティングはAWS CAFが定義する観点には含まれません。','誤り。営業はAWS CAFが定義する観点には含まれません。']},
+  {id:'p115', domain:'concepts', type:'single', source:SOURCES.wafPerformance, text:'新しいAWSサービスやインスタンスタイプが登場した際、ワークロードのパフォーマンスを維持・向上させるために検証・採用していく姿勢は、Well-Architected Frameworkのどの柱に関連しますか？',
+    choices:['信頼性の柱','コスト最適化の柱','パフォーマンス効率の柱','持続可能性の柱'], correct:[2],
+    why:['信頼性の柱は障害時の継続稼働に関する内容で、新技術の採用による効率向上とは異なります。','コスト最適化の柱は費用対効果に関する内容です。','正しい。パフォーマンス効率の柱は、テクノロジーの進化に応じて新しいサービスやアプローチを検証・採用し、効率を維持する姿勢を含みます。','持続可能性の柱は環境負荷の低減に関する内容です。']},
+  {id:'p116', domain:'security', type:'single', source:SOURCES.shield, text:'AWS Shield StandardとAWS Shield Advancedの違いとして正しいものはどれですか？',
+    choices:['Standardのみ有料で、Advancedは無料で提供される','StandardはWebアプリケーション層の攻撃をルールベースでフィルタリングし、AdvancedはDDoS攻撃を検知する','Advancedではネットワークの脆弱性スキャンが行われる','Standardは全AWSアカウントに自動で無料提供される基本的なDDoS対策で、Advancedは追加費用を払うことで24時間365日のDDoS対応チームのサポートや高度な緩和機能を利用できる'], correct:[3],
+    why:['誤り。Standardは無料、Advancedは有料のサブスクリプションです。','誤り。両方ともDDoS対策サービスです（Web層フィルタリングを行うのはAWS WAFです）。','誤り。脆弱性スキャンはAmazon Inspectorの機能です。','正しい。Shield Standardは全アカウントに無料で自動提供される基本的なDDoS対策で、Shield Advancedは有料で高度な緩和機能やDDoS対応チーム(DRT)のサポートを利用できます。']},
+  {id:'p117', domain:'security', type:'multi', source:SOURCES.iam, text:'AWS IAMで作成できるポリシーの種類として正しいものを2つ選択してください。',
+    choices:['課金ポリシー','IDベースポリシー（ユーザー・グループ・ロールにアタッチする）','リソースベースポリシー（S3バケット等のリソースに直接アタッチする）','ネットワークポリシー'], correct:[1,2],
+    why:['誤り。「課金ポリシー」という種類のIAMポリシーはありません。','正しい。IDベースポリシーは、IAMユーザー・グループ・ロールにアタッチする管理ポリシーです。','正しい。リソースベースポリシーは、S3バケットなどのリソースに直接アタッチするポリシーです。','誤り。「ネットワークポリシー」という種類のIAMポリシーはありません（ネットワーク制御はセキュリティグループ等で行います）。']},
+  {id:'p118', domain:'security', type:'single', source:SOURCES.cognito, text:'Amazon Cognitoの「ユーザープール」と「IDプール（フェデレーテッドアイデンティティ）」の違いとして正しいものはどれですか？',
+    choices:['ユーザープールはアプリのサインアップ・サインインを管理するディレクトリであり、IDプールは認証済みユーザー等に一時的なAWS認証情報を発行してAWSリソースへのアクセスを許可する仕組みである','ユーザープールは常に無料で、IDプールは常に有料である','IDプールはActive Directoryと同一の機能である','ユーザープールはAWSリソースへの一時的なアクセス権限の発行のみを行う'], correct:[0],
+    why:['正しい。ユーザープールはサインアップ・サインインを管理するユーザーディレクトリで、IDプールは認証済みのユーザーなどに一時的なAWS認証情報を発行し、S3やDynamoDB等のAWSリソースへのアクセスを許可する仕組みです。','誤り。いずれも使用量に応じて料金が発生する場合があります。','誤り。IDプールとAWS Directory Serviceは別の仕組みです。','誤り。一時的なAWS認証情報の発行を行うのはIDプールの役割です。']},
+  {id:'p119', domain:'tech', type:'single', source:SOURCES.batch, text:'数千件規模のバッチジョブを、ジョブキューに基づいて必要な量・種類のコンピューティングリソースへ自動的に割り当てて実行したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon EventBridge','AWS Batch','Amazon API Gateway','AWS Step Functions'], correct:[1],
+    why:['誤り。EventBridgeはイベントのルーティングを行うサービスで、バッチジョブのキューイングやリソース割り当てには特化していません。','正しい。AWS Batchは、送信されたバッチジョブの量や要件に応じて最適な量・種類のコンピューティングリソースを自動的にプロビジョニングして実行する、フルマネージドのバッチコンピューティングサービスです。','誤り。API GatewayはAPIの作成・公開・保護を行うサービスです。','誤り。Step Functionsは複数のAWSサービスを順序立てて実行するワークフローを構築するサービスで、大量バッチジョブの動的なリソース割り当てに特化したものではありません。']},
+  {id:'p120', domain:'tech', type:'single', source:SOURCES.fsx, text:'Windows File ServerやLustreなど、人気のファイルシステムをベースにしたフルマネージドの共有ファイルストレージを、複数の種類から選んで利用したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon EBS','Amazon S3','Amazon FSx','Amazon EFS'], correct:[2],
+    why:['誤り。EBSは単一のEC2インスタンスにアタッチするブロックストレージです。','誤り。S3はオブジェクトストレージであり、ファイルシステムとしては利用できません。','正しい。Amazon FSxは、Windows File Server・Lustre・NetApp ONTAP・OpenZFSといった人気のファイルシステムをベースにしたフルマネージドの共有ファイルストレージを、複数の種類から選んで利用できるサービスです。','誤り。EFSはAWSネイティブなLinux向けNFSファイルストレージで、Windows File ServerやLustre等の他のファイルシステムは提供しません。']},
+  {id:'p121', domain:'tech', type:'multi', source:SOURCES.elasticache, text:'Amazon ElastiCacheの用途として正しいものを2つ選択してください。',
+    choices:['オブジェクトを長期保存するためのアーカイブストレージ','仮想サーバーのOSパッチ管理','データベースへの問い合わせ結果をメモリ内にキャッシュし、読み取りレイテンシーを下げる','ウェブアプリケーションのセッション情報をメモリ内に保存し、高速に読み書きする'], correct:[2,3],
+    why:['誤り。これはAmazon S3 Glacier等の用途です。','誤り。これはAWS Systems Managerの用途です。','正しい。ElastiCacheはRedisやMemcached互換のインメモリキャッシュを提供し、データベースへの問い合わせ結果をキャッシュして読み取りを高速化します。','正しい。ElastiCacheはセッション情報など頻繁にアクセスされるデータをメモリ内に保存し、高速に読み書きする用途にも使われます。']},
+  {id:'p122', domain:'tech', type:'single', source:SOURCES.redshift, text:'複数のデータソースから集めた大量データを対象に、複雑な分析クエリやビジネスインテリジェンス(BI)処理を高速に実行したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon DynamoDB','Amazon RDS','Amazon ElastiCache','Amazon Redshift'], correct:[3],
+    why:['誤り。DynamoDBはキーバリュー型のNoSQLデータベースで、大規模な分析クエリ(OLAP)には最適化されていません。','誤り。RDSはトランザクション処理(OLTP)向けのリレーショナルデータベースです。','誤り。ElastiCacheはインメモリキャッシュサービスで、データウェアハウス用途ではありません。','正しい。Amazon Redshiftは、大量データに対する複雑な分析クエリを高速に実行できるマネージド型のデータウェアハウスサービスです。']},
+  {id:'p123', domain:'billing', type:'single', source:SOURCES.costmgmt, text:'「今月のコストが先月に比べてどのサービスでどれだけ増減したか」を分析したい場合、最も適したサービスはどれですか？',
+    choices:['AWS Cost Explorer','AWS Budgets','AWS Organizations','AWS Artifact'], correct:[0],
+    why:['正しい。Cost Explorerは、サービス別・期間別にコストと使用量の傾向を可視化・分析できるツールです。','誤り。Budgetsは予算の閾値超過時にアラートを送るツールで、傾向分析が主目的ではありません。','誤り。Organizationsは複数アカウントの一括管理・一括請求を行うサービスです。','誤り。Artifactはコンプライアンス関連レポートを提供するサービスです。']},
+  {id:'p124', domain:'billing', type:'multi', source:SOURCES.free, text:'現在のAWS Free Tier（無料利用枠）を構成する要素として正しいものを2つ選択してください。',
+    choices:['一部のサービスで常に無料で利用できる範囲（Always Free）','すべてのAWSサービスが期間を問わず常に無料になる仕組み','サポートプランの費用が無料になる仕組み（Basic Support）','新規アカウント向けに提供される、一定期間・一定額の無料クレジット'], correct:[0,3],
+    why:['正しい。一部のサービスには期間に関わらず常に無料で使える範囲（Always Free）があります。','誤り。すべてのサービスが無期限に無料になるわけではありません。','誤り。Basic Supportが無料なのはサポートプランの話であり、Free Tierの構成要素とは別に説明されます。','正しい。新規アカウント向けに、一定期間・一定額の無料クレジットが提供される区分があります。']}
 ];
 
 // 模擬試験専用の問題プール（PRACTICEとは独立。目標500問、現在は初期シード分のみ。
@@ -889,5 +934,17 @@ var MOCK_POOL = [
     why:['誤り。これはAmazon EKS等の役割です。','誤り。これはAmazon Redshiftの役割です。','正しい。Lightsailは、仮想サーバー・ストレージ・ネットワーキング等があらかじめ構成され、固定料金で簡単に始められるシンプルなクラウドサービスです。','誤り。これはAWS Lambdaの役割です。']},
   {id:'m44', domain:'billing', type:'single', source:SOURCES.ec2Ri, text:'EC2リザーブドインスタンスの支払いオプションのうち、「契約期間の開始時に全額を前払いし、以降の利用時間に対する追加料金が発生しない」のはどれですか？',
     choices:['No Upfront','Partial Upfront','スポットインスタンス','All Upfront'], correct:[3],
-    why:['誤り。No Upfrontは前払いなしで、利用時間ごとに割引後の料金が課金されます。','誤り。Partial Upfrontは一部を前払いし、残りは利用時間ごとに割引後の料金が課金されます。','誤り。スポットインスタンスはリザーブドインスタンスの支払いオプションではなく、別の購入方式です。','正しい。All Upfrontは契約期間開始時に全額を前払いし、以降の利用時間に対する追加料金は発生しません。']}
+    why:['誤り。No Upfrontは前払いなしで、利用時間ごとに割引後の料金が課金されます。','誤り。Partial Upfrontは一部を前払いし、残りは利用時間ごとに割引後の料金が課金されます。','誤り。スポットインスタンスはリザーブドインスタンスの支払いオプションではなく、別の購入方式です。','正しい。All Upfrontは契約期間開始時に全額を前払いし、以降の利用時間に対する追加料金は発生しません。']},
+  {id:'m45', domain:'concepts', type:'single', source:SOURCES.caf, text:'AWS Cloud Adoption Framework (CAF)が定義する観点(パースペクティブ)として正しいものはどれですか？',
+    choices:['マーケティング(Marketing)','プラットフォーム(Platform)','営業(Sales)','法務(Legal)'], correct:[1],
+    why:['誤り。マーケティングはAWS CAFが定義する観点には含まれません。','正しい。プラットフォームは、ビジネス・人材・ガバナンス・プラットフォーム・セキュリティ・運用という、AWS CAFが定義する観点の一つです。','誤り。営業はAWS CAFが定義する観点には含まれません。','誤り。法務はAWS CAFが定義する観点には含まれません。']},
+  {id:'m46', domain:'security', type:'single', source:SOURCES.guardduty, text:'Amazon GuardDutyの役割として正しいものはどれですか？',
+    choices:['Webアプリケーション層への攻撃をルールベースでフィルタリングする','リソースの設定変更履歴を記録し、コンプライアンス評価を行う','CloudTrailのログ・VPCフローログ・DNSログ等を機械学習や脅威インテリジェンスを用いて継続的に分析し、不審なアクティビティや潜在的な脅威を検出する','暗号鍵を生成・管理する'], correct:[2],
+    why:['これはAWS WAFの役割です。','これはAWS Configの役割です。','正しい。GuardDutyは、CloudTrail・VPCフローログ・DNSログなどを継続的にモニタリングし、機械学習や脅威インテリジェンスを用いて不審なアクティビティや潜在的な脅威を検出するサービスです。','これはAWS KMSの役割です。']},
+  {id:'m47', domain:'tech', type:'single', source:SOURCES.batch, text:'大量のバッチジョブについて、EC2のオンデマンド・スポット・Fargateなどから最適なコンピューティングリソースを自動的に選択してジョブキューを処理させたい場合、最も適したサービスはどれですか？',
+    choices:['AWS Lambda','Amazon EC2 Auto Scaling','AWS Step Functions','AWS Batch'], correct:[3],
+    why:['誤り。Lambdaは最大実行時間に上限があり、長時間・大量のバッチ処理には不向きです。','誤り。EC2 Auto Scalingは需要に応じてインスタンス数を増減させる仕組みで、ジョブキューに基づくバッチ処理の割り当てには特化していません。','誤り。Step Functionsはワークフローの順序立てた実行を管理するサービスで、大量バッチジョブ向けの動的なコンピューティングリソース選択には特化していません。','正しい。AWS Batchは、ジョブキューに基づいて必要な量・種類のコンピューティングリソース（EC2オンデマンド/スポット/Fargate等）を自動的に選択し、大量のバッチジョブを実行するフルマネージドサービスです。']},
+  {id:'m48', domain:'billing', type:'single', source:SOURCES.costmgmt, text:'向こう1年間、特定のインスタンスファミリーに縛られずEC2・Fargate・Lambdaなど複数のコンピューティングサービスにまたがって一定の使用量を契約し、割引を受けたい場合、最も適した料金モデルはどれですか？',
+    choices:['Savings Plans','リザーブドインスタンス','スポットインスタンス','オンデマンド'], correct:[0],
+    why:['正しい。Savings Plansは、EC2・Fargate・Lambdaなど複数のコンピューティングサービスにまたがって一定の使用量（ドル/時間）を契約することで、特定のインスタンスファミリーに縛られずに割引を受けられる柔軟な料金モデルです。','誤り。リザーブドインスタンスは特定のインスタンスタイプ・リージョンに紐づく予約であり、Fargate/Lambda等にはまたがりません。','誤り。スポットインスタンスは中断の可能性がある空きキャパシティを利用する料金モデルで、使用量契約による割引ではありません。','誤り。オンデマンドは契約を伴わない通常料金のモデルです。']}
 ];
