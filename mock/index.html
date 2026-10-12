@@ -1,0 +1,880 @@
+<title>AWS資格ドリル</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#F4F5F7;
+    --surface:#FFFFFF;
+    --surface-alt:#ECEDF1;
+    --ink:#1D2430;
+    --ink-muted:#5B6472;
+    --border:#E2E4E9;
+    --accent:#B85E16;
+    --accent-soft:#F3E4D3;
+    --accent-contrast:#FFFFFF;
+    --good:#2E8B57;
+    --good-soft:#E1F2E8;
+    --critical:#D14343;
+    --critical-soft:#FBE4E4;
+    --shadow:0 1px 2px rgba(29,36,48,.06), 0 6px 16px rgba(29,36,48,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14171C; --surface:#1C2027; --surface-alt:#22262E;
+      --ink:#ECEEF1; --ink-muted:#9AA3AF; --border:#2A2F37;
+      --accent:#F2A35E; --accent-soft:#3A2A18; --accent-contrast:#1A1206;
+      --good:#3FAF72; --good-soft:#163325; --critical:#E2605C; --critical-soft:#3A1A1A;
+      --shadow:0 1px 2px rgba(0,0,0,.35), 0 6px 16px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14171C; --surface:#1C2027; --surface-alt:#22262E;
+    --ink:#ECEEF1; --ink-muted:#9AA3AF; --border:#2A2F37;
+    --accent:#F2A35E; --accent-soft:#3A2A18; --accent-contrast:#1A1206;
+    --good:#3FAF72; --good-soft:#163325; --critical:#E2605C; --critical-soft:#3A1A1A;
+    --shadow:0 1px 2px rgba(0,0,0,.35), 0 6px 16px rgba(0,0,0,.3);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Noto Sans JP',system-ui,sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .shell{
+    max-width:480px; margin:0 auto; min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  .topbar{
+    display:flex; align-items:center; gap:.75rem;
+    padding:.9rem 1.1rem; border-bottom:1px solid var(--border);
+    position:sticky; top:0; background:var(--bg); z-index:5;
+  }
+  .topbar h1{
+    font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700;
+    font-size:1.05rem; margin:0; flex:1; text-wrap:balance;
+  }
+  .iconbtn{
+    width:36px; height:36px; border-radius:10px; border:1px solid var(--border);
+    background:var(--surface); color:var(--ink); display:flex; align-items:center;
+    justify-content:center; cursor:pointer; flex:none;
+  }
+  .iconbtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .progress-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:.8rem; color:var(--ink-muted);
+    font-variant-numeric: tabular-nums; flex:none;
+  }
+
+  main{flex:1; padding:1.25rem 1.1rem 2rem; display:flex; flex-direction:column; gap:1.1rem;}
+  .fade-in{animation:fadeIn .18s ease-out;}
+  @media (prefers-reduced-motion: reduce){ .fade-in{animation:none;} }
+  @keyframes fadeIn{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;}}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:.75rem; letter-spacing:.08em;
+    color:var(--accent); text-transform:uppercase; margin:0 0 .3rem;
+  }
+  .hero-title{
+    font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:1.7rem;
+    margin:0 0 .25rem; text-wrap:balance;
+  }
+  .hero-sub{color:var(--ink-muted); font-size:.9rem; margin:0;}
+
+  .mode-grid{display:flex; flex-direction:column; gap:.7rem;}
+  .mode-card{
+    display:flex; align-items:center; gap:.9rem; text-align:left;
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    padding:1rem; box-shadow:var(--shadow); cursor:pointer; color:var(--ink);
+    font-family:inherit; width:100%;
+  }
+  .mode-card:active{transform:scale(.98);}
+  .mode-icon-wrap{
+    width:44px; height:44px; border-radius:11px; background:var(--accent-soft);
+    color:var(--accent); display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .mode-icon{width:24px; height:24px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
+  .mode-icon .cutout{fill:var(--surface);}
+  .mode-text strong{
+    display:block; font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:1rem; margin-bottom:.15rem;
+  }
+  .mode-text span{display:block; font-size:.8rem; color:var(--ink-muted); line-height:1.4;}
+
+  .chip{
+    display:inline-flex; align-items:center; gap:.3rem;
+    font-size:.72rem; padding:.25rem .6rem; border-radius:999px;
+    background:var(--surface-alt); color:var(--ink-muted); letter-spacing:.02em; width:fit-content;
+  }
+  .chip-critical{background:var(--critical-soft); color:var(--critical);}
+
+  .term-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:18px;
+    padding:2.2rem 1.25rem; text-align:center; box-shadow:var(--shadow);
+    display:flex; flex-direction:column; align-items:center; gap:.9rem;
+  }
+  .term-word{
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:2.1rem;
+    letter-spacing:.01em; word-break:break-word;
+  }
+  .term-hint{font-size:.82rem; color:var(--ink-muted);}
+
+  .assess-row{display:flex; gap:.7rem;}
+  .assess-btn{
+    flex:1; padding:.95rem .5rem; border-radius:12px; border:1px solid var(--border);
+    background:var(--surface); color:var(--ink); font-family:'Zen Kaku Gothic New',sans-serif;
+    font-weight:700; font-size:.95rem; cursor:pointer;
+  }
+  .assess-btn:active{background:var(--surface-alt);}
+
+  .q-text{
+    font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:1.08rem;
+    line-height:1.6; text-wrap:balance; margin:0;
+  }
+  .q-meta{display:flex; justify-content:space-between; align-items:center; gap:.5rem;}
+  .q-multi-hint{font-size:.78rem; color:var(--accent);}
+
+  .choice-list{display:flex; flex-direction:column; gap:.6rem;}
+  .choice{
+    display:flex; align-items:flex-start; gap:.7rem; text-align:left;
+    padding:.85rem .9rem; border-radius:12px; border:1px solid var(--border);
+    background:var(--surface); cursor:pointer; font-family:'Noto Sans JP',sans-serif;
+    font-size:.92rem; color:var(--ink); line-height:1.5;
+  }
+  .choice .mark{
+    flex:none; width:20px; height:20px; border-radius:50%; border:1.6px solid var(--ink-muted);
+    margin-top:.1rem; position:relative;
+  }
+  .choice[data-shape="square"] .mark{border-radius:5px;}
+  .choice.picked .mark{border-color:var(--accent); background:var(--accent-soft);}
+  .choice.picked .mark::after{
+    content:""; position:absolute; inset:4px; border-radius:50%; background:var(--accent);
+  }
+  .choice[data-shape="square"].picked .mark::after{border-radius:2px;}
+  .choice.correct{border-color:var(--good); background:var(--good-soft);}
+  .choice.correct .mark{border-color:var(--good);}
+  .choice.correct .mark::after{background:var(--good); border-radius:2px;}
+  .choice.wrong{border-color:var(--critical); background:var(--critical-soft);}
+  .choice.wrong .mark{border-color:var(--critical);}
+  .choice.wrong .mark::after{background:var(--critical); border-radius:2px;}
+  .choice:disabled, .choice[data-locked="1"]{cursor:default;}
+
+  .feedback-panel{
+    border-radius:14px; padding:1rem 1.05rem; font-size:.88rem; line-height:1.6;
+    border:1px solid var(--border); background:var(--surface-alt);
+  }
+  .feedback-title{
+    font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:.95rem; margin:0 0 .6rem;
+    display:flex; align-items:center; gap:.4rem;
+  }
+  .feedback-title.ok{color:var(--good);}
+  .feedback-title.ng{color:var(--critical);}
+  .why-list{display:flex; flex-direction:column; gap:.6rem;}
+  .why-row{display:flex; gap:.55rem; align-items:flex-start; font-size:.85rem; line-height:1.55;}
+  .why-mark{
+    flex:none; width:19px; height:19px; border-radius:50%; margin-top:.1rem;
+    display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700;
+  }
+  .why-mark.ok{background:var(--good-soft); color:var(--good);}
+  .why-mark.ng{background:var(--critical-soft); color:var(--critical);}
+  .why-row b{font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:.88rem;}
+
+  .bottom-bar{
+    position:sticky; bottom:0; padding:.9rem 1.1rem 1.2rem; background:var(--bg);
+    border-top:1px solid var(--border); display:flex; gap:.6rem;
+  }
+  .btn{
+    flex:1; padding:.95rem 1rem; border-radius:12px; border:none; cursor:pointer;
+    font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:.95rem;
+  }
+  .btn-primary{background:var(--accent); color:var(--accent-contrast);}
+  .btn-primary:disabled{opacity:.4; cursor:default;}
+  .btn-ghost{background:var(--surface); color:var(--ink); border:1px solid var(--border);}
+  .btn:active{transform:scale(.98);}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+  .timer{
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:1rem;
+    font-variant-numeric: tabular-nums; color:var(--ink);
+  }
+  .timer.low{color:var(--critical);}
+
+  .mock-nav-dots{display:flex; gap:.3rem; justify-content:center;}
+  .mock-nav-dots span{width:6px; height:6px; border-radius:50%; background:var(--border);}
+  .mock-nav-dots span.answered{background:var(--accent);}
+  .mock-nav-dots span.current{background:var(--ink);}
+
+  .score-tile{
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+    padding:1.4rem; text-align:center; box-shadow:var(--shadow);
+  }
+  .score-num{
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:2.4rem;
+    font-variant-numeric: tabular-nums; color:var(--accent);
+  }
+  .score-label{color:var(--ink-muted); font-size:.85rem; margin-top:.2rem;}
+
+  .review-item{
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    padding:1rem; display:flex; flex-direction:column; gap:.5rem; box-shadow:var(--shadow);
+  }
+  .review-head{display:flex; justify-content:space-between; align-items:center; gap:.5rem;}
+  .tag-result{
+    font-size:.72rem; font-weight:700; padding:.2rem .55rem; border-radius:999px; flex:none;
+  }
+  .tag-ok{background:var(--good-soft); color:var(--good);}
+  .tag-ng{background:var(--critical-soft); color:var(--critical);}
+  .review-line{font-size:.82rem; color:var(--ink-muted); line-height:1.5;}
+  .review-line b{color:var(--ink); font-weight:600;}
+
+  .stat-row{display:flex; flex-direction:column; gap:.3rem;}
+  .stat-row-head{display:flex; justify-content:space-between; font-size:.85rem;}
+  .stat-row-head span:last-child{
+    font-family:'IBM Plex Mono',monospace; font-variant-numeric: tabular-nums; color:var(--ink-muted);
+  }
+  .bar-track{height:8px; border-radius:999px; background:var(--surface-alt); overflow:hidden;}
+  .bar-fill{height:100%; border-radius:999px; background:var(--accent);}
+
+  .overall-stat{display:flex; gap:.8rem;}
+  .overall-stat .score-tile{flex:1; padding:1rem;}
+  .overall-stat .score-num{font-size:1.8rem;}
+
+  .weak-list{display:flex; flex-direction:column; gap:.55rem;}
+  .weak-row{
+    display:flex; justify-content:space-between; align-items:center; gap:.6rem;
+    background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:.75rem .9rem;
+  }
+  .weak-row .wtext{font-size:.85rem; line-height:1.4;}
+  .weak-row .wtext small{display:block; color:var(--ink-muted); font-size:.72rem; margin-top:.1rem;}
+
+  .empty-note{color:var(--ink-muted); font-size:.85rem; text-align:center; padding:1rem 0;}
+  .section-label{
+    font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:.92rem; margin:0;
+  }
+</style>
+
+<div class="shell" id="app"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var DOMAINS = {
+    concepts:'クラウドのコンセプト',
+    security:'セキュリティとコンプライアンス',
+    tech:'クラウドテクノロジーとサービス',
+    billing:'請求、課金、サポート'
+  };
+
+  var VOCAB = [
+    {id:'v1', term:'EC2', domain:'tech', q:{text:'Amazon EC2とは何ですか？', choices:[
+      '仮想サーバーを提供するコンピューティングサービス','オブジェクトストレージサービス','マネージド型のリレーショナルデータベース','DNSを管理するサービス'
+    ], correct:0, why:[
+      '正しい。EC2 (Elastic Compute Cloud) は、仮想サーバーをオンデマンドで起動できるコンピューティングサービスです。',
+      'これはAmazon S3（オブジェクトストレージ）の説明です。',
+      'これはAmazon RDS（マネージド型リレーショナルデータベース）の説明です。',
+      'これはAmazon Route 53（DNS）の説明です。'
+    ]}},
+    {id:'v2', term:'S3', domain:'tech', q:{text:'Amazon S3とは何ですか？', choices:[
+      '仮想サーバーサービス','高い耐久性を持つオブジェクトストレージサービス','ネットワーク仮想化サービス','リソース監視サービス'
+    ], correct:1, why:[
+      'これはAmazon EC2（仮想サーバー）の説明です。',
+      '正しい。S3 (Simple Storage Service) は画像・ログ等のオブジェクトを保存できる高耐久なストレージサービスです。',
+      'これはAmazon VPC（ネットワーク仮想化）の説明です。',
+      'これはAmazon CloudWatch（監視サービス）の説明です。'
+    ]}},
+    {id:'v3', term:'IAM', domain:'security', q:{text:'AWS IAMの主な役割は何ですか？', choices:[
+      'コンテンツ配信の高速化','AWSリソースへのアクセス権限を管理する','仮想マシンの作成','課金レポートの生成'
+    ], correct:1, why:[
+      'これはAmazon CloudFront（コンテンツ配信）の説明です。',
+      '正しい。IAM (Identity and Access Management) は、誰がどのAWSリソースに何をできるかを管理するサービスです。',
+      'これはAmazon EC2（仮想マシンの作成）の説明です。',
+      'これは課金レポート機能（Cost Explorer等）の説明です。'
+    ]}},
+    {id:'v4', term:'VPC', domain:'tech', q:{text:'Amazon VPCとは何ですか？', choices:[
+      'AWS上に論理的に分離されたネットワーク環境を作成するサービス','請求管理サービス','オブジェクトストレージ','メール送信サービス'
+    ], correct:0, why:[
+      '正しい。VPC (Virtual Private Cloud) は、自分専用の論理的に分離されたネットワーク環境をAWS上に構築する仕組みです。',
+      'これは請求管理機能の説明です。',
+      'これはAmazon S3（オブジェクトストレージ）の説明です。',
+      'これはAmazon SES（メール送信サービス）の説明です。'
+    ]}},
+    {id:'v5', term:'Shared Responsibility Model', domain:'security', q:{text:'責任共有モデルにおいて、AWS側が責任を持つのは次のうちどれですか？', choices:[
+      'OS上のアプリケーション設定','クラウドの物理的インフラストラクチャの保護','ユーザーのIAMポリシー設定','データの暗号化キーの管理方法の選択'
+    ], correct:1, why:[
+      'これはユーザー側（クラウド内のセキュリティ）の責任範囲です。',
+      '正しい。クラウドの物理的インフラ（データセンター等）の保護はAWS側の責任範囲です。',
+      'これはユーザー側（クラウド内のセキュリティ）の責任範囲です。',
+      'これはユーザー側（クラウド内のセキュリティ）の責任範囲です。'
+    ]}},
+    {id:'v6', term:'CloudFront', domain:'tech', q:{text:'Amazon CloudFrontの役割は何ですか？', choices:[
+      'コンテンツをエッジロケーション経由で高速配信するCDNサービス','仮想サーバー管理サービス','課金管理サービス','IDプロバイダー連携サービス'
+    ], correct:0, why:[
+      '正しい。CloudFrontは世界中のエッジロケーションを使ってコンテンツ配信を高速化するCDNです。',
+      'これはAmazon EC2（仮想サーバー管理）の説明です。',
+      'これは課金管理機能の説明です。',
+      'これはAmazon Cognito（ID連携）の説明です。'
+    ]}},
+    {id:'v7', term:'Free Tier', domain:'billing', q:{text:'AWS無料利用枠(Free Tier)の説明として正しいものは？', choices:[
+      '全サービスが永久に無料になる','一部サービスを一定の範囲・期間内で無料利用できる仕組み','サポートプランが無料になる','全リージョンでの利用が無料になる'
+    ], correct:1, why:[
+      '誤り。無期限・全サービスが対象ではなく、対象サービスを期間・範囲限定で無料利用できる制度です。',
+      '正しい。Free Tierは対象サービスを一定の範囲・期間内で無料利用できる仕組みです。',
+      '誤り。サポートプラン自体が無料になるわけではありません。',
+      '誤り。無料になるのは特定サービス・条件下のみで、全リージョンが対象ではありません。'
+    ]}},
+    {id:'v8', term:'Pay-as-you-go', domain:'billing', q:{text:'AWSの「従量課金制(Pay-as-you-go)」とは何ですか？', choices:[
+      '年間契約で固定額を支払う方式','使用した分だけ料金を支払う方式','月額固定のサブスクリプション','無料で使い放題になる方式'
+    ], correct:1, why:[
+      '誤り。これは固定額を前払いする契約の説明です。',
+      '正しい。従量課金制は、実際に使用したリソース量に応じて料金が発生する仕組みです。',
+      '誤り。これはサブスクリプション型の説明です。',
+      '誤り。従量課金制でも利用には料金が発生します。'
+    ]}}
+  ];
+
+  var PRACTICE = [
+    {id:'p1', domain:'concepts', type:'single', text:'オンデマンドで必要な分だけコンピューティングリソースを増減できるクラウドの特性を何と呼びますか？',
+      choices:['弾力性（Elasticity）','耐久性（Durability）','一貫性（Consistency）','冗長性（Redundancy）'], correct:[0],
+      why:[
+        '正しい。弾力性（Elasticity）は、需要に応じてリソースを自動的に増減できる特性です。',
+        '耐久性（Durability）はデータが失われない性質を指す概念で、リソースの増減とは異なります。',
+        '一貫性（Consistency）はデータの整合性を指す概念で、リソースの増減とは異なります。',
+        '冗長性（Redundancy）は障害対策のための複製を指す概念で、リソースの増減とは異なります。'
+      ]},
+    {id:'p2', domain:'billing', type:'multi', text:'AWSクラウドを利用する経済的メリットとして正しいものを2つ選択してください。',
+      choices:['初期投資（資本費用）が不要になる','ハードウェアの調達・保守が不要になる','すべてのリージョンで同一価格になる','常に無料で利用できる'], correct:[0,1],
+      why:[
+        '正しい。クラウドでは先行投資（資本費用）が不要になります。',
+        '正しい。物理ハードウェアの調達・保守が不要になります。',
+        '誤り。価格はリージョンによって異なります。',
+        '誤り。クラウド利用には基本的に料金が発生します。'
+      ]},
+    {id:'p3', domain:'security', type:'single', text:'責任共有モデルにおいて、利用者（ユーザー）側の責任範囲に該当するものはどれですか？',
+      choices:['データの暗号化とアクセス管理','データセンターの物理セキュリティ','ハードウェアの保守','ネットワークインフラの物理層'], correct:[0],
+      why:[
+        '正しい。データの暗号化やアクセス管理はユーザー側（クラウド内）の責任範囲です。',
+        '誤り。データセンターの物理セキュリティはAWS側の責任範囲です。',
+        '誤り。ハードウェアの保守はAWS側の責任範囲です。',
+        '誤り。ネットワークインフラの物理層はAWS側の責任範囲です。'
+      ]},
+    {id:'p4', domain:'tech', type:'single', text:'複数のアベイラビリティーゾーンにリソースを分散させる主な目的は何ですか？',
+      choices:['可用性と耐障害性を高めるため','コストを削減するため','レイテンシーを完全にゼロにするため','セキュリティ設定を簡略化するため'], correct:[0],
+      why:[
+        '正しい。複数AZへの分散は、一つの施設で障害が発生しても他で稼働を継続できるようにするためです。',
+        '誤り。主な目的はコスト削減ではなく、可用性・耐障害性の向上です。',
+        '誤り。レイテンシーを完全になくすことはできません。',
+        '誤り。セキュリティ設定の簡略化が目的ではありません。'
+      ]},
+    {id:'p5', domain:'billing', type:'multi', text:'AWS Organizationsを使うメリットとして正しいものを2つ選択してください。',
+      choices:['複数アカウントを一括管理できる','一括請求（コンソリデーティッドビリング）が可能になる','自動でアプリをデプロイできる','すべてのサービスが無料になる'], correct:[0,1],
+      why:[
+        '正しい。AWS Organizationsで複数アカウントを一括管理できます。',
+        '正しい。コンソリデーティッドビリングにより請求を一括管理できます。',
+        '誤り。自動デプロイはAWS Organizationsの機能ではありません。',
+        '誤り。AWS Organizations自体が利用を無料にする機能ではありません。'
+      ]},
+    {id:'p6', domain:'concepts', type:'single', text:'AWSの「マネージドサービス」の特徴として正しいものはどれですか？',
+      choices:['AWSがインフラの運用・保守を担当し、利用者は設定・利用に集中できる','利用者がすべてのサーバー管理を自分で行う必要がある','オンプレミスでのみ利用可能である','常に無料で提供される'], correct:[0],
+      why:[
+        '正しい。マネージドサービスはAWSが運用・保守を担い、利用者は設定・利用に集中できます。',
+        '誤り。マネージドサービスの特徴は、利用者がサーバー管理を自分で行う必要がない点です。',
+        '誤り。クラウド上のサービスであり、オンプレミス限定ではありません。',
+        '誤り。多くのマネージドサービスは利用に応じて料金が発生します。'
+      ]}
+  ];
+
+  var STORAGE_KEY = 'awsDrillMockProgress_v1';
+
+  function loadProgress(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ return {}; }
+  }
+  function saveProgress(p){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch(e){}
+  }
+  function seedIfEmpty(p){
+    if (Object.keys(p).length) return p;
+    var seed = {
+      v1:{attempts:1, correct:1, lastSelf:'known', lastResult:'correct', lastAt:Date.now()},
+      v3:{attempts:2, correct:0, lastSelf:'unknown', lastResult:'incorrect', lastAt:Date.now()},
+      v6:{attempts:1, correct:1, lastSelf:'known', lastResult:'correct', lastAt:Date.now()},
+      p1:{attempts:1, correct:1, lastResult:'correct', lastAt:Date.now()},
+      p3:{attempts:2, correct:0, lastResult:'incorrect', lastAt:Date.now()}
+    };
+    saveProgress(seed);
+    return seed;
+  }
+
+  var progress = seedIfEmpty(loadProgress());
+
+  function recordResult(id, isCorrect, selfAssessment){
+    var rec = progress[id] || {attempts:0, correct:0};
+    rec.attempts += 1;
+    if (isCorrect) rec.correct += 1;
+    rec.lastResult = isCorrect ? 'correct' : 'incorrect';
+    if (selfAssessment) rec.lastSelf = selfAssessment;
+    rec.lastAt = Date.now();
+    progress[id] = rec;
+    saveProgress(progress);
+  }
+
+  function isWeak(id){
+    var rec = progress[id];
+    if (!rec) return false;
+    if (rec.lastResult === 'incorrect') return true;
+    if (rec.lastSelf === 'unknown') return true;
+    if (rec.attempts > 0 && (rec.correct / rec.attempts) < 0.6) return true;
+    return false;
+  }
+
+  function findVocab(id){ return VOCAB.filter(function(v){return v.id===id;})[0]; }
+  function findPractice(id){ return PRACTICE.filter(function(p){return p.id===id;})[0]; }
+
+  function arraysEqualSet(a, b){
+    if (a.length !== b.length) return false;
+    var sa = a.slice().sort(), sb = b.slice().sort();
+    for (var i=0;i<sa.length;i++){ if (sa[i] !== sb[i]) return false; }
+    return true;
+  }
+
+  function getQuestionView(item){
+    if (item.type === 'vocab'){
+      return {text:item.ref.q.text, choices:item.ref.q.choices, type:'single', correct:[item.ref.q.correct], why:item.ref.q.why};
+    }
+    return {text:item.ref.text, choices:item.ref.choices, type:item.ref.type, correct:item.ref.correct, why:item.ref.why};
+  }
+
+  function renderBreakdown(choices, correct, why){
+    return '<div class="why-list">' + choices.map(function(label, idx){
+      var ok = correct.indexOf(idx) !== -1;
+      return '<div class="why-row"><span class="why-mark '+(ok?'ok':'ng')+'">'+(ok?'✓':'✕')+'</span>'+
+        '<span><b>'+label+'</b><br>'+why[idx]+'</span></div>';
+    }).join('') + '</div>';
+  }
+
+  var ICON_VOCAB = '<svg class="mode-icon" viewBox="0 0 24 24"><rect x="3" y="6" width="15" height="12" rx="2.5"></rect><rect class="cutout" x="6.5" y="3" width="15" height="12" rx="2.5" style="fill:var(--surface)"></rect></svg>';
+  var ICON_PRACTICE = '<svg class="mode-icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2.5"></rect><line x1="8" y1="8.5" x2="16" y2="8.5"></line><line x1="8" y1="12.5" x2="16" y2="12.5"></line><line x1="8" y1="16.5" x2="13" y2="16.5"></line></svg>';
+  var ICON_MOCK = '<svg class="mode-icon" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5"></circle><line x1="12" y1="13.5" x2="12" y2="9.5"></line><line x1="12" y1="13.5" x2="15" y2="15.5"></line><line x1="9.5" y1="3" x2="14.5" y2="3"></line><line x1="12" y1="3" x2="12" y2="6"></line></svg>';
+  var ICON_STATS = '<svg class="mode-icon" viewBox="0 0 24 24"><line x1="5" y1="19" x2="5" y2="11"></line><line x1="12" y1="19" x2="12" y2="6"></line><line x1="19" y1="19" x2="19" y2="14"></line><line x1="2.5" y1="19" x2="21.5" y2="19"></line></svg>';
+  var ICON_BACK = '<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>';
+  var ICON_HOME = '<svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg>';
+
+  var state = {view:'home'};
+  var mock = null;
+  var timerTick = null;
+
+  function startSession(kind){
+    var items;
+    if (kind === 'vocab') items = VOCAB.map(function(v){return {type:'vocab', ref:v};});
+    else if (kind === 'practice') items = PRACTICE.map(function(p){return {type:'practice', ref:p};});
+    else {
+      items = VOCAB.filter(function(v){return isWeak(v.id);}).map(function(v){return {type:'vocab', ref:v};})
+        .concat(PRACTICE.filter(function(p){return isWeak(p.id);}).map(function(p){return {type:'practice', ref:p};}));
+    }
+    state = {
+      view:'session', kind:kind, items:items, index:0,
+      step: items.length && items[0].type === 'vocab' ? 'assess' : 'answer',
+      selfAssessment:null, selected:[], correctCount:0, total:items.length, lastCorrect:null
+    };
+    render();
+  }
+
+  function sessionNext(){
+    state.index += 1;
+    if (state.index >= state.total){
+      state.view = 'sessionComplete';
+      render();
+      return;
+    }
+    state.selected = [];
+    state.selfAssessment = null;
+    state.lastCorrect = null;
+    state.step = state.items[state.index].type === 'vocab' ? 'assess' : 'answer';
+    render();
+  }
+
+  function handleAssess(value){
+    state.selfAssessment = value;
+    state.step = 'answer';
+    render();
+  }
+
+  function toggleChoice(idx){
+    var item = state.items[state.index];
+    var qv = getQuestionView(item);
+    if (qv.type === 'single'){
+      state.selected = [idx];
+    } else {
+      var i = state.selected.indexOf(idx);
+      if (i === -1) state.selected.push(idx); else state.selected.splice(i, 1);
+    }
+    render();
+  }
+
+  function submitAnswer(){
+    var item = state.items[state.index];
+    var qv = getQuestionView(item);
+    var isCorrect = arraysEqualSet(state.selected, qv.correct);
+    state.lastCorrect = isCorrect;
+    state.step = 'feedback';
+    if (isCorrect) state.correctCount += 1;
+    recordResult(item.ref.id, isCorrect, item.type === 'vocab' ? state.selfAssessment : null);
+    render();
+  }
+
+  function startMock(){
+    mock = {index:0, answers:{}, timeLeft:300, finished:false};
+    state = {view:'mockIntro'};
+    render();
+  }
+  function beginMockPlay(){
+    state = {view:'mock'};
+    render();
+    runTimer();
+  }
+  function runTimer(){
+    clearTimer();
+    timerTick = setInterval(function(){
+      mock.timeLeft -= 1;
+      var el = document.getElementById('mockTimer');
+      if (el){
+        el.textContent = formatTime(mock.timeLeft);
+        el.classList.toggle('low', mock.timeLeft <= 30);
+      }
+      if (mock.timeLeft <= 0){
+        clearTimer();
+        finishMock();
+      }
+    }, 1000);
+  }
+  function clearTimer(){ if (timerTick){ clearInterval(timerTick); timerTick = null; } }
+  function formatTime(sec){
+    sec = Math.max(0, sec);
+    var m = Math.floor(sec/60), s = sec%60;
+    return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  }
+
+  function mockToggleChoice(idx){
+    var q = PRACTICE[mock.index];
+    var cur = mock.answers[q.id] || [];
+    if (q.type === 'single'){
+      mock.answers[q.id] = [idx];
+    } else {
+      var i = cur.indexOf(idx);
+      if (i === -1) cur.push(idx); else cur.splice(i,1);
+      mock.answers[q.id] = cur;
+    }
+    render();
+  }
+  function mockNav(dir){
+    if (dir === 'prev' && mock.index > 0){ mock.index -= 1; render(); }
+    else if (dir === 'next' && mock.index < PRACTICE.length - 1){ mock.index += 1; render(); }
+    else if (dir === 'submit'){ clearTimer(); finishMock(); }
+  }
+  function finishMock(){
+    var results = PRACTICE.map(function(q){
+      var selected = mock.answers[q.id] || [];
+      var isCorrect = selected.length > 0 && arraysEqualSet(selected, q.correct);
+      recordResult(q.id, isCorrect, null);
+      return {q:q, selected:selected, isCorrect:isCorrect};
+    });
+    mock.results = results;
+    mock.score = results.filter(function(r){return r.isCorrect;}).length;
+    state = {view:'mockResults'};
+    render();
+  }
+
+  function categoryStats(){
+    return Object.keys(DOMAINS).map(function(key){
+      var ids = VOCAB.filter(function(v){return v.domain===key;}).map(function(v){return v.id;})
+        .concat(PRACTICE.filter(function(p){return p.domain===key;}).map(function(p){return p.id;}));
+      var attempts=0, correct=0;
+      ids.forEach(function(id){ var r = progress[id]; if (r){ attempts+=r.attempts; correct+=r.correct; } });
+      return {label:DOMAINS[key], attempts:attempts, correct:correct, pct: attempts ? Math.round(correct/attempts*100) : null};
+    });
+  }
+  function overallStats(){
+    var attempts=0, correct=0;
+    Object.keys(progress).forEach(function(id){ attempts+=progress[id].attempts; correct+=progress[id].correct; });
+    return {attempts:attempts, correct:correct, pct: attempts ? Math.round(correct/attempts*100) : 0};
+  }
+  function weakItems(){
+    return VOCAB.filter(function(v){return isWeak(v.id);}).map(function(v){return {label:v.term, sub:DOMAINS[v.domain]+' ・ 単語問題'};})
+      .concat(PRACTICE.filter(function(p){return isWeak(p.id);}).map(function(p){return {label:p.text, sub:DOMAINS[p.domain]+' ・ 想定問題'};}));
+  }
+
+  function topbar(title, opts){
+    opts = opts || {};
+    var left = opts.home
+      ? ''
+      : '<button class="iconbtn" data-action="home" aria-label="ホームへ戻る">'+ICON_BACK+'</button>';
+    var right = opts.progress ? '<span class="progress-tag">'+opts.progress+'</span>' : '';
+    return '<div class="topbar">'+left+'<h1>'+title+'</h1>'+right+'</div>';
+  }
+
+  function screenHome(){
+    return topbar('AWS資格ドリル', {home:true}) +
+      '<main>'+
+        '<div class="fade-in">'+
+          '<p class="eyebrow">CLF-C02 ・ Cloud Practitioner</p>'+
+          '<h2 class="hero-title">今日のドリル</h2>'+
+          '<p class="hero-sub">単語・想定問題・模擬試験から選んで学習を始めましょう。</p>'+
+        '</div>'+
+        '<div class="mode-grid fade-in">'+
+          modeCard('vocab', ICON_VOCAB, '単語問題', 'ヒントなしで分かるか即答 → 選択問題で確認')+
+          modeCard('practice', ICON_PRACTICE, '想定問題', '単一・複数選択に対応。回答ごとに解説を表示')+
+          modeCard('mockIntroNav', ICON_MOCK, '模擬試験', '本番形式。タイマー付きで最後にまとめて採点')+
+          modeCard('stats', ICON_STATS, '進捗・統計', '分野別の正答率と苦手項目を確認')+
+        '</div>'+
+      '</main>';
+  }
+  function modeCard(action, icon, title, desc){
+    return '<button class="mode-card" data-action="'+action+'">'+
+      '<span class="mode-icon-wrap">'+icon+'</span>'+
+      '<span class="mode-text"><strong>'+title+'</strong><span>'+desc+'</span></span>'+
+    '</button>';
+  }
+
+  function screenSession(){
+    var item = state.items[state.index];
+    var title = state.kind === 'vocab' ? '単語問題' : (state.kind === 'practice' ? '想定問題' : '苦手項目の復習');
+    var domainLabel = DOMAINS[item.ref.domain];
+    var body = '';
+
+    if (item.type === 'vocab' && state.step === 'assess'){
+      body =
+        '<div class="fade-in" style="display:flex;flex-direction:column;gap:1rem;">'+
+          '<span class="chip">'+domainLabel+'</span>'+
+          '<div class="term-card">'+
+            '<div class="term-word">'+item.ref.term+'</div>'+
+            '<div class="term-hint">ヒントなしで、意味が分かるか答えてください</div>'+
+          '</div>'+
+          '<div class="assess-row">'+
+            '<button class="assess-btn" data-action="assess" data-value="known">分かる</button>'+
+            '<button class="assess-btn" data-action="assess" data-value="unknown">分からない</button>'+
+          '</div>'+
+        '</div>';
+      return topbar(title, {progress:(state.index+1)+' / '+state.total}) + '<main>'+body+'</main>';
+    }
+
+    var qv = getQuestionView(item);
+    var locked = state.step === 'feedback';
+    var choiceShape = qv.type === 'multi' ? 'square' : 'circle';
+
+    var choicesHtml = qv.choices.map(function(label, idx){
+      var classes = ['choice'];
+      var picked = state.selected.indexOf(idx) !== -1;
+      if (picked && !locked) classes.push('picked');
+      if (locked){
+        if (qv.correct.indexOf(idx) !== -1) classes.push('correct');
+        else if (picked) classes.push('wrong');
+      }
+      return '<button class="'+classes.join(' ')+'" data-shape="'+choiceShape+'" '+
+        (locked ? 'data-locked="1"' : 'data-action="toggleChoice" data-index="'+idx+'"')+'>'+
+        '<span class="mark"></span><span>'+label+'</span>'+
+      '</button>';
+    }).join('');
+
+    var hint = qv.type === 'multi' ? '<div class="q-multi-hint">当てはまるものをすべて選択してください（複数選択）</div>' : '';
+
+    var feedback = '';
+    if (locked){
+      feedback = '<div class="feedback-panel fade-in">'+
+        '<p class="feedback-title '+(state.lastCorrect ? 'ok' : 'ng')+'">'+(state.lastCorrect ? '正解' : '不正解')+'</p>'+
+        renderBreakdown(qv.choices, qv.correct, qv.why)+
+      '</div>';
+    }
+
+    body =
+      '<div class="fade-in" style="display:flex;flex-direction:column;gap:1rem;">'+
+        '<div class="q-meta"><span class="chip">'+domainLabel+'</span></div>'+
+        '<p class="q-text">'+qv.text+'</p>'+
+        hint+
+        '<div class="choice-list">'+choicesHtml+'</div>'+
+        feedback+
+      '</div>';
+
+    var bottomBar = '';
+    if (!locked){
+      bottomBar = '<div class="bottom-bar"><button class="btn btn-primary" data-action="submitAnswer" '+
+        (state.selected.length === 0 ? 'disabled' : '')+'>回答する</button></div>';
+    } else {
+      bottomBar = '<div class="bottom-bar"><button class="btn btn-primary" data-action="next">次へ</button></div>';
+    }
+
+    return topbar(title, {progress:(state.index+1)+' / '+state.total}) + '<main>'+body+'</main>' + bottomBar;
+  }
+
+  function screenSessionComplete(){
+    var title = state.kind === 'vocab' ? '単語問題' : (state.kind === 'practice' ? '想定問題' : '苦手項目の復習');
+    return topbar(title, {home:true}) +
+      '<main>'+
+        '<div class="fade-in" style="display:flex;flex-direction:column;gap:1.1rem;align-items:center;text-align:center;padding-top:2rem;">'+
+          '<p class="eyebrow">完了</p>'+
+          '<div class="score-tile" style="width:100%;">'+
+            '<div class="score-num">'+state.correctCount+' / '+state.total+'</div>'+
+            '<div class="score-label">正解</div>'+
+          '</div>'+
+          '<p class="hero-sub">お疲れさまでした。続けて他のモードも試せます。</p>'+
+        '</div>'+
+      '</main>'+
+      '<div class="bottom-bar">'+
+        '<button class="btn btn-ghost" data-action="stats">統計を見る</button>'+
+        '<button class="btn btn-primary" data-action="home">ホームへ</button>'+
+      '</div>';
+  }
+
+  function screenMockIntro(){
+    return topbar('模擬試験', {}) +
+      '<main>'+
+        '<div class="fade-in" style="display:flex;flex-direction:column;gap:1.1rem;">'+
+          '<p class="eyebrow">CLF-C02 ・ 本番形式</p>'+
+          '<h2 class="hero-title" style="font-size:1.4rem;">模擬試験を開始します</h2>'+
+          '<p class="hero-sub">全'+PRACTICE.length+'問 ・ 制限時間 5:00。回答中はフィードバックが表示されず、終了後にまとめて採点・解説を確認します。</p>'+
+        '</div>'+
+      '</main>'+
+      '<div class="bottom-bar"><button class="btn btn-primary" data-action="beginMock">開始する</button></div>';
+  }
+
+  function screenMock(){
+    var q = PRACTICE[mock.index];
+    var selected = mock.answers[q.id] || [];
+    var choiceShape = q.type === 'multi' ? 'square' : 'circle';
+    var choicesHtml = q.choices.map(function(label, idx){
+      var picked = selected.indexOf(idx) !== -1;
+      return '<button class="choice'+(picked?' picked':'')+'" data-shape="'+choiceShape+'" data-action="mockChoice" data-index="'+idx+'">'+
+        '<span class="mark"></span><span>'+label+'</span>'+
+      '</button>';
+    }).join('');
+    var hint = q.type === 'multi' ? '<div class="q-multi-hint">当てはまるものをすべて選択してください（複数選択）</div>' : '';
+    var dots = PRACTICE.map(function(_, i){
+      var cls = [];
+      if (mock.answers[PRACTICE[i].id] && mock.answers[PRACTICE[i].id].length) cls.push('answered');
+      if (i === mock.index) cls.push('current');
+      return '<span class="'+cls.join(' ')+'"></span>';
+    }).join('');
+
+    var body =
+      '<div class="fade-in" style="display:flex;flex-direction:column;gap:1rem;">'+
+        '<div class="q-meta"><span class="chip">'+DOMAINS[q.domain]+'</span><span class="timer" id="mockTimer">'+formatTime(mock.timeLeft)+'</span></div>'+
+        '<p class="q-text">'+q.text+'</p>'+
+        hint+
+        '<div class="choice-list">'+choicesHtml+'</div>'+
+        '<div class="mock-nav-dots">'+dots+'</div>'+
+      '</div>';
+
+    var isLast = mock.index === PRACTICE.length - 1;
+    var bottomBar = '<div class="bottom-bar">'+
+      '<button class="btn btn-ghost" data-action="mockPrev" '+(mock.index===0?'disabled':'')+'>前へ</button>'+
+      (isLast
+        ? '<button class="btn btn-primary" data-action="mockSubmit">提出する</button>'
+        : '<button class="btn btn-primary" data-action="mockNext">次へ</button>')+
+    '</div>';
+
+    return topbar('模擬試験 ・ 問 '+(mock.index+1)+'/'+PRACTICE.length, {}) + '<main>'+body+'</main>' + bottomBar;
+  }
+
+  function screenMockResults(){
+    var items = mock.results.map(function(r){
+      var yourAns = r.selected.length ? r.selected.map(function(i){return r.q.choices[i];}).join(' / ') : '（未回答）';
+      return '<div class="review-item">'+
+        '<div class="review-head"><span class="chip">'+DOMAINS[r.q.domain]+'</span>'+
+          '<span class="tag-result '+(r.isCorrect?'tag-ok':'tag-ng')+'">'+(r.isCorrect?'正解':'不正解')+'</span></div>'+
+        '<p style="margin:0;font-weight:700;font-family:\'Zen Kaku Gothic New\',sans-serif;font-size:.92rem;">'+r.q.text+'</p>'+
+        '<p class="review-line">あなたの回答: <b>'+yourAns+'</b></p>'+
+        renderBreakdown(r.q.choices, r.q.correct, r.q.why)+
+      '</div>';
+    }).join('');
+
+    return topbar('模擬試験の結果', {home:true}) +
+      '<main>'+
+        '<div class="score-tile fade-in"><div class="score-num">'+mock.score+' / '+PRACTICE.length+'</div><div class="score-label">正解</div></div>'+
+        '<div style="display:flex;flex-direction:column;gap:.7rem;" class="fade-in">'+items+'</div>'+
+      '</main>'+
+      '<div class="bottom-bar">'+
+        '<button class="btn btn-ghost" data-action="stats">統計を見る</button>'+
+        '<button class="btn btn-primary" data-action="home">ホームへ</button>'+
+      '</div>';
+  }
+
+  function screenStats(){
+    var cats = categoryStats();
+    var overall = overallStats();
+    var weak = weakItems();
+
+    var catsHtml = cats.map(function(c){
+      var pct = c.pct === null ? 0 : c.pct;
+      var pctLabel = c.pct === null ? '未着手' : c.pct+'%';
+      return '<div class="stat-row">'+
+        '<div class="stat-row-head"><span>'+c.label+'</span><span>'+pctLabel+'</span></div>'+
+        '<div class="bar-track"><div class="bar-fill" style="width:'+pct+'%"></div></div>'+
+      '</div>';
+    }).join('');
+
+    var weakHtml = weak.length
+      ? '<div class="weak-list">'+weak.map(function(w){
+          return '<div class="weak-row"><span class="wtext">'+truncate(w.label, 40)+'<small>'+w.sub+'</small></span><span class="chip chip-critical">苦手</span></div>';
+        }).join('')+'</div>'
+      : '<p class="empty-note">現在、苦手項目はありません。</p>';
+
+    return topbar('進捗・統計', {}) +
+      '<main>'+
+        '<div class="overall-stat fade-in">'+
+          '<div class="score-tile"><div class="score-num">'+overall.pct+'%</div><div class="score-label">総合正答率</div></div>'+
+          '<div class="score-tile"><div class="score-num">'+overall.attempts+'</div><div class="score-label">総解答数</div></div>'+
+        '</div>'+
+        '<div class="fade-in" style="display:flex;flex-direction:column;gap:.9rem;">'+
+          '<p class="section-label">分野別の正答率</p>'+catsHtml+
+        '</div>'+
+        '<div class="fade-in" style="display:flex;flex-direction:column;gap:.7rem;">'+
+          '<p class="section-label">苦手な項目</p>'+weakHtml+
+        '</div>'+
+      '</main>'+
+      '<div class="bottom-bar">'+
+        '<button class="btn btn-primary" data-action="reviewWeak" '+(weak.length===0?'disabled':'')+'>苦手項目だけで復習する</button>'+
+      '</div>';
+  }
+
+  function truncate(s, n){ return s.length > n ? s.slice(0, n) + '…' : s; }
+
+  function render(){
+    clearTimer();
+    var app = document.getElementById('app');
+    var html = '';
+    switch(state.view){
+      case 'home': html = screenHome(); break;
+      case 'session': html = screenSession(); break;
+      case 'sessionComplete': html = screenSessionComplete(); break;
+      case 'mockIntro': html = screenMockIntro(); break;
+      case 'mock': html = screenMock(); break;
+      case 'mockResults': html = screenMockResults(); break;
+      case 'stats': html = screenStats(); break;
+      default: html = screenHome();
+    }
+    app.innerHTML = html;
+    if (state.view === 'mock') runTimer();
+  }
+
+  document.getElementById('app').addEventListener('click', function(e){
+    var el = e.target.closest('[data-action]');
+    if (!el) return;
+    var action = el.getAttribute('data-action');
+    switch(action){
+      case 'home': clearTimer(); state = {view:'home'}; render(); break;
+      case 'vocab': startSession('vocab'); break;
+      case 'practice': startSession('practice'); break;
+      case 'reviewWeak': startSession('weak'); break;
+      case 'stats': state = {view:'stats'}; render(); break;
+      case 'mockIntroNav': startMock(); break;
+      case 'beginMock': beginMockPlay(); break;
+      case 'assess': handleAssess(el.getAttribute('data-value')); break;
+      case 'toggleChoice': toggleChoice(parseInt(el.getAttribute('data-index'),10)); break;
+      case 'submitAnswer': submitAnswer(); break;
+      case 'next': sessionNext(); break;
+      case 'mockChoice': mockToggleChoice(parseInt(el.getAttribute('data-index'),10)); break;
+      case 'mockPrev': mockNav('prev'); break;
+      case 'mockNext': mockNav('next'); break;
+      case 'mockSubmit': mockNav('submit'); break;
+    }
+  });
+
+  render();
+})();
+</script>
