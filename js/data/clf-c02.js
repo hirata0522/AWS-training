@@ -51,7 +51,19 @@ var SOURCES = {
   organizations:{label:'AWS Organizations', url:'https://aws.amazon.com/organizations/'},
   support:{label:'AWS Support プラン', url:'https://aws.amazon.com/premiumsupport/plans/'},
   trustedadvisor:{label:'AWS Trusted Advisor', url:'https://aws.amazon.com/premiumsupport/technology/trusted-advisor/'},
-  costmgmt:{label:'AWSのコスト管理戦略の選び方', url:'https://docs.aws.amazon.com/decision-guides/latest/cost-management-on-aws-how-to-choose/cost-management-on-aws-how-to-choose.html'}
+  costmgmt:{label:'AWSのコスト管理戦略の選び方', url:'https://docs.aws.amazon.com/decision-guides/latest/cost-management-on-aws-how-to-choose/cost-management-on-aws-how-to-choose.html'},
+  config:{label:'AWS Config', url:'https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html'},
+  inspector:{label:'Amazon Inspector', url:'https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html'},
+  acm:{label:'AWS Certificate Manager', url:'https://aws.amazon.com/certificate-manager/'},
+  cognito:{label:'Amazon Cognito', url:'https://aws.amazon.com/cognito/'},
+  ecs:{label:'Amazon ECS', url:'https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html'},
+  aurora:{label:'Amazon Aurora', url:'https://aws.amazon.com/rds/aurora/'},
+  sqs:{label:'Amazon SQS', url:'https://aws.amazon.com/sqs/'},
+  beanstalk:{label:'AWS Elastic Beanstalk', url:'https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html'},
+  pricingcalc:{label:'AWS Pricing Calculator', url:'https://aws.amazon.com/aws-cost-management/aws-pricing-calculator/'},
+  marketplace:{label:'AWS Marketplace', url:'https://aws.amazon.com/marketplace'},
+  s3glacier:{label:'Amazon S3 Glacier ストレージクラス', url:'https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html'},
+  edgelocation:{label:'AWSグローバルネットワーク（PoP/エッジロケーション）', url:'https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/points-of-presence.html'}
 };
 
 var VOCAB = [
@@ -110,7 +122,13 @@ var VOCAB = [
   {id:'v45', term:'Savings Plans', domain:'billing', source:SOURCES.costmgmt, q:{text:'AWS Savings Plansの特徴として正しいものはどれですか？', choices:['1年または3年間、一定の使用量（ドル/時間）を契約することで、オンデマンドより低い料金を得られる柔軟な料金モデル','無料利用枠として提供される料金モデル','AWSの空き容量を低価格で利用できるが中断される可能性がある料金モデル','使用した分だけ支払う、契約を伴わない料金モデル'], correct:0, why:['正しい。Savings Plansは一定の使用量を1年・3年単位で契約することで、インスタンスタイプ等に縛られず割引価格を得られる料金モデルです。','これは無料利用枠の説明です。','これはスポットインスタンスの説明です。','これはオンデマインドインスタンスの説明です。']}},
   {id:'v46', term:'Reserved Instances', domain:'billing', source:SOURCES.costmgmt, q:{text:'Amazon EC2のリザーブドインスタンスの特徴として正しいものはどれですか？', choices:['AWSが中断できる空き容量を割安に利用する料金モデル','特定のインスタンスタイプ・リージョンを1年または3年間予約することで、オンデマンドより割安な料金を得られる','必要な時にすぐ起動し使用した分だけ支払う、予約を伴わない料金モデル','常に無料で利用できる料金モデル'], correct:1, why:['これはスポットインスタンスの説明です。','正しい。リザーブドインスタンスは特定の条件のインスタンスを1年・3年単位で予約することで割安な料金を得られます。','これはオンデマンドインスタンスの説明です。','誤り。無料になるわけではなく、割引価格での契約です。']}},
   {id:'v47', term:'Spot Instances', domain:'billing', source:SOURCES.costmgmt, q:{text:'Amazon EC2スポットインスタンスの特徴として正しいものはどれですか？', choices:['1年/3年の予約契約でオンデマンドより割安になる','常時可用性が保証された料金モデル','AWSの空きキャパシティを大幅な割引価格で利用できるが、AWSの都合で中断される可能性がある','使用量にかかわらず固定額を支払う'], correct:2, why:['これはリザーブドインスタンス/Savings Plansの説明です。','誤り。中断の可能性があり、常時可用性は保証されません。','正しい。スポットインスタンスはAWSの空きキャパシティを大幅な割引で利用できますが、AWSの都合で2分前通知のうえ中断される可能性があります。','誤り。使用量に応じて料金が発生します。']}},
-  {id:'v48', term:'AWS Trusted Advisor', domain:'billing', source:SOURCES.trustedadvisor, q:{text:'AWS Trusted Advisorの役割として正しいものはどれですか？', choices:['リザーブドインスタンスを自動的に購入するサービス','予算超過時にアラートを送るサービス','複数アカウントを一括請求するサービス','コスト最適化・パフォーマンス・セキュリティ・レジリエンス（耐障害性）・サービス制限などの観点でベストプラクティスに基づく推奨事項を提示する'], correct:3, why:['誤り。自動購入機能を持つサービスではありません。','これはAWS Budgetsの説明です。','これはAWS Organizationsの説明です。','正しい。Trusted Advisorはコスト最適化・パフォーマンス・セキュリティ・レジリエンス・サービス制限等の観点で推奨事項を提示します。']}}
+  {id:'v48', term:'AWS Trusted Advisor', domain:'billing', source:SOURCES.trustedadvisor, q:{text:'AWS Trusted Advisorの役割として正しいものはどれですか？', choices:['リザーブドインスタンスを自動的に購入するサービス','予算超過時にアラートを送るサービス','複数アカウントを一括請求するサービス','コスト最適化・パフォーマンス・セキュリティ・レジリエンス（耐障害性）・サービス制限などの観点でベストプラクティスに基づく推奨事項を提示する'], correct:3, why:['誤り。自動購入機能を持つサービスではありません。','これはAWS Budgetsの説明です。','これはAWS Organizationsの説明です。','正しい。Trusted Advisorはコスト最適化・パフォーマンス・セキュリティ・レジリエンス・サービス制限等の観点で推奨事項を提示します。']}},
+
+  // --- 追加分（耐障害性・ガバナンス・DR・エッジロケーション） ---
+  {id:'v49', term:'Fault Tolerance', domain:'concepts', source:SOURCES.wafReliability, q:{text:'「耐障害性(Fault Tolerance)」とは何を指しますか？', choices:['一部のコンポーネントで障害が発生しても、システム全体として正常に機能を継続できる能力','需要に応じてリソースを自動的に増減できる特性','障害からの復旧にかかる時間を測定する指標','データが失われない性質'], correct:0, why:['正しい。耐障害性は、一部のコンポーネントで障害が発生してもシステム全体としては正常に機能し続けられる能力を指します。','これは弾力性(Elasticity)の説明です。','これは目標復旧時間(RTO)のような復旧指標に関する説明であり、耐障害性自体の定義ではありません。','これは耐久性(Durability)の説明です。']}},
+  {id:'v50', term:'AWS Config', domain:'security', source:SOURCES.config, q:{text:'AWS Configの役割として正しいものはどれですか？', choices:['DDoS攻撃からリソースを保護する','AWSリソースの構成を記録し、構成変更の履歴を追跡してコンプライアンス評価に利用できるサービス','暗号鍵を管理する','Webアプリケーションへの攻撃をフィルタリングする'], correct:1, why:['これはAWS Shieldの説明です。','正しい。AWS Configはリソースの構成とその変更履歴を記録し、コンプライアンス評価やトラブルシューティングに利用できるサービスです。','これはAWS KMSの説明です。','これはAWS WAFの説明です。']}},
+  {id:'v51', term:'Disaster Recovery (DR)', domain:'concepts', source:SOURCES.wafReliability, q:{text:'「ディザスタリカバリ(DR)」とは何ですか？', choices:['需要に応じてリソースを増減させる仕組み','複数のAZにインスタンスを分散配置する機能そのもの','災害や大規模障害発生時に、システムを復旧させ事業を継続するための計画・仕組み','コストを最小化するための購入オプション'], correct:2, why:['これは弾力性(Elasticity)の説明です。','複数AZへの分散はDR戦略の一手段ですが、それ自体がDRの定義ではありません。','正しい。DRは災害や大規模障害発生時にシステムを復旧し、事業を継続するための計画・仕組みです。','これはリザーブドインスタンスやSavings Plansなど購入オプションに関する説明です。']}},
+  {id:'v52', term:'Edge Location', domain:'concepts', source:SOURCES.edgelocation, q:{text:'AWSの「エッジロケーション」とは何ですか？', choices:['複数のアベイラビリティーゾーンで構成される地理的エリア','1つ以上のデータセンターで構成されるリージョン内の拠点','請求情報を一括管理する拠点','CloudFrontなどのサービスがコンテンツをキャッシュし、利用者に近い場所から低レイテンシーで配信するために使用する拠点'], correct:3, why:['これはリージョンの説明です。','これはアベイラビリティーゾーンの説明です。','請求管理とは無関係です。','正しい。エッジロケーションはCloudFront等のサービスがコンテンツをキャッシュし、利用者に近い場所から低レイテンシーで配信するために使用する拠点です。']}}
 ];
 
 var PRACTICE = [
@@ -259,7 +277,48 @@ var PRACTICE = [
     why:['誤り。物理的な配線設計はAWSが管理する範囲であり、Trusted Advisorの推奨カテゴリではありません。','誤り。従業員の勤怠管理はAWSのサービス範囲外です。','正しい。コスト最適化はTrusted Advisorが推奨事項を提示する代表的なカテゴリの一つです。','正しい。セキュリティもTrusted Advisorが推奨事項を提示するカテゴリの一つです。']},
   {id:'p46', domain:'billing', type:'single', source:SOURCES.support, text:'AWSサポートプランに関する正しい説明はどれですか？',
     choices:['すべてのサポートプランは有料で、Basicプランも費用が発生する','Basic Supportはすべてのアカウントで自動的に無料で利用でき、上位プランでは対応時間の短縮や専任担当（TAM）などの手厚い支援が追加される','サポートプランはセキュリティ機能の有効化にのみ関係する','サポートプランはAWSの利用料金に含まれ、別途申込みは一切不要である'], correct:[1],
-    why:['誤り。Basic Supportは無料で、追加費用は発生しません。','正しい。Basic Supportは全アカウントに自動的に無料で付属し、上位の有料プランでは対応時間の短縮や専任のテクニカルアカウントマネージャー（TAM）などが追加されます。','誤り。サポートプランはセキュリティに限らず、技術支援全般に関係します。','誤り。上位プランは別途申込み・契約が必要です。']}
+    why:['誤り。Basic Supportは無料で、追加費用は発生しません。','正しい。Basic Supportは全アカウントに自動的に無料で付属し、上位の有料プランでは対応時間の短縮や専任のテクニカルアカウントマネージャー（TAM）などが追加されます。','誤り。サポートプランはセキュリティに限らず、技術支援全般に関係します。','誤り。上位プランは別途申込み・契約が必要です。']},
+
+  // --- 追加分 ---
+  {id:'p47', domain:'concepts', type:'single', source:SOURCES.wafReliability, text:'システムの各コンポーネント間の依存関係を減らし、一部に障害が発生しても全体への影響を抑える設計思想を何と呼びますか？',
+    choices:['疎結合（Loose Coupling）','密結合（Tight Coupling）','垂直スケーリング','単一障害点の集中設計'], correct:[0],
+    why:['正しい。疎結合（Loose Coupling）はコンポーネント間の依存を減らし、一部の障害が全体に波及しにくくする設計です。','誤り。密結合は依存が強く、障害の影響が広がりやすい設計です。','誤り。垂直スケーリングはリソースの増強方法であり、結合度とは無関係です。','誤り。単一障害点はむしろ避けるべき設計上の弱点です。']},
+  {id:'p48', domain:'concepts', type:'single', source:SOURCES.sixAdv, text:'AWSのような大規模事業者が多数の顧客の需要を集約することで、利用者が単位あたりのコストを下げられる効果を何と呼びますか？',
+    choices:['弾力性（Elasticity）','規模の経済（Economies of Scale）','疎結合（Loose Coupling）','責任共有モデル'], correct:[1],
+    why:['誤り。弾力性は需要に応じたリソースの増減を指す概念です。','正しい。規模の経済は、多数の利用を集約することで単位コストを引き下げられる効果を指します。','誤り。疎結合はコンポーネント間の依存を減らす設計思想です。','誤り。責任共有モデルはセキュリティ責任の分担に関する概念です。']},
+  {id:'p49', domain:'concepts', type:'single', source:SOURCES.wafReliability, text:'ディザスタリカバリ(DR)計画を策定する目的として最も適切なものはどれですか？',
+    choices:['日常のコストを完全にゼロにすること','単一のアベイラビリティーゾーンにリソースを集中させ管理を簡素化すること','大規模な障害や災害が発生した場合に、システムを復旧し事業を継続できるようにすること','すべてのIAMユーザーに管理者権限を付与すること'], correct:[2],
+    why:['誤り。コストをゼロにすることが目的ではありません。','誤り。単一AZへの集中は可用性・耐障害性を下げる方向であり、DRの目的に反します。','正しい。DR計画は大規模な障害や災害発生時にシステムを復旧し、事業を継続できるようにすることが目的です。','誤り。IAM権限管理とは無関係です。']},
+  {id:'p50', domain:'security', type:'single', source:SOURCES.config, text:'AWSリソースの構成変更履歴を記録し、特定時点での構成を遡って確認できるようにしたい場合、最も適したサービスはどれですか？',
+    choices:['Amazon GuardDuty','AWS CloudTrail','Amazon CloudWatch','AWS Config'], correct:[3],
+    why:['誤り。GuardDutyは脅威検知サービスであり、構成変更履歴の記録が主目的ではありません。','誤り。CloudTrailはAPIコールの履歴を記録しますが、リソースの構成そのものの履歴を時系列で評価する役割はAWS Configが担います。','誤り。CloudWatchは運用メトリクス・ログの監視が主目的です。','正しい。AWS Configはリソースの構成と変更履歴を記録し、特定時点の構成を確認できます。']},
+  {id:'p51', domain:'security', type:'single', source:SOURCES.inspector, text:'EC2インスタンスやコンテナイメージ、Lambda関数を自動的にスキャンし、ソフトウェアの脆弱性や意図しないネットワーク露出を継続的に検出するサービスはどれですか？',
+    choices:['Amazon Inspector','AWS Secrets Manager','AWS Artifact','AWS Organizations'], correct:[0],
+    why:['正しい。Amazon Inspectorは、EC2・コンテナイメージ・Lambda関数等を自動的にスキャンし、脆弱性やネットワーク露出を継続的に検出する脆弱性管理サービスです。','誤り。Secrets Managerはシークレットの保管・ローテーションサービスです。','誤り。Artifactはコンプライアンスレポートの取得サービスです。','誤り。Organizationsは複数アカウント管理サービスです。']},
+  {id:'p52', domain:'security', type:'single', source:SOURCES.acm, text:'Webサイトやロードバランサーで使用するSSL/TLS証明書を発行・管理し、多くの場合自動的に更新できるサービスはどれですか？',
+    choices:['AWS KMS','AWS Certificate Manager (ACM)','Amazon Cognito','AWS Secrets Manager'], correct:[1],
+    why:['誤り。KMSは暗号鍵の作成・管理サービスであり、SSL/TLS証明書の発行に特化したサービスではありません。','正しい。ACMはSSL/TLS証明書を発行・管理し、ELBやCloudFront等と連携して自動更新できるサービスです。','誤り。Cognitoはアプリケーションのユーザー認証・ID管理サービスです。','誤り。Secrets Managerはデータベース認証情報等のシークレット管理サービスです。']},
+  {id:'p53', domain:'security', type:'multi', source:SOURCES.cognito, text:'モバイルアプリのユーザーにサインアップ・サインイン機能を提供し、Google等の外部IDプロバイダーと連携した認証を実装したい場合に有効な対策を2つ選択してください。',
+    choices:['Amazon Cognitoのユーザープールを使用して認証機能を実装する','外部IDプロバイダー(例: Google)とのフェデレーションを設定する','すべてのユーザーにルートユーザーの認証情報を共有する','IAMロールをエンドユーザーに直接割り当てて個人管理する'], correct:[0,1],
+    why:['正しい。Cognitoのユーザープールは、サインアップ・サインイン機能を提供する認証サービスです。','正しい。Cognitoは外部IDプロバイダーとのフェデレーションをサポートし、既存のソーシャル/エンタープライズIDでのサインインを実現できます。','誤り。ルートユーザー認証情報の共有は重大なセキュリティリスクです。','誤り。IAMロールは一時的な権限委譲のための仕組みで、エンドユーザー個人への直接割り当て・個人管理には適していません。']},
+  {id:'p54', domain:'tech', type:'single', source:SOURCES.ecs, text:'Dockerコンテナを複数のEC2インスタンスやFargate上でオーケストレーション（配置・スケーリング管理）したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon RDS','AWS Direct Connect','Amazon Elastic Container Service (ECS)','Amazon Route 53'], correct:[2],
+    why:['誤り。RDSはリレーショナルデータベースサービスです。','誤り。Direct Connectは専用線接続サービスです。','正しい。ECSはコンテナのデプロイ・管理・スケーリングを行うフルマネージドなコンテナオーケストレーションサービスです。','誤り。Route 53はDNSサービスです。']},
+  {id:'p55', domain:'tech', type:'single', source:SOURCES.aurora, text:'MySQLおよびPostgreSQLと互換性があり、クラウド向けに設計された高性能なリレーショナルデータベースサービスはどれですか？',
+    choices:['Amazon DynamoDB','Amazon S3','Amazon ElastiCache','Amazon Aurora'], correct:[3],
+    why:['誤り。DynamoDBはNoSQL型のデータベースです。','誤り。S3はオブジェクトストレージです。','誤り。ElastiCacheはインメモリキャッシュサービスであり、永続化を主目的とするリレーショナルデータベースではありません。','正しい。AuroraはMySQL・PostgreSQL互換の、クラウド向けに最適化された高性能なリレーショナルデータベースサービスです。']},
+  {id:'p56', domain:'tech', type:'multi', source:SOURCES.sqs, text:'マイクロサービス間の処理を非同期化し、一時的な負荷の急増でも後続処理が失敗しないように疎結合化する設計として適切なものを2つ選択してください。',
+    choices:['すべてのサービスを密結合にして同期呼び出しのみで連携する','Amazon SQSを使ってサービス間にキューを挟み、非同期にメッセージを受け渡す','AWS Lambdaを使ってイベント駆動で後続処理を実行する','単一のEC2インスタンスにすべての処理を集約する'], correct:[1,2],
+    why:['誤り。密結合・同期呼び出しのみの構成は、負荷急増時に障害が伝播しやすくなります。','正しい。SQSによるキューを介した非同期連携は、サービス間を疎結合にし負荷の急増を吸収できます。','正しい。Lambdaのイベント駆動実行は、キューに溜まったメッセージを非同期に処理するのに適しています。','誤り。単一インスタンスへの集約は単一障害点を生み、スケーラビリティも損ないます。']},
+  {id:'p57', domain:'tech', type:'single', source:SOURCES.beanstalk, text:'アプリケーションのコードをアップロードするだけで、EC2・ロードバランサー・Auto Scalingなどの基盤環境をAWSが自動的にプロビジョニングし、運用の詳細を管理せずにWebアプリケーションを実行したい場合、最も適したサービスはどれですか？',
+    choices:['AWS Elastic Beanstalk','Amazon EFS','Amazon Route 53','AWS Direct Connect'], correct:[0],
+    why:['正しい。Elastic Beanstalkは、コードをアップロードするだけでEC2・ロードバランサー・Auto Scaling等の環境をAWSが自動的に構築・管理してくれるサービスです。','誤り。EFSは共有ファイルストレージサービスです。','誤り。Route 53はDNSサービスです。','誤り。Direct Connectは専用線接続サービスです。']},
+  {id:'p58', domain:'tech', type:'single', source:SOURCES.s3glacier, text:'数年に一度程度しかアクセスしない法令保存用のログデータを、できるだけ低コストで長期保管したい場合、最も適したストレージクラスはどれですか？',
+    choices:['S3 Standard','S3 Glacier Deep Archive','Amazon EBS','Amazon EFS'], correct:[1],
+    why:['誤り。S3 Standardは頻繁にアクセスするデータ向けの標準ストレージクラスで、長期保管用途としては割高です。','正しい。S3 Glacier Deep Archiveは、年に一度未満程度のアクセス頻度を想定した最も低コストな長期アーカイブ向けストレージクラスです。','誤り。EBSはEC2にアタッチするブロックストレージであり、長期アーカイブ用途には適していません。','誤り。EFSは複数インスタンスで共有するファイルストレージであり、長期アーカイブ用途には適していません。']},
+  {id:'p59', domain:'billing', type:'single', source:SOURCES.pricingcalc, text:'新しいワークロードをAWS上に構築する前に、想定する構成（インスタンスタイプ・使用量等）を入力して事前にコストを見積もりたい場合、最も適したツールはどれですか？',
+    choices:['AWS Budgets','AWS Cost Explorer','AWS Pricing Calculator','AWS Trusted Advisor'], correct:[2],
+    why:['誤り。Budgetsは予算に対するアラート機能が主目的で、構築前の見積もりツールではありません。','誤り。Cost Explorerは過去の実績コストの分析・予測が主目的で、未構築のワークロードの見積もりには使いにくいです。','正しい。AWS Pricing Calculatorは、想定する構成を入力してワークロードのコストを事前に見積もれるツールです。','誤り。Trusted Advisorはベストプラクティスの推奨事項を提示するサービスです。']}
 ];
 
 // 模擬試験専用の問題プール（PRACTICEとは独立。目標500問、現在は初期シード分のみ。
@@ -463,5 +522,39 @@ var MOCK_POOL = [
       '誤り。Cost Explorerはコスト分析・予測が主目的です。',
       '誤り。Organizationsは複数アカウント管理が主目的です。',
       '正しい。Trusted Advisorはコスト最適化・パフォーマンス・セキュリティ等の観点で推奨事項を提示します。'
+    ]},
+
+  // --- 追加分 ---
+  {id:'m25', domain:'concepts', type:'single', source:SOURCES.edgelocation, text:'CloudFrontなどのサービスが、利用者の近くからコンテンツを低レイテンシーで配信するために利用する拠点を何と呼びますか？',
+    choices:['リージョン','アベイラビリティーゾーン','データセンター','エッジロケーション'], correct:[3],
+    why:[
+      '誤り。リージョンは複数のAZで構成される地理的エリアです。',
+      '誤り。AZはリージョン内の独立したデータセンター群です。',
+      '誤り。データセンターはAZを構成する個々の施設です。',
+      '正しい。エッジロケーションはCloudFront等がコンテンツをキャッシュし、利用者に近い場所から配信するための拠点です。'
+    ]},
+  {id:'m26', domain:'security', type:'single', source:SOURCES.inspector, text:'EC2インスタンスやLambda関数、コンテナイメージに対して継続的に脆弱性スキャンを行い、リスクに応じたスコアを付与するサービスはどれですか？',
+    choices:['Amazon Inspector','AWS Artifact','AWS Organizations','AWS Secrets Manager'], correct:[0],
+    why:[
+      '正しい。Amazon Inspectorは脆弱性を継続的にスキャンし、リスクスコアを付与する脆弱性管理サービスです。',
+      '誤り。Artifactはコンプライアンスレポートの取得サービスです。',
+      '誤り。Organizationsは複数アカウント管理サービスです。',
+      '誤り。Secrets Managerはシークレット管理サービスです。'
+    ]},
+  {id:'m27', domain:'tech', type:'multi', source:SOURCES.aurora, text:'既存のオンプレミスのMySQLデータベースとDockerコンテナアプリケーションをAWSへ移行する際に活用できるマネージドサービスを2つ選択してください。',
+    choices:['AWS Direct Connect','Amazon Route 53','Amazon Aurora','Amazon Elastic Container Service (ECS)'], correct:[2,3],
+    why:[
+      '誤り。Direct Connectはオンプレミスとの専用線接続サービスであり、データベースやコンテナの移行先ではありません。',
+      '誤り。Route 53はDNSサービスであり、データベースやコンテナの移行先ではありません。',
+      '正しい。Amazon AuroraはMySQL互換のマネージドリレーショナルデータベースで、既存MySQLからの移行先として適しています。',
+      '正しい。Amazon ECSはDockerコンテナをAWS上でオーケストレーションするマネージドサービスです。'
+    ]},
+  {id:'m28', domain:'billing', type:'single', source:SOURCES.marketplace, text:'サードパーティが提供するソフトウェア（AMIベースの製品やSaaS製品など）を検索・購入し、AWSの利用料金と合わせて一括で請求してもらいたい場合、最も適したサービスはどれですか？',
+    choices:['AWS Budgets','AWS Marketplace','AWS Cost Explorer','AWS Organizations'], correct:[1],
+    why:[
+      '誤り。Budgetsは予算アラートの設定サービスです。',
+      '正しい。AWS Marketplaceはサードパーティ製ソフトウェアを検索・購入できるカタログで、料金はAWSの利用料金と合わせて請求されます。',
+      '誤り。Cost Explorerはコスト分析・予測ツールです。',
+      '誤り。Organizationsは複数アカウント管理サービスです。'
     ]}
 ];
