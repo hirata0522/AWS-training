@@ -102,7 +102,15 @@ var SOURCES = {
   quicksight:{label:'Amazon QuickSight', url:'https://aws.amazon.com/quicksight/'},
   storagegateway:{label:'AWS Storage Gateway', url:'https://aws.amazon.com/storagegateway/'},
   capacityReservation:{label:'Amazon EC2 On-Demand Capacity Reservation', url:'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html'},
-  athena:{label:'Amazon Athena', url:'https://docs.aws.amazon.com/athena/latest/ug/what-is.html'}
+  athena:{label:'Amazon Athena', url:'https://docs.aws.amazon.com/athena/latest/ug/what-is.html'},
+  workspaces:{label:'Amazon WorkSpaces', url:'https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html'},
+  controlTower:{label:'AWS Control Tower', url:'https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html'},
+  privatelink:{label:'AWS PrivateLink', url:'https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html'},
+  datasync:{label:'AWS DataSync', url:'https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html'},
+  opensearch:{label:'Amazon OpenSearch Service', url:'https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html'},
+  xray:{label:'AWS X-Ray', url:'https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html'},
+  comprehend:{label:'Amazon Comprehend', url:'https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html'},
+  costAnomalyDetection:{label:'AWS Cost Anomaly Detection', url:'https://docs.aws.amazon.com/cost-management/latest/userguide/manage-ad.html'}
 };
 
 var VOCAB = [
@@ -195,7 +203,13 @@ var VOCAB = [
   {id:'v73', term:'AWS Well-Architected Tool', domain:'concepts', source:SOURCES.watool, q:{text:'AWS Well-Architected Toolとは何ですか？', choices:['自分のワークロードをAWSのベストプラクティス（Well-Architected Frameworkの6つの柱）と比較して評価し、改善の推奨事項を得られる無料のツール','DDoS攻撃からワークロードを保護するサービス','ワークロードのコストを自動的に最適化し、支払いまで代行するサービス','IAMポリシーの過剰な権限を検出するサービス'], correct:0, why:['正しい。AWS Well-Architected Toolは、Well-Architected Frameworkの6つの柱に基づいてワークロードをレビューし、改善のための推奨事項を提示する無料のツールです。','これはAWS Shieldの説明です。','誤り。コストの自動最適化や支払いの代行を行うツールではなく、設計・運用のレビューを支援するツールです。','これはAWS IAM Access Analyzerの説明です。']}},
   {id:'v74', term:'AWS IAM Access Analyzer', domain:'security', source:SOURCES.accessAnalyzer, q:{text:'AWS IAM Access Analyzerの役割として正しいものはどれですか？', choices:['DDoS攻撃を検知し緩和する','S3バケットなどのリソースが、外部のAWSアカウントや公衆からアクセス可能な状態になっていないかを分析し、意図しない共有を検出する','データ暗号化に使う暗号鍵を作成・管理する','リソースの構成変更履歴を記録しコンプライアンス評価に使う'], correct:1, why:['これはAWS Shieldの説明です。','正しい。IAM Access Analyzerは論理推論を用いてリソースベースポリシーを分析し、外部アカウントや公衆に意図せず共有されているリソースを検出します。','これはAWS KMSの説明です。','これはAWS Configの説明です。']}},
   {id:'v75', term:'Amazon Athena', domain:'tech', source:SOURCES.athena, q:{text:'Amazon Athenaとは何ですか？', choices:['仮想サーバーを提供するコンピューティングサービス','データの収集・変換・結合（ETL）処理を行うサービス','Amazon S3に保存されたデータに対して、サーバーを管理せずに標準SQLで直接クエリを実行できるサーバーレスの分析サービス','ビジネスインテリジェンス向けのダッシュボードを作成するサービス'], correct:2, why:['これはAmazon EC2の説明です。','これはAWS Glueの説明です。','正しい。Amazon Athenaは、S3に保存されたデータに対してサーバーのプロビジョニングや管理をせずに標準SQLで直接クエリを実行できるサーバーレスの対話型分析サービスです。','これはAmazon QuickSightの説明です。']}},
-  {id:'v76', term:'On-Demand Capacity Reservation', domain:'billing', source:SOURCES.capacityReservation, q:{text:'Amazon EC2のOn-Demand Capacity Reservationとは何ですか？', choices:['AWSの空きキャパシティを割引価格で利用できるが、AWSの都合で中断される可能性がある仕組み','1年または3年の使用量を契約することで割引を得られる料金モデル','特定のコンピューティングサービス横断で使用量を契約する料金モデル','特定のアベイラビリティーゾーンで、指定したインスタンスタイプの容量を必要な期間だけ確保できる仕組みで、料金はオンデマンド料金が基準となり自動的な割引は提供されない'], correct:3, why:['これはスポットインスタンスの説明です。','これはリザーブドインスタンス/Savings Plansの説明です。','これはSavings Plansの説明です。','正しい。On-Demand Capacity Reservationは、特定のAZで指定したインスタンスタイプの容量を必要な期間だけ確保できる仕組みです。容量確保自体に割引はなく、料金はオンデマンド料金が基準になります。']}}
+  {id:'v76', term:'On-Demand Capacity Reservation', domain:'billing', source:SOURCES.capacityReservation, q:{text:'Amazon EC2のOn-Demand Capacity Reservationとは何ですか？', choices:['AWSの空きキャパシティを割引価格で利用できるが、AWSの都合で中断される可能性がある仕組み','1年または3年の使用量を契約することで割引を得られる料金モデル','特定のコンピューティングサービス横断で使用量を契約する料金モデル','特定のアベイラビリティーゾーンで、指定したインスタンスタイプの容量を必要な期間だけ確保できる仕組みで、料金はオンデマンド料金が基準となり自動的な割引は提供されない'], correct:3, why:['これはスポットインスタンスの説明です。','これはリザーブドインスタンス/Savings Plansの説明です。','これはSavings Plansの説明です。','正しい。On-Demand Capacity Reservationは、特定のAZで指定したインスタンスタイプの容量を必要な期間だけ確保できる仕組みです。容量確保自体に割引はなく、料金はオンデマンド料金が基準になります。']}},
+
+  // --- 追加分（WorkSpaces・Control Tower・PrivateLink・Cost Anomaly Detection） ---
+  {id:'v77', term:'Amazon WorkSpaces', domain:'tech', source:SOURCES.workspaces, q:{text:'Amazon WorkSpacesとは何ですか？', choices:['クラウド上でマネージド型の仮想デスクトップ(DaaS)を提供するサービス','オンプレミスとAWS間でファイルを安全に転送するサービス','コンテナイメージを保存するレジストリサービス','DNSの名前解決を行うサービス'], correct:0, why:['正しい。Amazon WorkSpacesは、Windows/Linux等のマネージド型仮想デスクトップ(Desktop as a Service)をクラウド上で提供するサービスです。','これはAWS DataSyncの説明です。','これはAmazon ECR(Elastic Container Registry)の説明です。','これはAmazon Route 53の説明です。']}},
+  {id:'v78', term:'AWS Control Tower', domain:'concepts', source:SOURCES.controlTower, q:{text:'AWS Control Towerの役割として正しいものはどれですか？', choices:['単一アカウント内のコスト予算を管理する','ベストプラクティスに基づいたマルチアカウント環境(ランディングゾーン)を自動的にセットアップ・統制するサービス','EC2インスタンスの自動スケーリングを行う','オンプレミスとの専用線接続を確立する'], correct:1, why:['これはAWS Budgetsの説明です。','正しい。AWS Control Towerは、AWS Organizations等を活用し、ベストプラクティスに基づくマルチアカウント環境(ランディングゾーン)を自動構築・統制するサービスです。','これはAmazon EC2 Auto Scalingの説明です。','これはAWS Direct Connectの説明です。']}},
+  {id:'v79', term:'AWS PrivateLink', domain:'security', source:SOURCES.privatelink, q:{text:'AWS PrivateLinkの役割として正しいものはどれですか？', choices:['インターネット経由でオンプレミスとVPCを暗号化接続する','複数のアベイラビリティーゾーンにトラフィックを分散する','インターネットを経由せずに、VPCとAWSサービスや他VPC/アカウントのサービスをプライベートに接続する','DDoS攻撃からアプリケーションを保護する'], correct:2, why:['これはAWS Site-to-Site VPNの説明です。','これはElastic Load Balancingの説明です。','正しい。AWS PrivateLinkは、インターネットゲートウェイやNAT、VPN等を使わずに、VPCエンドポイント経由でAWSサービスや他VPC上のサービスにプライベートに接続できます。','これはAWS Shieldの説明です。']}},
+  {id:'v80', term:'AWS Cost Anomaly Detection', domain:'billing', source:SOURCES.costAnomalyDetection, q:{text:'AWS Cost Anomaly Detectionの役割として正しいものはどれですか？', choices:['予算の閾値を手動で設定し超過時にアラートを送る','複数アカウントを一括請求する','ベストプラクティスに基づく推奨事項を提示する','機械学習を使って通常と異なる異常なコスト・使用量のパターンを検知し通知する'], correct:3, why:['これはAWS Budgetsの説明です（Budgetsは手動で設定した閾値に基づきます）。','これはAWS Organizations（コンソリデーティッドビリング）の説明です。','これはAWS Trusted Advisorの説明です。','正しい。AWS Cost Anomaly Detectionは機械学習でコスト・使用量の異常なパターンを検知し、メールやAmazon SNS経由で通知します。']}}
 ];
 
 var PRACTICE = [
@@ -625,7 +639,48 @@ var PRACTICE = [
     why:['誤り。Basic Supportはすべてのアカウントで自動的に無料提供され、追加の契約は不要です。','誤り。応答時間はプランによって異なり、上位プランほど短い応答時間が設定されています。','正しい。Basic Supportは全アカウントに自動的に無料で提供され、請求・アカウントに関するサポートやドキュメント、AWSの状態に関する情報、コミュニティフォーラムへのアクセス等を利用できます。','誤り。有料のサポートプランは月単位の契約で、必要に応じて変更・解約が可能です。']},
   {id:'p137', domain:'billing', type:'single', source:SOURCES.marketplace, text:'サードパーティが提供するソフトウェア(AMIやSaaS製品など)を購入・デプロイし、その利用料金をAWSの利用料金と合わせて一つの請求にまとめたい場合、最も適したサービスはどれですか？',
     choices:['AWS Budgets','AWS Cost Explorer','AWS Organizations','AWS Marketplace'], correct:[3],
-    why:['誤り。Budgetsは予算設定とアラート通知が目的です。','誤り。Cost Explorerはコストと使用量の分析・可視化が目的です。','誤り。Organizationsは複数アカウントの管理・一括支払いが目的ですが、サードパーティ製品の購入・カタログ機能は持ちません。','正しい。AWS Marketplaceは、サードパーティが提供するソフトウェア(AMI・SaaS等)を検索・購入・デプロイできるカタログサービスで、利用料金はAWSの利用料金と合わせて請求されます。']}
+    why:['誤り。Budgetsは予算設定とアラート通知が目的です。','誤り。Cost Explorerはコストと使用量の分析・可視化が目的です。','誤り。Organizationsは複数アカウントの管理・一括支払いが目的ですが、サードパーティ製品の購入・カタログ機能は持ちません。','正しい。AWS Marketplaceは、サードパーティが提供するソフトウェア(AMI・SaaS等)を検索・購入・デプロイできるカタログサービスで、利用料金はAWSの利用料金と合わせて請求されます。']},
+
+  // --- 追加分（Control Tower・PrivateLink・GuardDuty比較・WorkSpaces・DataSync・OpenSearch・X-Ray・Comprehend・Cost Anomaly Detection） ---
+  {id:'p138', domain:'concepts', type:'single', source:SOURCES.controlTower, text:'企業が複数のAWSアカウントを新規に展開する際、セキュリティ・コンプライアンスのベストプラクティスに基づいた「ランディングゾーン」を短時間で自動構築し、ガードレール(統制)を適用したい。最も適切なサービスはどれですか？',
+    choices:['AWS Control Tower','AWS Trusted Advisor','AWS Budgets','Amazon Inspector'], correct:[0],
+    why:['正しい。AWS Control Towerは、AWS Organizations等を組み合わせ、ベストプラクティスに基づくマルチアカウントのランディングゾーンをガードレール付きで自動構築します。','誤り。Trusted Advisorはベストプラクティスの推奨事項を提示しますが、ランディングゾーンの自動構築は行いません。','誤り。Budgetsは予算アラートのサービスで、マルチアカウント統制とは無関係です。','誤り。Inspectorは脆弱性スキャンサービスで、アカウント統制とは無関係です。']},
+  {id:'p139', domain:'concepts', type:'single', source:SOURCES.caf, text:'AWS Cloud Adoption Framework (AWS CAF) における「ガバナンス」の視点が主に扱う内容として最も適切なものはどれですか？',
+    choices:['アプリケーションコードの実装パターン','ビジネス目標に沿ってリスク・コンプライアンスを管理し、クラウド利用に関する意思決定プロセスを整備すること','EC2インスタンスのOSパッチ適用手順','ネットワークの物理的な配線設計'], correct:[1],
+    why:['誤り。これはAWS CAFの「プラットフォーム」や「運用」の視点に近い技術的な内容です。','正しい。AWS CAFの「ガバナンス」の視点は、ビジネス目標に沿ったリスク管理・コンプライアンス・意思決定プロセスの整備を扱います。','誤り。これは運用上の技術的な作業であり、ガバナンスの視点とは異なります。','誤り。これはAWSが責任を持つ物理的インフラの領域です。']},
+  {id:'p140', domain:'concepts', type:'single', source:SOURCES.sixAdv, text:'クラウドコンピューティングの6つのメリットのうち、「キャパシティ(容量)の予測が不要になる」という点を最もよく表している説明はどれですか？',
+    choices:['データセンターの運用費を変動費化できる','世界中の複数リージョンに数分でデプロイできる','将来の需要を事前に予測して機器を購入する必要がなく、必要な分だけリソースを増減できる','固定費を可変費に転換できる'], correct:[2],
+    why:['誤り。これは「固定費を可変費に」というメリットの説明です。','誤り。これは「数分で世界中にデプロイ」というメリットの説明です。','正しい。クラウドでは需要予測が不要で、必要なときに必要な分だけキャパシティを確保・解放できます。','誤り。これは別のメリット（資本費用の削減）の説明です。']},
+  {id:'p141', domain:'security', type:'single', source:SOURCES.privatelink, text:'オンプレミスのネットワークを経由せず、VPC内から特定のAWSサービスやパートナーが提供するサービスに、インターネットを経由せずプライベートに接続したい。最も適切な方法はどれですか？',
+    choices:['AWS Direct Connect','AWS Site-to-Site VPN','インターネットゲートウェイ経由の接続','AWS PrivateLink（VPCインターフェースエンドポイント）'], correct:[3],
+    why:['誤り。Direct ConnectはオンプレミスとAWS間を専用線で接続するサービスで、今回のようなVPC内からサービスへの接続ではありません。','誤り。Site-to-Site VPNもオンプレミスとVPC間の接続であり、要件に合いません。','誤り。インターネットゲートウェイ経由ではインターネットを経由してしまいます。','正しい。AWS PrivateLinkはVPCエンドポイントを使い、インターネットを経由せずにAWSサービスやパートナーサービスにプライベート接続できます。']},
+  {id:'p142', domain:'security', type:'single', source:SOURCES.guardduty, text:'VPCフローログやDNSログ、CloudTrailイベントなどを継続的に分析し、機械学習や脅威インテリジェンスを使って悪意のある活動や不審な挙動を自動的に検知したい。最も適切なサービスはどれですか？',
+    choices:['Amazon GuardDuty','AWS Security Hub','Amazon Detective','AWS Config'], correct:[0],
+    why:['正しい。GuardDutyはVPCフローログ・DNSログ・CloudTrail等を機械学習と脅威インテリジェンスで分析し、脅威を自動検知する脅威検出サービスです。','誤り。Security Hubは複数のセキュリティサービスの検出結果を集約・一元管理するサービスで、検知そのものは行いません。','誤り。Detectiveは検知後の原因調査・可視化を支援するサービスです。','誤り。Configはリソース設定の記録・評価を行うサービスで、脅威検知が主目的ではありません。']},
+  {id:'p143', domain:'security', type:'single', source:SOURCES.secretsmanager, text:'データベースの認証情報(パスワード)を安全に保管し、自動的にローテーション(定期的な変更)させたい場合、最も適切なサービスはどれですか？',
+    choices:['AWS KMS','AWS Secrets Manager','AWS CloudHSM','Amazon Macie'], correct:[1],
+    why:['誤り。KMSは暗号化キーの作成・管理を行うサービスで、認証情報のローテーション機能自体は持ちません。','正しい。Secrets Managerはデータベース認証情報などのシークレットを安全に保管し、自動ローテーションさせることができます。','誤り。CloudHSMは専用ハードウェアでキーを管理するサービスで、シークレットのローテーションは主目的ではありません。','誤り。MacieはS3内の機密データを検出するサービスで、認証情報管理とは異なります。']},
+  {id:'p144', domain:'tech', type:'single', source:SOURCES.workspaces, text:'社員が自宅や外出先の様々なデバイスから、会社が管理するセキュアな仮想デスクトップ環境にアクセスできるようにしたい。物理的なPCの調達・管理の手間を減らしたい場合、最も適切なサービスはどれですか？',
+    choices:['Amazon EC2','AWS Fargate','Amazon WorkSpaces','AWS Lambda'], correct:[2],
+    why:['誤り。EC2は仮想サーバーですが、仮想デスクトップ(DaaS)専用の管理機能は持ちません。','誤り。Fargateはコンテナ向けのサーバーレスコンピューティングサービスです。','正しい。Amazon WorkSpacesはマネージド型の仮想デスクトップ(DaaS)サービスで、様々なデバイスから安全にアクセスできます。','誤り。Lambdaはイベント駆動型のサーバーレスコンピューティングサービスです。']},
+  {id:'p145', domain:'tech', type:'single', source:SOURCES.datasync, text:'オンプレミスのファイルサーバーにある大量のデータを、ネットワーク経由で安全かつ高速にAmazon S3へ移行し、その後も定期的に同期したい場合、最も適切なサービスはどれですか？',
+    choices:['AWS Snowball','AWS Direct Connect','AWS Database Migration Service (DMS)','AWS DataSync'], correct:[3],
+    why:['誤り。Snowballは物理デバイスを使ったオフラインでの大容量データ輸送サービスで、ネットワーク経由の継続的な同期には使いません。','誤り。Direct Connectはネットワーク接続サービスであり、データ転送・同期を自動化する機能自体は持ちません。','誤り。DMSはデータベースの移行・レプリケーション用のサービスで、ファイルサーバーのデータ移行には使いません。','正しい。AWS DataSyncはオンプレミスとAWSストレージ(S3等)間のデータ転送・同期をネットワーク経由で高速かつ安全に行うサービスです。']},
+  {id:'p146', domain:'tech', type:'single', source:SOURCES.opensearch, text:'アプリケーションから出力される大量のログデータをリアルタイムに検索・分析し、運用監視用のダッシュボードを構築したい場合、最も適切なサービスはどれですか？',
+    choices:['Amazon OpenSearch Service','Amazon Redshift','Amazon Athena','Amazon DynamoDB'], correct:[0],
+    why:['正しい。Amazon OpenSearch Serviceはログ分析やリアルタイム検索・可視化のダッシュボード構築に適したマネージド型の検索・分析サービスです。','誤り。Redshiftはデータウェアハウスで、大規模なバッチ分析向けのサービスです。','誤り。AthenaはS3上のデータにSQLクエリを実行する分析サービスで、リアルタイムダッシュボード用途には向きません。','誤り。DynamoDBはNoSQLデータベースで、ログ検索・分析機能は持ちません。']},
+  {id:'p147', domain:'tech', type:'single', source:SOURCES.xray, text:'複数のマイクロサービスで構成されたアプリケーションで、リクエストがどのサービスを経由し、どこで遅延やエラーが発生しているかを可視化して分析したい場合、最も適切なサービスはどれですか？',
+    choices:['Amazon CloudWatch','AWS X-Ray','AWS CloudTrail','AWS Config'], correct:[1],
+    why:['誤り。CloudWatchはメトリクス監視・ログ収集が主目的で、リクエスト単位の分散トレーシングはX-Rayの役割です。','正しい。AWS X-Rayは、分散アプリケーション内でのリクエストの経路を追跡し、遅延やエラーの発生箇所を可視化・分析できます。','誤り。CloudTrailはAPIコールの履歴（誰が何をしたか）を記録するサービスです。','誤り。Configはリソース設定の変更履歴を記録・評価するサービスです。']},
+  {id:'p148', domain:'tech', type:'multi', source:SOURCES.comprehend, text:'Amazon Comprehendが提供する機能として正しいものはどれですか？（2つ選択）',
+    choices:['画像内の物体やシーンを検出する','テキストから感情(ポジティブ/ネガティブ等)を分析する','音声をテキストに変換する','テキストからエンティティ(人名・組織名等)やキーフレーズを抽出する'], correct:[1,3],
+    why:['誤り。これはAmazon Rekognitionの機能です。','正しい。Amazon Comprehendは自然言語処理(NLP)により、テキストの感情分析ができます。','誤り。これはAmazon Transcribeの機能です。','正しい。Amazon Comprehendはテキストからエンティティやキーフレーズを抽出する機能も提供します。']},
+  {id:'p149', domain:'billing', type:'single', source:SOURCES.costAnomalyDetection, text:'日々のAWS利用料金について、手動で閾値を設定せずに、機械学習によって通常の利用パターンから外れた異常なコストの急増を自動的に検知し、メールで通知を受け取りたい場合、最も適切なサービスはどれですか？',
+    choices:['AWS Budgets','AWS Cost Explorer','AWS Cost Anomaly Detection','AWS Trusted Advisor'], correct:[2],
+    why:['誤り。Budgetsは利用者が手動で設定した予算の閾値に基づいてアラートを送る仕組みです。','誤り。Cost Explorerは過去のコスト分析・将来予測のための可視化ツールで、異常検知を自動で行う主目的の機能ではありません。','正しい。AWS Cost Anomaly Detectionは機械学習を使い、閾値を手動設定せずに異常なコストパターンを自動検知し通知します。','誤り。Trusted Advisorはベストプラクティスに基づく推奨事項を提示するサービスです。']},
+  {id:'p150', domain:'billing', type:'single', source:SOURCES.pricing, text:'特定のインスタンスファミリーやリージョンに縛られず、EC2・Fargate・Lambdaなど複数のコンピューティングサービスを横断して、一定の利用コミットメント（USD/時間）に対する割引を受けたい場合、最も適切な購入オプションはどれですか？',
+    choices:['リザーブドインスタンス','Savings Plans','スポットインスタンス','On-Demand Capacity Reservation'], correct:[1],
+    why:['誤り。リザーブドインスタンスは基本的に特定のインスタンスファミリー・リージョンに対する予約であり、サービス横断の柔軟性はSavings Plansより低いです。','正しい。Savings PlansはEC2・Fargate・Lambda等を横断して、一定の利用コミットメントに対する割引を受けられる購入オプションです。','誤り。スポットインスタンスは空き容量を活用した大幅割引ですが、中断されるリスクがあり、コミットメント型の割引ではありません。','誤り。On-Demand Capacity Reservationは容量確保が目的で、料金の割引は提供しません。']}
 ];
 
 // 模擬試験専用の問題プール（PRACTICEとは独立。目標500問、現在は初期シード分のみ。
@@ -1014,5 +1069,19 @@ var MOCK_POOL = [
     why:['誤り。Glueはデータの収集・変換・結合(ETL)が主目的のサービスです。','誤り。QuickSightはダッシュボードによるデータ可視化が主目的です。','正しい。Amazon Athenaは、S3上のデータに対してサーバーを管理せずに標準SQLで直接クエリを実行できるサーバーレスの分析サービスです。','誤り。Storage Gatewayはオンプレミスとクラウドストレージを接続するハイブリッドストレージサービスです。']},
   {id:'m52', domain:'billing', type:'single', source:SOURCES.capacityReservation, text:'特定のインスタンスタイプ・アベイラビリティーゾーンの容量を、必要な期間だけ確実に確保したいが、1年/3年の長期契約による割引は必要ない場合、最も適した仕組みはどれですか？',
     choices:['リザーブドインスタンス','Savings Plans','スポットインスタンス','On-Demand Capacity Reservation'], correct:[3],
-    why:['誤り。リザーブドインスタンスは1年・3年の契約期間に基づく割引モデルであり、短期的な容量確保だけを目的とした仕組みではありません。','誤り。Savings Plansも1年・3年の使用量契約による割引モデルです。','誤り。スポットインスタンスは空きキャパシティを利用するため、容量の確保は保証されません。','正しい。On-Demand Capacity Reservationは、長期契約を伴わずに特定のAZ・インスタンスタイプの容量を必要な期間だけ確保できる仕組みです。']}
+    why:['誤り。リザーブドインスタンスは1年・3年の契約期間に基づく割引モデルであり、短期的な容量確保だけを目的とした仕組みではありません。','誤り。Savings Plansも1年・3年の使用量契約による割引モデルです。','誤り。スポットインスタンスは空きキャパシティを利用するため、容量の確保は保証されません。','正しい。On-Demand Capacity Reservationは、長期契約を伴わずに特定のAZ・インスタンスタイプの容量を必要な期間だけ確保できる仕組みです。']},
+
+  // --- 追加分（Control Tower・PrivateLink・OpenSearch・Cost Anomaly Detection） ---
+  {id:'m53', domain:'concepts', type:'single', source:SOURCES.controlTower, text:'複数の部門がそれぞれ別のAWSアカウントを使う予定の企業が、アカウント作成の標準化や、組織全体のセキュリティ・コンプライアンスのガードレールを統一的に適用したいと考えている。最も適切なサービスはどれですか？',
+    choices:['AWS Control Tower','Amazon CloudWatch','AWS CloudFormation','Amazon Inspector'], correct:[0],
+    why:['正しい。AWS Control Towerは、Account Factoryによるアカウント標準化や、ガードレールによる組織全体のガバナンス統制を提供します。','誤り。CloudWatchは監視サービスで、アカウント統制の仕組みではありません。','誤り。CloudFormationはInfrastructure as Codeのサービスで、個々のリソース構築に使いますが、マルチアカウント統制の専用サービスではありません。','誤り。Inspectorは脆弱性スキャンサービスです。']},
+  {id:'m54', domain:'security', type:'single', source:SOURCES.privatelink, text:'自社のVPC内のアプリケーションから、パートナー企業がAWS上で公開しているサービスに対して、インターネットを経由せずプライベートに安全にアクセスしたい。最も適切な方法はどれですか？',
+    choices:['AWS Site-to-Site VPNでパートナーのVPCと接続する','AWS PrivateLinkを使い、パートナーが公開したエンドポイントサービスにVPCエンドポイント経由で接続する','パートナーのサービスをパブリックインターネット経由で呼び出す','AWS Direct Connectで専用線接続を新設する'], correct:[1],
+    why:['誤り。VPNはオンプレミスとの接続が主な用途で、今回のようなサービス単位の接続には適しません。','正しい。AWS PrivateLinkを使うと、パートナーが公開したエンドポイントサービスに対し、インターネットを経由せずプライベートに接続できます。','誤り。パブリックインターネット経由ではプライベート接続の要件を満たしません。','誤り。Direct Connectは専用線接続で、コストも時間もかかり、今回のようなサービス単位の接続には過剰です。']},
+  {id:'m55', domain:'tech', type:'single', source:SOURCES.opensearch, text:'Webサイト内の商品検索機能を実装するために、全文検索・あいまい検索に対応したスケーラブルな検索エンジンをマネージドサービスとして利用したい場合、最も適切なサービスはどれですか？',
+    choices:['Amazon RDS','Amazon DynamoDB','Amazon OpenSearch Service','Amazon Redshift'], correct:[2],
+    why:['誤り。RDSはリレーショナルデータベースで、全文検索に特化した機能は持ちません。','誤り。DynamoDBはNoSQLデータベースで、あいまい検索などの全文検索機能は持ちません。','正しい。Amazon OpenSearch Serviceは全文検索・あいまい検索に対応したスケーラブルな検索・分析エンジンのマネージドサービスです。','誤り。Redshiftはデータウェアハウスで、Webサイトの検索機能には向きません。']},
+  {id:'m56', domain:'billing', type:'single', source:SOURCES.costAnomalyDetection, text:'複数のAWSアカウントを持つ組織で、特定のコストアロケーションタグやアカウント単位でコストの異常な変動を機械学習により自動検知し、担当者に通知したい場合、最も適切なサービスはどれですか？',
+    choices:['AWS Organizationsのコンソリデーティッドビリング','AWS Budgetsの固定閾値アラート','AWS Trusted Advisor','AWS Cost Anomaly Detection'], correct:[3],
+    why:['誤り。コンソリデーティッドビリングは複数アカウントの請求を一括管理する機能で、異常検知機能ではありません。','誤り。Budgetsは手動で設定した固定の閾値に基づくアラートで、機械学習による自動検知ではありません。','誤り。Trusted Advisorはベストプラクティスの推奨事項を提示するサービスです。','正しい。AWS Cost Anomaly Detectionは、アカウントやコストアロケーションタグ、コストカテゴリ単位でモニターを設定し、機械学習による異常コストの自動検知・通知が可能です。']}
 ];
