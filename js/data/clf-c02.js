@@ -75,7 +75,10 @@ var SOURCES = {
   redshift:{label:'Amazon Redshift', url:'https://docs.aws.amazon.com/redshift/'},
   consolidatedBilling:{label:'AWS Organizations 一括支払い（Consolidated Billing）', url:'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html'},
   computeOptimizer:{label:'AWS Compute Optimizer', url:'https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html'},
-  transitGateway:{label:'AWS Transit Gateway', url:'https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-transit-gateway.html'}
+  transitGateway:{label:'AWS Transit Gateway', url:'https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-transit-gateway.html'},
+  systemsManager:{label:'AWS Systems Manager', url:'https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html'},
+  apigateway:{label:'Amazon API Gateway', url:'https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html'},
+  networkFirewall:{label:'AWS Network Firewall', url:'https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html'}
 };
 
 var VOCAB = [
@@ -150,7 +153,11 @@ var VOCAB = [
   {id:'v57', term:'AWS Cloud Adoption Framework (CAF)', domain:'concepts', source:SOURCES.caf, q:{text:'AWS Cloud Adoption Framework (AWS CAF) とは何ですか？', choices:['組織がクラウドへの移行・変革を計画・実行するためのガイダンスをまとめたフレームワーク','EC2インスタンスの性能を自動的に最適化するサービス','AWSの利用料金を監視し予算超過を通知するサービス','IAMユーザーの認証情報を一元管理するサービス'], correct:0, why:['正しい。AWS CAFは、ビジネス・人材・ガバナンス・プラットフォーム・セキュリティ・運用の観点から、組織がクラウド導入・変革を進めるための指針をまとめたフレームワークです。','これはAWS Compute Optimizerの説明です。','これはAWS Budgetsの説明です。','これはAWS IAM Identity Centerの説明です。']}},
   {id:'v58', term:'AWS IAM Identity Center', domain:'security', source:SOURCES.iamIdentityCenter, q:{text:'AWS IAM Identity Centerの主な役割は何ですか？', choices:['個々のEC2インスタンスへのネットワークアクセスを制御するファイアウォール機能','複数のAWSアカウントやビジネスアプリケーションへのシングルサインオン(SSO)によるアクセスを一元管理する機能','S3バケット内の機密データを自動的に検出する機能','オンプレミスとAWS間を専用線で接続する機能'], correct:1, why:['これはセキュリティグループの説明です。','正しい。IAM Identity Centerは、複数のAWSアカウントやクラウドアプリケーションへのアクセスをシングルサインオンで一元管理できるサービスです。','これはAmazon Macieの説明です。','これはAWS Direct Connectの説明です。']}},
   {id:'v59', term:'Amazon SNS', domain:'tech', source:SOURCES.sns, q:{text:'Amazon SNS (Simple Notification Service) とは何ですか？', choices:['メッセージを一時的に保持し受信側がポーリングして取得するキューイングサービス','アプリケーションの性能指標を収集・可視化する監視サービス','パブリッシャーからサブスクライバーへメッセージを配信するpub/sub型の通知サービス','仮想サーバー間のネットワーク通信を仲介するロードバランサー'], correct:2, why:['これはAmazon SQSの説明です。','これはAmazon CloudWatchの説明です。','正しい。Amazon SNSは、パブリッシャーが送信したメッセージを複数のサブスクライバー（メール、SMS、Lambda等）へ同時に配信するpub/sub型の通知サービスです。','これはElastic Load Balancingの説明です。']}},
-  {id:'v60', term:'Consolidated Billing（一括支払い）', domain:'billing', source:SOURCES.consolidatedBilling, q:{text:'AWS Organizationsの「一括支払い（Consolidated Billing）」機能とは何ですか？', choices:['各メンバーアカウントが個別にAWSへ料金を支払う仕組み','サポートプランの料金のみを複数アカウントで分担する仕組み','無料利用枠を全メンバーアカウントで使い切るまで共有する仕組み','組織内の複数アカウントの請求を管理アカウントに集約し、利用量をまとめることでボリュームディスカウント等が適用されやすくなる仕組み'], correct:3, why:['誤り。一括支払いでは、管理アカウントが全メンバーアカウントの料金をまとめて支払います。','誤り。一括支払いは料金全体を対象とする仕組みで、サポート料金だけに限定されません。','誤り。無料利用枠の説明ではありません。','正しい。一括支払いは、組織内の複数アカウントの請求を管理アカウントに集約し、利用量を合算することでボリュームディスカウントなどが適用されやすくなる仕組みです。']}}
+  {id:'v60', term:'Consolidated Billing（一括支払い）', domain:'billing', source:SOURCES.consolidatedBilling, q:{text:'AWS Organizationsの「一括支払い（Consolidated Billing）」機能とは何ですか？', choices:['各メンバーアカウントが個別にAWSへ料金を支払う仕組み','サポートプランの料金のみを複数アカウントで分担する仕組み','無料利用枠を全メンバーアカウントで使い切るまで共有する仕組み','組織内の複数アカウントの請求を管理アカウントに集約し、利用量をまとめることでボリュームディスカウント等が適用されやすくなる仕組み'], correct:3, why:['誤り。一括支払いでは、管理アカウントが全メンバーアカウントの料金をまとめて支払います。','誤り。一括支払いは料金全体を対象とする仕組みで、サポート料金だけに限定されません。','誤り。無料利用枠の説明ではありません。','正しい。一括支払いは、組織内の複数アカウントの請求を管理アカウントに集約し、利用量を合算することでボリュームディスカウントなどが適用されやすくなる仕組みです。']}},
+  {id:'v61', term:'AWS Systems Manager', domain:'tech', source:SOURCES.systemsManager, q:{text:'AWS Systems Managerの主な役割は何ですか？', choices:['SSHキーの管理や踏み台サーバーを使わずに、EC2インスタンス等のノードを一元的に表示・操作・運用できるようにする','Webアプリケーションへの攻撃をルールベースでフィルタリングする','リレーショナルデータベースの運用・保守を代行する','複数アカウントの請求を一つに集約する'], correct:0, why:['正しい。Systems Managerは、SSHキーや踏み台サーバーなしでEC2インスタンス等のノードを一元的に表示・操作できる運用管理サービスです（Session Manager機能など）。','これはAWS WAFの説明です。','これはAmazon RDSの説明です。','これはAWS Organizationsの一括支払い(Consolidated Billing)の説明です。']}},
+  {id:'v62', term:'Amazon API Gateway', domain:'tech', source:SOURCES.apigateway, q:{text:'Amazon API Gatewayとは何ですか？', choices:['EC2インスタンスにアタッチするブロックストレージ','REST・HTTP・WebSocket形式のAPIを作成・公開・保護・監視できるマネージドサービス','DNSの名前解決を行うサービス','脆弱性スキャンを行うサービス'], correct:1, why:['これはAmazon EBSの説明です。','正しい。API Gatewayは、REST・HTTP・WebSocket APIを作成・公開・保護・監視できるマネージドサービスで、Lambda等のバックエンドと組み合わせて使われます。','これはAmazon Route 53の説明です。','これはAmazon Inspectorの説明です。']}},
+  {id:'v63', term:'AWS Network Firewall', domain:'security', source:SOURCES.networkFirewall, q:{text:'AWS Network Firewallとは何ですか？', choices:['Webアプリケーション層の攻撃をフィルタリングするサービス','DDoS攻撃を検知し緩和するサービス','VPC単位でステートフルなトラフィック検査・フィルタリングを行うマネージドネットワークファイアウォール','インスタンス単位で動作するステートフルなファイアウォール'], correct:2, why:['これはAWS WAFの説明です。','これはAWS Shieldの説明です。','正しい。AWS Network Firewallは、VPC単位でステートフルなディープパケットインスペクションやルールベースのフィルタリングを行うマネージドネットワークファイアウォールです。','これはセキュリティグループの説明です（インスタンス単位で動作しますが、Network Firewallより狭い範囲です）。']}},
+  {id:'v64', term:'Economies of Scale（規模の経済）', domain:'concepts', source:SOURCES.sixAdv, q:{text:'クラウドの「規模の経済(Economies of Scale)」とは何を指しますか？', choices:['リソースを自動的に増減できる特性','先行投資を運用費用に変換できる特性','複数リージョンに同時展開できる速さ','非常に多くの顧客の利用量を集約することで、個々の組織では実現できない低コスト構造を実現し、それが従量課金の低価格として還元される仕組み'], correct:3, why:['これは弾力性(Elasticity)の説明です。','これはCapEx/OpExの説明です。','これは俊敏性(Agility)に関連する説明です。','正しい。規模の経済は、AWSが非常に多くの顧客の利用を集約することでコスト構造を下げ、その低コストを利用者への低価格として還元する仕組みです。']}}
 ];
 
 var PRACTICE = [
@@ -420,7 +427,48 @@ var PRACTICE = [
     why:['誤り。Budgetsは予算を設定し、超過時に通知するサービスです。','誤り。Cost Explorerは過去のコスト・使用状況を可視化・分析するサービスです。','誤り。Trusted Advisorはコスト・セキュリティ・耐障害性等の観点から幅広い推奨事項を提示しますが、利用率メトリクスに基づく詳細なライトサイジング推奨に特化したサービスはCompute Optimizerです。','正しい。AWS Compute Optimizerは、EC2・Lambda・EBS等の使用率メトリクスを分析し、コスト削減やパフォーマンス向上につながるリソース設定変更を推奨するサービスです。']},
   {id:'p85', domain:'billing', type:'single', source:SOURCES.costmgmt, text:'中断されても問題ない処理（バッチ処理等）で、オンデマンド料金に比べて大幅なコスト削減を狙える代わりに、AWS側の都合で中断される可能性があるEC2の購入オプションはどれですか？',
     choices:['スポットインスタンス(Spot Instances)','リザーブドインスタンス(Reserved Instances)','Savings Plans','オンデマンドインスタンス(On-Demand Instances)'], correct:[0],
-    why:['正しい。スポットインスタンスはAWSの余剰キャパシティを活用した購入オプションで、オンデマンドに比べ大幅に安価ですが、AWS側の都合で中断される可能性があります。','誤り。リザーブドインスタンスは一定期間の利用を事前にコミットすることで割引を受ける購入オプションで、中断されることはありません。','誤り。Savings Plansは一定期間・一定金額分の利用をコミットすることで割引を受ける購入オプションで、中断されることはありません。','誤り。オンデマンドインスタンスは最も柔軟で中断されない購入オプションですが、割引はありません。']}
+    why:['正しい。スポットインスタンスはAWSの余剰キャパシティを活用した購入オプションで、オンデマンドに比べ大幅に安価ですが、AWS側の都合で中断される可能性があります。','誤り。リザーブドインスタンスは一定期間の利用を事前にコミットすることで割引を受ける購入オプションで、中断されることはありません。','誤り。Savings Plansは一定期間・一定金額分の利用をコミットすることで割引を受ける購入オプションで、中断されることはありません。','誤り。オンデマンドインスタンスは最も柔軟で中断されない購入オプションですが、割引はありません。']},
+
+  // --- 追加分（規模の経済/HA・FT比較/Network Firewall/API Gateway/Systems Manager/Transit Gateway/Marketplace/Free Tier構成） ---
+  {id:'p86', domain:'concepts', type:'single', source:SOURCES.sixAdv, text:'AWSの「規模の経済(Economies of Scale)」によって利用者が得られる主なメリットは何ですか？',
+    choices:['AWSが大規模な利用を集約することで実現した低コスト構造が、従量課金の低価格として利用者に還元される','サーバーの台数を自動的に増減できる','複数のアベイラビリティーゾーンにデータが自動的に複製される','IAMによるアクセス制御が不要になる'], correct:[0],
+    why:['正しい。規模の経済は、AWSが非常に多くの顧客の利用を集約して実現した低コスト構造が、従量課金の低価格として利用者に還元される仕組みです。','誤り。これは弾力性(Elasticity)の説明です。','誤り。これは可用性・耐久性向上のための仕組みの説明です。','誤り。規模の経済とIAMによるアクセス制御は無関係で、アクセス制御は引き続き必要です。']},
+  {id:'p87', domain:'concepts', type:'single', source:SOURCES.wafReliability, text:'「高可用性(High Availability)」と「耐障害性(Fault Tolerance)」の違いに関する説明として正しいものはどれですか？',
+    choices:['両者は完全に同義であり、互換的に使ってよい','高可用性は障害発生時にユーザーへの影響を完全にゼロにすることを指す','耐障害性は稼働率(アップタイム)の目標値のみを指す指標である','高可用性はダウンタイムを最小化する設計を指し、耐障害性はコンポーネント障害が発生してもシステム全体が機能を継続できる、より高いレベルの要件を指す'], correct:[3],
+    why:['誤り。両者は関連しますが、要求レベルが異なる別の概念です。','誤り。高可用性はダウンタイムの最小化を目指しますが、影響を完全にゼロにすることを保証するものではありません。','誤り。耐障害性は稼働率の数値指標ではなく、障害時にも機能を継続できる設計上の能力を指します。','正しい。高可用性はダウンタイムを最小限に抑える設計を指し、耐障害性はコンポーネント障害時にもシステム全体として機能を継続できる、より高いレベルの要件を指します。']},
+  {id:'p88', domain:'concepts', type:'multi', source:SOURCES.sixAdv, text:'AWSクラウドを利用する6つのメリットのうち、正しい組み合わせを2つ選択してください。',
+    choices:['需要を見積もる前にキャパシティを確保する必要がなくなる（キャパシティの推測が不要になる）','すべてのAWSサービスが永続的に無料になる','数クリック・数分で複数リージョンへグローバル展開できる','ハードウェアの保守は利用者自身が行う必要がある'], correct:[0,2],
+    why:['正しい。クラウドでは事前にキャパシティを見積もる必要がなく、必要に応じてリソースを調整できます。','誤り。永続的に無料というわけではなく、使用量に応じて料金が発生します。','正しい。AWSのグローバルインフラを使えば、数クリックで複数リージョンへ短時間で展開できます。','誤り。ハードウェアの保守はAWS側が担当し、利用者が行う必要はありません。']},
+  {id:'p89', domain:'security', type:'single', source:SOURCES.networkFirewall, text:'複数のVPCに対して、ステートフルなディープパケットインスペクションや侵入検知/防止(IDS/IPS)ルールを一元的に適用したい場合に適したサービスはどれですか？',
+    choices:['AWS WAF','AWS Network Firewall','AWS Shield','AWS Secrets Manager'], correct:[1],
+    why:['誤り。WAFはWebアプリケーション層(HTTP/HTTPS)のリクエストをフィルタリングするサービスで、VPC全体のネットワークトラフィックは対象外です。','正しい。AWS Network Firewallは、VPC単位でステートフルなディープパケットインスペクションやSuricata互換のIDS/IPSルールを適用できるマネージドネットワークファイアウォールです。','誤り。ShieldはDDoS攻撃対策に特化したサービスです。','誤り。Secrets Managerはシークレット情報の管理サービスです。']},
+  {id:'p90', domain:'security', type:'single', source:SOURCES.vpc, text:'セキュリティグループ・ネットワークACL(NACL)・AWS Network Firewallの役割の違いに関する説明として正しいものはどれですか？',
+    choices:['3つとも同じ単位（VPC単位）で動作し、役割に違いはない','セキュリティグループがVPC全体、NACLがサブネット、Network Firewallがインスタンス単位で動作する','セキュリティグループはインスタンス単位、NACLはサブネット単位、Network FirewallはVPC単位というように、段階的に広い範囲をカバーする多層防御を構成できる','Network FirewallはセキュリティグループやNACLを置き換える後継サービスであり、両方とも不要になる'], correct:[2],
+    why:['誤り。3つはそれぞれ異なる単位（インスタンス/サブネット/VPC）で動作します。','誤り。動作する単位が入れ替わっています。セキュリティグループはインスタンス単位、Network FirewallはVPC単位です。','正しい。インスタンス単位のセキュリティグループ、サブネット単位のNACL、VPC単位のNetwork Firewallを組み合わせることで、段階的な多層防御を実現できます。','誤り。Network Firewallは既存のセキュリティグループやNACLを置き換えるものではなく、組み合わせて使う追加の防御層です。']},
+  {id:'p91', domain:'security', type:'multi', source:SOURCES.networkFirewall, text:'AWS環境におけるネットワークレベルでの防御策として適切なものを2つ選択してください。',
+    choices:['AWS Secrets Managerでシークレットをローテーションする','セキュリティグループでインスタンスへのインバウンド通信を制限する','AWS KMSでS3オブジェクトを暗号化する','AWS Network FirewallでVPCの境界を通過するトラフィックを検査する'], correct:[1,3],
+    why:['誤り。Secrets Managerのシークレットローテーションはアプリケーション層の認証情報管理であり、ネットワークレベルの防御ではありません。','正しい。セキュリティグループはインスタンスへのネットワークアクセスを制限するネットワークレベルの防御策です。','誤り。KMSによる暗号化はデータ保護の対策であり、ネットワークレベルの通信制御ではありません。','正しい。AWS Network FirewallはVPCの境界を通過するトラフィックを検査・フィルタリングするネットワークレベルの防御策です。']},
+  {id:'p92', domain:'tech', type:'single', source:SOURCES.apigateway, text:'モバイルアプリのバックエンドとして、AWS Lambda関数をHTTP経由で呼び出せるRESTful APIを作成・公開・保護したい場合に適したサービスはどれですか？',
+    choices:['Elastic Load Balancing','Amazon API Gateway','Amazon CloudFront','Amazon Route 53'], correct:[1],
+    why:['誤り。ELBはEC2インスタンス等へのトラフィック分散が主目的で、API定義・管理機能は提供しません。','正しい。API Gatewayは、Lambda等をバックエンドとするREST・HTTP・WebSocket APIの作成・公開・保護・監視を行うマネージドサービスです。','誤り。CloudFrontはコンテンツ配信(CDN)サービスです。','誤り。Route 53はDNSサービスです。']},
+  {id:'p93', domain:'tech', type:'single', source:SOURCES.systemsManager, text:'本番環境のEC2インスタンスに対して、インバウンドのSSHポートを開けず、SSHキーも管理せずに、ブラウザやCLIから安全にシェルアクセスしたい場合に使える機能はどれですか？',
+    choices:['Site-to-Site VPNで常時接続する','踏み台(bastion)サーバーを別途構築する','セキュリティグループで22番ポートを全開放する','AWS Systems Manager の Session Manager機能を使う'], correct:[3],
+    why:['誤り。VPN接続自体はSSHポートを開ける必要性を直接なくすものではありません。','誤り。踏み台サーバーを使う方法はありますが、別途構築・管理コストがかかり、SSHキー管理も必要です。','誤り。22番ポートの全開放はセキュリティリスクを高める危険な設定です。','正しい。Systems ManagerのSession Managerを使うと、インバウンドポートを開けず、SSHキーも管理せずに、ブラウザやCLIから安全にインスタンスへアクセスできます。']},
+  {id:'p94', domain:'tech', type:'single', source:SOURCES.transitGateway, text:'数十のVPCを相互接続する際、個別のVPCピアリング接続を多数管理する代わりにハブ&スポーク型の構成でネットワークを簡素化したい場合に適したサービスはどれですか？',
+    choices:['AWS Transit Gateway','Amazon Route 53','AWS CloudFormation','Elastic Load Balancing'], correct:[0],
+    why:['正しい。AWS Transit Gatewayは、多数のVPCやオンプレミス拠点を単一のハブ経由で相互接続でき、個別のVPCピアリングを多数管理する複雑さを解消します。','誤り。Route 53はDNSサービスです。','誤り。CloudFormationはInfrastructure as Codeのサービスです。','誤り。ELBはトラフィック分散サービスであり、VPC間接続のハブ機能ではありません。']},
+  {id:'p95', domain:'tech', type:'multi', source:SOURCES.fargate, text:'サーバーのプロビジョニングや管理を利用者が行う必要がない「サーバーレス」な選択肢を2つ選択してください。',
+    choices:['AWS Lambda','Amazon EC2','Amazon Lightsail','AWS Fargate'], correct:[0,3],
+    why:['正しい。Lambdaはサーバーのプロビジョニングや管理を利用者が行う必要のない、イベント駆動のサーバーレスコンピューティングサービスです。','誤り。EC2は仮想サーバーであり、OSやスケーリングの管理が必要です。','誤り。Lightsailは簡易な仮想サーバー提供サービスで、基盤となるサーバーの管理という概念自体は残ります。','正しい。Fargateは、ECS/EKS上でコンテナを実行する際にサーバーの管理が不要なサーバーレスコンピューティングエンジンです。']},
+  {id:'p96', domain:'billing', type:'single', source:SOURCES.marketplace, text:'サードパーティ製のソフトウェア（AMIベースの製品やSaaS型製品）をAWS上で検索・購入し、料金をAWSの利用料金とまとめて請求してもらいたい場合、最も適したサービスはどれですか？',
+    choices:['AWS Budgets','AWS Cost Explorer','AWS Marketplace','AWS Organizations'], correct:[2],
+    why:['誤り。Budgetsは予算アラートの設定サービスです。','誤り。Cost Explorerはコスト分析・予測ツールです。','正しい。AWS Marketplaceは、サードパーティ製ソフトウェアを検索・購入できるカタログで、料金はAWSの利用料金とまとめて請求されます。','誤り。Organizationsは複数アカウント管理サービスです。']},
+  {id:'p97', domain:'billing', type:'single', source:SOURCES.free, text:'現行のAWS Free Tier（無料利用枠）の構成に関する説明として正しいものはどれですか？',
+    choices:['すべてのサービスが12ヶ月間無料で使い放題になる','「常に無料」の対象サービス、新規アカウント向けの無料クレジット、特定サービスの短期無料トライアルという複数の仕組みで構成される','サポートプランの費用のみが無料になる制度である','新規アカウントであれば、すべてのサービスが永続的に無料になる'], correct:[1],
+    why:['誤り。「12ヶ月間無料」という説明は現行の構成とは異なり、サービスや条件によって範囲が異なります。','正しい。現行のFree Tierは、常に無料の対象サービス、新規アカウント向けの無料クレジット、一部サービスの短期無料トライアルという複数の仕組みで構成されます。','誤り。サポートプランの無料提供（Basic Support）とは別の仕組みです。','誤り。永続的にすべてのサービスが無料になるわけではありません。']},
+  {id:'p98', domain:'billing', type:'multi', source:SOURCES.computeOptimizer, text:'コストとパフォーマンスの最適化に関する推奨事項を得られるサービスを2つ選択してください。',
+    choices:['AWS CloudTrail','AWS Trusted Advisor','AWS Compute Optimizer','Amazon GuardDuty'], correct:[1,2],
+    why:['誤り。CloudTrailはAPIコール履歴の記録サービスであり、コスト最適化の推奨事項は提供しません。','正しい。Trusted Advisorはコスト最適化・パフォーマンス・セキュリティ等の観点からベストプラクティスに基づく推奨事項を提示します。','正しい。Compute Optimizerは利用率メトリクスを分析し、コスト削減とパフォーマンス向上につながるリソース変更を推奨します。','誤り。GuardDutyは脅威検知サービスであり、コスト最適化の推奨事項は提供しません。']}
 ];
 
 // 模擬試験専用の問題プール（PRACTICEとは独立。目標500問、現在は初期シード分のみ。
@@ -739,5 +787,39 @@ var MOCK_POOL = [
       '誤り。メンバーアカウントが個別にAWSへ支払うわけではありません。',
       '誤り。無料利用枠の適用自体は一括支払いの有無に関わらず各アカウントの条件に基づきます。',
       '誤り。サポート料金に限らず、全体の料金が管理アカウントに集約されます。'
+    ]},
+
+  // --- 追加分（規模の経済/グローバル展開/Network Firewall/API Gateway） ---
+  {id:'m37', domain:'concepts', type:'single', source:SOURCES.sixAdv, text:'クラウドコンピューティングにおける「キャパシティの推測が不要になる」というメリットの説明として最も適切なものはどれですか？',
+    choices:['料金が完全に無料になる','将来の需要を事前に正確に見積もる必要がなく、必要になった時点で必要な分だけリソースを調達・解放できる','すべてのリソースが自動的に暗号化される','サーバーの物理的な保守が不要になる'], correct:[1],
+    why:[
+      '誤り。料金は使用量に応じて発生します。',
+      '正しい。クラウドでは需要を事前に正確に見積もる必要がなく、必要になった時点でリソースを調達・解放できます。',
+      '誤り。暗号化は別途設定が必要な機能です。',
+      '誤り。これは別のメリット（データセンターの運用・保守が不要になる）の説明です。'
+    ]},
+  {id:'m38', domain:'concepts', type:'single', source:SOURCES.globalInfra, text:'AWSクラウドの「数分でグローバル展開できる」というメリットの説明として最も適切なものはどれですか？',
+    choices:['すべてのリージョンで同一の料金が適用される','データセンターの建設が不要になる、という意味でのみ使われる用語である','世界中に展開されたAWSのリージョン・インフラを使い、数クリック・数分でアプリケーションを複数の地域にデプロイできる','セキュリティ設定が完全に自動化される'], correct:[2],
+    why:[
+      '誤り。料金はリージョンによって異なります。',
+      '誤り。データセンター不要という点は別のメリット（運用費用化）に関する説明です。',
+      '正しい。世界中に広がるAWSのリージョン・インフラを活用し、数クリック・数分で複数地域へアプリケーションを展開できます。',
+      '誤り。セキュリティ設定は引き続き利用者が行う必要があります（責任共有モデル）。'
+    ]},
+  {id:'m39', domain:'security', type:'single', source:SOURCES.networkFirewall, text:'VPCの境界を通過するすべてのトラフィックに対して、Suricata互換のルールを用いた侵入検知/防止(IDS/IPS)を行いたい場合に適したサービスはどれですか？',
+    choices:['セキュリティグループ','AWS WAF','AWS Shield Advanced','AWS Network Firewall'], correct:[3],
+    why:[
+      '誤り。セキュリティグループはインスタンス単位のステートフルなファイアウォールで、IDS/IPSルールセットには対応していません。',
+      '誤り。WAFはWebアプリケーション層(HTTP/HTTPS)のリクエストに対するルールベースのフィルタリングサービスです。',
+      '誤り。Shield AdvancedはDDoS攻撃対策に特化したサービスです。',
+      '正しい。AWS Network Firewallは、VPCの境界を通過するトラフィックに対し、Suricata互換のルールでIDS/IPSを行えるマネージドネットワークファイアウォールです。'
+    ]},
+  {id:'m40', domain:'tech', type:'single', source:SOURCES.apigateway, text:'複数のAWS Lambda関数をバックエンドとして、統一されたエンドポイントでREST APIを公開し、認証・スロットリング・バージョン管理を行いたい場合に最も適したサービスはどれですか？',
+    choices:['Amazon API Gateway','Amazon CloudFront','Elastic Load Balancing','Amazon Route 53'], correct:[0],
+    why:[
+      '正しい。API Gatewayは、複数のLambda関数等をバックエンドとするREST/HTTP/WebSocket APIの作成・公開・認証・スロットリング・バージョン管理を行えるマネージドサービスです。',
+      '誤り。CloudFrontはコンテンツ配信(CDN)サービスです。',
+      '誤り。ELBはEC2インスタンス等へのトラフィック分散サービスです。',
+      '誤り。Route 53はDNSサービスです。'
     ]}
 ];
