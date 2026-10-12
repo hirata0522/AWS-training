@@ -1,6 +1,6 @@
 {
-  "name": "AWS資格勉強",
-  "short_name": "AWS勉強",
+  "name": "AWS学習アプリ",
+  "short_name": "AWS学習",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

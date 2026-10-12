@@ -211,7 +211,7 @@ function topbar(title, opts){
 }
 
 function screenHome(){
-  return topbar('AWS資格勉強', {home:true}) +
+  return topbar('AWS学習アプリ', {home:true}) +
     '<main>'+
       '<div class="fade-in">'+
         '<p class="eyebrow">CLF-C02 ・ Cloud Practitioner</p>'+
