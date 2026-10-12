@@ -93,7 +93,16 @@ var SOURCES = {
   lightsail:{label:'Amazon Lightsail', url:'https://aws.amazon.com/lightsail/'},
   ec2Ri:{label:'Amazon EC2 リザーブドインスタンス', url:'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html'},
   batch:{label:'AWS Batch', url:'https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html'},
-  fsx:{label:'Amazon FSx', url:'https://docs.aws.amazon.com/fsx/'}
+  fsx:{label:'Amazon FSx', url:'https://docs.aws.amazon.com/fsx/'},
+  watool:{label:'AWS Well-Architected Tool', url:'https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html'},
+  accessAnalyzer:{label:'AWS IAM Access Analyzer', url:'https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html'},
+  outposts:{label:'AWS Outposts', url:'https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html'},
+  eks:{label:'Amazon EKS', url:'https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html'},
+  glue:{label:'AWS Glue', url:'https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html'},
+  quicksight:{label:'Amazon QuickSight', url:'https://aws.amazon.com/quicksight/'},
+  storagegateway:{label:'AWS Storage Gateway', url:'https://aws.amazon.com/storagegateway/'},
+  capacityReservation:{label:'Amazon EC2 On-Demand Capacity Reservation', url:'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html'},
+  athena:{label:'Amazon Athena', url:'https://docs.aws.amazon.com/athena/latest/ug/what-is.html'}
 };
 
 var VOCAB = [
@@ -180,7 +189,13 @@ var VOCAB = [
   {id:'v69', term:'AWS Batch', domain:'tech', source:SOURCES.batch, q:{text:'AWS Batchとは何ですか？', choices:['送信されたバッチジョブの量や要件に応じて、必要な量と種類のコンピューティングリソース（EC2やFargate等）を自動的にプロビジョニングして実行する、フルマネージドのバッチコンピューティングサービス','最大実行時間15分の短時間のイベント駆動型コードを実行するサーバーレスサービス','コンテナを実行するためのサーバー管理が不要なコンピューティングエンジン','需要に応じてEC2インスタンスの数を自動的に増減させるサービス'], correct:0, why:['正しい。AWS Batchは、送信されたジョブの量や要件に応じて最適な量・種類のコンピューティングリソースを自動的にプロビジョニングし、ジョブキューに基づいてバッチ処理を実行するフルマネージドサービスです。','これはAWS Lambdaの説明です（実行時間に上限があり、長時間のバッチ処理には不向きです）。','これはAWS Fargateの説明です。AWS BatchはFargate上でジョブを実行することもできますが、Fargate自体はジョブキューやスケジューリングの仕組みを持ちません。','これはAmazon EC2 Auto Scalingの説明です。']}},
   {id:'v70', term:'Amazon FSx', domain:'tech', source:SOURCES.fsx, q:{text:'Amazon FSxとは何ですか？', choices:['単一のEC2インスタンスにのみアタッチできるブロックストレージ','Windows File Server・Lustre・NetApp ONTAP・OpenZFSなど、人気のファイルシステムをベースにしたフルマネージドの共有ファイルストレージを提供するサービス','非構造化オブジェクトを保存する高耐久なストレージサービス','Linux向けにAWSネイティブに構築されたNFS対応のフルマネージドファイルストレージサービス'], correct:1, why:['これはAmazon EBSの説明です。','正しい。Amazon FSxは、Windows File Server・Lustre・NetApp ONTAP・OpenZFSといった人気のファイルシステムをベースにした、フルマネージドの共有ファイルストレージを複数の種類から選んで利用できるサービスです。','これはAmazon S3の説明です。','これはAmazon EFSの説明です。']}},
   {id:'v71', term:'Amazon Cognito', domain:'security', source:SOURCES.cognito, q:{text:'Amazon Cognitoの役割は何ですか？', choices:['AWSクラウド上でMicrosoft Active Directoryを運用するディレクトリサービス','AWSリソースへのアクセス権限を管理するサービス','Webアプリ・モバイルアプリにユーザーのサインアップ・サインイン機能や、外部IDプロバイダーとの連携によるアクセス制御を提供するサービス','機密情報（パスワードやAPIキー等）を安全に保管・ローテーションするサービス'], correct:2, why:['これはAWS Directory Serviceの説明です。','これはAWS IAMの説明です。IAMはAWSリソースへのアクセス権限を管理しますが、Cognitoは主にアプリのエンドユーザー向けの認証・認可を担います。','正しい。Amazon Cognitoは、ユーザープールによるサインアップ・サインイン機能や、IDプールによる外部IDプロバイダー（Google等）と連携したアクセス制御を提供するサービスです。','これはAWS Secrets Managerの説明です。']}},
-  {id:'v72', term:'Performance Efficiency Pillar', domain:'concepts', source:SOURCES.wafPerformance, q:{text:'Well-Architected Frameworkの「パフォーマンス効率の柱」が重視する観点として正しいものはどれですか？', choices:['先行投資を従量課金の運用費用に変換すること','障害発生時にもシステムを継続稼働させること','環境への影響（エネルギー消費等）を低減すること','コンピューティングリソースを効率的に使用し、需要やテクノロジーの進化に応じてその効率を維持する方法を選択すること'], correct:3, why:['これはクラウドの経済的メリット（CapEx/OpEx）に関する内容です。','これは信頼性の柱に関する内容です。','これは持続可能性の柱に関する内容です。','正しい。パフォーマンス効率の柱は、システムリソースを効率的に使用し、需要の変化やテクノロジーの進化に応じて効率を維持する方法の選択に焦点を当てます。']}}
+  {id:'v72', term:'Performance Efficiency Pillar', domain:'concepts', source:SOURCES.wafPerformance, q:{text:'Well-Architected Frameworkの「パフォーマンス効率の柱」が重視する観点として正しいものはどれですか？', choices:['先行投資を従量課金の運用費用に変換すること','障害発生時にもシステムを継続稼働させること','環境への影響（エネルギー消費等）を低減すること','コンピューティングリソースを効率的に使用し、需要やテクノロジーの進化に応じてその効率を維持する方法を選択すること'], correct:3, why:['これはクラウドの経済的メリット（CapEx/OpEx）に関する内容です。','これは信頼性の柱に関する内容です。','これは持続可能性の柱に関する内容です。','正しい。パフォーマンス効率の柱は、システムリソースを効率的に使用し、需要の変化やテクノロジーの進化に応じて効率を維持する方法の選択に焦点を当てます。']}},
+
+  // --- 追加分（Well-Architected Tool・Access Analyzer・Athena・Capacity Reservation） ---
+  {id:'v73', term:'AWS Well-Architected Tool', domain:'concepts', source:SOURCES.watool, q:{text:'AWS Well-Architected Toolとは何ですか？', choices:['自分のワークロードをAWSのベストプラクティス（Well-Architected Frameworkの6つの柱）と比較して評価し、改善の推奨事項を得られる無料のツール','DDoS攻撃からワークロードを保護するサービス','ワークロードのコストを自動的に最適化し、支払いまで代行するサービス','IAMポリシーの過剰な権限を検出するサービス'], correct:0, why:['正しい。AWS Well-Architected Toolは、Well-Architected Frameworkの6つの柱に基づいてワークロードをレビューし、改善のための推奨事項を提示する無料のツールです。','これはAWS Shieldの説明です。','誤り。コストの自動最適化や支払いの代行を行うツールではなく、設計・運用のレビューを支援するツールです。','これはAWS IAM Access Analyzerの説明です。']}},
+  {id:'v74', term:'AWS IAM Access Analyzer', domain:'security', source:SOURCES.accessAnalyzer, q:{text:'AWS IAM Access Analyzerの役割として正しいものはどれですか？', choices:['DDoS攻撃を検知し緩和する','S3バケットなどのリソースが、外部のAWSアカウントや公衆からアクセス可能な状態になっていないかを分析し、意図しない共有を検出する','データ暗号化に使う暗号鍵を作成・管理する','リソースの構成変更履歴を記録しコンプライアンス評価に使う'], correct:1, why:['これはAWS Shieldの説明です。','正しい。IAM Access Analyzerは論理推論を用いてリソースベースポリシーを分析し、外部アカウントや公衆に意図せず共有されているリソースを検出します。','これはAWS KMSの説明です。','これはAWS Configの説明です。']}},
+  {id:'v75', term:'Amazon Athena', domain:'tech', source:SOURCES.athena, q:{text:'Amazon Athenaとは何ですか？', choices:['仮想サーバーを提供するコンピューティングサービス','データの収集・変換・結合（ETL）処理を行うサービス','Amazon S3に保存されたデータに対して、サーバーを管理せずに標準SQLで直接クエリを実行できるサーバーレスの分析サービス','ビジネスインテリジェンス向けのダッシュボードを作成するサービス'], correct:2, why:['これはAmazon EC2の説明です。','これはAWS Glueの説明です。','正しい。Amazon Athenaは、S3に保存されたデータに対してサーバーのプロビジョニングや管理をせずに標準SQLで直接クエリを実行できるサーバーレスの対話型分析サービスです。','これはAmazon QuickSightの説明です。']}},
+  {id:'v76', term:'On-Demand Capacity Reservation', domain:'billing', source:SOURCES.capacityReservation, q:{text:'Amazon EC2のOn-Demand Capacity Reservationとは何ですか？', choices:['AWSの空きキャパシティを割引価格で利用できるが、AWSの都合で中断される可能性がある仕組み','1年または3年の使用量を契約することで割引を得られる料金モデル','特定のコンピューティングサービス横断で使用量を契約する料金モデル','特定のアベイラビリティーゾーンで、指定したインスタンスタイプの容量を必要な期間だけ確保できる仕組みで、料金はオンデマンド料金が基準となり自動的な割引は提供されない'], correct:3, why:['これはスポットインスタンスの説明です。','これはリザーブドインスタンス/Savings Plansの説明です。','これはSavings Plansの説明です。','正しい。On-Demand Capacity Reservationは、特定のAZで指定したインスタンスタイプの容量を必要な期間だけ確保できる仕組みです。容量確保自体に割引はなく、料金はオンデマンド料金が基準になります。']}}
 ];
 
 var PRACTICE = [
@@ -569,7 +584,48 @@ var PRACTICE = [
     why:['正しい。Cost Explorerは、サービス別・期間別にコストと使用量の傾向を可視化・分析できるツールです。','誤り。Budgetsは予算の閾値超過時にアラートを送るツールで、傾向分析が主目的ではありません。','誤り。Organizationsは複数アカウントの一括管理・一括請求を行うサービスです。','誤り。Artifactはコンプライアンス関連レポートを提供するサービスです。']},
   {id:'p124', domain:'billing', type:'multi', source:SOURCES.free, text:'現在のAWS Free Tier（無料利用枠）を構成する要素として正しいものを2つ選択してください。',
     choices:['一部のサービスで常に無料で利用できる範囲（Always Free）','すべてのAWSサービスが期間を問わず常に無料になる仕組み','サポートプランの費用が無料になる仕組み（Basic Support）','新規アカウント向けに提供される、一定期間・一定額の無料クレジット'], correct:[0,3],
-    why:['正しい。一部のサービスには期間に関わらず常に無料で使える範囲（Always Free）があります。','誤り。すべてのサービスが無期限に無料になるわけではありません。','誤り。Basic Supportが無料なのはサポートプランの話であり、Free Tierの構成要素とは別に説明されます。','正しい。新規アカウント向けに、一定期間・一定額の無料クレジットが提供される区分があります。']}
+    why:['正しい。一部のサービスには期間に関わらず常に無料で使える範囲（Always Free）があります。','誤り。すべてのサービスが無期限に無料になるわけではありません。','誤り。Basic Supportが無料なのはサポートプランの話であり、Free Tierの構成要素とは別に説明されます。','正しい。新規アカウント向けに、一定期間・一定額の無料クレジットが提供される区分があります。']},
+
+  // --- 追加分（Well-Architected Tool・ハイブリッド・Access Analyzer・分析系・Capacity Reservation） ---
+  {id:'p125', domain:'concepts', type:'single', source:SOURCES.watool, text:'AWS Well-Architected FrameworkとAWS Well-Architected Toolの関係として正しいものはどれですか？',
+    choices:['Frameworkはベストプラクティスの指針であり、Toolはその指針に基づいてワークロードをレビュー・評価するための無料の実践ツールである','Frameworkは有料サービスであり、Toolはその契約状況を管理する画面である','Toolを使うとAWSの利用料金が自動的に割引される','Frameworkはセキュリティのみを扱うドキュメントであり、Toolはコストのみを扱う'], correct:[0],
+    why:['正しい。Well-Architected Frameworkは6つの柱からなるベストプラクティスの指針であり、Well-Architected Toolはその指針に基づいてワークロードをレビュー・評価できる無料のツールです。','誤り。Well-Architected Frameworkはドキュメント・考え方であり、有料サービスではありません。','誤り。利用料金の割引とは無関係です。','誤り。Frameworkは運用上の優秀性・セキュリティ・信頼性・パフォーマンス効率・コスト最適化・持続可能性という6つの柱を扱う包括的な指針です。']},
+  {id:'p126', domain:'concepts', type:'single', source:SOURCES.outposts, text:'オンプレミスのデータセンター内に、AWSのコンピューティング・ストレージ機能やAPIをそのまま拡張して、AWSリージョンの一部として運用したい場合、最も適したサービスはどれですか？',
+    choices:['AWS Direct Connect','AWS Outposts','Amazon VPC','AWS Snow Family'], correct:[1],
+    why:['誤り。Direct ConnectはオンプレミスとAWS間の専用線接続を提供しますが、オンプレミスにAWSのインフラそのものを拡張するものではありません。','正しい。AWS Outposts（ラック）は、AWSのコンピューティング・ストレージ機能をオンプレミスのデータセンターに拡張し、AWSが運用・監視するマネージドサービスです。','誤り。VPCはAWSクラウド内の論理的に分離されたネットワークであり、オンプレミスへの拡張機能ではありません。','誤り。Snow Familyは主にデータ移行やエッジコンピューティング向けの物理デバイス群であり、AWSリージョンの一部として常設運用するものではありません。']},
+  {id:'p127', domain:'concepts', type:'single', source:SOURCES.hybridCloud, text:'クラウドの導入モデルのうち、「ハイブリッドクラウド」の説明として正しいものはどれですか？',
+    choices:['すべてのワークロードを単一のクラウドプロバイダーに統合すること','オンプレミス環境を一切使わず、すべてをクラウド上で運用すること','オンプレミス環境とクラウド環境を接続・統合し、両方を組み合わせて運用すること','複数のクラウドプロバイダーのサービスを同時に利用すること'], correct:[2],
+    why:['これは単一クラウドへの集約の説明であり、ハイブリッドクラウドの定義ではありません。','これはクラウドへの全面移行の説明であり、ハイブリッドクラウドとは異なります。','正しい。ハイブリッドクラウドは、オンプレミス環境とクラウド環境を接続・統合し、両方の長所を組み合わせて運用するモデルです。','これはマルチクラウドの説明であり、ハイブリッドクラウドとは異なる概念です。']},
+  {id:'p128', domain:'security', type:'single', source:SOURCES.accessAnalyzer, text:'S3バケットなどのリソースが、意図せず別のAWSアカウントや公衆からアクセス可能な状態になっていないかを自動的に分析したい場合、最も適したサービスはどれですか？',
+    choices:['AWS Config','Amazon GuardDuty','AWS Shield','AWS IAM Access Analyzer'], correct:[3],
+    why:['誤り。AWS Configはリソースの構成変更履歴を記録しますが、外部共有の検出に特化したサービスではありません。','誤り。GuardDutyは脅威インテリジェンスや機械学習を用いた不審なアクティビティの検知が主目的です。','誤り。ShieldはDDoS攻撃からの保護が目的です。','正しい。IAM Access Analyzerは論理推論を用いてリソースベースポリシーを分析し、外部アカウントや公衆への意図しない共有を検出します。']},
+  {id:'p129', domain:'security', type:'single', source:SOURCES.securityHub, text:'GuardDuty・Inspector・Macieなど複数のセキュリティサービスの検出結果を一つの場所に集約し、セキュリティ状態を統合的に把握したい場合、最も適したサービスはどれですか？',
+    choices:['AWS Security Hub','AWS Config','AWS Artifact','AWS Trusted Advisor'], correct:[0],
+    why:['正しい。AWS Security Hubは、GuardDuty・Inspector・Macieなど複数のセキュリティサービスやパートナー製品の検出結果を集約し、セキュリティ状態を統合的に可視化するサービスです。','誤り。Configはリソースの構成変更履歴に特化しており、複数セキュリティサービスの検出結果集約を主目的としたサービスではありません。','誤り。Artifactはコンプライアンスレポートの取得が目的です。','誤り。Trusted Advisorはコスト・パフォーマンス・セキュリティ等の推奨事項提示が目的で、複数セキュリティサービスの検出結果集約には特化していません。']},
+  {id:'p130', domain:'security', type:'multi', source:SOURCES.organizations, text:'AWS Organizationsのサービスコントロールポリシー(SCP)に関する説明として正しいものを2つ選択してください。',
+    choices:['SCPはIAMポリシーの代わりに、ユーザーへ直接アクセス許可を付与する仕組みである','SCPは、OU(組織単位)やアカウントに適用し、メンバーアカウントで許可可能な権限の上限(ガードレール)を設定するもので、権限を直接付与するものではない','SCPを設定すると、メンバーアカウントの請求が自動的に一つにまとめられる(一括支払い)','管理アカウント(Organizationsの管理アカウント)には、デフォルトでSCPの制限が適用されない'], correct:[1,3],
+    why:['誤り。SCPは権限を直接付与する仕組みではなく、許可できる権限の上限を定めるガードレールです。実際の権限付与はIAMポリシーが行います。','正しい。SCPはOUやアカウントに適用し、メンバーアカウントで許可可能な権限の上限を設定するガードレールであり、権限を直接付与するものではありません。','誤り。請求の一括化(Consolidated Billing)はSCPとは別の機能です。','正しい。管理アカウントには、デフォルトでSCPの制限は適用されません。']},
+  {id:'p131', domain:'tech', type:'single', source:SOURCES.eks, text:'Kubernetesを使ってコンテナを運用したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon ECS','Amazon EKS','AWS Lambda','Amazon Lightsail'], correct:[1],
+    why:['誤り。ECSはAWS独自のコンテナオーケストレーションサービスで、Kubernetesではなく独自のオーケストレーション方式を使用します。','正しい。Amazon EKS(Elastic Kubernetes Service)は、Kubernetesの管理コントロールプレーンの運用・保守を行うマネージドサービスで、既存のKubernetesツール・プラグインをそのまま利用できます。','誤り。Lambdaはサーバーレスのコード実行サービスで、Kubernetesクラスタの運用機能はありません。','誤り。Lightsailは、あらかじめ構成が用意されたシンプルな仮想サーバー等を提供するサービスで、Kubernetesオーケストレーションには特化していません。']},
+  {id:'p132', domain:'tech', type:'single', source:SOURCES.glue, text:'異なるデータソースからデータを収集し、形式を変換・整形してデータレイクやデータウェアハウスに読み込む(ETL)処理を、サーバーを管理せずに行いたい場合、最も適したサービスはどれですか？',
+    choices:['Amazon Athena','Amazon QuickSight','AWS Glue','AWS Storage Gateway'], correct:[2],
+    why:['誤り。Athenaは既に保存されたデータに対してSQLクエリを実行する分析サービスであり、ETL処理自体が主目的ではありません。','誤り。QuickSightはBIダッシュボードの作成・可視化を行うサービスです。','正しい。AWS Glueは、データの検出・変換・結合(ETL)をサーバーレスで行うデータ統合サービスで、処理結果をデータカタログに登録しAthena等から利用できます。','誤り。Storage Gatewayはオンプレミスとクラウドストレージを接続するハイブリッドストレージサービスです。']},
+  {id:'p133', domain:'tech', type:'single', source:SOURCES.quicksight, text:'収集・整形したデータを使って、インタラクティブなダッシュボードを作成し、ビジネス上の意思決定に役立てたい場合、最も適したサービスはどれですか？',
+    choices:['AWS Glue','Amazon Athena','AWS Storage Gateway','Amazon QuickSight'], correct:[3],
+    why:['誤り。Glueはデータの収集・変換・結合(ETL)が主目的のサービスです。','誤り。AthenaはS3上のデータにSQLクエリを実行する分析サービスで、ダッシュボード作成機能自体は主目的ではありません。','誤り。Storage Gatewayはオンプレミスとクラウドストレージを接続するハイブリッドストレージサービスです。','正しい。Amazon QuickSightは、データを可視化してインタラクティブなダッシュボードやレポートを作成できるサーバーレスのビジネスインテリジェンス(BI)サービスです。']},
+  {id:'p134', domain:'tech', type:'single', source:SOURCES.storagegateway, text:'オンプレミスのアプリケーションからクラウド上のストレージへ、iSCSI・SMB・NFSなどの標準プロトコルを使って低レイテンシーにアクセスし、オンプレミスとAWSのストレージをシームレスに統合したい場合、最も適したサービスはどれですか？',
+    choices:['AWS Storage Gateway','Amazon FSx','Amazon EBS','AWS Direct Connect'], correct:[0],
+    why:['正しい。AWS Storage Gatewayは、オンプレミスとAWSクラウド間のハイブリッドストレージサービスで、iSCSI・SMB・NFS等の標準プロトコルを使い、よく使うデータをオンプレミスにキャッシュしながらAWSのストレージをシームレスに利用できます。','誤り。FSxはフルマネージドの共有ファイルストレージそのものを提供するサービスで、オンプレミスとのゲートウェイ機能に特化したものではありません。','誤り。EBSはEC2インスタンス専用のブロックストレージです。','誤り。Direct Connectは専用線によるネットワーク接続を提供しますが、ストレージプロトコルの変換機能は持ちません。']},
+  {id:'p135', domain:'billing', type:'single', source:SOURCES.capacityReservation, text:'特定のアベイラビリティーゾーンで、必要な時にEC2インスタンスを確実に起動できるよう、あらかじめ指定したインスタンスタイプの容量を確保しておきたい場合、最も適した仕組みはどれですか？',
+    choices:['スポットインスタンス','On-Demand Capacity Reservation','Savings Plans','AWS Budgets'], correct:[1],
+    why:['誤り。スポットインスタンスは空きキャパシティを利用するため、容量の確保を保証するものではありません。','正しい。On-Demand Capacity Reservationは、特定のAZで指定したインスタンスタイプの容量を必要な期間だけ確保できる仕組みです。料金的な割引は提供されず、オンデマンド料金が基準となります。','誤り。Savings Plansは使用量契約による割引を得る料金モデルで、容量そのものを確保する仕組みではありません。','誤り。Budgetsは予算の設定とアラート通知が目的のサービスです。']},
+  {id:'p136', domain:'billing', type:'single', source:SOURCES.support, text:'AWSサポートプランに関する記述として正しいものはどれですか？',
+    choices:['上位プランに加入しない限り、Basic Supportも有料契約が必要である','全てのサポートプランで、技術的な問い合わせに対する応答時間は同一である','Basic Supportはすべてのアカウントで自動的に提供され、請求・アカウント関連のサポートやドキュメント・コミュニティフォーラムへのアクセスなどを無料で利用できる','サポートプランは年単位の契約が必須で、月単位では解約できない'], correct:[2],
+    why:['誤り。Basic Supportはすべてのアカウントで自動的に無料提供され、追加の契約は不要です。','誤り。応答時間はプランによって異なり、上位プランほど短い応答時間が設定されています。','正しい。Basic Supportは全アカウントに自動的に無料で提供され、請求・アカウントに関するサポートやドキュメント、AWSの状態に関する情報、コミュニティフォーラムへのアクセス等を利用できます。','誤り。有料のサポートプランは月単位の契約で、必要に応じて変更・解約が可能です。']},
+  {id:'p137', domain:'billing', type:'single', source:SOURCES.marketplace, text:'サードパーティが提供するソフトウェア(AMIやSaaS製品など)を購入・デプロイし、その利用料金をAWSの利用料金と合わせて一つの請求にまとめたい場合、最も適したサービスはどれですか？',
+    choices:['AWS Budgets','AWS Cost Explorer','AWS Organizations','AWS Marketplace'], correct:[3],
+    why:['誤り。Budgetsは予算設定とアラート通知が目的です。','誤り。Cost Explorerはコストと使用量の分析・可視化が目的です。','誤り。Organizationsは複数アカウントの管理・一括支払いが目的ですが、サードパーティ製品の購入・カタログ機能は持ちません。','正しい。AWS Marketplaceは、サードパーティが提供するソフトウェア(AMI・SaaS等)を検索・購入・デプロイできるカタログサービスで、利用料金はAWSの利用料金と合わせて請求されます。']}
 ];
 
 // 模擬試験専用の問題プール（PRACTICEとは独立。目標500問、現在は初期シード分のみ。
@@ -946,5 +1002,17 @@ var MOCK_POOL = [
     why:['誤り。Lambdaは最大実行時間に上限があり、長時間・大量のバッチ処理には不向きです。','誤り。EC2 Auto Scalingは需要に応じてインスタンス数を増減させる仕組みで、ジョブキューに基づくバッチ処理の割り当てには特化していません。','誤り。Step Functionsはワークフローの順序立てた実行を管理するサービスで、大量バッチジョブ向けの動的なコンピューティングリソース選択には特化していません。','正しい。AWS Batchは、ジョブキューに基づいて必要な量・種類のコンピューティングリソース（EC2オンデマンド/スポット/Fargate等）を自動的に選択し、大量のバッチジョブを実行するフルマネージドサービスです。']},
   {id:'m48', domain:'billing', type:'single', source:SOURCES.costmgmt, text:'向こう1年間、特定のインスタンスファミリーに縛られずEC2・Fargate・Lambdaなど複数のコンピューティングサービスにまたがって一定の使用量を契約し、割引を受けたい場合、最も適した料金モデルはどれですか？',
     choices:['Savings Plans','リザーブドインスタンス','スポットインスタンス','オンデマンド'], correct:[0],
-    why:['正しい。Savings Plansは、EC2・Fargate・Lambdaなど複数のコンピューティングサービスにまたがって一定の使用量（ドル/時間）を契約することで、特定のインスタンスファミリーに縛られずに割引を受けられる柔軟な料金モデルです。','誤り。リザーブドインスタンスは特定のインスタンスタイプ・リージョンに紐づく予約であり、Fargate/Lambda等にはまたがりません。','誤り。スポットインスタンスは中断の可能性がある空きキャパシティを利用する料金モデルで、使用量契約による割引ではありません。','誤り。オンデマンドは契約を伴わない通常料金のモデルです。']}
+    why:['正しい。Savings Plansは、EC2・Fargate・Lambdaなど複数のコンピューティングサービスにまたがって一定の使用量（ドル/時間）を契約することで、特定のインスタンスファミリーに縛られずに割引を受けられる柔軟な料金モデルです。','誤り。リザーブドインスタンスは特定のインスタンスタイプ・リージョンに紐づく予約であり、Fargate/Lambda等にはまたがりません。','誤り。スポットインスタンスは中断の可能性がある空きキャパシティを利用する料金モデルで、使用量契約による割引ではありません。','誤り。オンデマンドは契約を伴わない通常料金のモデルです。']},
+  {id:'m49', domain:'concepts', type:'single', source:SOURCES.watool, text:'ワークロードをAWSのベストプラクティスに基づいてレビューし、改善のための推奨事項を得たい場合、追加費用なしで利用できるツールはどれですか？',
+    choices:['AWS Well-Architected Tool','AWS Trusted Advisor','AWS Config','Amazon Inspector'], correct:[0],
+    why:['正しい。AWS Well-Architected Toolは、Well-Architected Frameworkの6つの柱に基づいてワークロードをレビューし、改善の推奨事項を無料で提示するツールです。','誤り。Trusted Advisorはコスト最適化・パフォーマンス・セキュリティ等の観点で推奨事項を提示しますが、Well-Architected Frameworkの柱に基づく体系的なワークロードレビューを行うツールではありません。','誤り。Configはリソースの構成変更履歴の記録が主目的です。','誤り。Inspectorはソフトウェアの脆弱性やネットワーク到達性をスキャンするサービスです。']},
+  {id:'m50', domain:'security', type:'single', source:SOURCES.accessAnalyzer, text:'あるS3バケットが、意図せず社外のAWSアカウントからアクセス可能な設定になっていることを自動的に検出したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon GuardDuty','AWS IAM Access Analyzer','AWS Shield Advanced','AWS CloudTrail'], correct:[1],
+    why:['誤り。GuardDutyは脅威インテリジェンスや機械学習による不審なアクティビティの検知が主目的です。','正しい。IAM Access Analyzerは、リソースベースポリシーを論理推論で分析し、S3バケットなどが意図せず外部アカウントや公衆に共有されていないかを検出します。','誤り。Shield AdvancedはDDoS攻撃対策の高度なサービスです。','誤り。CloudTrailはAPIコールの履歴記録が主目的で、外部共有設定の自動検出に特化したサービスではありません。']},
+  {id:'m51', domain:'tech', type:'single', source:SOURCES.athena, text:'Amazon S3に保存されたログデータに対して、サーバーを構築・管理せずに標準SQLで直接クエリを実行し、必要なデータだけを素早く抽出したい場合、最も適したサービスはどれですか？',
+    choices:['AWS Glue','Amazon QuickSight','Amazon Athena','AWS Storage Gateway'], correct:[2],
+    why:['誤り。Glueはデータの収集・変換・結合(ETL)が主目的のサービスです。','誤り。QuickSightはダッシュボードによるデータ可視化が主目的です。','正しい。Amazon Athenaは、S3上のデータに対してサーバーを管理せずに標準SQLで直接クエリを実行できるサーバーレスの分析サービスです。','誤り。Storage Gatewayはオンプレミスとクラウドストレージを接続するハイブリッドストレージサービスです。']},
+  {id:'m52', domain:'billing', type:'single', source:SOURCES.capacityReservation, text:'特定のインスタンスタイプ・アベイラビリティーゾーンの容量を、必要な期間だけ確実に確保したいが、1年/3年の長期契約による割引は必要ない場合、最も適した仕組みはどれですか？',
+    choices:['リザーブドインスタンス','Savings Plans','スポットインスタンス','On-Demand Capacity Reservation'], correct:[3],
+    why:['誤り。リザーブドインスタンスは1年・3年の契約期間に基づく割引モデルであり、短期的な容量確保だけを目的とした仕組みではありません。','誤り。Savings Plansも1年・3年の使用量契約による割引モデルです。','誤り。スポットインスタンスは空きキャパシティを利用するため、容量の確保は保証されません。','正しい。On-Demand Capacity Reservationは、長期契約を伴わずに特定のAZ・インスタンスタイプの容量を必要な期間だけ確保できる仕組みです。']}
 ];
