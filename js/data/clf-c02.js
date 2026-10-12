@@ -65,7 +65,17 @@ var SOURCES = {
   s3glacier:{label:'Amazon S3 Glacier ストレージクラス', url:'https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html'},
   edgelocation:{label:'AWSグローバルネットワーク（PoP/エッジロケーション）', url:'https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/points-of-presence.html'},
   elasticache:{label:'Amazon ElastiCache', url:'https://aws.amazon.com/elasticache/'},
-  macie:{label:'Amazon Macie', url:'https://aws.amazon.com/macie/'}
+  macie:{label:'Amazon Macie', url:'https://aws.amazon.com/macie/'},
+  caf:{label:'AWS Cloud Adoption Framework', url:'https://aws.amazon.com/cloud-adoption-framework/'},
+  migrationStrategies:{label:'移行戦略（Migration Strategies）', url:'https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html'},
+  iamIdentityCenter:{label:'AWS IAM Identity Center', url:'https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html'},
+  securityHub:{label:'AWS Security Hub', url:'https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub-v2.html'},
+  sns:{label:'Amazon SNS', url:'https://docs.aws.amazon.com/sns/'},
+  snowFamily:{label:'AWS Snow Family', url:'https://docs.aws.amazon.com/whitepapers/latest/how-aws-pricing-works/aws-snow-family.html'},
+  redshift:{label:'Amazon Redshift', url:'https://docs.aws.amazon.com/redshift/'},
+  consolidatedBilling:{label:'AWS Organizations 一括支払い（Consolidated Billing）', url:'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html'},
+  computeOptimizer:{label:'AWS Compute Optimizer', url:'https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html'},
+  transitGateway:{label:'AWS Transit Gateway', url:'https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-transit-gateway.html'}
 };
 
 var VOCAB = [
@@ -136,7 +146,11 @@ var VOCAB = [
   {id:'v53', term:'Amazon ElastiCache', domain:'tech', source:SOURCES.elasticache, q:{text:'Amazon ElastiCacheの役割として正しいものはどれですか？', choices:['RedisやMemcached等のインメモリキャッシュをマネージドで運用し、データベースの負荷を減らしてアプリケーションの応答速度を向上させるサービス','S3に保存したオブジェクトを長期保管用の低コストストレージクラスへ自動的に移行するサービス','複数のAZにEC2インスタンスへのトラフィックを分散するサービス','オンプレミスとAWSの間に専用線接続を確立するサービス'], correct:0, why:['正しい。ElastiCacheはRedisやMemcached等のインメモリキャッシュエンジンをマネージドで提供し、頻繁にアクセスされるデータをキャッシュすることでデータベース負荷を減らし、応答速度を向上させます。','これはAmazon S3のライフサイクルルール（S3 Glacier等への移行）の説明です。','これはElastic Load Balancingの説明です。','これはAWS Direct Connectの説明です。']}},
   {id:'v54', term:'Amazon Macie', domain:'security', source:SOURCES.macie, q:{text:'Amazon Macieの役割として正しいものはどれですか？', choices:['DDoS攻撃からリソースを保護するサービス','AWS環境内の不審なAPIコールやネットワーク挙動を検知するサービス','機械学習とパターンマッチングを使い、S3内のデータから個人情報(PII)などの機密データを自動的に検出・可視化するサービス','暗号鍵を作成・管理するサービス'], correct:2, why:['これはAWS Shieldの説明です。','これはAmazon GuardDutyの説明です。','正しい。Amazon Macieは機械学習とパターンマッチングを用いて、S3バケット内のPIIなどの機密データを検出し、データセキュリティのリスクを可視化するサービスです。','これはAWS KMSの説明です。']}},
   {id:'v55', term:'Horizontal Scaling (Scale Out)', domain:'concepts', source:SOURCES.autoscaling, q:{text:'「水平スケーリング（スケールアウト）」とは何ですか？', choices:['単一のサーバーのCPUやメモリをより高性能なものに置き換えること','既存サーバーの台数は変えずにストレージ容量だけを増やすこと','インスタンスの稼働するリージョンを変更すること','同種のインスタンスの台数を増やすことで、全体の処理能力を増強すること'], correct:3, why:['これは垂直スケーリング（スケールアップ）の説明です。','ストレージ容量の拡張はスケーリングの一種ですが、水平スケーリングの定義そのものではありません。','リージョンの変更はスケーリングとは異なる概念です。','正しい。水平スケーリング（スケールアウト）は、Auto Scaling等で同種のインスタンスの台数を増減させることで処理能力を調整する方式です。']}},
-  {id:'v56', term:'Vertical Scaling (Scale Up)', domain:'concepts', source:SOURCES.ec2, q:{text:'「垂直スケーリング（スケールアップ）」とは何ですか？', choices:['インスタンスの台数を増やして処理能力を増強すること','複数のアベイラビリティーゾーンにインスタンスを分散すること','1台のインスタンスをより高いCPU・メモリ性能のインスタンスタイプに変更することで処理能力を増強すること','無料利用枠の範囲内でリソースを使い続けること'], correct:2, why:['これは水平スケーリング（スケールアウト）の説明です。','これはマルチAZ構成の説明であり、スケーリングの方式とは異なります。','正しい。垂直スケーリング（スケールアップ）は、EC2インスタンスのタイプをより高性能なものに変更して処理能力を増強する方式です。多くの場合、変更には再起動が必要です。','Free Tierの説明であり、スケーリングとは無関係です。']}}
+  {id:'v56', term:'Vertical Scaling (Scale Up)', domain:'concepts', source:SOURCES.ec2, q:{text:'「垂直スケーリング（スケールアップ）」とは何ですか？', choices:['インスタンスの台数を増やして処理能力を増強すること','複数のアベイラビリティーゾーンにインスタンスを分散すること','1台のインスタンスをより高いCPU・メモリ性能のインスタンスタイプに変更することで処理能力を増強すること','無料利用枠の範囲内でリソースを使い続けること'], correct:2, why:['これは水平スケーリング（スケールアウト）の説明です。','これはマルチAZ構成の説明であり、スケーリングの方式とは異なります。','正しい。垂直スケーリング（スケールアップ）は、EC2インスタンスのタイプをより高性能なものに変更して処理能力を増強する方式です。多くの場合、変更には再起動が必要です。','Free Tierの説明であり、スケーリングとは無関係です。']}},
+  {id:'v57', term:'AWS Cloud Adoption Framework (CAF)', domain:'concepts', source:SOURCES.caf, q:{text:'AWS Cloud Adoption Framework (AWS CAF) とは何ですか？', choices:['組織がクラウドへの移行・変革を計画・実行するためのガイダンスをまとめたフレームワーク','EC2インスタンスの性能を自動的に最適化するサービス','AWSの利用料金を監視し予算超過を通知するサービス','IAMユーザーの認証情報を一元管理するサービス'], correct:0, why:['正しい。AWS CAFは、ビジネス・人材・ガバナンス・プラットフォーム・セキュリティ・運用の観点から、組織がクラウド導入・変革を進めるための指針をまとめたフレームワークです。','これはAWS Compute Optimizerの説明です。','これはAWS Budgetsの説明です。','これはAWS IAM Identity Centerの説明です。']}},
+  {id:'v58', term:'AWS IAM Identity Center', domain:'security', source:SOURCES.iamIdentityCenter, q:{text:'AWS IAM Identity Centerの主な役割は何ですか？', choices:['個々のEC2インスタンスへのネットワークアクセスを制御するファイアウォール機能','複数のAWSアカウントやビジネスアプリケーションへのシングルサインオン(SSO)によるアクセスを一元管理する機能','S3バケット内の機密データを自動的に検出する機能','オンプレミスとAWS間を専用線で接続する機能'], correct:1, why:['これはセキュリティグループの説明です。','正しい。IAM Identity Centerは、複数のAWSアカウントやクラウドアプリケーションへのアクセスをシングルサインオンで一元管理できるサービスです。','これはAmazon Macieの説明です。','これはAWS Direct Connectの説明です。']}},
+  {id:'v59', term:'Amazon SNS', domain:'tech', source:SOURCES.sns, q:{text:'Amazon SNS (Simple Notification Service) とは何ですか？', choices:['メッセージを一時的に保持し受信側がポーリングして取得するキューイングサービス','アプリケーションの性能指標を収集・可視化する監視サービス','パブリッシャーからサブスクライバーへメッセージを配信するpub/sub型の通知サービス','仮想サーバー間のネットワーク通信を仲介するロードバランサー'], correct:2, why:['これはAmazon SQSの説明です。','これはAmazon CloudWatchの説明です。','正しい。Amazon SNSは、パブリッシャーが送信したメッセージを複数のサブスクライバー（メール、SMS、Lambda等）へ同時に配信するpub/sub型の通知サービスです。','これはElastic Load Balancingの説明です。']}},
+  {id:'v60', term:'Consolidated Billing（一括支払い）', domain:'billing', source:SOURCES.consolidatedBilling, q:{text:'AWS Organizationsの「一括支払い（Consolidated Billing）」機能とは何ですか？', choices:['各メンバーアカウントが個別にAWSへ料金を支払う仕組み','サポートプランの料金のみを複数アカウントで分担する仕組み','無料利用枠を全メンバーアカウントで使い切るまで共有する仕組み','組織内の複数アカウントの請求を管理アカウントに集約し、利用量をまとめることでボリュームディスカウント等が適用されやすくなる仕組み'], correct:3, why:['誤り。一括支払いでは、管理アカウントが全メンバーアカウントの料金をまとめて支払います。','誤り。一括支払いは料金全体を対象とする仕組みで、サポート料金だけに限定されません。','誤り。無料利用枠の説明ではありません。','正しい。一括支払いは、組織内の複数アカウントの請求を管理アカウントに集約し、利用量を合算することでボリュームディスカウントなどが適用されやすくなる仕組みです。']}}
 ];
 
 var PRACTICE = [
@@ -367,7 +381,46 @@ var PRACTICE = [
     why:['誤り。EBSはブロックストレージサービスです。','正しい。Elastic Beanstalkはコードをアップロードするだけで、インフラのプロビジョニング・ロードバランシング・Auto Scaling等を自動的に処理し、Webアプリケーションを素早くデプロイできるサービスです。','誤り。Direct Connectは専用線接続サービスです。','誤り。GuardDutyは脅威検知サービスです。']},
   {id:'p72', domain:'billing', type:'single', source:SOURCES.pricingcalc, text:'まだAWS上に構築していないワークロードについて、想定する構成を入力して事前にコストの見積もりを行いたい場合、最も適したツールはどれですか？',
     choices:['AWS Cost Explorer','AWS Budgets','AWS Pricing Calculator','AWS Trusted Advisor'], correct:[2],
-    why:['誤り。Cost Explorerは過去の実績コストの分析・予測ツールです。','誤り。Budgetsは予算に対するアラート機能が主目的です。','正しい。AWS Pricing Calculatorは、想定する構成を入力することで、未構築のワークロードのコストを事前に見積もれるツールです。','誤り。Trusted Advisorはベストプラクティスの推奨事項を提示するサービスです。']}
+    why:['誤り。Cost Explorerは過去の実績コストの分析・予測ツールです。','誤り。Budgetsは予算に対するアラート機能が主目的です。','正しい。AWS Pricing Calculatorは、想定する構成を入力することで、未構築のワークロードのコストを事前に見積もれるツールです。','誤り。Trusted Advisorはベストプラクティスの推奨事項を提示するサービスです。']},
+  {id:'p73', domain:'concepts', type:'single', source:SOURCES.caf, text:'AWS Cloud Adoption Framework (AWS CAF) が示す6つの視点（パースペクティブ）に含まれないものはどれですか？',
+    choices:['テクニカルサポート','ガバナンス','プラットフォーム','セキュリティ'], correct:[0],
+    why:['正しい。AWS CAFの6つの視点はビジネス・人材・ガバナンス・プラットフォーム・セキュリティ・運用であり、「テクニカルサポート」という視点は含まれません。','誤り。ガバナンスはAWS CAFの6つの視点の1つです。','誤り。プラットフォームはAWS CAFの6つの視点の1つです。','誤り。セキュリティはAWS CAFの6つの視点の1つです。']},
+  {id:'p74', domain:'concepts', type:'single', source:SOURCES.migrationStrategies, text:'既存のオンプレミスアプリケーションを、同等機能を持つ別の製品（多くはSaaS）に乗り換える移行戦略を何と呼びますか？',
+    choices:['リホスト(Rehost)','リパーチェス(Repurchase)','リファクタリング(Refactor / Re-architect)','リタイア(Retire)'], correct:[1],
+    why:['誤り。リホストは、アプリケーションをほぼ変更せずそのままクラウドに移す戦略です。','正しい。リパーチェスは、既存のアプリケーションを同等機能を持つ別の製品（多くはSaaS）に置き換える移行戦略です。','誤り。リファクタリングは、クラウドネイティブな機能を活用するためにアプリケーションを再設計する戦略です。','誤り。リタイアは、不要になったアプリケーションを廃止する戦略です。']},
+  {id:'p75', domain:'concepts', type:'single', source:SOURCES.hybridCloud, text:'オンプレミス環境とAWSクラウド環境を接続し、両方を組み合わせて利用するデプロイモデルを何と呼びますか？',
+    choices:['パブリッククラウド','プライベートクラウド','ハイブリッドクラウド','マルチクラウド'], correct:[2],
+    why:['誤り。パブリッククラウドは、AWSのようなプロバイダーが提供するクラウド環境のみを利用する形態です。','誤り。プライベートクラウドは、自社専用に構築・運用されるクラウド環境のみを指します。','正しい。ハイブリッドクラウドは、オンプレミス環境とパブリッククラウド環境を接続し、両方を組み合わせて利用するデプロイモデルです。','誤り。マルチクラウドは、複数の異なるクラウドプロバイダーを組み合わせて利用する形態を指し、オンプレミスとの組み合わせを前提とした用語ではありません。']},
+  {id:'p76', domain:'security', type:'single', source:SOURCES.iamIdentityCenter, text:'複数のAWSアカウントを運用する組織で、従業員が1回のログインで許可された複数のAWSアカウントやアプリケーションにアクセスできるようにしたい場合、最も適したサービスはどれですか？',
+    choices:['Amazon Cognito','AWS Secrets Manager','AWS Key Management Service (KMS)','AWS IAM Identity Center'], correct:[3],
+    why:['誤り。Cognitoは主にアプリケーションの利用者（エンドユーザー）向けの認証・ID管理サービスです。','誤り。Secrets Managerはデータベース認証情報等のシークレットを管理するサービスです。','誤り。KMSは暗号鍵を作成・管理するサービスです。','正しい。IAM Identity Centerは、複数のAWSアカウントやアプリケーションへのシングルサインオンによる従業員アクセスを一元管理するサービスです。']},
+  {id:'p77', domain:'security', type:'single', source:SOURCES.kms, text:'保管時のデータ（保存されているデータ）を暗号化する際に、暗号鍵の作成・管理に使われるAWSサービスはどれですか？',
+    choices:['AWS Key Management Service (KMS)','AWS Certificate Manager (ACM)','Amazon CloudWatch','AWS Trusted Advisor'], correct:[0],
+    why:['正しい。AWS KMSは、保管時のデータ暗号化等に使用する暗号鍵を作成・管理するサービスです。','誤り。ACMはSSL/TLS証明書を発行・管理するサービスで、主に転送中データの暗号化（通信の暗号化）に関わります。','誤り。CloudWatchは監視サービスで、暗号鍵管理機能はありません。','誤り。Trusted Advisorはベストプラクティスの推奨を行うサービスで、暗号鍵管理機能はありません。']},
+  {id:'p78', domain:'security', type:'single', source:SOURCES.securityHub, text:'Amazon GuardDuty・Amazon Inspector・Amazon Macieなど複数のセキュリティサービスの検出結果を一つの画面に集約し、セキュリティ状態を統合的に確認できるサービスはどれですか？',
+    choices:['AWS Config','AWS Security Hub','AWS CloudTrail','AWS Artifact'], correct:[1],
+    why:['誤り。Configはリソースの構成変更履歴を記録・評価するサービスです。','正しい。AWS Security Hubは、GuardDuty・Inspector・Macieなど複数のセキュリティサービスの検出結果を集約し、セキュリティ状態を統合的に可視化するサービスです。','誤り。CloudTrailはAPIコールの記録・監査を行うサービスです。','誤り。Artifactはコンプライアンスレポートや契約書を取得できるサービスです。']},
+  {id:'p79', domain:'tech', type:'single', source:SOURCES.sns, text:'アプリケーションから送信された1件の通知を、メール・SMS・複数のLambda関数など複数の宛先に同時に配信したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon SQS','Amazon EventBridge','Amazon SNS','AWS Direct Connect'], correct:[2],
+    why:['誤り。SQSは1つのキューを介した非同期メッセージ処理に向いたキューイングサービスで、1件のメッセージを複数の宛先に同時配信することは主目的ではありません。','誤り。EventBridgeはイベント駆動のルーティングサービスで、主にAWSサービス間やSaaS連携のイベント処理に使われます。本シナリオのような通知のマルチ配信にはSNSがより直接的に適しています。','正しい。Amazon SNSはpub/sub型のサービスで、1件のメッセージを複数のサブスクライバー（メール、SMS、Lambda等）へ同時に配信できます。','誤り。Direct Connectは専用線接続サービスで、通知配信とは無関係です。']},
+  {id:'p80', domain:'tech', type:'single', source:SOURCES.snowFamily, text:'数百テラバイト〜ペタバイト規模のデータを、インターネット経由ではなく物理デバイスを使ってオンプレミスからAWSへ輸送したい場合に使うサービス群はどれですか？',
+    choices:['AWS Direct Connect','AWS Storage Gateway','AWS Database Migration Service (DMS)','AWS Snow Family'], correct:[3],
+    why:['誤り。Direct Connectはオンプレミスとの専用線接続サービスで、物理デバイスによる大容量データ輸送ではなくネットワーク経由の接続手段です。','誤り。Storage GatewayはオンプレミスとS3等を連携させるハイブリッドストレージサービスで、ネットワーク経由でのデータ連携が前提です。','誤り。DMSはデータベースをAWSへ移行・レプリケーションするサービスで、物理デバイスによる大容量データ輸送のためのサービスではありません。','正しい。AWS Snow Family（Snowcone/Snowball Edge等）は、物理デバイスを使ってオンプレミスとAWS間で大容量データを輸送するサービス群です。']},
+  {id:'p81', domain:'tech', type:'single', source:SOURCES.redshift, text:'大量の履歴データを対象に複雑な集計・分析クエリ（OLAP）を高速に実行したい場合に最も適したサービスはどれですか？',
+    choices:['Amazon Redshift','Amazon RDS','Amazon DynamoDB','Amazon ElastiCache'], correct:[0],
+    why:['正しい。Amazon Redshiftは、ペタバイト規模のデータに対する複雑な分析クエリ（OLAP）を高速に処理できるマネージド型データウェアハウスサービスです。','誤り。RDSはオンライントランザクション処理（OLTP）向けのマネージド型リレーショナルデータベースサービスで、大規模分析処理に特化したサービスではありません。','誤り。DynamoDBはキーバリュー型のNoSQLデータベースで、低レイテンシーなトランザクション処理に向いていますが、複雑な分析クエリには向いていません。','誤り。ElastiCacheはインメモリキャッシュサービスで、データウェアハウスではありません。']},
+  {id:'p82', domain:'tech', type:'multi', source:SOURCES.lambda, text:'次のAWSのコンピューティングサービスのうち、サーバーのプロビジョニングや管理が不要な「サーバーレス」なサービスを2つ選択してください。',
+    choices:['Amazon EC2','AWS Lambda','AWS Fargate','Amazon Lightsail'], correct:[1,2],
+    why:['誤り。EC2は仮想サーバー（インスタンス）をユーザー自身が起動・管理するサービスで、サーバーレスではありません。','正しい。AWS Lambdaは、コードを実行するためのサーバーをユーザーが管理する必要がないサーバーレスなコンピューティングサービスです。','正しい。AWS Fargateは、コンテナを実行するためのサーバーやクラスターをユーザーが管理する必要がないサーバーレスなコンピューティングサービスです。','誤り。Lightsailは簡易な仮想サーバー（VPS）を提供するサービスで、サーバー自体の管理は依然としてユーザー側で必要です。']},
+  {id:'p83', domain:'billing', type:'single', source:SOURCES.consolidatedBilling, text:'複数の子会社がそれぞれ別々のAWSアカウントを持つ企業グループが、AWS Organizationsの一括支払い（Consolidated Billing）を使う主なメリットは何ですか？',
+    choices:['各アカウントのセキュリティ設定が自動的に統一される','各アカウントのIAMユーザーが自動的に共有される','複数アカウントの利用量を合算することで、ボリュームディスカウントなどが適用されやすくなる','各アカウントで異なるリージョンの料金表が自動的に適用される'], correct:[2],
+    why:['誤り。セキュリティ設定の統一は一括支払いの機能ではなく、AWS OrganizationsのSCP(サービスコントロールポリシー)等の別機能で実現します。','誤り。IAMユーザーはアカウントごとに個別に管理され、一括支払いによって自動的に共有されるわけではありません。','正しい。一括支払いでは複数アカウントの利用量が合算されるため、ボリュームディスカウントやリザーブドインスタンス割引等が適用されやすくなります。','誤り。リージョンごとの料金表はアカウントの支払い方法に関わらず同一の基準で適用されます。']},
+  {id:'p84', domain:'billing', type:'single', source:SOURCES.computeOptimizer, text:'EC2インスタンスやLambda関数などの使用率を分析し、コスト削減とパフォーマンス向上につながるリソースサイズの変更（ライトサイジング）を推奨するサービスはどれですか？',
+    choices:['AWS Budgets','AWS Cost Explorer','AWS Trusted Advisor','AWS Compute Optimizer'], correct:[3],
+    why:['誤り。Budgetsは予算を設定し、超過時に通知するサービスです。','誤り。Cost Explorerは過去のコスト・使用状況を可視化・分析するサービスです。','誤り。Trusted Advisorはコスト・セキュリティ・耐障害性等の観点から幅広い推奨事項を提示しますが、利用率メトリクスに基づく詳細なライトサイジング推奨に特化したサービスはCompute Optimizerです。','正しい。AWS Compute Optimizerは、EC2・Lambda・EBS等の使用率メトリクスを分析し、コスト削減やパフォーマンス向上につながるリソース設定変更を推奨するサービスです。']},
+  {id:'p85', domain:'billing', type:'single', source:SOURCES.costmgmt, text:'中断されても問題ない処理（バッチ処理等）で、オンデマンド料金に比べて大幅なコスト削減を狙える代わりに、AWS側の都合で中断される可能性があるEC2の購入オプションはどれですか？',
+    choices:['スポットインスタンス(Spot Instances)','リザーブドインスタンス(Reserved Instances)','Savings Plans','オンデマンドインスタンス(On-Demand Instances)'], correct:[0],
+    why:['正しい。スポットインスタンスはAWSの余剰キャパシティを活用した購入オプションで、オンデマンドに比べ大幅に安価ですが、AWS側の都合で中断される可能性があります。','誤り。リザーブドインスタンスは一定期間の利用を事前にコミットすることで割引を受ける購入オプションで、中断されることはありません。','誤り。Savings Plansは一定期間・一定金額分の利用をコミットすることで割引を受ける購入オプションで、中断されることはありません。','誤り。オンデマンドインスタンスは最も柔軟で中断されない購入オプションですが、割引はありません。']}
 ];
 
 // 模擬試験専用の問題プール（PRACTICEとは独立。目標500問、現在は初期シード分のみ。
@@ -654,5 +707,37 @@ var MOCK_POOL = [
       '誤り。Direct Connectは専用線接続サービスです。',
       '正しい。Amazon ElastiCacheはRedisやMemcached等のインメモリキャッシュをマネージドで提供し、データベース負荷の軽減とレスポンス速度の改善に利用されます。',
       '誤り。Route 53はDNSサービスです。'
+    ]},
+  {id:'m33', domain:'concepts', type:'single', source:SOURCES.migrationStrategies, text:'利用状況を分析した結果、CPU・メモリ使用率が極めて低く、今後も使われる予定がないアプリケーションが見つかった場合に適した移行戦略はどれですか？',
+    choices:['リプラットフォーム(Replatform)','リタイア(Retire)','リホスト(Rehost)','リテイン(Retain)'], correct:[1],
+    why:[
+      '誤り。リプラットフォームは、一部最適化を加えつつクラウドへ移行する戦略で、不要なアプリケーションの廃止には当たりません。',
+      '正しい。リタイアは、使用率が低く今後利用予定のない不要なアプリケーションを廃止する移行戦略です。',
+      '誤り。リホストは、アプリケーションをそのままクラウドに移す戦略で、廃止ではありません。',
+      '誤り。リテインは、現時点ではオンプレミスに残しておく戦略で、廃止ではありません。'
+    ]},
+  {id:'m34', domain:'security', type:'single', source:SOURCES.securityHub, text:'AWS Security Hubの機能として正しいものはどれですか？',
+    choices:['S3バケット内のファイルを自動的に暗号化する','DDoS攻撃を検知し自動的に緩和する','複数のセキュリティサービスの検出結果を集約し、セキュリティ標準（ベストプラクティス）への準拠状況を評価する','IAMユーザーのパスワードを定期的に自動変更する'], correct:[2],
+    why:[
+      '誤り。これはS3のデフォルト暗号化機能やKMSの説明です。',
+      '誤り。これはAWS Shieldの説明です。',
+      '正しい。Security Hubは、GuardDuty・Inspector・Macie等の検出結果を集約するとともに、セキュリティ標準への準拠状況を継続的に評価します。',
+      '誤り。これはIAMのパスワードポリシー等の機能であり、Security Hubの主機能ではありません。'
+    ]},
+  {id:'m35', domain:'tech', type:'single', source:SOURCES.transitGateway, text:'数十〜数百のVPCやオンプレミス拠点を個別にピアリング接続する代わりに、単一のハブを経由して相互接続を簡素化したい場合に使うサービスはどれですか？',
+    choices:['AWS Direct Connect','Amazon Route 53','AWS CloudFormation','AWS Transit Gateway'], correct:[3],
+    why:[
+      '誤り。Direct Connectはオンプレミスとの専用線接続サービスで、VPC同士の相互接続のハブ機能ではありません。',
+      '誤り。Route 53はDNSサービスです。',
+      '誤り。CloudFormationはインフラをコードで管理するサービスです。',
+      '正しい。AWS Transit Gatewayは、多数のVPCやオンプレミス拠点を単一のハブ経由で相互接続できるサービスで、個別のVPCピアリングの複雑さを軽減します。'
+    ]},
+  {id:'m36', domain:'billing', type:'single', source:SOURCES.consolidatedBilling, text:'AWS Organizationsで一括支払い（Consolidated Billing）を設定している場合、メンバーアカウントの料金について正しい説明はどれですか？',
+    choices:['メンバーアカウントへの請求書は発行されず、料金は管理アカウントがまとめて支払う','メンバーアカウントは自分の利用分を管理アカウントとは別に直接AWSへ支払う','メンバーアカウントの利用量は無料利用枠の対象外になる','メンバーアカウントはサポートプランの料金のみ個別に支払う'], correct:[0],
+    why:[
+      '正しい。一括支払いでは、メンバーアカウントの利用料金を含め、組織全体の請求が管理アカウントに集約され、管理アカウントがまとめて支払います。',
+      '誤り。メンバーアカウントが個別にAWSへ支払うわけではありません。',
+      '誤り。無料利用枠の適用自体は一括支払いの有無に関わらず各アカウントの条件に基づきます。',
+      '誤り。サポート料金に限らず、全体の料金が管理アカウントに集約されます。'
     ]}
 ];
