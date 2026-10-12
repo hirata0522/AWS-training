@@ -5,8 +5,9 @@
 ## プロジェクトの現状
 
 - 仕様確定・アーキテクチャ方針確定・モック（画面イメージ）作成とユーザー確認まで完了。
-- 次にやること: このモック（`mock/index.html`）の内容・データ構造をベースに、本実装（GitHub Pagesで公開する実際のアプリ）を作る。
-- リポジトリはGitHub上に private で作成済み: `hirata0522/AWS-training`（origin設定済み、まだpushしたコミットはない）。
+- 本実装の土台（ビルドなし・素のHTML/CSS/JS、`index.html` + `css/style.css` + `js/data/clf-c02.js` + `js/storage.js` + `js/app.js`）を作成・push・GitHub Pages公開まで完了し、実機で動作確認済み。公開URL: `https://hirata0522.github.io/AWS-training/`。
+- モックのロジック・データ・ダミーコンテンツ（単語8件・想定問題6件）は変更せずそのまま移植した状態。**次にやること: CLF-C02の全ドメインを網羅するコンテンツ拡充**（下記「次のステップ」参照）。
+- リポジトリはGitHub上に private で作成済み: `hirata0522/AWS-training`（origin設定済み、push済み）。GitHub Pages設定: Settings → Pages → Branch `master` / `(root)`、設定済み。
 
 ## 確定した仕様
 
@@ -57,7 +58,7 @@
 
 ## モック（画面イメージ確認用）について
 
-`mock/index.html` に、Claude Artifactとして公開し実機（Pixel 9a）で動作確認済みのインタラクティブなHTMLモックがある。単体のHTMLファイル（外部ライブラリなし、Google Fontsのみ使用）で、本実装のベースとして参照する。
+`mock/index.html` に、Claude Artifactとして公開し実機（Pixel 9a）で動作確認済みのインタラクティブなHTMLモックがある。単体のHTMLファイル（外部ライブラリなし、Google Fontsのみ使用）で、本実装のベース（参照用・ロールバック用）として残している。本実装（リポジトリルートの`index.html`等）はこのモックをロジック・データともに変更せず分割移植したもの。
 
 ### モックのデータ構造（本実装でも踏襲する想定）
 
@@ -68,7 +69,7 @@
 // 想定問題
 { id:'p1', domain:'concepts', type:'single'|'multi', text, choices:[4件], correct:[正解indexの配列], why:[4件の理由文字列] }
 
-// 進捗レコード（localStorageキー: 'awsDrillMockProgress_v1'、本実装では別キー名にしてよい）
+// 進捗レコード（localStorageキー: 本実装では 'awsTrainingProgress_v1'、モックは 'awsDrillMockProgress_v1'）
 { [itemId]: { attempts, correct, lastSelf /* 単語のみ: 'known'|'unknown' */, lastResult /* 'correct'|'incorrect' */, lastAt } }
 ```
 
@@ -88,9 +89,8 @@ CLF-C02の一部のみ（単語8件、想定問題6件）。**本実装では全
 
 ## 次のステップ
 
-1. CLF-C02の本番相当のコンテンツ（単語・想定問題を全ドメイン網羅する量）を作成する。
-2. モックの画面・操作パターン・データ構造を踏襲しつつ、実際にGitHub Pagesで公開できる形に実装する（ビルド構成・ファイル分割など、具体的な実装方法は未決定）。
-3. 実装・動作確認後、同じ仕組みでAIF-C01のコンテンツ・ドメインを追加する。
+1. **CLF-C02の本番相当のコンテンツ拡充**（単語・想定問題を全ドメイン網羅する量に増やす。現在は単語8件・想定問題6件のダミーのみ）: `js/data/clf-c02.js` の `VOCAB`/`PRACTICE` 配列に追加していく。
+2. 実装・動作確認後、同じ仕組みでAIF-C01のコンテンツ・ドメインを追加する（`js/data/aif-c01.js` 等を新設し、`DOMAINS`/`VOCAB`/`PRACTICE` の扱いをどう分けるか別途検討）。
 
 ## 参考
 - GitHubリポジトリ: `hirata0522/AWS-training`（private）。ローカルの`.git`に`origin`として設定済み。
