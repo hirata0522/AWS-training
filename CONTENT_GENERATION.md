@@ -89,3 +89,4 @@
 ## 進捗ログ（この末尾に追記していく）
 
 - 2026-10-12: 初期シード投入（このセッションで実施）。VOCAB=48, PRACTICE=46, MOCK_POOL=24。
+- 2026-10-12: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=52, PRACTICE=59, MOCK_POOL=28。追加トピック: AWS Config, Amazon Inspector, ACM, Cognito, ECS, Aurora, SQS, Elastic Beanstalk, S3 Glacier, Pricing Calculator, AWS Marketplace, Fault Tolerance, Disaster Recovery, Edge Location。
