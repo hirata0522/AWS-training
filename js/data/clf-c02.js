@@ -78,7 +78,20 @@ var SOURCES = {
   transitGateway:{label:'AWS Transit Gateway', url:'https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-transit-gateway.html'},
   systemsManager:{label:'AWS Systems Manager', url:'https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html'},
   apigateway:{label:'Amazon API Gateway', url:'https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html'},
-  networkFirewall:{label:'AWS Network Firewall', url:'https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html'}
+  networkFirewall:{label:'AWS Network Firewall', url:'https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html'},
+  directoryService:{label:'AWS Directory Service', url:'https://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html'},
+  eventbridge:{label:'Amazon EventBridge', url:'https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html'},
+  cur:{label:'AWS Cost and Usage Report (CUR)', url:'https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html'},
+  cloudhsm:{label:'AWS CloudHSM', url:'https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html'},
+  firewallManager:{label:'AWS Firewall Manager', url:'https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html'},
+  detective:{label:'Amazon Detective', url:'https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective'},
+  ecr:{label:'Amazon ECR', url:'https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html'},
+  globalAccelerator:{label:'AWS Global Accelerator', url:'https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html'},
+  kinesis:{label:'Amazon Kinesis Data Streams', url:'https://docs.aws.amazon.com/streams/latest/dev/introduction.html'},
+  natGateway:{label:'VPC NATゲートウェイ', url:'https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html'},
+  stepFunctions:{label:'AWS Step Functions', url:'https://docs.aws.amazon.com/step-functions/latest/apireference/Welcome.html'},
+  lightsail:{label:'Amazon Lightsail', url:'https://aws.amazon.com/lightsail/'},
+  ec2Ri:{label:'Amazon EC2 リザーブドインスタンス', url:'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html'}
 };
 
 var VOCAB = [
@@ -157,7 +170,11 @@ var VOCAB = [
   {id:'v61', term:'AWS Systems Manager', domain:'tech', source:SOURCES.systemsManager, q:{text:'AWS Systems Managerの主な役割は何ですか？', choices:['SSHキーの管理や踏み台サーバーを使わずに、EC2インスタンス等のノードを一元的に表示・操作・運用できるようにする','Webアプリケーションへの攻撃をルールベースでフィルタリングする','リレーショナルデータベースの運用・保守を代行する','複数アカウントの請求を一つに集約する'], correct:0, why:['正しい。Systems Managerは、SSHキーや踏み台サーバーなしでEC2インスタンス等のノードを一元的に表示・操作できる運用管理サービスです（Session Manager機能など）。','これはAWS WAFの説明です。','これはAmazon RDSの説明です。','これはAWS Organizationsの一括支払い(Consolidated Billing)の説明です。']}},
   {id:'v62', term:'Amazon API Gateway', domain:'tech', source:SOURCES.apigateway, q:{text:'Amazon API Gatewayとは何ですか？', choices:['EC2インスタンスにアタッチするブロックストレージ','REST・HTTP・WebSocket形式のAPIを作成・公開・保護・監視できるマネージドサービス','DNSの名前解決を行うサービス','脆弱性スキャンを行うサービス'], correct:1, why:['これはAmazon EBSの説明です。','正しい。API Gatewayは、REST・HTTP・WebSocket APIを作成・公開・保護・監視できるマネージドサービスで、Lambda等のバックエンドと組み合わせて使われます。','これはAmazon Route 53の説明です。','これはAmazon Inspectorの説明です。']}},
   {id:'v63', term:'AWS Network Firewall', domain:'security', source:SOURCES.networkFirewall, q:{text:'AWS Network Firewallとは何ですか？', choices:['Webアプリケーション層の攻撃をフィルタリングするサービス','DDoS攻撃を検知し緩和するサービス','VPC単位でステートフルなトラフィック検査・フィルタリングを行うマネージドネットワークファイアウォール','インスタンス単位で動作するステートフルなファイアウォール'], correct:2, why:['これはAWS WAFの説明です。','これはAWS Shieldの説明です。','正しい。AWS Network Firewallは、VPC単位でステートフルなディープパケットインスペクションやルールベースのフィルタリングを行うマネージドネットワークファイアウォールです。','これはセキュリティグループの説明です（インスタンス単位で動作しますが、Network Firewallより狭い範囲です）。']}},
-  {id:'v64', term:'Economies of Scale（規模の経済）', domain:'concepts', source:SOURCES.sixAdv, q:{text:'クラウドの「規模の経済(Economies of Scale)」とは何を指しますか？', choices:['リソースを自動的に増減できる特性','先行投資を運用費用に変換できる特性','複数リージョンに同時展開できる速さ','非常に多くの顧客の利用量を集約することで、個々の組織では実現できない低コスト構造を実現し、それが従量課金の低価格として還元される仕組み'], correct:3, why:['これは弾力性(Elasticity)の説明です。','これはCapEx/OpExの説明です。','これは俊敏性(Agility)に関連する説明です。','正しい。規模の経済は、AWSが非常に多くの顧客の利用を集約することでコスト構造を下げ、その低コストを利用者への低価格として還元する仕組みです。']}}
+  {id:'v64', term:'Economies of Scale（規模の経済）', domain:'concepts', source:SOURCES.sixAdv, q:{text:'クラウドの「規模の経済(Economies of Scale)」とは何を指しますか？', choices:['リソースを自動的に増減できる特性','先行投資を運用費用に変換できる特性','複数リージョンに同時展開できる速さ','非常に多くの顧客の利用量を集約することで、個々の組織では実現できない低コスト構造を実現し、それが従量課金の低価格として還元される仕組み'], correct:3, why:['これは弾力性(Elasticity)の説明です。','これはCapEx/OpExの説明です。','これは俊敏性(Agility)に関連する説明です。','正しい。規模の経済は、AWSが非常に多くの顧客の利用を集約することでコスト構造を下げ、その低コストを利用者への低価格として還元する仕組みです。']}},
+  {id:'v65', term:'Sustainability Pillar', domain:'concepts', source:SOURCES.wafSustainability, q:{text:'Well-Architected Frameworkの「持続可能性の柱」が重視する観点として正しいものはどれですか？', choices:['リソースの使用を最適化し、環境への影響（エネルギー消費等）を低減すること','DDoS攻撃からシステムを保護すること','料金を従量課金制にすること','複数のアベイラビリティーゾーンにインスタンスを分散配置すること'], correct:0, why:['正しい。持続可能性の柱は、クラウドワークロードが環境に与える影響を理解し、エネルギー消費や資源利用を最適化することに焦点を当てます。','これはセキュリティの柱（DDoS対策等）に関する内容です。','これは料金モデル（Pay-as-you-go）の説明であり、持続可能性の柱とは異なります。','これは信頼性の柱（高可用性設計）に関する内容です。']}},
+  {id:'v66', term:'AWS Directory Service', domain:'security', source:SOURCES.directoryService, q:{text:'AWS Directory Serviceの役割として正しいものはどれですか？', choices:['Webアプリケーションへの攻撃をフィルタリングする','AWSクラウド上でMicrosoft Active Directoryを運用したり、既存のオンプレミスADと連携したりできるマネージド型ディレクトリサービス','暗号鍵を生成・管理する','DNSの名前解決を行う'], correct:1, why:['これはAWS WAFの説明です。','正しい。AWS Directory Serviceは、AWS Managed Microsoft ADの提供やAD Connectorによるオンプレミスとの連携など、複数の方式でディレクトリサービスを利用できるマネージド型サービスです。','これはAWS KMSの説明です。','これはAmazon Route 53の説明です。']}},
+  {id:'v67', term:'Amazon EventBridge', domain:'tech', source:SOURCES.eventbridge, q:{text:'Amazon EventBridgeの役割として正しいものはどれですか？', choices:['リレーショナルデータベースを提供する','コンテナイメージを保存するレジストリ','AWSサービス・SaaSアプリケーション・自作アプリケーションからのイベントを受け取り、ルールに基づいて複数のターゲットにルーティングするサーバーレスのイベントバスサービス','仮想サーバーを提供するコンピューティングサービス'], correct:2, why:['これはAmazon RDSの説明です。','これはAmazon ECRの説明です。','正しい。EventBridgeは、イベントを受け取りルールに基づいてLambda等のターゲットにルーティングできる、サーバーレスのイベントバスサービスです。','これはAmazon EC2の説明です。']}},
+  {id:'v68', term:'AWS Cost and Usage Report (CUR)', domain:'billing', source:SOURCES.cur, q:{text:'AWS Cost and Usage Report (CUR)の説明として正しいものはどれですか？', choices:['AWSサポートへの問い合わせ履歴をまとめたレポート','コンプライアンス関連の第三者認証レポート','リソースのパフォーマンスメトリクスをまとめたレポート','AWSの利用状況・コストに関する最も詳細なデータセットで、指定したS3バケットに1日1回CSV形式等で出力される'], correct:3, why:['これはAWS Supportのケース履歴の説明であり、CURとは異なります。','これはAWS Artifactが提供するレポートの説明です。','これはAmazon CloudWatchの説明です。','正しい。CURは、利用した製品・使用タイプ・操作ごとの行を含む、AWSで利用可能な最も詳細なコスト・利用状況データセットで、指定のS3バケットに定期的に出力されます。']}}
 ];
 
 var PRACTICE = [
@@ -468,7 +485,46 @@ var PRACTICE = [
     why:['誤り。「12ヶ月間無料」という説明は現行の構成とは異なり、サービスや条件によって範囲が異なります。','正しい。現行のFree Tierは、常に無料の対象サービス、新規アカウント向けの無料クレジット、一部サービスの短期無料トライアルという複数の仕組みで構成されます。','誤り。サポートプランの無料提供（Basic Support）とは別の仕組みです。','誤り。永続的にすべてのサービスが無料になるわけではありません。']},
   {id:'p98', domain:'billing', type:'multi', source:SOURCES.computeOptimizer, text:'コストとパフォーマンスの最適化に関する推奨事項を得られるサービスを2つ選択してください。',
     choices:['AWS CloudTrail','AWS Trusted Advisor','AWS Compute Optimizer','Amazon GuardDuty'], correct:[1,2],
-    why:['誤り。CloudTrailはAPIコール履歴の記録サービスであり、コスト最適化の推奨事項は提供しません。','正しい。Trusted Advisorはコスト最適化・パフォーマンス・セキュリティ等の観点からベストプラクティスに基づく推奨事項を提示します。','正しい。Compute Optimizerは利用率メトリクスを分析し、コスト削減とパフォーマンス向上につながるリソース変更を推奨します。','誤り。GuardDutyは脅威検知サービスであり、コスト最適化の推奨事項は提供しません。']}
+    why:['誤り。CloudTrailはAPIコール履歴の記録サービスであり、コスト最適化の推奨事項は提供しません。','正しい。Trusted Advisorはコスト最適化・パフォーマンス・セキュリティ等の観点からベストプラクティスに基づく推奨事項を提示します。','正しい。Compute Optimizerは利用率メトリクスを分析し、コスト削減とパフォーマンス向上につながるリソース変更を推奨します。','誤り。GuardDutyは脅威検知サービスであり、コスト最適化の推奨事項は提供しません。']},
+  {id:'p99', domain:'concepts', type:'single', source:SOURCES.sixAdv, text:'クラウドコンピューティングの6つの利点のうち、「キャパシティ推測からの解放」とは何を指しますか？',
+    choices:['必要なキャパシティを事前に予測して購入する必要がなくなり、需要に応じて必要な分だけ利用できること','データセンターの建設コストを削減できること','全リソースが永久に無料になること','障害発生時にシステムが自動的に復旧すること'], correct:[0],
+    why:['正しい。クラウドでは事前にキャパシティを予測して購入する必要がなく、必要になった時に必要な分だけ調達・利用できます。','これはCapEx/OpExの変換（先行投資の削減）に関する利点であり、キャパシティ推測からの解放とは異なる論点です。','誤り。無料になるわけではなく、使用した分だけ課金されます。','これは耐障害性(Fault Tolerance)に関する内容であり、キャパシティ推測とは異なります。']},
+  {id:'p100', domain:'concepts', type:'single', source:SOURCES.wafReliability, text:'信頼性の柱が推奨する「疎結合アーキテクチャ(Loose Coupling)」の利点として正しいものはどれですか？',
+    choices:['全コンポーネントを1つのサーバーに集約し管理を簡素化できる','コンポーネント間の依存を減らすことで、一部の障害が他の部分に影響しにくくなり、個別にスケール・更新できる','料金を固定額にできる','暗号化を自動的に有効化できる'], correct:[1],
+    why:['誤り。疎結合はむしろコンポーネントを分離する考え方であり、1つのサーバーへの集約とは逆の方向性です。','正しい。疎結合アーキテクチャはコンポーネント間の依存を減らし、一部の障害が他へ連鎖しにくくし、各コンポーネントを個別にスケール・更新できるようにします。','誤り。料金モデルとは直接関係しません。','誤り。暗号化の有効化とは直接関係しません。']},
+  {id:'p101', domain:'concepts', type:'single', source:SOURCES.caf, text:'AWS Cloud Adoption Framework (AWS CAF)の目的として正しいものはどれですか？',
+    choices:['EC2インスタンスの購入オプションを比較すること','DDoS攻撃から保護すること','組織がクラウド導入のための能力を体系的に構築・発展させるための指針を、ビジネス・人材・ガバナンス等の観点から提供すること','S3のストレージクラスを選択すること'], correct:[2],
+    why:['誤り。これはEC2購入オプション（オンデマンド・RI等）の比較に関する内容で、CAFの目的ではありません。','誤り。これはAWS Shield等のセキュリティサービスの役割です。','正しい。AWS CAFは、ビジネス・人材・ガバナンス・プラットフォーム・セキュリティ・運用等の観点から、組織のクラウド導入能力の構築を支援する指針です。','誤り。これはAmazon S3のストレージクラス選択に関する内容で、CAFの目的ではありません。']},
+  {id:'p102', domain:'concepts', type:'single', source:SOURCES.wafReliability, text:'可用性を高めるためにアプリケーションを複数のアベイラビリティーゾーン(AZ)に配置する設計の主な目的は何ですか？',
+    choices:['料金を割引価格にすること','コンテナイメージのスキャンを自動化すること','ログデータを一元的に収集すること','単一のAZで障害が発生した場合でも、他のAZでサービス提供を継続できるようにすること'], correct:[3],
+    why:['誤り。AZをまたいだ配置は料金の割引を目的とした仕組みではありません。','誤り。これはAmazon ECR等のイメージスキャン機能の説明です。','誤り。これはAmazon CloudWatch Logs等の説明です。','正しい。複数AZへの配置は、単一のAZで障害が発生してもサービス提供を継続できるようにする高可用性設計の基本です。']},
+  {id:'p103', domain:'security', type:'single', source:SOURCES.cloudhsm, text:'AWS KMSとAWS CloudHSMの違いとして正しいものはどれですか？',
+    choices:['CloudHSMは専有のハードウェアセキュリティモジュール(HSM)を提供し、鍵の管理をより細かく利用者自身で行う必要があるのに対し、KMSはAWSが鍵管理の大部分を担うマネージド型サービスである','KMSはDDoS対策サービスであり、CloudHSMは暗号鍵管理サービスである','CloudHSMは無料で利用できるが、KMSは有料である','KMSはオンプレミス専用のサービスであり、CloudHSMはクラウド専用のサービスである'], correct:[0],
+    why:['正しい。CloudHSMは専有のHSMクラスタを提供し、利用者自身がより多くの鍵管理責任を持つのに対し、KMSはAWSが鍵管理の大部分を担うマネージド型サービスです。','誤り。KMSはDDoS対策サービスではなく暗号鍵管理サービスです（DDoS対策はAWS Shield）。','誤り。CloudHSMは専有ハードウェアを利用するため料金が発生します。','誤り。両方ともAWSクラウド上で提供されるサービスであり、オンプレミス専用ではありません。']},
+  {id:'p104', domain:'security', type:'single', source:SOURCES.firewallManager, text:'AWS Firewall Managerの役割として正しいものはどれですか？',
+    choices:['EC2インスタンスのOSにセキュリティパッチを適用する','AWS Organizations配下の複数アカウントにまたがって、AWS WAFルールやAWS Shield Advanced等のセキュリティポリシーを中央から一括管理・適用する','S3バケットのストレージクラスを自動で切り替える','IAMユーザーのパスワードを自動生成する'], correct:[1],
+    why:['誤り。これはAWS Systems Manager等のパッチ管理機能の説明です。','正しい。Firewall Managerは、AWS Organizations配下の複数アカウント・アプリケーションに対し、WAFルールやShield Advanced保護などのセキュリティポリシーを中央から一括設定・適用できます。','誤り。これはS3ライフサイクルポリシーの説明です。','誤り。これはIAMのパスワードポリシーとは異なる機能です。']},
+  {id:'p105', domain:'security', type:'single', source:SOURCES.detective, text:'Amazon Detectiveの役割として正しいものはどれですか？',
+    choices:['Webアプリケーション層の攻撃をリアルタイムでブロックする','コンプライアンスレポートをオンデマンドで提供する','VPCフローログやAWS CloudTrailログ、Amazon GuardDutyの検出結果などを機械学習・グラフ理論で分析し、セキュリティ調査や根本原因の特定を支援する','暗号鍵のローテーションを自動化する'], correct:[2],
+    why:['誤り。これはAWS WAFの役割です。','誤り。これはAWS Artifactの役割です。','正しい。Amazon Detectiveは、VPCフローログ・CloudTrailログ・GuardDutyの検出結果等を機械学習やグラフ理論で分析し、セキュリティ調査や根本原因の特定を支援します。','誤り。これはAWS KMS/Secrets Managerの役割です。']},
+  {id:'p106', domain:'security', type:'single', source:SOURCES.iam, text:'IAMポリシーを設計する際の「最小権限の原則(Principle of Least Privilege)」とは何ですか？',
+    choices:['すべてのユーザーにAdministratorAccessを付与すること','ルートユーザーのみでリソースを操作すること','MFAを無効化して操作を簡略化すること','ユーザーやロールには、タスクの実行に必要な最小限の権限のみを付与すること'], correct:[3],
+    why:['誤り。すべてに管理者権限を付与するのは最小権限の原則に反します。','誤り。ルートユーザーの常用は推奨されず、最小権限の原則とも関係しません。','誤り。MFAの無効化はセキュリティを低下させ、最小権限の原則とは無関係です。','正しい。最小権限の原則は、ユーザーやロールにタスク実行に必要な最小限の権限のみを付与する考え方です。']},
+  {id:'p107', domain:'tech', type:'single', source:SOURCES.ecr, text:'Amazon ECR(Elastic Container Registry)の役割として正しいものはどれですか？',
+    choices:['Dockerコンテナイメージ等を安全に保存・管理できるマネージド型のコンテナイメージレジストリ','コンテナのオーケストレーション(実行・スケジューリング)を行うサービス','サーバーレスでコードを実行するサービス','リレーショナルデータベースを提供するサービス'], correct:[0],
+    why:['正しい。ECRは、Dockerコンテナイメージ等をIAMで権限管理しながら安全に保存・管理できるマネージド型のコンテナイメージレジストリです。','誤り。これはAmazon ECS/EKSの役割です。','誤り。これはAWS Lambdaの役割です。','誤り。これはAmazon RDSの役割です。']},
+  {id:'p108', domain:'tech', type:'single', source:SOURCES.globalAccelerator, text:'AWS Global AcceleratorとAmazon CloudFrontの違いとして正しいものはどれですか？',
+    choices:['CloudFrontはネットワーク層でTCP/UDPトラフィックを最適化し、Global Acceleratorは静的コンテンツ配信に特化したCDNである','Global Acceleratorはネットワーク層でAWSのグローバルネットワークを使い、TCP/UDPを含むトラフィックを最適なエンドポイントにルーティングするのに対し、CloudFrontは主にコンテンツ配信(CDN)に特化している','両者はまったく同じ機能を提供し、完全に互換である','Global Acceleratorはリレーショナルデータベースサービスである'], correct:[1],
+    why:['誤り。CloudFrontとGlobal Acceleratorの役割が逆です。','正しい。Global Acceleratorはネットワーク層でAWSのグローバルネットワークを利用し、TCP/UDPを含むトラフィックを最適なエンドポイントにルーティングするのに対し、CloudFrontはコンテンツ配信(CDN)に特化したサービスです。','誤り。両者は役割が異なり、用途に応じて使い分けます。','誤り。これはAmazon RDS等の説明です。']},
+  {id:'p109', domain:'tech', type:'single', source:SOURCES.kinesis, text:'Amazon Kinesis Data Streamsの用途として正しいものはどれですか？',
+    choices:['コンテナイメージを保存する','DNSクエリを解決する','ログデータやクリックストリームなどの大量データをリアルタイムに収集・処理するためのストリーミングデータサービス','IAMポリシーの構文を評価する'], correct:[2],
+    why:['誤り。これはAmazon ECRの用途です。','誤り。これはAmazon Route 53の用途です。','正しい。Kinesis Data Streamsは、ログやクリックストリームなどの大量データをリアルタイムに収集・処理するためのストリーミングデータサービスです。','誤り。これはIAM Policy Simulator等の用途です。']},
+  {id:'p110', domain:'tech', type:'single', source:SOURCES.natGateway, text:'VPCの「NATゲートウェイ」の役割として正しいものはどれですか？',
+    choices:['複数のVPCやオンプレミス拠点を相互接続するハブとして機能する','インターネットからのインバウンド接続をプライベートサブネットのインスタンスに直接許可する','HTTP/HTTPSリクエストをルールに基づいてフィルタリングする','プライベートサブネット内のインスタンスがインターネット等の外部サービスへアウトバウンド接続できるようにする一方、外部からそのインスタンスへ接続を開始することはできないようにする'], correct:[3],
+    why:['誤り。これはAWS Transit Gatewayの役割です。','誤り。NATゲートウェイは外部からのインバウンド接続の開始を許可しません。','誤り。これはAWS WAFの役割です。','正しい。NATゲートウェイは、プライベートサブネット内のインスタンスが外部サービスへアウトバウンド接続できるようにする一方、外部からの接続開始は許可しません。']},
+  {id:'p111', domain:'tech', type:'multi', source:SOURCES.stepFunctions, text:'AWS Step Functionsの特徴として正しいものを2つ選択してください。',
+    choices:['複数のAWS Lambda関数やその他のAWSサービスを順序立てて実行するワークフロー(ステートマシン)を構築できる','仮想サーバーのOSパッチ管理を行う','ワークフロー内の各ステップの再試行やエラーハンドリングを組み込みで管理できる','S3オブジェクトのストレージクラスを自動変更する'], correct:[0,2],
+    why:['正しい。Step Functionsは、Lambda関数等を組み合わせて順序立てて実行するワークフロー(ステートマシン)を視覚的に構築できます。','誤り。これはAWS Systems Managerの役割です。','正しい。Step Functionsはワークフロー内の各ステップの再試行(リトライ)やエラーハンドリングを組み込みの仕組みで管理できます。','誤り。これはAmazon S3のライフサイクルポリシーの役割です。']}
 ];
 
 // 模擬試験専用の問題プール（PRACTICEとは独立。目標500問、現在は初期シード分のみ。
@@ -821,5 +877,17 @@ var MOCK_POOL = [
       '誤り。CloudFrontはコンテンツ配信(CDN)サービスです。',
       '誤り。ELBはEC2インスタンス等へのトラフィック分散サービスです。',
       '誤り。Route 53はDNSサービスです。'
-    ]}
+    ]},
+  {id:'m41', domain:'security', type:'single', source:SOURCES.shield, text:'AWS Shield StandardとAWS Shield Advancedの違いとして正しいものはどれですか？',
+    choices:['Standardは追加費用なしで全利用者に自動適用される基本的なDDoS対策であるのに対し、Advancedは有料で、より高度な保護や24時間365日のDDoS対応チームへのアクセス、コスト保護等を提供する','Standardは有料オプションであり、Advancedは全アカウントに自動適用される無料機能である','両方とも同じ保護範囲・機能を提供する','StandardはWebアプリケーション層の攻撃対策に特化し、Advancedはネットワーク層のみを保護する'], correct:[0],
+    why:['正しい。Shield Standardは追加費用なしで全利用者に自動適用される基本的なDDoS対策で、Shield Advancedは有料で、より高度な保護やDDoS対応チームへのアクセス、コスト保護等を追加提供します。','誤り。StandardとAdvancedの説明が逆です。','誤り。Advancedの方がより高度な保護機能を提供します。','誤り。これはAWS WAF/AWS Shieldの役割分担を混同した説明です。']},
+  {id:'m42', domain:'tech', type:'single', source:SOURCES.directconnect, text:'オンプレミス環境とAWS VPCを接続する方法のうち、「専用線で安定した帯域と低レイテンシーを確保できるが、構築には物理的な配線作業が必要」なのはどれですか？',
+    choices:['AWS Site-to-Site VPN','AWS Direct Connect','AWS Transit Gateway','Amazon CloudFront'], correct:[1],
+    why:['誤り。Site-to-Site VPNはインターネット経由で暗号化接続するため、専用線の構築は不要です。','正しい。AWS Direct Connectは、オンプレミスとAWS間を専用線で接続するサービスで、安定した帯域と低レイテンシーを得られますが、物理的な配線作業が必要です。','誤り。Transit Gatewayは複数のVPC・オンプレミス接続を相互接続するハブであり、専用線そのものではありません。','誤り。CloudFrontはコンテンツ配信(CDN)サービスです。']},
+  {id:'m43', domain:'tech', type:'single', source:SOURCES.lightsail, text:'Amazon Lightsailの特徴として正しいものはどれですか？',
+    choices:['Kubernetesクラスタの管理に特化したサービス','ビッグデータ分析向けのデータウェアハウスサービス','仮想サーバー・ストレージ・ネットワーキング等があらかじめ構成された、固定料金で始めやすいシンプルなクラウドサービス','サーバーレスでコードを実行するサービス'], correct:[2],
+    why:['誤り。これはAmazon EKS等の役割です。','誤り。これはAmazon Redshiftの役割です。','正しい。Lightsailは、仮想サーバー・ストレージ・ネットワーキング等があらかじめ構成され、固定料金で簡単に始められるシンプルなクラウドサービスです。','誤り。これはAWS Lambdaの役割です。']},
+  {id:'m44', domain:'billing', type:'single', source:SOURCES.ec2Ri, text:'EC2リザーブドインスタンスの支払いオプションのうち、「契約期間の開始時に全額を前払いし、以降の利用時間に対する追加料金が発生しない」のはどれですか？',
+    choices:['No Upfront','Partial Upfront','スポットインスタンス','All Upfront'], correct:[3],
+    why:['誤り。No Upfrontは前払いなしで、利用時間ごとに割引後の料金が課金されます。','誤り。Partial Upfrontは一部を前払いし、残りは利用時間ごとに割引後の料金が課金されます。','誤り。スポットインスタンスはリザーブドインスタンスの支払いオプションではなく、別の購入方式です。','正しい。All Upfrontは契約期間開始時に全額を前払いし、以降の利用時間に対する追加料金は発生しません。']}
 ];
