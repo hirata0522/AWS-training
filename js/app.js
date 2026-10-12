@@ -211,11 +211,11 @@ function topbar(title, opts){
 }
 
 function screenHome(){
-  return topbar('AWS資格ドリル', {home:true}) +
+  return topbar('AWS資格勉強', {home:true}) +
     '<main>'+
       '<div class="fade-in">'+
         '<p class="eyebrow">CLF-C02 ・ Cloud Practitioner</p>'+
-        '<h2 class="hero-title">今日のドリル</h2>'+
+        '<h2 class="hero-title">学習を始める</h2>'+
         '<p class="hero-sub">単語・想定問題・模擬試験から選んで学習を始めましょう。</p>'+
       '</div>'+
       '<div class="mode-grid fade-in">'+
