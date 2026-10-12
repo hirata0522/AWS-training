@@ -63,7 +63,9 @@ var SOURCES = {
   pricingcalc:{label:'AWS Pricing Calculator', url:'https://aws.amazon.com/aws-cost-management/aws-pricing-calculator/'},
   marketplace:{label:'AWS Marketplace', url:'https://aws.amazon.com/marketplace'},
   s3glacier:{label:'Amazon S3 Glacier ストレージクラス', url:'https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html'},
-  edgelocation:{label:'AWSグローバルネットワーク（PoP/エッジロケーション）', url:'https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/points-of-presence.html'}
+  edgelocation:{label:'AWSグローバルネットワーク（PoP/エッジロケーション）', url:'https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/points-of-presence.html'},
+  elasticache:{label:'Amazon ElastiCache', url:'https://aws.amazon.com/elasticache/'},
+  macie:{label:'Amazon Macie', url:'https://aws.amazon.com/macie/'}
 };
 
 var VOCAB = [
@@ -128,7 +130,13 @@ var VOCAB = [
   {id:'v49', term:'Fault Tolerance', domain:'concepts', source:SOURCES.wafReliability, q:{text:'「耐障害性(Fault Tolerance)」とは何を指しますか？', choices:['一部のコンポーネントで障害が発生しても、システム全体として正常に機能を継続できる能力','需要に応じてリソースを自動的に増減できる特性','障害からの復旧にかかる時間を測定する指標','データが失われない性質'], correct:0, why:['正しい。耐障害性は、一部のコンポーネントで障害が発生してもシステム全体としては正常に機能し続けられる能力を指します。','これは弾力性(Elasticity)の説明です。','これは目標復旧時間(RTO)のような復旧指標に関する説明であり、耐障害性自体の定義ではありません。','これは耐久性(Durability)の説明です。']}},
   {id:'v50', term:'AWS Config', domain:'security', source:SOURCES.config, q:{text:'AWS Configの役割として正しいものはどれですか？', choices:['DDoS攻撃からリソースを保護する','AWSリソースの構成を記録し、構成変更の履歴を追跡してコンプライアンス評価に利用できるサービス','暗号鍵を管理する','Webアプリケーションへの攻撃をフィルタリングする'], correct:1, why:['これはAWS Shieldの説明です。','正しい。AWS Configはリソースの構成とその変更履歴を記録し、コンプライアンス評価やトラブルシューティングに利用できるサービスです。','これはAWS KMSの説明です。','これはAWS WAFの説明です。']}},
   {id:'v51', term:'Disaster Recovery (DR)', domain:'concepts', source:SOURCES.wafReliability, q:{text:'「ディザスタリカバリ(DR)」とは何ですか？', choices:['需要に応じてリソースを増減させる仕組み','複数のAZにインスタンスを分散配置する機能そのもの','災害や大規模障害発生時に、システムを復旧させ事業を継続するための計画・仕組み','コストを最小化するための購入オプション'], correct:2, why:['これは弾力性(Elasticity)の説明です。','複数AZへの分散はDR戦略の一手段ですが、それ自体がDRの定義ではありません。','正しい。DRは災害や大規模障害発生時にシステムを復旧し、事業を継続するための計画・仕組みです。','これはリザーブドインスタンスやSavings Plansなど購入オプションに関する説明です。']}},
-  {id:'v52', term:'Edge Location', domain:'concepts', source:SOURCES.edgelocation, q:{text:'AWSの「エッジロケーション」とは何ですか？', choices:['複数のアベイラビリティーゾーンで構成される地理的エリア','1つ以上のデータセンターで構成されるリージョン内の拠点','請求情報を一括管理する拠点','CloudFrontなどのサービスがコンテンツをキャッシュし、利用者に近い場所から低レイテンシーで配信するために使用する拠点'], correct:3, why:['これはリージョンの説明です。','これはアベイラビリティーゾーンの説明です。','請求管理とは無関係です。','正しい。エッジロケーションはCloudFront等のサービスがコンテンツをキャッシュし、利用者に近い場所から低レイテンシーで配信するために使用する拠点です。']}}
+  {id:'v52', term:'Edge Location', domain:'concepts', source:SOURCES.edgelocation, q:{text:'AWSの「エッジロケーション」とは何ですか？', choices:['複数のアベイラビリティーゾーンで構成される地理的エリア','1つ以上のデータセンターで構成されるリージョン内の拠点','請求情報を一括管理する拠点','CloudFrontなどのサービスがコンテンツをキャッシュし、利用者に近い場所から低レイテンシーで配信するために使用する拠点'], correct:3, why:['これはリージョンの説明です。','これはアベイラビリティーゾーンの説明です。','請求管理とは無関係です。','正しい。エッジロケーションはCloudFront等のサービスがコンテンツをキャッシュし、利用者に近い場所から低レイテンシーで配信するために使用する拠点です。']}},
+
+  // --- 追加分（キャッシュ・データセキュリティ・スケーリング） ---
+  {id:'v53', term:'Amazon ElastiCache', domain:'tech', source:SOURCES.elasticache, q:{text:'Amazon ElastiCacheの役割として正しいものはどれですか？', choices:['RedisやMemcached等のインメモリキャッシュをマネージドで運用し、データベースの負荷を減らしてアプリケーションの応答速度を向上させるサービス','S3に保存したオブジェクトを長期保管用の低コストストレージクラスへ自動的に移行するサービス','複数のAZにEC2インスタンスへのトラフィックを分散するサービス','オンプレミスとAWSの間に専用線接続を確立するサービス'], correct:0, why:['正しい。ElastiCacheはRedisやMemcached等のインメモリキャッシュエンジンをマネージドで提供し、頻繁にアクセスされるデータをキャッシュすることでデータベース負荷を減らし、応答速度を向上させます。','これはAmazon S3のライフサイクルルール（S3 Glacier等への移行）の説明です。','これはElastic Load Balancingの説明です。','これはAWS Direct Connectの説明です。']}},
+  {id:'v54', term:'Amazon Macie', domain:'security', source:SOURCES.macie, q:{text:'Amazon Macieの役割として正しいものはどれですか？', choices:['DDoS攻撃からリソースを保護するサービス','AWS環境内の不審なAPIコールやネットワーク挙動を検知するサービス','機械学習とパターンマッチングを使い、S3内のデータから個人情報(PII)などの機密データを自動的に検出・可視化するサービス','暗号鍵を作成・管理するサービス'], correct:2, why:['これはAWS Shieldの説明です。','これはAmazon GuardDutyの説明です。','正しい。Amazon Macieは機械学習とパターンマッチングを用いて、S3バケット内のPIIなどの機密データを検出し、データセキュリティのリスクを可視化するサービスです。','これはAWS KMSの説明です。']}},
+  {id:'v55', term:'Horizontal Scaling (Scale Out)', domain:'concepts', source:SOURCES.autoscaling, q:{text:'「水平スケーリング（スケールアウト）」とは何ですか？', choices:['単一のサーバーのCPUやメモリをより高性能なものに置き換えること','既存サーバーの台数は変えずにストレージ容量だけを増やすこと','インスタンスの稼働するリージョンを変更すること','同種のインスタンスの台数を増やすことで、全体の処理能力を増強すること'], correct:3, why:['これは垂直スケーリング（スケールアップ）の説明です。','ストレージ容量の拡張はスケーリングの一種ですが、水平スケーリングの定義そのものではありません。','リージョンの変更はスケーリングとは異なる概念です。','正しい。水平スケーリング（スケールアウト）は、Auto Scaling等で同種のインスタンスの台数を増減させることで処理能力を調整する方式です。']}},
+  {id:'v56', term:'Vertical Scaling (Scale Up)', domain:'concepts', source:SOURCES.ec2, q:{text:'「垂直スケーリング（スケールアップ）」とは何ですか？', choices:['インスタンスの台数を増やして処理能力を増強すること','複数のアベイラビリティーゾーンにインスタンスを分散すること','1台のインスタンスをより高いCPU・メモリ性能のインスタンスタイプに変更することで処理能力を増強すること','無料利用枠の範囲内でリソースを使い続けること'], correct:2, why:['これは水平スケーリング（スケールアウト）の説明です。','これはマルチAZ構成の説明であり、スケーリングの方式とは異なります。','正しい。垂直スケーリング（スケールアップ）は、EC2インスタンスのタイプをより高性能なものに変更して処理能力を増強する方式です。多くの場合、変更には再起動が必要です。','Free Tierの説明であり、スケーリングとは無関係です。']}}
 ];
 
 var PRACTICE = [
@@ -318,7 +326,48 @@ var PRACTICE = [
     why:['誤り。S3 Standardは頻繁にアクセスするデータ向けの標準ストレージクラスで、長期保管用途としては割高です。','正しい。S3 Glacier Deep Archiveは、年に一度未満程度のアクセス頻度を想定した最も低コストな長期アーカイブ向けストレージクラスです。','誤り。EBSはEC2にアタッチするブロックストレージであり、長期アーカイブ用途には適していません。','誤り。EFSは複数インスタンスで共有するファイルストレージであり、長期アーカイブ用途には適していません。']},
   {id:'p59', domain:'billing', type:'single', source:SOURCES.pricingcalc, text:'新しいワークロードをAWS上に構築する前に、想定する構成（インスタンスタイプ・使用量等）を入力して事前にコストを見積もりたい場合、最も適したツールはどれですか？',
     choices:['AWS Budgets','AWS Cost Explorer','AWS Pricing Calculator','AWS Trusted Advisor'], correct:[2],
-    why:['誤り。Budgetsは予算に対するアラート機能が主目的で、構築前の見積もりツールではありません。','誤り。Cost Explorerは過去の実績コストの分析・予測が主目的で、未構築のワークロードの見積もりには使いにくいです。','正しい。AWS Pricing Calculatorは、想定する構成を入力してワークロードのコストを事前に見積もれるツールです。','誤り。Trusted Advisorはベストプラクティスの推奨事項を提示するサービスです。']}
+    why:['誤り。Budgetsは予算に対するアラート機能が主目的で、構築前の見積もりツールではありません。','誤り。Cost Explorerは過去の実績コストの分析・予測が主目的で、未構築のワークロードの見積もりには使いにくいです。','正しい。AWS Pricing Calculatorは、想定する構成を入力してワークロードのコストを事前に見積もれるツールです。','誤り。Trusted Advisorはベストプラクティスの推奨事項を提示するサービスです。']},
+
+  // --- 追加分（運用上の優秀性・データセキュリティ・キャッシュ・コンテナ等） ---
+  {id:'p60', domain:'concepts', type:'single', source:SOURCES.sixAdv, text:'クラウドの「俊敏性(アジリティ)」が新規事業のアイデア検証にもたらすメリットとして最も適切なものはどれですか？',
+    choices:['必要なリソースを数分で調達できるため、低コスト・低リスクで新しいアイデアを素早く試せる','既存システムをすべて即座に廃止できる','料金が完全に無料になる','データセンターの建設が不要になるだけで、試行速度には影響しない'], correct:[0],
+    why:['正しい。必要なリソースを素早く調達できることで、アイデアの実験や方向転換にかかる時間とコストを削減できます。','誤り。既存システムの廃止は移行計画次第であり、即座に行われるわけではありません。','誤り。リソースの利用には料金が発生します。','誤り。データセンター建設の不要化は俊敏性向上の一因であり、試行速度に影響しないという説明は誤りです。']},
+  {id:'p61', domain:'concepts', type:'single', source:SOURCES.wafOps, text:'AWS Well-Architected Frameworkの「運用上の優秀性の柱」が重視する内容として正しいものはどれですか？',
+    choices:['不要なコストを排除し支出対効果を最大化すること','システムを運用・監視し、手順を継続的に改善してビジネス価値を生み出すこと','障害発生時にシステムが復旧できる能力を高めること','環境への影響を低減すること'], correct:[1],
+    why:['これはコスト最適化の柱の説明です。','正しい。運用上の優秀性の柱は、システムの運用・監視を行い、手順を継続的に改善してビジネス価値を生み出すことを重視します。','これは信頼性の柱の説明です。','これは持続可能性の柱の説明です。']},
+  {id:'p62', domain:'concepts', type:'single', source:SOURCES.globalInfra, text:'サービスを複数のAWSリージョンに展開する目的として最も適切なものはどれですか？',
+    choices:['単一のデータセンターに全リソースを集約し管理を簡素化するため','課金方法を一本化するため','利用者に近いリージョンからサービス提供してレイテンシーを下げたり、リージョン単位の障害に備えて災害対策を行うため','セキュリティグループの設定を不要にするため'], correct:[2],
+    why:['誤り。これは複数リージョン展開とは逆の方針です。','誤り。課金方法の一本化が主目的ではありません。','正しい。複数リージョンへの展開により、利用者に近い場所からの低レイテンシーな提供や、リージョン規模の障害に対する災害対策（DR）を実現できます。','誤り。セキュリティグループの設定はリージョンを問わず必要です。']},
+  {id:'p63', domain:'concepts', type:'multi', source:SOURCES.sixAdv, text:'クラウド移行によって得られる経済的・運用的なメリットとして正しいものを2つ選択してください。',
+    choices:['先行投資（資本費用）が不要になり、使用した分だけの費用（運用費用）に変えられる','必要なITリソースを数分で調達できるようになる','すべてのサービスの利用が無期限に無料になる','サーバーの保守作業が自動的に3倍に増える'], correct:[0,1],
+    why:['正しい。クラウドでは先行投資（資本費用）を行わず、使用量に応じた費用（運用費用）に変えられます。','正しい。必要なリソースを数分で調達できるようになり、俊敏性が向上します。','誤り。無期限・無料になるわけではありません。','誤り。保守作業は自動的に増えるのではなく、AWSが管理する範囲が増えることで利用者側の負担は減る方向です。']},
+  {id:'p64', domain:'security', type:'single', source:SOURCES.macie, text:'機械学習とパターンマッチングを使って、S3バケット内のデータから個人情報(PII)などの機密データを自動的に検出するサービスはどれですか？',
+    choices:['Amazon GuardDuty','Amazon Inspector','AWS Config','Amazon Macie'], correct:[3],
+    why:['誤り。GuardDutyはAPIコールやネットワーク挙動から脅威を検知するサービスで、S3内データの機密情報検出が主目的ではありません。','誤り。Inspectorはソフトウェアの脆弱性をスキャンするサービスです。','誤り。Configはリソースの構成変更履歴を記録するサービスです。','正しい。Amazon Macieは機械学習とパターンマッチングでS3内のPII等の機密データを検出し、データセキュリティのリスクを可視化します。']},
+  {id:'p65', domain:'security', type:'multi', source:SOURCES.shared, text:'責任共有モデルにおいて、利用者（ユーザー）側の責任範囲に該当するものを2つ選択してください。',
+    choices:['データセンターの物理的な警備','保存するデータの暗号化の有無や方法の選択','ハードウェアの老朽化対応','IAMユーザー・ロールへの適切な権限付与'], correct:[1,3],
+    why:['誤り。データセンターの物理的な警備はAWS側の責任範囲です。','正しい。データを暗号化するかどうか、どの方式で暗号化するかはユーザー側が選択・管理する責任範囲です。','誤り。ハードウェアの老朽化対応はAWS側の責任範囲です。','正しい。IAMユーザー・ロールへの適切な権限付与（最小権限の原則の適用）はユーザー側の責任範囲です。']},
+  {id:'p66', domain:'security', type:'single', source:SOURCES.acm, text:'Webサイトで使用するSSL/TLS証明書の発行・管理・自動更新を行いたい場合、最も適したサービスはどれですか？',
+    choices:['AWS Secrets Manager','AWS Certificate Manager (ACM)','AWS KMS','Amazon Cognito'], correct:[1],
+    why:['誤り。Secrets Managerはデータベース認証情報等のシークレット管理サービスです。','正しい。ACMはパブリック・プライベートのSSL/TLS証明書を発行・管理し、ELBやCloudFront等と連携して自動更新できるサービスです。','誤り。KMSは暗号鍵の作成・管理サービスで、証明書の発行機能は主目的ではありません。','誤り。Cognitoはアプリケーションの利用者認証・認可を管理するサービスです。']},
+  {id:'p67', domain:'tech', type:'single', source:SOURCES.elasticache, text:'データベースへの読み取り負荷を減らし、アプリケーションの応答速度を改善するために、頻繁にアクセスされるデータをインメモリに保持したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon EBS','AWS Direct Connect','Amazon ElastiCache','Amazon Route 53'], correct:[2],
+    why:['誤り。EBSはEC2にアタッチするブロックストレージであり、インメモリキャッシュではありません。','誤り。Direct Connectは専用線接続サービスです。','正しい。ElastiCacheはRedisやMemcached等のインメモリキャッシュをマネージドで提供し、データベースの負荷軽減とアプリケーションの応答速度向上に利用されます。','誤り。Route 53はDNSサービスです。']},
+  {id:'p68', domain:'tech', type:'single', source:SOURCES.ecs, text:'複数のDockerコンテナを本番環境でオーケストレーション（配置・スケーリング・管理）したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon EBS','Amazon Route 53','AWS Budgets','Amazon Elastic Container Service (ECS)'], correct:[3],
+    why:['誤り。EBSはブロックストレージサービスです。','誤り。Route 53はDNSサービスです。','誤り。Budgetsは予算管理サービスです。','正しい。ECSはDockerコンテナのデプロイ・スケーリング・管理をオーケストレーションするマネージドサービスです。']},
+  {id:'p69', domain:'tech', type:'multi', source:SOURCES.aurora, text:'Amazon Auroraの特徴として正しいものを2つ選択してください。',
+    choices:['MySQLやPostgreSQLと互換性のあるマネージドリレーショナルデータベースである','キーバリュー型のNoSQLデータベースである','一般的なMySQLに比べて高いスループットを実現できるよう設計されている','オンプレミス環境専用のデータベースエンジンである'], correct:[0,2],
+    why:['正しい。AuroraはMySQL・PostgreSQL互換のマネージドリレーショナルデータベースです。','誤り。これはAmazon DynamoDBの説明です。','正しい。Auroraは一般的なMySQLデータベースに比べて高いスループットを実現できるよう設計されています。','誤り。Auroraはクラウド上で提供されるマネージドサービスであり、オンプレミス専用ではありません。']},
+  {id:'p70', domain:'tech', type:'single', source:SOURCES.sqs, text:'アプリケーションのコンポーネント間でメッセージを受け渡し、処理のタイミングを分離（デカップリング）したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon SQS','Amazon CloudWatch','AWS CloudTrail','Amazon Route 53'], correct:[0],
+    why:['正しい。Amazon SQSはメッセージキューイングサービスで、コンポーネント間でメッセージを受け渡すことで処理のタイミングを分離（デカップリング）できます。','誤り。CloudWatchはメトリクス監視サービスです。','誤り。CloudTrailはAPI操作履歴の記録サービスです。','誤り。Route 53はDNSサービスです。']},
+  {id:'p71', domain:'tech', type:'single', source:SOURCES.beanstalk, text:'インフラの構成管理やキャパシティプロビジョニング、ロードバランシングを自動で行い、コードをアップロードするだけでWebアプリケーションを素早くデプロイしたい場合、最も適したサービスはどれですか？',
+    choices:['Amazon EBS','AWS Elastic Beanstalk','AWS Direct Connect','Amazon GuardDuty'], correct:[1],
+    why:['誤り。EBSはブロックストレージサービスです。','正しい。Elastic Beanstalkはコードをアップロードするだけで、インフラのプロビジョニング・ロードバランシング・Auto Scaling等を自動的に処理し、Webアプリケーションを素早くデプロイできるサービスです。','誤り。Direct Connectは専用線接続サービスです。','誤り。GuardDutyは脅威検知サービスです。']},
+  {id:'p72', domain:'billing', type:'single', source:SOURCES.pricingcalc, text:'まだAWS上に構築していないワークロードについて、想定する構成を入力して事前にコストの見積もりを行いたい場合、最も適したツールはどれですか？',
+    choices:['AWS Cost Explorer','AWS Budgets','AWS Pricing Calculator','AWS Trusted Advisor'], correct:[2],
+    why:['誤り。Cost Explorerは過去の実績コストの分析・予測ツールです。','誤り。Budgetsは予算に対するアラート機能が主目的です。','正しい。AWS Pricing Calculatorは、想定する構成を入力することで、未構築のワークロードのコストを事前に見積もれるツールです。','誤り。Trusted Advisorはベストプラクティスの推奨事項を提示するサービスです。']}
 ];
 
 // 模擬試験専用の問題プール（PRACTICEとは独立。目標500問、現在は初期シード分のみ。
@@ -556,5 +605,54 @@ var MOCK_POOL = [
       '正しい。AWS Marketplaceはサードパーティ製ソフトウェアを検索・購入できるカタログで、料金はAWSの利用料金と合わせて請求されます。',
       '誤り。Cost Explorerはコスト分析・予測ツールです。',
       '誤り。Organizationsは複数アカウント管理サービスです。'
+    ]},
+
+  // --- 追加分（弾力性/スケーラビリティの区別・SG/NACL比較・ストレージ種別・キャッシュ） ---
+  {id:'m29', domain:'concepts', type:'single', source:SOURCES.waf, text:'「弾力性(Elasticity)」と「スケーラビリティ(Scalability)」の違いに関する説明として正しいものはどれですか？',
+    choices:[
+      '弾力性は需要の減少時にリソースを増やすことを指し、スケーラビリティとは無関係である',
+      '弾力性は需要の変化に応じてリソースを自動的に増減させる特性を指し、スケーラビリティは需要の増加に応じてリソースを拡張しパフォーマンスを維持できる能力を指す',
+      '両者は完全に同じ意味であり、置き換えて使っても問題ない',
+      'スケーラビリティはコストを完全に無料にする特性を指す'
+    ], correct:[1],
+    why:[
+      '誤り。弾力性は需要の減少時だけでなく増加時にも対応する特性であり、説明が不正確です。',
+      '正しい。弾力性は需要の変化に応じて自動的にリソースを増減できる特性、スケーラビリティは需要増加に応じて拡張しパフォーマンスを維持できる能力を指します。',
+      '誤り。両者は関連する概念ですが、意味は異なります。',
+      '誤り。スケーラビリティは無料化を意味する概念ではありません。'
+    ]},
+  {id:'m30', domain:'security', type:'single', source:SOURCES.vpc, text:'VPCにおけるセキュリティグループとネットワークACL(NACL)の違いに関する説明として正しいものはどれですか？',
+    choices:[
+      '両者とも同じ単位（インスタンス単位）で動作し、違いはない',
+      'NACLはステートフルで許可ルールのみ設定でき、セキュリティグループはステートレスで許可・拒否両方を設定できる',
+      'セキュリティグループはサブネット単位、NACLはインスタンス単位で動作する',
+      'セキュリティグループはインスタンス単位でステートフルに動作し許可ルールのみ設定できるのに対し、NACLはサブネット単位でステートレスに動作し許可・拒否の両方を設定できる'
+    ], correct:[3],
+    why:[
+      '誤り。セキュリティグループはインスタンス単位、NACLはサブネット単位で動作し、動作単位も異なります。',
+      '誤り。ステートフル/ステートレスの関係が逆です。NACLはステートレス、セキュリティグループはステートフルです。',
+      '誤り。動作する単位が逆です。セキュリティグループはインスタンス単位、NACLはサブネット単位です。',
+      '正しい。セキュリティグループはインスタンス単位のステートフルなファイアウォールで許可ルールのみ、NACLはサブネット単位のステートレスなファイアウォールで許可・拒否の両方を設定できます。'
+    ]},
+  {id:'m31', domain:'tech', type:'single', source:SOURCES.s3, text:'Amazon S3・Amazon EBS・Amazon EFSのストレージ種別の組み合わせとして正しいものはどれですか？',
+    choices:[
+      'S3=オブジェクトストレージ、EBS=ブロックストレージ、EFS=ファイルストレージ',
+      'S3=ブロックストレージ、EBS=オブジェクトストレージ、EFS=ファイルストレージ',
+      'S3=ファイルストレージ、EBS=ブロックストレージ、EFS=オブジェクトストレージ',
+      'S3・EBS・EFSはすべて同じブロックストレージである'
+    ], correct:[0],
+    why:[
+      '正しい。S3はオブジェクトストレージ、EBSはEC2にアタッチするブロックストレージ、EFSは複数インスタンスから共有マウントできるファイルストレージです。',
+      '誤り。S3とEBSのストレージ種別が入れ替わっています。S3はオブジェクトストレージ、EBSはブロックストレージです。',
+      '誤り。S3とEFSのストレージ種別が入れ替わっています。S3はオブジェクトストレージ、EFSはファイルストレージです。',
+      '誤り。3つのサービスはストレージ種別がそれぞれ異なります（オブジェクト/ブロック/ファイル）。'
+    ]},
+  {id:'m32', domain:'tech', type:'single', source:SOURCES.elasticache, text:'データベースの読み取り負荷が高いアプリケーションで、頻繁にアクセスされるデータをインメモリにキャッシュしてレスポンス速度を改善したい場合、最も適したサービスはどれですか？',
+    choices:['Amazon EBS','AWS Direct Connect','Amazon ElastiCache','Amazon Route 53'], correct:[2],
+    why:[
+      '誤り。EBSはEC2にアタッチするブロックストレージであり、インメモリキャッシュサービスではありません。',
+      '誤り。Direct Connectは専用線接続サービスです。',
+      '正しい。Amazon ElastiCacheはRedisやMemcached等のインメモリキャッシュをマネージドで提供し、データベース負荷の軽減とレスポンス速度の改善に利用されます。',
+      '誤り。Route 53はDNSサービスです。'
     ]}
 ];

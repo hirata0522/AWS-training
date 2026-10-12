@@ -90,3 +90,4 @@
 
 - 2026-10-12: 初期シード投入（このセッションで実施）。VOCAB=48, PRACTICE=46, MOCK_POOL=24。
 - 2026-10-12: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=52, PRACTICE=59, MOCK_POOL=28。追加トピック: AWS Config, Amazon Inspector, ACM, Cognito, ECS, Aurora, SQS, Elastic Beanstalk, S3 Glacier, Pricing Calculator, AWS Marketplace, Fault Tolerance, Disaster Recovery, Edge Location。
+- 2026-10-12: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=56, PRACTICE=72, MOCK_POOL=32。追加トピック: Amazon ElastiCache, Amazon Macie, 水平/垂直スケーリング（Scale Out/Scale Up）、ACM（証明書管理の別視点）、ECS（コンテナオーケストレーション）、Aurora（移行ユースケース）、SQS（デカップリング）、Elastic Beanstalk、Pricing Calculator、Well-Architected運用上の優秀性の柱、セキュリティグループ/NACL比較、S3/EBS/EFSストレージ種別比較。新規出典2件（elasticache, macie）はWebSearchでaws.amazon.com配下のページ存在を確認（この実行環境ではaws.amazon.com/docs.aws.amazon.comへの直接fetchがプロキシでブロックされており、WebFetchによる本文直接確認はできなかった点に留意）。
