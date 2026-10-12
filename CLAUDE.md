@@ -6,8 +6,10 @@
 
 - 仕様確定・アーキテクチャ方針確定・モック（画面イメージ）作成とユーザー確認まで完了。
 - 本実装の土台（ビルドなし・素のHTML/CSS/JS、`index.html` + `css/style.css` + `js/data/clf-c02.js` + `js/storage.js` + `js/app.js`）を作成・push・GitHub Pages公開まで完了し、実機で動作確認済み。公開URL: `https://hirata0522.github.io/AWS-training/`。
-- モックのロジック・データ・ダミーコンテンツ（単語8件・想定問題6件）は変更せずそのまま移植した状態。**次にやること: CLF-C02の全ドメインを網羅するコンテンツ拡充**（下記「次のステップ」参照）。
+- **CLF-C02コンテンツを大幅拡充済み**（単語8件→48件、想定問題6件→46件。4ドメインに概ね試験ガイドの出題比率(概念26%/セキュリティ25%/テクノロジー33%/請求16%)に沿って配分）。各項目にAWS公式ドキュメント・公式ページへの`source`フィールド（出典URL）を追加し、回答後の解説画面に「出典」リンクを表示するようにした。不正解の選択肢も紛らわしい（似た用語・隣接サービス）ものに作り変え済み。正解の選択肢位置も偏りなくシャッフル済み（以前は正解がほぼ常に1番目になっていた不具合を修正）。
+- 模擬試験モードを本番相当に修正: 以前は`PRACTICE`配列全件をそのまま使い5分固定タイマーだったが、現在は`PRACTICE`からランダムに最大65問を抽出し、65問なら90分、それより少ない場合は問題数に比例して制限時間を短縮する実装に変更（`js/app.js`の`MOCK_EXAM_QUESTIONS`/`MOCK_EXAM_SECONDS`）。
 - リポジトリはGitHub上に private で作成済み: `hirata0522/AWS-training`（origin設定済み、push済み）。GitHub Pages設定: Settings → Pages → Branch `master` / `(root)`、設定済み。
+- 出典の裏取りはWeb検索・AWS公式ページのfetchで実施済み（例: AWS Free Tierは2024年頃の制度変更で「12ヶ月無料」ではなく「常時無料サービス＋新規アカウント向け6ヶ月間の無料クレジット（$200）＋短期トライアル」という現行の3区分構成に更新。AWS Support Plansも現行の名称（Basic/Business Support+/Enterprise Support/Unified Operations）を反映）。CLF-C02試験ガイド本体（65問・90分・合格点700/1000・4ドメインの出題比率）も公式PDFで確認済み。
 
 ## 確定した仕様
 
@@ -63,15 +65,17 @@
 ### モックのデータ構造（本実装でも踏襲する想定）
 
 ```js
-// 単語項目
-{ id:'v1', term:'EC2', domain:'tech', q:{ text, choices:[4件], correct: 正解index, why:[4件の理由文字列] } }
+// 単語項目（本実装では source フィールドを追加済み）
+{ id:'v1', term:'EC2', domain:'tech', source:{label, url}, q:{ text, choices:[4件], correct: 正解index, why:[4件の理由文字列] } }
 
-// 想定問題
-{ id:'p1', domain:'concepts', type:'single'|'multi', text, choices:[4件], correct:[正解indexの配列], why:[4件の理由文字列] }
+// 想定問題（本実装では source フィールドを追加済み）
+{ id:'p1', domain:'concepts', type:'single'|'multi', source:{label, url}, text, choices:[4件], correct:[正解indexの配列], why:[4件の理由文字列] }
 
 // 進捗レコード（localStorageキー: 本実装では 'awsTrainingProgress_v1'、モックは 'awsDrillMockProgress_v1'）
 { [itemId]: { attempts, correct, lastSelf /* 単語のみ: 'known'|'unknown' */, lastResult /* 'correct'|'incorrect' */, lastAt } }
 ```
+
+- `source`は`js/data/clf-c02.js`先頭の`SOURCES`オブジェクト（AWS公式ドキュメント・公式ページのURL集）を`SOURCES.xxx`で参照する形にしている。新規項目を追加する際は、既存の`SOURCES`に適切なものがあれば再利用し、なければ出典を確認してから追加すること（未確認のURLを当て推量で書かない）。
 
 - 苦手判定ロジック: `lastResult==='incorrect' || lastSelf==='unknown' || (attempts>0 && correct/attempts<0.6)`
 - ドメインキー: `concepts` / `security` / `tech` / `billing`（CLF-C02の4ドメインに対応。AIF-C01追加時は別途ドメインキーを定義する）
@@ -85,12 +89,13 @@
 - レイアウト: モバイル1カラム、1画面1タスク、操作ボタンは画面下部固定。
 
 ### モックに含まれるダミーコンテンツの規模
-CLF-C02の一部のみ（単語8件、想定問題6件）。**本実装では全ドメインを網羅するコンテンツ拡充が必要**（ここが本実装の最初の作業になる想定）。
+CLF-C02の一部のみ（単語8件、想定問題6件）。モック自体は更新していない（本実装側の`js/data/clf-c02.js`を単語48件・想定問題46件まで拡充済み。詳細は上記「プロジェクトの現状」参照）。
 
 ## 次のステップ
 
-1. **CLF-C02の本番相当のコンテンツ拡充**（単語・想定問題を全ドメイン網羅する量に増やす。現在は単語8件・想定問題6件のダミーのみ）: `js/data/clf-c02.js` の `VOCAB`/`PRACTICE` 配列に追加していく。
-2. 実装・動作確認後、同じ仕組みでAIF-C01のコンテンツ・ドメインを追加する（`js/data/aif-c01.js` 等を新設し、`DOMAINS`/`VOCAB`/`PRACTICE` の扱いをどう分けるか別途検討）。
+1. **CLF-C02コンテンツのさらなる拡充（任意・継続タスク）**: 単語48件・想定問題46件まで増やしたが、本番の65問規模の模擬試験をより多様な問題でカバーするには、さらに増量する余地がある。追加する際は必ず出典（AWS公式ドキュメント）を確認してから`source`フィールドを埋めること。ユーザーからは「時間がかかるなら定期実行で少しずつ追加でもよい」との指示あり（`/loop`や`schedule`スキルでの定期実行も検討可）。
+2. **実機での動作確認が未完了**: このセッションではNode.js・ブラウザ自動化ツールが利用できず、`js/data/clf-c02.js`の構文・整合性はPythonスクリプトによる静的検証（括弧の対応、choices/why配列が各4件、correct添字の範囲、id重複なし、source参照の整合性）のみで確認した。実際にブラウザ（PC/実機Pixel 9a）で単語問題・想定問題・模擬試験の3モードを一通り触って崩れがないか確認すること。
+3. 実装・動作確認後、同じ仕組みでAIF-C01のコンテンツ・ドメインを追加する（`js/data/aif-c01.js` 等を新設し、`DOMAINS`/`VOCAB`/`PRACTICE` の扱いをどう分けるか別途検討）。
 
 ## 参考
 - GitHubリポジトリ: `hirata0522/AWS-training`（private）。ローカルの`.git`に`origin`として設定済み。

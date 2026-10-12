@@ -46,7 +46,8 @@ function isWeak(id){
 function categoryStats(){
   return Object.keys(DOMAINS).map(function(key){
     var ids = VOCAB.filter(function(v){return v.domain===key;}).map(function(v){return v.id;})
-      .concat(PRACTICE.filter(function(p){return p.domain===key;}).map(function(p){return p.id;}));
+      .concat(PRACTICE.filter(function(p){return p.domain===key;}).map(function(p){return p.id;}))
+      .concat(MOCK_POOL.filter(function(p){return p.domain===key;}).map(function(p){return p.id;}));
     var attempts=0, correct=0;
     ids.forEach(function(id){ var r = progress[id]; if (r){ attempts+=r.attempts; correct+=r.correct; } });
     return {label:DOMAINS[key], attempts:attempts, correct:correct, pct: attempts ? Math.round(correct/attempts*100) : null};
@@ -59,5 +60,6 @@ function overallStats(){
 }
 function weakItems(){
   return VOCAB.filter(function(v){return isWeak(v.id);}).map(function(v){return {label:v.term, sub:DOMAINS[v.domain]+' ・ 単語問題'};})
-    .concat(PRACTICE.filter(function(p){return isWeak(p.id);}).map(function(p){return {label:p.text, sub:DOMAINS[p.domain]+' ・ 想定問題'};}));
+    .concat(PRACTICE.filter(function(p){return isWeak(p.id);}).map(function(p){return {label:p.text, sub:DOMAINS[p.domain]+' ・ 想定問題'};}))
+    .concat(MOCK_POOL.filter(function(p){return isWeak(p.id);}).map(function(p){return {label:p.text, sub:DOMAINS[p.domain]+' ・ 模擬試験プール'};}));
 }

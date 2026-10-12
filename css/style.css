@@ -173,6 +173,10 @@ main{flex:1; padding:1.25rem 1.1rem 2rem; display:flex; flex-direction:column; g
 .why-mark.ng{background:var(--critical-soft); color:var(--critical);}
 .why-row b{font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:.88rem;}
 
+.source-line{font-size:.78rem; color:var(--ink-muted); margin:.7rem 0 0; padding-top:.6rem; border-top:1px solid var(--border);}
+.source-line a{color:var(--accent); text-decoration:none;}
+.source-line a:hover, .source-line a:focus-visible{text-decoration:underline;}
+
 .bottom-bar{
   position:sticky; bottom:0; padding:.9rem 1.1rem 1.2rem; background:var(--bg);
   border-top:1px solid var(--border); display:flex; gap:.6rem;

@@ -12,9 +12,9 @@ function arraysEqualSet(a, b){
 
 function getQuestionView(item){
   if (item.type === 'vocab'){
-    return {text:item.ref.q.text, choices:item.ref.q.choices, type:'single', correct:[item.ref.q.correct], why:item.ref.q.why};
+    return {text:item.ref.q.text, choices:item.ref.q.choices, type:'single', correct:[item.ref.q.correct], why:item.ref.q.why, source:item.ref.source};
   }
-  return {text:item.ref.text, choices:item.ref.choices, type:item.ref.type, correct:item.ref.correct, why:item.ref.why};
+  return {text:item.ref.text, choices:item.ref.choices, type:item.ref.type, correct:item.ref.correct, why:item.ref.why, source:item.ref.source};
 }
 
 function renderBreakdown(choices, correct, why){
@@ -23,6 +23,20 @@ function renderBreakdown(choices, correct, why){
     return '<div class="why-row"><span class="why-mark '+(ok?'ok':'ng')+'">'+(ok?'✓':'✕')+'</span>'+
       '<span><b>'+label+'</b><br>'+why[idx]+'</span></div>';
   }).join('') + '</div>';
+}
+
+function renderSource(source){
+  if (!source) return '';
+  return '<p class="source-line">出典: <a href="'+source.url+'" target="_blank" rel="noopener">'+source.label+'</a></p>';
+}
+
+function shuffleCopy(arr){
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+  }
+  return a;
 }
 
 var ICON_VOCAB = '<svg class="mode-icon" viewBox="0 0 24 24"><rect x="3" y="6" width="15" height="12" rx="2.5"></rect><rect class="cutout" x="6.5" y="3" width="15" height="12" rx="2.5" style="fill:var(--surface)"></rect></svg>';
@@ -36,13 +50,37 @@ var state = {view:'home'};
 var mock = null;
 var timerTick = null;
 
-function startSession(kind){
+var SESSION_SIZE_OPTIONS = [10, 20, 50];
+
+function screenSessionSetup(kind){
+  var pool = kind === 'vocab' ? VOCAB : PRACTICE;
+  var title = kind === 'vocab' ? '単語問題' : '想定問題';
+  var options = SESSION_SIZE_OPTIONS.filter(function(n){ return n < pool.length; });
+  options.push(pool.length);
+  var buttonsHtml = options.map(function(n){
+    return '<button class="assess-btn" data-action="startSessionCount" data-kind="'+kind+'" data-count="'+n+'">'+
+      (n === pool.length ? '全'+n+'問' : n+'問')+
+    '</button>';
+  }).join('');
+  return topbar(title, {}) +
+    '<main>'+
+      '<div class="fade-in" style="display:flex;flex-direction:column;gap:1.1rem;">'+
+        '<p class="eyebrow">CLF-C02</p>'+
+        '<h2 class="hero-title" style="font-size:1.4rem;">何問出題しますか？</h2>'+
+        '<p class="hero-sub">プール全'+pool.length+'問の中からランダムに出題します。</p>'+
+        '<div class="assess-row" style="flex-wrap:wrap;">'+buttonsHtml+'</div>'+
+      '</div>'+
+    '</main>';
+}
+
+function startSession(kind, count){
   var items;
-  if (kind === 'vocab') items = VOCAB.map(function(v){return {type:'vocab', ref:v};});
-  else if (kind === 'practice') items = PRACTICE.map(function(p){return {type:'practice', ref:p};});
+  if (kind === 'vocab') items = shuffleCopy(VOCAB).slice(0, count || VOCAB.length).map(function(v){return {type:'vocab', ref:v};});
+  else if (kind === 'practice') items = shuffleCopy(PRACTICE).slice(0, count || PRACTICE.length).map(function(p){return {type:'practice', ref:p};});
   else {
     items = VOCAB.filter(function(v){return isWeak(v.id);}).map(function(v){return {type:'vocab', ref:v};})
-      .concat(PRACTICE.filter(function(p){return isWeak(p.id);}).map(function(p){return {type:'practice', ref:p};}));
+      .concat(PRACTICE.filter(function(p){return isWeak(p.id);}).map(function(p){return {type:'practice', ref:p};}))
+      .concat(MOCK_POOL.filter(function(p){return isWeak(p.id);}).map(function(p){return {type:'practice', ref:p};}));
   }
   state = {
     view:'session', kind:kind, items:items, index:0,
@@ -95,8 +133,14 @@ function submitAnswer(){
   render();
 }
 
+var MOCK_EXAM_QUESTIONS = 65; // CLF-C02本番の出題数
+var MOCK_EXAM_SECONDS = 90 * 60; // CLF-C02本番の試験時間(90分)
+
 function startMock(){
-  mock = {index:0, answers:{}, timeLeft:300, finished:false};
+  var n = Math.min(MOCK_EXAM_QUESTIONS, MOCK_POOL.length);
+  var questions = shuffleCopy(MOCK_POOL).slice(0, n);
+  var seconds = Math.round(MOCK_EXAM_SECONDS * n / MOCK_EXAM_QUESTIONS);
+  mock = {questions:questions, index:0, answers:{}, timeLeft:seconds, totalSeconds:seconds, finished:false};
   state = {view:'mockIntro'};
   render();
 }
@@ -128,7 +172,7 @@ function formatTime(sec){
 }
 
 function mockToggleChoice(idx){
-  var q = PRACTICE[mock.index];
+  var q = mock.questions[mock.index];
   var cur = mock.answers[q.id] || [];
   if (q.type === 'single'){
     mock.answers[q.id] = [idx];
@@ -141,11 +185,11 @@ function mockToggleChoice(idx){
 }
 function mockNav(dir){
   if (dir === 'prev' && mock.index > 0){ mock.index -= 1; render(); }
-  else if (dir === 'next' && mock.index < PRACTICE.length - 1){ mock.index += 1; render(); }
+  else if (dir === 'next' && mock.index < mock.questions.length - 1){ mock.index += 1; render(); }
   else if (dir === 'submit'){ clearTimer(); finishMock(); }
 }
 function finishMock(){
-  var results = PRACTICE.map(function(q){
+  var results = mock.questions.map(function(q){
     var selected = mock.answers[q.id] || [];
     var isCorrect = selected.length > 0 && arraysEqualSet(selected, q.correct);
     recordResult(q.id, isCorrect, null);
@@ -175,8 +219,8 @@ function screenHome(){
         '<p class="hero-sub">単語・想定問題・模擬試験から選んで学習を始めましょう。</p>'+
       '</div>'+
       '<div class="mode-grid fade-in">'+
-        modeCard('vocab', ICON_VOCAB, '単語問題', 'ヒントなしで分かるか即答 → 選択問題で確認')+
-        modeCard('practice', ICON_PRACTICE, '想定問題', '単一・複数選択に対応。回答ごとに解説を表示')+
+        modeCard('vocabSetup', ICON_VOCAB, '単語問題', 'ヒントなしで分かるか即答 → 選択問題で確認')+
+        modeCard('practiceSetup', ICON_PRACTICE, '想定問題', '単一・複数選択に対応。回答ごとに解説を表示')+
         modeCard('mockIntroNav', ICON_MOCK, '模擬試験', '本番形式。タイマー付きで最後にまとめて採点')+
         modeCard('stats', ICON_STATS, '進捗・統計', '分野別の正答率と苦手項目を確認')+
       '</div>'+
@@ -236,6 +280,7 @@ function screenSession(){
     feedback = '<div class="feedback-panel fade-in">'+
       '<p class="feedback-title '+(state.lastCorrect ? 'ok' : 'ng')+'">'+(state.lastCorrect ? '正解' : '不正解')+'</p>'+
       renderBreakdown(qv.choices, qv.correct, qv.why)+
+      renderSource(qv.source)+
     '</div>';
   }
 
@@ -279,19 +324,20 @@ function screenSessionComplete(){
 }
 
 function screenMockIntro(){
+  var minutes = Math.round(mock.totalSeconds / 60);
   return topbar('模擬試験', {}) +
     '<main>'+
       '<div class="fade-in" style="display:flex;flex-direction:column;gap:1.1rem;">'+
         '<p class="eyebrow">CLF-C02 ・ 本番形式</p>'+
         '<h2 class="hero-title" style="font-size:1.4rem;">模擬試験を開始します</h2>'+
-        '<p class="hero-sub">全'+PRACTICE.length+'問 ・ 制限時間 5:00。回答中はフィードバックが表示されず、終了後にまとめて採点・解説を確認します。</p>'+
+        '<p class="hero-sub">全'+mock.questions.length+'問 ・ 制限時間 '+minutes+'分（本番は65問・90分）。回答中はフィードバックが表示されず、終了後にまとめて採点・解説を確認します。</p>'+
       '</div>'+
     '</main>'+
     '<div class="bottom-bar"><button class="btn btn-primary" data-action="beginMock">開始する</button></div>';
 }
 
 function screenMock(){
-  var q = PRACTICE[mock.index];
+  var q = mock.questions[mock.index];
   var selected = mock.answers[q.id] || [];
   var choiceShape = q.type === 'multi' ? 'square' : 'circle';
   var choicesHtml = q.choices.map(function(label, idx){
@@ -301,9 +347,9 @@ function screenMock(){
     '</button>';
   }).join('');
   var hint = q.type === 'multi' ? '<div class="q-multi-hint">当てはまるものをすべて選択してください（複数選択）</div>' : '';
-  var dots = PRACTICE.map(function(_, i){
+  var dots = mock.questions.map(function(qq, i){
     var cls = [];
-    if (mock.answers[PRACTICE[i].id] && mock.answers[PRACTICE[i].id].length) cls.push('answered');
+    if (mock.answers[qq.id] && mock.answers[qq.id].length) cls.push('answered');
     if (i === mock.index) cls.push('current');
     return '<span class="'+cls.join(' ')+'"></span>';
   }).join('');
@@ -317,7 +363,7 @@ function screenMock(){
       '<div class="mock-nav-dots">'+dots+'</div>'+
     '</div>';
 
-  var isLast = mock.index === PRACTICE.length - 1;
+  var isLast = mock.index === mock.questions.length - 1;
   var bottomBar = '<div class="bottom-bar">'+
     '<button class="btn btn-ghost" data-action="mockPrev" '+(mock.index===0?'disabled':'')+'>前へ</button>'+
     (isLast
@@ -325,7 +371,7 @@ function screenMock(){
       : '<button class="btn btn-primary" data-action="mockNext">次へ</button>')+
   '</div>';
 
-  return topbar('模擬試験 ・ 問 '+(mock.index+1)+'/'+PRACTICE.length, {}) + '<main>'+body+'</main>' + bottomBar;
+  return topbar('模擬試験 ・ 問 '+(mock.index+1)+'/'+mock.questions.length, {}) + '<main>'+body+'</main>' + bottomBar;
 }
 
 function screenMockResults(){
@@ -337,12 +383,13 @@ function screenMockResults(){
       '<p style="margin:0;font-weight:700;font-family:\'Zen Kaku Gothic New\',sans-serif;font-size:.92rem;">'+r.q.text+'</p>'+
       '<p class="review-line">あなたの回答: <b>'+yourAns+'</b></p>'+
       renderBreakdown(r.q.choices, r.q.correct, r.q.why)+
+      renderSource(r.q.source)+
     '</div>';
   }).join('');
 
   return topbar('模擬試験の結果', {home:true}) +
     '<main>'+
-      '<div class="score-tile fade-in"><div class="score-num">'+mock.score+' / '+PRACTICE.length+'</div><div class="score-label">正解</div></div>'+
+      '<div class="score-tile fade-in"><div class="score-num">'+mock.score+' / '+mock.questions.length+'</div><div class="score-label">正解</div></div>'+
       '<div style="display:flex;flex-direction:column;gap:.7rem;" class="fade-in">'+items+'</div>'+
     '</main>'+
     '<div class="bottom-bar">'+
@@ -397,6 +444,7 @@ function render(){
   var html = '';
   switch(state.view){
     case 'home': html = screenHome(); break;
+    case 'sessionSetup': html = screenSessionSetup(state.kind); break;
     case 'session': html = screenSession(); break;
     case 'sessionComplete': html = screenSessionComplete(); break;
     case 'mockIntro': html = screenMockIntro(); break;
@@ -415,8 +463,9 @@ document.getElementById('app').addEventListener('click', function(e){
   var action = el.getAttribute('data-action');
   switch(action){
     case 'home': clearTimer(); state = {view:'home'}; render(); break;
-    case 'vocab': startSession('vocab'); break;
-    case 'practice': startSession('practice'); break;
+    case 'vocabSetup': state = {view:'sessionSetup', kind:'vocab'}; render(); break;
+    case 'practiceSetup': state = {view:'sessionSetup', kind:'practice'}; render(); break;
+    case 'startSessionCount': startSession(el.getAttribute('data-kind'), parseInt(el.getAttribute('data-count'),10)); break;
     case 'reviewWeak': startSession('weak'); break;
     case 'stats': state = {view:'stats'}; render(); break;
     case 'mockIntroNav': startMock(); break;
