@@ -227,3 +227,32 @@
   確認し、既存349件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾
   項目にカンマを付与した4箇所のみ）を確認済み。正解位置は単一選択19件を0,1,2,3でほぼ均等にローテーション
   (各位置4〜5件)、複数選択2件は{1,3}と{0,2}の異なる組み合わせを使用。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっており、`git checkout master && git pull --rebase origin master`で復帰してから
+  作業した。累計 VOCAB=145, PRACTICE=375, MOCK_POOL=139（3プールとも各ドメイン比率は目標26/25/33/16%に近い:
+  VOCAB tech32.4/security24.8/billing16.6/concepts26.2、PRACTICE concepts25.1/billing16.5/security24.5/
+  tech33.9、MOCK_POOL concepts25.2/security25.2/tech32.4/billing17.3）。追加トピック: AWS CodeArtifact（新規）、
+  Amazon AppFlow（新規）、EC2 Image Builder（新規）、Amazon Verified Permissions（新規）、Amazon EC2 Reserved
+  Instance Marketplace（新規、出品条件とRI売却後のオンデマンド課金の2問）、Total Cost of Ownership (TCO)の
+  考え方（新規、Well-Architectedのコスト最適化の柱のベストプラクティスを出典として追加）、AWS Firewall Manager
+  （既存source、VOCAB初追加）、AWS Cost Optimization Hub（既存source、VOCAB初追加）、Well-Architected各柱の
+  未出題だった設計原則（コスト最適化「消費モデルの導入」、パフォーマンス効率「メカニカルシンパシーを持つ」、
+  持続可能性「使用率を最大化する」、セキュリティ「強固なアイデンティティ基盤を実装する」「トレーサビリティを
+  維持する」）、Elastic Load Balancingの種類比較(ALB/NLB/GLBの2問、既存source初のPRACTICE活用)、EC2リザーブド
+  インスタンスの支払いオプション「Partial Upfront」、AWS Trusted Advisorのコアチェック/フルチェックとサポート
+  プランの対応、AWS Artifactの「Agreements」機能、AI/MLサービスの組み合わせ問題(Transcribe+Comprehend)、AWS
+  Snowball Edgeのエッジコンピューティング用途。新規出典6件（tco, codeartifact, appflow, imageBuilder,
+  verifiedPermissions, riMarketplace）はすべて本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し
+  （**今回もWebFetchが成功**）、本文を直接確認した上で追加した。なお当初VOCABの新規サービス候補として
+  Amazon QLDB (Quantum Ledger Database) を検討したが、WebSearchで「2025年7月31日付で全面的にサービス終了・
+  新規顧客受付は2024年半ばに終了済み」であることが判明したため、既に廃止されたサービスとして出題対象から
+  除外し、代わりにAWS CodeArtifactに差し替えた。またAWS TCOの出典についても、当初想定していた「AWS TCO
+  Calculator」という単体ツールが`aws.amazon.com/tco-calculator/`から`calculator.aws`（AWS Pricing Calculator）
+  へリダイレクトされ、独立したツールとして現存しないことをWebFetchで確認したため、特定のツール名には言及せず
+  Well-Architected Frameworkのベストプラクティス(COST05-BP03)の一般的なTCOの定義のみを出題内容とした。既存の
+  飽和気味のsource（wafReliability21件・sixAdv30件・acm/secretsmanager/shield/securityHub/macie等、ほぼ同一
+  文言の設問が複数存在するもの）は今回の新規追加の対象から意図的に避け、未出題の設計原則や新規サービスを
+  優先した。正解位置はVOCAB4件を0,1,2,3でローテーション、PRACTICE単一選択11件を0,1,2,3でほぼ均等に
+  ローテーション（各位置2〜3件）、PRACTICE複数選択1件は{1,3}、MOCK_POOL単一選択4件を0,1,2,3でローテーション。
+  追加前後でvalidate_content.pyの出力・git diffを確認し、既存362件の項目は一切変更していないこと（diffは
+  SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
