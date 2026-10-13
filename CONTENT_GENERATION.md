@@ -509,3 +509,33 @@
   validate_content.pyの出力・git diffおよびnode(vm.runInContext)での読み込みを確認し、既存466件の項目は
   一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した
   4箇所のみ）を確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master`すると、ローカルの`master`が`origin/master`最新
+  コミット(475e4a0)と完全に一致していたため、`git pull --rebase`はfast-forward不要で即座に完了した。累計
+  VOCAB=181, PRACTICE=492, MOCK_POOL=175（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech32.6/security25.4/billing16.6/concepts25.4、PRACTICE concepts25.4/billing16.1/security25.0/
+  tech33.5、MOCK_POOL concepts25.7/security25.1/tech32.6/billing16.6）。追加トピック: Amazon CodeGuru
+  Profiler（新規）、AWS Resource Groups（新規、タグベース/CloudFormationスタックベースのクエリ・ネスト機能）、
+  AWS License Manager（既存source、VOCAB初追加・BYOLライセンスの上限コア数管理）、AWS Systems Manager
+  パラメータストア（既存source、VOCAB初追加・SecureStringのKMS暗号化と標準/アドバンストティアの違い）、AWS
+  Verified Access（ゼロトラスト・VPN不要）、AWS CloudHSM対AWS KMS（シングルテナント専有対マルチテナント
+  管理型）、AWS Cost Optimization Hub（組織全体のメンバーアカウントを横断した推奨事項の集約）、AWS Billing
+  Conductor（課金グループとマージンを用いたプロフォーマ請求、既存source初の「課金グループ」角度）、CloudFront
+  の「リージョナルエッジキャッシュ」（エッジロケーションとの違い、新角度）、AWS Well-Architected Framework
+  の6つの柱の歴史（持続可能性の柱が後から6つ目として追加された点）、ハイブリッドクラウドの段階的移行という
+  利点、AWSグローバルインフラストラクチャの「リージョン」の特徴（複数選択）。新規出典2件（codeguru,
+  resourceGroups）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetchが
+  成功**）、本文を直接確認した上で追加した。なおAmazon CodeGuru Reviewerは2025年11月7日付で新規リポジトリ
+  連携の受付を終了しメンテナンスモードに入っていることがWebSearchで判明したため、Reviewerではなく現行も
+  通常提供されているCodeGuru Profilerの機能に限定して出題した。同様にAmazon Chimeアプリケーション本体も
+  2026年2月20日付でサポート終了していることがWebSearchで判明したため(Chime SDKは提供継続)、既存の除外事例
+  （QLDB・Pinpoint・Amazon Forecast・Kendra・Connect・App Runner等）と同様の理由でChime関連の新規追加は
+  見送った。既存のSavings Plansのコンピュート横断フレキシビリティ(Compute Savings Plans)の角度は既に複数回
+  出題済みと判明したため、当初案だったbilling(savingsplansTypes)の1件はAWS Resource Groupsのネスト機能
+  (tech)に差し替えた。他にもfirewallManager・accessAnalyzer・mfa・macie・detective・pricingcalc・budgets・
+  consolidatedBilling・costAllocTags・capacityReservation・riMarketplace等、既存の設問内容をgrepで確認した
+  結果すべて飽和気味と判断し、今回の新規追加の対象からは避けた。正解位置は単一選択19件(VOCAB4・PRACTICE12・
+  MOCK_POOL3)を0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE1・
+  MOCK_POOL1)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffおよび
+  node(vm.runInContext)での読み込みを確認し、既存479件の項目は一切変更していないこと（diffはSOURCES/VOCAB/
+  PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
