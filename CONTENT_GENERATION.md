@@ -437,3 +437,36 @@
   S3 Storage Lens・AWS Clean Rooms)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.py
   の出力・git diffを確認し、既存440件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached
+  HEADの状態になっており、ローカル`master`も`origin/master`から14コミット遅れていたが、
+  `git checkout master && git pull --rebase origin master`でfast-forwardして正しい状態（最新コミット
+  69013bd）に復帰してから作業した。累計 VOCAB=173, PRACTICE=466, MOCK_POOL=167（3プールとも各ドメイン
+  比率は目標26/25/33/16%に近い: VOCAB tech32.4/security24.9/billing16.8/concepts26.0、PRACTICE
+  concepts25.3/billing16.1/security24.9/tech33.7、MOCK_POOL concepts25.7/security25.1/tech32.3/
+  billing16.8）。追加トピック: Amazon Q Developer（新規、IDE統合の生成AI開発アシスタント、Amazon Q
+  Businessとの違い）、AWS AppFabric（新規、複数SaaSアプリの監査ログをOCSFに正規化して集約するセキュリティ
+  サービス、AWS Security Hub/CloudTrailとの違い）、Amazon EC2のリザーブドインスタンスの「リージョナル
+  スコープ対ゾーナルスコープ」の違い（既存source ec2Riの新角度、容量確保の保証範囲と割引適用範囲の違いを
+  VOCAB/PRACTICE/MOCK_POOLで出題）、RTO(目標復旧時間)の定義（既存source rtorpoのVOCAB初出、RPO/
+  可用性/SLAとの区別）、Amazon Kinesis Data Streamsの「シャード」という容量単位（既存source kinesisの
+  新角度）、AWS Schema Conversion Tool (SCT)とAWS DMSの役割分担（既存source dmsの新角度）、Amazon
+  OpenSearch Serviceのベクトル検索(k-NN)によるRAG実装（既存source opensearchの新角度、生成AI関連の
+  新しいユースケース）、AWS Control TowerとAWS Organizationsの関係（既存source controlTowerの新角度）、
+  AWS Resilience HubとAWS Elastic Disaster Recovery (AWS DRS)の役割の違い（既存source resilienceHubの
+  新角度）、AWSグローバルインフラストラクチャの構成要素を問う複数選択（既存source globalInfraの新角度）、
+  Savings Plansのコミットメント構造($/時・1年/3年、既存source savingsplansTypesの新角度）、AWS Nitro
+  Enclaves（既存source nitroSystemの新角度、機密データ処理用の隔離実行環境とアテステーション機能）。
+  新規出典2件（qDeveloper, appfabric）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し
+  （**今回もWebFetchが成功**）、本文を直接確認した上で追加した。なおAmazon Q Developerのドキュメントには
+  「2027年4月30日付でIDEプラグイン単体の形態は終了予定（後継はKiro）」という記載があったが、これはIDE
+  プラグインという特定の提供形態の終了であり、Amazon Q Developerという生成AIアシスタント自体の提供終了
+  ではないため、特定の提供形態(IDEプラグイン名)には言及せず、サービス全体としての一般的な機能・特徴のみを
+  出題内容とした。既存の飽和気味のsource（sixAdv30件・wafReliability21件・waf10件・globalInfra8件(今回で
+  9件目)・drStrategies7件・shared9件・marketplace7件等）は今回の新規追加の対象から意図的に避けた
+  （globalInfraのみ、複数選択という従来にない出題形式のため例外的に1件追加）。正解位置は単一選択19件
+  (VOCAB4・PRACTICE12・MOCK_POOL3のうち単一選択)を0,1,2,3でほぼ均等にローテーション(各位置4〜5件)、
+  複数選択2件(PRACTICE1・MOCK_POOL1、いずれもAWS Control Towerの正誤選択)は{0,2}と{1,3}の異なる組み合わせ
+  を使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存453件の項目は一切変更していないこと
+  （diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
+  また、node (vm.runInContext) で実際にファイルを評価し、構文エラーなくVOCAB/PRACTICE/MOCK_POOLの配列が
+  期待通りの件数で読み込めることも追加で確認した。
