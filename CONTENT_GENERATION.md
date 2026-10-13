@@ -204,3 +204,26 @@
   均等にローテーション(0が5件、1が5件、2が5件、3が4件)、複数選択2件は{1,3}と{0,2}の異なる組み合わせを
   使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存336件の項目は一切変更していないこと
   （diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached HEAD
+  の状態だったため`git checkout master && git pull --rebase origin master`で復帰してから作業した。累計
+  VOCAB=141, PRACTICE=362, MOCK_POOL=135（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech32.6/security24.8/billing16.3/concepts26.2、PRACTICE concepts25.1/billing16.3/security24.6/tech34.0、
+  MOCK_POOL concepts25.2/security25.2/tech32.6/billing17.0）。追加トピック: AWS CodeBuild（新規）、AWS
+  CodeDeploy（新規）、AWS Cost Optimization Hub（新規）、責任共有モデル(RDS等マネージド型DBのOSパッチ
+  適用責任)、AWS CAFのセキュリティ視点(これで6つの視点を全て網羅)、AWS Systems Manager パラメータストア
+  対Secrets Managerのコスト・用途比較、AWS WAFのレート制限ルール、S3標準-IA対One Zone-IA対Glacier Deep
+  Archive対Intelligent-Tieringの使い分け、AWS CodeBuild/CodeDeploy/CodePipelineの役割分担、Amazon
+  Rekognitionの動画コンテンツモデレーション、AWS DataSync対Snowballの使い分け、Amazon Lex/Transcribe/
+  Pollyの役割分担、AWS Compute Optimizer対Cost Optimization Hubの違い、AWS Basic Supportプランに含まれる
+  範囲、Amazon CognitoのIDプール(一時的なAWS認証情報の発行)、AWS Migration Evaluatorの役割、AWS Budgets
+  対Cost Anomaly Detectionの使い分け。新規出典3件（codebuild, codedeploy, costOptimizationHub）はすべて
+  本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した
+  上で追加した。なお「AWSサポートプランでTAM(Technical Account Manager)が専任で付くのはどのプランか」を
+  WebSearchで確認したところ、Enterprise SupportとUnified Operationsの両方にTAMが含まれる可能性がある
+  (どちらが正確に対応するか単一の公式ページで確認できなかった)ため、単一の正解に断定する出題は避け、
+  「Basic Supportには含まれない」という確実な事実のみを問う出題に変更した。同様にCloudTrail Lakeは
+  2026年5月31日付で新規顧客への提供が終了予定であることがWebSearchで判明したため、出題対象から除外し、
+  代わりにAmazon CognitoのIDプールの話題に差し替えた。新規追加前後でvalidate_content.pyの出力・git diffを
+  確認し、既存349件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾
+  項目にカンマを付与した4箇所のみ）を確認済み。正解位置は単一選択19件を0,1,2,3でほぼ均等にローテーション
+  (各位置4〜5件)、複数選択2件は{1,3}と{0,2}の異なる組み合わせを使用。
