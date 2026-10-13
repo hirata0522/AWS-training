@@ -181,3 +181,26 @@
   既存336件中の新規追加前の323件の項目は一切変更していないことを確認済み（diffはSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目に追加のためのカンマを付与した4箇所のみが既存行の変更として表示され、
   内容自体の変更はなし）。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっており、`git checkout master && git pull --rebase origin master`でfast-forward
+  して正しい状態に復帰してから作業した。累計 VOCAB=137, PRACTICE=349, MOCK_POOL=131（3プールとも各ドメイン
+  比率は目標26/25/33/16%に極めて近い: VOCAB tech32.8/security24.8/billing16.1/concepts26.3、PRACTICE
+  concepts25.5/billing16.0/security24.9/tech33.5、MOCK_POOL concepts25.2/security25.2/tech32.8/billing16.8）。
+  追加トピック: AWS AppSync（新規）、AWS Fault Injection Service (FIS)（新規）、ボリュームディスカウント
+  （段階的価格、既存pricing出典の新角度）、Well-Architected各柱の個別の設計原則(design principles)を複数
+  追加——コスト最適化の柱「効率の測定」「費用の分析と帰属」、パフォーマンス効率の柱「サーバーレスアーキ
+  テクチャを使用する」、持続可能性の柱「マネージドサービスを使用する」、セキュリティの柱「セキュリティを
+  全レイヤーに適用する」「セキュリティのベストプラクティスを自動化する」（いずれも既存のWAF系source
+  を再利用しつつ、既存項目とは異なる具体的な設計原則を扱うことで重複を回避）。加えてコンプライアンス
+  プログラムの参照方法、AWS Verified Accessの特徴、VPC Flow Logsの発行先(S3/CloudWatch Logs)、AWS Glueの
+  データカタログ、AWS Global Accelerator、Amazon QuickSightの料金モデル、S3 Glacier Flexible Retrievalの
+  取り出しオプション(Expedited/Bulk)、VPC NATゲートウェイの高可用性構成、AWS Cost Explorerのカスタム
+  レポート、AWS X-Ray(サーバーレス構成でのトレーシング)、Amazon Comprehend(感情分析)、SCPの特徴(ルート
+  ユーザーへの影響・管理アカウント不適用)を、いずれも既存SOURCESを再利用した別角度の設問として追加
+  （既存項目との重複を避けるため、各sourceの既存設問内容を事前にgrepで確認した上で執筆）。新規出典2件
+  （appsync, fis）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetchが
+  成功**）、本文を直接確認した上で追加した。S3 Glacierの取り出し時間(Expedited 1-5分/Bulk 5-12時間)は
+  WebSearchで最新のAWS公式ドキュメントの数値を確認して採用した。正解位置は単一選択19件を0,1,2,3で
+  均等にローテーション(0が5件、1が5件、2が5件、3が4件)、複数選択2件は{1,3}と{0,2}の異なる組み合わせを
+  使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存336件の項目は一切変更していないこと
+  （diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
