@@ -348,3 +348,34 @@
   を使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存401件の項目は一切変更していない
   こと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を
   確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`
+  からdetached HEADの状態になっていたが、`git checkout master`すると、ローカルの`master`が
+  `origin/master`最新コミット(ad135cf)と完全に一致していたため、`git pull --rebase`はfast-forward不要
+  で即座に完了した。累計 VOCAB=161, PRACTICE=427, MOCK_POOL=155（3プールとも各ドメイン比率は目標
+  26/25/33/16%に近い: VOCAB tech32.9/security24.8/billing16.8/concepts25.5、PRACTICE
+  concepts25.3/billing16.4/security24.8/tech33.5、MOCK_POOL concepts25.2/security25.2/tech32.9/
+  billing16.8）。追加トピック: Amazon Personalize（新規）、AWS AppConfig（新規）、Amazon Managed
+  Workflows for Apache Airflow (MWAA)（新規）、AWS Organizations（既存source、VOCAB初追加・委任管理者
+  (delegated administrator)の仕組みをPRACTICEで新規出題）、AWS Cost Explorer（既存source、VOCAB初追加・
+  ライトサイジング推奨機能をPRACTICEで新規出題）、移行戦略「リファクター(Refactor/Re-architect)」
+  （VOCAB新規）・「リロケート(Relocate、VMware Cloud on AWS)」（PRACTICE新規）、AWS Storage Gatewayの
+  Volume Gateway（キャッシュ型ボリューム、既存のFile/Tape Gatewayとは別角度）、CloudFormation
+  StackSets（複数アカウント・リージョンへの一括展開）、Well-Architectedセキュリティの柱「保管中および
+  転送中のデータを保護する」（これでセキュリティの柱の7設計原則すべてを網羅）、運用上の優秀性の柱
+  「頻繁に、小規模かつ可逆的な変更を行う」・「すべての運用上の失敗から学ぶ」、コスト最適化の柱
+  「差別化につながらない重い作業にお金を使わない」、Amazon Verified PermissionsとAWS IAMの役割の違い、
+  AWS Cost Anomaly Detectionの根本原因分析(Root Cause Analysis)機能、Amazon GuardDutyのMalware
+  Protection for EC2（S3/RDS Protectionとは別の保護機能）。新規出典3件（personalize, appconfig, mwaa）
+  はすべて本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を
+  直接確認した上で追加した。なおAmazon ForecastとAmazon Kendraも新規VOCAB候補として確認したところ、
+  両方ともWebFetchで「新規顧客への提供を終了している」ことが判明したため、既存の除外事例と同様の理由で
+  出題対象・出典候補から除外した。また「AWS Cost Categoriesはコスト配分タグと異なり過去データに遡及
+  適用できる」という当初の着想も、WebSearchで2024年3月にコスト配分タグ側にも遡及適用機能が追加された
+  ことが判明し、両者を区別する決定的な違いとしては現在不正確なため出題を見送った。既存の飽和気味の
+  source（wafReliability21件・wafSecurity(セキュリティの柱の個別設計原則は本回で全7種を使い切ったため
+  今後は別の既存FAQ的内容での再利用に限定)・GuardDuty・organizations等）は、既出内容と重複しない具体的な
+  未出題の事実・角度であることを個別にgrepで確認した上でのみ利用した。正解位置は単一選択11件
+  (VOCAB4・PRACTICE9・MOCK_POOL4のうち単一選択)を0,1,2,3でほぼ均等にローテーション、複数選択2件
+  (PRACTICE2件: MWAA・Organizations委任管理者)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後で
+  validate_content.pyの出力・git diffを確認し、既存414件の項目は一切変更していないこと（diffはSOURCES/
+  VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
