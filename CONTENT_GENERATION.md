@@ -155,3 +155,29 @@
   3が3件)、複数選択3件(PRACTICE2件・MOCK_POOL1件)は{0,2}{1,3}{0,3}の3通りの異なる組み合わせを使用。
   追加前後でvalidate_content.pyの出力・git diffを確認し、既存323件（VOCAB125/PRACTICE310/MOCK_POOL119）
   の項目は一切変更していないことを確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`
+  からdetached HEADの状態になっており、かつ直前の実行（上記エントリ）のコミット(b931963)がローカルの
+  `master`ブランチに反映されていなかった（コミット自体はorigin/masterには既にpush済みだったことを
+  `git pull --rebase`で確認）。`git checkout master && git pull --rebase origin master`でfast-forwardして
+  正しい状態に復帰してから新規追加作業を開始した。累計 VOCAB=133, PRACTICE=336, MOCK_POOL=127（3プール
+  とも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech32/security26/billing16/concepts26、PRACTICE
+  concepts26/billing16/security25/tech33、MOCK_POOL concepts26/security24/tech32/billing17）。追加トピック:
+  Amazon Timestream（新規）、AWS IoT Core（新規）、AWS Cost Categories（新規）、AWS Private CA/AWS
+  Certificate Manager Private CA（新規）、Amazon Keyspaces for Apache Cassandra（新規）、ACM(パブリック証明書)
+  対Private CA(プライベート証明書)比較、VPC Flow Logs対CloudTrail対Config比較、AWS Verified Access対
+  Site-to-Site VPN、AWS KMSのキー種別(AWSマネージドキー/カスタマーマネージドキー)、VPCゲートウェイ
+  エンドポイント対インターフェースエンドポイント(PrivateLink)、サーバーレスDB比較(DynamoDB/Keyspaces対
+  RDS/Neptuneのプロビジョンドモード)、AWS Cost Explorerの購入推奨機能、Cost Categories対コスト配分タグ、
+  CloudWatch料金アラーム対AWS Budgets。新規出典5件（timestream, iotcore, costCategories, acmpca,
+  keyspaces）はすべて本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回はWebFetchが実行
+  全件で成功**）、該当ページ本文を直接取得・確認した上で追加した（costCategoriesのみ初回フェッチでは
+  見出しのみ返り、WebSearchで正しいURL(awsaccountbilling/latest/aboutv2/manage-cost-categories.html)を
+  特定してから再度WebFetchし本文を確認）。既存の`acm`・`kms`・`vpcFlowLogs`・`verifiedAccess`・
+  `privatelink`・`costExplorer`・`budgets`等のSOURCESは別角度の新規設問として再利用し、使用頻度が
+  著しく高い`sixAdv`(30件)・`caf`(13件)・`iam`系・`accessAnalyzer`(7件)・`hybridCloud`(6件、ほぼ同一文言の
+  重複が多い)は今回新規追加の対象から意図的に除外した。正解位置は単一選択18件(VOCAB4・PRACTICE11・
+  MOCK_POOL3)を0,1,2,3で均等にローテーション(各位置4〜5件)、複数選択3件(PRACTICE2・MOCK_POOL1)は
+  {0,1}{0,2}{1,3}の3通りの異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、
+  既存336件中の新規追加前の323件の項目は一切変更していないことを確認済み（diffはSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目に追加のためのカンマを付与した4箇所のみが既存行の変更として表示され、
+  内容自体の変更はなし）。
