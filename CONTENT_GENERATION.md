@@ -379,3 +379,30 @@
   (PRACTICE2件: MWAA・Organizations委任管理者)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後で
   validate_content.pyの出力・git diffを確認し、既存414件の項目は一切変更していないこと（diffはSOURCES/
   VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached
+  HEADの状態になっていたが、`git checkout master`した時点でローカル`master`は既に`origin/master`の
+  最新コミット(f99284e)と一致していたため、`git pull --rebase`はfast-forward不要で即座に完了した。
+  累計 VOCAB=165, PRACTICE=440, MOCK_POOL=159（3プールとも各ドメイン比率は目標26/25/33/16%に近い:
+  VOCAB tech32.7/security24.8/billing16.4/concepts26.1、PRACTICE concepts25.5/billing16.1/
+  security25.0/tech33.4、MOCK_POOL concepts25.8/security25.2/tech32.7/billing16.4）。追加トピック:
+  AWS Nitro System（新規、仮想化の分離とAmazon従業員を含む運用者アクセス排除というセキュリティ上の
+  利点）、AWS Amplify Hosting（新規、Git連携CI/CDによるフルスタックWebアプリのホスティング）、
+  耐久性(Durability)の定義と可用性(Availability)との違い、AWS Well-Architected Framework全体の目的
+  (個別の柱ではなく総論、既存源流wafの別角度)、Total Cost of Ownership(TCO)算出に含めるべき要素
+  (複数選択)、水平/垂直スケーリングの使い分けの理由、AWS Control Tower(ランディングゾーン/ガードレール)、
+  AWSコンプライアンスプログラムページ(AWS Artifactとの役割の違い)、AWS Directory Serviceの
+  AWS Managed Microsoft AD対Simple AD対AD Connector、Infrastructure as Code(IaC)の概念とAWS
+  CloudFormation、Amazon FSx for Windows File Server対Amazon EFS、Amazon SNS/SQSによるファンアウト
+  パターン(複数選択)、AWS Data Exports(Parquet形式でのS3出力・Athena/QuickSight連携)。新規出典2件
+  （amplify, nitroSystem）はいずれも本実行環境でWebFetchがdocs.aws.amazon.com/aws.amazon.comに対して
+  成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。なおAmazon Pinpointを新規VOCAB
+  候補として確認したところ、WebFetchで「2026年10月30日付でサポート終了予定」であることが判明したため、
+  既存の除外事例（QLDB・Application Discovery Service・Connect・App Runner・CloudTrail Lake・Amazon
+  Q Business・Amazon Forecast・Kendra等）と同様の理由で出題対象から除外し、代わりにAWS Amplifyを採用
+  した。既存の飽和気味のsource（sixAdv30件・wafReliability21件・migrationStrategies15件・caf14件等）は
+  今回の新規追加の対象から意図的に避け、moderate(3〜10件程度)の既存sourceの再利用と2件の新規source追加
+  で構成した。正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK_POOL4)を0,1,2,3でほぼ均等にローテーション
+  (0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE2件: TCO構成要素・SNS/SQSファンアウト)は
+  {0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存
+  427件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目に
+  カンマを付与した4箇所のみ）を確認済み。
