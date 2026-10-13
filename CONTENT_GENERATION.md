@@ -317,3 +317,34 @@
   {0,3}{0,2}{1,3}の3通りの異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、
   既存388件(復旧後の基準)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの
   末尾項目にカンマを付与した4箇所のみ）を確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master`した時点で既にローカルの`master`が
+  `origin/master`の最新コミット(2b074ff)を指していたため、`git pull --rebase`はfast-forward不要で
+  即座に完了した。累計 VOCAB=157, PRACTICE=414, MOCK_POOL=151（3プールとも各ドメイン比率は目標
+  26/25/33/16%に近い: VOCAB tech33.1/security24.8/billing16.6/concepts25.5、PRACTICE
+  concepts25.4/billing16.4/security24.9/tech33.3、MOCK_POOL concepts25.2/security25.2/tech32.5/
+  billing17.2）。追加トピック: Amazon Bedrock（新規）、AWS IAM Roles Anywhere（新規）、AWS Data
+  Exports（新規）、Amazon S3 Storage Lens（新規）、移行戦略「リテイン(Retain)」、Well-Architected
+  パフォーマンス効率の柱の未出題設計原則（高度なテクノロジーを誰でも使えるようにする／実験の頻度を
+  増やす。いずれも従来は他問題の不正解選択肢の文言としてのみ存在し、正解として問う専用問題はこの回が
+  初出）、コスト最適化の柱「クラウド財務管理を導入する」、持続可能性の柱の未出題設計原則（持続可能性の
+  目標を設定する／ダウンストリームへの影響を削減する）、Amazon GuardDutyの個別保護機能(S3 Protection/
+  RDS Protection、従来は汎用的な脅威検知の説明に留まっていたが今回初めて機能別に出題)、AWS KMSの
+  カスタマーマネージドキー対AWSマネージドキーの自動ローテーション仕様の違い、Amazon SageMaker・
+  AWS AppSyncのシナリオ形式の設問(いずれも既存VOCABの定義紹介のみでPRACTICE/MOCK_POOLでは今回が初出)、
+  AWS Supportプランの「24時間365日のワークロードモニタリング」がUnified Operations限定である点。
+  新規出典4件（bedrock, rolesAnywhere, dataExports, storageLens）はすべて本実行環境でWebFetchが
+  docs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した
+  （dataExportsは`cur/latest/userguide/dataexports.html`への初回フェッチではタイトルのみ返り、
+  WebSearchで正しいURL(`cur/latest/userguide/what-is-data-exports.html`)を特定してから再度WebFetch
+  し本文を確認）。なおAmazon Q Businessを新規VOCAB候補として検討したが、WebFetchで「新規顧客への
+  提供を終了しており、代替としてAmazon Quickを案内している」ことが判明したため、既存の除外事例
+  （QLDB・Application Discovery Service・Connect・App Runner・CloudTrail Lake等）と同様の理由で
+  出題対象から除外し、代わりにAmazon Bedrockを採用した。既存の飽和気味のsource（acmpca3件・RAM4件・
+  firewallManager4件・verifiedAccess4件・GuardDuty7件・wafReliability21件等、ほぼ同一文言や類似シナリオ
+  の設問が複数存在するもの）は今回の新規追加の対象から意図的に避け、未出題の具体的な機能・設計原則を
+  優先した。正解位置は単一選択19件(VOCAB4・PRACTICE12・MOCK_POOL3)を0,1,2,3でほぼ均等にローテーション
+  (0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE1・MOCK_POOL1)は{0,2}と{1,3}の異なる組み合わせ
+  を使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存401件の項目は一切変更していない
+  こと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を
+  確認済み。
