@@ -406,3 +406,34 @@
   {0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存
   427件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目に
   カンマを付与した4箇所のみ）を確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached
+  HEADの状態になっていたが、`git checkout master`した時点でローカル`master`は既に`origin/master`の
+  最新コミット(91d8956)と一致していたため、`git pull --rebase`はfast-forward不要で即座に完了した。
+  累計 VOCAB=169, PRACTICE=453, MOCK_POOL=163（3プールとも各ドメイン比率は目標26/25/33/16%に近い:
+  VOCAB tech32.5/security24.9/billing16.6/concepts26.0、PRACTICE concepts25.4/billing16.1/
+  security24.9/tech33.6、MOCK_POOL concepts25.8/security25.2/tech32.5/billing16.6）。追加トピック:
+  Amazon MemoryDB（新規、ElastiCacheとの違い=耐久性のあるプライマリDBとして使える点）、AWS Clean Rooms
+  （新規、データを開示せずに複数企業でコラボレーション分析できる点）、ディザスタリカバリ戦略
+  「Warm Standby」（VOCAB初出、既存source drStrategiesの別角度）、EC2 Convertible Reserved
+  Instances（VOCAB初出、Standard RIとの違い=構成交換可能だが割引率が低くMarketplaceで売却不可、既存
+  source ec2Riの別角度）、AWS CodeArtifact（パッケージリポジトリ、ECR/CodeCommitとの比較）、AWS
+  CloudShell（ブラウザ上のターミナル、Systems Manager Session Managerとの違い）、Amazon Managed
+  Workflows for Apache Airflow (MWAA)（既存Airflow DAGの移行、Step Functionsとの違い）、Amazon S3
+  Storage Lens（複数アカウント・リージョンの可視化、複数選択問題）、AWS Security Incident Response
+  （インシデント対応の人的支援、GuardDuty/Detectiveとの違い）、AWS Private CAをAWS RAMで複数アカウント
+  に共有する方法、Well-Architected運用上の優秀性の柱の未出題だった設計原則2つ（障害を予測する
+  (Anticipate failure)／運用手順を頻繁に改善する(Refine operations procedures frequently)、これで
+  運用上の優秀性の柱の5設計原則すべてを網羅）、TCOがクラウド移行でコスト削減につながる理由（過剰な
+  事前投資が不要になる点）、On-Demand Capacity Reservationに割引を適用する方法（リージョナルRI/
+  Savings Plansとの組み合わせ）。新規出典2件（memorydb, cleanrooms）はいずれも本実行環境でWebFetchが
+  docs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。
+  既存の飽和気味のsource（sixAdv30件・wafReliability21件・migrationStrategies15件・caf14件・costmgmt
+  16件等）は今回の新規追加の対象から意図的に避け、1〜4件程度の軽めの既存sourceの再利用（codeartifact,
+  cloudshell, mwaa, storageLens, securityIR, acmpca, tco, capacityReservation等）と2件の新規source
+  追加で構成した。なおAWS CodePipeline/Amazon EMR/AWS Resource Access Manager単体での新規出題は
+  既存問題との重複が大きいと判断し見送り、代わりにPrivate CAとRAMを組み合わせた複合問題に差し替えた。
+  正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK_POOL4)を
+  0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE2件:
+  S3 Storage Lens・AWS Clean Rooms)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.py
+  の出力・git diffを確認し、既存440件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
