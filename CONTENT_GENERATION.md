@@ -470,3 +470,42 @@
   （diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
   また、node (vm.runInContext) で実際にファイルを評価し、構文エラーなくVOCAB/PRACTICE/MOCK_POOLの配列が
   期待通りの件数で読み込めることも追加で確認した。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached
+  HEADの状態になっていたが、`git checkout master`した時点でローカル`master`は既に`origin/master`の
+  最新コミット(5c84e34)と一致していたため、`git pull --rebase`はfast-forward不要で即座に完了した。累計
+  VOCAB=177, PRACTICE=479, MOCK_POOL=171（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech32.2/security24.9/billing17.0/concepts26.0、PRACTICE concepts25.3/billing16.1/security24.8/
+  tech33.8、MOCK_POOL concepts25.7/security25.1/tech32.2/billing17.0）。追加トピック: Amazon DataZone
+  （新規、データカタログ・ガバナンス・ビジネスグロッサリーの2問）、AWS re:Post（新規、コミュニティ主導の
+  無料Q&Aサービス。無料/Premium Supportとの違い、2024年8月追加のAWS Support Officialチャンネルの3問）、
+  AWS Signer（新規、Lambdaデプロイパッケージのコード署名、IoTデバイスのOTAファームウェア署名の3問）、
+  移行戦略「リタイア(Retire)」VOCAB新規・「リパーチェス(Repurchase)」PRACTICE新規（これで7つのRすべてを
+  VOCAB/PRACTICEで個別に出題済み）・7つのRの名称識別を問う複数選択（MOCK_POOL新規、Rewrite/Resizeという
+  非公式用語を紛らわしい誤答として使用）、AWS Outposts/Local Zones/Wavelengthの比較（複数選択、既存source
+  outpostsの新角度）、AWS Well-Architected Framework持続可能性の柱の設計原則「新しい、より効率的なハード
+  ウェア・ソフトウェアの採用を予測して採用する」（これで持続可能性の柱の6設計原則すべてを網羅）、AWS
+  CloudTrailの管理イベント対データイベントの違い、AWS KMSのマルチリージョンキー、AWS Glue DataBrew
+  （既存source glueの新角度、コード不要のビジュアルデータ準備）、Amazon QuickSightの生成AI機能（現行名称
+  Amazon Q in QuickSight、旧称QuickSight Qから正式名称が変更されている点を確認して反映）、Amazon Keyspaces
+  とAmazon DynamoDBの違い(CQL互換性)・Keyspacesの特徴(サーバーレス・ドライバー互換性)の2問。新規出典3件
+  （dataZone, repost, signer）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し
+  （**今回もWebFetchが成功**）、本文を直接確認した上で追加した。re:Postの出典URLはdocs.aws.amazon.com配下に
+  適切なページが無かったため、WebFetchで内容を確認済みのaws.amazon.com配下の公式発表ページ
+  (whats-new/2021/12/aws-repost-...)をsourceとして採用した。なお当初VOCAB/PRACTICEの新規候補として
+  AWS Snowcone(Snow Familyの小型エッジデバイス)を検討したが、WebSearchで「2024年11月12日付で新規提供が
+  終了し、既存デバイスのサポートも2025年11月12日に終了済み」であることが判明したため、既存の除外事例
+  （QLDB・Pinpoint・Amazon Forecast・Kendra等）と同様の理由で出題対象から除外し、代わりにAmazon DataZoneを
+  追加した。また、Amazon QuickSight Qは現在「Amazon Q in QuickSight」に名称変更されていることをWebSearchで
+  確認し、新規項目では現行名称を主として記載した（既存のQuickSight関連項目は変更していない）。AWS
+  Well-Architectedコスト最適化の柱の設計原則「マネージドサービスの活用」を新規項目の候補として検討したが、
+  WebFetchで公式ページを確認した結果、同柱の設計原則は5つ(Implement Cloud Financial Management/Adopt a
+  consumption model/Measure overall efficiency/Stop spending money on undifferentiated heavy lifting/
+  Analyze and attribute expenditure)であり、該当する内容は既存の「差別化につながらない重い作業にお金を
+  使わない」の説明に含まれ別個の設計原則ではないと判明したため、重複を避けてこの項目の追加を見送った
+  （持続可能性の柱の方で6設計原則中の未出題分を代わりに採用）。既存の飽和気味のsource（sixAdv30件・
+  wafReliability21件・migrationStrategies(追加前)15件・caf14件等）は今回も意図的に避けた。正解位置は
+  単一選択19件(VOCAB4・PRACTICE12のうち単一選択・MOCK_POOL3のうち単一選択)を0,1,2,3で均等にローテーション
+  (各位置4〜5件)、複数選択2件(PRACTICE1・MOCK_POOL1)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後で
+  validate_content.pyの出力・git diffおよびnode(vm.runInContext)での読み込みを確認し、既存466件の項目は
+  一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した
+  4箇所のみ）を確認済み。
