@@ -256,3 +256,29 @@
   ローテーション（各位置2〜3件）、PRACTICE複数選択1件は{1,3}、MOCK_POOL単一選択4件を0,1,2,3でローテーション。
   追加前後でvalidate_content.pyの出力・git diffを確認し、既存362件の項目は一切変更していないこと（diffは
   SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master`した時点で既にローカルの`master`がorigin/masterの
+  最新コミット(3522d75)を指していたため、`git pull --rebase`はfast-forward不要で即座に完了した。累計
+  VOCAB=149, PRACTICE=388, MOCK_POOL=143（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech32.9/security24.8/billing16.8/concepts25.5、PRACTICE concepts25.0/billing16.8/security24.5/tech33.8、
+  MOCK_POOL concepts25.2/security25.2/tech32.2/billing17.5）。追加トピック: AWS Wavelength（新規）、AWS
+  CloudShell（新規）、Amazon Lightsail（既存source、VOCAB初追加）、Amazon Verified Permissions（既存source、
+  VOCAB初追加・PRACTICE定義角度追加）、Amazon EC2 Reserved Instance Marketplace（既存source、VOCAB初追加）、
+  Amazon Route 53のヘルスチェック/フェイルオーバールーティング、Network Load Balancer(NLB、超低レイテンシー・
+  静的IP)、Amazon EBSスナップショットの増分バックアップ、AWS Configのコンフォーマンスパック、AWS Directory
+  ServiceのAD Connector(オンプレミスADへのプロキシ)、AWS Local ZonesとAWS Wavelengthの比較、責任共有モデル
+  (セキュリティグループ設定は常に顧客責任)、AWS Well-Architected Toolの特徴(無料・マイルストーン記録)、EC2
+  Instance Savings Plans対Compute Savings Plansの違い、AWS Billing Conductorのプロフォーマ請求と実際の
+  支払いの関係、AWS Cost Optimization Hub対AWS Compute Optimizerの関係、RPOの定義(事前目標値としての許容
+  データ損失量)、AWS Network Firewallのステートレス/ステートフルルールグループとルーティング構成。新規出典
+  2件（wavelength, cloudshell）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回も
+  WebFetchが成功**）、本文を直接確認した上で追加した。他はすべて既存SOURCESを、grepで既存設問内容を事前に
+  確認した上で、まだ出題されていない具体的な事実・角度に絞って再利用した（例: route53は既存のDNS+地理的
+  ルーティング問題とは別にヘルスチェック/フェイルオーバーを、elbは既存のALBパスベース/GWLB問題とは別にNLBを、
+  ebsは既存のルートボリューム問題とは別に増分スナップショットを扱った）。1件のみ当初案から差し替え: Amazon
+  Inspectorの「Lambda関数スキャン」は既存のp51/m26で既に出題済みと判明したため、代わりにAWS Directory
+  ServiceのAD Connectorに差し替えた。正解位置は単一選択18件(VOCAB4・PRACTICE11・MOCK_POOL3)を0,1,2,3で
+  均等にローテーション(各位置4〜5件)、複数選択3件(PRACTICE2・MOCK_POOL1)は{0,2}{1,3}{0,3}の3通りの異なる
+  組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存375件の項目は一切変更して
+  いないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を
+  確認済み。
