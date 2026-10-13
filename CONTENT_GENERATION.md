@@ -132,3 +132,26 @@
   URL42件は統合前にすべてWebFetchで直接内容を確認済み（1件のみ訂正: AWS MGNは現在
   「AWS Transform MGN」に名称変更されており、該当する3項目(v84/p151/m57)の文言も修正した）。
   結果、累計 VOCAB=125, PRACTICE=310, MOCK_POOL=119。統合後、20本の孤立ブランチは削除した。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時に起動直後のサンドボックスが
+  `master`からdetached HEADの状態になっていたため（前回記録したブランチ事故とは別件）、まず
+  `git checkout master && git pull --rebase origin master`で正しい状態に復帰してから作業した。
+  累計 VOCAB=129, PRACTICE=323, MOCK_POOL=123（3プールとも各ドメイン比率は目標26/25/33/16%に近い:
+  VOCAB tech32/security26/billing16/concepts27、PRACTICE concepts27/billing16/security24/tech33、
+  MOCK_POOL concepts27/security24/tech32/billing17）。追加トピック: Amazon Security Lake（新規）、
+  Amazon Kinesis Data Streams、AWS Step Functions、コスト配分タグ(Cost Allocation Tags)、クラウドの
+  6つのメリット(Go Global in Minutes / 固定費を可変費へ)、Well-Architected Frameworkの柱(多肢選択)、
+  ハイブリッドクラウド、Amazon Macie、AWS IAM Access Analyzer、AWS Shield/WAF(DDoS対策、多肢選択)、
+  Amazon OpenSearch Service、AWS Pricing Calculator、Savings Plans対リザーブドインスタンス比較、
+  Amazon GuardDuty、OCSFスキーマ。新規出典1件（securityLake）はWebFetchで
+  `docs.aws.amazon.com/security-lake/latest/userguide/what-is-security-lake.html`の本文を直接取得・確認
+  できた（**今回はWebFetchが成功**し、本文の直接確認ができた）。なお同じ回でAmazon Connectと
+  AWS App Runnerの2サービスもWebFetchで本文を確認したが、Connectは「Amazon Connectは現在エージェント型
+  AIソリューション群の名称に変わり、従来のAmazon Connect（コンタクトセンター機能）は"Connect Customer"
+  という名称になった」という最近の大きな名称変更が、App Runnerは「新規顧客への提供を終了し既存顧客のみ
+  利用可能（新規にはECS Express Modeを推奨）」という状態変更がそれぞれ確認され、断定的な出題にすると
+  不正確になるリスクが高いと判断し、**この2つは今回の追加対象から除外**した（他のソースは全て既存の
+  SOURCESを再利用し、別角度の設問として追加）。正解位置はVOCAB4件・PRACTICE単一選択11件・MOCK_POOL
+  単一選択3件の合計18件の単一選択問題を0,1,2,3でおおむね均等にローテーション(0が5件、1が5件、2が5件、
+  3が3件)、複数選択3件(PRACTICE2件・MOCK_POOL1件)は{0,2}{1,3}{0,3}の3通りの異なる組み合わせを使用。
+  追加前後でvalidate_content.pyの出力・git diffを確認し、既存323件（VOCAB125/PRACTICE310/MOCK_POOL119）
+  の項目は一切変更していないことを確認済み。
