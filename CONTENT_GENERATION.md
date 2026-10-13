@@ -282,3 +282,38 @@
   組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存375件の項目は一切変更して
   いないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を
   確認済み。
+- 2026-10-13: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master`すると、ローカルの`master`がこのdetached HEAD
+  より6コミット古い状態（`origin/master`とは一致）であることが判明した。detached HEAD側は過去6回分の定期
+  実行セッションがコミットまでは完了していたがローカルの`master`ブランチへの反映が漏れていたもので、
+  `git log`で各コミットの内容・進捗ログの記述を確認した結果、正当な既存の追加作業（VOCAB80→149、
+  PRACTICE150→388、MOCK_POOL56→143）であり、`origin/master`ともdetached HEADの祖先関係が一直線
+  （fast-forward可能）であることを`git merge-base --is-ancestor`で確認できたため、`git merge --ff-only`で
+  このdetached HEADの内容をローカル`master`に取り込み、`python3 scripts/validate_content.py`でエラーが
+  無いことを確認してから`git pull --rebase origin master`（fast-forward不要で即完了）・`git push origin
+  master`を実行して復旧した（pushは既にorigin側が同じコミットを保持していたため実質no-op）。復旧後、
+  累計VOCAB=149, PRACTICE=388, MOCK_POOL=143の状態から今回分の新規追加作業を開始した。追加後の累計は
+  VOCAB=153, PRACTICE=401, MOCK_POOL=147（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.3/security24.8/billing16.3/concepts25.5、PRACTICE concepts25.2/billing16.7/security24.7/
+  tech33.4、MOCK_POOL concepts25.2/security25.2/tech32.7/billing17.0）。追加トピック: Amazon AppFlow
+  （既存source、VOCAB初追加）、AWS Certificate Manager (ACM)の基本定義（既存source、VOCAB初追加）、
+  Well-Architected運用上の優秀性の柱の総称VOCAB項目（既存source）、AWS IoT Greengrass（新規、VOCAB・
+  PRACTICE・MOCK_POOLの3プールで導入）、Well-Architected各柱の未出題だった具体的な設計原則（運用上の
+  優秀性「運用をコードとして実行する」、持続可能性「影響を理解する」、コスト最適化「費用の分析と帰属」、
+  セキュリティ「セキュリティインシデントに備える」「データから人を遠ざける」）、RTO/RPOの違いを問う比較形式
+  の複数選択問題、AWS WAFのマネージドルールグループ、AWS Security Incident Response（新規）、VPCピアリング
+  対AWS Transit Gatewayの使い分け、Amazon ECRの拡張スキャン機能(Amazon Inspector連携)、AWS Cost Explorerの
+  リザーブドインスタンス/Savings Plans利用率・カバレッジレポート、Amazon EC2リザーブドインスタンスの
+  「変更(モディファイ)」機能、Amazon S3の「One Zone-IA」ストレージクラス。新規出典2件（iotGreengrass,
+  securityIR）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、
+  本文を直接確認した上で追加した。なおAWS IoT Greengrassの確認中、2026年10月7日付でAWS IoT Greengrass
+  Version 1のサポートが終了していたことがWebFetchで判明したため、出題内容はすべて現行のVersion 2を前提とした
+  記述にした。また、VOCABの新規追加候補としてAWS Application Discovery Serviceを検討したが、WebFetchで
+  「新規顧客への提供を終了しており、代替としてAWS Transformの利用が推奨されている」ことが判明したため、
+  出題対象から除外し、代わりにAWS IoT GreengrassをVOCABに追加した。既存の飽和気味のsource（marketplace7件・
+  pricing6件・secretsmanager5件・macie4件等、ほぼ同一文言の設問が複数存在するもの）は今回の新規追加の対象
+  から意図的に避けた。正解位置はVOCAB4件・PRACTICE単一選択10件・MOCK_POOL単一選択4件の合計18件の単一選択
+  問題を0,1,2,3でおおむね均等にローテーション(0が5件、1が5件、2が4件、3が4件)、複数選択3件(PRACTICE3件)は
+  {0,3}{0,2}{1,3}の3通りの異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、
+  既存388件(復旧後の基準)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの
+  末尾項目にカンマを付与した4箇所のみ）を確認済み。
