@@ -1266,3 +1266,33 @@
   追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存722件
   (VOCAB253/PRACTICE722/MOCK_POOL247)の項目は一切変更していないこと（diffはVOCAB/PRACTICE/MOCK_POOLそれ
   ぞれの末尾項目にカンマを付与した3箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で18件追加（VOCAB+4/PRACTICE+10/MOCK_POOL+4、目安の15〜25件の範囲内だが既存コンテンツ
+  との重複回避を優先しやや下限寄りに抑えた）。開始時、サンドボックスがmasterからdetached HEADの状態になって
+  いたが、`git fetch origin master`すると、ローカルに保存されていたorigin/masterの参照が42コミット分古い
+  状態だった(実際のGitHub上のorigin/masterはこのdetached HEADの内容と完全に一致しており、孤立コミットでは
+  なく単にローカル参照が古かっただけ)ことが判明。`git checkout master && git pull --rebase origin master`で
+  fast-forwardして復帰してから作業した。累計 VOCAB=261, PRACTICE=745, MOCK_POOL=255（3プールとも各ドメイン
+  比率は目標26/25/33/16%に近い: VOCAB tech33.7/security24.5/billing16.5/concepts25.3、PRACTICE
+  concepts24.3/billing15.7/security25.6/tech34.4、MOCK_POOL concepts25.5/security25.1/tech32.9/
+  billing16.5）。新規SOURCES3件を追加: AWS Elastic Disaster Recovery (DRS)、AWS Resilience Hub、Amazon
+  GuardDuty Runtime Monitoring。3件ともWebFetchをdocs.aws.amazon.com(DRS・Runtime Monitoringは本文を直接
+  取得・確認)およびaws.amazon.com(Resilience Hubはdocsページが見出しのみ返ったため公式サービスページ
+  aws.amazon.com/resilience-hub/で本文を確認)に対して試し、**今回はWebFetchが成功**した。追加トピック:
+  DRS(ステージングエリアでの低コスト継続レプリケーション、AWS Backupとの違い、ドリル/復旧時のインスタンス
+  起動の仕組み、フェイルバック)、Resilience Hub(レジリエンシーポリシーによるRTO/RPO/可用性目標の設定、
+  AI評価エンジンによるWell-Architectedベストプラクティス評価と推奨事項の優先順位付け、依存関係マッピングと
+  組織全体レポーティング、レジリエンシーテストによる障害注入と合否判定)、GuardDuty Runtime Monitoring
+  (EKS/Fargate上のECS/EC2のOS・ネットワーク・ファイルイベント監視、セキュリティエージェントの自動/手動管理
+  とFargate(ECS)の例外、Malware Protectionとの違い)に加え、既存source初のVOCAB化としてAWS Cloud WAN
+  (コアネットワークポリシーによる一元管理)、Amazon DynamoDBのグローバルテーブル(マルチアクティブな
+  マルチリージョンレプリケーション)、Amazon EFSのストレージクラス(Standard/IA/Archive、2026年1月に追加
+  された新しいArchiveクラスを含む)とライフサイクル管理を追加した（dynamodb・efsは既存sourceだが、いずれも
+  これまでVOCAB1件+PRACTICE/MOCK各1件の基礎的な内容のみで、グローバルテーブルやストレージクラスの角度は
+  未出題だったため採用)。既存の飽和気味のsource（sixAdv32件・wafReliability22件・migrationStrategies22件・
+  iam16件・costmgmt16件・guardduty15件・globalInfra15件・caf14件・ec2Ri11件・savingsplansTypes10件・
+  support10件等）は、既出内容との重複が強いと判断し今回は避けた。正解位置は単一選択(VOCAB4+PRACTICE8+
+  MOCK4=16件)を0,1,2,3で完全に均等にローテーション(各位置4件ずつ)、複数選択2件(PRACTICE、Resilience Hub
+  機能・GuardDuty Runtime Monitoring対Malware Protection)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後
+  でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存722件(VOCAB253/
+  PRACTICE722/MOCK_POOL247)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれ
+  の末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
