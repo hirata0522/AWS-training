@@ -539,3 +539,39 @@
   MOCK_POOL1)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffおよび
   node(vm.runInContext)での読み込みを確認し、既存479件の項目は一切変更していないこと（diffはSOURCES/VOCAB/
   PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master && git pull --rebase origin master`で復帰してから
+  作業した（ローカルmasterはこの時点でorigin/masterの最新コミットより遅れており、fast-forwardで復帰）。
+  累計 VOCAB=185, PRACTICE=505, MOCK_POOL=179（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.0/security25.4/billing16.8/concepts24.9、PRACTICE concepts25.3/billing16.0/security25.0/tech33.7、
+  MOCK_POOL concepts25.7/security25.1/tech32.4/billing16.8）。追加トピック: Amazon Data Firehose（新規）、
+  Amazon Managed Grafana（新規）、AWS Security Incident Response（既存source、VOCAB初追加）、AWS Compute
+  Optimizer（既存source、VOCAB初追加）、Amazon CloudFront Origin Access Control (OAC)対Origin Access
+  Identity (OAI)の違い、AWS Fault Injection Service (FIS)の停止条件(Stop Condition)、AWS CodeDeployの
+  カナリア/リニア/AllAtOnceデプロイ設定、Amazon VPC Flow Logsの記録対象外トラフィック(AmazonProvidedDNS・
+  インスタンスメタデータ等)、AWS Private CAの証明書失効(OCSP/CRL)、Amazon Cognitoのトークン種別(ID/
+  アクセス/リフレッシュトークン、複数選択含む)、AWS Local Zones(親リージョンのVPC拡張の仕組み、VPC
+  エンドポイント非対応等の制約)、Amazon S3 Transfer Acceleration(CloudFrontのエッジロケーション経由の
+  高速化、既存source edgelocationの新角度)、AWS Resilience Hubのレジリエンシースコア、コスト配分タグの
+  AWS生成タグ/ユーザー定義タグの有効化(既存source costAllocTagsの新角度、複数選択含む)、AWS Cost
+  Categoriesの分割請求ルール(Split Charge Rules、既存source costCategoriesの新角度)。新規出典2件
+  （firehose, grafana）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回も
+  WebFetchが成功**）、本文を直接確認した上で追加した。CloudFront OACとS3 Transfer Acceleration、FISの
+  停止条件、VPC Flow Logsの記録対象外トラフィック、AWS Private CAの失効方式、Cognitoのトークン、AWS
+  Cost Categoriesの分割請求ルールもすべてWebSearch/WebFetchで公式ドキュメント(docs.aws.amazon.com)の
+  記述を確認してから出題内容を作成した。なおAWS Outposts(1U/2Uサーバー形態)を新規VOCAB候補として
+  WebSearchで確認したところ、「Outposts servers(1U/2U)は新規販売を終了しており、既存顧客はOutposts
+  rackへの移行が案内されている」ことが判明したため、既存の除外事例（QLDB・Pinpoint・Amazon Forecast・
+  Chime・AWS Proton・AWS App Mesh(2026年9月30日サポート終了予定)等）と同様の理由でこの角度の出題は
+  見送り、代わりにAWS Local Zonesの仕組みに関する出題に差し替えた。また、AWS Proton(2026年10月7日付で
+  サポート終了)とAWS App Mesh(2026年9月30日付でサポート終了予定)を新規SOURCES候補としてWebSearchで
+  確認したが、いずれも終了済み・終了予定のサービスであるため出典・出題対象から除外した。既存の飽和気味の
+  source（sixAdv30件・wafReliability21件・migrationStrategies18件・wafOps11件・waf11件・ec2Ri11件・
+  Well-Architectedの各柱の個別設計原則は全て出題済みのもの等）は今回の新規追加の対象から意図的に避けた。
+  今回はtech(特にVOCAB/PRACTICE)の比率がやや高め(新規source2件を両方techに配置したため)になったが、
+  concepts向けの手頃な未出題トピックが払底気味であることが一因であり、累計の3プール全体としては目標比率
+  からの乖離は小さい。正解位置は単一選択19件(VOCAB4・PRACTICE12・MOCK_POOL3)を0,1,2,3でほぼ均等に
+  ローテーション(0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE1・MOCK_POOL1)は{0,2}と{1,3}の
+  異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffおよびnode(vm.runInContext)での
+  読み込みを確認し、既存492件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOL
+  それぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
