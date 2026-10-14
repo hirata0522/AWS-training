@@ -970,3 +970,49 @@
   追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存
   VOCAB221/PRACTICE622/MOCK_POOL215件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、ローカルの`master`は既に`origin/master`の最新コミット(3166213、前回
+  記録の累計VOCAB225/PRACTICE635/MOCK_POOL219時点)と一致していたため、`git checkout master`後の
+  `git pull --rebase origin master`はfast-forward不要で即座に完了した。累計 VOCAB=229, PRACTICE=648,
+  MOCK_POOL=223（3プールとも各ドメイン比率は目標26/25/33/16%に近いが、今回の新規追加分がtech(新規source2件)
+  に偏ったため、累計でもやや乖離: VOCAB tech33.6/security24.9/billing16.6/concepts24.9、PRACTICE
+  concepts24.7/billing15.6/security25.3/tech34.4、MOCK_POOL concepts25.1/security25.1/billing16.6/
+  tech33.2）。新規SOURCES2件を追加: AWS Ground Station（衛星通信をマネージドサービスとして提供、自前の
+  地上局設備が不要）、AWS Elemental MediaPackage（動画のJust-In-Timeパッケージング・オリジネーション、
+  DRM連携）。追加トピック: AWS Ground Station（VOCAB/PRACTICE/MOCK_POOLの3問、衛星ダウンリンクのユース
+  ケース）、AWS Elemental MediaPackage（VOCAB/PRACTICE2問/MOCK_POOLの4問、MediaLive・MediaConvertとの
+  役割分担、HLS/DASH複数フォーマット出力、SPEKE経由のDRM連携）、AWS WAF ATP(Account Takeover Prevention)
+  のリクエスト検査(漏洩済み認証情報データベースとの照合)とレスポンス検査の制約(HTTP/3非対応・Cognito
+  ユーザープール非対応、既存source wafAtpの新角度、VOCAB初追加)、AWS Network Access AnalyzerのNetwork
+  Access Scope構成(MatchPaths/ExcludePaths、複数選択、既存source networkAccessAnalyzerの新角度)、AWS
+  Support App in Slackのチャンネルメンバーの権限がIAMロールのポリシーに依存する点（既存source supportApp
+  の新角度、VOCAB初追加）、Amazon S3ストレージクラスの最低保存期間比較(Glacier Deep Archive=180日、
+  Glacier Flexible Retrieval/Instant Retrieval=90日、Standard-IA/One Zone-IA=30日、既存source s3glacier
+  の新角度)、AWS DataSyncのデータ整合性検証(チェックサム・メタデータ比較、既存source datasyncの新角度)、
+  Amazon Managed Service for Apache FlinkのStudioノートブック(Apache Zeppelinベース、本番アプリケーション
+  への昇格機能、既存source managedFlinkの新角度)、AWS Prescriptive Guidanceの「Guide」階層の位置づけ
+  (Strategy/Pattern/Guideの三層構造、既存source prescriptiveGuidanceの新角度)、AWS Service Quotasの
+  「Adjustable=No」のハードリミット概念(既存source serviceQuotasの新角度)、Total Cost of Ownership(TCO)
+  算出でオンプレミス側に特有の隠れたコスト要素(既存source tcoの新角度)。新規出典2件（groundStation,
+  mediaPackage）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetchが
+  成功**）、本文を直接確認した上で追加した。既存source再利用時も、WAF ATPのリクエスト/レスポンス検査の
+  仕組み、Network Access Scopeの構成要素、S3ストレージクラスの最低保存期間、DataSyncの整合性検証方式、
+  Managed Service for Apache Flink Studioノートブックの仕様、AWS Prescriptive Guidanceの三層構造、
+  AWS Service Quotasのハードリミット概念はすべてWebFetch/WebSearchで公式ドキュメントの記述を個別に確認
+  してから出題内容を作成した。なお新規VOCAB候補として検討した「AWS App2Container」「AWS Mainframe
+  Modernization」は、WebFetchで確認した結果いずれも2025年11月7日付で新規顧客の受付を終了していることが
+  判明したため、既存の除外事例（QLDB・Migration Hub・Pinpoint等）と同様の理由で出題対象から除外し、代わりに
+  AWS Ground StationとAWS Elemental MediaPackageを採用した。AWS Activate・AWS Data Exportsについても
+  新角度の候補（クレジットの併用制限、エクスポート頻度）を検討したが、WebSearchで公式ドキュメントから
+  確実な裏付けが取れなかったため出題を見送った。既存の飽和気味のsource（sixAdv31件・wafReliability22件・
+  migrationStrategies18件・costmgmt16件・iam15件・guardduty15件・organizations12件・ec2Ri11件等）は今回の
+  新規追加の対象から意図的に避けた。正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK_POOL4)を0,1,2,3で
+  ほぼ均等にローテーション(0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE2件: Network Access
+  Scope構成・MediaPackageの特徴)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの
+  出力・git diff・node(vm.runInContext)での読み込みを確認し、既存635/622/219件(VOCAB/PRACTICE/MOCK_POOL)
+  の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを
+  付与した4箇所のみで、IDの重複も無し）を確認済み。1件のみ実装上のミスがあり、PRACTICE単一選択の
+  correct フィールドを当初`correct:N`という整数形式で書いてしまい(validate_content.pyがPRACTICE/MOCK_POOL
+  では`correct:[N]`という配列形式を前提としているため)検証エラーとなったが、該当11件を`correct:[N]`形式に
+  修正してから再検証・コミットした（次回以降の実行でも、PRACTICE/MOCK_POOLのtype:'single'は
+  `correct:[N]`という配列形式で書く必要がある点に注意）。
