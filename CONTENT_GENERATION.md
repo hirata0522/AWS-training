@@ -1332,3 +1332,35 @@
   validate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存737件
   (VOCAB261/PRACTICE745/MOCK_POOL255)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、そのdetached HEADはすでに`origin/master`の最新コミットと一致しており、
+  ローカルの`master`ブランチだけが古い状態だった。`git checkout master && git pull --rebase origin master`で
+  fast-forwardして復帰してから作業した。開始時点でVOCAB265/PRACTICE758/MOCK_POOL259であることを確認した。
+  累計 VOCAB=269, PRACTICE=771, MOCK_POOL=263（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.8/security24.5/billing16.7/concepts24.9、PRACTICE concepts24.1/billing16.1/security25.7/tech34.1、
+  MOCK_POOL concepts25.1/security25.1/tech33.1/billing16.7）。新規SOURCES2件を追加: Amazon S3 Express One
+  Zone(単一AZ・ディレクトリバケットによる高性能ストレージクラス)、AWS Supply Chain(ERP/サプライチェーン
+  管理システムのデータを統合し機械学習で需給予測・在庫リスクを可視化するクラウドアプリケーション)。
+  S3 Express One ZoneはWebFetchをdocs.aws.amazon.com(本文タイトルのみ返り失敗)およびaws.amazon.com(本文を
+  直接取得・確認に成功)に対して試した。AWS Supply ChainはWebFetchをdocs.aws.amazon.comに対して試したが
+  404で失敗したため、WebSearchで複数言語ミラー(es_es/de_de等)の同一構造のページが実在することを確認する
+  フォールバックを使った(**今回はdocs.aws.amazon.comへのWebFetchは一部成功・一部失敗の混在で、aws.amazon.com
+  へのWebFetchは成功**)。追加トピック: 上記2新規サービスに加え、Amazon Detective(ビヘイビアグラフによる
+  対話的調査、VOCAB初追加)、AWS Audit Managerの自動エビデンス収集、GuardDuty Extended Threat Detectionの
+  EKS関連シーケンス検出に必要な保護プラン(EKS Protection/Runtime Monitoringの少なくとも一方)、AWS Network
+  Access AnalyzerとVPC Flow Logsの違い(事前の静的解析 対 事後のログ解析)、Amazon MemoryDBとAmazon
+  ElastiCache for Redisの違い(永続的プライマリDB対キャッシュ)、S3 Standard-IA/One Zone-IAの最低保存期間
+  (30日)課金、AWS Trusted Advisorのチェックカテゴリ(2023年10月に追加された運用上の優秀性)、AWS Cost
+  ExplorerのAmortized Cost対Unblended Cost、AWS Cost Categoriesのルール評価順序(最初に一致したルールが
+  適用)と未一致時のデフォルト値、AWS Data ExportsのFOCUS 1.0形式(マルチクラウド向けオープン標準、CURとは
+  別物)、AWS Well-Architected ToolのLens Catalogに含まれる業界特化レンズの具体例(Financial Services
+  Industry Lens・IoT Lens)。既存のcloudValueFramework・CAF・migrationStrategies・sixAdv・wafReliability等は
+  WebSearchで「Cloud Value Frameworkは実際には4つではなく5つの柱(Cost Savings/Staff Productivity/
+  Operational Resilience/Business Agility/Sustainability)である」ことを確認した上で、既存m196で
+  Business Agilityが既に正解選択肢として明示されていることをgrepで確認し、重複を避けるため今回の新規
+  追加からは除外した(CAFは6視点、sixAdvの主要ベネフィットも既存項目で概ね出題済みのため同様に見送った)。
+  正解位置は単一選択20件(VOCAB4・PRACTICE12・MOCK4)を0,1,2,3で完全に均等にローテーション(各位置5件ずつ)、
+  複数選択1件(PRACTICE、Lens Catalogの実在レンズ名)は{0,2}を使用。追加前後でvalidate_content.pyの出力・
+  git diff・node(vm.runInContext)での読み込みを確認し、既存750件(VOCAB265/PRACTICE758/MOCK_POOL259)の
+  項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与
+  した4箇所のみで、IDの重複も無し）を確認済み。
