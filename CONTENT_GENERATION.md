@@ -928,3 +928,45 @@
   を使用。追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存
   217/609/211件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master`した時点でローカルの`master`は既に
+  `origin/master`の最新コミット(前回記録のVOCAB221/PRACTICE609ではなく実際はVOCAB221/PRACTICE622/
+  MOCK_POOL215。前回ログの累計値表記に誤記があったため、本行は`python3 scripts/validate_content.py`で
+  実測したこの回の開始時点の値を正とする)と一致していたため、fast-forwardは不要で即座に完了した。
+  追加後の累計 VOCAB=225, PRACTICE=635, MOCK_POOL=219（3プールとも各ドメイン比率は目標26/25/33/16%に
+  近い: VOCAB tech33.3/security24.9/billing16.4/concepts25.3、PRACTICE concepts24.7/billing15.7/
+  security25.4/tech34.2、MOCK_POOL concepts25.1/security25.1/tech32.9/billing16.9）。新規SOURCES4件を
+  追加: AWS Prescriptive Guidance（移行・モダナイゼーションのノウハウを戦略/パターン/ガイドの形式で
+  提供するコンテンツライブラリ）、AWS Activate（スタートアップ向けクレジット・技術サポート・トレーニング
+  提供プログラム、Activate Founders対Activate Portfolio）、AWS Support App in Slack（Slackチャンネルから
+  サポートケースを管理）、Amazon Interactive Video Service (IVS)（低遅延のライブ動画配信サービス）。
+  追加トピック: AWS Prescriptive Guidance（VOCAB/PRACTICE/MOCK_POOLの3問、コンテンツ形式Guide/Strategy/
+  Patternの区別を含む）、AWS Activate（VOCAB/PRACTICEの2問、Founders対Portfolioの違い）、AWS Support App
+  in Slack（PRACTICE/MOCK_POOLの2問）、Amazon IVS（PRACTICE2問/MOCK_POOL1問、MediaLiveとの使い分け）、
+  AWS Compliance Programs（既存source compliancePrograms、VOCAB初追加）、Amazon GuardDuty Malware
+  Protection for S3（既存source guardduty、VOCAB初追加・PRACTICE/MOCK_POOLでEventBridge連携の隔離
+  ワークフローを出題）、AWS Resilience HubとAWS Fault Injection Service (FIS)の統合（既存source
+  resilienceHub、2024年12月に追加されたレジリエンス実験推奨機能という新角度）、AWS Cloud Value Frameworkの
+  「コスト削減(Cost Savings)」の観点（既存source、これで5つの価値の観点すべてに専用問題を追加）、Amazon
+  InspectorのCode Security機能（既存source inspector、ソースコード/依存関係/IaCスキャンという従来の
+  EC2・ECR・Lambdaスキャンとは異なる新角度）、AWS IAM Identity CenterのABAC（属性ベースアクセス制御、既存
+  source、SSO/許可セットとは異なる新角度）、AWS Secrets Managerのリージョン間レプリケーション（既存
+  source、ローテーションとは異なる新角度、複数選択）、AWS Global Acceleratorの仕組み（既存source、Anycast
+  IPの新角度）、AWS AppConfigの設定データソース（既存source、ロールバックとは異なる新角度、複数選択）。
+  新規出典4件のうちAWS Support App in SlackとAWS Activateは本実行環境でWebFetchが
+  docs.aws.amazon.com/aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で
+  追加した。AWS Prescriptive GuidanceとAmazon IVSはWebSearchの検索結果スニペットで確認した。AWS Activate
+  は複数のAWS公式ページでクレジット上限額の記載（$100,000〜$200,000等）がばらついていたため、出題内容には
+  具体的な金額を含めず、Founders(自己資金)対Portfolio(プロバイダー紹介)という安定した仕組みの違いのみを
+  扱った。GuardDuty Malware Protection for S3(2024年6月一般提供開始)とInspector Code Securityの機能詳細、
+  Resilience Hub×FISの統合(2024年12月)、Secrets Managerのリージョン間レプリケーションの仕様はいずれも
+  WebSearchで公式ドキュメント・AWS発表記事の内容を確認してから出題した。既存の飽和気味・類似シナリオ
+  過多のsource（sixAdv31件・wafReliability22件・migrationStrategies18件・costmgmt16件・iam15件・
+  budgets8件・drStrategies8件・rtorpo7件・transferFamily3件・consolidatedBilling6件等）は今回の新規
+  追加の対象から意図的に避け、新規サービスと、既存sourceのうち軽度の利用頻度(2〜5件)で明確に未出題の
+  角度があるものを優先した。正解位置はVOCAB4件を0,1,2,3でローテーションし、PRACTICE/MOCK_POOLの単一選択
+  15件は0,1,2,3でほぼ均等にローテーション(0が4件、1が4件、2が4件、3が3件)、複数選択2件(PRACTICE2件:
+  Secrets Managerのレプリケーション・AppConfigの設定ソース)は{0,2}と{1,3}の異なる組み合わせを使用。
+  追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存
+  VOCAB221/PRACTICE622/MOCK_POOL215件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
