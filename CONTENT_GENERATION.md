@@ -1237,3 +1237,32 @@
   node(vm.runInContext)での読み込みを確認し、既存722件中の新規追加前の709件(PRACTICE)および既存249/243件
   (VOCAB/MOCK_POOL)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾
   項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master && git pull --rebase origin master`で復帰した
+  （ローカルmasterは既にorigin/masterの最新コミットと一致しており、fast-forwardは不要だった）。累計
+  VOCAB=257, PRACTICE=735, MOCK_POOL=251（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.5/security24.5/billing16.7/concepts25.3、PRACTICE concepts24.2/billing15.9/security25.7/
+  tech34.1、MOCK_POOL concepts25.5/security25.1/tech32.7/billing16.7）。今回は新規SOURCESを追加しなかった。
+  新サービス候補としてAmazon WorkMail(WebSearchで2026年4月30日付で新規顧客受付終了予定と判明)、AWS Cloud9
+  (2024年7月25日付で新規顧客受付を終了済みと判明。CodeCommit等も同時に終了済み)、Amazon Managed Blockchain
+  (2026年10月29日付で新規顧客受付終了予定、既に目前と判明)を検討したがいずれも除外し、代わりに既存SOURCES
+  の未出題の具体的な角度を追加した。追加トピック: AWS CodeDeploy(VOCAB初追加・AppSpecファイルのライフ
+  サイクルフック)、IAMグループ(VOCAB新規、グループはプリンシパルになれずネストもできない点)、AWS Invoicing
+  請求書機能(VOCAB初追加、existing source invoicesのVOCAB化)、クラウドの6つのメリット「Stop Guessing
+  Capacity」(VOCAB新規、既存source sixAdvのVOCAB化)、AWS Snowcone(最小・最軽量デバイス、DataSyncでの
+  ネットワーク経由返送)、AWS Control TowerのAccount Factory、AWS Outpostsの利用形態(容量の事前注文・
+  AWSによる設置保守・契約期間)、Amazon Macieのカスタムデータ識別子(正規表現による独自フォーマット検出)、
+  AWS RAMで共有可能なリソースタイプ(License Manager設定、多肢選択)、AWS PrivateLinkのプライベートDNS、
+  AWS Device Farmのデスクトップブラウザテスト(Selenium)対応、AWS IoT SiteWiseのアセットモデル階層構造、
+  AWS Elemental MediaTailorのID3時限メタデータ挿入、Amazon CloudWatch RUM対Synthetics(パッシブ対アクティブ
+  監視)、AWS CodeDeployのAppSpecファイル(多肢選択)、EC2 Dedicated Host対Dedicated Instanceの違い、AWS
+  Partner Networkのコンサルティングパートナー対テクノロジーパートナー、Amazon Snowball Edgeのデータ暗号化
+  (256-bit、KMS管理)、Amazon Macieの検出ジョブ(1回限り/スケジュール、圧縮ファイル対応)、Amazon WorkSpacesの
+  課金方式(Monthly/Hourly)とAutoStop稼働モード、AWS Free Tierの「短期トライアル」区分の定義。いずれも既存
+  grepで既出内容と重複しないことを個別に確認した上で追加し、安定した(近年の変更リスクが低い)既存知識のみを
+  使用したため、今回はWebFetchでの新規ソース確認は行わず、新サービス候補の除外判断のみWebSearchを使用した。
+  正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK_POOL4)を0,1,2,3でほぼ均等にローテーション(各位置4〜5件)、
+  複数選択2件(PRACTICE、RAM共有リソース種別・CodeDeploy AppSpec)は{0,2}と{1,3}の異なる組み合わせを使用。
+  追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存722件
+  (VOCAB253/PRACTICE722/MOCK_POOL247)の項目は一切変更していないこと（diffはVOCAB/PRACTICE/MOCK_POOLそれ
+  ぞれの末尾項目にカンマを付与した3箇所のみで、IDの重複も無し）を確認済み。
