@@ -726,3 +726,38 @@
   validate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存544件の項目は一切
   変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所の
   みで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master`した時点でローカルの`master`は`origin/master`
+  より古い状態だったため`git pull --rebase origin master`でfast-forwardして復帰した。累計 VOCAB=205,
+  PRACTICE=570, MOCK_POOL=199（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech32.7/security24.9/billing16.6/concepts25.9、PRACTICE concepts25.4/billing16.1/security25.1/
+  tech33.3、MOCK_POOL concepts25.6/security25.1/tech32.7/billing16.6）。新規SOURCES5件を追加: AWS
+  Well-Architected Tool「レンズ(Lens)」機能、AWS Cloud Value Framework（クラウド導入の価値を測る5つの
+  観点）、AWS Network Access Analyzer（ネットワークパスの静的解析）、AWS Elemental MediaConvert
+  （ファイルベースの動画トランスコード）、IAM Policy Simulator。追加トピック: Well-Architected
+  レンズ（Serverless Applications Lens等、VOCAB/PRACTICE新規導入）、AWS Cloud Value Frameworkの5つの
+  価値の観点（コスト削減/スタッフの生産性向上/運用上の回復性/ビジネスアジリティ/持続可能性、複数選択含む
+  VOCAB/PRACTICE/MOCK_POOLの4問）、AWS Well-Architected Toolのレンズ選択機能（既存source watoolの新角度）、
+  ディザスタリカバリ「バックアップ&リストア」戦略（既存source drStrategiesの新角度、最も低コストだが
+  RTO/RPOが最大）、AWS Network Access Analyzer（VOCAB/PRACTICEの2問）、AWS Audit Managerの事前定義済み
+  フレームワークライブラリ（既存source auditManagerの新角度）、IAM Policy Simulator（複数選択含む
+  PRACTICE/MOCK_POOLの2問）、AWS Elemental MediaConvert（VOCAB/PRACTICE/MOCK_POOLの3問）、Amazon EC2
+  インスタンスタイプのファミリー比較（既存source ec2の新角度）、Amazon CloudWatch複合アラーム(Composite
+  Alarm、既存source cloudwatchの新角度）、AWS Service QuotasのCloudWatchアラーム連携（既存source
+  serviceQuotasの新角度）、AWS Trusted Advisorの全チェック利用に必要なサポートプラン(Business Support+
+  以上、既存source trustedadvisorの新角度）。新規出典5件はすべて本実行環境でWebFetchが
+  docs.aws.amazon.com/aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で
+  追加した。特にAWS Cloud Value Frameworkは、学習時点の知識では「4つの価値の柱」という古い情報を想定して
+  いたが、WebFetchでaws.amazon.com/executive-insights/content/business-value-on-aws/を確認した結果、
+  現行は「コスト削減・スタッフの生産性向上・運用上の回復性・ビジネスアジリティ・持続可能性」の5つの
+  観点であることが判明したため、5つの観点として出題内容を修正した（まさにランブックが警告する
+  「変化しやすい事実」の実例）。同様にIAM Policy Simulatorも、2026年7月30日付でIAMコンソールに統合され
+  SCPのテストにも対応したという最近の変更がWebSearchで判明したため、特定のURL形態や「スタンドアロンの
+  ツール」という古い言及は避け、機能面の記述に限定した。既存の飽和気味のsource（sixAdv31件・
+  wafReliability22件・migrationStrategies18件・iam15件・mfa6件・iamIdentityCenter5件・ram5件等）は
+  今回の新規追加の対象から意図的に避けた。正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK_POOL4)を
+  0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE2件: Cloud
+  Value Frameworkの価値の観点・IAM Policy Simulatorのテスト対象)は{0,2}と{1,3}の異なる組み合わせを使用。
+  追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存557件の
+  項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを
+  付与した4箇所のみで、IDの重複も無し）を確認済み。
