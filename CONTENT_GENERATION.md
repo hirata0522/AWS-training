@@ -1049,3 +1049,36 @@
   node(vm.runInContext)での読み込みを確認し、既存229/648/223件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更して
   いないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの
   重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached HEAD
+  の状態になっていたため、`git checkout master && git pull --rebase origin master`で復帰してから作業した
+  （fast-forward不要でローカル`master`は既に`origin/master`の最新コミットと一致していた）。開始時点で
+  VOCAB233/PRACTICE661/MOCK_POOL227であることを確認してから新規追加を開始した。追加後の累計
+  VOCAB=237, PRACTICE=674, MOCK_POOL=231（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.3/security24.9/billing16.9/concepts24.9、PRACTICE concepts24.8/billing15.9/security25.2/tech34.1、
+  MOCK_POOL concepts25.5/security25.1/tech32.5/billing16.9）。新規SOURCES2件を追加: Amazon CloudWatch
+  Application Signals（アプリケーションの自動計装・依存関係マップ・SLO追跡機能）、Amazon EC2 Capacity
+  Blocks for ML（将来日程のGPU容量事前予約）。追加トピック: 上記2件の新規サービスについてVOCAB2件・
+  PRACTICE7件・MOCK_POOL1件を作成したほか、既存source（migrationStrategies=Repurchase/Relocateの
+  VOCAB初追加とReplatform対Repurchase・Relocate対Rehostの比較設問、prescriptiveGuidance=Strategy階層の
+  位置づけ、waLens=レンズカタログに含まれる業界別レンズ、riMarketplace=買い手視点でのメリット、
+  s3ObjectLock=ガバナンスモード対コンプライアンスモードの違い、backup=Vault Lockとそのクーリングオフ期間、
+  imdsv2=メタデータ不要時の無効化設定）を新角度で再利用した（事前に各sourceの既存設問テキストをgrepで
+  確認し重複がないことを確認済み）。検討したが見送った候補: Amazon DevOps Guruは新規SOURCES候補として
+  WebFetchで本文を確認したところ、2026年10月29日付で新規顧客の受付を終了し2027年9月30日にサービス終了
+  予定であることが判明したため、既存の除外事例（App Runner・Proton・WorkMail等）と同様の理由で出題対象
+  から除外し、代わりにCloudWatch Application Signalsを採用した。AWS Supply Chainおよびprescriptive-guidance
+  のMigration Readiness Assessment関連ページはWebFetchを試みたがいずれも404となり本文の直接確認ができな
+  かったため、確認できた情報の範囲にとどめる方針から新規追加は見送った。新規出典2件のうちCloudWatch
+  Application SignalsはWebFetchがdocs.aws.amazon.comに対して成功し本文を直接確認できた（**今回はWebFetch
+  が一部成功**）。Capacity Blocks for MLはWebFetchが404となったため、WebSearchの複数の検索結果スニペット
+  (docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html 等の一致を複数確認)で内容を確認する
+  フォールバックを使用した。AWS Backup Vault LockおよびAWS WAF ACFPのPassword pairing protection機能については
+  WebSearchで事実確認を行い、後者は公式ドキュメントでの用語の一致が確認できなかったため出題を見送った。
+  既存の飽和気味のsource（sixAdv31件・wafReliability22件・migrationStrategies18件(VOCAB初追加分を除く)・
+  costmgmt16件・iam15件・guardduty15件・organizations12件・ec2Ri11件・wafOps11件等）は今回の新規追加・
+  再利用の対象から意図的に避けた。正解位置は単一選択18件(VOCAB4・PRACTICE11・MOCK_POOL3)を0,1,2,3で
+  ほぼ均等にローテーション(0が5件、1が5件、2が5件、3が3件)、複数選択3件(PRACTICE2件・MOCK_POOL1件)は
+  {0,2}{1,3}{0,2}の組み合わせを使用。追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)
+  での読み込みを確認し、既存233/
+  661/227件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
