@@ -575,3 +575,47 @@
   異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffおよびnode(vm.runInContext)での
   読み込みを確認し、既存492件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOL
   それぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master`すると、ローカルの`master`は既に`origin/master`
+  最新コミット(b7fbe7f)と18コミット分遅れていたため、`git pull --rebase origin master`でfast-forwardして
+  復帰してから作業した。累計 VOCAB=189, PRACTICE=518, MOCK_POOL=183（3プールとも各ドメイン比率は目標
+  26/25/33/16%に近い: VOCAB tech32.8/security25.4/billing16.9/concepts24.9、PRACTICE
+  concepts25.1/billing16.0/security25.1/tech33.8、MOCK_POOL concepts25.7/security25.1/tech32.2/
+  billing16.9）。追加トピック: AWS IoT Device Defender（新規、IoTデバイスのAudit/Rules Detect/ML Detect/
+  Mitigation Actions機能）、Amazon Managed Service for Prometheus（新規、PromQL互換のサーバーレスコンテナ
+  メトリクス監視、クロスリージョン集約のアグリゲーターリージョン設定）、AWS Resource Explorer（新規、
+  複数リージョン・アカウント横断の検索エンジン的リソース検索、Resource Groups/Configとの違い）、クラウドの
+  デプロイモデル(パブリック/プライベート/ハイブリッド/マルチクラウドの識別、既存source hybridCloudの新角度)、
+  AWS Organizationsの管理アカウント(請求の一括受取先であり、LeaveOrganizationでは退出できずDeleteOrganization
+  でのみ組織から外れる点、既存source organizationsの新角度)、AWS Artifactの「Agreements」機能(BAA/NDAの締結、
+  既存のReports機能とは別角度)、責任共有モデル(データセンターの物理的セキュリティは常にAWS責任/EC2ゲストOS
+  パッチは常に顧客責任、既存source sharedの新角度)、AWS Systems Manager Patch Manager(既存source
+  systemsManagerの新角度)、AWS Site-to-Site VPNの2トンネル冗長構成(既存source siteToSiteVpnの新角度)、
+  Amazon Managed GrafanaのIAM Identity Center/SAML認証(既存source grafanaの新角度)、AWS CodeArtifactの
+  外部接続(パブリックリポジトリのアップストリーム・キャッシュ、既存source codeartifactの新角度)、Amazon MQの
+  デプロイモード(シングルインスタンス対アクティブ/スタンバイ、既存source amazonMQの新角度)、AWS Marketplace
+  のプライベートオファー(セラー・バイヤー間のカスタム価格/EULA、有効期限切れ時の挙動、既存source marketplace
+  の新角度)。新規出典3件（iotDeviceDefender, prometheus, resourceExplorer）はすべて本実行環境でWebFetchが
+  docs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。Amazon MQの
+  デプロイモード、Site-to-Site VPNの2トンネル構成、Systems Manager Patch Manager、AWS Artifactの
+  Agreements機能、AWS Marketplaceのプライベートオファー、AWS Organizationsの管理アカウントの退出制限、
+  Amazon Managed GrafanaのIAM Identity Center/SAML認証、AWS CodeArtifactの外部接続は、いずれも既存SOURCESの
+  再利用だが、WebSearchで公式ドキュメント(docs.aws.amazon.com)の内容を個別に確認してから出題内容を作成した。
+  なおAWS Migration EvaluatorはWebSearchで「公式FAQが現在AWS Transformのアセスメント機能を案内しており、
+  AWS Transformへの統合が進んでいる可能性がある」ことが判明したため、既存の除外事例（QLDB・Pinpoint・
+  CloudTrail Lake等）と同様の理由でこの回の新規追加候補からは除外した。AWS Application Cost Profilerも
+  WebSearchで「2024年9月30日付で新規顧客の受付を終了している」ことが確認できたため、新規出典候補から除外
+  した。既存の飽和気味のsource（sixAdv30件・wafReliability21件・migrationStrategies18件・
+  costmgmt16件・caf14件等、加えてcostOptimizationHub・capacityReservation・awsHealth・serviceCatalog・
+  watool・controlTower・licenseManager・repost・riMarketplace・costExplorer・budgets・billingConductor・
+  costAnomalyDetection・cur・pricingcalc・free・config・vpcPeering・eks・dataZone・resourceGroups・
+  quicksight・codeguru・amazonMQ(既存角度)・appflow・dataExports等、いずれも既存の設問内容をgrepで確認した
+  結果、新規追加に使える未出題の角度が見当たらなかったもの）は今回の新規追加の対象から意図的に避けた結果、
+  billing・concepts領域で新規に使える出典が手薄になり、tech・security領域にやや重みが寄った
+  (この回の21件の内訳: concepts4/security6/tech7/billing4。目標比率(26/25/33/16%)からの乖離はあるが、
+  累計の3プール全体としては目標比率に近い値を維持できている)。正解位置は単一選択19件(VOCAB4・PRACTICE11・
+  MOCK_POOL4)を0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE2件:
+  IoT Device DefenderのDetect機能・Amazon Managed GrafanaのSSO認証方法)は{0,2}と{0,2}の組み合わせを使用
+  (SOURCESが異なるため同一組み合わせでも出題内容の重複はない)。追加前後でvalidate_content.pyの出力・git
+  diffおよびnode(vm.runInContext)での読み込みを確認し、既存505件の項目は一切変更していないこと（diffは
+  SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
