@@ -802,3 +802,42 @@
   使用。追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存
   570/557/199件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached HEAD
+  の状態になっていたが、`git checkout master`した時点でローカルの`master`は既に`origin/master`の最新
+  コミットと一致していたため、fast-forward不要で即座に完了した。累計 VOCAB=213, PRACTICE=596,
+  MOCK_POOL=207（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.3/security24.4/billing16.4/concepts25.8、PRACTICE concepts25.2/billing16.1/security25.2/
+  tech33.6、MOCK_POOL concepts25.6/security25.1/tech32.4/billing16.9）。新規SOURCES2件を追加: AWS Lake
+  Formation（S3データレイク＋Glueデータカタログに対するテーブル・列・行単位のきめ細かいアクセス許可管理）、
+  AWS Elemental MediaLive（ライブ動画のリアルタイムエンコード・放送/ストリーミング配信向け変換）。
+  追加トピック: AWS Lake Formation（VOCAB/PRACTICE/MOCK_POOLの3問、いずれもAWS Glue・Amazon Athena・
+  AWS RAM等の隣接サービスとの違いを問う形式）、AWS Elemental MediaLive（VOCAB/PRACTICEの2問、既存source
+  mediaconvertとの「ライブ対オンデマンド」の違いを明確化）、Amazon ECS（新規VOCAB初出。EKS・Fargate・ECR
+  との役割分担を問うPRACTICEも追加）、Amazon EKS（既存source、VOCAB・PRACTICEいずれも今回が初出。ECSとの
+  使い分け・Kubernetes標準API準拠の観点）、ハイブリッドクラウド(Hybrid Cloud)（新規VOCAB。既存の
+  パブリック/プライベート/マルチクラウドの3用語に続く4つ目のデプロイモデル用語として追加。既存source
+  hybridCloudを再利用し、PRACTICEでも別角度のシナリオ問題を追加）、IAM Policy Simulator（既存source、
+  PRACTICE初追加。ポリシーの事前シミュレーション）、AWS Network Access Analyzer（既存source、PRACTICE新
+  角度。トラフィックを送らない静的なネットワーク到達性解析）、AWS Security Incident Response（既存source、
+  PRACTICE新角度。24時間365日の専門チーム支援というサブスクリプション型の性質）、AWS Verified Access
+  （既存source、PRACTICE/MOCK_POOLでゼロトラストの特徴を問う複数選択・単一選択）、コスト配分タグ（既存
+  source costAllocTags、PRACTICE新角度。部門別チャージバックのシナリオ）、Amazon EC2 Reserved Instance
+  Marketplace（既存source riMarketplace、PRACTICE単一選択・MOCK_POOL複数選択の2問。不要になったRIの
+  売却というシナリオ）、SLA (Service Level Agreement)（既存source slaLegal、PRACTICE/MOCK_POOLで
+  サービスクレジットによる補償の仕組みを問う新角度）、RTO/RPO（既存source rtorpo、PRACTICEで複数選択の
+  比較形式を追加）。新規出典2件（lakeFormation, medialive）はいずれも本実行環境でWebFetchが
+  docs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した
+  （lakeFormationはS3データレイク＋Glueデータカタログへのきめ細かいアクセス許可管理という役割を、
+  medialiveはライブ動画のリアルタイム変換という役割をそれぞれ本文で確認）。VOCABの新規候補として検討した
+  用語のうち、既存termリストをgrepで確認した結果「AWS Elastic Disaster Recovery (DRS)」「AWS Fault
+  Injection Service (FIS)」「AWS Clean Rooms」は、末尾に略称等が付いた表記違いで実際には既にVOCABへ
+  存在していたことが判明したため除外し、代わりに未出題だったAmazon ECS・ハイブリッドクラウドを採用した
+  （今回の教訓: VOCABの重複チェックは正式名称の完全一致だけでなく、略称付き表記ゆれも考慮してgrepする
+  必要がある）。既存の飽和気味のsource（sixAdv31件・wafReliability22件・migrationStrategies18件・
+  costmgmt16件・iam15件等）は今回の新規追加の対象から意図的に避けた。正解位置は単一選択18件
+  (VOCAB4・PRACTICE11・MOCK_POOL3)を0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が4件、3が4件)、
+  複数選択3件(PRACTICE2・MOCK_POOL1)は{1,3}{0,2}{0,2}の組み合わせを使用（rtorpoとriMarketplaceの2件が
+  偶然同じ{0,2}になったが、出典・内容は異なる）。追加前後でvalidate_content.pyの出力・git diff・
+  node(vm.runInContext)での読み込みを確認し、既存583件(VOCAB209/PRACTICE583/MOCK_POOL203)の項目は一切
+  変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所の
+  みで、IDの重複も無し）を確認済み。
