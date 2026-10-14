@@ -1016,3 +1016,36 @@
   では`correct:[N]`という配列形式を前提としているため)検証エラーとなったが、該当11件を`correct:[N]`形式に
   修正してから再検証・コミットした（次回以降の実行でも、PRACTICE/MOCK_POOLのtype:'single'は
   `correct:[N]`という配列形式で書く必要がある点に注意）。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっており、かつそのdetached HEAD(c43c346)はローカルの`master`ブランチより34コミット
+  進んでいたが、`git fetch origin master`で確認したところ`origin/master`も同じc43c346を指していた（過去の
+  複数回の実行がコミット・pushまでは完了していたが、ローカル`master`ブランチへの反映だけが漏れていた状態）。
+  `git checkout master && git merge --ff-only origin/master`でfast-forwardして復旧し、
+  `python3 scripts/validate_content.py`で開始時点がVOCAB229/PRACTICE648/MOCK_POOL223であることを確認して
+  から新規追加作業を開始した。追加後の累計 VOCAB=233, PRACTICE=661, MOCK_POOL=227（3プールとも各ドメイン
+  比率は目標26/25/33/16%に近い: VOCAB tech33.5/security24.9/billing16.7/concepts24.9、PRACTICE
+  concepts24.7/billing15.6/security25.3/tech34.5、MOCK_POOL concepts25.1/security25.1/tech33.0/billing16.7）。
+  新規SOURCES7件を追加: AWS Glue DataBrew（コードを書かない視覚的なデータ準備ツール）、Amazon Comprehend
+  Medical（臨床テキストのNLP、ICD-10-CM/RxNormへのオントロジーリンク）、Amazon CloudWatch RUM（実ユーザー
+  のクライアント側パフォーマンス監視）、Amazon S3 Object Lock（WORMモデル、Governance/Complianceモード）、
+  AWS Purchase Order Management（Billing and Cost Managementコンソールの購入注文セルフサービス管理、2026年
+  初頭にプレビュー公開された比較的新しい機能）、AWS Sustainability コンソール（2026年3月に新設された、
+  Customer Carbon Footprint Tool (CCFT)の後継となる炭素排出量可視化のスタンドアロンサービス。CCFTはWebSearch
+  で確認した時点で2026年6月30日付での廃止が予定されていることが判明したため、CCFT自体は新規出題の対象とせず、
+  後継のSustainability コンソールを採用した）、Amazon EC2 インスタンスメタデータサービス(IMDSv2)（PUTリクエスト
+  によるセッショントークンを用いたセキュアなメタデータ取得方式、SSRF等への多層防御）。追加トピック: 上記7件の
+  新規サービス・機能について、VOCAB4件(各ドメイン1件ずつ)・PRACTICE11件(複数角度)・MOCK_POOL4件を作成した
+  ほか、既存の軽度利用のsource（appstream=Amazon WorkSpaces Applicationsのフリートタイプ比較、fis=実験
+  テンプレートの構成要素、waLens=カスタムレンズ、dataExports=5種類のエクスポート形式)を新角度で2件
+  (PRACTICE)再利用した。新規出典7件はすべて本実行環境でWebFetchがdocs.aws.amazon.com/aws.amazon.comに対して
+  成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。AWS Purchase Order Managementの
+  ライン品目タイプの照合ロジック、AWS Sustainability コンソールのCCFT廃止時期・MBM/LBM算出方式、IMDSv2の
+  トークン発行の仕組みはいずれも公式ドキュメントの記述を直接確認してから出題内容を作成した。既存の飽和気味の
+  source（sixAdv31件・wafReliability22件・migrationStrategies18件・costmgmt16件・iam15件・guardduty15件・
+  accessAnalyzer9件・kms9件・networkAccessAnalyzer4件・securityIR5件・inspector5件・detective5件等）は今回の
+  新規追加・再利用の対象から意図的に避けた。正解位置は単一選択18件(VOCAB4・PRACTICE11・MOCK_POOL3)を
+  0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が4件、3が4件)、複数選択3件(PRACTICE2件・MOCK_POOL1件)
+  は{0,2}{1,3}{0,3}の3通りの異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diff・
+  node(vm.runInContext)での読み込みを確認し、既存229/648/223件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更して
+  いないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの
+  重複も無し）を確認済み。
