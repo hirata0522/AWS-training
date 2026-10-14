@@ -1082,3 +1082,38 @@
   での読み込みを確認し、既存233/
   661/227件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master`した時点でローカルの`master`は既に`origin/master`
+  の最新コミット(c66536c、前回記録の累計VOCAB237/PRACTICE674/MOCK_POOL231時点)と一致していたため、
+  `git pull --rebase origin master`はfast-forward不要で即座に完了した。累計 VOCAB=241, PRACTICE=687,
+  MOCK_POOL=235（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.6/security24.9/
+  billing16.6/concepts24.9、PRACTICE concepts24.6/billing16.0/security25.3/tech34.1、MOCK_POOL
+  concepts25.5/security25.1/tech32.3/billing17.0）。新規SOURCES2件を追加: AWS User Notifications（AWS管理
+  通知とユーザー設定通知(UCN)をコンソール通知センター・メール・モバイルアプリ・チャットアプリ等の複数
+  チャネルで一元管理）、AWS Billing: 請求書(Invoice)とBillsページ（月次の請求書PDF発行・Pending/Issued
+  ステータス・Organizations管理アカウントでの連結請求確認・請求書の会社名/住所修正・請求の移管(Billing
+  Transfer)）。追加トピック: 上記2件の新規サービスについてVOCAB2件・PRACTICE4件・MOCK_POOL1件を作成した
+  ほか、既存の軽度利用のsource（comprehendMedical=VOCAB初追加、wafAcfp=VOCAB初追加、snowFamily=VOCAB初追加、
+  cloudfront=署名付きURL/Cookieによるアクセス制限、sagemaker=SageMaker Studioの統合IDE、lightsail=
+  WordPress等のブループリントを使ったユースケース、databrewは今回は見送り、s3ObjectLock=Object Lockの
+  前提条件(バージョニング必須)、iamPolicySimulator=Principal/Customモードの違いおよびSCP評価時の制約
+  (一致したSCPステートメントは非表示)、paymentCryptography=TR-31/TR-34による鍵交換、verifiedPermissions=
+  ポリシーストアの役割、transform=VMware環境向けエージェント、skillBuilder=TeamサブスクリプションのSSO/
+  管理者機能、serviceCatalog=起動制約(Launch Constraint)とIAMロール）を新角度で再利用した（事前に各sourceの
+  既存設問テキストをgrepで確認し重複がないことを確認済み）。新規出典2件はいずれも本実行環境でWebFetchが
+  docs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。
+  s3ObjectLockのバージョニング必須という前提条件、iamPolicySimulatorのPrincipal/Customモードの違いおよび
+  SCP評価時に一致したステートメントが非表示になる制約、paymentCryptographyのTR-31/TR-34鍵交換、
+  invoicesの各事実（Pending/Issued・管理アカウントでのCharges by account・会社名住所の修正・Billing
+  Transfer）はいずれもWebFetchで公式ドキュメントの本文を直接確認してから出題内容を作成した。AWS Skill
+  Builderの具体的なサブスクリプション価格（プロモーション価格と通常価格が混在し出典間で金額が一致しない
+  ため）や、AWS Activateの具体的なクレジット金額、AWS CloudWatch Internet Monitorのヘルススコアの具体的な
+  しきい値(%)は、裏付けの確度が十分でなかったため出題内容から除外し、断定的な数値を含まない事実のみを
+  採用した。既存の飽和気味のsource（sixAdv31件・wafReliability22件・migrationStrategies18件・costmgmt16件・
+  iam15件・guardduty15件・organizations12件・ec2Ri11件・wafOps11件等）は今回の新規追加・再利用の対象から
+  意図的に避けた。正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK_POOL4)を0,1,2,3でほぼ均等にローテーション
+  (0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE2件: IAM Policy Simulator・Verified Permissions)は
+  {0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)
+  での読み込みを確認し、既存237/674/231件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffは
+  SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を
+  確認済み。
