@@ -656,3 +656,36 @@
   AWS Cloud Mapの特徴)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git
   diffおよびnode(vm.runInContext)での読み込みを確認し、既存518件の項目は一切変更していないこと（diffは
   SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master`すると、ローカルの`master`が`origin/master`の
+  最新コミット(cb63a57)より21コミット古い状態だったため、`git pull --rebase origin master`でfast-forward
+  して正しい状態（直前のエントリ記録の累計VOCAB193/PRACTICE531/MOCK_POOL187）に復帰してから作業した。累計
+  VOCAB=197, PRACTICE=544, MOCK_POOL=191（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech32.5/security25.4/billing16.8/concepts25.4、PRACTICE concepts25.0/billing16.0/security25.2/
+  tech33.8、MOCK_POOL concepts25.7/security25.1/tech32.5/billing16.8）。新規SOURCES2件を追加: AWS Service
+  Quotas（サービスのリソース上限管理）、Amazon EC2 Dedicated Host（専有ホスト）。追加トピック: AWS Service
+  Quotas（クォータの引き上げリクエスト、デフォルト値と適用済みクォータの違い、VOCAB/PRACTICE/MOCK_POOLの
+  3問で新規導入）、EC2 Dedicated Host（ソケット単位のBYOL対応、Dedicated Instanceとの違い、Dedicated Host
+  Reservationによる最大70%割引、無料利用枠の対象外である点、VOCAB/PRACTICE(2問)/MOCK_POOLの4問で新規導入）、
+  弾力性(Elasticity)対スケーラビリティ(Scalability)の違い（既存source sixAdvの新角度）、AWS Health Personal
+  Health DashboardとService Health Dashboardの違い（既存source awsHealthの新角度）、AWS Shield Advancedの
+  コスト保護(Cost Protection)機能とその利用条件（既存source shieldの新角度、VOCAB/PRACTICE/MOCK_POOLの3問）、
+  AWS CloudHSMとKMSの違い（FIPS 140-2レベル3のシングルテナントHSM、既存source cloudhsmの新角度）、Amazon
+  GuardDutyのEKS Protection/RDS Protection（既存source guarddutyの新角度、複数選択）、AWS CodeBuild対AWS
+  CodePipelineの役割分担（既存source codebuildの新角度、VOCAB初導入）、Amazon Route 53の正式なルーティング
+  ポリシー（加重・レイテンシーベース、既存source route53の新角度、複数選択）、Amazon EventBridge Scheduler
+  によるLambda定期実行（既存source eventbridgeの新角度）、Amazon AthenaとAmazon Redshiftの使い分け・Athenaの
+  スキャン量課金モデル（既存source athenaの新角度、PRACTICE/MOCK_POOLの2問）、AWS Organizations一括支払いに
+  おけるリザーブドインスタンス/Savings Plansの割引共有（既存source consolidatedBillingの新角度）。新規出典2件
+  （serviceQuotas, dedicatedHosts）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し
+  （**今回もWebFetchが成功**）、本文を直接確認した上で追加した。なおAWS App Meshを新規VOCAB候補として
+  WebFetchで確認したところ、「2026年9月30日付でサポートを終了する」という終了予告(End of support notice)が
+  本文冒頭に明記されていたため、既存の除外事例（QLDB・Forecast・Kendra・Connect・App Runner・Application
+  Discovery Service・Amazon Q Business等）と同様の理由で出題対象から除外した。既存の飽和気味のsource
+  （sixAdv30件・wafReliability22件・migrationStrategies18件・costmgmt16件・iam15件等）は今回の新規追加の
+  対象から意図的に避け、新規サービスと未出題の具体的な機能・角度を優先した。正解位置は単一選択18件
+  (VOCAB4・PRACTICE11・MOCK_POOL3)を0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が4件、3が4件)、
+  複数選択3件(PRACTICE2・MOCK_POOL1)は{0,2}{1,3}{0,3}の3通りの異なる組み合わせを使用。追加前後で
+  validate_content.pyの出力・git diffおよびnode(vm.runInContext)での読み込みを確認し、既存531件の項目は
+  一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した
+  4箇所のみ）を確認済み。
