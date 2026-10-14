@@ -882,3 +882,49 @@
   の出力・git diff・node(vm.runInContext)での読み込みを確認し、既存596/583/203件(VOCAB/PRACTICE/MOCK_POOL)
   の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを
   付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached HEAD
+  の状態になっていたが（`git branch --show-current`が空）、`git checkout master`した時点でローカルの
+  `master`は`origin/master`の最新コミット(前回記録の609/596/211件時点)より古い状態だったため、
+  `git pull --rebase origin master`でfast-forwardして復帰した。累計 VOCAB=221, PRACTICE=622,
+  MOCK_POOL=215（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.9/security24.4/billing16.3/concepts25.3、PRACTICE concepts24.8/billing15.8/security25.2/
+  tech34.2、MOCK_POOL concepts25.1/security25.1/tech33.0/billing16.7）。新規SOURCES3件を追加: Amazon
+  Kinesis Video Streams（デバイスからのライブ映像をクラウドへストリーミング・保存・インデックスする
+  フルマネージド型サービス）、AWS Cloud WAN（複数リージョン・拠点をポリシーベースで宣言的に接続する
+  グローバルWANサービス）、Amazon CloudWatch Synthetics（カナリアによるエンドポイントの能動的・定期的な
+  死活/機能監視）。追加トピック: AWS Cloud WAN対AWS Transit Gateway(単体)の使い分け、Cloud WANの
+  コアネットワークポリシー(セグメント・アタッチメントの宣言的定義、複数リージョンのコアネットワーク
+  エッジの自動フルメッシュピアリング)、Amazon Kinesis Video Streams(多数デバイスからのライブ映像の
+  時刻インデックス付き保存・バッチ解析、VOCAB/PRACTICE/MOCK_POOLの3問)、Amazon CloudWatch Synthetics
+  (顧客不在時間帯の能動的な操作手順の再現、カナリアがLambda関数として実装されNode.js/Python/Javaで
+  記述可能な点・最短1分間隔のスケジュール実行、VPC内のプライベートエンドポイント監視、複数選択含む
+  PRACTICE2問/MOCK_POOL1問)、AWS Fargate(既存source、VOCAB初追加・ECSタスクとEKSポッドの両方に使える
+  という既存の「EC2管理不要」angle とは異なる角度)、AWS IAM Policy Simulator(既存source、VOCAB初追加)、
+  Amazon EC2 Capacity Reservation Fleet(既存source、VOCAB初追加)、Amazon Redshift Spectrum(既存source
+  redshiftの新角度、S3データをロードせずRedshiftの既存テーブルと直接結合)、Amazon Rekognition Video
+  とKinesis Video Streamsの統合(既存source rekognitionの新角度)、GuardDuty Runtime Monitoring(既存source
+  guardduty、EKS/Fargate上のECS/EC2のOSレベル・ネットワーク・ファイルイベントの継続的な挙動監視。
+  Malware Protection/S3 Protection/RDS Protection/EKS Protectionとは別の保護機能で、本ファイルでは今回が
+  初出)、AWS WAF ATPのレスポンス検査(CloudFrontディストリビューション限定・非同期処理、既存source
+  wafAtpの新角度)、ACFPとATPを同一Web ACLに併用する構成・両者の検査内容の違い(サインアップ時のメール
+  ドメイン/電話番号/住所フィールド検証 対 ログイン時の認証情報照合、既存source wafAcfpの新角度、
+  PRACTICE/MOCK_POOLの2問)、AWS Well-Architected Toolのレンズの複数適用(既存source waLensの新角度、
+  複数選択)、AWS Transformの.NET Frameworkモダナイゼーション(既存source transformの新角度、マインフレーム・
+  VMware移行とは異なる角度)。新規出典3件（kinesisVideo, cloudWan, cwSynthetics）はすべて本実行環境で
+  WebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。
+  また既存source再利用時も、特に間違えやすい事実（WAF ATP/ACFPのレスポンス検査がCloudFront限定である点、
+  ACFPがCognitoユーザープールに非対応である点、Capacity Reservation Fleetの割り当て戦略は現在
+  prioritizedのみサポートである点、Well-Architected Toolのレンズ数上限、AWS Transformの.NET
+  モダナイゼーション機能）はWebFetch・WebSearchで公式ドキュメントを直接確認してから出題内容を作成した
+  （WAF ATPのCAPTCHA/Challengeアクションの詳細な挙動は公式ページの記述のみでは断定しづらかったため、
+  出題対象から除外した）。既存の飽和気味のsource（sixAdv31件・wafReliability22件・migrationStrategies18件・
+  costmgmt16件・iam15件・drStrategies8件・costAnomalyDetection5件・verifiedPermissions4件・rolesAnywhere4件・
+  detective5件・securityIR5件・resilienceHub5件・networkAccessAnalyzer3件・iamPolicySimulator(PRACTICE既存3件)
+  ・costCategories4件・costOptimizationHub5件・costExplorer6件・consolidatedBilling6件・comprehend3件等）は、
+  既出内容と重複しない具体的な未出題の事実・角度であることを個別にgrepで確認できたもの以外は今回の新規
+  追加の対象から意図的に避け、新規サービス・未出題の角度を優先した。正解位置は単一選択19件
+  (VOCAB4・PRACTICE11・MOCK_POOL4)を0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が5件、3が4件)、
+  複数選択2件(PRACTICE2件: waLensのレンズ複数適用・cwSyntheticsの実装詳細)は{0,2}と{1,3}の異なる組み合わせ
+  を使用。追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存
+  217/609/211件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
