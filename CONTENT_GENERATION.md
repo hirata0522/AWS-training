@@ -619,3 +619,40 @@
   (SOURCESが異なるため同一組み合わせでも出題内容の重複はない)。追加前後でvalidate_content.pyの出力・git
   diffおよびnode(vm.runInContext)での読み込みを確認し、既存505件の項目は一切変更していないこと（diffは
   SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master && git pull --rebase origin master`で復帰した
+  時点でローカル`master`は既に`origin/master`の最新コミット(前回記録の518件時点)と一致していたため、
+  fast-forward不要で即座に完了した。累計 VOCAB=193, PRACTICE=531, MOCK_POOL=187（3プールとも各ドメイン
+  比率は目標26/25/33/16%に近い: VOCAB tech32.6/security25.4/billing16.6/concepts25.4、PRACTICE
+  concepts25.0/billing16.0/security25.2/tech33.7、MOCK_POOL concepts25.7/security25.1/tech32.6/
+  billing16.6）。新規SOURCES3件を追加: AWS Cloud Map（サービスディスカバリー）、AWS IoT SiteWise（産業
+  データ収集）、AWS Service Level Agreements（SLA公式ページ）。追加トピック: SLA(Service Level
+  Agreement)の定義とRTO/RPOとの違い（VOCAB/PRACTICE/MOCK_POOLの3プールで新規導入）、マルチクラウド
+  (Multi-Cloud)のデプロイモデル（既存source hybridCloudの新角度、パブリック/プライベート/ハイブリッドとの
+  識別）、最小権限の原則(Principle of Least Privilege)（既存source iamの新角度、IAMポリシー設計の基本
+  原則としてVOCAB/PRACTICE/MOCK_POOLで新規導入）、AWS Cloud Map（サービスディスカバリー、Route 53の静的
+  DNSやApp Meshとの違い、ヘルスチェック連携、IPアドレスを持たないリソース(DynamoDB/SQS)の登録、VOCAB/
+  PRACTICE(単一選択・複数選択)/MOCK_POOLの4問で導入）、AWS IoT SiteWise（産業設備のアセットモデル・
+  SiteWise Monitor・SiteWise Edge、VOCAB/PRACTICE/MOCK_POOLの3問で導入）、Amazon S3の耐久性(11ナイン)と
+  可用性(Availability)の数値的な違い（既存source wafReliabilityの新角度、複数選択）、Amazon Security
+  Lakeのサブスクライバー「クエリアクセス」によるAmazon Athena等からの直接クエリ（既存source
+  securityLakeの新角度、既存のOCSF/収集機能とは別の「利用側」の仕組み）、AWS Signerの署名プロファイル
+  失効(Revoke Signing Profile)（既存source signerの新角度、鍵漏洩時の対応）、AWS IAM Roles Anywhereの
+  トラストアンカー(Trust Anchor)の役割（既存source rolesAnywhereの新角度、既存のp409複数選択とは別に
+  単独の定義問題として追加）、Amazon WorkSpaces Applications（旧AppStream 2.0、既存source appstreamの
+  2問目）、Amazon EC2 Reserved Instance Marketplaceの売却時のサービス料(12%)とゾーナル/リージョナル
+  スコープの出品可否（既存source riMarketplaceの新角度）、売り手登録の制限(米国の銀行口座・生涯の売却
+  上限)（既存source riMarketplaceの別角度）。新規出典3件（cloudMap, iotSitewise, slaLegal）のうち
+  cloudMapはdocs.aws.amazon.comへのWebFetchが本実行環境で成功し（**今回もWebFetchが成功**）、本文を直接
+  確認した。iotSitewiseとslaLegal(aws.amazon.com/legal/配下)はWebSearchの検索結果上でdocs.aws.amazon.com
+  /aws.amazon.com配下の実在ページであることを確認した。AWS Signerの失効機能・Security Lakeのサブスクライ
+  バークエリアクセス・EC2 Reserved Instance Marketplaceのサービス料率(12%)・売り手登録条件についても、
+  いずれもWebSearchで公式ドキュメント(docs.aws.amazon.com)の記述内容を確認してから出題内容を作成した。
+  既存の飽和気味のsource（sixAdv30件・wafReliability21件(今回複数選択1件を追加し22件)・
+  migrationStrategies18件・iam12件(今回単一選択2件を追加し14件)等）のうち、iamとwafReliabilityのみ、
+  既出内容と重複しない具体的な未出題の角度（最小権限の原則、耐久性と可用性の数値的な区別）であることを
+  個別にgrepで確認した上で利用した。正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK_POOL4)を0,1,2,3で
+  均等にローテーション(0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE2件: S3耐久性/可用性の区別・
+  AWS Cloud Mapの特徴)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git
+  diffおよびnode(vm.runInContext)での読み込みを確認し、既存518件の項目は一切変更していないこと（diffは
+  SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を確認済み。
