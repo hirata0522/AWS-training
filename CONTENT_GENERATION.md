@@ -1296,3 +1296,39 @@
   でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存722件(VOCAB253/
   PRACTICE722/MOCK_POOL247)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれ
   の末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、そのdetached HEADはすでに`origin/master`の最新コミット(7ac5c42)と
+  一致しており、ローカルの`master`ブランチだけが43コミット古い状態だった。`git checkout master && git pull
+  --rebase origin master`でfast-forwardして復帰してから作業した。開始時点でVOCAB261/PRACTICE745/
+  MOCK_POOL255であることを確認した。累計 VOCAB=265, PRACTICE=758, MOCK_POOL=259（3プールとも各ドメイン
+  比率は目標26/25/33/16%に近い: VOCAB tech34.0/security24.5/billing16.6/concepts24.9、PRACTICE
+  concepts24.4/billing15.8/security25.6/tech34.2、MOCK_POOL concepts25.5/security25.1/tech32.8/
+  billing16.6）。新規SOURCES1件を追加: Amazon GuardDuty Extended Threat Detection（複数のイベント・
+  シグナルをデータソース・リソース種別・時間をまたいで関連付け、多段階の攻撃を1件のCritical重大度の
+  「Attack sequence」検出結果として検知する機能。GuardDuty有効化で追加コストなしでデフォルト有効）。
+  WebFetchをdocs.aws.amazon.comに対して試し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。
+  同じ回でAmazon ECR・AWS Transfer Family・Amazon CloudFront(料金クラス)もWebFetchで本文を直接確認した
+  (ECR・Transfer Familyは既存source、料金クラスの公式ページはリダイレクトされたためWebSearchのスニペット
+  で補強確認)。追加トピック: 上記の新規サービスに加え、AWS Transform MGNのテストカットオーバー機能、
+  AWS Migration Evaluatorのデータ収集方法(Agentless Collector対既存データのインポート)、AWS Transformの
+  利用料金モデル(ツール自体は無料・基盤リソースは別課金)、AWS Well-Architected Toolのレンズ適用自体は
+  無料であること、AWS SignerのLambdaコード署名設定におけるEnforce対Warnの違い、AWS WAF Fraud Control
+  (ATP/ACFP)のクライアントSDK統合要件、AWS Marketplace Vendor InsightsのNDA経由アクセス手続き、EC2
+  On-Demand Capacity ReservationをAWS RAM経由で他アカウントと共有する仕組み、AWS re:Post Private(Enterprise
+  Support以上向けの組織専用プライベートQ&A)、AWS Support Appのサービスクォータ引き上げリクエスト機能、
+  AWS User Notificationsの「通知ハブ」リージョン設定(最大3リージョン)、Amazon Comprehend MedicalのDetectPHI
+  対DetectEntitiesV2の使い分け、Amazon Chime SDKの料金モデル(アテンディー分課金のpay-as-you-go)、総所有
+  コスト(TCO)算出における無形の価値(ビジネスアジリティ等)の扱い、AWS Purchase Order Managementの有効月
+  (Effective month)の遡及不可、Amazon AppFlowのフロー実行中データ変換機能(フィルタリング/マスキング/
+  検証/マッピング)。検討したが新規採用を見送った候補: Amazon Pinpoint・AWS Proton・Amazon Augmented AI
+  (A2I)・AWS App Mesh・Amazon FinSpaceはいずれもWebSearchで新規顧客受付が終了済み(一部は既存顧客向け
+  サポートも終了済みまたは終了間近)と判明したため除外した。既存の飽和気味のsource（sixAdv32件・
+  wafReliability22件・migrationStrategies22件・iam16件・costmgmt16件・guardduty15件・globalInfra15件・
+  caf14件・ec2Ri11件・savingsplansTypes10件・support10件等、および今回調査したcleanrooms・s3ObjectLock・
+  networkAccessAnalyzer・firewallManager・marketplace等の既出内容が多い角度）は、既出内容と重複しない
+  未出題の事実・角度であることを個別にgrepで確認できたもののみ利用した。正解位置は単一選択18件
+  (VOCAB4・PRACTICE11・MOCK3)を0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が4件、3が4件)、
+  複数選択3件(PRACTICE2・MOCK1)は{0,2}{1,3}{0,1}の3通りの異なる組み合わせを使用。追加前後で
+  validate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存737件
+  (VOCAB261/PRACTICE745/MOCK_POOL255)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
