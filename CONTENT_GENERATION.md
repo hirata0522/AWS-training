@@ -1162,3 +1162,39 @@
   での読み込みを確認し、既存241/687/235件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffは
   SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を
   確認済み。
+- 2026-10-14: 定期実行で17件追加（VOCAB+4/PRACTICE+9/MOCK_POOL+4、目安の15〜25件の範囲内だが今回は既存
+  コンテンツとの重複回避を優先し下限寄りに抑えた）。開始時、サンドボックスが`master`からdetached HEADの
+  状態になっていたが、`git fetch origin master`すると、ローカルに保存されていた`origin/master`の参照が
+  39コミット分古い状態だった(実際のGitHub上のorigin/masterはこのdetached HEADの内容と完全に一致していた、
+  つまり孤立コミットではなく単にローカルの参照が古かっただけ)ことが判明。`git checkout master && git merge
+  --ff-only origin/master`でローカルmasterをfast-forwardしてから作業した。累計 VOCAB=249, PRACTICE=709,
+  MOCK_POOL=243（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.7/security24.5/
+  billing16.5/concepts25.3、PRACTICE concepts24.5/billing15.9/security25.7/tech33.9、MOCK_POOL
+  concepts25.5/security25.1/tech32.9/billing16.5）。今回は新規SOURCESを追加しなかった（AWS Migration Hub・
+  AWS App2Container・Amazon Pinpointを新規候補としてWebSearchで確認したが、いずれも2025年11月7日(Migration
+  Hub/App2Container)・2025年5月20日(Pinpoint)付で新規顧客の受付を終了していることが判明し除外。AWS Supply
+  Chainも確認したところ「Amazon Connect Decisions」への移行が進んでおり名称が不安定なため見送った）。
+  代わりに既存SOURCESの未出題の具体的な角度を追加: ディザスタリカバリ4戦略のうち「Backup and Restore」の
+  単体定義(VOCAB、drStrategies)とコストランキング比較(PRACTICE)、Savings Plansの「Compute Savings Plans」
+  単体定義(VOCAB、savingsplansTypes)、Amazon Comprehend(感情分析等の汎用NLP、Medical版とは別、VOCAB、
+  comprehend)、VPC Peering単体定義(非推移性を含む、VOCAB、vpcPeering)、AWSリージョンの最低AZ数(3つ、
+  PRACTICE、globalInfra)、AWS PrivateLinkの提供者側視点(VPCエンドポイントサービス、PRACTICE多肢選択、
+  privatelink)、AWS Verified Accessのトラストプロバイダー(ID1つ+デバイス複数の組み合わせ、PRACTICE、
+  verifiedAccess)、Amazon CognitoのHosted UI(PRACTICE、cognito)、AWS Transfer FamilyのAS2プロトコル対応
+  (PRACTICE、transferFamily)、Amazon AppStream 2.0のAlways-Onフリート(PRACTICE、appstream)、Amazon
+  DocumentDBのグローバルクラスター(PRACTICE、documentdb)、AWS Data Exportsの定期更新の仕組み(PRACTICE、
+  dataExports)、Amazon MSK Serverless(MOCK_POOL、msk)、IAMポリシーでのMFA必須化(aws:MultiFactorAuthPresent
+  条件キー、MOCK_POOL、mfa)、Amazon FSx for LustreのHPC/ML用途(MOCK_POOL、fsx)、バックアップ間隔からRPOを
+  算出する数値シナリオ(MOCK_POOL、rtorpo)。今回はWebFetchを試さず、既存SOURCESの再利用（URLは過去の実行で
+  確認済み）とWebSearchによる事実確認(Compute Savings Plansの柔軟性、コスト配分タグのAWS生成/ユーザー定義
+  区分、Well-Architected持続可能性の柱の設計原則、Verified Accessのトラストプロバイダー仕様、リージョンの
+  最低AZ数など)のみで対応した。既存の飽和source（sixAdv31件・wafReliability22件・migrationStrategies22件・
+  costmgmt16件・guardduty15件・iam15件・caf14件・globalInfra14件(AZ数の角度のみ新規に追加)・hybridCloud13件・
+  organizations12件・CloudHSM6件・RAM5件・Firewall Manager4件・MFA6件・PrivateLink3件・Verified Access7件・
+  Billing Conductor6件・コスト配分タグ5件・Savings Plans種別6件・AWS Support10件・Reserved Instance
+  Marketplace7件等）は新規追加前に既存問題文を個別にgrepで確認し、ほぼすべてで未出題の角度が見つからな
+  かったため意図的に避けた。正解位置は単一選択16件(VOCAB4・PRACTICE8・MOCK_POOL4)を0,1,2,3で完全に均等
+  ローテーション(各位置4件ずつ)、複数選択1件(PRACTICE、PrivateLink)は{0,2}を使用。追加前後でvalidate_
+  content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存の項目は一切変更していない
+  こと（diffはVOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した3箇所のみで、IDの重複も無し）を
+  確認済み。
