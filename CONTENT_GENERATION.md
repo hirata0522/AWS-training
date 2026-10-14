@@ -689,3 +689,40 @@
   validate_content.pyの出力・git diffおよびnode(vm.runInContext)での読み込みを確認し、既存531件の項目は
   一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した
   4箇所のみ）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master && git pull --rebase origin master`で復帰した
+  時点でローカル`master`は既に`origin/master`の最新コミット(前回記録の544件時点)と一致していたため、
+  fast-forward不要で即座に完了した。累計 VOCAB=201, PRACTICE=557, MOCK_POOL=195（3プールとも各ドメイン
+  比率は目標26/25/33/16%に近い: VOCAB tech32.8/security24.9/billing16.4/concepts25.9、PRACTICE
+  concepts25.1/billing16.2/security25.1/tech33.6、MOCK_POOL concepts25.6/security25.1/tech32.8/
+  billing16.4）。新規SOURCES1件を追加: AWS Transform（メインフレーム/VMware/.NETのモダナイゼーション・
+  移行をAIエージェントが支援する後継サービス）。追加トピック: AWS Transform（VOCAB/PRACTICEで導入）、
+  アベイラビリティーゾーン(AZ)の定義（既存source globalInfraのVOCAB初出）、リージョン選択時の考慮要素
+  (レイテンシー・データレジデンシー、複数選択)、マルチAZ配置によるフォールトアイソレーション、ハイブリッド
+  クラウドの具体例(Direct Connect/VPN)、Amazon Transcribe(VOCAB初出)、AWS X-Ray(VOCAB初出・サービスマップ
+  機能)、NATゲートウェイ対NATインスタンス(マネージド型・帯域幅)・AZ単位の冗長化、Amazon Lex(Amazon Connect
+  + Lambdaによるフルフィルメント、テキストのみでの利用可否)、AWS IAM Identity Centerの「許可セット
+  (Permission Set)」、AWS IAM Access Analyzerの「未使用アクセス分析(Unused Access Analysis)」(既存の
+  外部アクセス分析とは別角度)、IAM MFAのデバイス種別(仮想認証アプリ/FIDOセキュリティキー/ハードウェアTOTP
+  トークン、1つの物理キーを複数アイデンティティで共用可能な点)、AWS Free Tierの「常時無料」が期間無制限で
+  Free/Paidどちらのプランでも適用される点、AWS Supportプランの「DevOpsエージェント クレジット」(プラン別の
+  付与率)、Business Support+に含まれるWell-Architected Review/プロアクティブなセキュリティレビュー。新規
+  出典1件（transform）は本実行環境でWebFetchがdocs.aws.amazon.com/transform/latest/userguide/what-is-service.html
+  に対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。なお新規候補として検討した
+  「AWS Migration Hub」は、WebFetch・WebSearchで「2025年11月7日付で新規顧客の受付を終了し、後継のAWS
+  Transformへの移行が案内されている」ことが確認できたため、既存の除外事例（QLDB・Pinpoint・CloudTrail
+  Lake・Amazon Q Business等）と同様の理由で出典・出題対象から除外し、代わりにAWS Transformを採用した。
+  同様に新規VOCAB候補として検討した「AWS Snowmobile」も、WebSearchで「2024年3月までにAWS公式サイトから
+  削除され、現在は提供終了している」ことが確認できたため除外した（関連してAWS Snowballデバイスも2026年
+  12月31日付で全リージョンで提供終了予定、Snowball Edgeは2025年11月7日付で新規顧客受付を終了している旨が
+  判明したが、既存のsnowFamily関連項目は変更していない。将来Snow Family関連の既存項目を見直す際の参考情報
+  としてここに記録しておく）。また、AWS Supportプランの記述については、本実行でaws.amazon.com/premiumsupport/plans/
+  をWebFetchで直接確認したところ、現行の4プラン名称(Basic/Business Support+/Enterprise Support/Unified
+  Operations)は既存コンテンツの記述と一致していることを再確認した。既存の飽和気味のsource（sixAdv31件・
+  wafReliability22件・migrationStrategies18件・costmgmt16件・iam15件・accessAnalyzer(外部アクセス分析の
+  角度のみ)7件等）は、未出題の角度(未使用アクセス分析等)であることを個別に確認したもの以外は今回の新規
+  追加の対象から避けた。正解位置は単一選択19件(VOCAB4・PRACTICE12・MOCK_POOL3)を0,1,2,3で均等にローテー
+  ション(各位置4〜5件)、複数選択1件(PRACTICE1件: リージョン選択の考慮要素)は{1,3}を使用。追加前後で
+  validate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存544件の項目は一切
+  変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所の
+  みで、IDの重複も無し）を確認済み。
