@@ -841,3 +841,44 @@
   node(vm.runInContext)での読み込みを確認し、既存583件(VOCAB209/PRACTICE583/MOCK_POOL203)の項目は一切
   変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所の
   みで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached HEAD
+  の状態になっていた（`git branch --show-current`が空）が、`git checkout master`した時点でローカルの
+  `master`は既に`origin/master`の最新コミット(前回記録の596/583/203件時点)と一致していたため、
+  fast-forwardは不要で即座に完了した。累計 VOCAB=217, PRACTICE=609, MOCK_POOL=211（3プールとも各ドメイン
+  比率は目標26/25/33/16%に近い: VOCAB tech33.6/security24.4/billing16.1/concepts25.8、PRACTICE
+  concepts25.0/billing16.1/security25.3/tech33.7、MOCK_POOL concepts25.6/security25.1/tech32.2/
+  billing17.1）。新規SOURCES8件を追加: Amazon GameLift Servers（セッションベースのマルチプレイヤー
+  ゲーム向け専用サーバーホスティング）、Amazon Chime SDK（メッセージング・音声・ビデオ・画面共有を自社
+  アプリに組み込むリアルタイム通信コンポーネント群）、Amazon Managed Service for Apache Flink（旧Amazon
+  Kinesis Data Analytics for Apache Flink、ストリーム処理）、AWS Payment Cryptography（決済処理(PCI基準)
+  向けの暗号機能・鍵管理、専用ペイメントHSMの調達が不要）、AWS WAF Fraud Control - Account Takeover
+  Prevention (ATP)（ログインページの不正アクセス対策）、AWS WAF Fraud Control - Account Creation Fraud
+  Prevention (ACFP)（サインアップページの偽アカウント対策）、Amazon CloudWatch Internet Monitor（地域・
+  ISP単位でのインターネット経由の性能・可用性監視）、Amazon EC2 Capacity Reservation Fleet（複数インスタンス
+  タイプへの優先順位付き容量確保、既存のCapacity Reservationとは別ページ）。追加トピック: GameLift Servers
+  のマネージド型フリート対Anywhere(自己管理型)の違い、FlexMatchマッチメイキング機能(複数選択)、複数
+  ロケーションにまたがるプレイスメントキュー、Chime SDKを使った通信機能の自社アプリへの組み込み、Managed
+  Service for Apache FlinkとFlink Studio(ノートブック)の使い分け、CloudWatch Internet Monitorによる地域・
+  ISP別の性能問題の検知、AWS Payment CryptographyとAWS KMS/CloudHSMの役割の違い(2問)、WAF Fraud Control
+  ATP対ACFPの使い分け(ログイン保護対サインアップ保護、ATPはCognitoユーザープール非対応という点も含む)、
+  AWS Payment Cryptographyが取得するハードウェア認定規格(PCI PTS HSM V3・FIPS 140-2 Level 3、複数選択)、
+  Well-Architectedパフォーマンス効率の柱の設計原則「数分でグローバル展開する」(初出)、AWS Cloud Value
+  Frameworkの「運用上の回復性」「持続可能性」の各観点(いずれも既存sourceの新角度、これで5つの価値の観点
+  のうち4つに専用問題を追加。VOCABでも初導入)、Capacity Reservation Fleetの優先順位(priority)・重み
+  (weight)・未使用容量の課金の仕組み(3問)。新規出典8件はすべて本実行環境でWebFetchがdocs.aws.amazon.com
+  に対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。なお新規VOCAB候補として
+  検討した「AWS Proton」は、WebSearchで「2026年10月7日付でサポートを終了している（新規顧客の受付は2025年
+  10月7日に終了）」ことが判明し、本実行日(2026-10-14)時点で既にサポート終了日を過ぎていたため出題対象
+  から除外した。「Amazon Managed Blockchain」も、2026年9月29日付で新規顧客の受付終了が発表され同年10月
+  29日から新規受付停止予定であることが判明したため、サンセットが近いサービスとして出題対象から避けた。
+  「AWS Private 5G」は2025年5月に提供終了済みのため除外した。「AWS Application Cost Profiler」も2024年
+  9月30日付で提供終了済みのため除外した。既存の飽和気味のsource（sixAdv31件・wafReliability22件・
+  migrationStrategies18件・costmgmt16件・iam15件・wafOps11件・wafSustainability9件・guardduty11件・
+  drStrategies8件・wafCost10件等）は、Well-Architected各柱の設計原則一覧やDR戦略の4パターン、移行戦略の
+  7R'sなどを個別にWebFetch・grepで確認した結果、いずれもほぼ全ての角度が既に出題済みであることを確認
+  できたため、今回の新規追加の対象から避け、新規サービス・新規角度を優先した。正解位置は単一選択19件
+  (VOCAB4・PRACTICE12・MOCK_POOL3)を0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が5件、3が4件)、
+  複数選択2件(PRACTICE1・MOCK_POOL1)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.py
+  の出力・git diff・node(vm.runInContext)での読み込みを確認し、既存596/583/203件(VOCAB/PRACTICE/MOCK_POOL)
+  の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを
+  付与した4箇所のみで、IDの重複も無し）を確認済み。
