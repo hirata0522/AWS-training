@@ -1198,3 +1198,42 @@
   content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存の項目は一切変更していない
   こと（diffはVOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した3箇所のみで、IDの重複も無し）を
   確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached HEAD
+  の状態になっていたが、`git status`で確認するとこのdetached HEADは`origin/master`の最新コミット(20098ab)
+  と完全に一致しており、ローカルの`master`ブランチだけが1コミット古い状態だった。`git merge-base
+  --is-ancestor`で祖先関係を確認した上で`git checkout master && git merge --ff-only 20098ab`でローカル
+  masterを復旧し、`git pull --rebase origin master`（fast-forward不要で即完了）してから作業を開始した。
+  開始時点でVOCAB249/PRACTICE709/MOCK_POOL243であることを確認した。累計 VOCAB=253, PRACTICE=722,
+  MOCK_POOL=247（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.6/security24.5/
+  billing16.6/concepts25.3、PRACTICE concepts24.2/billing15.9/security25.8/tech34.1、MOCK_POOL
+  concepts25.5/security25.1/tech32.8/billing16.6）。新規SOURCES2件を追加: Amazon DynamoDB Accelerator
+  (DAX)、AWS Elemental MediaTailor。いずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し
+  （**今回もWebFetchが成功**）、本文を直接確認した上で追加した。追加トピック: 上記2件の新規サービスに
+  ついてVOCAB1件・PRACTICE3件・MOCK_POOL1件を作成したほか、EC2 Instance Savings Plans単体定義(VOCAB、
+  既存source savingsplansTypes)、RPO (Recovery Point Objective)単体定義(VOCAB、既存source rtorpoにRTOの
+  対となる単語項目を追加)、AWS KMSのカスタマーマネージドキー単体定義(VOCAB、既存source kms)、Amazon
+  CloudWatch Internet Monitor(エージェント不要の国・ISP単位の接続品質監視、PRACTICE)、Amazon Managed
+  Service for Apache Flink(サーバーレスでの運用負荷削減、PRACTICE)、AWS Resource Explorer(集約インデックス
+  によるクロスリージョン検索の仕組み、PRACTICE)、AWS Clean Roomsの分析ルールの種類(Aggregation/List、
+  PRACTICE多肢選択)と差分プライバシー(PRACTICE)、AWS KMSのスケジュール削除の待機期間(7〜30日、PRACTICE)と
+  キャンセル(MOCK_POOL)、AWS IAM Roles Anywhereの「プロファイル(Profile)」の役割(PRACTICE)、Amazon EC2
+  Capacity Reservation Fleetのキャンセル時の動作(PRACTICE)、EC2 Dedicated HostとAWS License Managerの
+  ソケット/コア単位ライセンス追跡の統合(PRACTICE)、RPOの数値シナリオ問題(バックアップ間隔からの算出、
+  PRACTICE/MOCK_POOLで異なる数値)、AWS Outpostsの2つのフォームファクター(rack対server、MOCK_POOL)、
+  Savings Plansの割引が自動適用される仕組み(MOCK_POOL)。KMSの削除待機期間(7〜30日、Pending deletion状態、
+  キャンセル可能)、Clean Roomsの分析ルール種類(Aggregation/List/Custom)、IAM Roles AnywhereのProfile、
+  Outpostsのrack/server、License Manager統合は、いずれもWebFetchで公式ドキュメントの本文を直接確認してから
+  出題内容を作成した。検討したが採用しなかった候補: Amazon DevOps Guru(WebFetchで2026年10月29日付で新規
+  顧客受付終了予定と判明したため除外)、AWS IoT Events(WebSearchで2026年5月20日付で既にサポート終了済みと
+  判明したため除外)、Amazon CloudSearch(WebFetchで新規顧客への提供を終了済みと判明したため除外)、AWS IoT
+  Device Defenderの「Detect」機能(WebFetchで新規顧客受付を終了済みと判明したため除外。Auditは終了していない
+  がDetect関連の出題は避けた)。既存の飽和気味のsource（sixAdv31件・wafReliability22件・migrationStrategies
+  22件(6R's全て個別に出題済み)・cloudValueFramework6件(5つの価値観点を全て個別に出題済み)・prescriptive
+  Guidance6件(Strategy/Pattern/Guideを全て個別に出題済み)・drStrategies9件(4戦略の比較を多角的に出題済み)・
+  slaLegal6件・rtorpo7件・detective5件・ram5件等）は、既出内容と重複しない具体的な未出題の事実・角度で
+  あることを個別にgrepで確認できたもの以外は、今回の新規追加の対象から意図的に避けた。正解位置は単一選択
+  20件(VOCAB4・PRACTICE12・MOCK_POOL4)を0,1,2,3で完全に均等にローテーション(各位置5件ずつ)、複数選択1件
+  (PRACTICE、Clean Rooms分析ルール)は{0,2}を使用。追加前後でvalidate_content.pyの出力・git diff・
+  node(vm.runInContext)での読み込みを確認し、既存722件中の新規追加前の709件(PRACTICE)および既存249/243件
+  (VOCAB/MOCK_POOL)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾
+  項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
