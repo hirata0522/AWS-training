@@ -1409,3 +1409,41 @@
   node(vm.runInContext)での読み込みを確認し、既存763件(VOCAB269/PRACTICE771/MOCK_POOL263)の項目は
   一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した
   4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=277, PRACTICE=797,
+  MOCK_POOL=271（3プールとも各ドメイン比率は目標26/25/33/16%に近い）。
+  **運用上の重要な発見（今回の実行冒頭）**: セッション開始時、HEADがmasterから46コミット分
+  detachされた状態になっていた。調査した結果、それら46コミットはmasterの現在のtip(当時)から
+  素直にfast-forwardできる内容で、実際にはorigin/master側は既にその46コミット先まで進んでいた
+  （つまりリモートにデータ損失はなく、ローカルのmasterブランチ参照だけが古い状態だった）。
+  `git checkout master`だけでは古い参照に乗ってしまい、以後の作業がその古い状態を基準にしてしまう
+  リスクがあったため、`git merge --ff-only`でローカルmasterを最新のdetached tipまで進め、
+  `python3 scripts/validate_content.py`で健全性を確認した上で作業を開始した
+  （実際にはorigin/masterは既に最新だったため、このff-only mergeはローカル参照を正しい状態に
+  追従させる安全な操作だった）。以後の実行では、`git checkout master`後に必ず
+  `git log --oneline -1 HEAD`と`git log --oneline -1 origin/master`を比較し、ローカルmasterが
+  origin/masterより古い場合は`git merge --ff-only origin/master`（またはpull --rebase）で
+  必ず追従させてから作業を開始すること。
+  追加トピック: AWS CAF「人材の視点(People Perspective)」、AWS Verified Access、Amazon MSK
+  (Managed Streaming for Apache Kafka)、AWS Billing Conductor、AWS Prescriptive Guidance、
+  AWS re:Post、AWS Skill Builder、AWS Cloud Value Framework（複数選択）、IAM Policy Simulator、
+  AWS IAM Roles Anywhere、AWS Network Access Analyzer（複数選択）、Amazon EC2 Reserved Instance
+  Marketplace、AWS Cost Optimization Hub、AWS Cloud Map、EC2 Image Builder、AWS CloudShell、
+  Amazon Managed Workflows for Apache Airflow (MWAA)、AWS Migration Evaluator、
+  Amazon Verified Permissions、AWS Lake Formation、AWSコスト配分タグ(Cost Allocation Tags)。
+  新規SOURCESの追加は無し（すべて既存のSOURCESキーを再利用し、別角度の設問として追加）。
+  **WebFetch結果**: 今回はdocs.aws.amazon.com/aws.amazon.comへのWebFetchが成功した
+  （以前の実行記録に複数残っていたDNS/プロキシによるブロックは発生しなかった。AWS App Runner、
+  AWS Proton、Amazon Kendraの公式docsページを直接fetchして内容を確認できた）。
+  その調査の過程で、AWS Protonが2026年10月7日付でサポート終了済み（新規申込は2025年10月7日停止）、
+  AWS Application Cost Profilerが2024年9月30日付で提供終了済み（英語docsページは404）であることが
+  判明したため、両サービスは出題対象として採用しなかった。またAWS App RunnerとAmazon Kendraは
+  「新規顧客の受付を終了（それぞれ2026年4月・2026年7月）だがMaintenance Mode/既存顧客向けには
+  現役でdocsも存続」という状態だったが、本ランブックの既存の除外リスト（進捗ログの2026-10-13?
+  相当エントリで「App Runner・Kendra等」が既に除外対象として記録されていた）との整合性を優先し、
+  一旦草稿していたApp Runner/Kendraの項目(VOCAB 1件・PRACTICE 1件)はコミット前にAmazon MSK・
+  MWAAへ差し替えた。正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK4)を0,1,2,3でローテーション
+  (0が5件、1が5件、2が5件、3が4件)、複数選択2件(PRACTICE、Cloud Value Framework・Network Access
+  Analyzer)はそれぞれ{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・
+  git diff・node(vm.runInContext)での読み込みを確認し、既存777件(VOCAB273/PRACTICE784/MOCK_POOL267)
+  の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目に
+  カンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
