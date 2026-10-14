@@ -761,3 +761,44 @@
   追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存557件の
   項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを
   付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached HEAD
+  の状態だったが、`git checkout master`した時点でローカルの`master`は既に`origin/master`の最新コミット
+  (前回記録の570/557/199件時点)と一致していたため、fast-forward不要で即座に完了した。累計 VOCAB=209,
+  PRACTICE=583, MOCK_POOL=203（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech32.5/security24.9/billing16.7/concepts25.8、PRACTICE concepts25.2/billing16.1/security25.0/
+  tech33.6、MOCK_POOL concepts25.6/security25.1/tech32.5/billing16.7）。新規SOURCES4件を追加: Amazon
+  Location Service（地図・ジオコーディング・ルート・ジオフェンス・トラッカー）、AWS Device Farm（実機での
+  モバイルアプリテスト）、AWS Skill Builder（AWS公式の学習プラットフォーム）、AWS Partner Network (APN)
+  （パートナー企業のグローバルコミュニティ）。追加トピック: Amazon Location Service（VOCAB/PRACTICEで導入、
+  基本定義とジオフェンス/トラッカー機能）、AWS Device Farm（VOCAB無し・PRACTICE/MOCK_POOLで導入、実機
+  テストの地域制約とリモートアクセス対自動テスト実行の違い）、AWS Skill Builder（VOCAB/PRACTICE2問/
+  MOCK_POOLで導入、無料コース対サブスクリプション、ハンズオンラボ、認定合格後のデジタルバッジ）、AWS
+  Partner Network（VOCAB/PRACTICE2問/MOCK_POOLで導入、コンサルティングパートナーの役割、AWS Marketplace
+  やAWS Professional Servicesとの違い）、AWS WAF Bot Control（既存source wafServiceの新角度、VOCAB初導入・
+  CAPTCHA/Challengeアクションの上書き・Common対Targetedの検出レベル差）、AWS Elastic Beanstalkの環境タイプ
+  （Webサーバー環境対ワーカー環境、既存source beanstalkの新角度）、Amazon OpenSearch Serverless対
+  プロビジョンドクラスター（既存source opensearchの新角度）、AWS Resource Explorerのインデックス作成/
+  有効化要件（既存source resourceExplorerの新角度、初回追加のp516とは異なる角度）、EC2 Image Builderの
+  テストコンポーネント・ディストリビューション設定（既存source imageBuilderの新角度、初回追加のp370とは
+  異なる角度）、AWS IAM Access Analyzerのポリシー検証(Policy Validation)機能（既存source accessAnalyzerの
+  新角度、エラー/セキュリティ警告/一般警告/提案の4種類、外部アクセス分析・未使用アクセス分析とは異なる
+  角度）、Amazon Cognitoの脅威保護(Threat Protection)機能（既存source cognitoの新角度、漏洩認証情報検出と
+  適応型認証、複数選択）。新規出典4件（locationService, deviceFarm, skillBuilder, partnerNetwork）のうち、
+  locationServiceとdeviceFarmは本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetch
+  が成功**）、本文を直接確認した上で追加した。skillBuilderとpartnerNetworkはaws.amazon.com/training/・
+  aws.amazon.com/partners/に対してWebFetchが成功し本文を確認した。またAWS WAF Bot Control・IAM Access
+  Analyzerのポリシー検証機能・Amazon CognitoのThreat Protection機能（2017年当初は「Advanced Security
+  Features」という名称だったが現行ドキュメントでは「Threat Protection」に名称変更されている点を確認）に
+  ついては、既存SOURCESの再利用のためURL確認は必須ではなかったが、事実の正確性を期すためWebSearchで現行
+  の仕様・名称を確認してから出題内容を作成した。AWS Partner NetworkとAWS Professional Servicesの違いに
+  ついては、AWS公式の直接的な比較ページが検索で見つからなかったため、両者が別組織である（Professional
+  ServicesはAWS自身のコンサルティング部門、APNはサードパーティ企業のコミュニティ）という確実に正しいと
+  判断できる一般的な事実のみを出題し、両者の使い分けの詳細な基準（料金・対応可否等）には踏み込まなかった。
+  既存の飽和気味のsource（sixAdv31件・wafReliability22件・waf(基本)11件・shared11件・marketplace9件・
+  guardduty11件・accessAnalyzer7件→8件・support10件・budgets8件等）は、未出題の具体的な機能・角度で
+  あることを個別にgrepで確認したaccessAnalyzerのポリシー検証機能を除き、今回の新規追加の対象から意図的に
+  避けた。正解位置は単一選択19件(VOCAB4・PRACTICE12・MOCK_POOL3)を0,1,2,3でほぼ均等にローテーション
+  (0が4件、1が5件、2が5件、3が5件)、複数選択2件(PRACTICE1・MOCK_POOL1)は{0,2}と{1,3}の異なる組み合わせを
+  使用。追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、既存
+  570/557/199件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
