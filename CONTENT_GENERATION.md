@@ -1364,3 +1364,48 @@
   git diff・node(vm.runInContext)での読み込みを確認し、既存750件(VOCAB265/PRACTICE758/MOCK_POOL259)の
   項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与
   した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、そのdetached HEADはすでに`origin/master`の最新コミット(8f762de)と
+  一致しており、ローカルの`master`ブランチだけが45コミット古い状態だった。`git checkout master && git pull
+  --rebase origin master`でfast-forwardして復帰してから作業した。開始時点でVOCAB269/PRACTICE771/
+  MOCK_POOL263であることを確認した。累計 VOCAB=273, PRACTICE=784, MOCK_POOL=267（3プールとも各ドメイン
+  比率は目標26/25/33/16%に近い: VOCAB tech33.3/security24.5/billing16.8/concepts25.3、PRACTICE
+  concepts24.0/billing16.2/security25.9/tech33.9、MOCK_POOL concepts25.1/security25.1/tech33.0/
+  billing16.9）。今回は、既存のSOURCESが既に244件(243キー)に達し、多くの定番サービス・概念が複数の
+  角度から出題済みであることを踏まえ、サービス一覧の網羅よりも「本当に未出題の角度」を優先する方針を
+  取った（sixAdv33件・wafReliability22件・migrationStrategies22件・iam16件・costmgmt16件・guardduty15件・
+  globalInfra15件・caf14件・drStrategies12件・wafOps11件・ec2Ri11件・waf11件・rtorpo10件・
+  savingsplansTypes10件・support10件・wafCost10件等、既に多角的に出題済みのsourceは新規追加を避けた）。
+  新規SOURCES2件を追加: AWS Marketplaceのプライベートオファー(Private Offer、売り手が特定の購入者アカウント
+  に非公開の価格・EULA条件を提示する仕組み)、AWS App Studio(自然言語の指示だけでソフトウェア開発の専門
+  知識がなくてもエンタープライズ向けアプリケーションを構築できる生成AIサービス)。両方ともWebFetchを
+  docs.aws.amazon.comに対して試し(**今回もWebFetchが成功**)、本文を直接確認した上で追加した。追加トピック:
+  上記2新規サービスに加え、移行戦略「リロケート(Relocate)」のVOCAB初追加(7つのRのうちVOCABで唯一未出題
+  だったもの)、Well-Architectedコスト最適化の柱の設計原則「クラウド財務管理を導入する(Implement Cloud
+  Financial Management)」のVOCAB初追加、ハードウェアセキュリティモジュール(HSM)の一般的な定義とAWS
+  CloudHSMとの関係、AWSのSLAが各サービス個別に定められ単一の包括的SLAは存在しないこと、大規模移行における
+  「移行戦略はポートフォリオ内のアプリケーションごとに使い分けるのが一般的」という方針レベルの論点(個々の
+  R定義ではなく初出の角度)、SCPとIAMポリシーの関係(SCPは権限の上限を定めるのみでアクセス許可自体は
+  付与しない、両者の論理積でのみ実行可能、SCPは管理アカウントに適用されない)、Amazon Verified Permissionsが
+  使用するポリシー言語Cedar、AWS Private CAのルートCA/下位CA階層構造、AWS AppFabricとAmazon Security Lakeの
+  連携(正規化したSaaS監査ログをセキュリティデータレイクに集約)、AWS Firewall ManagerがAWS Network Firewall・
+  Route 53 Resolver DNS Firewallのポリシーも組織全体に展開できること、AWS Activateの「Founders」(自己申請)
+  対「Portfolio」(Activate Provider経由の組織ID申請)の違い、AWS Marketplaceプライベートオファーの
+  Organizations一括支払い環境での共有・既存サブスクライバーへの再受諾要件、Amazon S3 Express One Zoneの
+  低レイテンシー用途としての位置づけ、AWS Supply ChainのERPデータ取り込み方式(事前構築済みコネクタ)。
+  検討したが採用を見送った候補: AWS Cloud Adoption Readiness Tool (CART)は公式ドキュメント(docs.aws.amazon.com)
+  のページが見つからず、情報源がブログ記事・サードパーティサイトに限られ内容の整合性も取れなかったため
+  出典として不適切と判断し除外した。AWS Migration HubはWebSearchで「2025年11月7日付で新規顧客への提供を
+  終了しており、代替としてAWS Transformが案内されている」ことが判明したため、既存の除外事例(QLDB・
+  Application Discovery Service・Connect・App Runner・CloudTrail Lake・Amazon Forecast・Kendra・Q Business等)
+  と同様の理由で出題対象から除外した。既存の飽和気味のsource(上記に加えwafPerformance8件・wafSustainability9件・
+  slaLegal6件・cloudValueFramework7件・prescriptiveGuidance6件は個別にgrepで内容を確認した結果、設計原則や
+  コンテンツ種別がほぼ出し切られていたため新規追加を見送った)は避け、scp(4→6件)・verifiedPermissions(5→6件)・
+  acmpca(5→6件)・appfabric(3→4件)・firewallManager(5→6件)・activate(2→4件)・s3ExpressOneZone(2→3件)・
+  awsSupplyChain(1→2件)など元々使用頻度が低かったsourceを優先して再利用した。正解位置は単一選択19件
+  (VOCAB4・PRACTICE11・MOCK4)を0,1,2,3で完全に均等にローテーション(0が5件、1が5件、2が5件、3が4件)、
+  複数選択2件(PRACTICE、Firewall Manager対象リソース・Marketplaceプライベートオファーの組織内共有)は
+  それぞれ{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diff・
+  node(vm.runInContext)での読み込みを確認し、既存763件(VOCAB269/PRACTICE771/MOCK_POOL263)の項目は
+  一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した
+  4箇所のみで、IDの重複も無し）を確認済み。
