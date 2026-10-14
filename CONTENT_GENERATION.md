@@ -1117,3 +1117,48 @@
   での読み込みを確認し、既存237/674/231件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffは
   SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を
   確認済み。
+- 2026-10-14: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master && git pull --rebase origin master`で復帰した
+  （ローカル`master`が最新コミット176b17aに追いついていなかったため、fast-forwardで38コミット分反映）。
+  開始時点でVOCAB241/PRACTICE687/MOCK_POOL235であることを確認してから新規追加を開始した。追加後の累計
+  VOCAB=245, PRACTICE=700, MOCK_POOL=239（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.5/security24.9/billing16.3/concepts25.3、PRACTICE concepts24.6/billing16.0/security25.6/tech33.9、
+  MOCK_POOL concepts25.5/security25.1/tech32.6/billing16.7）。新規SOURCES2件を追加: AWS HealthOmics
+  （ゲノム等オミクスデータの保存・解析ワークフローを完全マネージドで提供するサービス。WDL/Nextflow/CWL
+  対応のWorkflows、シーケンスストア等のStorage、Analyticsの3コンポーネントから構成）、AWS Marketplace
+  Vendor Insights（AWS MarketplaceのSaaS製品について、販売者のセキュリティ・コンプライアンス情報を
+  ダッシュボードで一元評価できる機能。本番環境からのライブエビデンス(AWS Config/Audit Manager経由)・
+  ISO27001/SOC2レポート・販売者のセルフアセスメントの3種類のエビデンスを根拠とする）。追加トピック:
+  上記2件の新規サービスについてVOCAB2件・PRACTICE4件・MOCK_POOL2件を作成したほか、DR戦略の「Pilot
+  Light」「Multi-Site Active/Active」の個別定義(VOCAB2件、既存source drStrategiesは比較形式の設問が
+  多かったため単体定義という新角度)、Amazon Location ServiceのRoutes/Places機能(既存のTrackers/
+  Geofence角度とは別、PRACTICE1件・MOCK_POOL1件)、AWS WAF ATPのレスポンス検査による成功/失敗判定の
+  仕組み(PRACTICE1件)、AWS Security Incident Responseの利用形態(Supportプランとは別のサブスクリプション、
+  PRACTICE1件)、AWS Network Access Analyzerの可視化結果(PRACTICE1件)、AWS Health Dashboardの
+  Service Health Dashboard(認証不要の公開ページ、PRACTICE1件)とイベントタイプの分類(Issue/Account
+  notification/Scheduled change/Investigation、MOCK_POOL1件)、AWS SLAのクレジット申請の仕組み
+  (PRACTICE1件)、AWS Skill Builderの模擬試験(Practice Exam)の位置づけ(PRACTICE1件)、AWS Cost
+  Categoriesのルール設定(Dimensions・階層化、PRACTICE1件)、AWS Purchase Order Managementの請求書との
+  関連付け(PRACTICE1件)を、既存SOURCESの新角度として追加した（事前に各sourceの既存設問テキストをgrepで
+  確認し重複がないことを確認済み）。新規出典2件はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して
+  成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。なお新規VOCAB候補として検討した
+  AWS IoT FleetWise・Amazon WorkSpaces Secure Browserは、前者がWebFetchで「新規顧客への受付を終了している」
+  ことが判明し、後者はWebFetch/WebSearchで本文を十分に確認できなかったため、既存の除外事例と同様の理由で
+  出題対象から除外した。AWS re:Post Private・Amazon Managed Blockchain・AWS Private 5G・Amazon CodeCatalyst・
+  AWS CodeCommitも新規候補として確認したが、WebSearchでそれぞれ「2027年6月付で全面的にサービス終了予定」
+  「2026年10月29日付で新規顧客受付終了予定」「2025年5月に提供終了済み」「2025年11月7日付で新規顧客受付
+  終了済み」「2024年に新規顧客受付終了済み」であることが判明したため、既存の除外事例(QLDB等)と同様の理由
+  でいずれも採用しなかった。AWS Purchase Order Managementの請求書関連付けについては、当初「Payment
+  preferences」という具体的なUI要素名を使う設問を検討したが、WebSearchでその名称自体の確認が取れなかった
+  ため、確認できた一般的な事実(POに基づく請求書生成・PO番号の関連付け・コンソールでの確認)のみを問う内容に
+  変更した。AWS HealthのイベントタイプのうちInvestigationはAPIリファレンス上はカテゴリ値として定義されて
+  いるが「現状は実際のイベントに使用されない」と公式ドキュメントに明記されていることをWebSearchで確認し、
+  その点を正確に反映した選択肢文言とした。既存の飽和気味のsource（sixAdv31件・wafReliability22件・
+  migrationStrategies22件・costmgmt16件・guardduty15件・iam15件・caf14件・globalInfra14件・hybridCloud13件・
+  organizations12件等）は今回の新規追加・再利用の対象から意図的に避けた。正解位置は単一選択19件
+  (VOCAB4・PRACTICE10・MOCK_POOL4のうち単一選択)を0,1,2,3でほぼ均等にローテーション(各位置4〜5件)、
+  複数選択2件(PRACTICE2件: HealthOmicsのワークフロー言語・Marketplace Vendor Insightsのエビデンス種別)は
+  {0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)
+  での読み込みを確認し、既存241/687/235件(VOCAB/PRACTICE/MOCK_POOL)の項目は一切変更していないこと（diffは
+  SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの重複も無し）を
+  確認済み。
