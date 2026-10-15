@@ -1917,3 +1917,36 @@
   確認し、既存921件(VOCAB320/PRACTICE921/MOCK_POOL318)の項目は一切変更していないこと(diffは
   VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与3箇所のみ、SOURCESへの変更なし)を確認済み。
   累計 VOCAB=324, PRACTICE=931, MOCK_POOL=322。
+- 2026-10-15: 定期実行で18件追加（VOCAB+4/PRACTICE+10/MOCK_POOL+4。目安の15〜25件をやや下回ったが、
+  理由は下記参照）。開始時、サンドボックスが`master`からdetached HEADの状態になっており、
+  `git checkout master`すると、ローカルの`master`は`origin/master`の最新コミット(dba3c6a、前回エントリの
+  続き)より19コミット古い状態だった(ローカルrefが浅いcloneのまま更新されていなかっただけで、過去の
+  ブランチ事故とは無関係)。`git pull --rebase origin master`で正しく追従してから作業を開始した。既存
+  SOURCES(265件)の使用状況をPythonスクリプトでドメイン別・プール別に集計し、特にconceptsドメインの
+  PRACTICEが目標比率(26%)に対して不足気味(23.3%)だったため、今回はconcepts/securityドメインを優先した。
+  検討したが見送った候補: AWS Elastic Disaster Recovery(DRS、新規VOCAB候補として調査したが既にVOCAB2件・
+  PRACTICE3件・MOCK2件と十分出題済みと判明)、AWS Backupのクロスアカウントコピー(既存m62/p671等で
+  ほぼ同内容が既出と判明)、AWS Customer Carbon Footprint Tool(既存のAWS Sustainabilityコンソール関連
+  設問(sustainabilityConsole、4件)が既にCCFTとの関係・優位性を扱っており重複と判断)、AWS Cloud Adoption
+  Readiness Tool等の新規サービス追加(移行戦略の7R's・CAF等が既に極めて高密度(数十件)に出題済みで、
+  concepts/securityドメインの既存SOURCESの大半(outposts/controlTower/awsHealth/tco/snowFamily/
+  edgelocation/dataResidency等)も4〜5件前後まで出題済みのため、重複しない新しい角度を見つけるのに
+  通常より時間を要した)。最終的に採用したのは、(1)VOCABで未出だった4サービス(Amazon Aurora、AWS
+  Transit Gateway、VPC NATゲートウェイ、Amazon DocumentDB。いずれもPRACTICE/MOCKでは既出だがVOCAB定義は
+  未出だったため新規追加)、(2)使用回数が少なかった既存SOURCES(repost1件、sqs(concepts)1件、rcp3件)の
+  新しい角度、(3)既存のguardduty(汎用)sourceを使った「Amazon GuardDuty EKS Protection」の新規出題(監査
+  ログ監視とランタイム監視の2層構成、無料トライアル)、(4)IAMの「暗黙の拒否(Implicit Deny)」(既存の
+  「明示的な拒否(Explicit Deny)」の対になる概念で未出)、(5)multiTenancy/artifact/configの既出source内での
+  新しい角度(サイロモデル、Reports対Agreements機能比較、Configコンフォーマンスパック)。新規SOURCESの
+  追加は今回は無し(既存の確認済み出典を再利用したため、「新規SOURCESの少なくとも1件でWebFetchを試す」旨の
+  指示は今回対象外。代わりにWebSearchでGuardDuty EKS Protectionの仕組み・re:Postの位置づけ・SQSの
+  可視性タイムアウト・Well-Architected Toolのマイルストーン機能・RCP導入時の対応サービス限定・Aurora
+  レプリカの仕様・Transit Gatewayのリージョン間ピアリング等を個別に検証した)。ドメイン配分は今回
+  concepts6件・security6件・tech6件・billing0件(billingは既存のcur/budgets/costExplorer等が既に
+  5〜11件と密で新規の重複しない角度を見つけられなかったが、現在のbilling比率はVOCAB16.4%/PRACTICE
+  16.2%/MOCK16.5%といずれも目標16%にほぼ一致しており、3回連続billing0件でも比率への実害は無いと判断)。
+  正解位置は単一選択15件を0,1,2,3でほぼ均等にローテーション(0が4件、1が4件、2が4件、3が3件)、複数選択
+  3件は{0,2}{1,3}{0,3}の3通りの異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを
+  確認し、既存931件(VOCAB324/PRACTICE931/MOCK_POOL322)の項目は一切変更していないこと(diffはVOCAB/
+  PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与3箇所のみ、SOURCESへの変更なし)を確認済み。
+  累計 VOCAB=328, PRACTICE=941, MOCK_POOL=326。
