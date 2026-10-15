@@ -2235,3 +2235,37 @@
   今回も未実施）。既存の1730件の項目は一切変更していない(diffはSOURCESの末尾項目へのカンマ付与1箇所の
   みで、VOCAB/PRACTICE/MOCK_POOLは既存の最終項目の行自体を変更せず直後に新規項目を追加したためgit diff
   上は追加のみとして表示される)。累計 VOCAB=359, PRACTICE=1034, MOCK_POOL=358。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached
+  HEADの状態になっていたが、`git checkout master`すると、ローカル`master`は既に`origin/master`の
+  最新コミット(9e5ccc6)と一致していたため(直前の実行がpush済みだった)、`git pull --rebase`は
+  fast-forward不要で即座に完了した。累計 VOCAB=363, PRACTICE=1047, MOCK_POOL=362（3プールとも各
+  ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.6/security24.2/billing16.3/concepts25.9、
+  PRACTICE concepts24.7/billing15.8/security25.9/tech33.6、MOCK_POOL concepts26.0/security25.1/
+  tech32.6/billing16.3）。追加トピック: Amazon Managed Service for Prometheus (AMP、新規)、AWS
+  Organizations タグポリシー(Tag Policies、新規)、データ主権(Data Sovereignty、新規、データレジデン
+  シーとの違い)、AWS Free Tierの使用状況アラート(新規、85%通知はあくまで通知でありBudgetsとは別の
+  仕組みである点)、AWS Graviton(EC2以外にLambda/RDS/Aurora/ElastiCache等でも選択できる点)、Amazon
+  EBS io2 Block Express(256,000 IOPS・99.999%耐久性)、Amazon ECS Service Connect(AWS管理のEnvoyサイド
+  カーを自動挿入する仕組み)、Amazon EventBridge SchedulerとEventBridgeルールの違い(タイムゾーン対応・
+  一度だけの実行、複数選択)、AWS ペネトレーションテストポリシー、Amazon GuardDuty Extended Threat
+  Detectionの「AttackSequence:」命名規則(複数選択)、AWSアベイラビリティーゾーン(AZ)の物理的分離の
+  設計、AWS Migration Acceleration Program (MAP)が提供する支援内容、AWS Organizationsタグポリシーと
+  SCPの違い、AWS Invoicesタブでのメンバーアカウント請求書のPDFダウンロード、マルチテナントSaaSの
+  利点(複数選択)。新規出典4件（amp, tagPolicies, dataSovereignty, freeTierAlerts）のうちampと
+  tagPoliciesはWebFetchがdocs.aws.amazon.comに対して成功し(**今回もWebFetchが成功**)本文を直接確認、
+  dataSovereigntyはaws.amazon.com/what-is/data-sovereignty/をWebFetchで直接確認、freeTierAlertsは
+  WebSearchで複数の公式ページ記述を確認した(docs.aws.amazon.com/awsaccountbilling/.../tracking-free-tier-usage.html)。
+  新規サービス候補として検討したAmazon DevOps Guru・Amazon Managed Blockchainの2つは、WebFetch/WebSearch
+  で2026年9月29日付の終了告知(新規顧客受付停止が2026年10月29日、既存顧客も2027年9月末でアクセス不可)が
+  判明したため出題対象から除外した(既存の除外事例と同様の理由)。他に新規候補として調べたAWS Proton・
+  AWS RoboMaker・Amazon WorkDocsもそれぞれ終了日(2026年10月7日・2025年9月10日・2025年4月25日)が既に
+  過ぎているサービスであることが判明し除外した。既存の飽和気味のsource(wafReliability・sixAdv・caf・
+  migrationStrategies等、十数件以上出題されているもの)は避け、1〜4件程度の軽めの既存source(graviton,
+  ebsVolumeTypes, ecsServiceConnect, eventBridgeScheduler, penTesting, guarddutyExtendedThreatDetection,
+  azDetails, migrationAcceleration, multiTenancy, invoices)の新角度での再利用と、4件の新規source追加で
+  構成した。正解位置は単一選択18件(VOCAB4・PRACTICE11・MOCK_POOL3)を0,1,2,3でほぼ均等にローテーション
+  (0が5件、1が4件、2が4件、3が5件)、複数選択3件(PRACTICE2・MOCK_POOL1)は{0,2}{1,3}{0,3}の3通りの異なる
+  組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存1750件(359+1034+358+新規
+  source4件を除くSOURCES)の項目は一切変更していないこと(diffはSOURCESの末尾項目へのカンマ付与1箇所の
+  みで、VOCAB/PRACTICE/MOCK_POOLは既存の最終項目の行自体を変更せず直後に新規項目を追加したためgit diff
+  上は追加のみとして表示される)を確認済み。
