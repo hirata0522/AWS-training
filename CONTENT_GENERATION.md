@@ -2345,3 +2345,30 @@
   通過を確認。既存1787件の項目は変更していない(diffはSOURCESへの新規キー追加1箇所のみ)。
   累計 VOCAB=371, PRACTICE=1067, MOCK_POOL=370(3プールとも各ドメイン比率は目標26/25/33/16%に近い
   水準を維持)。
+- 2026-10-15(定期実行): 21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時サンドボックスがdetached
+  HEADだったため`git checkout master`してから作業（手順書の指示どおり）。既存1808件の項目のうち既出
+  トピック（S3ライフサイクル・ALB/NLB/GWLB・Shield Standard/Advanced・マルチクラウド等）はPythonで
+  出現回数を事前チェックして避け、CAFプラットフォームの視点・IAM Identity Centerの権限セット・
+  Well-Architected信頼性の柱の設計原則(自動復旧/復旧手順テスト)・パフォーマンス効率の柱(高度な
+  テクノロジーの民主化)・固定費を可変費用に変える(6つのメリット)・KMSキーローテーション・
+  GuardDuty対Security Hub・CloudWatchアラーム・EBSスナップショットのクロスリージョンコピー・
+  VPCゲートウェイ型/インターフェイス型エンドポイント・Route53レイテンシーベースルーティング・
+  AWS Supportの重大度(Business-critical system down)・Budgets対Cost Anomaly Detection・責任共有
+  モデル(オブ/インザクラウド)・セキュリティグループ対NACL・Auto Scaling起動テンプレート・
+  リザーブドインスタンス対Savings Plansという、件数0件または低い未出題トピックを中心に選定した。
+  **WebFetchは今回成功した**: docs.aws.amazon.com/AmazonCloudWatch(アラームの仕組み)、
+  docs.aws.amazon.com/singlesignon(IAM Identity Centerの権限セット)、
+  docs.aws.amazon.com/wellarchitected(信頼性の柱・パフォーマンス効率の柱の設計原則)、
+  docs.aws.amazon.com/vpc(PrivateLink/VPCエンドポイントの種類)、
+  docs.aws.amazon.com/Route53(ルーティングポリシー)、docs.aws.amazon.com/awssupport(重大度別
+  応答時間)の本文を直接取得・確認できた。新規SOURCESキー`cloudwatchAlarms`を1件追加
+  (https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)。
+  正解位置は21件の単一選択をほぼ0,1,2,3でローテーションし、複数選択2件(PRACTICE1件・MOCK_POOL1件)
+  は{0,3}と{1,2}という、過去の実行で使われていなかった組み合わせを使用した。追加後、
+  Node.js(v22.22.0)のvmモジュールで新規21件全件のwhy配列の「正しい。」位置とcorrect添字の一致、
+  choices/why各4件、correct添字の範囲、sourceが公式ドメインであることを個別に検証し、全件エラー
+  なしを確認。python3 scripts/validate_content.pyもエラー0件で通過。既存1808件の項目は変更していない
+  (diffはSOURCESへの新規キー追加1箇所のみ)。累計 VOCAB=375, PRACTICE=1080, MOCK_POOL=374
+  (3プールとも各ドメイン比率は目標26/25/33/16%に近い水準を維持: VOCAB tech33.3/security24.5/
+  billing16.3/concepts25.9、PRACTICE concepts24.9/billing15.9/security25.7/tech33.4、
+  MOCK_POOL concepts25.9/security25.1/tech32.1/billing16.8)。
