@@ -2322,3 +2322,26 @@
   **提案(手順書への反映候補)**: 軽量source(使用回数3〜11件程度)を再利用する前に、本回のように
   Pythonで該当sourceの既存text/term全件を抽出して目視確認する一手間を、次回以降も標準手順として
   推奨する。これにより「件数は少ないが実質的には既に出題済み」という誤判定を防げる。
+- 2026-10-15(同日4回目の実行): 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時サンドボックス
+  がdetached HEADだったため`git checkout master`してから作業。既存SOURCESのうち使用回数が少ない
+  キー(aurora, appRunner新規, computeOptimizer, detective, multiTenancy, watool, migrationEvaluator,
+  typesOfCloud, permissionsBoundary, penTesting, rolesAnywhere, ec2LaunchTemplate, asgLifecycleHooks,
+  deadlineCloud, repostPrivate, priceListApi, cloudValueFramework, purchaseOrderMgmt)を中心に選定し、
+  CAF等すでに多数の項目がある話題は避けた。**WebFetchは今回成功した**: docs.aws.amazon.com/apprunner、
+  docs.aws.amazon.com/AmazonRDS(Aurora Serverless v2のACU/オートポーズ)、docs.aws.amazon.com/rolesanywhere、
+  docs.aws.amazon.com/detective、docs.aws.amazon.com/awsaccountbilling(Price List Bulk API)の本文を
+  直接取得・確認できた。aws.amazon.com/migration-evaluator、aws.amazon.com/deadline-cloud、
+  aws.amazon.com/security/penetration-testing、aws.amazon.com/repost-private/faqsも本文を取得できた。
+  一方aws.amazon.com/partners/programs（パートナー階層名称の確認用）とaws.amazon.com/executive-insights
+  の一部はJSレンダリングで本文が取れず、後者はWebSearchでCloud Value Frameworkの5分類
+  (コスト削減/生産性/運用の耐障害性/ビジネスの俊敏性/持続可能性)を確認して代替し、パートナー階層の
+  話題自体は確証が取れなかったため採用を見送った。新規SOURCESキー`appRunner`を1件追加
+  (https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html)。正解位置は21件を通じて
+  0,1,2,3でおおむね均等にローテーション、複数選択2件(PRACTICE1件・MOCK_POOLなし)は{0,2}と{1,3}の
+  異なる組み合わせを使用。追加後、Node.js(v22.22.0)で実際にSOURCES/VOCAB/PRACTICE/MOCK_POOLを
+  vmモジュールでロードし、新規追加した21件全件についてwhy配列の「正しい。」の位置がcorrect添字と
+  一致していること(index不整合)をスクリプトで検証し、作成時に発覚したv370/v371の選択肢順序ミス
+  (correct添字と正解文面がずれていた)を修正した。python3 scripts/validate_content.pyもエラー0件で
+  通過を確認。既存1787件の項目は変更していない(diffはSOURCESへの新規キー追加1箇所のみ)。
+  累計 VOCAB=371, PRACTICE=1067, MOCK_POOL=370(3プールとも各ドメイン比率は目標26/25/33/16%に近い
+  水準を維持)。
