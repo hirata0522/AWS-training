@@ -1484,3 +1484,47 @@
   で、IDの重複も無し）を確認済み。なお作業開始時、ローカル`master`より46コミット進んだdetached
   HEADが存在していたが、`git checkout master`時点で既に`origin/master`の最新コミットと一致して
   いたため、特別な復旧操作は不要だった。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`
+  からdetached HEADの状態になっていたが、`git checkout master && git pull --rebase origin master`で
+  fast-forwardして復帰してから作業した（復帰後の時点でVOCAB281/PRACTICE810/MOCK_POOL275、この回の
+  ログにはすでに記録されている48回分の累計が反映されていた）。累計 VOCAB=285, PRACTICE=823,
+  MOCK_POOL=279（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.3/security24.6/
+  billing16.8/concepts25.3、PRACTICE concepts23.9/billing16.2/security25.8/tech34.1、MOCK_POOL
+  concepts24.7/security25.1/tech33.0/billing17.2）。新規SOURCES3件を追加: Amazon CloudWatch
+  Application Insights（EC2・SQL Server HA等のアプリケーションリソースのメトリクス・ログ・アラーム
+  自動セットアップ）、Amazon Elastic VMware Service (Amazon EVS)（顧客VPC内のEC2ベアメタル上でVMware
+  Cloud Foundationを稼働、サブスクリプションポータビリティ）、Amazon EKS Auto Mode（Bottlerocket
+  不変AMI・21日ノードライフタイム・Karpenterオートスケーリング）。追加トピック: 上記3新規サービスを
+  VOCAB/PRACTICE/MOCK_POOLで導入、AWS Application Migration Service (MGN) の「カットオーバー
+  (Cutover)」ステップ（既存source mgnの新角度、テスト後の本番切替最終ステップ）、AWS Managed
+  Microsoft ADの「マルチリージョン複製」（既存source directoryServiceの新角度、Enterprise Edition限定・
+  ネイティブADレプリケーション）、AWS Configアグリゲーター（既存source configの新角度、Organizations
+  全体の読み取り専用集約ビュー）、Amazon Security Lakeの「ロールアップリージョン」（既存source
+  securityLakeの新角度、複数選択）、AWS SustainabilityコンソールのScope1/2/3排出区分の定義（既存source
+  sustainabilityConsoleの新角度、GHGプロトコル準拠）、AWS Free Tier使用状況アラート（既存source freeの
+  新角度、85%到達時のデフォルトEメール通知・Organizations管理アカウントは対象外）、AWS Marketplace
+  プライベートオファーの契約終了後の挙動（既存source marketplacePrivateOffersの新角度、製品により
+  パブリック価格へ切替/利用不可の両パターンがある）、EC2 IMDSv2のHttpPutResponseHopLimit（既存source
+  imdsv2の新角度、デフォルト値1・Dockerコンテナ利用時は2以上に増やす必要）。新規出典2件
+  （appinsights, eksAutoMode）は本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回も
+  WebFetchが成功**）、本文を直接確認した上で追加した。evsもWebFetchで本文を確認できたが、取得した
+  URLが実際にはAmazon EVSのトップページで一部リンク先が404だったため、最終的に採用したURL
+  (evs/latest/userguide/what-is-evs.html)で再度WebFetchし直し、本文全体を確認してから採用した。
+  なお当初、AWS Cloud Adoption Readiness Tool (CART) を新規concepts系sourceの候補として検討したが、
+  docs.aws.amazon.com配下の該当ページがWebFetchで404になり、WebSearchでもAWS公式の現行ステータスを
+  確認できず(Migration Hubの関連ページが404、無料の後継ツールCloud Readiness Assessment (CRA)が
+  存在する可能性も示唆されたが確証が得られなかった)、不確実な情報を出典にしないというルールに従って
+  出題対象から除外した。マルチリージョン複製・ロールアップリージョン・Configアグリゲーター・Free Tier
+  アラート・Marketplaceプライベートオファーの契約終了後挙動・IMDSv2のHttpPutResponseHopLimitは、
+  いずれも既存SOURCESの再利用だが、WebSearchで公式ドキュメント(docs.aws.amazon.com)の記述を個別に
+  確認してから出題内容を作成した(特にAWS Managed Microsoft ADのマルチリージョン複製は、2026年4月の
+  Opt-inリージョン対応拡大という比較的新しい更新があったため、既存の安定した仕様(Enterprise Edition
+  限定・ネイティブADレプリケーション・ディレクトリID不変)のみを出題内容とし、リージョン一覧等の
+  変化しやすい詳細には触れないようにした)。既存の飽和気味のsource（sixAdv31件・wafReliability22件・
+  migrationStrategies18件等）は今回も意図的に避けた。正解位置はVOCAB4件を0,1,2,3でローテーション、
+  PRACTICE単一選択11件を0,1,2,3のサイクルでほぼ均等にローテーション(0が3件、1が3件、2が3件、3が2件)、
+  PRACTICE複数選択2件は{0,2}と{1,3}の異なる組み合わせ、MOCK_POOL単一選択4件は3,0,1,2の順でローテー
+  ション。追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、
+  既存823件中の追加前の802件(VOCAB281/PRACTICE810/MOCK_POOL275)の項目は一切変更していないこと
+  （diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの
+  重複も無し）を確認済み。
