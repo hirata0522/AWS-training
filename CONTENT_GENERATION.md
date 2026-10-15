@@ -1619,3 +1619,45 @@
   `node`の`vm.runInContext`でのファイル読み込み確認、ID重複なしの確認、`git diff`で変更が
   SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ(既存848-21=827件、
   すなわちVOCAB289/PRACTICE836/MOCK_POOL283の項目は一切変更なし)であることを確認済み。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが
+  detached HEADの状態になっていたが、`git checkout master`すると、ローカル`master`は既に
+  `origin/master`の最新コミット(2a2ccb6)と一致していたため、`git pull --rebase`はfast-forward
+  不要で即座に完了した。累計 VOCAB=297, PRACTICE=861, MOCK_POOL=292（3プールとも各ドメイン比率は
+  目標26/25/33/16%に近い: VOCAB tech33.7/security24.6/billing16.8/concepts24.9、PRACTICE
+  concepts23.9/billing16.3/security25.7/tech34.1、MOCK_POOL concepts24.7/security25.3/tech33.2/
+  billing16.8）。既存のVOCAB・PRACTICE・MOCK_POOLの大半のSOURCESキーが既にVOCAB定義問題を持って
+  いることを確認した上で、未出題の新規トピック・サブ機能に絞って追加した。追加トピック: Amazon
+  Braket（新規、量子コンピューティングサービス）、AWS STS (Security Token Service)（新規、
+  AssumeRoleによる一時的セキュリティ認証情報の発行）、AWS Supply Chain（既存source、VOCAB初追加・
+  既存ERP/SCMシステムを置き換えずに統合する特徴）、EC2リザーブドインスタンスのサイズ柔軟性(Instance
+  Size Flexibility、正規化係数に基づくリージョナルRI限定の割引適用・超過分のプロレーション課金)、
+  責任共有モデルのEC2対RDSのゲストOSパッチ適用責任比較、責任共有モデルのLambda(サーバーレス)における
+  責任分担、Well-Architected信頼性の柱の未出題だった設計原則（水平方向にスケールしてワークロード
+  全体の可用性を高める／障害から自動的に復旧する／変更を自動化で管理する）、Amazon SQSによる疎結合・
+  フォールトアイソレーションのシナリオ、AWS KMSのグラント(Grant)の定義・リタイア対取り消し(Revoke)の
+  違い・グラントトークンによる結果整合性の回避（いずれも新規の切り口）、AWS Certificate Managerの
+  DNS検証(CNAMEレコード)による自動更新の仕組み、AWS Cost Explorerのリザーブドインスタンス/Savings
+  Plans購入推奨が過去の実績利用に基づき将来予測は行わない点・24時間毎の更新・Break even months
+  (損益分岐月数)指標、Amazon Braketのハイブリッド量子アルゴリズム(化学・最適化分野)・複数ベンダーへの
+  オンデマンドアクセスという商用面の利点。新規SOURCES1件（braket）はWebFetchで
+  `docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html`の本文を直接取得・確認できた
+  （**今回もWebFetchが成功**）。また同じ回でAmazon Pinpoint（2026年10月30日付で新規に限らずサービス
+  自体の提供終了が判明）、Amazon WorkMail（2026年4月30日付で新規顧客の受付を終了済み）、AWS Proton
+  （2025年10月7日付で新規顧客の受付を終了し、2026年10月7日付で既存顧客向けサポートも終了済み）、
+  Amazon Managed Blockchain（2026年10月29日付で新規顧客の受付を終了予定）、AWS IoT Events（2026年
+  5月20日付でサービス自体のサポートが終了済み）をVOCAB新規候補として検討したが、いずれもWebFetch/
+  WebSearchでサービス終了・新規受付終了が確認されたため出題対象から除外し、Amazon Braketに差し替えた
+  （Amazon Braketは同じ検索でハードウェアデバイスの入れ替えのみでサービス自体は現役であることを確認
+  済み）。また、AWS Cost Explorerのリザーブドインスタンス購入推奨の仕組みについては、既存の
+  `costExplorer`ページ(`ri-recommendations.html`)をWebFetchで直接確認し、Break even months・24時間
+  毎の更新・過去7/30/60日の実績に基づく前提(将来予測ではない)という具体的な仕様を取得した上で出題に
+  反映した。AWS KMSのグラントについても`docs.aws.amazon.com/kms/latest/developerguide/grants.html`を
+  WebFetchで確認し、リタイア(グラント自身が許可されたプリンシパルが行う)と取り消し(通常はキー管理者が
+  行う)の違い、グラントトークンの役割を正確に反映した。正解位置は単一選択19件(VOCAB4・PRACTICE11・
+  MOCK_POOL4)を0,1,2,3の分布が5:5:5:4となるよう意識的にローテーション、複数選択2件(PRACTICE2件)は
+  {0,2}と{1,3}の異なる組み合わせを使用。追加後にpython3 scripts/validate_content.pyでエラー無し・
+  `node`の`vm.runInContext`でのファイル読み込み・ID重複なし(計1450件)を確認し、`git diff`で変更が
+  SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ(既存861-21=840件、
+  すなわちVOCAB293/PRACTICE848/MOCK_POOL288の項目は一切変更なし)であることを確認済み。コミット後
+  `git pull --rebase origin master`(fast-forward不要で即完了)・`git push origin master`で
+  origin/masterを更新した(2a2ccb6→cc91dfa)。
