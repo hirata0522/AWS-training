@@ -1447,3 +1447,40 @@
   git diff・node(vm.runInContext)での読み込みを確認し、既存777件(VOCAB273/PRACTICE784/MOCK_POOL267)
   の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目に
   カンマを付与した4箇所のみで、IDの重複も無し）を確認済み。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが
+  `master`からdetached HEADの状態になっていたが、`git checkout master`すると、ローカルの`master`が
+  `origin/master`の最新コミット(d70647f)と完全に一致していたため、`git pull --rebase`はfast-forward
+  不要で即座に完了した。累計 VOCAB=281, PRACTICE=810, MOCK_POOL=275（3プールとも各ドメイン比率は
+  目標26/25/33/16%に近い: VOCAB tech33.5/security24.6/billing16.7/concepts25.3、PRACTICE
+  concepts24.1/billing16.2/security25.7/tech34.1、MOCK_POOL concepts24.7/security25.1/tech33.1/
+  billing17.1）。既存のSOURCESの多くが複数設問で既に使われており(例: sixAdv33件、wafReliability21件、
+  cloudValueFramework・drStrategies・rtorpo・iamIdentityCenter・inspector・auditManager・
+  rolesAnywhere・acmpca・cognito・secretsmanager・guardduty系・wafAtp/wafAcfp等は主要な角度を
+  ほぼ出し切っていた)ことを個別にgrepで確認し、それらは今回の新規追加の対象から外して、未出題の
+  サービス・角度を優先した。追加トピック: Amazon Redshift（VOCAB初追加、Redshift Serverlessの
+  アイドル時無課金という課金モデル）、Amazon CloudWatch Logs（新規、CloudWatch Logs Insightsによる
+  ログの検索・分析、メトリクスとの違い）、SLA(Service Level Agreement)のクレジット申請方法
+  （AWS Support Centerでのケース起票・申請期限）、AWS Signerの「コード署名設定(Code Signing
+  Config)」のWarn/Enforceポリシーおよび署名失効(revoke)の影響範囲、AWS Private CAを既存の
+  オンプレミスCA(外部CA)に連鎖する下位CAとして構成する方法、Amazon Aurora Serverless v2の
+  ACU単位の自動スケーリング、Amazon EC2 Auto Scalingの目標追跡スケーリング、AWS Cost Categories
+  によるコスト次元のルールベースなグルーピング、AWS Schema Conversion Tool (AWS SCT、新規、
+  異種データベース間のスキーマ変換とAWS DMSとの役割分担)、AWS GlueとAWS Glue DataBrewの違い、
+  マルチクラウド戦略のメリット・トレードオフ、AWS Well-Architected Frameworkの柱の間の
+  トレードオフの考え方。新規SOURCES2件（cloudwatchLogs, schemaConversionTool）はWebFetchで
+  docs.aws.amazon.comの該当ページ（AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html,
+  SchemaConversionTool/latest/userguide/CHAP_Welcome.html）の本文を直接確認した上で追加した
+  （**今回はWebFetchが成功**）。調査の過程で、AWS Directory Serviceの「Simple AD」は公式docsで
+  「新規顧客への受付を終了している」ことがWebSearchで判明したため、正解として推奨する出題は
+  見送った（既存の除外事例と同様の理由）。AWS Signerの「署名プロファイル失効が既存のデプロイ済み
+  Lambda関数に即座に影響するか」という点は公式ドキュメントで明確に確認できなかったため、断定的な
+  出題を避け、公式ドキュメントで明確に確認できた「署名自体の失効がLambdaの署名検証チェックに
+  失敗させる」という事実のみを問う内容にした。正解位置はVOCAB4件を0,1,2,3でローテーション、
+  PRACTICE単一選択11件を0,1,2,3でおおむね均等にローテーション(各位置2〜3件)、PRACTICE複数選択
+  2件は{0,2}と{1,3}の異なる組み合わせ、MOCK_POOL単一選択4件は3,0,1,2の順でローテーション。
+  追加前後でvalidate_content.pyの出力・git diff・node(vm.runInContext)での読み込みを確認し、
+  既存810件中の追加前810-21=789件相当（VOCAB277/PRACTICE797/MOCK_POOL271）の項目は一切変更して
+  いないこと（diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ
+  で、IDの重複も無し）を確認済み。なお作業開始時、ローカル`master`より46コミット進んだdetached
+  HEADが存在していたが、`git checkout master`時点で既に`origin/master`の最新コミットと一致して
+  いたため、特別な復旧操作は不要だった。
