@@ -1773,3 +1773,36 @@
   python3 scripts/validate_content.pyでエラー無しを確認し、git diffで変更がSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ(既存1471件の項目は一切変更なし)であることを
   確認済み。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが
+  `master`からdetached HEADの状態になっていたため、`git checkout master && git pull --rebase
+  origin master`で復帰してから作業した(ローカルmasterは既にorigin/masterの最新コミットと一致)。
+  累計 VOCAB=313, PRACTICE=913, MOCK_POOL=308（domains: VOCAB tech104/security77/billing53/
+  concepts79、PRACTICE concepts213/billing151/security235/tech314、MOCK_POOL concepts75/
+  security78/tech102/billing53）。新規SOURCES1件（ipam、Amazon VPC IP Address Manager）は
+  本実行環境でWebFetchがdocs.aws.amazon.com/vpc/latest/ipam/what-it-is-ipam.htmlに対して成功し
+  （**今回もWebFetchが成功**。なお初回は誤ったURL(what-is-it-ipam.html)を叩いてタイトルのみ返り
+  失敗したが、WebSearchで正しいスラッグ(what-it-is-ipam.html)を特定して再度WebFetchしたところ
+  本文を直接取得できた。これは過去ログで繰り返し記録されていた「WebFetchがDNS/プロキシで
+  ブロックされる」症状ではなく、単純なURL誤りだったことが判明した点を記録しておく）、本文を
+  直接確認した上で追加した。追加トピック: Amazon VPC IP Address Manager (IPAM)（新規）、AWS KMSの
+  非対称キー(Asymmetric Keys、署名/検証用途)、AWS Direct Connect SiteLink、Amazon EC2ハイバネーション
+  (Hibernate)、Amazon EBSのMulti-Attach機能(io1/io2のリージョン差異含む)、Amazon Auroraグローバル
+  データベース(ストレージ層レプリケーション・1分未内フェイルオーバー)、VPCエンドポイントポリシー
+  (ゲートウェイ/インターフェースエンドポイントでのPrincipal要素の扱いの違い、未設定時のデフォルト
+  挙動)、AWS Organizationsの「すべての機能」対「一括支払いのみ」の機能セット、AWS Data Exports
+  (CUR 2.0)のテーブル設定(TIME_GRANULARITY/INCLUDE_RESOURCES)とレガシーCURとのスキーマの違い、
+  責任共有モデルの管理策区分(継承されるコントロール/共有コントロール/お客様固有のコントロール、
+  Well-Architectedセキュリティの柱が出典)。既存の飽和気味のsource（kms・ec2Ri・organizations・
+  shared等）は、grepで既出内容を個別に確認したうえで、未出題の具体的な角度(非対称キー・
+  Hibernate・全機能モード・管理策区分等)にのみ絞って利用した。なおAWS App Mesh(2026年9月30日付で
+  サポート終了予定、2024年9月に新規受付終了済み)とAmazon Managed Blockchain(2026年10月29日付で
+  新規受付終了・2027年9月29日付でサービス終了予定との報道)を新規候補として検討したが、いずれも
+  既に提供終了が決定しているためWebSearchで確認した上で出題対象から除外した。正解位置は単一選択
+  18件を最終的に0が5件・1が4件・2が5件・3が4件となるよう調整（当初一部の項目で位置1に偏る草稿に
+  なったため、4件(p902/p905/p910/p912)の選択肢の並び順と解説の対応を入れ替えて位置3に移動し均等化
+  した）、複数選択3件は{0,3}{1,2}{0,2}の3通りの異なる組み合わせを使用（p909も当初{0,3}の重複が
+  発生したため選択肢の並びを組み替えて{1,2}に変更した）。追加後にNode.js(vm経由でのJS実行)で構文の
+  パース・ID重複なし・choices/why各4件・correct添字の範囲を確認し、python3 scripts/validate_content.py
+  でもエラー無しを確認した。git diffで変更がSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目への
+  カンマ付与4箇所のみ(既存900件のPRACTICE・309件のVOCAB・304件のMOCK_POOLの項目は一切変更なし)で
+  あることを確認済み。
