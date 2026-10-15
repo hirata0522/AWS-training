@@ -2202,3 +2202,36 @@
   カンマ付与1箇所のみで、VOCAB/PRACTICE/MOCK_POOLは既存の最終項目の行自体を変更せず直後に新規項目を
   追加したためgit diff上は追加のみとして表示された）を確認済み。累計 VOCAB=355, PRACTICE=1021,
   MOCK_POOL=354。
+- 2026-10-15(同日2回目の実行): 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時点でも
+  サンドボックスがmasterから分岐した50コミット分のdetached HEAD状態（直前の実行の最終コミットと一致）
+  になっていたが、本ランブックの警告どおり`git checkout master`を実行後、`git pull --rebase origin
+  master`を行った時点でローカルmasterがちょうどその分岐先と同じ内容へforce-updateされておりデータ
+  損失なく解決された。作業開始時点の件数はVOCAB355/PRACTICE1021/MOCK_POOL354（直前の実行による更新分
+  を含む）。残り件数(目標-現在)の比(VOCAB145:PRACTICE479:MOCK150)から予算21件をvocab4/practice13/
+  mock4に配分し、各プール内はドメイン別の不足比率(現状がほぼ目標比26/25/33/16に沿っているため均等配分)
+  に従って概ね1ドメインずつ均等に配分した。新規トピックの選定時、候補に挙げたAWS Snowmobileは
+  WebSearchで複数の報道記事(datacenterdynamics.com等、2024年3月付)を確認した結果「2024年にAWSが
+  ひそかにサービスを終了し公式サイトから削除した」ことが判明したため出題対象から除外した。同様に
+  AWS Enterprise Discount Program (EDP)はWebSearchで複数回検索したが、AWS公式ドメイン
+  (docs.aws.amazon.com/aws.amazon.com)上の説明ページが見つからず(第三者のベンダーブログ・
+  AWS Marketplaceの販売パートナーの商品ページのみ)、出典確認ルールにより未確認のまま出題するのを
+  避けて除外し、代わりにAWS公式ドキュメントで確認できたAWS Cost Explorerの「予約購入レコメンデーション
+  (Reservation Purchase Recommendations)」を採用した。新規に追加したSOURCESは9件
+  (iamPolicyTypes・s3MfaDelete・ebsVolumeTypes・cfnDriftDetection・ec2LaunchTemplate・
+  asgLifecycleHooks・costExplorerForecast・riRecommendations・controlTowerControls)で、いずれも
+  WebFetchでdocs.aws.amazon.comまたはaws.amazon.com配下の該当ページの本文を直接取得・確認してから
+  urlを記載した(IAMのmanaged-vs-inlineページ、S3のMultiFactorAuthenticationDeleteページ、
+  CloudFormationのusing-cfn-stack-driftページ、EC2のec2-launch-templatesページ、Auto Scalingの
+  lifecycle-hooks-overviewページ、Cost Managementのce-forecast/ri-recommendationsページ、
+  Control Towerのcontrol-behaviorページの7件でWebFetch本文取得に成功。WebFetchは今回も成功した)。
+  なお、Control Towerの「ガードレール」は現行ドキュメントでは用語が「コントロール」に移行中だが、
+  両用語は同義として併用されていることをWebSearchで確認した上でSOURCESのlabelには「コントロール
+  （ガードレール）」と両方を記載した。正解位置は単一選択18件(VOCAB4・PRACTICE11・MOCK3)を0,1,2,3で
+  ローテーション(0×5・1×5・2×4・3×4)、複数選択3件(PRACTICE2・MOCK1)は{0,1}{1,2}{0,3}の3通りの異なる
+  組み合わせを使用。scripts/validate_content.py実行で0エラーを確認した上で、さらにNode.js(v22.22.0)の
+  `new Function`でclf-c02.jsのSOURCES/VOCAB/PRACTICE/MOCK_POOLを実際に評価・ロードし、新規追加した
+  21件それぞれについてchoices/why配列が各4件・source.urlの存在・correct添字が0〜3の範囲内・
+  type:'single'は要素1件・type:'multi'は要素2件以上であることを個別に検証済み（ブラウザでの実機確認は
+  今回も未実施）。既存の1730件の項目は一切変更していない(diffはSOURCESの末尾項目へのカンマ付与1箇所の
+  みで、VOCAB/PRACTICE/MOCK_POOLは既存の最終項目の行自体を変更せず直後に新規項目を追加したためgit diff
+  上は追加のみとして表示される)。累計 VOCAB=359, PRACTICE=1034, MOCK_POOL=358。
