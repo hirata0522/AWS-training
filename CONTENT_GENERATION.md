@@ -1739,3 +1739,37 @@
   組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存1471件の項目は
   一切変更していないこと(diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを
   付与した4箇所のみ)を確認済み。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが
+  `master`からdetached HEADの状態になっていたが、`git checkout master`した時点で既にローカル
+  `master`が`origin/master`の最新コミットと一致していたため、`git pull --rebase`はfast-forward
+  不要で即座に完了した。累計 VOCAB=309, PRACTICE=900, MOCK_POOL=304（domains: VOCAB
+  tech103/security76/billing52/concepts78、PRACTICE concepts212/billing149/security230/
+  tech309、MOCK_POOL concepts74/security77/tech101/billing52）。今回は既存のSOURCES（160件超）
+  がAWSの主要サービス・Well-Architectedの各柱の設計原則・CAFの6つの視点をほぼ網羅していることが
+  事前のgrep調査で判明したため、重複を避けるべく新規トピックの発見に時間をかけ、既出かどうかを
+  個別にgrepで確認したうえで追加した。追加トピック: Amazon RDS Proxy（新規、コネクションプーリング・
+  フェイルオーバー時の接続維持）、Amazon Neptune Analytics（新規、グラフ分析専用のメモリ最適化
+  エンジン）、AWS Organizationsのリソースコントロールポリシー(RCP、新規。SCPとの違い=SCPは組織内
+  プリンシパル自身の権限上限、RCPは組織外プリンシパルが組織内リソースへアクセスする際の権限上限)、
+  レジリエンス(Resilience、新規。信頼性の柱が定義する「障害からの回復・動的なリソース確保・障害の
+  軽減」という信頼性の中心要素で、既存のRedundancy/Durability/Availability等のVOCABとは別概念として
+  追加)、IAMポリシー評価の明示的な拒否(Explicit Deny)の優先順位、Amazon RDSのリードレプリカ、EC2 Auto
+  Scalingのウォームプール(Warm Pool)、Amazon DocumentDB Elastic Clusters(シャーディングによる水平
+  スケーリング)、Amazon GuardDuty Lambda Protection、EC2スタンダードリザーブドインスタンスの分割・
+  結合(Split/Merge)、AWS Organizations一括支払い(Consolidated Billing)でのRI/Savings Plans割引共有。
+  新規SOURCES3件（rdsProxy, rcp, neptuneAnalytics）はすべて本実行環境でWebFetchがdocs.aws.amazon.com
+  に対して成功し（**今回はWebFetchが成功**）、本文を直接確認した上で追加した。なお当初VOCAB新規候補
+  として検討したAmazon WorkMailは、WebFetchで「2027年3月31日付でサポートを終了する」という正式な
+  終了予告がドキュメント先頭に明記されていることが判明したため、既存の除外事例(Pinpoint・Migration
+  Hub・CodeCatalyst等)と同様の理由で出題対象から除外し、代わりにAmazon Neptune Analyticsに差し替えた。
+  EC2 RIの分割・結合の詳細条件（スタンダードRIのみ対象・同一ファミリー内・結合時は開始日終了日が一致
+  している必要がある）および一括支払いでのRI/Savings Plans割引共有の既定動作は、WebSearchでAWS公式
+  ドキュメントの記載を確認した上で執筆した。既存の飽和気味のsource（wafReliability・guardduty・iam・
+  ec2Ri等）は、既出内容と重複しない具体的な未出題の事実・角度であることを個別にgrepで確認した上で
+  のみ利用し、特に「疎結合」(19件)・CAFの6視点(全網羅済み)・WAF信頼性の柱の5設計原則(全網羅済み)・
+  耐久性/可用性のナインズ表記(3件)等は重複リスクが高いと判断し新規追加の対象から除外した。正解位置は
+  単一選択18件(VOCAB4・PRACTICE11・MOCK_POOL3)の分布が0:5/1:5/2:4/3:4となるよう意識的にローテーション
+  し、複数選択3件(PRACTICE2・MOCK_POOL1)は{1,3}{0,2}{0,3}の3通りの異なる組み合わせを使用。追加後に
+  python3 scripts/validate_content.pyでエラー無しを確認し、git diffで変更がSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ(既存1471件の項目は一切変更なし)であることを
+  確認済み。
