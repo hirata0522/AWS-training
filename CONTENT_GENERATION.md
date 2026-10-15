@@ -2165,3 +2165,40 @@
   995+347+346=1688件の項目は一切変更していないこと（diffはSOURCESの末尾項目へのカンマ付与1箇所のみ。
   VOCAB/PRACTICE/MOCK_POOLは既存の最終項目の行自体は変更せず、その直後に新規項目を追加したためgit diff
   上は追加のみとして表示された）を確認済み。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがmasterから
+  分岐した50コミット分の検出不能な履歴を含むdetached HEAD状態になっていたが、`git checkout master`後に
+  `git pull --rebase origin master`を実行した時点で、別プロセスによりちょうどorigin/masterがその分岐先
+  （同じ内容）へforce-updateされておりローカルmasterと一致、データ損失なく解決された（念のためこの旨を
+  ユーザーに報告済み）。作業開始時点の件数はVOCAB351/PRACTICE1008/MOCK_POOL350。残り件数（目標-現在）を
+  プール別に算出しVOCAB149・PRACTICE492・MOCK150の比(≒19/62/19%)から今回の予算21件をvocab4/practice13/
+  mock4に配分し、各プール内はドメイン別の不足比率(現状がおおむね26/25/33/16の目標比に近いため大きな偏り
+  補正は不要と判断)に沿って概ね均等に配分した。新規に検討した候補のうちAmazon Kendra・AWS Application
+  Discovery Service・Amazon Q Businessは、WebFetch/WebSearchで公式ドキュメントを確認した結果いずれも
+  「新規顧客の受付を終了」の告知があり、AWS App Meshは2026年9月30日付でサポート終了(Amazon ECS Service
+  Connectへの移行を推奨)という告知が確認されたため、正確性を優先してこれら4件は出題対象から除外し、
+  代わりに現行かつ非推奨の告知がないことを確認できたAmazon EventBridge Scheduler・Amazon ECS Service
+  Connectを新規SOURCESとして追加した（Amazon ECS Service ConnectはWebFetchでdocs.aws.amazon.com/
+  AmazonECS/latest/developerguide/service-connect.htmlの本文を直接確認し成功、Amazon EventBridge
+  Schedulerおよびその他の事実確認はWebSearchのスニペットで確認。WebFetchは今回成功した）。残り17件は
+  既存のSOURCES（controlTower・migrationEvaluator・govCloud・schemaConversionTool・serviceCatalog・
+  inspector・rcp・secretsmanager・cloudMap・eventbridge・transferFamily・costExplorer・budgets・
+  prescriptiveGuidance・detective・kinesis/firehose・savingsplansTypes）を、既存項目とは異なる具体的な
+  シナリオ（例: RCPとSCPの使い分け、RI使用率とRIカバレッジの違い、Secrets ManagerとParameter Storeの
+  使い分け、Cloud MapとECS Service Connectの違い）で再利用した。AWS Cost Explorerの「RI使用率
+  (Utilization)レポート」と「RIカバレッジ(Coverage)レポート」の違いは、AWS公式ドキュメント
+  (cost-management/latest/userguide/ce-default-reports.html)に加えAWS公式ナレッジセンター記事
+  (repost.aws)のスニペットでも整合することを確認し、具体的な料金・割引率の数値は本文に含めなかった。
+  Amazon Secrets Manager / Systems Manager Parameter Storeの比較では、具体的な料金(セント単位)は出典間
+  で食い違いが見られたためWebSearchスニペットでも断定せず、出題内容には「Secrets Managerは有料でRDS等
+  向けの自動ローテーションが組み込まれている／Parameter StoreのStandardパラメータは無料だが自動
+  ローテーションは組み込まれていない」という、複数の出典で一致する安定した構造的事実のみを採用した。
+  正解位置は単一選択18件(VOCAB4・PRACTICE11・MOCK3)を0,1,2,3でローテーション(0×5・1×5・2×4・3×4)、
+  複数選択3件(PRACTICE2・MOCK1)は{0,1}{0,3}{0,2}の3通りの異なる組み合わせを使用。Node.js(v22.22.0)で
+  clf-c02.jsを実際にevalしてVOCAB/PRACTICE/MOCK_POOL全件をロードし、ID重複なし(全1730件)・新規追加した
+  21件それぞれについてchoices/why配列が各4件・correct添字が範囲内・source.urlがdocs.aws.amazon.com/
+  aws.amazon.com配下であること・`why`配列中の「正しい。」の位置が`correct`の添字(配列)と完全一致する
+  ことをスクリプトで検証済み（ブラウザでの実機確認は今回も未実施）。追加前後でvalidate_content.pyの
+  出力・git diffを確認し、既存1688件の項目は一切変更していないこと（diffはSOURCESの末尾項目への
+  カンマ付与1箇所のみで、VOCAB/PRACTICE/MOCK_POOLは既存の最終項目の行自体を変更せず直後に新規項目を
+  追加したためgit diff上は追加のみとして表示された）を確認済み。累計 VOCAB=355, PRACTICE=1021,
+  MOCK_POOL=354。
