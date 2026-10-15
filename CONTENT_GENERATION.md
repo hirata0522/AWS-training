@@ -1564,3 +1564,58 @@
   既存836件中の追加前の815件(VOCAB285/PRACTICE823/MOCK_POOL279)の項目は一切変更していないこと
   （diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を
   確認済み。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+12/MOCK_POOL+5、合計件数の都合でPRACTICE/
+  MOCK_POOLの内訳をいつもの13/4から12/5に調整）。開始時、サンドボックスが`master`からdetached
+  HEADの状態になっていたが、`git checkout master`すると、ローカルの`master`ブランチが
+  `origin/master`と完全に無関係な(共通の祖先を持たない)古い履歴(2026-10-12 14:45付、19コミット、
+  いずれも`origin`には存在せずpush履歴も無いことを`git ls-remote`で確認)を指していることが判明した。
+  調査の結果、このローカル`master`は過去に記録されている「サンドボックスがmaster以外のブランチを
+  チェックアウトした状態になっていた事故」と同種の、2026-10-13のブランチ統合作業より前の完全に
+  陳腐化したローカル専用の参照であり、実体のある正当な未push作業ではないと判断した(origin側には
+  このブランチの内容は一切含まれておらず、`git ls-remote`で確認した時点のoriginはmasterブランチ1本
+  のみでf65087dを指していた)。安全のため、まずこの古いローカル`master`をタグ
+  `backup/stale-local-master-20261012`としてバックアップしてから、detached HEADのまま
+  `origin/master`の内容で作業を継続し、最終的に`git push origin HEAD:master`で直接originの
+  masterブランチを更新する方式を採った(ローカルのブランチ参照自体の付け替え操作はサンドボックスの
+  自動分類器により「破壊的操作」として許可されなかったため)。累計 VOCAB=293, PRACTICE=848,
+  MOCK_POOL=288（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.4/security24.6/
+  billing16.7/concepts25.3、PRACTICE concepts23.8/billing16.2/security25.6/tech34.4、MOCK_POOL
+  concepts24.3/security25.3/tech33.3/billing17.0）。追加トピック: 冗長性(Redundancy、新規の
+  VOCAB項目)、DynamoDBの読み取り整合性モデル(結果整合性/強い整合性)、AWS KMSのキーポリシー
+  (Key Policy)の定義とクロスアカウントでのキー共有(キーポリシー+利用側IAMポリシーの両方が必要)、
+  AWS Schema Conversion Tool (AWS SCT)の基本定義、Amazon Comprehend Medicalの個別API
+  (DetectPHI/InferICD10CM/InferRxNorm/InferSNOMEDCT/DetectEntitiesV2の使い分け)、Amazon Textract
+  のQueries機能とAnalyzeID機能、Amazon Translateの非同期バッチ翻訳ジョブ、AWS Device Farmの
+  リモートアクセス(手動デバッグ)機能、Amazon CloudWatch Application Insightsの「Problem」概念、
+  Amazon DataZoneのサブスクリプション(利用申請)ワークフロー、Amazon CloudWatch Syntheticsの
+  視覚的モニタリング(Visual Monitoring)機能、AWS Billing請求書のCSVダウンロード、Amazon EC2
+  Capacity Reservation Fleetの優先度(priority)に基づく容量確保順序、VPC Flow Logsのカスタム形式
+  (フィールド選択)、VPC Flow Logsの粒度(VPC/サブネット/ENI単位)、AWS KMSのマルチリージョンキー、
+  Well-Architected運用上の優秀性の柱の設計原則「マネージドサービスを使用する」、Amazon Managed
+  Grafanaのアラート(Alerting)機能。新規のSOURCES追加は無し(すべて既存のSOURCESキーを再利用し、
+  各ソースについて既存項目の内容を個別にgrepで確認した上で、まだ出題されていない具体的なAPI・
+  機能・角度に絞って追加)。当初Amazon FinSpaceとAWS IoT FleetWiseを新規SOURCES候補として
+  WebSearchで調査したが、FinSpaceは2026年10月7日付でサポート終了(新規顧客受付は2025年10月7日に
+  終了済み)、IoT FleetWiseは2026年4月30日付で新規顧客の受付を終了していることが判明したため、
+  いずれも出題対象から除外し、既存SOURCESの再利用に切り替えた。また、AWS Mainframe
+  Modernizationも検討したが、マネージドランタイム環境が2025年11月7日付で新規顧客受付を終了して
+  いることがWebSearchで判明し、同様に除外した。WebFetchはdocs.aws.amazon.comに対して複数回
+  (Amazon CloudWatch Application Insightsの機能詳細、Amazon EC2 Capacity Reservation Fleetの
+  優先度/重みの仕様、Well-Architected運用上の優秀性の柱の設計原則一覧)試行し、すべて成功した
+  (**今回もWebFetchが成功**)。これらのWebFetch結果に基づき、Application InsightsのProblem/
+  Observation/Componentの定義、Capacity Reservation Fleetの優先度に基づく容量確保順序(数値が
+  小さいほど優先度が高い)、運用上の優秀性の柱の設計原則が現行では8つ(組織化/観測可能性の実装/
+  安全な自動化/頻繁な小規模変更/手順の頻繁な見直し/障害の予測/すべての運用上の失敗からの学習/
+  マネージドサービスの使用)であり、既存項目が扱っていた5つとは別に「マネージドサービスを使用する」
+  がまだ未出題だったことを確認した上で出題した。既存の飽和気味のsource(wafPerformance全5設計原則
+  使い切り、wafOps旧5原則使い切り、resourceExplorer・ram・securityIR・networkAccessAnalyzer・
+  iamPolicySimulator・rolesAnywhere・globalInfra・shared・consolidatedBilling・licenseManager・
+  compliancePrograms・invoices(一部)・wafAcfp・guarddutyExtendedThreatDetection・
+  capacityReservationFleet(重み以外)等、既存項目の内容を個別に確認した結果、今回検討した角度が
+  既出または近すぎると判断したもの)は候補から外し、未出題の具体的なAPI・機能に絞って追加した。
+  正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK_POOL4)の分布が0:5/1:5/2:4/3:5となるよう
+  意識的に選択肢を並び替え、複数選択2件(PRACTICE1・MOCK_POOL1)は{1,2}と{0,2}の異なる組み合わせを
+  使用。追加後にpython3 scripts/validate_content.pyでエラー無し・ドメイン件数を確認し、
+  `node`の`vm.runInContext`でのファイル読み込み確認、ID重複なしの確認、`git diff`で変更が
+  SOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ(既存848-21=827件、
+  すなわちVOCAB289/PRACTICE836/MOCK_POOL283の項目は一切変更なし)であることを確認済み。
