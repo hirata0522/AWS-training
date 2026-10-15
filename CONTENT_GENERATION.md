@@ -1661,3 +1661,42 @@
   すなわちVOCAB293/PRACTICE848/MOCK_POOL288の項目は一切変更なし)であることを確認済み。コミット後
   `git pull --rebase origin master`(fast-forward不要で即完了)・`git push origin master`で
   origin/masterを更新した(2a2ccb6→cc91dfa)。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが
+  `master`からdetached HEADの状態になっていたが、`git checkout master`すると、ローカル`master`は既に
+  `origin/master`の最新コミット(8335166)と一致していたため、`git pull --rebase`はfast-forward不要で
+  即座に完了した。累計 VOCAB=301, PRACTICE=874, MOCK_POOL=296（3プールとも各ドメイン比率は目標
+  26/25/33/16%に近い: VOCAB tech33.6/security24.6/billing16.9/concepts24.9、PRACTICE
+  concepts24.0/billing16.4/security25.5/tech34.1、MOCK_POOL concepts24.7/security25.3/tech33.1/
+  billing16.9）。追加トピック: Amazon VPC Lattice（新規、複数VPC/アカウントをまたぐサービス間接続・
+  認可ポリシー・サービスネットワークの仕組み）、IAM 権限の境界 (Permissions Boundary)（新規、委任管理
+  シナリオ・単体では権限を付与しない点・有効な権限は交差(intersection)である点）、AWSアカウントの
+  代替連絡先 (Alternate Contacts)（新規、請求/運用/セキュリティの3種類・AWS Organizations管理アカウント
+  からの一元設定）、Well-Architected信頼性の柱の「障害分離境界(Fault Isolation Boundary)」「影響範囲
+  (Blast Radius)」「静的安定性(Static Stability)」（いずれも既存のwafReliability sourceの新規の切り口、
+  これまでAZ/リージョンの定義や個々のDR戦略は出題していたが、この概念自体を明示的に問う設問はこれが
+  初出）、クラウドのサービスモデル(IaaS/PaaS/SaaS)と責任共有モデルの関係（既存のshared sourceの新規の
+  切り口）、AWS CodeDeployのBlue/Greenデプロイ（既存のcodedeploy source、インプレースデプロイとの対比
+  はこの回が初出）、AWS AppSyncのサブスクリプション機能(WebSocketによるリアルタイムプッシュ配信、既存
+  appsync sourceの3件目として追加)、Amazon S3 Storage Lensの無料デフォルトメトリクス(14日間)対有料
+  Advanced Metrics(15か月間・追加機能、既存storageLens sourceの3件目)、AWS Service Quotasのクォータ
+  引き上げリクエストの仕組み(既存serviceQuotas sourceの2件目)、Amazon Athenaのクエリコスト削減手法
+  (パーティション分割・列指向形式、既存athena sourceの2件目)。新規SOURCES3件（vpcLattice,
+  permissionsBoundary, alternateContacts）はすべて本実行環境でWebFetchがdocs.aws.amazon.comに対して
+  成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した（vpc-lattice/latest/ug/
+  what-is-vpc-lattice.html、IAM/latest/UserGuide/access_policies_boundaries.html、
+  accounts/latest/reference/manage-acct-update-contact-alternate.htmlの3ページ）。なおAWS Migration Hub
+  （2025年11月7日付で新規顧客の受付を終了）、Amazon CodeCatalyst（同日付で新規顧客の受付を終了）、
+  AWS App Mesh（2024年9月24日付で新規顧客の受付を終了済み、2026年9月30日付でサービス自体のサポートも
+  終了予定）をVOCAB新規候補として検討したが、いずれもWebSearchで新規受付終了・終了予定が判明したため
+  出題対象から除外し、Amazon VPC Lattice（App Meshの推奨移行先の一つ、現役サービス）に差し替えた。
+  既存の飽和気味のsource（sixAdv37件・wafReliability(既存項目はAZ/リージョン定義や個々のDR戦略が中心)・
+  guarddutyExtendedThreatDetection(既存3件で主要facetを使い切り、4件目は追加しなかった)・localZones/
+  outposts/wavelength(比較問題はp383・p468で既出のため追加しなかった)等)は、既出内容と重複しない具体的な
+  未出題の概念・角度であることを個別にgrepで確認した上でのみ利用した。正解位置は単一選択18件
+  (VOCAB4・PRACTICE11・MOCK_POOL3)の分布が0:5/1:5/2:4/3:4となるよう意識的に選択肢を並び替え(作成時に
+  1,3に偏ったため、p867とp872の選択肢・解説の順序を後から入れ替えて調整)、複数選択3件(PRACTICE2・
+  MOCK_POOL1)は{0,1}{0,2}{0,2}の組み合わせを使用。追加後にpython3 scripts/validate_content.pyで
+  エラー無し・`node`の`vm.runInContext`でのファイル読み込み・ID重複なし(計1471件)・すべてのsource参照
+  が解決可能であることを確認し、`git diff`で変更がSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目
+  へのカンマ付与4箇所のみ(既存874-21=853件、すなわちVOCAB297/PRACTICE861/MOCK_POOL292の項目は一切
+  変更なし)であることを確認済み。
