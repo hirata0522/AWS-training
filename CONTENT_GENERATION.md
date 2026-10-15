@@ -2078,3 +2078,37 @@
   type=single/multiとcorrect件数の整合・`why`配列中の「正しい。」/「誤り。」の位置が`correct`の添字と
   完全一致すること、及び全986+344+342件中のID重複がないことを検証済み（ブラウザでの実機確認は今回も
   未実施）。
+- 2026-10-15: 定期実行で16件追加（VOCAB+3/PRACTICE+9/MOCK_POOL+4）。開始時、ローカルの`master`が
+  detached HEADの状態になっており、かつサンドボックスのローカルrefが浅いclone時点の古いコミット
+  (cb63a57)を指していた。`git checkout master && git pull --rebase origin master`で
+  `origin/master`(05f8081。VOCAB344/PRACTICE986/MOCK_POOL342)へ正しく追従してから作業した。累計
+  VOCAB=347, PRACTICE=995, MOCK_POOL=346（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.7/security24.2/billing15.9/concepts26.2、PRACTICE concepts24.5/billing15.7/security26.0/
+  tech33.8、MOCK_POOL concepts26.0/security25.1/tech32.9/billing15.9）。既存SOURCESを広く俯瞰した
+  結果、Well-Architected Framework(wafReliability38件)・CAF(15件)・re:Post(6件)等の主要sourceは
+  既出内容と重複しない新しい角度を見つけるのが非常に困難だったため、今回は「既存の設問で選択肢
+  (不正解側)にのみ名前が出てきて、正解として定義される専用の設問が存在しないトピック」を探す
+  アプローチを取った。その結果、AWS Professional Services・AWS Managed Services (AMS)・AWS CAFの
+  「ビジネスの視点(Business Perspective)」の3つが、他の設問の不正解選択肢としてのみ言及されており
+  専用の設問が存在しないことを確認した（grepで既存の全設問を確認済み）。追加トピック: AWS
+  Professional Services（新規、コンサルティング部門としての定義・APNとの違い・AMSとの違いの3角度）、
+  AWS Managed Services (AMS)（新規、運用代行サービスとしての定義・セキュリティ/コンプライアンス機能・
+  コスト削減効果の3角度）、AWS CAFの「ビジネスの視点(Business Perspective)」（既存source caf、CAFの
+  6つの視点のうち唯一これまで正解として出題されていなかった視点。定義・主要関係者(CEO/CFO/COO/CIO/
+  CTO)・目的の3角度）。新規SOURCESキー2件（professionalServices, managedServices）はいずれも本実行
+  環境でWebFetchがaws.amazon.com/professional-services/とaws.amazon.com/managed-services/に対して
+  成功し（**今回もWebFetchが成功**）、本文を直接確認した上で追加した。また、新規候補として検討した
+  AWS IQ（AWS専門家とのマッチングサービス）は、WebSearchで「2026年5月28日付で提供を終了済み」である
+  ことが判明したため、既存の除外事例（QLDB・Connect・App Runner・Pinpoint・Amazon Q Business等）と
+  同様の理由で出題対象から除外した。AWS Support Conciergeチーム（請求・アカウント関連の専任サポート）
+  についても、どのサポートプラン階層に含まれるかが公式ページの表組みから確実に確認できなかったため、
+  不正確なリスクを避けて出題を見送った。既存の飽和気味のsource（wafReliability38件・caf15件
+  （ビジネスの視点追加後）・re:Post6件・sixAdv・migrationStrategies等）は今回の新規追加の主対象から
+  意図的に避けた。正解位置は単一選択13件(VOCAB3・PRACTICE7・MOCK3)を0,1,2,3でほぼ均等にローテーション
+  (0が4件、1が3件、2が3件、3が3件)、複数選択3件(PRACTICE2・MOCK1)は{1,3}{0,2}{0,3}の3通りの異なる
+  組み合わせを使用。Node.jsでclf-c02.jsを実際にevalしてVOCAB/PRACTICE/MOCK_POOL全件をロードし、ID
+  重複なし(全1688件)・新規追加した16件それぞれについてchoices/why配列が各4件・correct添字が範囲内・
+  type=single/multiとcorrect件数の整合・`why`配列中の「正しい。」の位置が`correct`の添字と完全一致
+  することを検証済み（ブラウザでの実機確認は今回も未実施）。追加前後でvalidate_content.pyの出力・git
+  diffを確認し、既存986+344+342=1672件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ）を確認済み。
