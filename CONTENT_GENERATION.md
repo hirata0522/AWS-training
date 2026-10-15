@@ -1877,3 +1877,43 @@
   項目(VOCAB316/PRACTICE918/MOCK_POOL312)は一切変更していないこと(diffはSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ)を確認済み。累計 VOCAB=320, PRACTICE=921,
   MOCK_POOL=318。
+- 2026-10-15: 定期実行で18件追加（VOCAB+4/PRACTICE+10/MOCK_POOL+4。目安の15〜25件をやや下回ったが、
+  理由は下記参照）。開始時、サンドボックスのローカル`master`が古いコミット(cb63a57)を指したまま
+  detached HEADの状態になっていたが、これは単に今回のサンドボックスのローカルrefが浅いclone時点の
+  ものでまだ更新されていなかっただけで、`git checkout master`後に`git pull --rebase origin master`
+  を実行すると実際の`origin/master`(ab01014、VOCAB316/PRACTICE918/MOCK_POOL312。前回エントリの続き)
+  まで正しく追従できた。前回の提案(使用回数が少ないSOURCESを先に特定するアプローチ)に従い、まず
+  既存SOURCES(263件)の使用回数をスクリプトで集計し、使用回数が少ないものから既存設問本文をgrepで
+  確認した上で、重複しない新しい角度のみを追加対象とした。検討したが見送った候補: AWS Migration Hub
+  (新規候補として調査したが、WebSearchで「2025年11月7日付で新規顧客への受付を終了しており、後継は
+  AWS Transform」であることが判明したため、既存の除外事例(QLDB・Application Discovery Service等)
+  と同様の理由で出題対象から除外)、AWS Global Acceleratorの「2つの静的Anycast IPアドレス」に関する
+  追加角度(既存p634が「ヘルスチェックに基づく自動的なエンドポイントフェイルオーバー」を既に正確に
+  扱っており、IPアドレス自体の切り替えがクライアント側の再試行に依存する点は紛らわしく誤解を招く
+  リスクがあると判断し見送り)、AWS IAM Access Analyzer・AWS Organizationsコンプライアンスプログラム等
+  (既に設問が密で重複リスクが高いため見送り)、Amazon Data Firehoseの配信先・Lambda変換に関する追加角度
+  (既存v182/p494/m176で既に扱われていたため重複と判断し見送り)。最終的に採用したのは、既存SOURCES
+  (cloudtrail、guarddutyMalwareEC2、sns、sagemaker、rekognition、codeguru、serviceCatalog、
+  iotSitewise、resourceExplorer、s3glacier)の中で使用回数が少なかったものに対する、既存設問と重複
+  しない新しい事実・角度での追加で、新規のSOURCESエントリは今回は追加していない(既存の確認済み出典を
+  再利用したため、「新規SOURCESの少なくとも1件でWebFetchを試す」旨の指示は今回は対象外。代わりに
+  WebSearchで個々の事実(CloudTrail Insightsの検知種別・前提条件・料金、GuardDuty Malware Protection
+  for EC2のEBSスナップショットの保持仕様、Amazon SNSのサブスクリプションフィルターポリシーのスコープ、
+  SageMaker JumpStartの基盤モデル提供方式、Rekognition Custom Labelsの学習時間・バージョニング・課金
+  仕様、CodeGuru Reviewerの機能、AWS IoT SiteWise/SiteWise Edge、AWS Resource Explorer、AWS Service
+  Catalog AppRegistry、S3 Glacier Deep Archiveの取り出しオプション)を個別に検証した)。追加トピック:
+  AWS CloudTrail Insights(新規VOCAB、PRACTICE2件・MOCK1件)、Amazon GuardDuty Malware Protection for
+  EC2のEBSスナップショット保持仕様、Amazon SNSサブスクリプションフィルターポリシー、Amazon SageMaker
+  JumpStart、Amazon Rekognition Custom Labels(PRACTICE+MOCKの2角度)、Amazon CodeGuru Reviewer、AWS
+  Service Catalog AppRegistry(新規VOCAB、PRACTICE+MOCKの2角度)、AWS IoT SiteWise(新規VOCAB+
+  PRACTICE)、AWS Resource Explorer(新規VOCAB+PRACTICE)、Amazon S3 Glacier Deep Archiveの取り出し
+  オプション(Expedited非対応・Standard約12時間・Bulk最大48時間)。ドメイン配分は今回「使用回数が少なく
+  かつ重複のないソースの大半がtech/securityドメインに偏っていた」ため、tech 10件・security 5件・
+  concepts 3件・billing 0件という偏りが生じた(billingドメインは既存のcur/budgets/free/costExplorer等
+  を個別にgrepで確認したが、いずれも5〜11件と既に設問が密で、重複しない新しい事実を見つけられず今回も
+  見送った。billingが2回連続で0件になっている点は次回以降の課題として残す)。正解位置は単一選択17件を
+  0,1,2,3でおおむね均等にローテーション(0が4件、1が5件、2が4件、3が4件)、複数選択1件
+  (PRACTICE、CloudTrail Insightsの特徴)は{1,2}を使用。追加前後でvalidate_content.pyの出力・git diffを
+  確認し、既存921件(VOCAB320/PRACTICE921/MOCK_POOL318)の項目は一切変更していないこと(diffは
+  VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与3箇所のみ、SOURCESへの変更なし)を確認済み。
+  累計 VOCAB=324, PRACTICE=931, MOCK_POOL=322。
