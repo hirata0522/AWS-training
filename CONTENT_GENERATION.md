@@ -2026,3 +2026,34 @@
   0,1,2の3つの異なる位置、MOCK複数選択1件は{1,3}を使用。追加前後でvalidate_content.pyの出力・git diffを
   確認し、既存951件(VOCAB332/PRACTICE951/MOCK_POOL330)の項目は一切変更していないこと(diffはSOURCES/
   VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ)を確認済み。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが
+  `master`からdetached HEADの状態になっていた。`git checkout master`した時点でローカルの`master`は
+  6コミット古い状態(cb63a57)だったが、`git fetch --unshallow origin master`で全履歴を取得して確認した
+  結果、ローカル`master`は`origin/master`(detached HEADと同じ6ed3ed3)の正当な祖先であり、分岐は無く
+  単純にfast-forward可能な状態だったため、`git merge --ff-only origin/master`で復旧してから作業した
+  (「forced update」と表示されたのは、起動時の浅いクローンでのorigin/master追跡参照が古かったことに
+  よるローカル参照の更新であり、リモート側でのhistory書き換えではないことをmerge-base調査で確認済み)。
+  累計 VOCAB=340, PRACTICE=974, MOCK_POOL=338（3プールとも各ドメイン比率は目標26/25/33/16%に近い:
+  VOCAB tech34.1/security24.4/billing15.9/concepts25.6、PRACTICE concepts23.7/billing15.8/
+  security26.3/tech34.2、MOCK_POOL concepts25.1/security25.4/tech33.4/billing16.0）。既存267件の
+  SOURCESを俯瞰し、未出題の新規サービス・機能を優先: AWS Deadline Cloud(新規、レンダーファーム管理)、
+  IAMの最終アクセス情報(Access Advisor、新規、Access Analyzerとの違いも出題)、AWS GovCloud (US)
+  (新規、分離・審査・請求の仕組み)、AWS Price List Bulk API(新規、DescribeServices→ListPriceLists→
+  GetPriceListFileUrlの流れ)。既存source再利用の新角度: Amazon S3 Access Points、EC2配置グループ
+  (Cluster/Spread/Partition)、VPCのIPv6デュアルスタック対応(/56→/64 CIDR)、Lambda@EdgeとCloudFront
+  Functionsの違い(言語・実行場所・イベント種別)、IAMポリシー評価の明示的拒否優先ルール、NACLの
+  ステートレス性とエフェメラルポート、Well-Architectedレビューの継続的プロセスとしての性質、Cost
+  Explorerの利用率(Utilization)対カバレッジ(Coverage)レポートの違い、AWS Budgetsのゼロ消費(Zero
+  spend)テンプレート。新規SOURCESキー4件(deadlineCloud, accessAdvisor, govCloud, priceListApi)は
+  いずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し(**今回もWebFetchが成功**)、本文を
+  直接確認した上で追加した。EC2配置グループ・Lambda@Edge対CloudFront Functions・VPC IPv6・Cost
+  Explorerレポート・Budgetsゼロ消費テンプレートはWebSearchで現行の仕様を確認した上で、断定できない
+  細かい数値(配置グループの最大インスタンス数等、公式ページで確認できなかった値)は出題内容に含めず、
+  確実に確認できた事実のみを出題した。正解位置は単一選択18件(VOCAB4・PRACTICE11・MOCK3)を0,1,2,3で
+  均等にローテーション(0が5件、1が5件、2が4件、3が4件)、複数選択3件(PRACTICE2・MOCK1)は{1,3}{0,2}
+  {1,2}の3通りの異なる組み合わせを使用。Node.jsでclf-c02.jsを実際にevalしてVOCAB/PRACTICE/MOCK_POOL
+  全件をロードし、ID重複なし・choices/why配列が各4件・correct添字が範囲内・新規追加した21件それぞれの
+  `why`配列中の「正しい。」の位置が`correct`の添字と完全一致することを追加で検証した(ブラウザでの実機
+  確認は今回も未実施)。追加前後でvalidate_content.pyの出力・git diffを確認し、既存974件中の追加前の
+  961件(VOCAB336/PRACTICE961/MOCK_POOL334)の項目は一切変更していないこと(diffはSOURCES/VOCAB/
+  PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ)を確認済み。
