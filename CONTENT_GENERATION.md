@@ -2112,3 +2112,56 @@
   することを検証済み（ブラウザでの実機確認は今回も未実施）。追加前後でvalidate_content.pyの出力・git
   diffを確認し、既存986+344+342=1672件の項目は一切変更していないこと（diffはSOURCES/VOCAB/PRACTICE/
   MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ）を確認済み。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`
+  からdetached HEADの状態になっていたが、`git checkout master && git pull --rebase origin master`で
+  `origin/master`(347/995/346件時点)へ正しく追従してから作業した。累計 VOCAB=351, PRACTICE=1008,
+  MOCK_POOL=350（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.6/security24.2/
+  billing16.0/concepts26.2、PRACTICE concepts24.5/billing15.8/security26.0/tech33.7、MOCK_POOL
+  concepts26.0/security25.1/tech32.9/billing16.0）。既存274件のSOURCESを俯瞰し、既存の設問で不正解
+  選択肢にのみ名前が登場し専用の設問が存在しないトピックを優先的に探すアプローチを継続: AWS CAFの
+  6つの視点のうち「ガバナンスの視点(Governance Perspective)」「プラットフォームの視点(Platform
+  Perspective)」「セキュリティの視点(Security Perspective)」「運用の視点(Operations Perspective)」の
+  4つが、他の設問の不正解選択肢としてのみ言及されており専用の正解設問が存在しないことをgrepで確認し、
+  既存source cafを再利用してVOCAB/PRACTICE/MOCK_POOLに4問追加した（これでCAFの6つの視点すべてに専用の
+  正解設問が存在する状態になった）。新規SOURCESキー4件を追加: AWS Client VPN（個々のユーザー・デバイス
+  向けのクライアントベースVPN、OpenVPN/TLSベースで証明書・AD・SAMLフェデレーション認証に対応）、AWS
+  Graviton（AWSが設計するArmベースのプロセッサファミリー、x86対比で高い価格性能比）、AWS Data Exchange
+  （データグラント・AWS Marketplace経由のデータセット提供/購読サービス）、AWS re:Post Private
+  （Enterprise/Enterprise On-Rampサポートプラン限定の組織専用プライベートコミュニティ、一般公開の
+  re:Postとは別サービス）。追加トピック: AWS Client VPN(VOCAB定義・PRACTICE利用シナリオ・認証方式
+  複数選択・料金モデル・MOCK特徴複数選択の計5問、既存source clientVpnは新規でありSite-to-Site VPN等との
+  混同を避けるためVOCAB/PRACTICE/MOCKで一貫してSite-to-Site VPNとの対比を明示)、AWS Graviton(VOCAB定義・
+  PRACTICEコスト最適化シナリオの2問)、AWS Data Exchange(PRACTICE定義・データセット種類複数選択・MOCK
+  用途の3問)、AWS re:Post Private(PRACTICE定義1問、一般公開のAWS re:Post(既存source repost)との違いを
+  明示)、AWS Marketplaceのプライベートマーケットプレイス(Private Marketplace、既存source marketplaceの
+  新角度、企業が従業員の調達を承認済み製品に限定するガバナンス機能、VOCAB/PRACTICE/MOCKの3問)、AWS RAM
+  のリソース共有招待(invitation、既存source ram、Organizations内の共有は招待不要・組織外や組織内共有
+  無効時は招待が必要という仕様、PRACTICE1問)、データレジデンシー(既存source dataResidency、EU企業の
+  シナリオ角度、PRACTICE1問)。新規出典4件（clientVpn, graviton, dataExchange, repostPrivate）のうち、
+  dataExchangeはdocs.aws.amazon.com/data-exchange/latest/userguide/what-is.htmlへのWebFetchが本実行環境
+  で成功し本文を直接確認した。clientVpnはWebFetchでは本文が取得できずタイトルのみ返ったため、WebSearch
+  で docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html の内容（OpenVPNベース・TLS暗号化・
+  証明書/AD/SAML認証）を複数の検索結果スニペットで確認した。gravitonはWebFetchでaws.amazon.com/ec2/
+  graviton/の本文を確認し（ただしページ本文はArmベースである点を明示していなかったため、Armベースである
+  ことはWebSearchで別途Wikipedia等の情報と公式発表の整合を確認）、x86対比の価格性能比（最大20%）は
+  公式ページの記載を直接採用した。repostPrivateはWebFetchでaws.amazon.com/repost-private/faqs/の本文を
+  確認し、Enterprise/Enterprise On-Rampサポートプラン限定であることを確認した（なお一部の第三者サイトに
+  「2026年7月30日付で新規顧客の受付を終了した」との記述があったが、AWS公式ページ・公式FAQにはそのような
+  終了告知が一切見られなかったため、この未確認情報は採用せず、出題内容には現在availabilityに関する断定を
+  含めていない）。また、新規VOCAB候補として検討した「ベンダーロックイン(Vendor Lock-in)」は、AWS公式
+  ドキュメント・公式ページ上で明確にこの用語を定義した単一のソースが見つからなかったため（検索結果は
+  すべて第三者のブログ・記事のみ）、確認が取れない事実を無理に出題しないというルールに従い出題対象から
+  除外した。AWS Client VPNの料金モデルの具体的な金額（$0.10/時間等）は第三者サイトの情報であり地域差も
+  大きいとWebSearchで判明したため、出題内容には具体的な金額を含めず「サブネット関連付け時間・接続時間の
+  それぞれに時間単位の課金が発生し、データ転送量にも別途課金される」という課金構造のみを扱った。既存の
+  飽和気味のsource（wafReliability38件・caf15件→19件(視点4つ追加後)・sixAdv・migrationStrategies等)は
+  今回、CAFの未出題視点4つを除き新規追加の対象から避けた。正解位置は単一選択18件(VOCAB4・PRACTICE11・
+  MOCK3)を0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が4件、3が4件)、複数選択3件(PRACTICE2・
+  MOCK1)は{0,2}{1,3}{0,3}の3通りの異なる組み合わせを使用。Node.js(v22.22.0)でclf-c02.jsを実際にevalして
+  VOCAB/PRACTICE/MOCK_POOL全件をロードし、ID重複なし(全1709件)・新規追加した21件それぞれについて
+  choices/why配列が各4件・correct添字が範囲内・source.urlがdocs.aws.amazon.com/aws.amazon.com配下である
+  こと・`why`配列中の「正しい。」の位置が`correct`の添字と完全一致することをスクリプトで検証済み
+  （ブラウザでの実機確認は今回も未実施）。追加前後でvalidate_content.pyの出力・git diffを確認し、既存
+  995+347+346=1688件の項目は一切変更していないこと（diffはSOURCESの末尾項目へのカンマ付与1箇所のみ。
+  VOCAB/PRACTICE/MOCK_POOLは既存の最終項目の行自体は変更せず、その直後に新規項目を追加したためgit diff
+  上は追加のみとして表示された）を確認済み。
