@@ -1837,3 +1837,43 @@
   **提案**: 今後の実行では、新規追加の前にまず「使用回数が少ないSOURCES」を特定してから切り口を探す
   アプローチ（今回採用）が、闇雲にトピックを探すより効率的だった。次回以降もこの方法を踏襲することを
   推奨する。
+- 2026-10-15: 定期実行で13件追加（VOCAB+4/PRACTICE+3/MOCK_POOL+6。目安の15〜25件をやや下回ったが、
+  理由は下記参照）。開始時、サンドボックスのローカル`master`が古いコミット(cb63a57)を指したまま
+  detached HEADの状態になっていたが、`git checkout master`後の`git pull --rebase origin master`で
+  実際の`origin/master`(ab01014、VOCAB316/PRACTICE918/MOCK_POOL312)まで正しくfast-forwardできた。
+  前回の提案に従い、まず「既存SOURCES(261件)のうち使用回数が少ないもの」を洗い出し、各候補について
+  実際の既存設問本文をgrepで確認した上で、重複しない新しい角度のみを追加対象とした。その結果、
+  以下はいずれも既存設問が密であり重複リスクが高いと判断して追加を見送った: edgelocation/
+  sustainabilityConsole/typesOfCloud/repost/waLens/drStrategies/hybridCloud(11件の類似デプロイモデル
+  設問が既出)/guarddutyMalwareEC2(既存p880がオンデマンドスキャンの要件を既に網羅)/
+  compliancePrograms/costExplorer(10件で主要機能をほぼ網羅)。最終的に採用したのは、既存VOCABに
+  ある「AWS Resource Control Policy (RCP)」(既存p894/m302はあるがVOCAB定義が未出のため追加)・
+  「AWS Glue DataBrew」「AWS Elemental MediaLive」「Amazon VPC IPAM」「AWS Schema Conversion Tool」
+  (既存VOCAB/PRACTICEはあるがMOCK_POOLが未出のため、既出と重複しない新しい事実で追加)・
+  「AWS Wavelength」(PRACTICEが未出のため追加)の計6ソースの新角度と、新規SOURCES2件
+  （networkManager, multiTenancy）。追加トピック: AWS Network Manager(AWS Global Networks for
+  Transit Gateways、新規。Transit Gateway/AWS Cloud WANコアネットワークの「グローバルネットワーク」
+  としての一元管理・可視化、ホームリージョンが米国西部(オレゴン)に固定で変更不可という点、
+  追加料金が発生しない点、PrivateLink経由接続のリージョン制限)、マルチテナンシー(Multi-Tenancy、
+  新規。Silo/Bridge/Poolの3つのテナント分離モデルとそれぞれの特徴)、AWS Glue DataBrewのPII統計
+  (データプロファイルでのPII検出)、AWS Elemental MediaLiveのチャンネルクラス(STANDARD対
+  SINGLE_PIPELINE)、Amazon VPC IPAMのPublic IP Insights(BYOIPアドレスの可視化)、AWS Schema
+  Conversion Toolの評価レポートのアクション項目タブ、AWS Wavelengthのキャリアゲートウェイ、
+  AWS Organizationsのリソースコントロールポリシー(RCP)のVOCAB定義。なおVOCAB未出だった
+  「AWS App Studio」(既存p782/m267はあるがVOCAB未出)もVOCAB定義として追加した。新規SOURCES2件
+  （networkManager, multiTenancy）のうちnetworkManagerはWebFetchが
+  `docs.aws.amazon.com/network-manager/latest/tgwnm/what-are-global-networks.html`に対して成功し
+  （**今回はWebFetchが成功**）本文を直接確認した。multiTenancyもWebFetchが
+  `docs.aws.amazon.com/solutions/multi-tenant-architectures-on-aws/`に対して成功し、Silo/Bridge/Pool
+  各モデルの説明を本文から直接確認した。なお新規VOCAB候補として検討したAmazon FinSpaceは、
+  WebSearchで「2026年10月7日付(まさに今週)でサポートを終了し、新規にはDataZone/Athena/SageMaker
+  Studio等への移行が案内されている」ことが判明したため、既存の除外事例(QLDB・Application Discovery
+  Service・WorkMail等)と同様の理由で出題対象から除外した。ドメイン配分は今回「使用回数の少ない
+  ソースの大半がtechドメインに偏っていた」ため、tech 9件・concepts 3件・security 1件・billing 0件
+  という大きな偏りが生じた(billingドメインは既存の飽和気味のsourceを個別にgrepで確認したが、
+  costExplorer等いずれも重複しない新しい事実を見つけられず今回は見送った)。正解位置は単一選択12件
+  を0,1,2,3で完全に均等にローテーション(各位置3件)、複数選択1件(PRACTICE、マルチテナンシーの
+  Silo/Pool比較)は{0,2}を使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存918件の
+  項目(VOCAB316/PRACTICE918/MOCK_POOL312)は一切変更していないこと(diffはSOURCES/VOCAB/PRACTICE/
+  MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ)を確認済み。累計 VOCAB=320, PRACTICE=921,
+  MOCK_POOL=318。
