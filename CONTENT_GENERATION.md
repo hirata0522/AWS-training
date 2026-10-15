@@ -2057,3 +2057,24 @@
   確認は今回も未実施)。追加前後でvalidate_content.pyの出力・git diffを確認し、既存974件中の追加前の
   961件(VOCAB336/PRACTICE961/MOCK_POOL334)の項目は一切変更していないこと(diffはSOURCES/VOCAB/
   PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ)を確認済み。
+- 2026-10-15: 定期実行で20件追加（VOCAB+4/PRACTICE+12/MOCK_POOL+4）。累計 VOCAB=344, PRACTICE=986,
+  MOCK_POOL=342。追加トピック: EC2 Image Builder、ペネトレーションテストのポリシー、事業継続計画(BCP)、
+  AWS Invoices(Billsページ)、Well-Architected信頼性の柱（高可用性とフォールトトレランスの違い、抽象化
+  されたサービスの責任共有モデルを含む）、AWS WAF+Firewall Manager、Amazon Inspector、AWS Artifact+
+  コンプライアンスプログラム、Lambda、S3 Glacier Flexible Retrieval、Direct Connect/Site-to-Site VPN、
+  Cost Anomaly Detection、AWS Supportプラン(Business Support+)、ハイブリッドクラウド、ルートユーザー
+  MFA、DynamoDB、購入オプション(スポット/RI/Savings Plans)。新規SOURCESキーは`penTesting`
+  (aws.amazon.com/security/penetration-testing/)のみ追加、`invoices`/`imageBuilder`/`drStrategies`
+  等は既存SOURCESを再利用。WebFetchはaws.amazon.com/apprunner、aws.amazon.com/security/
+  penetration-testing/、docs.aws.amazon.com(Billing invoice.html)の3件に対して試行し、apprunner・
+  penetration-testingは取得成功（penetration-testingの内容はWebSearchでも許可サービス一覧・C2要承認等の
+  要点が一致することを再確認）、Billing invoice.htmlは404で失敗（WebSearchのスニペットでURLと内容を確認
+  するフォールバックに切替）。AWS App Runnerは2026-04-30付で新規顧客の受け入れを終了している（既存利用者
+  のみ継続）ことがWebFetchで判明したため出題対象として採用せず、同じtechドメインの代替としてEC2 Image
+  Builder（新規受付終了の情報なし）を採用した。正解位置は単一選択16件(VOCAB4・PRACTICE9・MOCK3)で0が4件・
+  1が5件・2が3件・3が4件とおおむね均等にローテーションし、複数選択4件(PRACTICE3・MOCK1)は{0,1}{1,3}{0,2}
+  {1,2}の4通りの異なる組み合わせを使用。Node.jsでclf-c02.jsを実際にevalしてVOCAB/PRACTICE/MOCK_POOL
+  全件をロードし、新規追加した20件それぞれについてchoices/why配列が各4件・correct添字が範囲内・
+  type=single/multiとcorrect件数の整合・`why`配列中の「正しい。」/「誤り。」の位置が`correct`の添字と
+  完全一致すること、及び全986+344+342件中のID重複がないことを検証済み（ブラウザでの実機確認は今回も
+  未実施）。
