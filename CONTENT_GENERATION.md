@@ -1528,3 +1528,39 @@
   既存823件中の追加前の802件(VOCAB281/PRACTICE810/MOCK_POOL275)の項目は一切変更していないこと
   （diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみで、IDの
   重複も無し）を確認済み。
+
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスがdetached
+  HEADの状態になっていた。`git checkout master`すると、ローカル`master`が`origin/master`より49コミット
+  遅れていたが、`git merge-base --is-ancestor`でローカル`master`がdetached HEAD側コミット(6aea401)の
+  祖先であることを確認した上で`git fetch origin master`したところ、origin/master自体が既にこの
+  detached HEADの先端を指していた（過去の複数回の定期実行が正当にpush済みだったもので、ブランチ分岐
+  事故ではない）ため、`git pull --rebase origin master`の単純なfast-forwardで復旧できた。復旧後の
+  時点でVOCAB=285, PRACTICE=823, MOCK_POOL=279。追加後の累計は VOCAB=289, PRACTICE=836,
+  MOCK_POOL=283（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.2/security24.6/
+  billing17.0/concepts25.3、PRACTICE concepts24.0/billing16.1/security25.7/tech34.1、MOCK_POOL
+  concepts24.7/security25.1/tech32.9/billing17.3）。追加トピック: クラウドデプロイモデル(Cloud/
+  プライベートクラウド(オンプレミス)/ハイブリッドの3分類、AWS公式ホワイトペーパー「Types of Cloud
+  Computing」が出典、新規)、AWS IAM Access Analyzerの未出題だった機能(未使用アクセス分析/ポリシー
+  検証/ポリシー生成/カスタムポリシーチェックの4機能、既存accessAnalyzer sourceの別角度)、AWS
+  Elemental MediaConnect(ライブ映像トランスポート、新規、MediaConvert/MediaLive/MediaPackageとの
+  比較問題を含む)、Amazon EMR Serverless、Amazon OpenSearch Serverless、Amazon API Gatewayのキャッシュ
+  機能、AWS Pricing Calculatorのグループ機能・見積もり共有、AWS Cost Explorerのレポート保存機能、
+  コスト配分タグとCost Categoriesの違い。新規出典2件（typesOfCloud, mediaconnect）はいずれも本実行
+  環境でWebFetch/WebSearchが成功し、本文を直接確認した上で追加した（typesOfCloudはWebFetchで
+  「Deployment models」セクション(Cloud/Private cloud (on-premises)/Hybridの3分類とその定義)の本文
+  全体を確認、mediaconnectはWebSearchで公式ページの存在とEntitlements機能の説明を確認）。なお当初、
+  Cloud Value Framework(aws.amazon.com/economics)を2つ目の新規sourceとして検討したが、WebSearchで
+  内容を確認した結果、既存のSOURCES.cloudValueFramework(business-value-on-aws)と実質的に同一の
+  フレームワーク(5つの価値の観点)を指していることが判明したため、重複を避けて見送った。また「AWS
+  Marketplaceのプライベートマーケットプレイス」も新規トピックとして検討したが、WebSearchでその
+  docs.aws.amazon.comのレガシー版ページが「2026年3月17日付で廃止予定」と明記されており、確認時点
+  (2026-10-15)で既にその期限を過ぎている可能性が高く、現行版の正確なURLも特定できなかったため、
+  既存の除外事例（QLDB・CloudTrail Lake等）と同様の理由で出題対象から除外した。既存の飽和気味の
+  source（sixAdv33件・migrationStrategies25件・wafReliability22件・caf15件・drStrategies12件等、
+  既存の全facetを使い切っているもの）は今回の新規追加の対象から意図的に避け、未出題の具体的な機能・
+  新規サービスを優先した。正解位置は単一選択19件(VOCAB4・PRACTICE11・MOCK_POOL4のうち単一選択)の
+  分布が0:6/1:5/2:4/3:4となるよう意識的に選択肢を並び替え、複数選択2件(PRACTICE1・MOCK_POOL1)は
+  {0,2}と{0,1}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、
+  既存836件中の追加前の815件(VOCAB285/PRACTICE823/MOCK_POOL279)の項目は一切変更していないこと
+  （diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを付与した4箇所のみ）を
+  確認済み。
