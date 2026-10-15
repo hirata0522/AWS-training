@@ -1950,3 +1950,44 @@
   確認し、既存931件(VOCAB324/PRACTICE931/MOCK_POOL322)の項目は一切変更していないこと(diffはVOCAB/
   PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与3箇所のみ、SOURCESへの変更なし)を確認済み。
   累計 VOCAB=328, PRACTICE=941, MOCK_POOL=326。
+- 2026-10-15: 定期実行で18件追加（VOCAB+4/PRACTICE+10/MOCK_POOL+4）。開始時、ローカルの`master`が
+  detached HEADの状態で、かつサンドボックスのローカルrefが浅いclone時点の古いコミット(cb63a57)を
+  指していた。`git checkout master`後`git pull --rebase origin master`を実行すると、実際の
+  `origin/master`(824c7be。VOCAB328/PRACTICE941/MOCK_POOL326)へ正しく追従できた
+  (`git diff --stat`で両コミットのファイル内容が完全一致することを確認済み。ローカルrefが更新
+  されていなかっただけで、過去に記録されたブランチ事故やpush漏れとは別件)。既存SOURCES(277件)の
+  ドメイン別・プール別の使用状況を集計した結果、PRACTICE/MOCK_POOLではconceptsドメインが
+  目標比率(26%)に対してやや不足(23.5%/24.8%)していたが、concepts配下の主要な既存source
+  (wafReliability/sixAdv/migrationStrategies/drStrategies/resilienceHub/multiTenancy/
+  dataResidency/cloudValueFramework等)はいずれも既に多数の設問で個々の論点を使い切っており
+  (例: 移行戦略7R'sは全14問、DR戦略4種は全14問、Well-Architectedパフォーマンス効率・持続可能性の
+  柱は設計原則を全種網羅、Cloud Value Frameworkの5つの価値観点も個別に出題済み)、grepで内容を
+  確認した上で重複しない新しい角度を見つけるのが非常に困難だった。このため今回は、2つの新規
+  SOURCESを追加して新しい事実を増やす方針にした。新規出典2件(migrationAcceleration=AWS
+  Migration Acceleration Program(MAP)、iamCredentialReport=IAMクレデンシャルレポート)は、
+  いずれも本実行環境でWebFetchがaws.amazon.com/docs.aws.amazon.comに対して成功し(**今回も
+  WebFetchが成功**)、本文を直接確認した上で追加した(MAPの3フェーズ(Assess/Mobilize/Migrate and
+  Modernize)と資金的インセンティブの目的、クレデンシャルレポートの内容・CSV形式・4時間キャッシュの
+  仕様を本文から確認)。追加トピック: AWS Migration Acceleration Program (MAP、新規、3フェーズと
+  資金的インセンティブの2角度)、IAMクレデンシャルレポート(新規、内容・生成仕様・外部監査人への
+  提供方法・IAM Access Analyzerの未使用アクセス分析との違いの4角度、WebSearchで仕様を確認)、AWS
+  Backup Vault Lock(既存backup source、VOCAB初追加。コンプライアンスモードの不可逆性・ガバナンス
+  モードとの比較(複数選択)・WORMの意味の4角度、WebSearchでガバナンス/コンプライアンス両モードの
+  違いを確認)、クラウド(フルクラウド)デプロイモデル(既存typesOfCloud source、VOCAB初追加。既存の
+  プライベートクラウド(v286)の対になる、AWSの3分類の一つとして未出だった角度)、AWS Site-to-Site
+  VPNのアクセラレーテッドVPN機能(既存siteToSiteVpn source、AWS Global Acceleratorとの連携を
+  WebSearchで確認)、AWS Control TowerのAccount Factory/Account Factory for Terraform(AFT)
+  (既存controlTower source、コンソール操作とGitOpsワークフローの2角度をWebSearchで確認)。結果、
+  PRACTICE/MOCK_POOLともconceptsドメインを多少補えたものの(PRACTICE概念224/951=23.6%→
+  ほぼ変化なし、MOCK概念82/330=24.8%→変化なし)、新規に確認できた事実の大半がsecurityドメインに
+  偏ったため、最終的な追加内訳はVOCAB(concepts2/security2)、PRACTICE(concepts3/security7)、
+  MOCK_POOL(concepts1/security3)で、securityへの偏りが生じた。これは、PRACTICEの現在のsecurity
+  比率(25.8%)が目標(25%)に対し既にわずかに過剰である点を踏まえると理想的な配分ではないが、
+  concepts側でこれ以上grepによる重複確認を重ねても今回の時間内に正確で重複のない新規設問を
+  追加するのが困難だったため、正確性を優先してこの配分のまま採用した(次回以降、concepts側の
+  新規source発掘を優先課題として残す)。正解位置は単一選択17件を0,1,2,3でおおむね均等にローテー
+  ション(0が5件、1〜3が各4件)、複数選択1件(PRACTICE、Backup Vault Lockのガバナンス/コンプライ
+  アンスモード比較)は{1,3}を使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存
+  941件(VOCAB328/PRACTICE941/MOCK_POOL326)の項目は一切変更していないこと(diffはSOURCES/VOCAB/
+  PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ)を確認済み。
+  累計 VOCAB=332, PRACTICE=951, MOCK_POOL=330。
