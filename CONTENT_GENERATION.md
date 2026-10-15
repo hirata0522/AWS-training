@@ -1700,3 +1700,42 @@
   が解決可能であることを確認し、`git diff`で変更がSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目
   へのカンマ付与4箇所のみ(既存874-21=853件、すなわちVOCAB297/PRACTICE861/MOCK_POOL292の項目は一切
   変更なし)であることを確認済み。
+- 2026-10-15: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスの
+  ローカル`master`ブランチが古いコミット(cb63a57、2026-10-12時点)を指したまま`detached HEAD`の
+  状態になっており、かつそのdetached HEAD自体は直近の実行の成果(e8d7a10、この時点でVOCAB301/
+  PRACTICE874/MOCK_POOL296)を指していた。`git checkout master`でいったんローカルの古い`master`
+  に切り替わってしまったが、その後の`git pull --rebase origin master`でフェッチしたところ、
+  実際の`origin/master`はすでにe8d7a10まで進んでいることが判明し(ローカルの`master`参照だけが
+  古いキャッシュだった)、fast-forwardで正しい最新状態に復帰できた。データの消失は無かったが、
+  万一に備えて復帰前に`backup-detached-20261015`という退避用ブランチをorigin上に作成していた
+  ため、復帰確認後に不要と判断してローカル側は削除した(リモート側の削除はトークン権限不足で
+  403エラーとなり未実施。内容は現在のmasterと完全に同一の無害なブランチなので、次回以降の
+  実行やユーザーが気になった場合は手動で削除してよい)。累計 VOCAB=305, PRACTICE=887,
+  MOCK_POOL=300（domains: VOCAB tech102/security75/billing51/concepts77、PRACTICE
+  concepts210/billing146/security227/tech304、MOCK_POOL concepts73/security76/tech100/
+  billing51）。今回は既存コンテンツがWell-Architected Frameworkの6つの柱すべての設計原則・
+  AWS CAFの6つの視点を個別の設問としてほぼ完全に出題済みであることが判明し(grepで確認)、
+  これ以上の汎用コンセプト系の設問追加は重複リスクが高いと判断、今回はドメイン比率の微調整より
+  正確性・新規性を優先し、新規サービス・新規機能の具体的な角度を中心に追加した(結果的に
+  tech/securityに偏り、concepts/billingの追加は少なめ)。追加トピック: GuardDuty Malware
+  Protection for EC2（新規、スキャン対象・GuardDuty-initiated対On-demandスキャンの違い・
+  抑制ルールとの相互作用）、Amazon SWF（新規、Step Functionsとの新旧比較）、単一障害点(SPOF)・
+  静的安定性(Static Stability)のVOCAB初追加（既存PRACTICEでは既出の概念だがVOCAB項目としては
+  今回が初出）、Amazon CloudFrontのキャッシュ無効化(Invalidation)、Amazon S3マルチパート
+  アップロード、Amazon S3バージョニング、AWS PrivateLink(サービス提供側のエンドポイントサービス・
+  利用側のインターフェースエンドポイントの両面)、AWS STSのAssumeRoleWithWebIdentity（Web
+  アイデンティティフェデレーション）、GuardDutyの抑制ルール(Suppression Rule、基本動作と副作用の
+  2問)、AWS Cost Explorerのライトサイジングの推奨、AWS Invoicing、AWS Organizationsのバックアップ
+  ポリシー、AWS Configの適合パック(Conformance Pack、多肢選択)、Amazon EC2リザーブドインスタンス
+  マーケットプレイスの販売条件(多肢選択)、AWS Organizationsのタグポリシー(Tag Policies)、
+  Amazon Route 53のパブリック対プライベートホストゾーン。新規出典2件（guarddutyMalwareEC2,
+  swf）はいずれも本実行環境でWebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetchが
+  成功**）、本文を直接確認した上で追加した。なおAmazon Kendra（新規顧客の受付を終了済み）と
+  Amazon Pinpoint（2026年10月30日付でサービス終了予定、わずか2週間後）はWebSearchで確認した
+  結果、出題対象から除外した。既存SOURCESを再利用した項目(Config適合パック・STSフェデレーション・
+  GuardDuty抑制ルール・Cost Explorerライトサイジング・RIマーケットプレイスの販売条件等)についても、
+  具体的な条件(日数・期間等)はWebSearchでAWS公式ドキュメントの記載を確認した上で執筆した。正解位置は
+  単一選択19件を0,1,2,3でほぼ均等にローテーション(各位置4〜5件)、複数選択2件は{0,2}と{1,3}の異なる
+  組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存1471件の項目は
+  一切変更していないこと(diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目にカンマを
+  付与した4箇所のみ)を確認済み。
