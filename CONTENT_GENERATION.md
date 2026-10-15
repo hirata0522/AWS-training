@@ -1806,3 +1806,34 @@
   でもエラー無しを確認した。git diffで変更がSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目への
   カンマ付与4箇所のみ(既存900件のPRACTICE・309件のVOCAB・304件のMOCK_POOLの項目は一切変更なし)で
   あることを確認済み。
+- 2026-10-15: 定期実行で12件追加（VOCAB+3/PRACTICE+5/MOCK_POOL+4。目安の15〜25件を下回ったが、理由は
+  下記参照）。開始時、サンドボックスがdetached HEADの状態だったため`git checkout master && git pull
+  --rebase origin master`で復帰してから作業した。累計 VOCAB=316, PRACTICE=918, MOCK_POOL=312（domains:
+  VOCAB tech105/security77/billing53/concepts81、PRACTICE concepts215/billing151/security236/tech316、
+  MOCK_POOL concepts77/security78/tech104/billing53）。**今回、新規追加に着手する前に既存コンテンツの
+  重複チェックに通常より多くの時間を割いた**: 20回以上の過去の定期実行により主要なAWSサービス・概念は
+  ほぼ全て複数の切り口でカバー済みであることが判明し（SOURCES総数260件、使用回数が2桁に達している
+  source多数: wafReliability37件・sixAdv33件・migrationStrategies25件・iam21件・kms20件等）、
+  accessAnalyzer・guardduty・backup・shared・cognito・shield・waf・resilienceHub・alternateContacts・
+  rcp・drStrategies・wafSustainability(6つの設計原則すべて使用済み)等、当初候補に挙げた複数のsourceは
+  grepで既存設問を確認した結果、想定していた切り口が既に出題済みと分かり追加を見送った。最終的に、
+  WebSearchで新規に裏取りした2つの新しい切り口（データレジデンシー、責任共有モデルの「抽象化された
+  サービス」区分）と、使用回数が少なく(1〜2件)まだ出題の余地があった既存source2件（Amazon Neptune
+  Analytics、Amazon Elastic VMware Service (EVS)）に絞って追加した。追加トピック: データレジデンシー
+  (Data Residency、新規SOURCES「dataResidency」)、責任共有モデルの抽象化されたサービス(Abstracted
+  Services、既存source「shared」の新しい切り口)、Amazon Neptune Analytics(本番Neptuneデータベースから
+  分離された分析専用エンジンという切り口、既存source)、Amazon EVS対VMware Cloud on AWSの違い(利用者
+  自身のAWSアカウント内で稼働する点、既存source)、AWS Control TowerのRegion denyガードレール
+  (データレジデンシー要件への技術的対応、既存source「controlTower」の新しい切り口)。新規SOURCES1件
+  （dataResidency）はWebSearchで`docs.aws.amazon.com/prescriptive-guidance/latest/strategy-aws-semicon-
+  workloads/meeting-data-residency-requirements.html`の実在を確認（WebFetchは
+  `docs.aws.amazon.com/whitepapers/latest/aws-overview/data-residency.html`に対して試したが、タイトル
+  のみが返り本文を取得できなかったため、今回もWebFetchは実質失敗、WebSearchのフォールバックで確認した）。
+  Amazon EVSとVMware Cloud on AWSの違い(利用者のAWSアカウント内で稼働/EC2ベアメタル上で稼働という点)、
+  AWS Control TowerのRegion deny機能(管理アカウントは対象外という点を含む)もWebSearchで確認した。正解
+  位置は12件を0,1,2,3の順で完全に均等にローテーション(各位置3件)。追加前後でvalidate_content.pyの
+  出力・git diffを確認し、既存306件(VOCAB313/PRACTICE913/MOCK_POOL308)の項目は一切変更していないこと
+  （diffはSOURCES/VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ）を確認済み。
+  **提案**: 今後の実行では、新規追加の前にまず「使用回数が少ないSOURCES」を特定してから切り口を探す
+  アプローチ（今回採用）が、闇雲にトピックを探すより効率的だった。次回以降もこの方法を踏襲することを
+  推奨する。
