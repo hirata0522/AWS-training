@@ -1991,3 +1991,38 @@
   941件(VOCAB328/PRACTICE941/MOCK_POOL326)の項目は一切変更していないこと(diffはSOURCES/VOCAB/
   PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ)を確認済み。
   累計 VOCAB=332, PRACTICE=951, MOCK_POOL=330。
+- 2026-10-15: 定期実行で18件追加（VOCAB+4/PRACTICE+10/MOCK_POOL+4）。開始時、サンドボックスが
+  `master`からdetached HEADの状態になっていたが、`git checkout master`すると、ローカルの`master`は
+  `origin/master`の最新コミット(384fc97)と完全に一致していたため、`git pull --rebase`はfast-forward
+  不要で即座に完了した。累計 VOCAB=336, PRACTICE=961, MOCK_POOL=334（3プールとも各ドメイン比率は
+  目標26/25/33/16%に近い: VOCAB tech34.2/security24.4/billing15.8/concepts25.6、PRACTICE
+  concepts23.7/billing15.7/security26.3/tech34.2、MOCK_POOL concepts25.1/security25.4/tech33.5/
+  billing15.9）。既存SOURCESの使用状況をドメイン別に集計した結果、特にPRACTICEのconceptsドメインが
+  目標比率(26%)に対して不足気味(23.6%)だったため、今回はconcepts・security寄りの配分にし、billing
+  は既存のcur/budgets/marketplace/repost等が既に5〜11件前後と密で重複しない新規の角度を見つけられ
+  なかったため0件とした(ただし3プールともbilling比率は目標16%にほぼ一致しているため実害は小さいと
+  判断)。追加トピック: AWS Glue(既存source、VOCAB初追加)、AWS Organizationsの委任管理者(Delegated
+  Administrator、既存source、VOCAB初追加・PRACTICE/MOCKで複数の角度(サービス単位の個別登録・管理
+  アカウントの権限保持・組織へのアカウント招集権限の不所持)を追加)、クラウドの6つのメリット:
+  データセンターの運用・保守からの解放(既存source sixAdv、VOCAB初追加)、AWS CloudFormation
+  StackSets(新規、VOCAB+PRACTICE2件+MOCK1件で導入: 基本定義、セルフマネージド型/サービスマネージド型
+  パーミッションの違い、操作オプション「失敗許容数」)、AWSグローバルインフラストラクチャの
+  アベイラビリティーゾーン(AZ)に関する詳細事実(新規source: 各リージョンに最低3つのAZが保証される
+  こと、AZ ID(物理的な場所を一意に示す識別子)とAZコードの違い、「制約のあるAZ」の概念)、AWS
+  Organizationsの「信頼されたアクセス(Trusted Access)」(既存source organizations、新しい角度)。
+  新規SOURCESキー2件(cfnStackSets, azDetails)はいずれも本実行環境でWebFetchがdocs.aws.amazon.com
+  に対して成功し(**今回もWebFetchが成功**)、本文を直接確認した上で追加した。なお、新規VOCAB候補として
+  検討したAmazon QuickSight・AWS Proton・Amazon Managed Blockchain・Amazon CodeCatalystは、WebSearch/
+  WebFetchで確認した結果、それぞれ「Amazon Quickへの名称・位置づけの大幅な変更が進行中」「2026年10月7日
+  付でサポート終了」「2026年10月29日から新規受付終了・2027年9月29日に完全終了予定」「2025年11月7日から
+  新規顧客受付終了」であることが判明したため、既存の除外事例(QLDB・Connect・App Runner・Pinpoint等)と
+  同様の理由でいずれも今回の追加対象から除外した。今回はNode.js(v22.22.0)がこの実行環境で利用できる
+  ことを確認できたため、Pythonの`validate_content.py`に加えて、Node.jsで`js/data/clf-c02.js`を実際に
+  `eval`してVOCAB/PRACTICE/MOCK_POOL全件をロードし、ID重複なし・choices/why配列が各4件・correct添字が
+  範囲内・singleの正解数が1件/multiが2件以上・新規追加した18件それぞれの`why`配列中の「正しい。」の
+  位置が`correct`の添字と完全一致することまで追加で検証した(ブラウザでの実機確認は今回も未実施)。
+  正解位置はVOCAB単一選択4件を0,1,2,3の順で完全にローテーション、PRACTICE単一選択8件を0,1,2,3を2周
+  させて完全に均等(各位置2件)、PRACTICE複数選択2件は{0,2}と{1,3}の異なる組み合わせ、MOCK単一選択3件は
+  0,1,2の3つの異なる位置、MOCK複数選択1件は{1,3}を使用。追加前後でvalidate_content.pyの出力・git diffを
+  確認し、既存951件(VOCAB332/PRACTICE951/MOCK_POOL330)の項目は一切変更していないこと(diffはSOURCES/
+  VOCAB/PRACTICE/MOCK_POOLそれぞれの末尾項目へのカンマ付与4箇所のみ)を確認済み。
