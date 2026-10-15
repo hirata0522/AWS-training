@@ -2269,3 +2269,56 @@
   source4件を除くSOURCES)の項目は一切変更していないこと(diffはSOURCESの末尾項目へのカンマ付与1箇所の
   みで、VOCAB/PRACTICE/MOCK_POOLは既存の最終項目の行自体を変更せず直後に新規項目を追加したためgit diff
   上は追加のみとして表示される)を確認済み。
+- 2026-10-15(同日3回目の実行): 定期実行で15件追加（VOCAB+4/PRACTICE+7/MOCK_POOL+4。通常の目安21件より
+  少ない。理由は後述）。開始時、サンドボックスが`master`からdetached HEADの状態になっていたが、
+  `git checkout master`した時点でローカル`master`は既に`origin/master`の最新コミット(8853dab)と
+  一致していたため、`git pull --rebase`はfast-forward不要で即座に完了した。作業開始時点の件数は
+  VOCAB363/PRACTICE1047/MOCK_POOL362。今回、既存ソースの再利用先を選ぶ前に、候補とした軽めの
+  既存source(resilienceHub・dataResidency・typesOfCloud・cloudValueFramework・prescriptiveGuidance・
+  waLens・watool・wafPerformance・keyspaces・guarddutyRuntime・wafAcfp・accessAdvisor・iamPolicyTypes・
+  tagPolicies・purchaseOrderMgmt・asgLifecycleHooks・ec2LaunchTemplate等、使用回数こそ4〜11件程度と
+  一見軽めだが)について、Pythonで既存の全text/termを抽出して事前に目視確認したところ、いずれも
+  想定していた「新しい角度」が実際には既にほぼそのまま出題済みであることが判明した(例:
+  ec2LaunchTemplateの「バージョニング対応」角度は既存の唯一の項目(p1031)がまさにその角度そのもの、
+  asgLifecycleHooksの既存1項目(p1032)がPending:Wait/Terminating:Wait/デフォルト1時間タイムアウト/
+  ハートビートの要点をすべて既に網羅、wafPerformanceはパフォーマンス効率の柱の5つの設計原則を
+  individual角度ですべて使い切っていた等)。50回以上の既存実行により、軽量〜中量の既存sourceでも
+  自然な出題角度はほぼ枯渇し始めていることが分かったため、今回は内容の正確性・非重複を最優先し、
+  件数の目安(21件)より少ない15件に絞った上で、新規source2件(spotInstances・europeanSovereignCloud)
+  を軸に構成した。新規出典2件はいずれもWebFetch・WebSearchの組み合わせで確認した
+  (spotInstancesはdocs.aws.amazon.com/AWSEC2/.../ec2-spot-instances.htmlとaws.amazon.com/ec2/spot/を
+  WebFetchしたがいずれも本文はタイトルのみ返り(JS描画のため)、WebSearchで割引率(最大90%)・価格決定
+  方式・中断通知(2分前・インスタンスメタデータ/latest/meta-data/spot/instance-action・EventBridge・
+  リバランスの推奨)・中断理由(キャパシティ回収/価格超過/制約)を複数の整合する結果で確認。
+  europeanSovereignCloudはWebFetchでdocs.aws.amazon.com/whitepapers/latest/overview-aws-european-
+  sovereign-cloud/配下のページ(design-goals.html、aws-european-sovereign-cloud.html)の存在をタイトル
+  レベルで確認した上で、WebSearchでaws.amazon.com配下の複数の公式ブログ記事(aws.amazon.com/blogs/
+  security/配下)と技術的内容(別パーティションaws-eusc、独自IAM/請求/コントロールプレーン、EU域内
+  居住者のみが運用、2026年1月GA、ドイツ・ブランデンブルクが初リージョン、AWS Nitro System使用、
+  ベルギー/オランダ/ポルトガルへのソブリンLocal Zones計画、780億ユーロの投資計画)を確認。**今回も
+  WebFetchはdocs.aws.amazon.com/aws.amazon.comへのリクエスト自体は成功したが、いずれも本文がJSで
+  描画されるページでタイトルのみ返り、本文の直接確認はできなかった(WebSearchでのクロスチェックで
+  代替)**。既存source再利用は、文面の重複を避けられると個別に確認できたもののみに絞った: macie
+  (自動化された機密データ検出(Automated Sensitive Data Discovery)の仕組みをWebSearchで確認し新規
+  追加、別途MacieのfindingsのEventBridge/Security Hub連携もWebSearchで確認して追加)、s3MfaDelete
+  (既存2件はルートユーザー限定・コンソール不可の角度を既に使用済みだったため、x-amz-mfaヘッダー
+  要件という別角度をWebSearchで確認して追加)、cfnDriftDetection(既存2件は定義・NOT_CHECKEDステータス
+  の角度だったため、「自動修復はしない」という角度を追加)、penTesting(既存2件は一般的なポリシー説明
+  だったため、DNSゾーンウォーキング禁止・Amazon API Gateway/Amazon Bedrock AgentCoreがアウトバウンド
+  テスト対象外という、公式ページ記載の具体的な禁止事項・除外サービスの角度をWebSearchで確認して追加)、
+  costExplorerForecast(既存2件は一般的な予測機能・予測区間の説明だったため、2025年11月のAWS公式
+  What's New発表(aws.amazon.com/about-aws/whats-new/2025/11/)で確認した「予測期間が12か月→18か月に
+  延長」「説明可能なAIによる予測(プレビュー、コンソール限定)」という最新の角度を2件追加)。正解位置は
+  単一選択13件を0,1,2,3でほぼ均等にローテーション(0が4件、1〜3が各3件)、複数選択2件(PRACTICE1・
+  MOCK_POOL1)は{0,2}と{1,2}の異なる組み合わせを使用。追加後、Node.js(v22.22.0)の`new Function`で
+  SOURCES/VOCAB/PRACTICE/MOCK_POOLを実際に評価・ロードし、新規追加した15件それぞれについてchoices/why
+  配列が各4件・source.urlの存在・correct添字が0〜3の範囲内・type別のcorrect要素数・全ファイル中の
+  id重複なしであることをスクリプトで個別に検証済み(ブラウザでの実機確認は今回も未実施)。追加前後で
+  validate_content.pyの出力・git diffを確認し、既存1766件の項目は一切変更していないこと(diffは
+  SOURCESの末尾項目へのカンマ付与1箇所のみ)を確認済み。累計 VOCAB=367, PRACTICE=1054, MOCK_POOL=366
+  (3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.2/security24.5/billing16.3/
+  concepts25.9、PRACTICE concepts24.8/billing15.9/security25.8/tech33.5、MOCK_POOL concepts26.0/
+  security25.1/tech32.2/billing16.7)。
+  **提案(手順書への反映候補)**: 軽量source(使用回数3〜11件程度)を再利用する前に、本回のように
+  Pythonで該当sourceの既存text/term全件を抽出して目視確認する一手間を、次回以降も標準手順として
+  推奨する。これにより「件数は少ないが実質的には既に出題済み」という誤判定を防げる。
