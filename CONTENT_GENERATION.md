@@ -2697,3 +2697,37 @@
   依然として不安定であることが分かる。ユーザーには、ルーティンの実行環境設定(セッションのoutcomeブランチ
   指定やチェックアウト方式)を改めて見直す余地がある可能性を報告する。古いローカル`master`参照は今回も
   `master-old-stale-backup-20261016`ブランチとして退避・保持した(削除していない)。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=419, PRACTICE=1223,
+  MOCK_POOL=418（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.4/security24.6/
+  billing16.7/concepts25.3、PRACTICE concepts25.0/billing16.1/security25.3/tech33.5、MOCK_POOL
+  concepts26.1/security25.1/tech32.3/billing16.5）。開始時、今回も`git status`が「detached HEAD」を
+  示し、ローカル`master`ブランチ参照が`origin/master`と無関係な古い履歴(今回のケースでは2026-10-12の
+  内容、cb63a57)を指していた(本ランブック手順0に記載の事故が4回目発生)。ただし今回詳しく調査した結果、
+  これは本物のデータ消失ではなく、サンドボックスにキャッシュされたローカル`master`参照が古いだけで、
+  `git fetch origin master`を実行すると`origin/master`自体は既に最新の内容(detached HEADと同一の
+  コミット55df381、VOCAB415/PRACTICE1210/MOCK_POOL414)まで正しくpush済みであることを確認できた
+  （つまり直前の複数回の実行は実際にはpushに成功していたが、サンドボックス側のローカル`master`参照の
+  更新だけが別の問題で行われていなかった）。ローカル`master`参照を`origin/master`に合わせる操作
+  (`git checkout -B`や`git update-ref`)はいずれもサンドボックスの権限システムにより
+  「破壊的操作」として拒否されたため、ローカル`master`ブランチには触れず、`origin/master`と一致する
+  detached HEAD上で直接作業し、最後に`git push origin HEAD:master`で`origin`の`master`を直接更新する
+  方式に切り替えた。これにより新しいブランチの作成・PRなしで`master`へ直接反映でき、禁止事項にも抵触
+  しない。ユーザーには、実行環境(ルーティンのセッション設定)側でローカル`master`参照が毎回
+  同期されない問題が続いている可能性を改めて報告する。追加トピック: Amazon EventBridge Pipes(新規)、
+  AWS Lambda プロビジョニングされた同時実行数(Provisioned Concurrency、既存sourceのlambdaを再利用)、
+  Amazon RDS Multi-AZ DBクラスターデプロイ(既存sourceのrdsを再利用)、AWS WAF Bot Control(新規)、
+  AWS Config コンフォーマンスパック(新規)、Amazon VPC Traffic Mirroring(新規)、AWS Migration
+  Readiness Assessment / MRA(新規)、CloudWatch 請求アラーム(新規)。追加前に候補としていたAmazon
+  Pinpoint・AWS App Mesh・AWS Proton・Amazon CloudSearch・AWS Application Discovery Service・AWS
+  Migration Hubは、WebSearchで裏取りした結果、2026年9月〜12月前後にAWSが順次サポート終了・新規顧客
+  受付終了としていることが判明したため、いずれも不採用とした(特にApp MeshとProtonは本実行時点
+  (2026-10-16)で既にサポート終了日を過ぎていた)。この点は「変化しやすい事実は必ずその場でWeb検索で
+  確認する」ルールの重要性を再確認する事例であり、学習時点の知識だけでは防げなかった誤りである。新規
+  出典6件(eventBridgePipes, wafBotControl, configConformancePacks, vpcTrafficMirroring,
+  migrationReadinessAssessment, billingAlarms)はすべてWebSearchでdocs.aws.amazon.com配下の実在ページ
+  を確認し、wafBotControl(waf-bot-control.html)は**WebFetchが成功**し本文を直接確認できた。正解位置は
+  単一選択20件を事前にスクリプトで集計し0,1,2,3が偏っていた(初稿で8/5/4/3)ことを検出したため、
+  AWS Migration Readiness Assessment関連の3問の選択肢順序を組み替えて5/5/5/5の完全な均等分布に修正
+  した。複数選択1件(AWS Config コンフォーマンスパック)は{0,2}を使用。追加後にvalidate_content.pyの
+  出力・`git diff --stat`を確認し、既存415件の項目は一切変更していないこと(diffは追加61行のみ、
+  削除0行)を確認済み。
