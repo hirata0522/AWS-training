@@ -2871,3 +2871,40 @@
   追加前後でvalidate_content.pyの出力(エラーなし)、`node --check`での構文チェック、`git diff
   --stat`(追加34行、削除0行)を確認し、既存447件(VOCAB447−4=443/PRACTICE1302−5=1297/
   MOCK446−4=442)の項目は一切変更・削除していないことを確認済み。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`
+  から大きく古い無関係な履歴を指すdetached HEADの状態になっていた（`git status`で検知）。`git checkout
+  master`すると、ローカルの`master`ブランチ自体も`origin/master`から50コミット遅れた古い履歴を指して
+  いたが、`git pull --rebase origin master`で問題なくfast-forwardし、正しい最新状態(`bd700a5`)に復帰
+  できた（手順0に記載されている「ローカルmasterがorigin/masterと無関係な古い履歴を指している」ケース
+  には該当せず、単純な遅延だったため退避等の特別な対応は不要だった）。累計 VOCAB=451, PRACTICE=1315,
+  MOCK_POOL=450（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech34.1/security24.8/
+  billing16.2/concepts24.8、PRACTICE concepts24.9/billing16.0/security25.3/tech33.8、MOCK_POOL
+  concepts25.3/security24.9/tech33.1/billing16.7）。今回は新規SOURCESを追加せず、既存の検証済み
+  SOURCESのみを再利用し、各ソースの既存の設問内容を事前にgrepで確認した上で、未出題の具体的な事実・
+  角度に絞って追加した（出典として新規ドメインを追加しない代わりに、技術的に不確実な部分は個別に
+  WebSearch/WebFetchで事実確認した）。追加トピック: Amazon WorkSpaces Applications(旧AppStream 2.0)
+  の基本定義(VOCAB初追加)、AWSプロモーションクレジットの有効期限優先適用ルール(VOCAB初追加)、IaaS/
+  PaaS/SaaSにおける責任範囲の違い(VOCAB初追加)、IAMポリシー評価の「暗黙の拒否(Implicit Deny)」(VOCAB
+  初追加)、AWS Cloud Value Frameworkの「ビジネスの俊敏性(Business Agility)」、マルチテナントSaaS
+  の「プールモデル(Pool Model)」、4つのDR戦略のコスト/RTO傾向の比較、RTO/RPOを事業部門とIT部門が
+  協議して決定すべきという考え方、AWS Organizationsタグポリシーの「非準拠操作の防止」の挙動、IAMの
+  AWS管理ポリシーは顧客側で直接編集できない点、AWS Security Incident Responseのサブスクリプション
+  形態、CloudFront FunctionsとLambda@Edgeの実行環境(言語・実行時間・メモリ)の違い、Lambda@Edgeの
+  Origin Requestイベントの発生タイミング、EC2ハイバネーションの制約(RAM上限150GiB/16GiB、60日間の
+  上限、Auto Scalingグループでは不可)、AWS Elemental MediaConnectのソースフェイルオーバー(マージ
+  モード/SMPTE ST 2022-7)、Cost ExplorerのSavings Plans推奨事項のルックバック期間(7/30/60日)と
+  生成条件、AWSアカウントの代替連絡先の3種類(Billing/Operations/Security)、AWS Dedicated Local
+  Zonesによるデータレジデンシー対応、AWS Audit Managerのカスタムフレームワーク、EC2起動テンプレート
+  のバージョン機能、AWS Price List Bulk APIの出力ファイル形式(JSON/CSV)。事実確認のためWebSearchを
+  9件実施(CloudFront Functions/Lambda@Edge比較、Lambda@Edgeトリガー種別、MediaConnectソース
+  フェイルオーバー、Cost ExplorerのSavings Plansルックバック期間、タグポリシーのenforcement仕組み、
+  Dedicated Local Zones、SaaSテナント分離モデル、Cloud Value Frameworkの5つの価値観点、Audit
+  Managerのカスタムフレームワーク)に加え、手順0の指示に従いEC2ハイバネーションの前提条件について
+  `docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-hibernate-overview.html`へのWebFetchを試行した
+  ところ**今回はWebFetchが成功**し、本文を直接確認できた(RAM上限・60日間の保持上限・Auto Scaling
+  グループでの非対応等の制約を本文から正確に採用)。正解位置はVOCAB4件を0,1,2,3でローテーション、
+  PRACTICE単一選択11件・MOCK_POOL単一選択4件の合計15件を0,1,2,3でほぼ均等にローテーション(各位置
+  3〜4件)、複数選択2件(PRACTICE)は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.py
+  の出力(エラーなし)と`git diff --stat`(追加55行、削除0行)を確認し、既存447件(VOCAB447/PRACTICE1302/
+  MOCK446)の項目は一切変更・削除していないことを確認済み。コミット後、`git push origin master`は
+  1回目で正常に完了した(非fast-forward拒否は発生しなかった)。
