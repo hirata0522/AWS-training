@@ -25,6 +25,17 @@
    （過去に、サンドボックスが起動時に`master`以外のブランチをチェックアウトした状態になっており、
    それに気づかず作業してしまったため、20回分の内容が別ブランチに孤立し続けた事故があった。
    このステップを省略しないこと。）
+   **さらに注意**: `git branch --show-current`が空（`detached HEAD`）の場合に加え、ローカルの
+   `master`ブランチ参照自体が`origin/master`と無関係な古い履歴を指していることがある
+   （2026-10-16に発生。`git fetch origin master`後、`git merge-base --is-ancestor master
+   origin/master`が失敗する＝共通祖先がない場合がこれに該当）。この場合、単純な
+   `git checkout master && git pull --rebase`では古いローカル`master`に新しいコミットを
+   積もうとして失敗する（履歴が無関係なため）。対処: ローカル`master`を`git branch -m master
+   master-old-stale-backup-<日付>`等で退避し、`git fetch origin master`で最新の`origin/master`
+   を取得した上で`git checkout -b master origin/master`（または現在のHEADが既に
+   `origin/master`と一致していればそこから`git checkout -b master`）で作り直し、
+   `git branch --set-upstream-to=origin/master master`で追跡設定を復元すること。
+   古いローカル`master`参照は（孤立していても）削除せず退避ブランチとして残すこと。
 1. `python3 scripts/validate_content.py` を実行し、現在の件数（プール別・ドメイン別）を確認する。
    - このスクリプトが失敗（exit code != 0）する場合、既存データが壊れている。新規追加は行わず、
      まずそのエラーを報告すること（直せる範囲なら直してよいが、無理に推測で直さない）。
@@ -2615,3 +2626,36 @@
   (0が5件、1が5件、2が4件、3が4件)、複数選択3件は{0,2}{1,3}{0,3}の異なる組み合わせを使用。追加前後で
   validate_content.pyの出力・git diffを確認し、既存の項目(VOCAB403/PRACTICE1171/MOCK_POOL402)は一切
   変更していないこと(diffは追加行56行のみ、削除行なし)を確認済み。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。**開始時に別種の事故を発見・復旧**:
+  サンドボックス起動時に`HEAD`が`master`から外れた`detached HEAD`状態になっており、かつローカルの
+  `master`ブランチ参照自体が、`origin/master`とは無関係な(共通の祖先を持たない)古い履歴
+  （VOCAB80/PRACTICE150/MOCK_POOL56時点、19コミット）を指す古い状態になっていた。一方
+  detached HEAD（50コミット）は`git fetch origin master`後の`origin/master`と完全に一致し、
+  VOCAB407/PRACTICE1184/MOCK_POOL406まで進んだ最新の状態だった。ローカル`master`の古い履行は
+  `origin/master`の実コミットの祖先ではなく（過去のブランチ事故の手作業統合時にforce-push等で
+  履行が書き換わったとみられる）、作業前に`git branch -m master master-old-stale-backup`で
+  退避してから`git checkout -b master`でHEAD（=origin/master）位置に新しい`master`を作り直し、
+  `git branch --set-upstream-to=origin/master master`で追跡設定を復元した（古いローカル履行は
+  `master-old-stale-backup`ブランチとして残してあり、削除はしていない）。復旧後は手順0の通り
+  `git pull --rebase origin master`を実行（Already up to date）。この回のWebFetch試行は
+  `docs.aws.amazon.com/vpc/.../vpc-endpoints.html`と`aws.amazon.com/premiumsupport/plans/`の
+  2件とも成功し、本文を直接確認できた（過去ログの「DNS/プロキシでブロックされる」という記録とは
+  異なり、今回の実行環境では問題なくWebFetchが機能した）。累計 VOCAB=411, PRACTICE=1197,
+  MOCK_POOL=410（3プールとも各ドメイン比率は目標26/25/33/16%にほぼ一致: VOCAB concepts25.3/
+  security24.6/tech33.6/billing16.5、PRACTICE concepts25.0/billing16.0/security25.5/tech33.5、
+  MOCK_POOL concepts26.1/security25.1/tech31.9/billing16.8）。追加トピック: AWS CAF
+  セキュリティの視点・運用の視点（既存VOCABにはビジネス・人材・ガバナンス・プラットフォームの4視点
+  しかなく、6視点のうち2つが欠けていたことが判明したため追加。CAF全体像(6視点から2つを選ぶ除外形式)
+  もMOCK_POOLに追加）、IAMのMFAデバイスの種類(パスキー/セキュリティキー(FIDO)・仮想MFAアプリ・
+  ハードウェアTOTPトークンの3方式、SMSベースMFAは新規サポート終了)、AWS Supportの重大度
+  「General guidance」の初回応答時間、VPCエンドポイント(ゲートウェイ対インターフェイス、新規出典
+  `vpcEndpoint`を追加)、ALB/NLB/GLBの使い分け、Direct Connect対VPN対Transit Gateway、RDS
+  リードレプリカ対Multi-AZ、EC2 Instance Savings Plans対Compute Savings Plans、AWS Cost
+  Anomaly Detection対Budgets対Cost Explorer、セキュリティグループ対NACLの併用、Permissions
+  Boundary、SCPとIAMポリシーの優先順位、S3 Glacier Deep Archive、EC2 Auto Scalingのターゲット
+  追跡スケーリング、責任共有モデル(ゲストOSパッチ適用)。新規出典1件（vpcEndpoint）はWebFetchで
+  本文を直接確認してから追加、他はすべて既存のSOURCESを再利用し、既存項目のテキストを事前にgrepで
+  確認した上で重複しない角度の設問として追加した。正解位置はPRACTICEの単一選択12件を0,1,2,3で
+  完全に均等にローテーション(各3件)、複数選択1件は{0,1}、MOCK_POOLは単一選択3件が1,2,3、複数選択
+  1件は{1,3}。追加前後でvalidate_content.pyの出力・git diffを確認し、既存の項目(VOCAB407/
+  PRACTICE1184/MOCK_POOL406)は一切変更していないこと(diffは追加行56行のみ、削除行なし)を確認済み。
