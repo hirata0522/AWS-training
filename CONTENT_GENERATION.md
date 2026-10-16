@@ -3036,3 +3036,23 @@
   出力(エラーなし)と`git diff --stat`(追加59行のみ、既存行の変更なし)を確認し、既存463件(追加前
   VOCAB459/PRACTICE1341/MOCK459)の項目は一切変更・削除していない。push前に`git pull --rebase
   origin master`を再実行し、最新化を確認した。
+- 2026-10-16: 定期実行で21件追加(VOCAB+4/PRACTICE+13/MOCK_POOL+4)。累計 VOCAB=467, PRACTICE=1367,
+  MOCK_POOL=467(いずれも目標未達、継続要)。開始時に`detached HEAD`だったため`git checkout master`
+  →`git pull --rebase origin master`で最新化してから作業した。新規トピック: 可用性(Availability)の
+  定義、Amazon RDSのIAMデータベース認証(IAM Database Authentication)、EC2配置グループ(Placement
+  Group: Cluster/Partition/Spread)、リザーブドインスタンスの支払いオプション(All/Partial/No
+  Upfront)、GuardDuty対Security Hub、EventBridge対SNS、Cost Explorer対Budgets、疎結合アーキテク
+  チャ、Config対CloudTrail、Kinesis Data Streams対SQS、Compute Savings Plans対EC2 Instance
+  Savings Plans、ECS対EKS、Comprehend対Textract、耐障害性対高可用性、単一AZ運用のリスク、ACM
+  パブリック証明書対AWS Private CA、Reserved Instance MarketplaceでのStandard RI売却。新規SOURCES
+  2件(`placementGroups`: `AWSEC2/latest/UserGuide/placement-groups.html`、`rdsIamAuth`:
+  `AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html`)はいずれもWebFetchで本文を直接取得し、
+  内容を確認してから追加した。**今回もWebFetchはdocs.aws.amazon.comに対して正常に成功した**(上記
+  に加え、EC2リザーブドインスタンスの支払いオプション・Reserved Instance Marketplaceの売却条件
+  (Standard RIのみ売却可・Convertible RIは売却不可で交換のみ可・アクティブ化から30日以上必要)も
+  `ec2-reserved-instances.html`/`ri-market-general.html`からWebFetchで本文を直接確認した)。正解
+  位置: VOCAB4件は1,2,0,3、PRACTICE単一選択11件は0,1,2,3,0,1,2,3,0,1,2の順、PRACTICE複数選択2件は
+  {0,2}と{0,3}、MOCK_POOL4件は0,1,2,3を1件ずつ配置。追加前後で`validate_content.py`の出力
+  (エラーなし、件数が463→467/1354→1367/463→467に増加したことのみ確認)と`git diff --stat`
+  (追加57行のみ)を確認し、既存467件(追加前VOCAB463/PRACTICE1354/MOCK463)の項目は一切変更・削除
+  していない。push前に`git pull --rebase origin master`を再実行し、最新化を確認した。
