@@ -2999,3 +2999,40 @@
   追加前後で`validate_content.py`の出力(エラーなし)と`git diff --stat`(追加55行のみ、既存行の変更は
   末尾へのカンマ付与3箇所のみ)を確認し、既存459件(追加前VOCAB455/PRACTICE1328/MOCK455)の項目は
   一切変更・削除していない。push前に`git pull --rebase origin master`を再実行し、最新化を確認した。
+- 2026-10-16: 定期実行で21件追加(VOCAB+4/PRACTICE+13/MOCK_POOL+4)。累計 VOCAB=463, PRACTICE=1354,
+  MOCK_POOL=463(ドメイン配分: VOCAB tech157/security115/billing77/concepts114、PRACTICE
+  concepts339/billing217/security342/tech456、MOCK_POOL concepts116/security115/tech154/billing78。
+  いずれも目標比率26/25/33/16%に近い)。開始時、ローカルの`master`がdetached HEAD状態になっており
+  （手順0で警告されている過去の事故と同種の状況）、かつローカルの`origin/master`参照が実際のGitHub上の
+  `origin/master`より50コミット古い状態だった（別の実行による並行pushが反映される前にfetchしていた
+  可能性）。`git fetch origin --prune`で最新化してから`git checkout master && git pull --rebase
+  origin master`を実行し、正しい最新の`master`(直前の実行が復旧済みの系列、VOCAB459/PRACTICE1341/
+  MOCK459)から作業を開始した。新規トピック: Amazon S3 Intelligent-Tiering(S3標準/One Zone-IA/
+  Glacierとの比較)、AWS WAFマネージドルール(AWS Managed Rules、ベースライン/用途別/IP reputation/
+  Bot Control/Fraud Control等のルールグループ群)、同一リージョン内のAZ間ネットワーク接続(専用メトロ
+  ファイバー・低遅延・高帯域・高冗長性)、現行のAWS Free Tier「Freeプラン」の新規アカウント向け無料
+  クレジット(最大$200・有効期間6ヶ月)と「常に無料」対象サービス(30以上、Free/Paid両プラン共通)、
+  Well-Architectedの全般的な設計原則の個別項目(自動化による実験の容易化/本番規模でのテスト/データに
+  基づくアーキテクチャ決定)、ハイブリッドクラウドの利点、IAMポリシー評価(同一アカウント内でのIDベース/
+  リソースベースポリシーの論理和的評価)、AWS Shield Standard対Advanced、GuardDutyの検出データソース
+  (VPCフローログ/DNSログ/CloudTrail)、RDS Multi-AZ対リードレプリカ、ELBの種類(ALB/NLB/GWLBの
+  レイヤー別比較)、Lambdaの実行モデル(同時実行に応じた自動スケール)、EBSスナップショットの増分保存、
+  AWS Organizationsにおけるリザーブドインスタンス/Savings Plansの割引共有の有効化・無効化、KMSの
+  カスタマーマネージドキー対AWS管理キー、Auto ScalingのELBヘルスチェック連携、AWS Supportの
+  Basicプランが全アカウントに自動かつ無償で含まれること。新規SOURCES4件追加
+  (s3IntelligentTiering, wafManagedRules, azInterconnect, riSpSharing)はいずれも
+  docs.aws.amazon.comの実在ページであることをWebFetchで本文を直接取得して確認した
+  (`storage-class-intro.html`, `aws-managed-rule-groups-list.html`, `ri-turn-off.html`、
+  および`general-design-principles.html`)。**今回の実行ではWebFetchがdocs.aws.amazon.com/
+  aws.amazon.comに対して正常に成功した**(過去のログに多数あったDNS/プロキシブロックの記録とは異なる
+  結果。`aws-regions-availability-zones.html`のAZ間接続の具体的な記述のみWebSearchのスニペット経由
+  で確認し、他はWebFetchで本文を直接確認)。AWS Free Tierについては、2025年7月15日以降の新規
+  アカウントでは「Freeプラン/Paidプラン」選択制・$100+$100クレジット・6ヶ月間という現行の構造を
+  `aws.amazon.com/free/`から直接確認し、既存のCLAUDE.mdの記述とも整合することを確認した上で執筆した。
+  AWS Supportプランの現行名称(Basic/Business Support+/Enterprise Support/Unified Operations、
+  Basicは無償)もWebSearchで再確認したが、具体的な応答時間等の数値は断定を避けた。正解位置:
+  VOCAB4件は0,1,2,3を1件ずつ、PRACTICE単一選択12件は0,1,2,3を3件ずつ均等に配置、PRACTICE複数選択
+  1件は{1,3}の組み合わせ、MOCK_POOL4件は0,1,2,3を1件ずつ配置。追加前後で`validate_content.py`の
+  出力(エラーなし)と`git diff --stat`(追加59行のみ、既存行の変更なし)を確認し、既存463件(追加前
+  VOCAB459/PRACTICE1341/MOCK459)の項目は一切変更・削除していない。push前に`git pull --rebase
+  origin master`を再実行し、最新化を確認した。
