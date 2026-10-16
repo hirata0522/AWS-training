@@ -2462,3 +2462,41 @@
   ほぼ均等に分散し、複数選択4件は{0,1}{1,3}{0,3}{1,2}の異なる組み合わせを使用。追加前後で
   validate_content.pyの出力・git diffを確認し、既存の項目（VOCAB387/PRACTICE1119/MOCK_POOL386）
   は一切変更していないことを確認済み（diffは追加行のみ、削除行なし）。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが
+  `master`からdetached HEADの状態になっていたが、`git checkout master`すると、ローカルの`master`が
+  起動時のdetached HEAD(71b3e42)より50コミットも古い状態だった(過去の複数回の定期実行セッションが
+  コミットは完了していたがローカルの`master`ブランチへの反映が漏れていた)。`git pull --rebase
+  origin master`を実行したところ、ローカルの古い`master`が自動的に`origin/master`の最新コミット
+  (71b3e42、detached HEADと同一)まで進み、正しい状態に復帰した。累計 VOCAB=395, PRACTICE=1145,
+  MOCK_POOL=394（3プールとも各ドメイン比率は目標26/25/33/16%に極めて近い: VOCAB
+  tech32.9/security24.8/billing16.7/concepts25.6、PRACTICE concepts25.1/billing16.0/
+  security25.4/tech33.5、MOCK_POOL concepts25.9/security25.1/tech32.0/billing17.0）。追加トピック:
+  Amazon S3 Transfer Acceleration（新規、専用エンドポイントと高速化しなかった場合の課金なしの仕組み）、
+  AWS Lambda@Edge（新規、CloudFrontのリクエスト/レスポンスをカスタマイズするNode.js/Python関数、
+  作成は米国東部(バージニア北部)で行う）、Amazon CloudFront Functions（新規、Lambda@Edgeとの比較:
+  軽量なJavaScript・サブミリ秒起動・ビューアーイベント中心 対 Lambda@Edgeの4イベント対応・高機能）、
+  Amazon S3 Block Public Access（新規、バケットポリシー/ACLの内容にかかわらずアカウント/バケット/
+  アクセスポイント単位で一元的にパブリックアクセスをブロックする設定）、AWS Configのマネージドルール
+  （既存source、VOCAB初追加）、Amazon VPCゲートウェイエンドポイント（既存source、VOCAB初追加・
+  対応サービスがS3/DynamoDBの2つのみである点をPRACTICEで別角度出題）、Amazon DynamoDB予約キャパシティ
+  （既存source、VOCAB初追加。当初「1年間のみ」と誤って記述しそうになったが、WebFetchで公式ドキュメント
+  を確認した結果、実際は「1年または一部リージョンでは3年のコミット、一部前払い+割引単価、購入した
+  リージョン内でのみ有効、オンデマンドモード/Standard-IAクラス/rWCUには不可」という仕様だったため、
+  正確な内容に修正してVOCAB/PRACTICE/MOCK_POOLの3問に反映した）、AWSのエッジロケーション（既存source、
+  CloudFront等専用の拠点であり汎用EC2を実行する場所ではない点を新角度で出題）、Amazon EC2 Auto
+  Scalingライフサイクルフック（既存source、Pending:Wait/Terminating:Wait状態の具体的な利用場面を複数
+  選択問題で出題）、Amazon CloudWatch複合アラーム(Composite Alarm)（既存source新角度）、Amazon RDS
+  リザーブドインスタンスの支払いオプション（既存source新角度）、AWS Cost ExplorerのSavings Plans推奨
+  事項（既存source、RI推奨事項とは別角度）、AWS Trainiumの分散トレーニング(EFA/UltraCluster)（既存
+  source新角度）、データ主権(Data Sovereignty)の法域適用シナリオ（既存source新角度）、AWS Artifactの
+  Agreements機能(BAA締結の具体例)（既存source、MOCK_POOL初追加）。新規出典4件
+  （s3TransferAcceleration, lambdaEdge, cloudfrontFunctions, s3BlockPublicAccess）はすべて本実行環境で
+  WebFetchがdocs.aws.amazon.comに対して成功し（**今回もWebFetchが成功**）、本文を直接確認した上で
+  追加した。既存の飽和気味のsource（wafReliability43件・iam23件・kms22件・globalInfra17件・
+  hybridCloud16件・support15件・costExplorer14件・caf・sixAdv・costCategories11件・GuardDuty各機能等、
+  ほぼすべての角度が出題済みのもの）は今回の新規追加の対象から意図的に避け、まだ出題されていない
+  サービス・具体的な仕様の事実を優先した。正解位置はVOCAB4件を0,1,2,3でローテーション、PRACTICE
+  単一選択12件を0,1,2,3を3周して完全に均等、PRACTICE複数選択1件(ライフサイクルフック)は{1,3}、
+  MOCK_POOL単一選択4件を0,1,2,3でローテーション。追加前後でvalidate_content.pyの出力・git diffを
+  確認し、既存の項目（VOCAB391/PRACTICE1132/MOCK_POOL390）は一切変更していないこと（diffは追加行
+  59行のみ、削除行なし）を確認済み。
