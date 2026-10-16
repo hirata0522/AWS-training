@@ -3056,3 +3056,23 @@
   (エラーなし、件数が463→467/1354→1367/463→467に増加したことのみ確認)と`git diff --stat`
   (追加57行のみ)を確認し、既存467件(追加前VOCAB463/PRACTICE1354/MOCK463)の項目は一切変更・削除
   していない。push前に`git pull --rebase origin master`を再実行し、最新化を確認した。
+- 2026-10-16: 定期実行で21件追加(VOCAB+4/PRACTICE+13/MOCK_POOL+4)。累計 VOCAB=471, PRACTICE=1380,
+  MOCK_POOL=471(いずれも目標未達、継続要)。前回の実行がこの日既に行われていたため、この回の開始時には
+  masterはdetached HEADかつローカル参照が古く(origin/masterがその後force updateとして検出された)、
+  `git checkout master`→`git pull --rebase origin master`で最新化してから作業した(手順0のとおり)。
+  新規トピック: AWS Organizations 組織単位(OU、新規SOURCES `organizationsOu`)、IAMポリシーのCondition
+  要素(条件キー、aws:MultiFactorAuthPresent/aws:SourceIp)、Elastic Load Balancingの種類(ALB/NLB/GWLB
+  の違い)、可用性のパーセンテージ表現(「ナイン」の意味、99.9%→99.99%→99.999%)、俊敏性(Agility)対
+  弾力性(Elasticity)、マルチアカウント戦略のメリット、DR戦略(ウォームスタンバイ対バックアップ&リストア)、
+  AWS KMSカスタマー管理キー対AWS管理キー、AWS Security Hubの検出結果集約、EFS対EBS対S3、DynamoDB対
+  RDS対Redshift、Savings Plans対リザーブドインスタンスの柔軟性、AWS Budgets対Cost Explorer。新規
+  SOURCES1件(`organizationsOu`: `organizations/latest/userguide/orgs_manage_ous.html`)はWebSearchで
+  docs.aws.amazon.com配下の実在ページ(複数言語ミラー含む)を確認してから追加。ALB/NLB/GWLBの区分に
+  ついてはdocs.aws.amazon.comへWebFetchを試みたが、本文は取得できずページタイトルのみ返る状態だった
+  ため(**今回もWebFetchは本文の直接取得には失敗**)、一般知識とWebSearchスニペットの内容が一致する
+  ことを確認した上で出典を付けた。正解位置はVOCAB4件(0,1,2,3)、PRACTICE単一選択11件(0,1,2,3を3周
+  して0,1,2,3,0,1,2,3,0,1,2)、PRACTICE複数選択2件({1,3}と{0,2})、MOCK_POOL4件(0,1,2,3)を使用し、
+  全21件中の正解位置の出現数は0:5件/1:5件/2:5件/3:4件とほぼ均等にした。追加前後で
+  `validate_content.py`の出力(エラーなし、件数が467→471/1367→1380/467→471に増加したことのみ確認)と
+  `git diff --stat`(追加56行のみ、削除0行)を確認し、既存467件の項目は一切変更・削除していない。
+  push前に`git pull --rebase origin master`を再実行し、最新化を確認した。
