@@ -2372,3 +2372,26 @@
   (3プールとも各ドメイン比率は目標26/25/33/16%に近い水準を維持: VOCAB tech33.3/security24.5/
   billing16.3/concepts25.9、PRACTICE concepts24.9/billing15.9/security25.7/tech33.4、
   MOCK_POOL concepts25.9/security25.1/tech32.1/billing16.8)。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=379, PRACTICE=1093,
+  MOCK_POOL=378（3プールとも各ドメイン比率は目標26/25/33/16%に近い水準を維持）。追加トピック:
+  AWSリージョンの選択基準（コンプライアンス/レイテンシー/サービス対応状況/料金）、AWS Artifactの
+  Agreements（BAA等の契約管理）とReports、AWS Trainium（学習向けAIアクセラレータ、Inferentiaとの
+  役割の違い）、Amazon RDSリザーブドインスタンス（サイズ柔軟性を含む）、AWS CAFガバナンスの視点、
+  移行戦略「リタイア(Retire)」、クラウドの6つの利点のうち規模の経済、ハイブリッドクラウド(Outposts)、
+  IAMポリシー評価ロジック（明示的拒否の優先、SCPとの関係）、AWS Configマネージドルール、
+  Amazon VPCゲートウェイ型エンドポイント(S3/DynamoDB限定・無料・PrivateLink不使用)、
+  AWS Direct Connect Gateway、Amazon ElastiCacheの用途、Amazon DynamoDB予約キャパシティ、
+  Savings Plansの種類比較。新規SOURCES7件（rdsReservedInstances, dynamodbReservedCapacity,
+  trainium, vpcGatewayEndpoint, iamPolicyEvaluation, configManagedRules, artifactAgreements）は
+  すべてWebFetch/WebSearchでdocs.aws.amazon.com・aws.amazon.com配下の実在ページ本文を直接確認して
+  から追加。**今回の実行ではWebFetchがdocs.aws.amazon.com/aws.amazon.comに対して成功した**
+  （過去の実行記録にあったDNS/プロキシブロックは発生せず、本文を直接取得・確認できた。環境の
+  ネットワーク設定が変化した可能性がある）。調査の過程で、Amazon Pinpointが2026年10月30日に
+  サポート終了予定であること、AWS Migration Hubが2025年11月7日付けで新規利用停止済みであること、
+  Amazon Kendraが新規顧客の利用停止済み(Bedrock Knowledge Basesへの移行を推奨)であることを公式
+  ドキュメント上の通知で確認したため、これら3つのサービスは新規コンテンツのトピックとして採用せず
+  見送った（既存コンテンツにこれらが含まれていないか確認したが該当なし）。正解位置は単一選択18件を
+  0(5件)/1(5件)/2(4件)/3(4件)でほぼ均等にローテーションし、複数選択3件は{0,2}{1,3}{0,3}の3通りの
+  組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存の項目
+  （VOCAB375/PRACTICE1080/MOCK_POOL374）は一切変更していないことを確認済み（diffは追加行のみ、
+  削除行なし）。
