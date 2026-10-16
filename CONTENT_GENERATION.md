@@ -2534,3 +2534,46 @@
   単一選択18件を0,1,2,3で完全に4周ローテーション、複数選択3件は{0,2}{1,3}{0,3}の異なる組み合わせを
   使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存の項目（VOCAB395/PRACTICE1145/
   MOCK_POOL394）は一切変更していないこと（diffは追加行56行のみ、削除行なし）を確認済み。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、`git status`では
+  masterからdetached HEADの状態だったが、`git checkout master`すると、ローカルの`master`が既に
+  `origin/master`の最新コミット(直前の2026-10-16実行分、VOCAB399/PRACTICE1158/MOCK_POOL398)と
+  一致していたため、`git pull --rebase`はfast-forward不要で即座に完了した。累計 VOCAB=403,
+  PRACTICE=1171, MOCK_POOL=402（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.5/security24.8/billing16.4/concepts25.3、PRACTICE concepts24.9/billing16.1/
+  security25.4/tech33.6、MOCK_POOL concepts25.9/security25.1/tech32.1/billing16.9）。今回は
+  既存SOURCES(311件)の飽和度をIDごとに個別にgrepで確認する作業に時間を要し、多くの候補
+  (azDetails・multiTenancy・dataResidency・cloudValueFramework・typesOfCloud・migrationStrategies・
+  wafOps・wafSustainability・awsHealth・iamIdentityCenter・accessAdvisor・s3ObjectLock・
+  s3MfaDelete・globalAccelerator・billingConductor・costAllocTags・consolidatedBilling等)が
+  既に複数角度から出題済みで新規追加を見送った。新規SOURCESは追加せず、既存SOURCESのうち
+  VOCABに一度も使われていなかったもの(eks・ses・lex・iamPolicyEvaluation)と、使用回数3〜5件に
+  留まっていたもの(cloudServiceModels・dataSovereignty・sixAdv・prescriptiveGuidance・
+  iamPolicyTypes・tagPolicies・datasync・keyspaces・appconfig・mwaa・storageLens・priceListApi・
+  rdsReservedInstances・ecsServiceConnect・rdsProxy・typesOfCloud・permissionsBoundary)を、既存の
+  出題内容をgrepで事前確認した上で、未出題の具体的な事実・角度に絞って再利用した。追加トピック:
+  Amazon EKS/SES/Lexの基本定義(VOCAB初追加)、IAMポリシー評価の基本原則(暗黙的拒否・明示的許可・
+  明示的拒否優先)、クラウドサービスモデル(PaaS、Elastic Beanstalkシナリオ)、データレジデンシー対
+  データ主権の違い、需要変動に対する弾力性(seasonalピーク対応)、AWS Prescriptive Guidanceの
+  戦略(Strategy)ガイド対パターン(Pattern)ガイドの違い、IAMカスタマー管理ポリシーのバージョン管理
+  (最大5バージョン・ロールバック)、AWS OrganizationsタグポリシーのOU階層継承、AWS DataSync対
+  Snowball Edge(ネットワーク帯域に基づく使い分け)、Amazon Keyspacesの保管時暗号化(デフォルト有効・
+  無効化不可・鍵種別は変更可)、AWS AppConfigのバリデーター機能(JSON Schema/Lambda、最大2件)、
+  MWAAのマネージド基盤コンポーネント・DAG互換性、Amazon S3 Storage Lensのメトリクスエクスポート
+  (CSV/Parquet、Athena/QuickSight連携)、AWS Price List Bulk API対Query APIの違い、Amazon RDS
+  リザーブドインスタンスのDBエンジン変更時の扱い、Amazon ECS Service ConnectのCloudWatch連携、
+  Amazon RDS ProxyとSecrets Manager/IAM認証の連携、クラウドバースティング(ハイブリッドデプロイの
+  一時的キャパシティ補完シナリオ)、IAM権限の境界の正しい理解(リソースベースポリシーには影響しない・
+  それ自体は許可を与えない)。今回は新規SOURCESを追加しなかったため、WebFetch/WebSearchによる
+  出典URLの新規確認は発生していないが、事実の正確性確認のためWebSearchを実施した項目がある
+  (Amazon RDS Reserved InstancesのシングルAZ/マルチAZ別購入の要否は出典間で記述が分かれていた
+  ため、この回では断定的な出題を避け、より確実なDBエンジン依存の事実のみを出題対象とした。
+  Amazon Keyspacesの暗号化常時有効、AWS AppConfigのバリデーター仕様、AWS DataSync対Snowball
+  Edgeの使い分け、Amazon S3 Storage Lensのエクスポート機能、AWS Price List Bulk API対Query APIの
+  違いはいずれもWebSearchでAWS公式ドキュメントの記載を確認した上で出題。なおAWS App2Container・
+  AWS Cloud9・AWS CodeCommit・Amazon CodeCatalyst・Amazon Managed Blockchain・Amazon CloudWatch
+  Evidentlyを新規VOCAB/PRACTICEのトピック候補として検討したが、WebSearchでいずれも新規顧客への
+  提供終了または既に提供終了済みであることが判明したため、既存の除外事例と同様の理由ですべて
+  見送った)。正解位置は単一選択19件を0,1,2,3でほぼ均等にローテーション(0が5件、1が5件、2が5件、
+  3が4件)、複数選択2件は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの
+  出力・git diffを確認し、既存の項目(VOCAB399/PRACTICE1158/MOCK_POOL398)は一切変更していないこと
+  (diffは追加行55行のみ、削除行なし)を確認済み。
