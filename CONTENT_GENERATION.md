@@ -2782,3 +2782,33 @@
   いないこと(diffは追加55行のみ、削除0行)を確認済み。
 - 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=431, PRACTICE=1262, MOCK_POOL=430。追加トピック: AWS CAF ガバナンスの視点/運用の視点、Amazon GuardDuty Runtime Monitoring、AWS CloudFormation StackSets、AWS Budgets Actions、マルチテナンシー、俊敏性(Agility)、規模の経済(Economies of Scale)、クラウドの6つのメリット(複数選択)、IAM Access Analyzer(外部アクセス分析)、AWS Config マネージドルール対カスタムルール、責任共有モデル(複数選択)、CloudWatch Logs Insights、EC2 Auto Scalingターゲット追跡スケーリング、Route 53ルーティングポリシー(複数選択)・ヘルスチェック/フェイルオーバー(MOCK)、AWS Cost Anomaly Detection、AWS Artifactのレポート対アグリーメント。新規SOURCESキーは追加せず、すべて既存のSOURCES(caf, guarddutyRuntime, cfnStackSets, budgets, multiTenancy, sixAdv, accessAnalyzer, configManagedRules, shared, cloudwatchLogs, autoscaling, route53, costAnomalyDetection, artifact等)を再利用した。候補として検討したAmazon Q Businessは、WebFetchでdocs.aws.amazon.com/amazonq/latest/business-use-dg/what-is.htmlへのアクセスを試みたところ今回は成功し(本文を直接取得できた)、ページ冒頭に「新規顧客の受付を終了しており、類似機能はAmazon Quickを利用のこと」との記載があったため不採用とした（WebFetchは今回成功した）。他の事実確認(CAFガバナンス/運用の視点、GuardDuty Runtime Monitoring、IAM Access Analyzer、AWS Budgets Actions、Route 53ヘルスチェック、AWS Artifact レポート対アグリーメント)はWebSearchで確認した。正解位置はVOCAB4件を0,1,2,3でローテーション、PRACTICE単一選択10件が0:3/1:3/2:2/3:2の分布、複数選択3件は{0,2}{1,3}{0,3}の異なる組み合わせを使用、MOCK_POOL単一選択4件を2,3,0,1の順でローテーション(全体では0,1が5件、2,3が4件で均等)。追加後にvalidate_content.pyの出力(エラーなし)と`git diff --stat`を確認し、既存431件(VOCAB427/PRACTICE1249/MOCK426)の項目は一切変更・削除していないこと(diffは追加55行のみ、削除0行)を確認済み。
 - 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=435, PRACTICE=1275, MOCK_POOL=434（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech147/security107/billing72/concepts109、PRACTICE concepts320/billing204/security322/tech429、MOCK_POOL concepts112/security109/tech140/billing73）。開始時、セッションが`detached HEAD`の状態だったため`git checkout master && git pull --rebase origin master`で復帰してから作業した。新規SOURCESキー1件（entityResolution, AWS Entity Resolution）を追加: WebSearchで実在・現行サービスであることを確認した上でWebFetchでdocs.aws.amazon.com/entityresolution/latest/userguide/what-is-service.htmlの本文を直接取得・確認してから追加した(**WebFetchは今回成功**)。追加トピック: AWS Entity Resolution(新規、レコードマッチング/顧客データ統合、VOCAB+PRACTICE+MOCKの3項目で使用)、Amazon S3 Transfer Accelerationの高速化の仕組み(CloudFrontエッジロケーション経由、既存の料金に関する設問p1137とは別角度)、Amazon VPC Traffic Mirroring(VOCAB新規+VPC Flow Logsとの違い)、Amazon Bedrock Guardrails(新規VOCAB)、GuardDuty Malware Protection for EC2(検出時の非自動リメディエーション挙動、除外タグ機能)、IAMポリシーの種類(エンティティ削除時のインライン対管理ポリシーの扱いの違い)、Amazon EventBridge Pipesのソース種別(複数選択)、Amazon Kinesis Video StreamsとAmazon Rekognition Videoの連携、AWS IoT Coreのデバイスゲートウェイ対ルールエンジン、Amazon Personalizeのイベントトラッカー(リアルタイム反映)、AWS Data ExchangeとAWS Marketplaceの関係、Amazon Data Firehoseの配信先の種類、AWS Gravitonのインスタンス命名規則(gサフィックス)とx86からの移行時の考慮点(MOCK)、AWS Schema Conversion Toolが同種(ホモジニアス)移行では基本的に不要という点、CloudWatch請求アラームの監視粒度(サービス別不可)と課金停止不可(MOCK)。既存の飽和気味のソース(caf, sixAdv, wafReliability, resilienceHub, rtorpo, billingConductor, dataExports, savingsplansTypes, riRecommendations, repostPrivate, networkAccessAnalyzer, costCategories, costOptimizationHub, purchaseOrderMgmt等、いずれも既に6件以上の設問が存在)は今回の新規追加の対象から意図的に避け、未使用または軽度使用(既存1〜3件)のソースを優先した。新サービス候補として検討したAWS Migration Hub・AWS App2Container・Amazon CodeCatalyst・AWS Mainframe Modernization・AWS DMS Fleet Advisor・AWS Application Cost Profilerは、いずれもWebSearchで「新規顧客の受付を終了」「サポート終了済み」等の制約が判明したため不採用とした。正解位置は単一選択19件(0が5件、1が5件、2が5件、3が4件)で均等に近い分布、複数選択2件は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力(エラーなし)と`git diff --stat`を確認し、既存431件(VOCAB431/PRACTICE1262/MOCK430)の項目は一切変更・削除していないこと(diffは追加56行のみ、削除0行)を確認済み。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=439, PRACTICE=1288,
+  MOCK_POOL=438（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech148/security108/
+  billing72/concepts111、PRACTICE concepts324/billing206/security325/tech433、MOCK_POOL
+  concepts113/security109/tech142/billing74）。開始時、セッションがdetached HEADの状態であることに
+  加え、ローカルの`master`参照自体が`origin/master`より古く(浅いクローンのため`git merge-base`が
+  当初「共通祖先なし」のエラーを返した)、ランブック手順0に記載の2026-10-16のケースに該当した。
+  `git fetch --deepen=1000 origin master`で履歴を十分に深く取得したところ`git merge-base`が正常に
+  解決し、本当に無関係な履歴ではなく浅いクローンのアーティファクトであると判明したため、
+  `git merge --ff-only origin/master`でローカル`master`を安全にfast-forwardしてから作業を開始した
+  (ローカル`master`の退避・再作成は不要だった)。新規SOURCESキー4件を追加:
+  wafDesignPrinciples(AWS Well-Architected Framework「全般的な設計原則」)、
+  iamPermissionsBoundary(IAM権限境界)、cloudfrontOriginShield(CloudFront Origin Shield)、
+  awsCredits(AWSクレジットの適用順序)。いずれもWebFetchでdocs.aws.amazon.comの該当ページ本文を
+  直接取得・確認してから追加した(**WebFetchは今回4件すべて成功**)。追加トピック: Well-Architected
+  Frameworkの「全般的な設計原則」のうち、既存のsixAdv(クラウドの6つのメリット)で頻出の「キャパシティの
+  予測が不要」以外の5原則(本番規模でのテスト/アーキテクチャの実験を容易にする自動化/進化するアーキテクチャ
+  /データドリブンなアーキテクチャ/ゲームデイを通じた改善、重複を避けるため「キャパシティの予測」原則は
+  複数選択の正解の一つとしてのみ使用)、IAM権限境界(基本定義/実効権限が積集合になるシナリオ/
+  iam:PermissionsBoundary条件キーによる委任シナリオの3問)、CloudFront Origin Shield(目的・仕組み/
+  料金とリージョン選択の2問)、NLBのクロスゾーン負荷分散(デフォルト無効という挙動と有効化後のデータ転送
+  料金)、Amazon VPC Latticeの「サービスネットワーク」(既存source、新角度)、AWSクレジットの適用順序
+  (有効期限が近い順→対象サービス数が少ない順→古い順)とステータス(Active/Paused/Exhausted/Expired)。
+  新サービス候補として「Amazon Quick」(2026年4月に発表されたエージェント型AIワークアシスタント、
+  旧Amazon Q Business等の後継)をWebSearchで調査したが、機能・位置づけが短期間で変化している
+  発表直後のサービスであり、CLF-C02レベルで断定的に出題できる安定した事実を確認できなかったため、
+  今回は採用を見送った(将来、公式ドキュメントで仕様が安定した時点で再検討する)。正解位置は単一選択19件
+  (0が5件、1が5件、2が5件、3が4件)で均等に近い分布、複数選択2件は{0,2}と{1,3}の異なる組み合わせを使用。
+  追加前後でvalidate_content.pyの出力(エラーなし)と`git diff --stat`・`node -c`による構文チェックを
+  確認し、既存435件(VOCAB435/PRACTICE1275/MOCK434)の項目は一切変更・削除していないこと(diffは追加
+  59行のみ、削除0行)を確認済み。
