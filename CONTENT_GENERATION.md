@@ -2441,3 +2441,24 @@
   組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存の項目
   （VOCAB383/PRACTICE1106/MOCK_POOL382）は一切変更していないことを確認済み（diffは追加行のみ、
   削除行なし）。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=391, PRACTICE=1132,
+  MOCK_POOL=390（3プールとも各ドメイン比率は目標26/25/33/16%に近い）。追加トピック: S3 Glacier Deep
+  Archive対S3 Express One Zone(ストレージクラスの違い)、AWS Shield Advanced(DDoS対策とコスト保護)、
+  耐障害性(Fault Tolerance)対弾力性/スケーラビリティ/耐久性、AWS Enterprise Support(専任TAM)、
+  AWS Direct Connect対Site-to-Site VPN/Transit Gateway/PrivateLink、Amazon ElastiCache対DAX/RDS
+  Proxy/MemoryDB、マネージド型NoSQLデータベース(DynamoDB/Keyspaces)、Well-Architectedパフォーマンス
+  効率の柱、AWS CAFプラットフォームの視点対人材/ガバナンス/ビジネスの視点、クラウドの6つのメリット
+  (CapEx→OpEx/アジリティ)、セキュリティグループ対NACL(ステートフル/ステートレスの違い)、AWS KMS対
+  CloudHSM、GuardDuty対Detective(脅威検出と調査)、AWS Budgets、Savings Plans対Reserved Instances、
+  AWS Transit Gateway、コンテナオーケストレーション(ECS/EKS)、AWS Artifact(コンプライアンスレポート)。
+  新規SOURCESの追加は無し（既存304個のSOURCESキーが事前確認時点で全て使用済みだったため、別角度の
+  設問として再利用）。出典確認の一環としてWebFetchをAWS Supportプラン公式ページ
+  (aws.amazon.com/premiumsupport/plans/)とAmazon S3ストレージクラス公式ページ
+  (aws.amazon.com/s3/storage-classes/)の2ページに対して試行し、両方とも成功した（本文を直接確認でき、
+  現行のサポートプラン名(Basic/Business Support+/Enterprise Support/Unified Operations)とS3
+  ストレージクラス一覧(Standard/Intelligent-Tiering/Express One Zone/Standard-IA/One Zone-IA/
+  Glacier Instant Retrieval/Glacier Flexible Retrieval/Glacier Deep Archive)を事実確認した上で
+  新規項目に反映した）。正解位置は単一選択17件を0,1,2,3のローテーションで0が5件・1,2,3が各4件と
+  ほぼ均等に分散し、複数選択4件は{0,1}{1,3}{0,3}{1,2}の異なる組み合わせを使用。追加前後で
+  validate_content.pyの出力・git diffを確認し、既存の項目（VOCAB387/PRACTICE1119/MOCK_POOL386）
+  は一切変更していないことを確認済み（diffは追加行のみ、削除行なし）。
