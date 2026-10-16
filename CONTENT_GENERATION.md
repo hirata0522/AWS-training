@@ -2839,3 +2839,35 @@
   使用。追加前後でvalidate_content.pyの出力(エラーなし)・`git diff --stat`(追加46行、削除0行)・
   Node.jsでのeval構文チェックを確認し、既存443件(VOCAB439/PRACTICE1288/MOCK438)の項目は一切
   変更・削除していないことを確認済み。
+- 2026-10-16: 定期実行で13件追加（VOCAB+4/PRACTICE+5/MOCK_POOL+4）。累計 VOCAB=447, PRACTICE=1302,
+  MOCK_POOL=446。開始時、セッションがdetached HEADの状態だったため`git checkout master && git pull
+  --rebase origin master`で復帰してから作業した。**重要な学び**: 当初、使用回数(grep -c
+  "SOURCES.key")が少ない既存SOURCESキー（dax, wafBotControl, cloudServiceModels,
+  costExplorerForecast, appRunner, timestream, rdsProxy, kinesisVideo, memorydb,
+  iamPolicyEvaluation, tco, prescriptiveGuidance, multiTenancy, priceListApi,
+  riRecommendations, eksAutoMode, rolesAnywhere, rtorpo, costAllocTags等)を21件分選んで
+  一度ドラフトしたが、実際に既存項目の全文を読んで比較したところ、ほぼ全件が既存項目と文言・シナリオが
+  酷似した重複コンテンツだったため(例: v444のDAXはv250と完全に同じ定義問題、m444のRoles Anywhereの
+  シナリオはp406とほぼ同一、m445のRTO/RPO問題はp595と酷似、m446のコスト配分タグ問題はm179と酷似)、
+  この21件は`git checkout --`で全て破棄してやり直した。**今後の教訓として明記**: 使用回数のカウント
+  だけでは重複判定に不十分で、使用回数が1〜2件のソースキーであっても、既存項目の全文(text/choices/why)
+  を実際に読んで角度が十分に異なることを確認しない限り新規項目を追加してはならない。本リポジトリは
+  既に2200件近い項目があり、主要なAWSサービスの基本的な「〜とは何ですか」的な問いはほぼ網羅済みのため、
+  新しいSOURCESキー（新しいAWSサービス・機能）を追加する方が重複を避けやすい。やり直し後は、新規
+  SOURCESキー3件（auroraDsql: Amazon Aurora DSQL、s3Tables: Amazon S3 Tables、
+  b2bDataInterchange: AWS B2B Data Interchange）をすべてWebSearchで実在・現行(deprecated/sunset
+  でない)サービスであることを確認し、さらにWebFetchで3件とも本文を直接取得・確認してから追加した
+  (**WebFetchは今回も成功**。なお検討した新サービス候補のうちAmazon Pinpointは2026-10-30に
+  サポート終了予定、Amazon Kendraは2026年に新規受付終了予定、Amazon WorkSpaces Secure Browser
+  も2026-10-29に新規受付終了予定であることがAWS公式ドキュメントで判明したため、いずれも不採用とした。
+  また「Amazon Connect」は公式ドキュメント上で「Amazon Connect Customer」への名称変更が進行中で
+  紛らわしいため、安全を優先し採用しなかった)。追加トピック: Amazon Aurora DSQL(新規、サーバーレス
+  分散SQLデータベース)、Amazon S3 Tables(新規、Apache Icebergテーブルバケット)、AWS B2B Data
+  Interchange(新規、EDI変換サービス、AWS Transfer Familyとの役割分担)、VPCエンドポイント(既存
+  ソースvpcEndpointを再利用、既存p1192とは異なる角度でGateway/Interface型の定義・比較を追加)、
+  Amazon S3 Transfer Acceleration(既存ソースを再利用、既存v433/p1137とは異なる角度でスピード比較
+  ツールを追加)。正解位置は単一選択9件(0が2件、1が3件、2が2件、3が2件)でほぼ均等、複数選択2件は
+  {0,2}の組み合わせを使用。今回はすべてtechドメインになった(新サービスが技術系に偏ったため)。
+  追加前後でvalidate_content.pyの出力(エラーなし)、`node --check`での構文チェック、`git diff
+  --stat`(追加34行、削除0行)を確認し、既存447件(VOCAB447−4=443/PRACTICE1302−5=1297/
+  MOCK446−4=442)の項目は一切変更・削除していないことを確認済み。
