@@ -2751,3 +2751,32 @@
   複数選択2件は{0,2}と{1,3}を使用。追加後にvalidate_content.pyの出力・`git diff --stat`を確認し、
   既存423件(VOCAB419/PRACTICE1223/MOCK418)の項目は一切変更していないこと(diffは追加55行のみ、削除
   0行)を確認済み。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=427, PRACTICE=1249,
+  MOCK_POOL=426（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech143/security105/
+  billing71/concepts108、PRACTICE concepts314/billing201/security316/tech418、MOCK_POOL
+  concepts111/security107/tech137/billing71）。開始時、セッションのローカル`master`参照が
+  `origin/master`と無関係な古い履歴(19件のローカル限定コミット、内容は過去のリネーム等が重複した
+  もので実害なし)を指しており、detached HEADの方が`origin/master`と一致していた事故が発生していた
+  （ランブックの手順0に記載の2026-10-16のケースに該当）。作業前後の変更が無い状態
+  (working tree clean)だったため、`git checkout -b master origin/master`でローカル`master`を
+  作り直し、追跡設定も`origin/master`に復元してから作業を開始した(ローカル限定コミットはどこにも
+  push済みでなくリモートの履歴には実害がなかったため、退避ブランチは作成せず単純に作り直した)。
+  新規トピック: AWS CAFのテクノロジーの視点(新規、既存のビジネス/人材/ガバナンス/プラットフォーム/
+  セキュリティ/運用の6視点に次ぐ7つ目の視点)、AWS WAFレートベースルール、Amazon CloudFrontの無効化
+  (Invalidation)、AWS Cost Explorerの適正サイズ化の推奨(Rightsizing Recommendations、いずれも新規
+  VOCAB)。他はECS起動タイプ比較(EC2対Fargate)、GuardDuty対Config、Savings Plans対リザーブド
+  インスタンス、移行戦略リプラットフォーム、Direct Connect対Site-to-Site VPN、KMSキーポリシーと
+  IAMポリシーの両方が必要な仕組み、Consolidated Billingの割引共有、Well-Architected運用上の
+  優秀性の柱、S3 One Zone-IA、クラウドの6つのメリット(複数選択)、ECS/EKSのコンテナオーケストレーション
+  (複数選択)、AWS Shield StandardとAdvancedの違い、持続可能性の柱(MOCK)、SCPの管理アカウント
+  非適用(MOCK)、Auroraのストレージ自動拡張(MOCK)、Pricing Calculatorの見積もり共有(MOCK)。新規
+  SOURCESキーは追加せず、すべて既存のSOURCES(costExplorer, wafService, cloudfront, caf等を含む)を
+  再利用した。候補として検討したAmazon Q Business・AWS IoT Events・Amazon WorkMailはWebSearchで
+  いずれも新規顧客の受付を終了済み(Q Businessは2026年7月31日付、IoT Eventsは2025年5月20日付で
+  新規受付終了・2026年5月20日付でサポート終了、WorkMailは2026年4月30日付で新規受付終了)であることが
+  判明したため不採用とした。WebFetchは今回は試みず(既存SOURCESの再利用のみで新規キーを追加しなかった
+  ため)、新サービス候補3件の裏取りはすべてWebSearchの検索結果で確認した。正解位置はVOCAB4件を
+  0,1,2,3でローテーション、PRACTICE単一選択11件を0,1,2,3でローテーションし3/3/2/3の分布、複数選択
+  2件は{0,2}と{1,3}を使用、MOCK_POOL4件も0,1,2,3でローテーション。追加後にvalidate_content.pyの
+  出力・`git diff --stat`を確認し、既存427件(VOCAB423/PRACTICE1236/MOCK422)の項目は一切変更して
+  いないこと(diffは追加55行のみ、削除0行)を確認済み。
