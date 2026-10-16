@@ -2419,3 +2419,25 @@
   {1,2}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存の項目
   （VOCAB379/PRACTICE1093/MOCK_POOL378）は一切変更していないことを確認済み（diffは追加行のみ、
   削除行なし）。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=387, PRACTICE=1119,
+  MOCK_POOL=386（3プールとも各ドメイン比率は目標26/25/33/16%に近い）。追加トピック: Well-Architected
+  Frameworkの6つの柱（可用性という柱は存在しない点）、ACMの証明書自動更新の条件、EFSとFSxの用途の違い、
+  Budgets対Cost Explorer、AWS CAFのセキュリティの視点/運用の視点、クラウドの利点（CapEx→OpEx/
+  Go Global in Minutes）、Well-ArchitectedのレンズConcept、Secrets Manager対パラメータストア、
+  GuardDuty対Inspector、責任共有モデル（AWS責任範囲の選択）、SQS標準キュー対FIFOキュー、Auroraの特徴、
+  API Gateway対AppSync、ECS/EKS対ECR（コンテナオーケストレーション選択）、Consolidated Billing、
+  AWS Supportプランの専任TAM（Enterprise Support）、持続可能性の柱、WAF対Shield、Kinesis対SQS、
+  Pricing Calculator対Cost Explorer。新規SOURCESの追加は無し（既存SOURCESをすべて別角度の設問として
+  再利用。367個のSOURCESキーが既にすべて使用済みであることを事前に確認した）。出典確認の一環として
+  WebFetchをAmazon Q Business（docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html）と
+  Amazon Kendra（docs.aws.amazon.com/kendra/latest/dg/what-is-kendra.html）の2ページに対して試行し、
+  両方とも成功した（本文を直接確認できた）。ただしどちらのページにも「新規顧客への提供を終了した」旨の
+  注記があり、既存のAmazon Connect/Kendra採用回避の判断（上記ログ参照）と同様に、状態が変化中の
+  サービスであるため新規SOURCESとしては採用せず、AWS Support プランの公式ページ
+  （aws.amazon.com/premiumsupport/plans/）のみ追加でWebFetchして現行プラン名（Basic/Business
+  Support+/Enterprise Support/Unified Operations）を確認した上でp1119/m384等の既存source参照先の
+  事実確認に利用した。正解位置はVOCAB4件を0,1,2,3で完全にローテーションし、PRACTICE/MOCK_POOLの
+  単一選択15件は0が3件・1が4件・2が4件・3が4件とほぼ均等に分散、複数選択3件は{0,2}{1,3}{0,2}の
+  組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存の項目
+  （VOCAB383/PRACTICE1106/MOCK_POOL382）は一切変更していないことを確認済み（diffは追加行のみ、
+  削除行なし）。
