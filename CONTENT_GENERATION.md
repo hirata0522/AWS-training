@@ -2731,3 +2731,23 @@
   した。複数選択1件(AWS Config コンフォーマンスパック)は{0,2}を使用。追加後にvalidate_content.pyの
   出力・`git diff --stat`を確認し、既存415件の項目は一切変更していないこと(diffは追加61行のみ、
   削除0行)を確認済み。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=423, PRACTICE=1236,
+  MOCK_POOL=422（3プールとも各ドメイン比率は目標26/25/33/16%に概ね一致）。開始時、ローカル`master`が
+  浅いクローン(shallow clone, depth=50)の状態でfetchしたため`git merge-base`が一時的に失敗し「共通
+  祖先なし」に見えたが、`git fetch --unshallow`で解消し、実際には履歴の分岐や事故ではなかったことを
+  確認した(過去のランブック改訂で想定していた「本当に無関係な履歴」のケースとは異なる)。今回は既存
+  SOURCES(321件)の再利用のみで新規SOURCESキーは追加せず、代わりにWebSearch/WebFetchで新しいサービス
+  候補2件(Amazon Kendra, Amazon Fraud Detector)を調査した結果、両方とも新規顧客の受付を終了済み
+  (Kendraは2026年7月30日付、Fraud Detectorは2025年11月7日付)であることが判明したため不採用とし、
+  代わりに既存サービス(EC2, CloudFront, AWS CAF, Well-Architected信頼性の柱, IAM, AWS Config
+  コンフォーマンスパック, WAF Bot Control, VPC Traffic Mirroring, Billing Conductor, Cost Anomaly
+  Detection等)の未出題の切り口(Elastic IPアドレス、AMI、CloudFront OAC、EC2配置グループのパーティション
+  戦略、IAMポリシーのaws:SourceIp条件キー等)で出題した。WebFetchはdocs.aws.amazon.com/kendra配下の
+  ページで**今回成功**し本文を直接確認できた(Kendra自体は不採用としたが、ページの可用性変更の注記も
+  含めて本文を確認できたことでWebFetchの疎通自体は確認できた)。EC2配置グループ(クラスター/スプレッド/
+  パーティション)の仕組みはWebSearchで再確認し、具体的な上限数(例:スプレッドは1AZあたり最大7台等)は
+  二次情報源のみでの確認だったため、問題文・選択肢には具体的な数値を含めず、仕組みと目的の違いのみを
+  問う形にして正確性を優先した。正解位置は単一選択19件を0,1,2,3でローテーションし5/5/5/4の均等分布、
+  複数選択2件は{0,2}と{1,3}を使用。追加後にvalidate_content.pyの出力・`git diff --stat`を確認し、
+  既存423件(VOCAB419/PRACTICE1223/MOCK418)の項目は一切変更していないこと(diffは追加55行のみ、削除
+  0行)を確認済み。
