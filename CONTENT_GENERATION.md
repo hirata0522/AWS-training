@@ -2941,3 +2941,61 @@
   および新規追加した設問文がどの既存項目とも完全一致しないことをNode.jsスクリプトで確認
   (1件、v453とm325の設問文完全一致を検出したため、v453の文言を修正して解消済み)。既存455件
   (追加前VOCAB451/PRACTICE1315/MOCK450)の項目は一切変更・削除していない。
+- 2026-10-16: **重大なgit事故を発見(このセッションで遭遇)。別の並行実行と衝突していた可能性が高い**。
+  作業開始時、ローカルは`master`からdetached HEADの状態(`acc69b7`、直前のログの続き)だった。手順0に従い
+  `git checkout master`したところ、ローカルの`master`ブランチ参照自体が`acc69b7`系列とは**共通祖先を
+  持たない無関係な履歴**(`cb63a57`、19コミット、アイコン/マニフェスト追加・アプリ名変更/リバート・
+  VOCAB80/PRACTICE150/MOCK56の初期規模のコミット群)を指しており、かつ`origin/master`も当初は
+  この`cb63a57`だった(`git status`で"up to date with origin/master"と表示)。`acc69b7`系列はその
+  ルートコミット(`f65087d`)自体が全ファイルを新規追加する内容で、`cb63a57`系列とは完全に独立した
+  履歴(おそらく過去のある時点でのファイルツリーのスナップショットから作り直されたもの)であることを
+  `git merge-base`で確認(共通祖先なし)。この状態で`git pull --rebase origin master`を実行したところ、
+  fetch時に"forced update"と表示され、`origin/master`が(私のどの操作とも無関係に)`cb63a57`から
+  `acc69b7`へ強制的に書き換えられていたことが判明した。すなわち**この実行中に、別の並行実行(おそらく
+  同じルーティンの別インスタンス)が、同種のdetached HEAD/無関係履歴問題に遭遇し、`acc69b7`系列
+  (VOCAB455/PRACTICE1328/MOCK455、こちらは今回のCONTENT_GENERATION.mdの記述も含む)を正とみなして
+  `origin/master`へforce pushしたと推測される**(本ランブックは`git push --force`を禁止しているが、
+  今回の強制更新は私自身の操作では発生していない)。この結果、`cb63a57`系列にのみ存在していた
+  直近3件の独自コンテンツ追加コミット(`9c636e0`/`a5b903e`/`a813c86`、いずれも「Add 21 CLF-C02 content
+  items」)と、アプリアイコン・Webマニフェスト追加コミット(`2154afe`)、アプリ名変更・リバートコミット
+  (`f92637a`/`e78c9ba`/`5c1614a`)が、`origin/master`の参照からは失われた状態になった。**対応**: (1)
+  `cb63a57`(実リポジトリの本来の履歴)を`recovered-real-master-lineage-20261016`ブランチとして、
+  (2)`acc69b7`(採用された方の履歴)を`recovered-orphan-content-20261016`ブランチとして、それぞれ
+  `origin`にpush済み(どちらも削除していない、masterへのforce pushは一切行っていない)。アイコン・
+  マニフェスト・アプリ名(`AWS資格勉強`)は`acc69b7`側(=現在のmaster)の時点でも既に同内容で存在する
+  ことを確認済みのため実質的な損失はないが、上記3件のコンテンツ追加コミットの内容(`cb63a57`固有の
+  約60件強のVOCAB/PRACTICE項目)は現在の`master`には反映されていない。**ユーザーへの確認推奨事項**:
+  `recovered-real-master-lineage-20261016`ブランチの内容を確認し、必要であれば該当コミットの項目を
+  (ID衝突に注意しつつ)現在の`master`へ手動で移植してください。無関係な履歴同士のマージは自動化実行での
+  対応が困難と判断し、今回は踏み込んだ復旧(マージ)は行わず、両系列の保存のみを実施した。また、
+  手順0に書かれている「ローカルmasterがorigin/masterと無関係な履歴を指す場合」の対処手順は、
+  今回のように**作業中にorigin/master自体が別の実行によって書き換えられるケース**までは想定していない
+  ため、並行実行時の衝突を避ける仕組み(例: ルーティンの同時実行を1つに制限する、またはロックを取る)の
+  検討をユーザーに推奨する。
+- 2026-10-16: 上記事故の対応後、現在の`master`(`acc69b7`系列)を起点に定期実行で21件追加
+  (VOCAB+4/PRACTICE+13/MOCK_POOL+4)。累計 VOCAB=459, PRACTICE=1341, MOCK_POOL=459(3プールとも
+  各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech156/security114/billing76/concepts113、PRACTICE
+  concepts335/billing215/security339/tech452、MOCK_POOL concepts115/security114/tech153/billing77)。
+  追加トピック: Amazon EC2 Auto Scaling 予測スケーリング(Predictive Scaling、機械学習による需要予測・
+  動的スケーリングとの併用が必要な理由)、AWS Lambdaの無料利用枠(Always Free、月100万リクエスト+
+  400,000GB秒、常時適用)、Amazon CloudTrail Insights(APIコール率/エラー率の異常検出、配信先)、
+  AWS re:Post Private(Enterprise Support/Enterprise On-Ramp限定の有料サブスクリプション)、移行戦略
+  Retain/Relocate/Retire/Rehost対Replatformの個別の角度、TCOの機会コスト、Well-Architectedコスト
+  最適化の柱「マネージド型サービスを使用する」、AWS Cost Optimization Hub(複数アカウント集約)、
+  AWS Marketplaceプライベートオファー(単一バイヤー限定・Organizations管理アカウントでの共有)、
+  AWS Budgetsの予算アクション(IAMポリシー適用/EC2・RDS停止)、IAM Access Analyzerの未使用アクセス
+  専用アナライザー・アーカイブルール、Amazon GuardDuty RDS Protection(異常ログイン検出)、AWS Compute
+  Optimizerのパフォーマンスリスク評価。新規SOURCESの追加はなし(すべて既存のSOURCESを再利用し、
+  既存項目とは異なる具体的な事実・角度で執筆)。検討した上で見送った新規サービス候補: AWS Proton
+  (2026年10月7日サポート終了)、Amazon QLDB(2025年7月31日終了)、AWS Migration Hub(2025年11月7日
+  新規受付終了)、Amazon Managed Blockchain(2026年10月29日新規受付終了予定との報道があり断定を避けた)
+  ——いずれもWebSearchで状態変化を確認し、不正確な出題になるリスクを避けて対象から除外した。
+  Lambda無料利用枠・GuardDuty RDS Protection・IAM Access Analyzer未使用アクセス・CloudTrail Insights・
+  Compute Optimizerパフォーマンスリスク・AWS Budgetsアクション・Cost Optimization Hub・Marketplace
+  プライベートオファー・Predictive Scalingの各事実はすべてWebSearchでdocs.aws.amazon.com/aws.amazon.com
+  配下の内容を確認した上で採用した(この実行ではWebFetchは試行せずWebSearchのみを使用)。正解位置:
+  VOCAB4件は0,1,2,3を1件ずつ、PRACTICE単一選択11件は0,1,2,3をほぼ均等に(0,1,2が各3件・3が2件)、
+  PRACTICE複数選択2件は{0,2}と{1,3}の異なる組み合わせ、MOCK_POOL単一選択4件は0,1,2,3を1件ずつ。
+  追加前後で`validate_content.py`の出力(エラーなし)と`git diff --stat`(追加55行のみ、既存行の変更は
+  末尾へのカンマ付与3箇所のみ)を確認し、既存459件(追加前VOCAB455/PRACTICE1328/MOCK455)の項目は
+  一切変更・削除していない。push前に`git pull --rebase origin master`を再実行し、最新化を確認した。
