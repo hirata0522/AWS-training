@@ -2577,3 +2577,41 @@
   3が4件)、複数選択2件は{0,2}と{1,3}の異なる組み合わせを使用。追加前後でvalidate_content.pyの
   出力・git diffを確認し、既存の項目(VOCAB399/PRACTICE1158/MOCK_POOL398)は一切変更していないこと
   (diffは追加行55行のみ、削除行なし)を確認済み。
+- 2026-10-16: **サンドボックス起動時の異常を検知・復旧してから定期実行**。今回は`git branch --show-current`が
+  「HEAD detached from refs/heads/master」を示し、かつそのdetached HEADは`git merge-base`で`master`との
+  共通祖先が存在しない(exit code 1)、完全に独立した50コミットの孤立履歴だった(ルートコミットも異なる)。
+  さらに`git checkout master && git pull --rebase origin master`を実行した際、「`cb63a57...a264501 master
+  -> origin/master (forced update)`」と表示され、**`origin/master`自体がこの孤立履歴の先端(a264501)へ
+  force pushされていたことが判明**した(つまりこの異常は今回のサンドボックスのローカル状態だけでなく、
+  リモート側の`master`そのものに既に反映されていた)。過去に記録されている「サンドボックスが別ブランチを
+  チェックアウトしていた事故」とは異なり、今回は履歴の共通祖先が無い点がより深刻だったため、自動実行の
+  本ルーティンとしては複雑な履歴統合をその場で判断・実行することはせず(それは過去にユーザーの直接指示の
+  もとで手作業により行われた特別対応であり、無人の定期実行が独自に判断すべき範囲を超えると判断)、
+  ランブックの手順0に従って`git checkout master`で安全にmasterへ切り替えて作業を継続した。実ファイル内容
+  (index.html/css/js/app.js等)は孤立履歴内にも正しく存在しており、データの実体が失われた形跡はなかった
+  (孤立履歴はおそらく過去のいずれかの回でgitの浅いclone・再初期化等により履歴のみが分断されたものと推測)。
+  `python3 scripts/validate_content.py`は孤立履歴側(force push後のorigin/master)で実行した時点で既に
+  エラーなし・VOCAB403/PRACTICE1171/MOCK_POOL402だったため、コンテンツの整合性自体への影響はなかった。
+  この経緯と現在のorigin/masterの状態をユーザーに報告する必要がある(本エントリ自体がその記録)。
+  その後、通常の手順で21件追加した(VOCAB+4/PRACTICE+13/MOCK_POOL+4)。累計 VOCAB=407, PRACTICE=1184,
+  MOCK_POOL=406（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech33.9/security24.6/
+  billing16.5/concepts25.1、PRACTICE concepts24.9/billing16.0/security25.5/tech33.5、MOCK_POOL
+  concepts26.1/security25.1/tech31.8/billing17.0）。追加トピック: AWS CDK（新規）、AWS CloudShell
+  （VOCAB初追加、既存source）、Amazon Managed Service for Apache Flink（VOCAB初追加、既存source）、
+  AWS Marketplace Private Offers（VOCAB初追加、既存source）、クラウドの3サービスモデルの管理責任分担
+  （多肢選択）、データ主権、RTO/RPOの役割分担（多肢選択）、IAM Policy SimulatorのCondition要素評価、
+  AWS Payment Cryptography、AWS WAF ATP/ACFP（ACFPは多肢選択）、リソースコントロールポリシー(RCP)の
+  適用範囲、AWS CDK/CloudShellの実践シナリオ、AWS Glue DataBrewのプロファイルジョブ、AWS Purchase
+  Order Managementの複数アカウント対応、EC2 Capacity Reservation Fleetの対象範囲、データレジデンシー、
+  AWS Network Access Analyzerの検出結果、AWS Cost Optimization Hubの適用挙動。新規出典1件（cdk）は
+  WebFetchで`docs.aws.amazon.com/cdk/v2/guide/home.html`の本文を直接取得・確認できた(**今回はWebFetch
+  が成功**)。同じ回でAmazon Kendraをもう1つの新規VOCAB候補として検討しWebFetchで本文を確認したところ、
+  「Amazon Kendra is no longer open to new customers」と明記されており、AWS Migration Hubについても
+  WebSearchで「AWSは2025年11月7日付でMigration Hubの新規顧客受付を終了し、AWS Transformを後継として
+  案内している」ことが判明したため、両方とも既存の除外事例と同様の理由で見送り、代わりにAWS CloudShell・
+  Amazon Managed Service for Apache Flink（いずれも既存source、VOCABとしては初追加）に差し替えた。
+  他の新規トピックはすべて既存のSOURCESを再利用し、既存項目のテキストを事前にgrepで確認した上で
+  重複しない角度の設問として追加した。正解位置は単一選択18件を0,1,2,3でほぼ均等にローテーション
+  (0が5件、1が5件、2が4件、3が4件)、複数選択3件は{0,2}{1,3}{0,3}の異なる組み合わせを使用。追加前後で
+  validate_content.pyの出力・git diffを確認し、既存の項目(VOCAB403/PRACTICE1171/MOCK_POOL402)は一切
+  変更していないこと(diffは追加行56行のみ、削除行なし)を確認済み。
