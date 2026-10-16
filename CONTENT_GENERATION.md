@@ -2659,3 +2659,41 @@
   完全に均等にローテーション(各3件)、複数選択1件は{0,1}、MOCK_POOLは単一選択3件が1,2,3、複数選択
   1件は{1,3}。追加前後でvalidate_content.pyの出力・git diffを確認し、既存の項目(VOCAB407/
   PRACTICE1184/MOCK_POOL406)は一切変更していないこと(diffは追加行56行のみ、削除行なし)を確認済み。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。**開始時に3回目の同種事故を検知・
+  復旧**: サンドボックスが`master`からdetached HEADの状態になっており、かつ`git fetch origin master`時に
+  「`cb63a57...ab5030d master -> origin/master (forced update)`」と表示され、ローカルの`master`ブランチ参照
+  (2026-10-12時点の19コミット、VOCAB80/PRACTICE150/MOCK_POOL56)が、detached HEAD(=最新のorigin/master、
+  50コミット、VOCAB411/PRACTICE1197/MOCK_POOL410)とは共通の祖先を持たない無関係な古い履歴になっていた
+  (`git merge-base --is-ancestor`が双方向とも失敗)。手順0の復旧手順に従い、`git branch -m master
+  master-old-stale-backup-20261016`で古いローカル`master`を退避し、`git checkout -b master origin/master`
+  でHEAD(=origin/master)位置に新しい`master`を作り直し、`git branch --set-upstream-to=origin/master master`
+  で追跡設定を復元した。復旧直後に`python3 scripts/validate_content.py`を実行しエラーなし・
+  VOCAB411/PRACTICE1197/MOCK_POOL410であることを確認してから新規追加作業を開始した。追加後の累計は
+  VOCAB=415, PRACTICE=1210, MOCK_POOL=414（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech33.5/security24.6/billing16.6/concepts25.3、PRACTICE concepts25.0/billing16.1/security25.4/
+  tech33.6、MOCK_POOL concepts26.1/security25.1/tech32.1/billing16.7）。追加トピック: イミュータブル
+  インフラストラクチャ(Immutable Infrastructure、AWS Well-Architected信頼性の柱REL08-BP04、新規)、
+  冪等性(Idempotency、REL04-BP04、新規)、属性ベースアクセス制御(ABAC、既存source=iamだが専用の設問は
+  これまで0件だったため新規導入、ABAC vs RBACの比較も含む)、IAMユーザー/ロールへの請求情報アクセスの
+  有効化(Activate IAM Access to Billing、新規)、Amazon S3 Multi-Region Access Points(新規)、Amazon VPC
+  Reachability Analyzer(新規)、Amazon EC2インスタンスのハイバネーション(新規)、AWS Fault Injection
+  Service(既存source、カオスエンジニアリングの目的という未出題の角度)。新規出典4件
+  （s3mrap, vpcReachabilityAnalyzer, ec2Hibernate, iamBillingAccess）のうち、s3mrapは
+  `docs.aws.amazon.com/AmazonS3/latest/userguide/MultiRegionAccessPoints.html`へのWebFetchが成功し
+  本文を直接確認した(**今回もWebFetchが成功**)。他の3件はWebFetchの代わりにWebSearchで
+  docs.aws.amazon.com配下の実在ページ(vpc/latest/reachability/what-is-reachability-analyzer.html、
+  AWSEC2/latest/UserGuide/instance-hibernate-overview.html、
+  awsaccountbilling/latest/aboutv2/control-access-billing.html)の内容・URLを確認してから追加した。
+  追加前に既存コンテンツを`grep`で事前確認し、ABAC・イミュータブルインフラ・冪等性・DynamoDBグローバル
+  テーブル・マルチテナンシー・データ主権等、重複リスクのある候補を個別に調査した結果、ABAC(専用の
+  定義/比較設問は0件)・イミュータブルインフラ・冪等性(いずれも用語自体の言及は0件)のみ安全と判断して
+  採用し、既に出題済みの角度(DynamoDBグローバルテーブル、マルチテナンシーのPool/Silo/Bridgeモデル、
+  データ主権、GuardDutyの個別保護機能等)は見送った。正解位置は単一選択16件(VOCAB4・PRACTICE11・
+  MOCK_POOL3のうち単一選択)を0,1,2,3でほぼ均等にローテーション(0が4件、1〜3が各4件)、複数選択2件
+  (PRACTICE1・MOCK_POOL1)は{0,2}と{1,3}の異なる組み合わせを使用。追加後にvalidate_content.pyの出力・
+  git diffを確認し、既存411件の項目は一切変更していないこと(diffは追加行59行のみ、削除行なし)を
+  確認済み。なお、今回で2026-10-16中に2回目・累計3回目となる「detached HEAD かつ ローカルmasterが
+  origin/masterと無関係な履歴」という事故が発生しており、サンドボックス起動時のブランチ・履歴の状態が
+  依然として不安定であることが分かる。ユーザーには、ルーティンの実行環境設定(セッションのoutcomeブランチ
+  指定やチェックアウト方式)を改めて見直す余地がある可能性を報告する。古いローカル`master`参照は今回も
+  `master-old-stale-backup-20261016`ブランチとして退避・保持した(削除していない)。
