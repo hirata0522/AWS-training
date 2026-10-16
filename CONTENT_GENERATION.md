@@ -2812,3 +2812,30 @@
   追加前後でvalidate_content.pyの出力(エラーなし)と`git diff --stat`・`node -c`による構文チェックを
   確認し、既存435件(VOCAB435/PRACTICE1275/MOCK434)の項目は一切変更・削除していないこと(diffは追加
   59行のみ、削除0行)を確認済み。
+- 2026-10-16: 定期実行で17件追加（VOCAB+4/PRACTICE+9/MOCK_POOL+4）。開始時、セッションがmaster以外
+  (detached HEAD、過去の孤立コミット50件相当)から始まっていたため、まず`git checkout master`で
+  masterに切り替えてから作業した（手順0の確認を実施）。累計 VOCAB=443, PRACTICE=1297, MOCK_POOL=442
+  （domains: VOCAB tech149/security111/billing72/concepts111、PRACTICE concepts324/billing208/
+  security330/tech435、MOCK_POOL concepts113/security111/tech144/billing74）。既存コンテンツの
+  網羅度が非常に高くなっており（例: クラウドの6つのメリット・DR4戦略・RTO/RPO・弾力性/スケーラビリティ/
+  耐障害性・障害分離境界・静的安定性・責任共有モデル(RDS/Lambda比較含む)などの基本概念は、調査の結果
+  いずれも複数の既存VOCAB/PRACTICE/MOCK項目で既に個別に出題済みと判明）、今回はほぼ未出題の新規トピック
+  3件に絞って追加した: (1) AWS WAFのCAPTCHA/Challengeアクション(新規出典 wafCaptcha)、(2) AWSにおける
+  GDPR対応(新規出典 gdpr、標準契約条項(SCC)を含むDPAやCloudTrail/Macie/IAM/KMS等のツール)、(3) Amazon
+  Q Business(新規出典 qBusiness、Amazon Q Developerとの対比)。このうちAmazon WorkDocsも新規候補として
+  検討したが、WebSearchで2025年4月25日に提供終了(EOL)していることが判明したため追加を見送った
+  (現行知識の裏取りの重要性を再確認)。3件の新規出典はいずれもWebFetchで`docs.aws.amazon.com`/
+  `aws.amazon.com`への直接アクセスを試行し、今回はWebFetchが成功して本文を直接確認できた
+  (waf-captcha-and-challenge.html、GDPR Center、qbusiness-ug/what-is.htmlの3ページとも本文を取得・
+  確認。過去の実行記録に残るDNS/プロキシブロックは今回は発生しなかった)。残り2件(AWS Budgets Actions
+  の承認方式AUTOMATIC/MANUAL、実行可能なアクションの種類)は既存出典(budgets)を再利用し、
+  WebSearchで`docs.aws.amazon.com`配下の仕様を確認した別角度の設問として追加。ドメイン配分は、
+  concepts(基本概念)の新規ネタが枯渇気味だったため今回はsecurity(新規出典2件+既存の再利用)と
+  tech(Amazon Q Business)に重点を置いた(VOCAB: security3/tech1、PRACTICE: security5/tech2/
+  billing2、MOCK_POOL: security2/tech2)。次回以降はconceptsドメインについて、既存の基本概念の
+  網羅が進んでいるため、より具体的なシナリオ問題や、Well-Architected各柱のベストプラクティス単位の
+  細目など、より粒度の細かいトピックを探す必要がある。正解位置は単一選択14件を0,1,2,3でほぼ均等に
+  ローテーション(0が4件、1が4件、2が3件、3が3件)、複数選択3件は{1,2}{0,2}{1,3}の異なる組み合わせを
+  使用。追加前後でvalidate_content.pyの出力(エラーなし)・`git diff --stat`(追加46行、削除0行)・
+  Node.jsでのeval構文チェックを確認し、既存443件(VOCAB439/PRACTICE1288/MOCK438)の項目は一切
+  変更・削除していないことを確認済み。
