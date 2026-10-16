@@ -2908,3 +2908,36 @@
   の出力(エラーなし)と`git diff --stat`(追加55行、削除0行)を確認し、既存447件(VOCAB447/PRACTICE1302/
   MOCK446)の項目は一切変更・削除していないことを確認済み。コミット後、`git push origin master`は
   1回目で正常に完了した(非fast-forward拒否は発生しなかった)。
+- 2026-10-16: **起動時にdetached HEAD状態だった事故に遭遇**(今回の作業開始時、ローカルがdetached HEAD
+  (`c94e564`、=前回までの最新masterと同一コミット)だった)。手順0に従い`git checkout master`を実行したところ、
+  ローカルの`master`ブランチ参照自体が古く無関係な履歴を指していた(警告: "you are leaving 50 commits
+  behind")。幸い`git pull --rebase origin master`で問題なくfast-forward的に解決し(ローカルmasterが
+  detached HEADと同じ`c94e564`=`origin/master`に追従)、手順0に書かれている「ローカルmasterがorigin/masterと
+  無関係な履歴を指している場合」の退避手順（ブランチrename等）を使う必要はなかった。孤立コミットの
+  損失は発生していない。定期実行で22件追加(VOCAB+4/PRACTICE+13/MOCK_POOL+5)。累計 VOCAB=455,
+  PRACTICE=1328, MOCK_POOL=455(3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech155/security113/billing74/concepts113、PRACTICE concepts330/billing212/security336/tech450、
+  MOCK_POOL concepts114/security113/tech152/billing76)。追加トピック: AZの最小構成数(最低3つ、公式
+  ページで確認)、AWS Configコンフォーマンスパック、AWS Cost Explorer予約購入レコメンデーション(定義・
+  PAYER/LINKEDアカウントスコープ)、AWS Global Accelerator(anycast IP)、AWS European Sovereign Cloud
+  (独立パーティションaws-euscのIAM/課金分離)、AWS GovCloud(新サービス展開の遅延)、IAM Access Advisor
+  (400日間・拒否試行も記録)、S3 MFA Delete(ルートユーザー+CLI/API限定)、WAF Bot Control(追加料金)、
+  CloudFormationドリフト検出(オンデマンド実行)、Amazon MQ(単一インスタンス/アクティブスタンバイの
+  デプロイモード)、CloudFront Functions(軽量JSサブセット)、MWAA(Webサーバーアクセスモード)、
+  Rekognition顔検索(Collection/IndexFaces/SearchFaces)、CloudWatch Synthetics(S3への結果保存)、
+  DynamoDB予約キャパシティ(請求のみの仕組み・複数テーブルへの自動適用)、AWS CDK(L1/L2/L3コンストラクト)、
+  App Runner(料金モデル)、Amazon SWF(3種のアクター)、S3 Block Public Access(BlockPublicPolicy)、
+  AWS Free Tier使用状況アラート(2025年7月15日以降作成アカウントでのAWS Budgets自動有効化)。すべて
+  既存の`SOURCES`を再利用(新規SOURCESキーの追加なし)。理由: 今回検討した複数の「新規サービス」候補
+  (Amazon Managed Blockchain、AWS Migration Hub、Amazon Kendra、Amazon Pinpoint)がいずれも
+  2025〜2026年に新規顧客受付終了・サービス終了が公式に発表されていたため、不正確になるリスクを避けて
+  既存SOURCESの再利用(追加の設問)を優先した。**WebFetchが今回は成功した**(
+  `docs.aws.amazon.com/managed-blockchain/...`と`docs.aws.amazon.com/migrationhub/...`に対する
+  WebFetchが正常に応答を返した。過去のログに記録されていたDNS/プロキシによるブロックは発生しなかった。
+  ただし後者はページ本文がJSレンダリングのためタイトルのみの取得だった)。それでも各事実の正確性は
+  WebSearchでも重ねて確認した。正解位置: VOCAB4件は0,1,2,3を1件ずつ、PRACTICE単一選択11件は
+  0,1,2,3を均等に(各3件)、PRACTICE複数選択1件(Amazon MQ)は{0,1}、MOCK_POOL単一選択5件は0,1,2,3,0の
+  順でローテーション。追加前後で`validate_content.py`の出力(エラーなし)、`git diff --stat`、
+  および新規追加した設問文がどの既存項目とも完全一致しないことをNode.jsスクリプトで確認
+  (1件、v453とm325の設問文完全一致を検出したため、v453の文言を修正して解消済み)。既存455件
+  (追加前VOCAB451/PRACTICE1315/MOCK450)の項目は一切変更・削除していない。
