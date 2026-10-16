@@ -2395,3 +2395,27 @@
   組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存の項目
   （VOCAB375/PRACTICE1080/MOCK_POOL374）は一切変更していないことを確認済み（diffは追加行のみ、
   削除行なし）。
+- 2026-10-16: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=383, PRACTICE=1106,
+  MOCK_POOL=382（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech127/security94/billing63/concepts99、
+  PRACTICE concepts277/billing176/security284/tech369、MOCK_POOL concepts99/security96/tech122/billing65）。
+  追加トピック: AWS CAF（ガバナンス/セキュリティ/人材の視点、既存のビジネス・プラットフォーム視点の問題とは別角度）、
+  Amazon GuardDuty Extended Threat Detection、Amazon EKS Auto Mode、AWS Budgets Actions、
+  Well-Architected運用上の優秀性の柱(Infrastructure as Code)、クラウドの6つのメリット（複数選択）、
+  AWS Verified Access、MFAデバイスの種類、責任共有モデル（複数選択）、AWS Transfer Family、Amazon MQ、
+  Amazon FSx for Lustre、AWS Batch、AWS Marketplaceプライベートオファー、AWS Cost Allocation Tags、
+  Well-Architected信頼性の柱(障害分離境界)、AWS CloudTrail管理イベント対データイベント、
+  Amazon Kinesis Data Firehose、AWS Reserved Instance Marketplace。新規SOURCESは追加せず、既存の
+  検証済みSOURCES（caf, guarddutyExtendedThreatDetection, eksAutoMode, budgets, wafOps, sixAdv,
+  verifiedAccess, mfa, shared, transferFamily, amazonMQ, fsx, batch, marketplacePrivateOffers,
+  costAllocTags, wafReliability, cloudtrail, firehose, riMarketplace）を別角度の設問として再利用した。
+  出典確認の一環としてWebSearch+WebFetchでAmazon ConnectとAmazon Kendraの公式ドキュメントページの
+  追加を検討したが、WebFetchは今回両方とも成功（この実行環境でdocs.aws.amazon.com/aws.amazon.comへの
+  直接WebFetchが成功したのは過去のログでは初めての記録）。しかしAmazon Connectは2026年4月に
+  「Amazon Connect Customer」へ改名されエージェント型AIファミリーに再編されたこと、Amazon Kendraは
+  2026年6月30日付でメンテナンスモード入りし2026年7月30日以降新規顧客の利用登録ができなくなったことが
+  判明したため、CLF-C02試験ガイドの記述との時期的な整合性に懸念があり、どちらも採用せず
+  AWS Transfer FamilyとAmazon MQ（安定している既存SOURCES）に差し替えた。正解位置は単一選択19件を
+  0,1,2,3のローテーション（0が5件、1が5件、2が5件、3が4件）で均等に分散し、複数選択2件は{0,3}と
+  {1,2}の異なる組み合わせを使用。追加前後でvalidate_content.pyの出力・git diffを確認し、既存の項目
+  （VOCAB379/PRACTICE1093/MOCK_POOL378）は一切変更していないことを確認済み（diffは追加行のみ、
+  削除行なし）。
