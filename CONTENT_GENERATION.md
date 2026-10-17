@@ -3165,3 +3165,32 @@
   で`validate_content.py`の出力(エラーなし、件数が479→483/1405→1418/479→483に増加したことのみ確認)と
   `git diff --stat`(追加56行のみ、削除0行)を確認し、既存479件の項目は一切変更・削除していない。push前に
   `git pull --rebase origin master`を再実行し、最新化を確認した。
+- 2026-10-17: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。累計 VOCAB=487, PRACTICE=1431,
+  MOCK_POOL=487（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB tech164/security122/billing79/concepts122、
+  PRACTICE concepts364/billing228/security360/tech479、MOCK_POOL concepts126/security121/tech160/billing80）。
+  起動時にdetached HEAD状態だったため、まず`git checkout master && git pull --rebase origin master`を実行して
+  最新化してから作業した（今回はローカルmasterとorigin/masterの履行は正常で、不整合の退避処理は不要だった）。
+  追加トピック: Well-Architected一般的設計原則の残り2項目（本番規模でのテスト/データドリブンなアーキテクチャ
+  改善/実験重視の自動化）、AWS WAFルール優先順位（個別ルールとルールグループの優先順位スケール共有）、
+  Amazon S3バージョニング（新規SOURCES追加）、Amazon CloudWatch Container Insights（新規SOURCES追加、
+  ECS/EKSのコンテナ監視）、AZ間インターコネクト（RDS Multi-AZ同期レプリケーションとの関係）、
+  データレジデンシー要件への対応、セキュリティグループのルール変更の即時反映、RDS IAMデータベース認証、
+  IAMマネージドポリシー対インラインポリシー、EC2ハイバネーション（RAM退避・復元の仕組み）、
+  Amazon Keyspacesのキャパシティモード（オンデマンド/プロビジョンド）、Auto Scalingライフサイクルフックの
+  既定保留時間(1時間)とハートビートによる延長(最大48時間)、AWS Price List Bulk API、Cost Explorer予測機能。
+  新規SOURCES2件（s3Versioning, cwContainerInsights）はWebFetchで`docs.aws.amazon.com`への直接アクセスを
+  試したところ、**今回はWebFetchが成功**し、本文を直接確認できた（過去の実行ログに記録されていた
+  DNS/プロキシブロックは今回は発生しなかった）。これに加えて、既存SOURCESを流用する項目についても
+  正確性の高いものが必要な事実（VPC Network ACLのルール評価順序・ステートレス/ステートフルの違い、
+  AWS WAFのルール優先順位の仕組み、EC2ハイバネーションの制限事項、AWS WAF Bot Controlの機能、AWS Migration
+  Acceleration Programの3フェーズ、AWS Cloud Value Frameworkの5つの価値領域（4つではなく5つ）等）を
+  WebFetch/WebSearchで個別に確認した。特にCloud Value Frameworkは「4つの価値領域」という誤った仮説を
+  立てていたが、WebSearchで「コスト削減・スタッフの生産性向上・運用上の回復性・ビジネスアジリティ・
+  持続可能性」の5領域だと判明し（既存v217の記述とも一致）、該当する新規項目の追加を見送った。このように、
+  このデータセットは既に非常に成熟しており（大半のSOURCESが5〜20回前後再利用されている）、完全に未使用の
+  トピックを探すよりも、既存トピックについて新しい具体的シナリオ・切り口で正確な問題を作ることを優先した。
+  正解位置はVOCAB4件を0,1,2,3でローテーション、PRACTICE単一選択12件を0,1,2,3の順で3周完全ローテーション、
+  複数選択1件(データレジデンシー)は{1,3}、MOCK_POOL単一選択4件も0,1,2,3でローテーションした。追加前後で
+  `validate_content.py`の出力（エラーなし、件数が483→487/1418→1431/483→487に増加したことのみ確認）と
+  `git diff --stat`（追加57行のみ、削除0行）を確認し、既存483件の項目は一切変更・削除していない。push前に
+  `git pull --rebase origin master`を再実行し、最新化を確認する。
