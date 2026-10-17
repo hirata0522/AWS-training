@@ -3329,3 +3329,45 @@
   今回は追加していない）。追加前後で`validate_content.py`の出力（エラーなし、件数が
   494→498/1475→1481/496→499に増加したことのみ確認）と`git diff --stat`・`git diff`の内容
   （追加44行のみ、削除0行）を確認し、既存の項目は一切変更・削除していない。
+- 2026-10-17: 定期実行（このセッションで実施、上記と同日の別回）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっており、さらに手順0に記載の「ローカルmaster参照が無関係な古い履歴を指している」
+  事故が再発していた(`git checkout master`後のローカル`master`が2026-10-12の古いコミット`cb63a57`を
+  指しており、`origin/master`の最新コミット`f172f00`とは共通祖先が無い状態を`git merge-base --is-ancestor`
+  で確認)。手順書記載の対処どおり、ローカル`master`を`master-old-stale-backup-20261017`へ退避し、
+  `git fetch origin master`→`git checkout -b master origin/master`→
+  `git branch --set-upstream-to=origin/master master`で復旧してから作業した。復旧後の時点で
+  VOCAB=498/500、PRACTICE=1481/1500、MOCK_POOL=499/500と目標にほぼ到達していたが、既存コンテンツの
+  飽和度を確認するため、追加前にSOURCESキー(359件)・各プールのドメイン別既存設問を事前にgrep調査した
+  結果、検討した新規候補の大半(GuardDuty EKS/Lambda Protection、KMSマルチリージョンキー、AWS Budgets
+  Actions、Amazon Detective関連、AWS Systems Manager Patch Manager、Amazon Cognito高度なセキュリティ機能等)
+  は既存のsource(guarddutyRuntime・kms・budgets・detective・systemsManager・cognito等)で既に同内容が
+  複数回出題済みであることが判明し、重複を避けるため採用を見送った。また新規候補として検討した
+  Amazon S3 Select は、WebSearchで「2026年時点で新規顧客への提供を終了しており既存顧客のみ利用可能」
+  であることが判明したため除外し、AWS Enterprise Discount Program (EDP) とAWS Billing Tax Settings は
+  AWS公式ドメイン(docs.aws.amazon.com/aws.amazon.com)上での正確な裏取りができなかった
+  (EDPは公式ページが見つからず第三者サイトの情報のみ、Tax SettingsはAWS Settingsという新UIへの
+  移行中で「限定公開中」と明記されており内容が確定的でなかった)ため、同様に見送った。その結果、
+  今回は「クラウドのコンセプト」ドメインにおいて、既存コンテンツ(sixAdv/caf/migrationStrategies等)が
+  個別サービスの説明の中で言及するのみで独立した設問になっていなかった汎用的なクラウド概念
+  ——サーバーレスコンピューティング・コンテナ化(Containerization)・マイクロサービス・
+  Infrastructure as Code (IaC)・DevOps・CI/CD・API——の7トピックに絞って新規追加した
+  (事前に各用語の既存言及箇所をgrepで確認し、いずれも他サービスの説明文中での言及のみで、
+  その概念自体を主題とした専用設問が存在しないことを確認済み)。追加内容: VOCAB+2
+  (サーバーレスコンピューティング、コンテナ化)、PRACTICE+7(サーバーレスの課金、コンテナ対VM比較、
+  マイクロサービスの定義、IaCの定義、DevOpsの定義、CI/CD複数選択(継続的デリバリー対デプロイメント)、
+  APIの定義)、MOCK_POOL+1(マイクロサービスの利点、VOCABとは別角度)。すべて`domain:'concepts'`。
+  累計 VOCAB=500/500(目標達成)、PRACTICE=1488/1500、MOCK_POOL=500/500(目標達成)。新規出典7件
+  (serverlessComputing, containerization, microservicesConcept, iac, devopsConcept, cicd, apiConcept)
+  はすべて本実行環境でWebFetchが`aws.amazon.com`の各「What is...」ページに対して成功し
+  （**WebFetchは今回も成功**。serverless-computing/, containerization/, microservices/
+  (`aws.amazon.com/microservices/`。`aws.amazon.com/what-is/microservices/`は404だったため
+  正しいURLをWebFetchで確認)、devops/what-is-devops/, what-is/ci-cd/, what-is/iac/, what-is/api/
+  の各ページで本文を直接確認)、本文を直接確認した上で追加した。正解位置は単一選択7件
+  (VOCAB2・PRACTICE5・MOCK1)を2,0,1,0,2,1,3,0の順(一部手動調整を含め概ね均等)でローテーションし、
+  複数選択1件(CI/CD)は{1,3}を使用。今回の合計追加件数は10件で、手順書の目安(15〜25件)より少ないが、
+  上記の通り既存コンテンツの飽和度が非常に高く(SOURCESキー366件、PRACTICE単体で1481件)、安全に
+  重複を避けながら裏取りできる新規トピックがこの件数に留まったため、件数より正確性・非重複性を
+  優先した。追加前後で`validate_content.py`の出力（エラーなし、件数が498→500/1481→1488/499→500に
+  増加したことのみ確認）と`git diff --stat`（追加35行のみ、削除0行）を確認し、既存の項目は
+  一切変更・削除していない。VOCABとMOCK_POOLは目標の500件に到達したため、次回以降はPRACTICEの
+  残り12件（1500件目標）に集中する形になる見込み。
