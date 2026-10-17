@@ -3221,3 +3221,39 @@
   単一選択18件の正解位置は0が5件・1が5件・2が5件・3が4件とほぼ均等。追加前後で`validate_content.py`の
   出力（エラーなし、件数が487→491/1431→1444/487→491に増加したことのみ確認）と`git diff --stat`（追加
   55行のみ、削除0行）を確認し、既存487件の項目は一切変更・削除していない。
+- 2026-10-17: 定期実行で18件追加（VOCAB+2/PRACTICE+14/MOCK_POOL+2）。開始時、サンドボックスが`master`から
+  detached HEADの状態で、かつローカル`master`参照自体が`origin/master`と無関係な古い履歴（b18142cから
+  辿れない50コミット）を指していた。`git checkout master`後、`git pull --rebase origin master`を
+  実行したところ、実際には`origin/master`側がフォースアップデートされていたため（"forced update"）、
+  ローカル`master`は単純にfast-forwardして`origin/master`(b18142c、VOCAB491/PRACTICE1444/MOCK_POOL491)
+  に一致し、データ損失は無かった(本ログの前回2026-10-17のエントリがこの状態に対応)。累計 VOCAB=493,
+  PRACTICE=1458, MOCK_POOL=493（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech34.1/security24.7/billing16.0/concepts25.2、PRACTICE concepts25.5/billing16.0/security25.1/
+  tech33.3、MOCK_POOL concepts25.8/security24.9/tech32.9/billing16.4）。新規SOURCESの追加なし
+  （既存345件のSOURCESキーを再利用）。今回はWebFetchをdocs.aws.amazon.comに対して試したところ
+  **成功**した（`wellarchitected/latest/framework/general-design-principles.html`の本文を直接取得できた。
+  過去のログで繰り返し記録されていたDNS/プロキシブロックは今回は発生せず、環境のネットワーク設定が
+  改善された可能性がある）。この成功を活用し、AWS Well-Architected Frameworkの「全般的な設計原則」
+  (6項目)のうち、既存データにまだ無かった2項目「キャパシティの推測をやめる(Stop guessing your capacity
+  needs)」「アーキテクチャの実験を前提に自動化する(Automate with architectural experimentation in
+  mind)」を本文から直接確認し、VOCABに追加した(残り4項目は既存v436/437/476/484/485で既にカバー済み
+  と判明)。PRACTICE 14件は、既存SOURCESの中から使用頻度が低い(2〜8回程度)ものを選び、各sourceの既存
+  設問本文を事前にgrepで全件確認した上で重複しない角度で追加: AZ間の物理的分離・高帯域ネットワーク接続
+  (azInterconnect)、Resilience Hubのレジリエンシースコア(0〜100、WebSearchでdocs.aws.amazon.com/
+  resilience-hub/latest/userguide/calculate-score.htmlの内容を確認)、Cloud Value Frameworkの
+  「スタッフの生産性」領域、Well-Architectedコスト最適化の柱における総所有コスト(TCO)、AWS Prescriptive
+  Guidance、Cost ExplorerのRI/SP購入レコメンデーション(ルックバック期間7/30/60日、WebSearchでdocs.aws.eu
+  ミラーの内容を確認)、Cost Explorerの予測機能(最大12か月先、AWS公式プロダクトページで確認)、AWS Purchase
+  Order Management、AWSクレジットの消化優先順位(有効期限が近いものから、docs.aws.amazon.com/
+  awsaccountbilling/.../useconsolidatedbilling-credits.htmlの内容をWebSearchで確認)、RDS IAMデータベース
+  認証トークンの有効期限(15分、docs.aws.amazon.comの翻訳版ミラー複数で確認)、IAM Access Advisor
+  (最終アクセス情報)、AWS WAFマネージドルールの一般的特徴(複数選択)、S3マルチリージョンアクセスポイント、
+  VPC IPAM。MOCK_POOL 2件は、まだ一度もMOCK_POOLに登場していなかったsource(securityIR, cwContainerInsights)
+  を使い、既存のVOCAB/PRACTICE側の設問本文と重複しない角度(AWS Security Incident Responseの位置づけ・
+  契約形態、CloudWatch Container Insightsの収集対象)で追加。正解位置はVOCAB2件を0,1、PRACTICEの単一選択
+  12件を2,3,0,1,2,3,0,1,2,1,0,2,0(0が4件、1が3件、2が4件、3が2件)、複数選択1件(WAFマネージドルール)は
+  {1,3}、MOCK_POOL単一選択2件を2,1とした。既存SOURCESオブジェクト内で`resilienceHub`と`drs`のキーが
+  それぞれ2回定義されている(後方の定義で上書きされるだけで動作に影響はないが、将来のクリーンアップ候補)
+  ことに気づいたが、既存コンテンツを無断で変更しない方針に従い、今回は修正せず記録のみ残す。追加前後で
+  `validate_content.py`の出力（エラーなし、件数が491→493/1444→1458/491→493に増加したことのみ確認）と
+  `git diff --stat`（追加50行のみ、削除0行）を確認し、既存1444件の項目は一切変更・削除していない。
