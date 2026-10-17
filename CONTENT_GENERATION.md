@@ -3194,3 +3194,30 @@
   `validate_content.py`の出力（エラーなし、件数が483→487/1418→1431/483→487に増加したことのみ確認）と
   `git diff --stat`（追加57行のみ、削除0行）を確認し、既存483件の項目は一切変更・削除していない。push前に
   `git pull --rebase origin master`を再実行し、最新化を確認する。
+- 2026-10-17: 定期実行で21件追加（VOCAB+4/PRACTICE+13/MOCK_POOL+4）。開始時、サンドボックスが`master`から
+  detached HEADの状態になっていたが、`git checkout master && git pull --rebase origin master`で復帰し、
+  ローカル`master`は`origin/master`最新コミット(2699475)にfast-forwardで一致した。累計 VOCAB=491,
+  PRACTICE=1444, MOCK_POOL=491（3プールとも各ドメイン比率は目標26/25/33/16%に近い: VOCAB
+  tech34.2/security24.8/billing16.1/concepts24.8、PRACTICE concepts25.4/billing15.9/security25.1/
+  tech33.5、MOCK_POOL concepts25.9/security24.8/tech32.8/billing16.5）。今回は**新規SOURCESの追加なし**
+  （既存345件のSOURCESキーを全て再利用）。方針を変更: 事前にPythonスクリプトでVOCAB/PRACTICE/MOCK_POOLの
+  3配列を解析し、各既存source(src)キーが「どのプールに一度も使われていないか」を機械的に洗い出した上で、
+  本当に未使用の組み合わせ（構造的な穴）を優先的に埋めた。具体的には: VOCABにまだ一度も登場していなかった
+  tech系source(cfnDriftDetection/ec2LaunchTemplate/deviceFarm/vpcReachabilityAnalyzer)をVOCAB4件に、
+  PRACTICEに一度も登場していなかったplacementGroups/s3VersioningをPRACTICE2件に、MOCK_POOLに一度も
+  登場していなかったwaLens(concepts)/imdsv2(security)/iamBillingAccess(billing)/sqs(tech)をMOCK_POOL4件に
+  採用。残るPRACTICE11件は、既存sourceの中から使用頻度が低い(2〜6回程度)ものを選び、各sourceの既存設問
+  本文を事前にgrepで確認した上で、明確に異なる角度(EFSのパフォーマンス/スループットモード、DynamoDB
+  Streams、CodeBuildのbuildspec.yml/カスタムDockerイメージ、KMSグラント、Secrets Manager自動ローテーション
+  の仕組み、Firewall Managerの組織一括適用、クラウドサービスモデルのSaaS角度、AZと物理データセンターの
+  関係、マルチテナンシーのサイロモデル、CUR 2.0/Data ExportsのParquet対応、AWSプロモーションクレジットの
+  失効ルール)で追加した。あわせてWebSearchで「AWS Cloud9」「AWS CodeCommit」「AWS App Mesh」「Amazon
+  WorkMail/WorkDocs」の現状を確認したところ、いずれも2024年7月〜9月頃に新規顧客の受付を終了済み(Cloud9・
+  CodeCommitは2024/7/25、App Meshは2024/9/24)、App Meshは2026/9/30に完全終了予定、WorkMailは2026/4/30で
+  新規受付終了・2027/3/31に完全終了予定であることが判明したため、これらは新規コンテンツの対象・出典候補
+  から除外した(既存の除外事例と同様の理由)。正解位置はVOCAB4件を0,1,2,3でローテーション、PRACTICE単一
+  選択11件を0,1,2,3でほぼ均等に配置(0が3件、1が3件、2が3件、3が2件)、PRACTICE複数選択2件は{0,2}と{1,3}、
+  MOCK_POOL単一選択3件を0,1,2,3の一部でローテーション(3,1,2)、MOCK_POOL複数選択1件は{0,3}を使用。全体の
+  単一選択18件の正解位置は0が5件・1が5件・2が5件・3が4件とほぼ均等。追加前後で`validate_content.py`の
+  出力（エラーなし、件数が487→491/1431→1444/487→491に増加したことのみ確認）と`git diff --stat`（追加
+  55行のみ、削除0行）を確認し、既存487件の項目は一切変更・削除していない。
