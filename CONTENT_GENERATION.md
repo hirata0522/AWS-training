@@ -3300,3 +3300,32 @@
   1件(European Sovereign Cloud)は{1,3}を使用。追加前後で`validate_content.py`の出力（エラーなし、
   件数が493→494/1458→1475/493→496に増加したことのみ確認）と`git diff --stat`（追加62行のみ、
   削除0行）を確認し、既存の項目は一切変更・削除していない。
+- 2026-10-17: 定期実行（このセッションで実施）。VOCAB 494→498(+4) / PRACTICE 1475→1481(+6) /
+  MOCK_POOL 496→499(+3)、合計13件追加（目安15〜25件にはやや届かなかったが、下記の理由により
+  件数より正確性を優先した）。作業開始時にdetached HEADの状態で古いコミット群の先頭にいたため、
+  手順書通り`git checkout master && git pull --rebase origin master`でmasterに復帰してから作業した
+  （以前の事故と同種の状況だったため特に注意した）。既存コンテンツが極めて充実しており
+  (SOURCESキー300件超、CAF6視点・Well-Architectedレンズ・移行の6R・クラウドの6つのメリット等は
+  数十問規模で既出)、重複を避けるため新規トピック候補を事前にgrepで裏取りした上で、未出題かつ
+  正確に裏取りできたものだけを採用する方針にした。その過程で、新規サービス候補として検討した
+  Amazon Pinpoint・AWS Proton・Amazon Managed Blockchain・Amazon Kendra・AWS App2Container・
+  Amazon FinSpace・Amazon WorkDocs・AWS IoT Analytics・AWS DeepRacer・Amazon Chime(旧版)は、
+  いずれもWebSearchで確認した結果、新規顧客受付終了・サポート終了(EOL)・メンテナンスモード入りなど
+  の理由で2025〜2026年に相次いで非推奨化されていることが判明したため、不正確な内容を出題するリスクを
+  避けて採用を見送った。同様にAmazon Connectも検討したが、公式ドキュメントが現在「Amazon Connect
+  Customer」への名称・位置づけ変更の過渡期にあることをWebFetchで確認し、断定的な記述がすぐに古くなる
+  リスクがあるため見送った。代わりに、十分に安定している既存コアサービスの未出題の具体的機能に絞り、
+  EC2インスタンスストア・S3同一リージョンレプリケーション(SRR)・AMIのリージョン間コピー・EC2拡張
+  ネットワーキング(ENA)・Elastic IPアドレスの再関連付け・S3 Requester Pays・Secrets Managerの
+  ステージングラベル(AWSCURRENT/AWSPENDING/AWSPREVIOUS)・KMSキーマテリアルのインポート(BYOK)・IAM
+  アクセスキーの無効化(Deactivate)してから削除するベストプラクティス・RDS暗号化は作成後に無効化できない
+  という制限・EBSのデフォルト暗号化(リージョン単位)・AWS Marketplaceの従量課金がAWSの請求に統合される
+  仕組み、およびAmazon SageMaker Canvas(ノーコードML、現役サービスであることを確認済み)を採用した。
+  いずれも`docs.aws.amazon.com`または`aws.amazon.com`の該当ページをWebFetchで直接取得して内容を
+  確認した（**WebFetchは今回成功**。EC2インスタンスストア・S3レプリケーション設定・AMIコピー・
+  Requester Pays・Secrets Managerローテーション・KMSキーマテリアルインポート・Elastic IP・RDS暗号化・
+  EBS暗号化・IAMアクセスキー更新・拡張ネットワーキング・AWS Marketplace支払いの各ページで成功）。
+  正解位置は13件を通して0,1,2,3,0,1,2,3,0,1,2,3,0の順で意識的にローテーションした（複数選択問題は
+  今回は追加していない）。追加前後で`validate_content.py`の出力（エラーなし、件数が
+  494→498/1475→1481/496→499に増加したことのみ確認）と`git diff --stat`・`git diff`の内容
+  （追加44行のみ、削除0行）を確認し、既存の項目は一切変更・削除していない。
