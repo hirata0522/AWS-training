@@ -3257,3 +3257,46 @@
   ことに気づいたが、既存コンテンツを無断で変更しない方針に従い、今回は修正せず記録のみ残す。追加前後で
   `validate_content.py`の出力（エラーなし、件数が491→493/1444→1458/491→493に増加したことのみ確認）と
   `git diff --stat`（追加50行のみ、削除0行）を確認し、既存1444件の項目は一切変更・削除していない。
+- 2026-10-17: 定期実行で21件追加（VOCAB+1/PRACTICE+17/MOCK_POOL+3、プール別の残り件数比に合わせて配分）。
+  開始時、サンドボックスのローカル`master`参照が`origin/master`と無関係な古い履歴（19コミット、別の
+  root commitを持つ）を指しており、`git merge-base`で共通祖先が見つからない状態だった(このファイルの
+  手順0に記載された2026-10-16の既知事象と同種)。ローカル`master`への`git checkout -B`での強制上書きが
+  サンドボックスの安全策により拒否されたため、ローカル`master`ブランチには触れず、`git checkout
+  origin/master`でdetached HEAD状態のまま作業し、完了後は`git push origin HEAD:master`で直接
+  origin側のmasterブランチを更新する方式に変更した(ローカルの壊れた`master`参照は退避も削除もせず
+  放置。次回以降のセッションでも同じ不整合に遭遇する可能性があるため、このファイルの手順0の対処法を
+  そのまま踏襲してよい)。累計 VOCAB=494, PRACTICE=1475, MOCK_POOL=496（3プールとも各ドメイン比率は
+  目標26/25/33/16%に近い: VOCAB tech34.2/security24.7/billing16.0/concepts25.1、PRACTICE
+  concepts25.6/billing16.1/security25.2/tech33.2、MOCK_POOL concepts25.8/security25.0/tech32.9/
+  billing16.3）。新規SOURCES1件（healthlake = AWS HealthLake）はWebFetchで`docs.aws.amazon.com/
+  healthlake/latest/devguide/what-is-amazon-health-lake.html`の本文を直接取得して確認した
+  （**WebFetchは今回成功**）。新規サービス候補として他にAmazon CodeCatalyst・AWS Mainframe
+  Modernization・Amazon WorkSpaces Secure Browserも検討したが、WebFetchでそれぞれ「新規顧客の受付を
+  終了している」「新規顧客の受付を終了している」「2026年10月29日より新規顧客の受付を終了する予定」
+  であることが判明したため、既存の除外事例(QLDB・Application Discovery Service等)と同様の理由で
+  いずれも採用を見送った。残りはすべて既存SOURCESキーを再利用し、事前にPythonスクリプトで
+  「各プールで一度も使われていないsourceキー」「プール内での使用頻度が低いsourceキー」を機械的に
+  洗い出した上で、各候補の既存設問本文をgrepで確認し、まだ出題されていない具体的な事実・角度のみを
+  採用した。追加トピック: AWS Organizations OUの最大ネスト階層(5階層)、AWS Supply Chainの料金モデル
+  (前払いコミットメント不要の使用量課金)、AWS Sustainabilityコンソールのデータ公開遅延の短縮
+  (最大3か月→翌月21日以内、2025年12月のAWS公式アナウンスをWebSearchで確認)、AWS Transformが複数の
+  モダナイゼーション領域を単一の統合Web体験で提供する点、AWS European Sovereign Cloudの設計目標
+  (メタデータのEU域内保持、グローバルAWSシステムから分離された状況でも自律運用できる設計。
+  `docs.aws.amazon.com/whitepapers/latest/overview-aws-european-sovereign-cloud/design-goals.html`
+  をWebFetchで直接確認し、複数選択問題として採用)、S3 Block Public Accessの「IgnorePublicAcls」、
+  セキュリティグループのルールでセキュリティグループID自体をソースに指定できる点、RDS IAMデータベース
+  認証が対応していないエンジン(Oracle/SQL Server/Db2)、AWS WAFのデフォルトアクション、AWS Nitro
+  Systemの構成要素(Nitro Security Chipのハードウェアルートオブトラスト、AWS公式ホワイトペーパーを
+  WebSearchで確認)、S3 MFA Deleteの有効化条件(ルートユーザーのみ・コンソール不可)、S3
+  Intelligent-Tieringの128KB未満オブジェクトの扱い(監視対象外・課金対象外、2021年のAWS公式アナウンスを
+  WebSearchで確認)、AWS Wavelength Zoneが親リージョンのコントロールプレーンで管理される点、VPC
+  IPAMの既存リソース自動インポート機能、AWS Organizationsに参加していない場合のRI/Savings
+  Plans割引共有の扱い、AWS Activateクレジットの失効時の扱い、代替連絡先(Alternate Contacts)が
+  Organizations参加の有無に関わらず単一アカウントでも設定できる点、AWS Professional Servicesが
+  有償のハンズオン支援である点、AWS Artifactでの監査レポート(SOC 2・PCI DSS AOC等)のオンデマンド
+  ダウンロード、S3バージョニングを一度有効化すると「無効」状態には戻せず「一時停止」のみ可能な点
+  (`docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html`をWebFetchで直接確認)。正解位置は
+  単一選択20件(VOCAB1・PRACTICE16・MOCK3)を0,1,2,3で完全に均等にローテーション(各位置5件)、複数選択
+  1件(European Sovereign Cloud)は{1,3}を使用。追加前後で`validate_content.py`の出力（エラーなし、
+  件数が493→494/1458→1475/493→496に増加したことのみ確認）と`git diff --stat`（追加62行のみ、
+  削除0行）を確認し、既存の項目は一切変更・削除していない。
