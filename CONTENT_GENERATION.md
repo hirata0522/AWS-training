@@ -3371,3 +3371,50 @@
   増加したことのみ確認）と`git diff --stat`（追加35行のみ、削除0行）を確認し、既存の項目は
   一切変更・削除していない。VOCABとMOCK_POOLは目標の500件に到達したため、次回以降はPRACTICEの
   残り12件（1500件目標）に集中する形になる見込み。
+- 2026-10-17: 定期実行（このセッションで実施、上記と同日の3回目）。開始時、サンドボックスが
+  `master`から再びdetached HEADの状態になっており、さらに手順0に記載の「ローカルmaster参照が
+  無関係な古い履歴を指している」事故も再発していた(ローカル`master`が2026-10-12の古いコミット
+  `cb63a57`を指し、`origin/master`の最新コミット`645d4cf`とは共通祖先が無い状態を
+  `git merge-base`で確認。このときdetached HEAD自体は既に`origin/master`の最新コミットと
+  一致していた)。手順書記載の対処どおり、ローカル`master`を`master-old-stale-backup-20261017`
+  へ退避し、`git fetch origin master`→`git checkout -b master origin/master`→
+  `git branch --set-upstream-to=origin/master master`で復旧してから作業した。復旧後の時点で
+  VOCAB=500/500・MOCK_POOL=500/500は既に目標達成済み、PRACTICE=1488/1500（残り12件）だったため、
+  今回はPRACTICEのみに絞って残り12件をちょうど追加し、3プールすべてを目標件数（500/1500/500）に
+  到達させた。ドメイン別の残り不足数(concepts6/billing3/security1/tech2、合計12)を算出し、その
+  配分どおりに追加した。追加前にSOURCESキー(373件)・各ドメインの既存設問をgrepで事前調査した結果、
+  billing・securityドメインは特に飽和度が高く(AWS Budgets Actions・GuardDuty各保護機能・Trusted
+  Advisor基本機能・AWS Support重大度別応答時間・IAMによる請求情報アクセス許可等、いずれも複数回
+  出題済み)、新規候補として検討したAmazon S3 Select（新規顧客への提供終了を確認）・AWS Enterprise
+  Discount Program (EDP)・AWS Billing Tax Settings（いずれも公式ドメイン上での正確な裏取りができず
+  見送り）、Amazon WorkMail（2027年3月31日付でサポート終了がアナウンスされていることをWebFetchで
+  確認したため、既存の除外事例と同様の理由で見送り）は採用しなかった。代わりに、concepts(6件)は
+  AWSの「What is...」系公式ページを根拠に、既存コンテンツでは個別サービスの説明中に用語が登場する
+  のみで専用の設問が存在しなかった汎用的なクラウド/IT概念——エッジコンピューティング・キャッシング・
+  データレイク・ロードバランシング・ハイパフォーマンスコンピューティング(HPC)・仮想化——に絞って
+  新規追加。tech(2件)はAmazon EC2 Mac インスタンス（Apple実機ハードウェア上でmacOSを実行、現役
+  サービスであることをWebFetchで確認）とAmazon ECS Anywhere（オンプレミスの外部インスタンスをECS
+  クラスターに登録する機能、Windows対応は終了済みだがLinux対応は現役であることをWebFetchで確認）を
+  新規採用。billing(3件)はAWS Countdown Premium（旧Infrastructure Event Managementのページが
+  現在はCountdown Premiumの説明に置き換わっていることをWebFetchで確認。Business Support+・
+  Enterprise Supportの有償アドオン、Unified Operationsには含まれる）・AWS Trusted Advisor Priority
+  （現在はEnterprise SupportまたはUnified Operations利用者向けに提供されることをWebFetchで確認。
+  2022年のローンチ時点ではEnterprise Support限定だったが対象が拡大している）・Enterprise Support
+  特典のWell-Architectedレビュー（既存source`support`を再利用）を新規追加。新規SOURCES10件
+  (edgeComputing, caching, dataLake, loadBalancingConcept, hpc, virtualizationConcept, ec2Mac,
+  ecsAnywhere, countdownPremium, trustedAdvisorPriority)はすべて本実行環境でWebFetchが
+  aws.amazon.com/docs.aws.amazon.comに対して成功し（**WebFetchは今回も成功**。what-is/
+  edge-computing/, caching/, what-is/data-lake/, what-is/load-balancing/, hpc/, what-is/
+  virtualization/, ec2/instance-types/mac/, AmazonECS/.../ecs-anywhere.html,
+  premiumsupport/programs/iem/（現在はCountdown Premiumの説明ページ）,
+  premiumsupport/technology/trusted-advisor-priority/ の各ページで本文を直接確認)、本文を直接
+  確認した上で追加した。正解位置は単一選択11件を0,1,2,3,0,1,2,3,0,1,2の順でローテーション
+  (0が3件、1が3件、2が3件、3が2件)、複数選択1件(Cognito Threat Protection)は{0,2}を使用。
+  追加後、`python3 scripts/validate_content.py`でVOCAB=500/500・PRACTICE=1500/1500・
+  MOCK_POOL=500/500(エラーなし)を確認し、PRACTICEのドメイン別件数が目標比率26/25/33/16%と
+  完全に一致(concepts390/billing240/security375/tech495)していることも確認した。
+  `git diff --stat`（追加46行のみ、削除0行）および`node`(vm.runInContext)での読み込みテストでも
+  既存の項目が一切変更・削除されていないことを確認済み。**この実行をもって3プールすべてが
+  目標件数(500/1500/500)に到達したため、次回以降の定期実行は新規追加の予算が0になり、
+  「何もせず終了する」が適用される見込み。** さらにコンテンツを拡充する場合は、このランブック
+  の目標件数（9〜13行目の表）をユーザーの指示のもとで引き上げてから再開すること。
