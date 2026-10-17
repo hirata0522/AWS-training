@@ -3076,3 +3076,31 @@
   `validate_content.py`の出力(エラーなし、件数が467→471/1367→1380/467→471に増加したことのみ確認)と
   `git diff --stat`(追加56行のみ、削除0行)を確認し、既存467件の項目は一切変更・削除していない。
   push前に`git pull --rebase origin master`を再実行し、最新化を確認した。
+- 2026-10-17: 定期実行で21件追加(VOCAB+4/PRACTICE+13/MOCK_POOL+4)。累計 VOCAB=475, PRACTICE=1393,
+  MOCK_POOL=475(いずれも目標未達、継続要)。開始時、ローカルの`master`がdetached HEADから復元した
+  状態で`origin/master`と19対50コミットで無関係な履歴に分岐していた(手順0の過去事例と同種の、
+  浅い(shallow)クローンに起因する事象)。`git checkout master`後、`git pull --rebase origin master`
+  を実行したところ正常にリベースが成功し(クローンがshallowで浅い履歴だったため見かけ上「共通祖先なし」
+  に見えていただけだった)、`git branch -m`等の退避操作は不要だった。新規トピック: クラウドの
+  6つのメリットのうち従来VOCAB/PRACTICEで明示的に扱われていなかった「固定費から可変費への転換
+  (Trade Capital Expense for Variable Expense)」、単一AZ運用のリスク(Single-AZ Risk)、責任共有
+  モデルにおけるコンテナサービス区分(Amazon RDS例)、Well-Architected Frameworkの6つの柱に関する
+  「含まれないもの」形式の設問、俊敏性(Agility)の利点、EC2 Auto Scalingのヘルスチェックタイプ
+  (EC2ステータスチェック対ELBヘルスチェック)、Amazon RDSのMulti-AZ配置の目的、AWS Direct Connect
+  対Site-to-Site VPN、IAMポリシー評価における明示的な拒否の優先、セキュリティグループ対ネットワーク
+  ACL、AWS KMSカスタマー管理キー対AWS管理キー、AWS Organizationsにおけるリザーブドインスタンス/
+  Savings Plansの割引共有無効化の目的、AWS Budgetsの予算タイプ(使用量予算・RI/Savings Plans利用率
+  予算等)。新規SOURCES1件(`securityGroups`: `AWSEC2/latest/UserGuide/creating-security-group.html`)
+  は、新規セキュリティグループの既定ルール(インバウンドはルールなし=拒否、アウトバウンドは全許可の
+  ルールのみ初期設定)という事実を含めてWebFetchで本文を直接取得し確認した。**今回もWebFetchは
+  docs.aws.amazon.comに対して正常に成功した**(上記に加え、デフォルトセキュリティグループの既定ルール
+  (`vpc/latest/userguide/default-security-group.html`)とEC2 Auto Scalingのヘルスチェックの仕組み
+  (`autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html`)、AWS Budgetsの予算タイプ一覧
+  (`cost-management/latest/userguide/budgets-managing-costs.html`)もWebFetchで本文を直接確認した)。
+  正解位置: VOCAB4件は0,1,2,3、PRACTICE単一選択9件は0,1,2,3,0,1,2,3,0の順(0:3/1:2/2:2/3:2)、
+  PRACTICE複数選択4件は{0,2}{1,3}{0,3}{1,2}と組み合わせを固定せず変化させた、MOCK_POOL4件は
+  1,2,3,0(VOCABとは異なる開始位置でローテーション)。追加前後で`validate_content.py`の出力
+  (エラーなし、件数が471→475/1380→1393/471→475に増加したことのみ確認)、IDの重複・欠番なし
+  (Pythonスクリプトでid連番を検証)、`git diff --stat`(追加56行のみ、削除0行)を確認し、既存471件の
+  項目は一切変更・削除していない。push前に`git pull --rebase origin master`を再実行し、最新化を
+  確認した。
