@@ -3104,3 +3104,34 @@
   (Pythonスクリプトでid連番を検証)、`git diff --stat`(追加56行のみ、削除0行)を確認し、既存471件の
   項目は一切変更・削除していない。push前に`git pull --rebase origin master`を再実行し、最新化を
   確認した。
+- 2026-10-17: 定期実行で20件追加(VOCAB+4/PRACTICE+12/MOCK_POOL+4)。累計 VOCAB=479, PRACTICE=1405,
+  MOCK_POOL=479(いずれも目標未達、継続要)。開始時、サンドボックスがdetached HEADの状態(ローカル
+  `master`参照自体は`origin/master`と同じ履行上にあり、過去に記録された「無関係な履歴」事故には
+  該当しなかった)だったため、`git checkout master && git pull --rebase origin master`で復帰してから
+  作業した。この日は既に1回分の定期実行(VOCAB475/PRACTICE1393/MOCK_POOL475まで追加)が完了済みで、
+  今回はその続きとして追加した。新規トピック: AWS Well-Architected Frameworkの信頼性の柱設計原則
+  「障害から自動的に復旧する(Automatically recover from failure)」(VOCABとして新規)、IAMアクセスキー
+  のローテーション、AWS KMSキーポリシー(Key Policy)とIAMポリシーの関係、AWS KMSのエンベロープ暗号化
+  (Envelope Encryption、4KB上限とデータキーの関係)、KMSキーのクロスアカウントアクセス、Amazon RDS
+  リードレプリカ(読み取りスケーリング用途・Multi-AZとの違い・クロスリージョンでのDR用途)、AWS Local
+  Zones/AWS Outposts/AWS Wavelengthの比較、複数リージョン展開の目的、データレジデンシー対応、ハイブリッド
+  クラウド採用理由、クラウドのアジリティ(実験コストの低減)、AWS Direct Connectの冗長構成(複数ロケーション
+  +Site-to-Site VPNバックアップ)、AWS Systems Manager Patch Manager、AWS Budgets Reports(スケジュール
+  されたメールレポート、Budget Actionsとは別機能)。新規SOURCESの追加はせず、既存の342件のSOURCESを
+  すべて別角度の設問として再利用した(既存SOURCESに適切なものが十分にあったため)。出典確認のため、
+  AWS App Mesh(docs.aws.amazon.com/app-mesh/)とAmazon Kendra(docs.aws.amazon.com/kendra/)の2件で
+  WebFetchを試行し、**いずれも成功して本文を直接確認できた**が、App Meshは2026年9月30日付でサポート
+  終了済み(本文に終了告知あり)、Kendraは新規顧客への提供が終了済み(本文に終了告知あり)であることが
+  判明したため、どちらも新規SOURCESとしては採用しなかった(現在提供が終了・制限されているサービスを
+  断定的な出題内容にするのはリスクが高いと判断)。また、AWS Supportプランのドキュメント
+  (docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html)もWebFetchで確認したところ、
+  「Infrastructure Event Management (IEM)」の提供プランがドキュメント上でEnterprise Support related
+  からAWS Unified Operations関連の記載に変化しており、サポートプラン体系が継続的に変化中であることが
+  確認されたため、このトピックは今回の出題対象から除外した(既存のTAM関連の出題はそのまま変更していない)。
+  AWS BudgetsのBudget Actions機能(docs.aws.amazon.com/cost-management/latest/userguide/budgets-controls.html)
+  はWebFetchで本文を直接確認した上でBudgets Reportsとの違いを明確にして出題した。正解位置は今回追加した
+  19件の単一選択問題(VOCAB4・PRACTICE11・MOCK_POOL4)全体で0,1,2,3を順に3巡弱ローテーションし
+  (0が5件、1が5件、2が5件、3が4件とほぼ均等)、複数選択1件(PRACTICE、ハイブリッドクラウド採用理由)は
+  {0,2}を使用した。追加前後で`validate_content.py`の出力(エラーなし、件数が475→479/1393→1405/
+  475→479に増加したことのみ確認)と`git diff --stat`(追加52行のみ、削除0行)を確認し、既存475件の
+  項目は一切変更・削除していない。push前に`git pull --rebase origin master`を再実行し、最新化を確認した。
