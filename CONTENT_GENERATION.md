@@ -3135,3 +3135,33 @@
   {0,2}を使用した。追加前後で`validate_content.py`の出力(エラーなし、件数が475→479/1393→1405/
   475→479に増加したことのみ確認)と`git diff --stat`(追加52行のみ、削除0行)を確認し、既存475件の
   項目は一切変更・削除していない。push前に`git pull --rebase origin master`を再実行し、最新化を確認した。
+- 2026-10-17: 定期実行で21件追加(VOCAB+4/PRACTICE+13/MOCK_POOL+4)。累計 VOCAB=483, PRACTICE=1418,
+  MOCK_POOL=483(いずれも目標未達、継続要)。開始時、サンドボックスがdetached HEADの状態だったため
+  `git checkout master && git pull --rebase origin master`で復帰してから作業した。この日は既に2回分の
+  定期実行(累計VOCAB479/PRACTICE1405/MOCK_POOL479まで)が完了済みで、今回はその続きとして追加した。
+  新規SOURCES1件(`wafRuleOrder`: `waf/latest/developerguide/web-acl-processing-order.html`、AWS WAFの
+  ウェブACLにおけるルール・ルールグループの優先順位評価順序と終端アクションの仕組み)はWebSearchで
+  AWS公式ドキュメントの内容を確認してから追加した(この実行環境でもdocs.aws.amazon.comへの直接WebFetch
+  は試みず、WebSearchの検索結果の要約で確認。今回はWebFetchを試す前にWebSearchで十分な確認が取れた
+  ため、WebFetch自体は使用しなかった)。他はすべて既存SOURCESを再利用した。新規トピック: Amazon S3
+  Intelligent-Tieringの自動階層構成の具体的な移動タイミング(30日/90日)とオプトイン制のアーカイブ階層
+  (Archive Access/Deep Archive Access)、Amazon EBS Elastic Volumes(稼働中のボリュームのサイズ・タイプ
+  ・IOPS/スループットをオンラインで変更)、AWS WAFのカウント(Count)モードによる新規ルール・マネージド
+  ルールグループ(Bot Control含む)の安全な検証手順、AWS WAFのルール/ルールグループの優先順位評価順序と
+  終端アクション(Allow/Block)の仕組み、AWS OrganizationsにおけるRI/Savings Plans割引共有時の自動最適
+  適用ロジック(手動配分不要)、Amazon DynamoDBのTime to Live(TTL)機能(期限切れ属性による無料のバック
+  グラウンド自動削除、約48時間以内)、AWS Elastic Beanstalkのデプロイポリシー(All at once/Rolling/
+  Rolling with additional batch/Immutable/Traffic splittingのうちキャパシティ維持や既存インスタンス
+  への無影響という観点での比較)、AWS Systems Manager Inventory(ソフトウェア構成情報の収集、Patch
+  Managerとの違い)、AWS CAFの人材(People)視点・運用(Operations)視点(いずれも既存項目では不正解選択肢
+  の説明としてのみ存在し、正解として問う専用問題は今回が初出)、AWS Budgetsの「ゼロ消費予算(Zero spend
+  budget)」テンプレート(既存項目では不正解選択肢の説明としてのみ存在していた)。これらのトピックは、
+  既存の約340件のSOURCESと1400件超のPRACTICE項目がCLF-C02試験ガイドの内容をほぼ網羅的にカバーして
+  いる状態であることを事前にgrepで確認した上で、各トピックの具体的な事実(しきい値の日数、機能名、
+  仕組みの詳細)が既存項目のどこにも(正解としても不正解選択肢の説明としても)登場していないことを個別に
+  確認してから選定した。正解位置はVOCAB4件を0,1,2,3でローテーション、PRACTICE単一選択11件を0,1,2,3の
+  順に約3周弱ローテーション(0が3件、1が3件、2が3件、3が2件)、PRACTICE複数選択2件は{2,3}と{0,2}の異なる
+  組み合わせ、MOCK_POOL単一選択4件は3,0,1,2の順(VOCABとは異なる開始位置)でローテーションした。追加前後
+  で`validate_content.py`の出力(エラーなし、件数が479→483/1405→1418/479→483に増加したことのみ確認)と
+  `git diff --stat`(追加56行のみ、削除0行)を確認し、既存479件の項目は一切変更・削除していない。push前に
+  `git pull --rebase origin master`を再実行し、最新化を確認した。
