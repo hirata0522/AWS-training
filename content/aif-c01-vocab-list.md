@@ -6,26 +6,26 @@
 |---|---|---|---|
 | 1 | Amazon Bedrock | genai | v1 |
 | 2 | Amazon SageMaker AI | aiml | v2 |
-| 3 | Artificial Intelligence (AI) | aiml | 未 |
-| 4 | Generative AI (GenAI) | genai | 未 |
-| 5 | Temperature | fm | 未 |
-| 6 | Responsible AI | responsible | 未 |
-| 7 | AWS Shared Responsibility Model | security | 未 |
-| 8 | Machine Learning (ML) | aiml | 未 |
-| 9 | Top-p | fm | 未 |
-| 10 | Security of the Cloud vs Security in the Cloud | security | 未 |
-| 11 | Large Language Model (LLM) | genai | 未 |
-| 12 | Deep Learning | aiml | 未 |
-| 13 | Fairness | responsible | 未 |
-| 14 | Top-k | fm | 未 |
-| 15 | AWS Identity and Access Management (IAM) | security | 未 |
-| 16 | Neural Network | aiml | 未 |
-| 17 | Foundation Model (FM) | genai | 未 |
-| 18 | Algorithm | aiml | 未 |
-| 19 | Maximum Tokens | fm | 未 |
-| 20 | IAM Role | security | 未 |
+| 3 | Artificial Intelligence (AI) | aiml | v3 |
+| 4 | Generative AI (GenAI) | genai | v4 |
+| 5 | Temperature | fm | v5 |
+| 6 | Responsible AI | responsible | v6 |
+| 7 | AWS Shared Responsibility Model | security | v7 |
+| 8 | Machine Learning (ML) | aiml | v8 |
+| 9 | Top-p | fm | v9 |
+| 10 | Security of the Cloud vs Security in the Cloud | security | v10 |
+| 11 | Large Language Model (LLM) | genai | v11 |
+| 12 | Deep Learning | aiml | v12 |
+| 13 | Fairness | responsible | v13 |
+| 14 | Top-k | fm | v14 |
+| 15 | AWS Identity and Access Management (IAM) | security | v15 |
+| 16 | Neural Network | aiml | v16 |
+| 17 | Foundation Model (FM) | genai | v17 |
+| 18 | Algorithm | aiml | v18 |
+| 19 | Maximum Tokens | fm | v19 |
+| 20 | IAM Role | security | v20 |
 | 21 | Bias (Responsible AI) | responsible | 未 |
-| 22 | Model | aiml | 未 |
+| 22 | Model | aiml | v21 |
 | 23 | Transformer | genai | 未 |
 | 24 | Stop Sequences | fm | 未 |
 | 25 | IAM Policy | security | 未 |

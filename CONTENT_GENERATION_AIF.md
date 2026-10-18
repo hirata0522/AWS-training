@@ -241,3 +241,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   単語リスト `content/aif-c01-vocab-list.md` を新規作成（474語、v1/v2は紐付け済み、他は `未`）。ドメイン別: aiml 135 / genai 81 / fm 97 / responsible 64 / security 97
   （aimlとsecurityが比率より多いので、以降はリスト末尾追記時にgenai/fm/responsibleを優先）。VOCAB/PRACTICE/MOCK_POOL への追加は0件（リスト作成を優先）。累計 VOCAB=2 / PRACTICE=4 / MOCK_POOL=1。新規SOURCESなし。
   注意: リストには廃止・対象外の可能性があるサービス（Amazon Forecast / Fraud Detector / Kendra / Lookout for Metrics / DevOps Guru / CodeGuru / DeepRacer / Kinesis / Athena / GuardDuty / Security Hub / WAF / Audit Manager / Organizations / IAM Identity Center 等、対象サービス一覧に無いもの）を含む。埋める際に公式で確認し、範囲外なら `除外` にすること。
+- 2026-10-18（定期実行・2回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リストの行3〜22のうち19語（Bias (Responsible AI)を除く）のVOCABを追加（v3〜v21）。
+  累計 VOCAB=21 / PRACTICE=4 / MOCK_POOL=1。単語リスト進捗 21/474。追加トピック: AI/ML/DL/NN/LLM/FM/GenAI、Temperature/Top-p/Top-k/Maximum Tokens、責任あるAI・公平性、責任共有モデル、IAM/IAMロール。
+  新規SOURCES: whatIsAi, whatIsGenai, bedrockInference, responsibleAi, sharedResp, whatIsMl, whatIsNn, whatIsLlm, iamRoles（いずれもWebFetch成功。aws.amazon.com/what-is/responsible-ai/ は404のため aws.amazon.com/ai/responsible-ai/ を採用）。
+  見送り: 行21「Bias (Responsible AI)」は公式の定義ページを今回確認できず `未` のまま（次回に回す）。正解最長の割合はVOCABで23%に調整済み。PRACTICE/MOCK_POOLは今回追加なし。
