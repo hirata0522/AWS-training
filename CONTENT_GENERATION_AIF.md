@@ -237,3 +237,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   how-it-works-mlconcepts）と `p4`（matching: Comprehend/Textract/Transcribe/Polly、出典 AWS概要ホワイトペーパーの
   機械学習のページ）を追加（いずれもWebFetchで本文確認）。(2) データファイルを即時関数で囲み
   `window.EXAMS['aif-c01']` に登録する形式に変更（CLF-C02も同様）。進捗は試験ごとに分けて保存。
+- 2026-10-18（定期実行）: 試験ガイド改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。ドメイン1〜5ページと対象サービス一覧もWebFetch成功。
+  単語リスト `content/aif-c01-vocab-list.md` を新規作成（474語、v1/v2は紐付け済み、他は `未`）。ドメイン別: aiml 135 / genai 81 / fm 97 / responsible 64 / security 97
+  （aimlとsecurityが比率より多いので、以降はリスト末尾追記時にgenai/fm/responsibleを優先）。VOCAB/PRACTICE/MOCK_POOL への追加は0件（リスト作成を優先）。累計 VOCAB=2 / PRACTICE=4 / MOCK_POOL=1。新規SOURCESなし。
+  注意: リストには廃止・対象外の可能性があるサービス（Amazon Forecast / Fraud Detector / Kendra / Lookout for Metrics / DevOps Guru / CodeGuru / DeepRacer / Kinesis / Athena / GuardDuty / Security Hub / WAF / Audit Manager / Organizations / IAM Identity Center 等、対象サービス一覧に無いもの）を含む。埋める際に公式で確認し、範囲外なら `除外` にすること。
