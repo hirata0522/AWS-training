@@ -96,7 +96,7 @@ CLF-C02の一部のみ（単語8件、想定問題6件）。モック自体は�
 1. **CLF-C02コンテンツのさらなる拡充（任意・継続タスク）**: 単語48件・想定問題46件まで増やしたが、本番の65問規模の模擬試験をより多様な問題でカバーするには、さらに増量する余地がある。追加する際は必ず出典（AWS公式ドキュメント）を確認してから`source`フィールドを埋めること。ユーザーからは「時間がかかるなら定期実行で少しずつ追加でもよい」との指示あり（`/loop`や`schedule`スキルでの定期実行も検討可）。
 2. **実機での動作確認が未完了**: このセッションではNode.js・ブラウザ自動化ツールが利用できず、`js/data/clf-c02.js`の構文・整合性はPythonスクリプトによる静的検証（括弧の対応、choices/why配列が各4件、correct添字の範囲、id重複なし、source参照の整合性）のみで確認した。実際にブラウザ（PC/実機Pixel 9a）で単語問題・想定問題・模擬試験の3モードを一通り触って崩れがないか確認すること。
 3. **AIF-C01のコンテンツ収集を開始済み（2026-10-19〜）**: `js/data/aif-c01.js`（ドメインキー `aiml`/`genai`/`fm`/`responsible`/`security`）を新設し、クラウドの定期実行ルーティン（2時間ごと）が `CONTENT_GENERATION_AIF.md` の手順で追加している。単語は `content/aif-c01-vocab-list.md` の全単語リストを上から順に埋める方式。検証は `python3 scripts/validate_content.py aif-c01`。アプリ（`index.html`/`js/app.js`）への組み込み・試験切替UIは未実装（後で行う）。
-4. 実装・動作確認後、同じ仕組みでAIF-C01のコンテンツ・ドメインを追加する（`js/data/aif-c01.js` 等を新設し、`DOMAINS`/`VOCAB`/`PRACTICE` の扱いをどう分けるか別途検討）。
+4. AIF-C01をアプリに組み込む（`js/data/aif-c01.js` はCLF-C02と同じ変数名 `DOMAINS`/`SOURCES`/`VOCAB`/`PRACTICE`/`MOCK_POOL` を使っているため、同時読み込み時の名前の扱いと試験切替UIを別途検討）。
 
 ## 参考
 - GitHubリポジトリ: `hirata0522/AWS-training`（private）。ローカルの`.git`に`origin`として設定済み。
