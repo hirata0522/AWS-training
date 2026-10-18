@@ -165,6 +165,24 @@ def main():
     ):
         print(f'{name}: {total} / {target}  domains={dict(domains)}')
 
+    print('\n=== correct-is-longest rate (target ~25%) ===')
+    for name, sec in (('VOCAB', vocab_src), ('PRACTICE', practice_src), ('MOCK_POOL', mock_src)):
+        n = longest = 0
+        for item in re.split(r"\n(?=\s*\{id:')", sec):
+            cm = re.search(r"choices:\[((?:\s*'(?:[^'\\]|\\.)*'\s*,?)+)\]", item)
+            co = re.search(r"correct:(\[[^\]]*\]|\d+)", item)
+            if not (cm and co):
+                continue
+            ch = re.findall(r"'((?:[^'\\]|\\.)*)'", cm.group(1))
+            idx = [int(x) for x in re.findall(r"\d+", co.group(1))]
+            if len(ch) != 4 or not idx:
+                continue
+            L = [len(c) for c in ch]
+            n += 1
+            if max(L[i] for i in idx) >= max(L):
+                longest += 1
+        print(f'{name}: {longest} / {n} ({100 * longest // max(n, 1)}%)')
+
     if errors:
         print('\n=== errors ===')
         print('\n'.join(errors))
