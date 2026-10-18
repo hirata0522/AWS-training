@@ -245,3 +245,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   累計 VOCAB=21 / PRACTICE=4 / MOCK_POOL=1。単語リスト進捗 21/474。追加トピック: AI/ML/DL/NN/LLM/FM/GenAI、Temperature/Top-p/Top-k/Maximum Tokens、責任あるAI・公平性、責任共有モデル、IAM/IAMロール。
   新規SOURCES: whatIsAi, whatIsGenai, bedrockInference, responsibleAi, sharedResp, whatIsMl, whatIsNn, whatIsLlm, iamRoles（いずれもWebFetch成功。aws.amazon.com/what-is/responsible-ai/ は404のため aws.amazon.com/ai/responsible-ai/ を採用）。
   見送り: 行21「Bias (Responsible AI)」は公式の定義ページを今回確認できず `未` のまま（次回に回す）。正解最長の割合はVOCABで23%に調整済み。PRACTICE/MOCK_POOLは今回追加なし。
+- 2026-10-18（定期実行・3回目）: 単語リスト行21,23〜26,28〜34のうち12語のVOCABを追加（v22〜v33）。累計 VOCAB=33 / PRACTICE=4 / MOCK_POOL=1。単語リスト進捗 33/474。
+  追加トピック: Bias、Transformer、Stop Sequences、IAM Policy、Training、Token、RAG、Least Privilege、Inference、Training Data、Bedrock Knowledge Bases、Resource-based Policy。
+  新規SOURCES: ragAws, bedrockKb, iamPolicies, transformers, aiBias（いずれもWebFetch成功）。改訂履歴ページは今回未確認（最新はv1.1のまま扱った）。
+  見送り: 行27 Inclusivity（公式の定義ページ未確認）、行35 Tokenization は次回に回す。正解最長の割合はVOCABで27%に調整済み。PRACTICE/MOCK_POOLは今回追加なし。

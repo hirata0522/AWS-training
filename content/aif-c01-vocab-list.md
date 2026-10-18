@@ -24,20 +24,20 @@
 | 18 | Algorithm | aiml | v18 |
 | 19 | Maximum Tokens | fm | v19 |
 | 20 | IAM Role | security | v20 |
-| 21 | Bias (Responsible AI) | responsible | 未 |
+| 21 | Bias (Responsible AI) | responsible | v22 |
 | 22 | Model | aiml | v21 |
-| 23 | Transformer | genai | 未 |
-| 24 | Stop Sequences | fm | 未 |
-| 25 | IAM Policy | security | 未 |
-| 26 | Training | aiml | 未 |
+| 23 | Transformer | genai | v23 |
+| 24 | Stop Sequences | fm | v24 |
+| 25 | IAM Policy | security | v25 |
+| 26 | Training | aiml | v26 |
 | 27 | Inclusivity | responsible | 未 |
-| 28 | Token | genai | 未 |
-| 29 | Retrieval Augmented Generation (RAG) | fm | 未 |
-| 30 | Least Privilege | security | 未 |
-| 31 | Inference | aiml | 未 |
-| 32 | Training Data | aiml | 未 |
-| 33 | Amazon Bedrock Knowledge Bases | fm | 未 |
-| 34 | Resource-based Policy | security | 未 |
+| 28 | Token | genai | v27 |
+| 29 | Retrieval Augmented Generation (RAG) | fm | v28 |
+| 30 | Least Privilege | security | v29 |
+| 31 | Inference | aiml | v30 |
+| 32 | Training Data | aiml | v31 |
+| 33 | Amazon Bedrock Knowledge Bases | fm | v32 |
+| 34 | Resource-based Policy | security | v33 |
 | 35 | Tokenization | genai | 未 |
 | 36 | Robustness | responsible | 未 |
 | 37 | Labeled Data | aiml | 未 |
