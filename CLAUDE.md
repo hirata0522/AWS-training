@@ -95,8 +95,10 @@ CLF-C02の一部のみ（単語8件、想定問題6件）。モック自体は�
 
 1. **CLF-C02コンテンツのさらなる拡充（任意・継続タスク）**: 単語48件・想定問題46件まで増やしたが、本番の65問規模の模擬試験をより多様な問題でカバーするには、さらに増量する余地がある。追加する際は必ず出典（AWS公式ドキュメント）を確認してから`source`フィールドを埋めること。ユーザーからは「時間がかかるなら定期実行で少しずつ追加でもよい」との指示あり（`/loop`や`schedule`スキルでの定期実行も検討可）。
 2. **実機での動作確認が未完了**: このセッションではNode.js・ブラウザ自動化ツールが利用できず、`js/data/clf-c02.js`の構文・整合性はPythonスクリプトによる静的検証（括弧の対応、choices/why配列が各4件、correct添字の範囲、id重複なし、source参照の整合性）のみで確認した。実際にブラウザ（PC/実機Pixel 9a）で単語問題・想定問題・模擬試験の3モードを一通り触って崩れがないか確認すること。
-3. **AIF-C01のコンテンツ収集を開始済み（2026-10-19〜）**: `js/data/aif-c01.js`（ドメインキー `aiml`/`genai`/`fm`/`responsible`/`security`）を新設し、クラウドの定期実行ルーティン（2時間ごと）が `CONTENT_GENERATION_AIF.md` の手順で追加している。単語は `content/aif-c01-vocab-list.md` の全単語リストを上から順に埋める方式。検証は `python3 scripts/validate_content.py aif-c01`。アプリ（`index.html`/`js/app.js`）への組み込み・試験切替UIは未実装（後で行う）。
-4. AIF-C01をアプリに組み込む（`js/data/aif-c01.js` はCLF-C02と同じ変数名 `DOMAINS`/`SOURCES`/`VOCAB`/`PRACTICE`/`MOCK_POOL` を使っているため、同時読み込み時の名前の扱いと試験切替UIを別途検討）。
+3. **AIF-C01のコンテンツ収集を開始済み（2026-10-19〜）**: `js/data/aif-c01.js`（ドメインキー `aiml`/`genai`/`fm`/`responsible`/`security`）を新設し、クラウドの定期実行ルーティン `aif-c01-content-generator`（2時間ごと）が `CONTENT_GENERATION_AIF.md` の手順で追加している。単語は `content/aif-c01-vocab-list.md` の全単語リストを上から順に埋める方式。検証は `python3 scripts/validate_content.py aif-c01`（引数なしはCLF-C02）。
+4. **複数試験対応（2026-10-19実装）**: 各データファイルは即時関数で囲み、末尾で `window.EXAMS['<試験キー>'] = {code, name, mock:{questions, minutes}, DOMAINS, SOURCES, VOCAB, PRACTICE, MOCK_POOL}` に登録する。`js/storage.js` の `useExam()` が選択中の試験のデータをグローバルの `DOMAINS`/`VOCAB`/`PRACTICE`/`MOCK_POOL`/`EXAM` に差し替える。ホーム画面上部で試験を切り替え。IDは試験内でのみ一意で、進捗はlocalStorage `awsTrainingProgress_v2`（`{currentExam, exams:{<試験キー>:{<id>:記録}}}`）に試験ごとに保存。旧 `awsTrainingProgress_v1` は初回起動時にCLF-C02分として引き継ぐ（v1自体は残す）。v1にあった「空なら仮の進捗を入れる」シード処理は廃止。
+5. **問題形式**: `PRACTICE`/`MOCK_POOL` は `single`/`multi`/`ordering`（`items`を正しい順に記述、表示時にシャッフル）/`matching`（`prompts`・`options`・`correct`=各プロンプトの正解options添字）に対応。データ形式の詳細は `CONTENT_GENERATION_AIF.md`。CLF-C02は本番が選択式のみなので `single`/`multi` のみ。
+6. **実機での確認**: 2026-10-19にjsdom（scratchpadに一時導入したNode.js）で、試験切替・4形式の出題/採点/解説・模擬試験・進捗移行を自動テスト済み。実機（Pixel 9a）での見た目（特に並び替え・組み合わせの操作感、プルダウン）は未確認。
 
 ## 参考
 - GitHubリポジトリ: `hirata0522/AWS-training`（private）。ローカルの`.git`に`origin`として設定済み。

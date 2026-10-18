@@ -98,79 +98,160 @@ def main():
         print(f'\n{len(errors)} error(s) found.')
         return 1
 
-    idx_sources = src.index('var SOURCES')
-    idx_vocab = src.index('var VOCAB')
-    idx_practice = src.index('var PRACTICE')
-    idx_mock = src.index('var MOCK_POOL')
-    sources_src = src[idx_sources:idx_vocab]
-    vocab_src = src[idx_vocab:idx_practice]
-    practice_src = src[idx_practice:idx_mock]
-    mock_src = src[idx_mock:]
+
+    def section(start_marker, end_marker=None):
+        start = src.index(start_marker)
+        end = src.index(end_marker) if end_marker else len(src)
+        sec = src[start:end]
+        # 配列の閉じ「];」以降（試験登録コードなど）は対象外
+        close = sec.find('\n];')
+        return sec[:close] if close != -1 else sec
+
+    sources_src = section('var SOURCES', 'var VOCAB')
+    vocab_src = section('var VOCAB', 'var PRACTICE')
+    practice_src = section('var PRACTICE', 'var MOCK_POOL')
+    mock_src = section('var MOCK_POOL')
 
     sources_defined = set(re.findall(r"^\s*(\w+):\{label:", sources_src, re.M))
 
-    def extract_ids(section, prefix):
-        return re.findall(r"id:'(" + prefix + r"\d+)'", section)
+    def split_items(sec):
+        return [it for it in re.split(r"\n(?=\s*\{id:')", sec) if re.match(r"\s*\{id:'", it)]
 
-    vids = extract_ids(vocab_src, 'v')
-    pids = extract_ids(practice_src, 'p')
-    mids = extract_ids(mock_src, 'm')
-    all_ids = vids + pids + mids
-    dup_ids = [k for k, c in Counter(all_ids).items() if c > 1]
+    def get_array(item, key):
+        """item 内の `key:[ ... ]` の中身を返す（文字列内の括弧は無視）。無ければ None。"""
+        m = re.search(r"(?<![\w.])" + key + r":\[", item)
+        if not m:
+            return None
+        i, depth, in_str = m.end(), 1, False
+        while i < len(item):
+            c = item[i]
+            if in_str:
+                if c == '\\':
+                    i += 2
+                    continue
+                if c == "'":
+                    in_str = False
+            elif c == "'":
+                in_str = True
+            elif c == '[':
+                depth += 1
+            elif c == ']':
+                depth -= 1
+                if depth == 0:
+                    return item[m.end():i]
+            i += 1
+        return None
+
+    def strs(raw):
+        return [] if raw is None else STR_RE.findall(raw)
+
+    def ints(raw):
+        return [] if raw is None else [int(x) for x in re.findall(r"-?\d+", raw)]
+
+    TYPES = ('single', 'multi', 'ordering', 'matching')
+
+    def check_pool(sec, pool_name, is_vocab):
+        pool_errors = []
+        items = split_items(sec)
+        stats = {'domains': Counter(), 'types': Counter(), 'n': len(items),
+                 'longest': 0, 'choice_n': 0, 'single_pos': Counter()}
+        for item in items:
+            iid = re.match(r"\s*\{id:'(\w+)'", item).group(1)
+
+            def err(msg):
+                pool_errors.append(f'{pool_name} {iid}: {msg}')
+
+            dm = re.search(r"domain:'(\w+)'", item)
+            if not dm or dm.group(1) not in VALID_DOMAINS:
+                err(f'invalid or missing domain: {dm.group(1) if dm else None}')
+            else:
+                stats['domains'][dm.group(1)] += 1
+            sm = re.search(r"source:SOURCES\.(\w+)", item)
+            if not sm:
+                err('missing source')
+            elif sm.group(1) not in sources_defined:
+                err(f'undefined source ref: {sm.group(1)}')
+
+            why = strs(get_array(item, 'why'))
+            if is_vocab:
+                qtype = 'single'
+                cm = re.search(r"correct:(\d+)", item)
+                correct = [int(cm.group(1))] if cm else []
+                if not re.search(r"term:'", item):
+                    err('missing term')
+            else:
+                tm = re.search(r"type:'(\w+)'", item)
+                qtype = tm.group(1) if tm else None
+                if qtype not in TYPES:
+                    err(f'invalid type: {qtype}')
+                    continue
+                correct = ints(get_array(item, 'correct'))
+            stats['types'][qtype] += 1
+
+            if qtype in ('single', 'multi'):
+                choices = strs(get_array(item, 'choices'))
+                n_ok = (len(choices) == 4) if (is_vocab or qtype == 'single') else (4 <= len(choices) <= 6)
+                if not n_ok:
+                    err(f'{qtype}: choices has {len(choices)} items')
+                if len(why) != len(choices):
+                    err(f'why has {len(why)} items (choices has {len(choices)})')
+                if any(c < 0 or c >= len(choices) for c in correct) or len(set(correct)) != len(correct):
+                    err(f'correct out of range or duplicated: {correct}')
+                if qtype == 'single' and len(correct) != 1:
+                    err(f'type=single but correct has {len(correct)} entries')
+                if qtype == 'multi' and not (2 <= len(correct) < len(choices)):
+                    err(f'type=multi but correct has {len(correct)} entries')
+                if choices and correct and all(0 <= c < len(choices) for c in correct):
+                    L = [len(c) for c in choices]
+                    stats['choice_n'] += 1
+                    if max(L[c] for c in correct) >= max(L):
+                        stats['longest'] += 1
+                    if qtype == 'single':
+                        stats['single_pos'][correct[0]] += 1
+            elif qtype == 'ordering':
+                steps = strs(get_array(item, 'items'))
+                if not (3 <= len(steps) <= 5):
+                    err(f'ordering: items has {len(steps)} entries (expected 3-5)')
+                if len(set(steps)) != len(steps):
+                    err('ordering: duplicated items')
+                if len(why) != len(steps):
+                    err(f'ordering: why has {len(why)} items (items has {len(steps)})')
+                if get_array(item, 'choices') is not None or get_array(item, 'correct') is not None:
+                    err('ordering: must not have choices/correct (items are listed in the correct order)')
+            elif qtype == 'matching':
+                prompts = strs(get_array(item, 'prompts'))
+                options = strs(get_array(item, 'options'))
+                if not (3 <= len(prompts) <= 7):
+                    err(f'matching: prompts has {len(prompts)} entries (expected 3-7)')
+                if not (len(prompts) <= len(options) <= 7):
+                    err(f'matching: options has {len(options)} entries (expected {len(prompts)}-7)')
+                if len(set(options)) != len(options):
+                    err('matching: duplicated options')
+                if len(correct) != len(prompts):
+                    err(f'matching: correct has {len(correct)} entries (prompts has {len(prompts)})')
+                if any(c < 0 or c >= len(options) for c in correct):
+                    err(f'matching: correct out of range: {correct}')
+                if len(why) != len(prompts):
+                    err(f'matching: why has {len(why)} items (prompts has {len(prompts)})')
+                if get_array(item, 'choices') is not None:
+                    err('matching: must not have choices')
+        return pool_errors, stats
+
+    v_errors, v_stats = check_pool(vocab_src, 'VOCAB', is_vocab=True)
+    p_errors, p_stats = check_pool(practice_src, 'PRACTICE', is_vocab=False)
+    m_errors, m_stats = check_pool(mock_src, 'MOCK_POOL', is_vocab=False)
+    errors.extend(v_errors + p_errors + m_errors)
+
+    vids = re.findall(r"\{id:'(\w+)'", vocab_src)
+    pids = re.findall(r"\{id:'(\w+)'", practice_src)
+    mids = re.findall(r"\{id:'(\w+)'", mock_src)
+    for name, ids, prefix in (('VOCAB', vids, 'v'), ('PRACTICE', pids, 'p'), ('MOCK_POOL', mids, 'm')):
+        bad = [i for i in ids if not re.fullmatch(prefix + r"\d+", i)]
+        if bad:
+            errors.append(f'{name}: id(s) must be "{prefix}<number>": {bad}')
+    dup_ids = [k for k, c in Counter(vids + pids + mids).items() if c > 1]
     if dup_ids:
         errors.append(f'duplicate id(s): {dup_ids}')
-
-    def check_pool(section, pool_name, correct_is_int):
-        pool_errors = []
-        choice_blocks = re.findall(r"choices:\[(.*?)\]", section, re.S)
-        why_blocks = re.findall(r"why:\[(.*?)\]", section, re.S)
-        if len(choice_blocks) != len(why_blocks):
-            pool_errors.append(f'{pool_name}: choices/why block count mismatch '
-                                f'({len(choice_blocks)} vs {len(why_blocks)})')
-        for i, b in enumerate(choice_blocks):
-            n = len(STR_RE.findall(b))
-            if n != 4:
-                pool_errors.append(f'{pool_name}: choices block #{i} has {n} items (expected 4)')
-        for i, b in enumerate(why_blocks):
-            n = len(STR_RE.findall(b))
-            if n != 4:
-                pool_errors.append(f'{pool_name}: why block #{i} has {n} items (expected 4)')
-
-        if correct_is_int:
-            corrects = re.findall(r"correct:(\d+)", section)
-            for c in corrects:
-                if not (0 <= int(c) <= 3):
-                    pool_errors.append(f'{pool_name}: correct index out of range: {c}')
-        else:
-            corrects = re.findall(r"correct:\[([^\]]*)\]", section)
-            types = re.findall(r"type:'(single|multi)'", section)
-            if len(corrects) != len(types):
-                pool_errors.append(f'{pool_name}: correct/type count mismatch '
-                                    f'({len(corrects)} vs {len(types)})')
-            for i, c in enumerate(corrects):
-                nums = [int(x.strip()) for x in c.split(',') if x.strip() != '']
-                if any(x < 0 or x > 3 for x in nums):
-                    pool_errors.append(f'{pool_name}: correct index out of range: {c}')
-                if i < len(types):
-                    t = types[i]
-                    if t == 'single' and len(nums) != 1:
-                        pool_errors.append(f'{pool_name}: type=single but correct has {len(nums)} entries: {c}')
-                    if t == 'multi' and len(nums) < 2:
-                        pool_errors.append(f'{pool_name}: type=multi but correct has {len(nums)} entries: {c}')
-
-        source_refs = set(re.findall(r"source:SOURCES\.(\w+)", section))
-        missing = source_refs - sources_defined
-        if missing:
-            pool_errors.append(f'{pool_name}: undefined source refs: {missing}')
-
-        domain_refs = re.findall(r"domain:'(\w+)'", section)
-        bad_domains = set(domain_refs) - VALID_DOMAINS
-        if bad_domains:
-            pool_errors.append(f'{pool_name}: invalid domain(s): {bad_domains}')
-
-        return pool_errors, Counter(domain_refs), len(domain_refs)
-
-    v_errors, v_domains, v_total = check_pool(vocab_src, 'VOCAB', correct_is_int=True)
 
     # 単語リスト（全単語を先に列挙し、上から順にVOCABへ埋めていく方式）の整合性チェック
     list_path = EXAMS[exam].get('vocab_list')
@@ -209,19 +290,12 @@ def main():
             excluded = sum(1 for r in rows if r[3] == '除外')
             targets = dict(targets, VOCAB=len(rows) - excluded)
             list_summary = (len(rows), len(done_ids), excluded, Counter(r[2] for r in rows if r[3] != '除外'))
-    p_errors, p_domains, p_total = check_pool(practice_src, 'PRACTICE', correct_is_int=False)
-    m_errors, m_domains, m_total = check_pool(mock_src, 'MOCK_POOL', correct_is_int=False)
-    errors.extend(v_errors)
-    errors.extend(p_errors)
-    errors.extend(m_errors)
 
+    pools = (('VOCAB', v_stats), ('PRACTICE', p_stats), ('MOCK_POOL', m_stats))
     print(f'=== counts ({exam}) ===')
-    for name, total, domains, target in (
-        ('VOCAB', v_total, v_domains, targets['VOCAB']),
-        ('PRACTICE', p_total, p_domains, targets['PRACTICE']),
-        ('MOCK_POOL', m_total, m_domains, targets['MOCK_POOL']),
-    ):
-        print(f'{name}: {total} / {target}  domains={dict(domains)}')
+    for name, st in pools:
+        types = '' if name == 'VOCAB' else f'  types={dict(st["types"])}'
+        print(f'{name}: {st["n"]} / {targets[name]}  domains={dict(st["domains"])}{types}')
 
     if list_path:
         if list_summary:
@@ -231,23 +305,13 @@ def main():
         else:
             print(f'VOCAB list ({list_path}): not created yet')
 
-    print('\n=== correct-is-longest rate (target ~25%) ===')
-    for name, sec in (('VOCAB', vocab_src), ('PRACTICE', practice_src), ('MOCK_POOL', mock_src)):
-        n = longest = 0
-        for item in re.split(r"\n(?=\s*\{id:')", sec):
-            cm = re.search(r"choices:\[((?:\s*'(?:[^'\\]|\\.)*'\s*,?)+)\]", item)
-            co = re.search(r"correct:(\[[^\]]*\]|\d+)", item)
-            if not (cm and co):
-                continue
-            ch = re.findall(r"'((?:[^'\\]|\\.)*)'", cm.group(1))
-            idx = [int(x) for x in re.findall(r"\d+", co.group(1))]
-            if len(ch) != 4 or not idx:
-                continue
-            L = [len(c) for c in ch]
-            n += 1
-            if max(L[i] for i in idx) >= max(L):
-                longest += 1
-        print(f'{name}: {longest} / {n} ({100 * longest // max(n, 1)}%)')
+    print('\n=== correct-is-longest rate, single/multi only (target ~25%) ===')
+    for name, st in pools:
+        print(f'{name}: {st["longest"]} / {st["choice_n"]} ({100 * st["longest"] // max(st["choice_n"], 1)}%)')
+
+    print('\n=== correct position of single-answer items (should be roughly even) ===')
+    for name, st in pools:
+        print(f'{name}: ' + ' '.join(f'{i}:{st["single_pos"][i]}' for i in range(4)))
 
     if errors:
         print('\n=== errors ===')

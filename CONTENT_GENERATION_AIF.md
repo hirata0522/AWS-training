@@ -4,9 +4,10 @@
 目標件数まで段階的に増やすための手順書。定期実行のクラウドエージェント（ルーティン）が
 **毎回ゼロから**このファイルを読んで作業する前提で書かれている。会話の記憶は引き継がれない。
 
-CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、**単語（VOCAB）だけは「先に全単語リストを
-作り、上から順に埋める」方式**である点が異なる（後述）。アプリ（`index.html`/`js/app.js`）への
-組み込みはまだ行っていない。このルーティンの仕事はデータを増やすことだけ。
+CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（VOCAB）は「先に全単語リストを
+作り、上から順に埋める」方式**、(2) **想定問題・模擬試験は並び替え(ordering)・組み合わせ(matching)形式も
+作る**、の2点が異なる（後述）。アプリはホーム画面でCLF-C02/AIF-C01を切り替えられ、`js/data/aif-c01.js`
+に追加した項目はそのまま出題される。このルーティンの仕事はデータを増やすことだけ（アプリのコードは触らない）。
 
 ## 試験の基本情報（2026-10-19にWebFetchで確認）
 
@@ -122,13 +123,41 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、**単語（VOCA
 
 ### 項目の作り方（必読・精度に関する重要ルール）
 
-- データ構造は既存の項目をそのまま真似ること（`VOCAB`はネストした`q:{...}`で`correct`は整数、
-  `PRACTICE`/`MOCK_POOL`はフラットな構造で`correct`は配列、`type`は`'single'`か`'multi'`）。
-  文字列はシングルクォート。文中にシングルクォートを使う場合は `\'` でエスケープする。
-- 本番試験には並べ替え(Ordering)・組み合わせ(Matching)形式もあるが、アプリは未対応なので、
-  **単一選択・複数選択（4択、multiは正解2つ）のみ**作る。並べ替え・組み合わせで問われる知識
-  （例: MLパイプラインの段階の順序）は、「正しい順序はどれか」の4択などに置き換える。
-- 各項目は選択肢4つ・解説（`why`）4つを必ずセットで用意し、不正解の選択肢は**隣接・類似する
+- **ファイルの構造**: `js/data/aif-c01.js` は全体が即時関数 `(function(){ ... })();` で囲まれており、
+  末尾で `window.EXAMS['aif-c01']` に自分を登録している（アプリは複数試験を同時に読み込むため、
+  `var VOCAB` 等はファイル内だけのローカル変数）。新規項目は各配列（`VOCAB`/`PRACTICE`/`MOCK_POOL`）の
+  閉じ `];` の直前に追加し、**末尾の登録ブロックと先頭・末尾の即時関数は変更しない**。
+  IDは試験ごとに独立（CLF-C02にも `v1` があるが衝突しない。進捗も試験ごとに分けて保存される）。
+- データ構造は既存の項目をそのまま真似ること。文字列はシングルクォート。文中にシングルクォートを使う場合は
+  `\'` でエスケープする。`VOCAB`は従来どおりネストした`q:{...}`で4択・`correct`は整数。
+- `PRACTICE`/`MOCK_POOL` は本番と同じ4つの形式（`type`）に対応している。
+  - `single`（単一選択）: `choices` 4つ、`correct:[正解の添字]`、`why` は `choices` と同数。
+  - `multi`（複数選択）: 本番同様 **5択で正解2つ** を基本とする（4〜6択・正解2つ以上まで許容）。
+    問題文に「（2つ選択）」のように正解数を明記する。`why` は `choices` と同数。
+  - `ordering`（並び替え）: `items` に3〜5個の手順を **正しい順に** 並べて書く（アプリが表示時にシャッフルする）。
+    `correct`・`choices` は書かない。`why` は `items` と同数で、各手順がその位置に来る理由を書く。
+    公式ドキュメントで順序がはっきり示されている手順（例: MLワークフロー、RAGの処理の流れ、
+    モデルのカスタマイズの手順）だけを題材にし、順序に解釈の余地があるものは作らない。
+    ```js
+    {id:'p3', domain:'aiml', type:'ordering', source:SOURCES.xxx, text:'…を順に並べてください。',
+      items:['手順1','手順2','手順3','手順4'],
+      why:['手順1の理由','手順2の理由','手順3の理由','手順4の理由']},
+    ```
+  - `matching`（組み合わせ）: `prompts` に3〜7個の項目（ユースケース等）、`options` にプロンプト数以上
+    7個以下の選択肢（サービス名等。1つ以上は使わない紛らわしい選択肢を入れるのが望ましい）、
+    `correct` は各プロンプトの正解の `options` 添字（`prompts` と同数）。`why` は `prompts` と同数で、
+    使わない選択肢がなぜ当てはまらないかは最後の `why` などに書き添える。`correct` が `[0,1,2,3]` のような
+    順番どおりにならないよう、`options` の並びを入れ替えること。
+    ```js
+    {id:'p4', domain:'aiml', type:'matching', source:SOURCES.xxx, text:'それぞれに最も適したものを選んでください。',
+      prompts:['ユースケースA','ユースケースB','ユースケースC'],
+      options:['サービスX','サービスY','サービスZ','サービスW'], correct:[2,0,3],
+      why:['Aの理由','Bの理由','Cの理由（サービスYは…なので当てはまらない）']},
+    ```
+  - 形式の配分の目安（`PRACTICE`/`MOCK_POOL` それぞれの累計で）: `single` 約70% ／ `multi` 約15% ／
+    `ordering` 約7% ／ `matching` 約8%。`validate_content.py aif-c01` が `types=` で現在の内訳を表示するので、
+    少ない形式を優先して補う。
+- `single`/`multi` は不正解の選択肢を**隣接・類似する
   AWSサービスや紛らわしい用語**にすること。良い例:
   Bedrock↔SageMaker AI↔SageMaker JumpStart、Comprehend(テキスト分析)↔Textract(文書からの抽出)↔
   Transcribe(音声→テキスト)↔Polly(テキスト→音声)↔Translate、Lex(会話ボット)↔Amazon Q、
@@ -137,14 +166,16 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、**単語（VOCA
   教師あり↔教師なし↔強化学習、過学習↔学習不足、バッチ推論↔リアルタイム推論↔非同期↔サーバーレス、
   temperature↔top-p↔top-k↔最大トークン数、CloudTrail(API監査)↔CloudWatch(監視)↔Config(構成履歴)、
   Macie(機密データ検出)↔Inspector(脆弱性)↔KMS。
-- **正解の選択肢の位置を偏らせないこと。** 今回追加する項目群の中で正解位置(0,1,2,3)がおおむね均等に
+- **正解の選択肢の位置を偏らせないこと**（`single`/`multi`。`validate_content.py` が単一選択の正解位置の
+  分布を表示する）。今回追加する項目群の中で正解位置(0,1,2,3)がおおむね均等に
   なるよう、1件ごとに意識的にローテーションする。複数選択の正解の組み合わせ
   （{0,1}{1,2}{2,3}{0,3}{0,2}{1,3}）も固定しない。追加後は既存分を含めた累計の位置分布を数え、
   偏っていれば今回追加分を少ない側に寄せる（選択肢と`why`を一緒に入れ替え、`correct`との対応を崩さない）。
 - **選択肢の長さで正解が分からないようにすること。** 正解が最長になる割合は約25%に収める。
   (1) 不正解も正解と同程度の長さ・具体性・文体で書く、(2) 4件に1件程度は不正解のどれかを正解より明確に
   長くする、(3) 補足は選択肢ではなく`why`に書く、(4) サービス名だけの選択肢では全選択肢の形式をそろえる。
-  `validate_content.py` が「正解が最長の割合」を表示するので、追加後に確認する（同じ長さも最長扱い）。
+  `validate_content.py` が「正解が最長の割合」を表示するので、追加後に確認する（同じ長さも最長扱い。
+  5択の`multi`はランダムなら約20〜40%になる。`ordering`/`matching`は対象外）。
 - **出典（`source`）を必ず付けること。**
   - 既存の `SOURCES` に適切なものがあれば `source:SOURCES.xxx` で再利用する。
   - なければ、AWS公式ドキュメント（`docs.aws.amazon.com`）または公式ページ（`aws.amazon.com`）を
@@ -171,7 +202,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、**単語（VOCA
 
 7. 新規項目を書き終えたら、再度 `python3 scripts/validate_content.py aif-c01` を実行し、
    exit code 0（エラーなし）であることを確認する。**エラーが残っている状態でコミットしない。**
-   `node` が使える環境なら `node -e` で `js/data/aif-c01.js` を `vm.runInContext` で読み込めることも確認する。
+   `node` が使える環境なら、次のコマンドで `js/data/aif-c01.js` が実際に読み込めることも確認する
+   （件数が表示されればOK）:
+   `node -e "const vm=require('vm');const c={window:{}};vm.createContext(c);vm.runInContext(require('fs').readFileSync('js/data/aif-c01.js','utf8'),c);const e=c.window.EXAMS['aif-c01'];console.log(e.VOCAB.length,e.PRACTICE.length,e.MOCK_POOL.length)"`
 8. 変更を確認してコミットする。
    - 対象ファイルは `js/data/aif-c01.js`、`content/aif-c01-vocab-list.md`、このファイル（進捗ログ）。
    - コミットメッセージ例: `Add N AIF-C01 content items (vocab a / practice b / mock c)`、
@@ -198,3 +231,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、**単語（VOCA
   対象サービス・改訂履歴、Bedrock/SageMaker AIの公式ページをWebFetchで確認したうえで種データを投入
   （VOCAB=2, PRACTICE=2, MOCK_POOL=1）。`scripts/validate_content.py` に試験引数（`aif-c01`）と単語リスト
   整合性チェックを追加。単語リスト（`content/aif-c01-vocab-list.md`）は未作成で、次回の定期実行で作成する。
+- 2026-10-19: 対話セッションで仕様変更。(1) 想定問題・模擬試験に並び替え(`ordering`)・組み合わせ(`matching`)形式を
+  追加し、アプリ（出題・採点・解説表示）と `validate_content.py`（1件ずつ形式別に検証、形式の内訳・単一選択の正解位置分布を
+  表示）を対応させた。`multi` は5択を基本に変更。種データとして `p3`（ordering: MLワークフロー、出典 SageMaker AI の
+  how-it-works-mlconcepts）と `p4`（matching: Comprehend/Textract/Transcribe/Polly、出典 AWS概要ホワイトペーパーの
+  機械学習のページ）を追加（いずれもWebFetchで本文確認）。(2) データファイルを即時関数で囲み
+  `window.EXAMS['aif-c01']` に登録する形式に変更（CLF-C02も同様）。進捗は試験ごとに分けて保存。

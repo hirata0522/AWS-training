@@ -153,6 +153,55 @@ main{flex:1; padding:1.25rem 1.1rem 2rem; display:flex; flex-direction:column; g
 .choice.wrong .mark::after{background:var(--critical); border-radius:2px;}
 .choice:disabled, .choice[data-locked="1"]{cursor:default;}
 
+/* 並び替え問題: 上に並べた結果（番号付きの枠）、下に未選択の選択肢 */
+.order-slots{display:flex; flex-direction:column; gap:.45rem;}
+.order-slot{
+  display:flex; align-items:flex-start; gap:.7rem; text-align:left; width:100%;
+  padding:.7rem .9rem; border-radius:12px; border:1px dashed var(--border);
+  background:transparent; font-family:'Noto Sans JP',sans-serif; font-size:.92rem;
+  color:var(--ink); line-height:1.5;
+}
+.order-slot.filled{border-style:solid; border-color:var(--accent); background:var(--accent-soft); cursor:pointer;}
+.order-slot.correct{border-color:var(--good); background:var(--good-soft);}
+.order-slot.wrong{border-color:var(--critical); background:var(--critical-soft);}
+.order-slot[data-locked="1"]{cursor:default;}
+.order-num{
+  flex:none; width:22px; height:22px; border-radius:50%; display:inline-flex;
+  align-items:center; justify-content:center; margin-top:.05rem;
+  font-family:'IBM Plex Mono',monospace; font-size:.78rem; font-weight:600;
+  background:var(--surface-alt); color:var(--ink-muted);
+}
+.order-slot.filled .order-num{background:var(--surface); color:var(--ink);}
+.order-placeholder{color:var(--ink-muted);}
+
+/* 組み合わせ問題: 各項目の下にプルダウン */
+.match-list{display:flex; flex-direction:column; gap:.6rem;}
+.match-row{
+  display:flex; flex-direction:column; gap:.5rem; padding:.85rem .9rem;
+  border-radius:12px; border:1px solid var(--border); background:var(--surface);
+}
+.match-row.correct{border-color:var(--good); background:var(--good-soft);}
+.match-row.wrong{border-color:var(--critical); background:var(--critical-soft);}
+.match-prompt{margin:0; font-size:.92rem; line-height:1.5;}
+.match-select{
+  width:100%; padding:.6rem .7rem; border-radius:10px; border:1px solid var(--border);
+  background:var(--bg); color:var(--ink); font-family:'Noto Sans JP',sans-serif; font-size:.92rem;
+}
+.match-select:disabled{opacity:1; color:var(--ink);}
+.your-answer{color:var(--critical); font-size:.8rem;}
+
+/* ホームの試験切り替え */
+.exam-switch{
+  display:flex; gap:.25rem; padding:.25rem; margin-bottom:1rem; border-radius:12px;
+  background:var(--surface-alt); width:fit-content;
+}
+.exam-tab{
+  border:none; background:transparent; color:var(--ink-muted); cursor:pointer;
+  padding:.45rem .9rem; border-radius:9px; font-family:'IBM Plex Mono',monospace;
+  font-weight:600; font-size:.82rem;
+}
+.exam-tab.active{background:var(--surface); color:var(--ink); box-shadow:var(--shadow);}
+
 .feedback-panel{
   border-radius:14px; padding:1rem 1.05rem; font-size:.88rem; line-height:1.6;
   border:1px solid var(--border); background:var(--surface-alt);

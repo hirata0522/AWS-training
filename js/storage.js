@@ -1,27 +1,52 @@
 'use strict';
 
-var STORAGE_KEY = 'awsTrainingProgress_v1';
+// 進捗は試験ごとに分けて保存する（IDは試験内でのみ一意なため）。
+// { currentExam:'clf-c02', exams:{ 'clf-c02':{ [itemId]:{attempts, correct, lastSelf, lastResult, lastAt} }, ... } }
+var STORAGE_KEY = 'awsTrainingProgress_v2';
+// v1 は CLF-C02 のみ・IDをそのままキーにしていた形式。初回だけ CLF-C02 の進捗として引き継ぐ（v1自体は消さない）。
+var LEGACY_STORAGE_KEY = 'awsTrainingProgress_v1';
+var DEFAULT_EXAM = 'clf-c02';
 
-function loadProgress(){
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ return {}; }
+function loadStore(){
+  var s = null;
+  try { s = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e){}
+  if (!s || typeof s !== 'object') s = {};
+  if (!s.exams || typeof s.exams !== 'object') s.exams = {};
+  if (!s.exams[DEFAULT_EXAM]){
+    try {
+      var legacy = JSON.parse(localStorage.getItem(LEGACY_STORAGE_KEY));
+      if (legacy && typeof legacy === 'object') s.exams[DEFAULT_EXAM] = legacy;
+    } catch(e){}
+  }
+  return s;
 }
-function saveProgress(p){
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch(e){}
-}
-function seedIfEmpty(p){
-  if (Object.keys(p).length) return p;
-  var seed = {
-    v1:{attempts:1, correct:1, lastSelf:'known', lastResult:'correct', lastAt:Date.now()},
-    v3:{attempts:2, correct:0, lastSelf:'unknown', lastResult:'incorrect', lastAt:Date.now()},
-    v6:{attempts:1, correct:1, lastSelf:'known', lastResult:'correct', lastAt:Date.now()},
-    p1:{attempts:1, correct:1, lastResult:'correct', lastAt:Date.now()},
-    p3:{attempts:2, correct:0, lastResult:'incorrect', lastAt:Date.now()}
-  };
-  saveProgress(seed);
-  return seed;
+function saveStore(){
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch(e){}
 }
 
-var progress = seedIfEmpty(loadProgress());
+var store = loadStore();
+var progress = {}; // 選択中の試験の進捗（store.exams[試験キー] への参照）
+
+// 選択中の試験のデータ（useExam で切り替える）
+var EXAM, DOMAINS, VOCAB, PRACTICE, MOCK_POOL;
+
+function examKeys(){ return Object.keys(window.EXAMS || {}); }
+
+function useExam(key){
+  if (!EXAMS[key]) key = EXAMS[DEFAULT_EXAM] ? DEFAULT_EXAM : examKeys()[0];
+  EXAM = EXAMS[key];
+  EXAM.key = key;
+  DOMAINS = EXAM.DOMAINS;
+  VOCAB = EXAM.VOCAB;
+  PRACTICE = EXAM.PRACTICE;
+  MOCK_POOL = EXAM.MOCK_POOL;
+  if (!store.exams[key]) store.exams[key] = {};
+  progress = store.exams[key];
+  store.currentExam = key;
+  saveStore();
+}
+
+useExam(store.currentExam || DEFAULT_EXAM);
 
 function recordResult(id, isCorrect, selfAssessment){
   var rec = progress[id] || {attempts:0, correct:0};
@@ -31,7 +56,7 @@ function recordResult(id, isCorrect, selfAssessment){
   if (selfAssessment) rec.lastSelf = selfAssessment;
   rec.lastAt = Date.now();
   progress[id] = rec;
-  saveProgress(progress);
+  saveStore();
 }
 
 function isWeak(id){
