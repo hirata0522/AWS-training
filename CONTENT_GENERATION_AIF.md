@@ -253,3 +253,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Labeled/Unlabeled Data、Supervised/Unsupervised/Reinforcement Learning、Vector Database、Vector、Embedding、AWS KMS、Amazon OpenSearch Service、Amazon Neptune、Encryption at Rest/in Transit、Aurora PostgreSQL pgvector。
   新規SOURCES: vectorDb, embeddings, whatIsRl, kms, opensearch, neptune, mlParadigms, encRestTransit, auroraKb（いずれもWebFetch成功）。
   見送り（`未`のまま次回へ）: 行27 Inclusivity、35 Tokenization、36 Robustness、41 Context Window、42 Safety、50 Veracity、54 Customer Managed Key（公式の定義ページを今回確認できていない）。正解最長の割合はVOCABで29%に調整済み。PRACTICE/MOCK_POOLは今回追加なし。
+- 2026-10-19（定期実行・5回目）: 単語リスト行60,61,63,64,66,68,69,70,72,74,75の11語のVOCABを追加（v48〜v58）、PRACTICEを5件追加（p5〜p9: single 3 / matching 2）。累計 VOCAB=58 / PRACTICE=9 / MOCK_POOL=1。単語リスト進捗 58/474。
+  追加トピック: Secrets Manager、Macie、PrivateLink、VPC Endpoint、Classification/Regression/Clustering/Dimensionality Reduction/Anomaly Detection（SageMaker AIのアルゴリズム種別ページ）、Diffusion Model、GAN。
+  新規SOURCES: secretsManager, macie, privateLink, diffusion, gan（いずれもWebFetch成功。aws.amazon.com/what-is/vpc-endpoint/ は404のため不採用）。改訂履歴ページは今回未確認（v1.1のまま扱った）。
+  既存データの修正（明確なバグ）: `js/data/aif-c01.js` で v33 行末と p4 末尾のカンマ漏れによりJavaScriptの構文エラーでファイル全体が読み込めない状態だったため、2か所にカンマを追加（項目の内容は未変更）。`validate_content.py` はこの構文エラーを検出できないので、今後も追加後に必ずnodeでの読み込み確認を行うこと。
+  見送り（`未`のまま）: 行62 Hybrid Search、65 Explainability、67 Reranking、71、73 In-context Learning は公式の定義ページを今回確認できていない。MOCK_POOLは今回追加なし。

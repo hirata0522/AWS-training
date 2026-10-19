@@ -63,22 +63,22 @@
 | 57 | Self-supervised Learning | aiml | 未 |
 | 58 | Multi-modal Model | genai | 未 |
 | 59 | Semantic Search | fm | 未 |
-| 60 | AWS Secrets Manager | security | 未 |
-| 61 | Classification | aiml | 未 |
+| 60 | AWS Secrets Manager | security | v48 |
+| 61 | Classification | aiml | v49 |
 | 62 | Hybrid Search | fm | 未 |
-| 63 | Amazon Macie | security | 未 |
-| 64 | Diffusion Model | genai | 未 |
+| 63 | Amazon Macie | security | v50 |
+| 64 | Diffusion Model | genai | v51 |
 | 65 | Explainability | responsible | 未 |
-| 66 | Regression | aiml | 未 |
+| 66 | Regression | aiml | v52 |
 | 67 | Reranking | fm | 未 |
-| 68 | AWS PrivateLink | security | 未 |
-| 69 | Clustering | aiml | 未 |
-| 70 | Generative Adversarial Network (GAN) | genai | 未 |
+| 68 | AWS PrivateLink | security | v53 |
+| 69 | Clustering | aiml | v54 |
+| 70 | Generative Adversarial Network (GAN) | genai | v55 |
 | 71 | Interpretability vs Explainability | responsible | 未 |
-| 72 | Dimensionality Reduction | aiml | 未 |
+| 72 | Dimensionality Reduction | aiml | v56 |
 | 73 | In-context Learning | fm | 未 |
-| 74 | Amazon VPC Endpoint | security | 未 |
-| 75 | Anomaly Detection | aiml | 未 |
+| 74 | Amazon VPC Endpoint | security | v57 |
+| 75 | Anomaly Detection | aiml | v58 |
 | 76 | Variational Autoencoder (VAE) | genai | 未 |
 | 77 | Fine-tuning | fm | 未 |
 | 78 | Amazon Bedrock AgentCore Identity | security | 未 |
