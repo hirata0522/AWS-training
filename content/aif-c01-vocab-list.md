@@ -62,15 +62,15 @@
 | 56 | Transparency | responsible | v68 |
 | 57 | Self-supervised Learning | aiml | v72 |
 | 58 | Multi-modal Model | genai | 未 |
-| 59 | Semantic Search | fm | 未 |
+| 59 | Semantic Search | fm | v73 |
 | 60 | AWS Secrets Manager | security | v48 |
 | 61 | Classification | aiml | v49 |
-| 62 | Hybrid Search | fm | 未 |
+| 62 | Hybrid Search | fm | v74 |
 | 63 | Amazon Macie | security | v50 |
 | 64 | Diffusion Model | genai | v51 |
 | 65 | Explainability | responsible | v71 |
 | 66 | Regression | aiml | v52 |
-| 67 | Reranking | fm | 未 |
+| 67 | Reranking | fm | v75 |
 | 68 | AWS PrivateLink | security | v53 |
 | 69 | Clustering | aiml | v54 |
 | 70 | Generative Adversarial Network (GAN) | genai | v55 |
@@ -94,16 +94,16 @@
 | 88 | Instruction Tuning | fm | 未 |
 | 89 | AWS CloudTrail | security |v64 |
 | 90 | Unstructured Data | aiml | 未 |
-| 91 | Transfer Learning | fm | 未 |
+| 91 | Transfer Learning | fm | v76 |
 | 92 | Amazon CloudWatch | security |v66 |
 | 93 | Computer Vision | aiml |v62 |
-| 94 | Chunking | genai | 未 |
+| 94 | Chunking | genai | v77 |
 | 95 | Privacy (Responsible AI) | responsible | 未 |
 | 96 | Natural Language Processing (NLP) | aiml |v63 |
 | 97 | Model Distillation | fm |v60 |
 | 98 | AWS Config | security |v65 |
 | 99 | Text Generation | genai | 未 |
-| 100 | Speech Recognition | aiml | 未 |
+| 100 | Speech Recognition | aiml | v78 |
 | 101 | Governance (Responsible AI) | responsible | 未 |
 | 102 | Domain Adaptation | fm | 未 |
 | 103 | Amazon Inspector | security | 未 |

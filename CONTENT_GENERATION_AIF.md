@@ -267,3 +267,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Customer Managed Key、責任あるAIの側面（Transparency/Safety/Robustness/Explainability）、Self-supervised Learning。
   新規SOURCES: kmsKeys, whatIsFm（WebFetch成功。責任あるAIの定義は aws.amazon.com/ai/responsible-ai/ を再確認）。改訂履歴ページは今回未確認（v1.1のまま扱った）。nodeでの読み込み確認済み。
   見送り: Multi-modal Model は公式ページに「multimodal」の用語定義が見つからず `未` のまま。MOCK_POOLは件数が少なく正解最長割合(80%)が高いので、次回以降は不正解を長めにして調整すること。
+- 2026-10-19（定期実行・8回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行59,62,67,91,94,100の6語のVOCABを追加（v73〜v78）、PRACTICEを7件（p18〜p24: single 4 / multi 1 / ordering 1 / matching 1）、MOCK_POOLを6件（m6〜m11: single 5 / multi 1）追加。累計 VOCAB=78 / PRACTICE=24 / MOCK_POOL=11。単語リスト進捗 78/474。
+  追加トピック: Bedrock Knowledge Basesの検索タイプ（Semantic/Hybrid）、Reranking、チャンキング戦略（固定サイズ/デフォルト/階層型/セマンティック）、Transfer Learning、Speech Recognition。
+  新規SOURCES: bedrockChunking, bedrockKbQuery, bedrockRerank, transferLearning, speechRecognition（いずれもWebFetch成功）。nodeでの読み込み確認済み。
+  見送り: 行35 Tokenization、41 Context Window などは今回も公式の定義ページ未確認のため `未` のまま。MOCK_POOLの正解最長割合は54%まで改善（次回以降も不正解を長めに）。
