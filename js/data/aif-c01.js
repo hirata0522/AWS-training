@@ -47,7 +47,14 @@ var SOURCES = {
   macie:{label:'Amazon Macie とは', url:'https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html'},
   privateLink:{label:'AWS PrivateLink とは', url:'https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html'},
   diffusion:{label:'AWS: 拡散モデル（Stable Diffusion）とは', url:'https://aws.amazon.com/what-is/stable-diffusion/'},
-  gan:{label:'AWS: GAN（敵対的生成ネットワーク）とは', url:'https://aws.amazon.com/what-is/gan/'}
+  gan:{label:'AWS: GAN（敵対的生成ネットワーク）とは', url:'https://aws.amazon.com/what-is/gan/'},
+  bedrockCustom:{label:'Amazon Bedrock: モデルのカスタマイズ', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html'},
+  promptEng:{label:'AWS: プロンプトエンジニアリングとは', url:'https://aws.amazon.com/what-is/prompt-engineering/'},
+  whatIsCv:{label:'AWS: コンピュータビジョンとは', url:'https://aws.amazon.com/what-is/computer-vision/'},
+  whatIsNlp:{label:'AWS: 自然言語処理(NLP)とは', url:'https://aws.amazon.com/what-is/nlp/'},
+  cloudtrail:{label:'AWS CloudTrail とは', url:'https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html'},
+  awsConfig:{label:'AWS Config とは', url:'https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html'},
+  cloudwatch:{label:'Amazon CloudWatch とは', url:'https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html'}
 };
 
 var VOCAB = [
@@ -109,6 +116,14 @@ var VOCAB = [
   {id:'v56', term:'Dimensionality Reduction', domain:'aiml', source:SOURCES.mlParadigms, q:{text:'高次元のデータを、重要な特性を保ったまま低次元に変換し、特徴選択や可視化に役立てる手法はどれですか？', choices:['次元削減（Dimension Reduction）','回帰（Regression）','分類（Classification）','クラスタリング（Cluster Analysis）'], correct:0, why:['正しい。次元削減は、高次元で疎なデータを重要な性質を保った低次元の空間に変換する手法で、データ探索や可視化にも使われます。','回帰は連続値を予測する教師あり学習で、データの次元を減らすものではありません。','分類はカテゴリを予測する教師あり学習で、次元を減らすものではありません。','クラスタリングはデータをグループに分ける手法で、特徴量の数を減らすものではありません。']}},
   {id:'v57', term:'Amazon VPC Endpoint', domain:'security', source:SOURCES.privateLink, q:{text:'VPCエンドポイント（VPC endpoint）の説明として正しいものはどれですか？', choices:['VPC内のサブネット間の通信を許可・拒否する、ステートレスなファイアウォール機能','インターネットゲートウェイなどを介さずに、VPCとサポートされているサービスとの間でプライベートに通信するための接続ポイント','オンプレミスのネットワークとVPCを暗号化されたトンネルで接続する仕組み','VPC内のインスタンスからインターネットへの送信のみを許可する仕組み'], correct:1, why:['サブネット単位で通信を制御するステートレスなファイアウォールはネットワークACLです。','正しい。PrivateLinkを基盤としたVPCエンドポイントにより、AWSサービスや他のアカウントのサービスにVPCからプライベートに接続できます。','暗号化トンネルでオンプレミスとVPCを接続するのはSite-to-Site VPNです。','インターネットへの送信のみを許可するのはNATデバイスなどの役割です。']}},
   {id:'v58', term:'Anomaly Detection', domain:'aiml', source:SOURCES.mlParadigms, q:{text:'銀行の不正取引のように、データセットの大多数とは大きく異なるまれな事象や観測値を見つけ出すタスクはどれですか？', choices:['回帰（Regression）','次元削減（Dimension Reduction）','異常検知（Anomaly Detection）','分類（Classification）'], correct:2, why:['回帰は住宅価格のような連続値を予測する問題です。','次元削減は特徴量の数を減らす手法で、まれな事象を見つけるものではありません。','正しい。異常検知は、他のデータから大きく外れた項目や観測値（外れ値）を特定するタスクで、不正検知などに使われます。','分類は事前に定義したカテゴリへ割り当てる問題で、まれな事象を見つけること自体が目的ではありません。']}},
+  {id:'v59', term:'Fine-tuning', domain:'fm', source:SOURCES.bedrockCustom, q:{text:'Amazon Bedrockの教師ありファインチューニングについて正しい説明はどれですか？', choices:['ラベル付きの入出力例で学習させ、モデルのパラメータを調整して特定タスクの性能を高める','プロンプトに例を埋め込むだけで、モデルのパラメータは変更しない','外部の文書を検索し、その結果を回答生成時に参照させる','大きなモデルの知識を、より小さなモデルへ移す'], correct:0, why:['正しい。ラベル付きデータでモデルのパラメータが調整され、対象タスクの性能が向上します。','これはプロンプトエンジニアリング（few-shot）の説明で、パラメータは変わりません。','これはRAGの説明で、モデル自体は更新されません。','これは蒸留（Distillation）の説明です。']}},
+  {id:'v60', term:'Model Distillation', domain:'fm', source:SOURCES.bedrockCustom, q:{text:'大きく高精度な「教師モデル」の応答を使って、小さく高速な「生徒モデル」をファインチューニングする手法はどれですか？', choices:['継続事前学習（Continued Pre-training）','モデル蒸留（Distillation）','強化学習によるファインチューニング','RAG'], correct:1, why:['継続事前学習は、ラベルなしの大量データでモデルの知識を拡張する手法で、教師・生徒の関係を使うものではありません。','正しい。教師モデルが生成した応答で生徒モデルを学習させ、低コスト・低レイテンシで教師に近い精度を目指します。','報酬関数のフィードバックで学習する手法で、教師モデルの出力を使うものではありません。','RAGは外部知識を検索して参照させる手法で、モデルを学習させません。']}},
+  {id:'v61', term:'Prompt Engineering', domain:'genai', source:SOURCES.promptEng, q:{text:'望ましい出力が得られるよう、プロンプトの書式や言い回しを選び、試行錯誤で改善していく取り組みを何といいますか？', choices:['ファインチューニング','モデル蒸留','プロンプトエンジニアリング','ベクトル化（Embedding）'], correct:2, why:['ファインチューニングはモデルのパラメータを学習で更新する手法で、プロンプトの工夫とは異なります。','蒸留は大きなモデルの知識を小さなモデルへ移す手法です。','正しい。入力（プロンプト）の形式や表現を工夫して生成AIの出力を導きます。','Embeddingはテキスト等を数値ベクトルに変換する処理です。']}},
+  {id:'v62', term:'Computer Vision', domain:'aiml', source:SOURCES.whatIsCv, q:{text:'画像や動画などの視覚データから、コンピュータに意味のある情報を引き出させるAIの分野はどれですか？', choices:['自然言語処理（NLP）','強化学習','時系列予測','コンピュータビジョン'], correct:3, why:['NLPは人間の言語（テキスト・音声）を扱う分野です。','強化学習は報酬を最大化する行動を学ぶ学習方法で、分野名ではなく学習パラダイムです。','時系列予測は時間順のデータから将来を予測するタスクです。','正しい。画像分類、物体検出、セグメンテーションなどが代表的なタスクです。']}},
+  {id:'v63', term:'Natural Language Processing (NLP)', domain:'aiml', source:SOURCES.whatIsNlp, q:{text:'人間の言語を解釈・理解させる技術で、感情分析や機械翻訳などを含むAIの分野はどれですか？', choices:['自然言語処理（NLP）','コンピュータビジョン','異常検知','次元削減'], correct:0, why:['正しい。品詞タグ付け、音声認識、機械翻訳、感情分析などがNLPのタスクです。','コンピュータビジョンは画像・動画などの視覚データを扱います。','異常検知は外れ値を見つけるタスクで、言語に限定されません。','次元削減は特徴量の数を減らす手法です。']}},
+  {id:'v64', term:'AWS CloudTrail', domain:'security', source:SOURCES.cloudtrail, q:{text:'AWSアカウント内で「誰が・いつ・どのAPIを呼び出したか」を記録し、監査やガバナンスに使えるサービスはどれですか？', choices:['AWS Config','Amazon CloudWatch','AWS CloudTrail','AWS Key Management Service'], correct:2, why:['Configはリソースの構成と変更履歴を記録するサービスで、API呼び出しの主体を記録するものではありません。','CloudWatchはメトリクス・ログ・アラームによる監視のサービスです。','正しい。ユーザー、ロール、AWSサービスの操作をイベントとして記録し、運用・リスク監査に使います。','KMSは暗号鍵を管理するサービスで、操作の監査記録が主目的ではありません。']}},
+  {id:'v65', term:'AWS Config', domain:'security', source:SOURCES.awsConfig, q:{text:'EC2セキュリティグループなどのリソース構成の履歴を記録し、ルールで準拠状況を評価できるサービスはどれですか？', choices:['AWS CloudTrail','AWS Config','Amazon Macie','AWS Secrets Manager'], correct:1, why:['CloudTrailはAPI呼び出し（操作）の記録で、リソース構成の時系列変化の評価が主目的ではありません。','正しい。リソース構成と過去の状態を記録し、Configルールで設定の準拠・非準拠を評価します。','Macieは S3 内の機密データを検出するサービスです。','Secrets Managerは認証情報などのシークレットを管理するサービスです。']}},
+  {id:'v66', term:'Amazon CloudWatch', domain:'security', source:SOURCES.cloudwatch, q:{text:'AWSリソースやアプリケーションのメトリクスを収集し、しきい値に基づくアラームやダッシュボードで監視するサービスはどれですか？', choices:['Amazon CloudWatch','AWS CloudTrail','AWS Config','AWS PrivateLink'], correct:0, why:['正しい。メトリクス、ログ、アラーム、ダッシュボードで運用状況をリアルタイムに監視します。','CloudTrailはAPI操作の監査記録で、性能メトリクスの監視用ではありません。','Configはリソース構成の履歴・準拠評価のサービスです。','PrivateLinkはVPCから他サービスへプライベート接続するための仕組みです。']}},
 ];
 
 var PRACTICE = [
@@ -142,12 +157,33 @@ var PRACTICE = [
   {id:'p9', domain:'genai', type:'single', source:SOURCES.gan, text:'画像生成の手法に関する説明のうち、GAN（敵対的生成ネットワーク）の特徴を正しく表しているものはどれですか？',
     choices:['ノイズを加える過程の逆をたどり、ノイズから画像を作る','データを潜在空間に圧縮し、そこから復元して生成する','画像中の物体を検出し、位置を示す枠を出力する','2つのモデルが競い合い、本物と区別できないデータの生成を目指す'], correct:[3],
     why:['ノイズを加える過程の逆をたどって画像を作るのは拡散モデルの仕組みです。','潜在空間への圧縮と復元で生成するのはVAEの考え方です。','物体検出は画像認識のタスクで、新しいデータを生成するGANの仕組みではありません。','正しい。GANは生成器と識別器が競い合って学習し、識別器が本物と見分けられなくなる状態を目指します。']},
+  {id:'p10', domain:'security', type:'single', source:SOURCES.cloudtrail, text:'セキュリティチームが、AWSアカウント内のAPI操作を誰が実行したかを後から調査・監査できるようにしたいと考えています。最も適したサービスはどれですか？',
+    choices:['Amazon CloudWatch','AWS CloudTrail','AWS Config','Amazon Macie'], correct:[1],
+    why:['CloudWatchは性能メトリクスやログの監視が中心で、操作の実行者を監査する用途の主役ではありません。','正しい。CloudTrailはユーザー・ロール・サービスの操作をイベントとして記録します。','Configはリソースの構成履歴を扱い、操作の実行者の追跡が主目的ではありません。','Macieは機密データの検出サービスです。']},
+  {id:'p11', domain:'security', type:'single', source:SOURCES.awsConfig, text:'ある企業が、リソースの設定が社内ルールに準拠しているかを継続的に評価し、過去の構成も確認したいと考えています。最も適したサービスはどれですか？',
+    choices:['AWS CloudTrail','Amazon CloudWatch','Amazon Macie','AWS Config'], correct:[3],
+    why:['CloudTrailは操作の記録で、構成の準拠評価を行うものではありません。','CloudWatchはメトリクスの監視・アラームが中心です。','Macieはデータの機密性を検出するサービスです。','正しい。Configルールでリソース構成を評価し、構成履歴も確認できます。']},
+  {id:'p12', domain:'aiml', type:'multi', source:SOURCES.whatIsCv, text:'コンピュータビジョンのタスクはどれですか？（2つ選択）',
+    choices:['センチメント分析（感情分析）','画像分類','機械翻訳','物体検出','音声認識'], correct:[1,3],
+    why:['感情分析はテキストを扱うNLPのタスクです。','正しい。画像全体に1つのラベルを割り当てるタスクです。','機械翻訳はNLPのタスクです。','正しい。画像内の特定の対象を見つけて識別するタスクです。','音声認識は音声をテキストに変換するNLP関連のタスクです。']},
+  {id:'p13', domain:'fm', type:'single', source:SOURCES.bedrockCustom, text:'コストと速度を重視して小さなモデルを使いつつ、大きなモデルの精度に近づけたい場合に適したカスタマイズ手法はどれですか？',
+    choices:['蒸留（Distillation）','RAG','プロンプトエンジニアリング','Embeddingの再計算'], correct:[0],
+    why:['正しい。教師モデルの応答で小さな生徒モデルをファインチューニングします。','RAGは外部知識を参照させる手法で、モデルを小さくする目的のものではありません。','プロンプトの工夫でモデルのサイズは変わりません。','Embeddingの再計算は検索用ベクトルの更新で、モデルのカスタマイズではありません。']},
+  {id:'p14', domain:'genai', type:'single', source:SOURCES.promptEng, text:'複雑な質問を小さな論理的ステップに分解させ、モデルに中間の推論を行わせるプロンプト手法はどれですか？',
+    choices:['ゼロショットで出力形式のみ指定する','Chain-of-thought（思考の連鎖）プロンプティング','ストップシーケンスを設定する','temperatureを0にする'], correct:[1],
+    why:['ゼロショットは例を示さず指示するだけで、推論ステップの分解とは異なります。','正しい。推論の中間ステップを踏ませることで複雑な質問に対応しやすくします。','ストップシーケンスは生成を止める文字列の設定です。','temperatureは出力のランダム性の調整であり、推論の分解ではありません。']},
 ];
 
 var MOCK_POOL = [
   {id:'m1', domain:'aiml', type:'single', source:SOURCES.sagemakerAi, text:'データサイエンティストのチームが、自社の表形式データを使って独自の予測モデルをトレーニングし、推論用のエンドポイントとしてデプロイしたいと考えています。最も適したAWSサービスはどれですか？',
     choices:['Amazon Bedrock','Amazon SageMaker AI','Amazon Personalize','Amazon Textract'], correct:[1],
-    why:['Bedrockは既存の基盤モデルを利用・カスタマイズして生成AIアプリを作るサービスで、表形式データから独自の予測モデルを一から学習させる用途には向きません。','正しい。SageMaker AIはMLモデルの構築・トレーニング・デプロイをマネージドで行えるため、独自モデルの学習とエンドポイント公開の要件に合致します。','Personalizeはレコメンデーション（パーソナライズ）に特化したマネージドサービスで、汎用的な予測モデルの学習・デプロイには使いません。','Textractは文書からテキストや表・フォームを抽出するサービスで、モデルのトレーニング基盤ではありません。']}
+    why:['Bedrockは既存の基盤モデルを利用・カスタマイズして生成AIアプリを作るサービスで、表形式データから独自の予測モデルを一から学習させる用途には向きません。','正しい。SageMaker AIはMLモデルの構築・トレーニング・デプロイをマネージドで行えるため、独自モデルの学習とエンドポイント公開の要件に合致します。','Personalizeはレコメンデーション（パーソナライズ）に特化したマネージドサービスで、汎用的な予測モデルの学習・デプロイには使いません。','Textractは文書からテキストや表・フォームを抽出するサービスで、モデルのトレーニング基盤ではありません。']},
+  {id:'m2', domain:'aiml', type:'single', source:SOURCES.whatIsNlp, text:'顧客レビューの文章から、満足や不満といった感情を判定する処理はどの分野のタスクですか？',
+    choices:['コンピュータビジョン','強化学習','自然言語処理（NLP）','次元削減'], correct:[2],
+    why:['コンピュータビジョンは画像・動画を扱います。','強化学習は報酬に基づいて行動を学ぶ手法です。','正しい。センチメント分析はNLPの代表的なタスクです。','次元削減は特徴量の数を減らす手法です。']},
+  {id:'m3', domain:'security', type:'single', source:SOURCES.cloudwatch, text:'EC2インスタンスのCPU使用率がしきい値を超えたら通知したい場合に使うサービスはどれですか？',
+    choices:['Amazon CloudWatch','AWS CloudTrail','AWS Config','AWS KMS'], correct:[0],
+    why:['正しい。メトリクスに対するアラームで通知や自動アクションを設定できます。','CloudTrailはAPI操作の記録です。','Configは構成の履歴・準拠評価です。','KMSは暗号鍵管理です。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

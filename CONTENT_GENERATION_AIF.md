@@ -258,3 +258,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: secretsManager, macie, privateLink, diffusion, gan（いずれもWebFetch成功。aws.amazon.com/what-is/vpc-endpoint/ は404のため不採用）。改訂履歴ページは今回未確認（v1.1のまま扱った）。
   既存データの修正（明確なバグ）: `js/data/aif-c01.js` で v33 行末と p4 末尾のカンマ漏れによりJavaScriptの構文エラーでファイル全体が読み込めない状態だったため、2か所にカンマを追加（項目の内容は未変更）。`validate_content.py` はこの構文エラーを検出できないので、今後も追加後に必ずnodeでの読み込み確認を行うこと。
   見送り（`未`のまま）: 行62 Hybrid Search、65 Explainability、67 Reranking、71、73 In-context Learning は公式の定義ページを今回確認できていない。MOCK_POOLは今回追加なし。
+- 2026-10-19（定期実行・6回目）: 単語リスト行77,97,87,93,96,89,98,92の8語のVOCABを追加（v59〜v66）、PRACTICEを5件（p10〜p14: single 4 / multi 1）、MOCK_POOLを2件（m2,m3）追加。累計 VOCAB=66 / PRACTICE=14 / MOCK_POOL=3。単語リスト進捗 66/474。
+  追加トピック: Fine-tuning、Model Distillation、Prompt Engineering（Chain-of-thought）、Computer Vision、NLP、CloudTrail、AWS Config、CloudWatch。
+  新規SOURCES: bedrockCustom, promptEng, whatIsCv, whatIsNlp, cloudtrail, awsConfig, cloudwatch（いずれもWebFetch成功）。改訂履歴ページは今回未確認（v1.1のまま扱った）。
+  既存データの修正（明確なバグ）: m1 末尾のカンマ漏れ（構文エラー）を修正。nodeでの読み込み確認済み。
+  見送り: 行83 Continued Pre-training は Bedrock のカスタマイズ公式ページに記載がなく確認できず `未` のまま。PRACTICE/MOCKは件数が少ないため形式・ドメイン（responsible/fmなど）の補充が次回以降の課題。

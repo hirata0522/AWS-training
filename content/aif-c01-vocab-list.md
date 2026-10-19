@@ -80,7 +80,7 @@
 | 74 | Amazon VPC Endpoint | security | v57 |
 | 75 | Anomaly Detection | aiml | v58 |
 | 76 | Variational Autoencoder (VAE) | genai | 未 |
-| 77 | Fine-tuning | fm | 未 |
+| 77 | Fine-tuning | fm |v59 |
 | 78 | Amazon Bedrock AgentCore Identity | security | 未 |
 | 79 | Trustworthiness | responsible | 未 |
 | 80 | Tabular Data | aiml | 未 |
@@ -90,18 +90,18 @@
 | 84 | Policy in AgentCore | security | 未 |
 | 85 | Structured Data | aiml | 未 |
 | 86 | Truthfulness | responsible | 未 |
-| 87 | Prompt Engineering | genai | 未 |
+| 87 | Prompt Engineering | genai |v61 |
 | 88 | Instruction Tuning | fm | 未 |
-| 89 | AWS CloudTrail | security | 未 |
+| 89 | AWS CloudTrail | security |v64 |
 | 90 | Unstructured Data | aiml | 未 |
 | 91 | Transfer Learning | fm | 未 |
-| 92 | Amazon CloudWatch | security | 未 |
-| 93 | Computer Vision | aiml | 未 |
+| 92 | Amazon CloudWatch | security |v66 |
+| 93 | Computer Vision | aiml |v62 |
 | 94 | Chunking | genai | 未 |
 | 95 | Privacy (Responsible AI) | responsible | 未 |
-| 96 | Natural Language Processing (NLP) | aiml | 未 |
-| 97 | Model Distillation | fm | 未 |
-| 98 | AWS Config | security | 未 |
+| 96 | Natural Language Processing (NLP) | aiml |v63 |
+| 97 | Model Distillation | fm |v60 |
+| 98 | AWS Config | security |v65 |
 | 99 | Text Generation | genai | 未 |
 | 100 | Speech Recognition | aiml | 未 |
 | 101 | Governance (Responsible AI) | responsible | 未 |
