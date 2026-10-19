@@ -61,7 +61,11 @@ var SOURCES = {
   bedrockKbQuery:{label:'Amazon Bedrock Knowledge Bases: クエリとレスポンス生成の設定（検索タイプ）', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-config.html'},
   bedrockRerank:{label:'Amazon Bedrock: リランカーモデルでクエリ応答の関連性を高める', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/rerank.html'},
   transferLearning:{label:'AWS: 転移学習とは', url:'https://aws.amazon.com/what-is/transfer-learning/'},
-  speechRecognition:{label:'AWS: 音声認識とは', url:'https://aws.amazon.com/what-is/speech-recognition/'}
+  speechRecognition:{label:'AWS: 音声認識とは', url:'https://aws.amazon.com/what-is/speech-recognition/'},
+  guardrails:{label:'Amazon Bedrock Guardrails で有害なコンテンツを検出・フィルタリングする', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html'},
+  inspector:{label:'Amazon Inspector とは', url:'https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html'},
+  artifact:{label:'AWS Artifact とは', url:'https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html'},
+  rlhf:{label:'AWS: 人間のフィードバックからの強化学習(RLHF)とは', url:'https://aws.amazon.com/what-is/reinforcement-learning-from-human-feedback/'}
 };
 
 var VOCAB = [
@@ -143,6 +147,10 @@ var VOCAB = [
   {id:'v76', term:'Transfer Learning', domain:'fm', source:SOURCES.transferLearning, q:{text:'あるタスクで事前学習されたモデルを、関連する新しいタスク向けにファインチューニングして再利用する機械学習の手法はどれですか？', choices:['強化学習（報酬を最大化する行動を試行錯誤で学ぶ手法）','転移学習（事前学習済みモデルを関連する新しいタスクに再利用する手法）','教師なし学習（ラベルなしデータからパターンやグループを見つける手法）','次元削減（特徴量の数を減らしてデータを圧縮する手法）'], correct:1, why:['強化学習は報酬に基づいて行動を学ぶ手法で、事前学習済みモデルを再利用する手法ではありません。','正しい。転移学習は、あるタスクで事前学習したモデルを関連する新しいタスクでファインチューニングする手法です。少ないデータと計算資源で済みます。','教師なし学習はラベルなしデータの構造を見つける学習方法で、既存モデルを別タスクに転用するものではありません。','次元削減は特徴量を減らす前処理の手法で、モデルの再利用とは別のものです。']}},
   {id:'v77', term:'Chunking', domain:'genai', source:SOURCES.bedrockChunking, q:{text:'Amazon Bedrock Knowledge Basesがデータを取り込む際、ドキュメントを扱いやすい大きさに分割する処理はどれですか？', choices:['トークン化（テキストをモデルが扱う最小単位に区切る処理）','エンベディング（テキストをベクトルとして数値表現に変換する処理）','チャンキング（ドキュメントを検索しやすい断片に分割する処理）','ファインチューニング（追加データでモデルの重みを更新する処理）'], correct:2, why:['トークン化はモデルが処理するための入力の区切りで、ナレッジベースがドキュメントを検索単位に分ける処理とは別です。','エンベディングは分割後のチャンクをベクトルに変換する処理で、分割そのものではありません。','正しい。ナレッジベースは取り込み時にドキュメントを効率よく検索できるチャンクに分割し、そのあとでエンベディングに変換してベクトルインデックスに書き込みます。','ファインチューニングはモデルをカスタマイズする手法で、ドキュメントの分割とは無関係です。']}},
   {id:'v78', term:'Speech Recognition', domain:'aiml', source:SOURCES.speechRecognition, q:{text:'録音された音声を自動的にテキストに変換する技術（音声認識）を提供するAWSサービスはどれですか？', choices:['Amazon Transcribe','Amazon Polly','Amazon Translate','Amazon Comprehend'], correct:0, why:['正しい。Amazon Transcribeは機械学習で音声をテキストに変換する自動音声認識(ASR)サービスです。','Amazon Pollyはテキストを自然な音声に変換する音声合成サービスで、向きが逆です。','Amazon Translateは言語間のテキスト翻訳サービスです。','Amazon Comprehendはテキストの感情やキーフレーズを分析するNLPサービスで、音声は直接扱いません。']}},
+  {id:'v79', term:'Amazon Bedrock Guardrails', domain:'responsible', source:SOURCES.guardrails, q:{text:'Amazon Bedrock Guardrailsの説明として正しいものはどれですか？', choices:['モデルの学習データに含まれる偏りを統計的に分析し、特徴量ごとの寄与度を可視化する','基盤モデルの応答品質を、ベンチマークデータセットや人間のレビューで評価する','ユーザー入力やモデル応答に含まれる有害なコンテンツを検出・フィルタリングし、機密情報を保護するための設定可能な安全対策を提供する','モデルの用途やリスク評価、学習の詳細をまとめたドキュメントを作成して管理する'], correct:2, why:['偏りの検出や特徴量の寄与度の説明は、SageMaker Clarifyの役割です。','応答品質の評価はAmazon Bedrock Model Evaluationの役割で、リアルタイムに入出力をフィルタリングするものではありません。','正しい。コンテンツフィルター、拒否トピック、単語フィルター、機密情報フィルター、コンテキストに基づくグラウンディングチェックなどを設定し、入力プロンプトとモデル応答の両方を評価できます。','モデルの用途やリスクなどをまとめて管理するのはSageMaker Model Cardsの役割です。']}},
+  {id:'v80', term:'Amazon Inspector', domain:'security', source:SOURCES.inspector, q:{text:'EC2インスタンス、ECRのコンテナイメージ、Lambda関数を自動的に検出し、ソフトウェアの脆弱性や意図しないネットワーク露出を継続的にスキャンするサービスはどれですか？', choices:['Amazon Macie','AWS Config','AWS CloudTrail','Amazon Inspector'], correct:3, why:['Macieは、S3内の機密データを検出して保護するサービスで、ワークロードの脆弱性をスキャンするものではありません。','AWS Configはリソースの構成変更を記録・評価するサービスで、ソフトウェアの脆弱性スキャンは行いません。','CloudTrailはAPI操作を記録して監査に使うサービスで、脆弱性のスキャンは行いません。','正しい。Amazon Inspectorは脆弱性管理サービスで、検出した問題をfindingとして報告します。']}},
+  {id:'v81', term:'AWS Artifact', domain:'security', source:SOURCES.artifact, q:{text:'監査人に提出するため、AWSのISOやSOCなどのコンプライアンスレポートをオンデマンドでダウンロードしたい場合に使うサービスはどれですか？', choices:['AWS Trusted Advisor','AWS Artifact','AWS Config','Amazon Macie'], correct:1, why:['Trusted Advisorは、コスト最適化やセキュリティなどの観点でアカウントを推奨事項に沿って確認するサービスで、AWSの監査レポートを提供するものではありません。','正しい。AWS ArtifactはAWSのセキュリティ・コンプライアンスに関するドキュメントをオンデマンドで提供し、AWSとの契約（agreement）の確認・承諾にも使えます。','AWS Configは、お客様自身のリソースの構成を記録・評価するサービスです。','Macieは、S3内の機密データを検出するサービスです。']}},
+  {id:'v82', term:'Reinforcement Learning from Human Feedback (RLHF)', domain:'fm', source:SOURCES.rlhf, q:{text:'RLHF（人間のフィードバックからの強化学習）の説明として正しいものはどれですか？', choices:['人間が好む応答を評価した結果から報酬モデルを作り、それを使って大規模言語モデルの出力を人間の好みに近づける','大きな教師モデルの出力を使って、小さな生徒モデルを学習させ、推論コストを下げる','ラベルのない大量のテキストから、データ自体を教師として言語の特徴を学習する','モデルの出力に含まれる個人情報を、推論時に検出してマスキングする'], correct:0, why:['正しい。人間が複数の応答を好みの順に評価し、その評価で報酬モデルを学習させ、報酬が高くなる応答を出すようモデルを最適化します。','教師モデルと生徒モデルを使うのは、蒸留（Distillation）の手法です。','ラベルなしデータから自己学習するのは、自己教師あり学習の説明です。','個人情報の検出とマスキングは、Guardrailsの機密情報フィルターなどの役割です。']}},
 ];
 
 var PRACTICE = [
@@ -222,6 +230,25 @@ var PRACTICE = [
   {id:'p24', domain:'aiml', type:'single', source:SOURCES.speechRecognition, text:'コールセンターの通話録音をテキストに変換し、あとから内容を検索・分析できるようにしたい場合、最も適したAWSサービスはどれですか？',
     choices:['Amazon Transcribe','Amazon Polly','Amazon Rekognition','Amazon Textract'], correct:[0],
     why:['正しい。Amazon Transcribeは音声をテキストに変換する自動音声認識サービスで、通話録音の文字起こしに使えます。','Amazon Pollyはテキストを音声に変換する音声合成サービスで、向きが逆です。','Amazon Rekognitionは画像や動画を分析するサービスで、音声の文字起こしは行いません。','Amazon Textractはスキャン文書から文字・フォーム・表を抽出するサービスで、音声は扱いません。']},
+  {id:'p25', domain:'responsible', type:'single', source:SOURCES.guardrails, text:'RAGを使った社内チャットボットで、基盤モデルが検索結果に書かれていない内容を付け加えてしまうことがあります。このようなハルシネーションを検出し、応答をブロックまたはフラグ付けするために使えるGuardrailsの機能はどれですか？',
+    choices:['拒否トピック（Denied topics）で、特定の話題をあらかじめ定義して拒否する','単語フィルター（Word filters）で、禁止語句が含まれる入出力を遮断する','コンテキストに基づくグラウンディングチェック（Contextual grounding checks）','機密情報フィルター（Sensitive information filters）で、PIIをブロックまたはマスクする'], correct:[2],
+    why:['拒否トピックは、アプリにとって望ましくない話題を検出して遮断する機能で、応答が参照元に基づいているかは判定しません。','単語フィルターは、指定した単語やフレーズに一致するものを遮断するだけで、応答の事実性は確認しません。','正しい。応答が参照元に基づいていない（事実と異なる、または新しい情報を加えている）場合や、質問に関係ない場合に検出でき、RAGアプリでのブロックやフラグ付けに使えます。','機密情報フィルターは、PIIなどの検出・マスキングが目的で、ハルシネーションの検出には使いません。']},
+  {id:'p26', domain:'security', type:'single', source:SOURCES.guardrails, text:'コールセンターの通話記録を要約する生成AIアプリで、ユーザーの氏名や住所などの個人を特定できる情報（PII）を、入力と応答の両方からマスクしたいと考えています。最も適した機能はどれですか？',
+    choices:['Amazon Bedrock Guardrailsのコンテンツフィルター','Amazon Bedrock Guardrailsの拒否トピック','Amazon Bedrock Guardrailsのコンテキストに基づくグラウンディングチェック','Amazon Bedrock Guardrailsの機密情報フィルター'], correct:[3],
+    why:['コンテンツフィルターは、Hate、Insults、Sexual、Violence、Misconduct、Prompt Attackといった有害なカテゴリを検出するもので、PIIのマスキング用ではありません。','拒否トピックは、定義した望ましくない話題を遮断する機能で、個人情報のマスキングを目的とするものではありません。','グラウンディングチェックは、応答が参照元に基づいているかを判定する機能で、PIIの処理とは関係がありません。','正しい。機密情報フィルターは、SSN、生年月日、住所などの個人情報を入力と応答から検出してブロックまたはマスクでき、正規表現による独自パターンも設定できます。']},
+  {id:'p27', domain:'security', type:'multi', source:SOURCES.inspector, text:'Amazon Inspectorが自動的に検出してスキャンの対象にできるリソースはどれですか？（2つ選択）',
+    choices:['Amazon S3バケット内に保存された機密データ','Amazon ECRのコンテナイメージ','Amazon SageMaker AIで学習したモデルの精度','AWS Lambda関数','Amazon CloudFrontのディストリビューションの設定履歴'], correct:[1,3],
+    why:['S3内の機密データを検出するのはAmazon Macieの役割で、Inspectorのスキャン対象ではありません。','正しい。InspectorはECRのコンテナイメージをスキャンし、ソフトウェアの脆弱性を検出します。','モデルの精度評価は脆弱性スキャンとは関係がなく、Inspectorの対象ではありません。','正しい。InspectorはLambda関数も検出してスキャンの対象にします。','リソースの設定履歴を記録するのはAWS Configの役割です。']},
+  {id:'p28', domain:'fm', type:'ordering', source:SOURCES.rlhf, text:'RLHF（人間のフィードバックからの強化学習）で基盤モデルを改善する一般的な流れを、順に並べてください。',
+    items:['人間の専門家がプロンプトと望ましい応答を作成して、学習用データを集める','事前学習済みのベースモデルを、そのデータでファインチューニングする','人間が複数の応答を好みの順に評価し、その評価で報酬モデルを学習させる','報酬モデルを使って応答を評価し、報酬が高い応答を出すようモデルを最適化する'],
+    why:['最初に、人間が作成したプロンプトと応答のデータを集めます。','次に、集めたデータでベースモデルをファインチューニングし、初期の方策（モデルの出力方針）を作ります。','続いて、人間の好みの評価から報酬モデルを学習させます。報酬モデルは、任意の応答を人間がどれだけ高く評価するかを推定します。','最後に、報酬モデルを使って、最も高い報酬が得られる応答を選べるようモデルを最適化します。']},
+  {id:'p29', domain:'security', type:'matching', source:SOURCES.inspector, text:'それぞれの要件に最も適したAWSサービスを選んでください。',
+    prompts:['EC2インスタンスやコンテナイメージのソフトウェア脆弱性を継続的にスキャンしたい','監査人に提出するため、AWSのSOCレポートをダウンロードしたい','S3バケット内の個人情報などの機密データを検出したい','アカウント内のAPI操作を記録し、監査に利用したい'],
+    options:['AWS CloudTrail','Amazon Macie','AWS KMS','Amazon Inspector','AWS Artifact'], correct:[3,4,1,0],
+    why:['Amazon Inspectorは、EC2、ECRのコンテナイメージ、Lambda関数の脆弱性や意図しないネットワーク露出を継続的にスキャンします。','AWS Artifactは、ISOやSOCなどのコンプライアンスレポートをオンデマンドで提供します。','Amazon Macieは、S3内の機密データを検出して保護します。','AWS CloudTrailは、API操作を記録して監査に使えるようにします。AWS KMSは暗号鍵を管理するサービスで、これらの要件には当てはまりません。']},
+  {id:'p30', domain:'security', type:'single', source:SOURCES.artifact, text:'規制当局への報告のため、AWSのインフラストラクチャが特定のコンプライアンス標準に準拠していることを示す公式の証明書や監査レポートを入手する必要があります。次のうち、これらのドキュメントを追加料金なしでダウンロードできるサービスはどれですか？',
+    choices:['AWS Artifact','AWS CloudTrail','Amazon Inspector','AWS Secrets Manager'], correct:[0],
+    why:['正しい。AWS Artifactは、AWSのセキュリティ・コンプライアンス関連ドキュメントやアカウントの契約を無料で提供します。','CloudTrailは、お客様のアカウント内のAPI操作を記録するサービスで、AWS自身の監査レポートを提供するものではありません。','Inspectorは、お客様のワークロードの脆弱性をスキャンするサービスです。','Secrets Managerは、認証情報などのシークレットを管理するサービスです。']},
 ];
 
 var MOCK_POOL = [
@@ -258,6 +285,18 @@ var MOCK_POOL = [
   {id:'m11', domain:'fm', type:'multi', source:SOURCES.bedrockChunking, text:'Amazon Bedrock Knowledge Basesのチャンキングの説明として正しいものはどれですか？（2つ選択）',
     choices:['セマンティックチャンキングは基盤モデルを利用するため、追加コストがかかる','チャンキングは、基盤モデルが回答を生成した後に出力を分割する処理である','デフォルトチャンキングは、約300トークンのチャンクに分け、文の境界を保つ','チャンキングなしを選ぶと、ドキュメントは文ごとに自動で分割される','階層型チャンキングでは、検索時に親チャンクが子チャンクに置き換えられる'], correct:[0,2],
     why:['正しい。セマンティックチャンキングは基盤モデルを使うため、データ量に応じた追加コストがかかります。','誤り。チャンキングは取り込み時にドキュメントを検索しやすい単位に分割する処理で、生成後の出力を分割するものではありません。','正しい。デフォルトチャンキングは約300トークンで分割し、文の境界を保って文が途中で切れないようにします。','誤り。チャンキングなしでは、各ドキュメントが1つのチャンクとして扱われます。','誤り。置き換えの方向が逆です。階層型では、検索時に子チャンクが親チャンクに置き換えられます。']},
+  {id:'m12', domain:'responsible', type:'single', source:SOURCES.guardrails, text:'金融アプリのチャットボットが、違法な投資助言を求める質問に回答しないようにしたい場合、Amazon Bedrock Guardrailsのどの機能を使いますか？',
+    choices:['単語フィルター（Word filters）で、投資に関する単語をすべて遮断する','コンテンツフィルター（Content filters）で、Hateなどの有害なカテゴリのしきい値を調整する','機密情報フィルター（Sensitive information filters）で、口座番号などの個人情報をマスクする','拒否トピック（Denied topics）'], correct:[3],
+    why:['単語フィルターは、指定した語句に一致するものを遮断するだけで、「違法な投資助言」といった話題の意味までは判断しません。投資に関する語句をすべて遮断すると正当な質問まで遮断してしまいます。','コンテンツフィルターは、Hate、Insults、Sexual、Violence、Misconduct、Prompt Attackといった定義済みの有害カテゴリを対象とし、アプリ固有の話題は定義できません。','機密情報フィルターは、PIIなどの検出・マスキング用で、話題の制限とは目的が異なります。','正しい。拒否トピックでは、アプリにとって望ましくない話題を定義でき、ユーザーの質問やモデルの応答でその話題が検出されると遮断されます。']},
+  {id:'m13', domain:'security', type:'single', source:SOURCES.inspector, text:'セキュリティチームが、コンテナ化した生成AIアプリのECRイメージに既知の脆弱性（CVE）が含まれていないかを、手動でスキャンを設定せずに継続的に確認したいと考えています。最も適したサービスはどれですか？',
+    choices:['Amazon Macie','Amazon Inspector','AWS Config','AWS KMS'], correct:[1],
+    why:['Macieは、S3内の機密データを検出するサービスで、コンテナイメージの脆弱性は対象外です。','正しい。Inspectorは、ECRのコンテナイメージなどを自動的に検出して継続的にスキャンし、新しいCVEが公開されたときなどに自動で再スキャンします。','AWS Configは、リソースの構成変更を記録・評価するサービスで、ソフトウェアの脆弱性は検出しません。','AWS KMSは、暗号鍵を管理するサービスで、脆弱性のスキャンは行いません。']},
+  {id:'m14', domain:'responsible', type:'multi', source:SOURCES.guardrails, text:'Amazon Bedrock Guardrailsについて正しい説明はどれですか？（2つ選択）',
+    choices:['ApplyGuardrail APIを使うと、基盤モデルを呼び出さずに、テキストをガードレールで評価できる','ガードレールが評価できるのは、モデルへの入力だけで、モデルの応答は評価できない','Guardrailsを利用するには、基盤モデルをファインチューニングして安全性を学習させる必要がある','単語フィルターは、指定した語句に対して大文字小文字を区別しない、単語やフレーズ全体の一致で遮断する','ガードレールは、Amazon Bedrock以外の基盤モデルにはどのような方法でも使えない'], correct:[0,3],
+    why:['正しい。ApplyGuardrail APIを使うと、基盤モデルを呼び出さずに、入力や応答のテキストをガードレールに照らして評価できます。','誤り。ガードレールは、入力プロンプトと基盤モデルの応答の両方を評価します。','誤り。Guardrailsは、基盤モデルの再学習なしに、設定した安全対策を適用する仕組みです。','正しい。単語フィルターは、大文字小文字を区別せず、単語やフレーズ全体の一致で動作します。','誤り。ApplyGuardrail APIは基盤モデルの呼び出しとは独立して評価できるため、Bedrock以外のモデルの入出力にも使えます。']},
+  {id:'m15', domain:'fm', type:'single', source:SOURCES.rlhf, text:'RLHFで「報酬モデル」はどのような役割を果たしますか？',
+    choices:['学習データから個人情報を検出して、自動的に削除する','人間の好みの評価から学習し、任意の応答を人間がどれだけ高く評価するかを推定する','大きなモデルの出力を再現するために、小さなモデルの重みを圧縮する','モデルの推論結果が、参照元の文書に基づいているかを判定する'], correct:[1],
+    why:['個人情報の検出は、MacieやGuardrailsなどの役割で、報酬モデルとは関係がありません。','正しい。人間が複数の応答を好みの順に評価した結果で報酬モデルを学習させ、その推定値でモデルを最適化します。','教師モデルの出力を使って小さなモデルを学習させるのは蒸留の手法で、報酬モデルの役割ではありません。','応答が参照元に基づいているかを判定するのは、Guardrailsのグラウンディングチェックなどの役割です。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

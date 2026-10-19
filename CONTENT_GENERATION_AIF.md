@@ -271,3 +271,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock Knowledge Basesの検索タイプ（Semantic/Hybrid）、Reranking、チャンキング戦略（固定サイズ/デフォルト/階層型/セマンティック）、Transfer Learning、Speech Recognition。
   新規SOURCES: bedrockChunking, bedrockKbQuery, bedrockRerank, transferLearning, speechRecognition（いずれもWebFetch成功）。nodeでの読み込み確認済み。
   見送り: 行35 Tokenization、41 Context Window などは今回も公式の定義ページ未確認のため `未` のまま。MOCK_POOLの正解最長割合は54%まで改善（次回以降も不正解を長めに）。
+- 2026-10-19（定期実行・9回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行115,103,108,116の4語のVOCABを追加（v79〜v82）、PRACTICEを6件（p25〜p30: single 3 / multi 1 / ordering 1 / matching 1）、MOCK_POOLを4件（m12〜m15: single 3 / multi 1）追加。累計 VOCAB=82 / PRACTICE=30 / MOCK_POOL=15。単語リスト進捗 82/474（除外1）。
+  追加トピック: Bedrock Guardrails（コンテンツ/拒否トピック/単語/機密情報フィルター、グラウンディングチェック、ApplyGuardrail API）、Amazon Inspector、AWS Artifact、RLHF。
+  新規SOURCES: guardrails, inspector, artifact, rlhf（いずれもWebFetch成功）。対象サービス一覧もWebFetchで再確認。nodeでの読み込み確認済み。
+  除外: 行117 Amazon GuardDuty（対象サービス一覧に無いため）。Trusted Advisor（行113）は一覧に有るが公式ページ未確認のため `未` のまま。
+  メモ: MOCK_POOLの正解最長割合が60%と高い（件数が少ないため）。次回以降は不正解を長めにして調整すること。

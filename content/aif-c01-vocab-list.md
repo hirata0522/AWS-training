@@ -106,21 +106,21 @@
 | 100 | Speech Recognition | aiml | v78 |
 | 101 | Governance (Responsible AI) | responsible | 未 |
 | 102 | Domain Adaptation | fm | 未 |
-| 103 | Amazon Inspector | security | 未 |
+| 103 | Amazon Inspector | security | v80 |
 | 104 | Recommendation System | aiml | 未 |
 | 105 | Summarization | genai | 未 |
 | 106 | Fraud Detection | aiml | 未 |
 | 107 | Parameter-efficient Fine-tuning (PEFT) | fm | 未 |
-| 108 | AWS Artifact | security | 未 |
+| 108 | AWS Artifact | security | v81 |
 | 109 | Accountability | responsible | 未 |
 | 110 | Forecasting | aiml | 未 |
 | 111 | Image Generation | genai | 未 |
 | 112 | LoRA | fm | 未 |
 | 113 | AWS Trusted Advisor (Governance) | security | 未 |
 | 114 | Feature | aiml | 未 |
-| 115 | Amazon Bedrock Guardrails | responsible | 未 |
-| 116 | Reinforcement Learning from Human Feedback (RLHF) | fm | 未 |
-| 117 | Amazon GuardDuty | security | 未 |
+| 115 | Amazon Bedrock Guardrails | responsible | v79 |
+| 116 | Reinforcement Learning from Human Feedback (RLHF) | fm | v82 |
+| 117 | Amazon GuardDuty | security | 除外 |
 | 118 | Code Generation | genai | 未 |
 | 119 | Feature Engineering | aiml | 未 |
 | 120 | Label | aiml | 未 |
