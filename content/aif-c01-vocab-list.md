@@ -87,7 +87,7 @@
 | 81 | Prompt | genai | v95 |
 | 82 | Time-series Data | aiml | v83 |
 | 83 | Continued Pre-training | fm | 未 |
-| 84 | Policy in AgentCore | security | 未 |
+| 84 | Policy in AgentCore | security | v124 |
 | 85 | Structured Data | aiml | v84 |
 | 86 | Truthfulness | responsible | 未 |
 | 87 | Prompt Engineering | genai |v61 |
@@ -125,17 +125,17 @@
 | 119 | Feature Engineering | aiml | v89 |
 | 120 | Label | aiml | v90 |
 | 121 | Data Curation | fm | 未 |
-| 122 | AWS Security Hub | security | 未 |
+| 122 | AWS Security Hub | security | 除外 |
 | 123 | AI Assistant | genai | 未 |
 | 124 | Content Filters | responsible | v94 |
 | 125 | Hyperparameter | aiml | v91 |
 | 126 | Data Labeling | fm | v92 |
-| 127 | AWS WAF | security | 未 |
+| 127 | AWS WAF | security | 除外 |
 | 128 | Hyperparameter Tuning | aiml | v111 |
 | 129 | Machine Translation | genai | 未 |
 | 130 | Denied Topics | responsible | v99 |
 | 131 | Representative Dataset | fm | 未 |
-| 132 | AWS Audit Manager | security | 未 |
+| 132 | AWS Audit Manager | security | 除外 |
 | 133 | Overfitting | aiml | v96 |
 | 134 | Hallucination | genai | v98 |
 | 135 | Underfitting | aiml | v97 |
@@ -144,7 +144,7 @@
 | 138 | Word Filters | responsible | v100 |
 | 139 | Bias (ML) | aiml | 未 |
 | 140 | Nondeterminism | genai | 未 |
-| 141 | Action Group | fm | 未 |
+| 141 | Action Group | fm | v123 |
 | 142 | Service Control Policy (SCP) | security | 未 |
 | 143 | Variance | aiml | 未 |
 | 144 | Sensitive Information Filters | responsible | v101 |
@@ -160,16 +160,16 @@
 | 154 | Asynchronous Inference | aiml | v105 |
 | 155 | Prompt Caching | fm | v109 |
 | 156 | Data Lineage | security | 未 |
-| 157 | Serverless Inference | aiml | 未 |
+| 157 | Serverless Inference | aiml | v120 |
 | 158 | FM Lifecycle | genai | 未 |
-| 159 | Automated Reasoning Checks | responsible | 未 |
+| 159 | Automated Reasoning Checks | responsible | v121 |
 | 160 | Exploratory Data Analysis (EDA) | aiml | 未 |
 | 161 | Instruction | fm | 未 |
 | 162 | Data Cataloging | security | 未 |
 | 163 | Data Pre-processing | aiml | 未 |
 | 164 | Token-based Pricing | genai | 未 |
 | 165 | Context (Prompt) | fm | 未 |
-| 166 | AWS Glue Data Catalog | security | 未 |
+| 166 | AWS Glue Data Catalog | security | v122 |
 | 167 | Data Splitting (Train/Validation/Test) | aiml | 未 |
 | 168 | Environmental Sustainability (AI) | responsible | 未 |
 | 169 | Input Tokens vs Output Tokens | genai | 未 |
@@ -240,29 +240,29 @@
 | 234 | Output Validation | security | 未 |
 | 235 | Traditional ML vs Foundation Models | aiml | 未 |
 | 236 | Multi-agent Communication Patterns | genai | 未 |
-| 237 | Amazon Comprehend | aiml | 未 |
+| 237 | Amazon Comprehend | aiml | v125 |
 | 238 | Prompt Versioning | fm | 未 |
 | 239 | Source Citation | security | 未 |
-| 240 | Amazon Lex | aiml | 未 |
+| 240 | Amazon Lex | aiml | v126 |
 | 241 | Amazon Bedrock Studio | genai | 未 |
 | 242 | Human Audit | responsible | 未 |
 | 243 | Amazon Bedrock Prompt Optimization | fm | 未 |
 | 244 | Application Security | security | 未 |
-| 245 | Amazon Polly | aiml | 未 |
+| 245 | Amazon Polly | aiml | v127 |
 | 246 | Amazon Q | genai | 未 |
-| 247 | Amazon Rekognition | aiml | 未 |
+| 247 | Amazon Rekognition | aiml | v128 |
 | 248 | Amazon Bedrock Model Evaluation | fm | v115 |
 | 249 | Threat Detection | security | 未 |
 | 250 | Amazon SageMaker Clarify | responsible | v116 |
-| 251 | Amazon Textract | aiml | 未 |
+| 251 | Amazon Textract | aiml | v129 |
 | 252 | Amazon Q Developer | genai | 未 |
 | 253 | Human-in-the-loop Evaluation | fm | 未 |
 | 254 | Vulnerability Management | security | 未 |
-| 255 | Amazon Transcribe | aiml | 未 |
+| 255 | Amazon Transcribe | aiml | v130 |
 | 256 | Amazon SageMaker Model Cards | responsible | v117 |
 | 257 | Benchmark Dataset | fm | 未 |
 | 258 | Infrastructure Protection | security | 未 |
-| 259 | Amazon Translate | aiml | 未 |
+| 259 | Amazon Translate | aiml | v131 |
 | 260 | Amazon Q Business | genai | 未 |
 | 261 | Amazon Personalize | aiml | v87 |
 | 262 | Recall-Oriented Understudy for Gisting Evaluation (ROUGE) | fm | 未 |
@@ -318,7 +318,7 @@
 | 312 | ISO/IEC 42001 | security | 未 |
 | 313 | Amazon Nova | genai | 未 |
 | 314 | AI Decision Transparency | responsible | 未 |
-| 315 | Amazon SageMaker Serverless Inference | aiml | 未 |
+| 315 | Amazon SageMaker Serverless Inference | aiml | 除外 |
 | 316 | Amazon Bedrock Converse API | fm | 未 |
 | 317 | NIST AI Risk Management Framework | security | 未 |
 | 318 | Amazon Titan | genai | 未 |

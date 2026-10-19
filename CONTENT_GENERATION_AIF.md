@@ -297,3 +297,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: bedrockAgents, agentcore, promptMgmt, bedrockEval, clarify, modelCards, jumpstart, strands（いずれもWebFetch成功）。
   注意: Bedrock Agents（Classic）とSageMaker Clarifyは公式ドキュメント上「新規顧客の受け付け終了」の注記あり。Bedrock Agentsは新規はAgentCore推奨。問題は概念説明にとどめた。
   見送り（`未`のまま）: 従来どおり定義ページ未確認の行（Inclusivity、Tokenization等）。リスト順ではなく、確認できた用語を優先した。nodeでの読み込み確認済み。
+- 2026-10-19（定期実行・8回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。対象サービス一覧もWebFetchで再確認。単語リストのVOCABを12語追加（v120〜v131: Serverless Inference、Automated Reasoning Checks、AWS Glue Data Catalog、Action Group、Policy in AgentCore、Amazon Comprehend/Lex/Polly/Rekognition/Textract/Transcribe/Translate）、PRACTICEを4件（p48〜p51: single 3 / matching 1）、MOCK_POOLを3件（m29〜m31: single）追加。累計 VOCAB=131 / PRACTICE=51 / MOCK_POOL=31。単語リスト進捗 131/469（除外5）。
+  新規SOURCES: serverlessInf, automatedReasoning, glueCatalog, actionGroup, agentcorePolicy, comprehend, lex, polly, rekognition, textract, transcribe, translate（いずれもWebFetch成功。agentcorePolicyはWebSearchで見つけた docs.aws.amazon.com/bedrock-agentcore/.../policy.md をWebFetchで本文確認）。nodeでの読み込み確認済み。
+  除外: 行122 AWS Security Hub / 127 AWS WAF / 132 AWS Audit Manager（対象サービス一覧に無いため）、315 Amazon SageMaker Serverless Inference（行157 Serverless Inferenceと重複）。
+  メモ: VOCABの正解最長割合が46%と高いまま（既存分の影響大）。次回以降は不正解を正解より長く書くこと。Bedrock Agents（Classic）は新規受付終了の注記があるため、Action Groupの問題は概念説明にとどめた。
