@@ -249,3 +249,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bias、Transformer、Stop Sequences、IAM Policy、Training、Token、RAG、Least Privilege、Inference、Training Data、Bedrock Knowledge Bases、Resource-based Policy。
   新規SOURCES: ragAws, bedrockKb, iamPolicies, transformers, aiBias（いずれもWebFetch成功）。改訂履歴ページは今回未確認（最新はv1.1のまま扱った）。
   見送り: 行27 Inclusivity（公式の定義ページ未確認）、行35 Tokenization は次回に回す。正解最長の割合はVOCABで27%に調整済み。PRACTICE/MOCK_POOLは今回追加なし。
+- 2026-10-19（定期実行・4回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行37〜40,43〜49,51〜53のうち14語のVOCABを追加（v34〜v47）。累計 VOCAB=47 / PRACTICE=4 / MOCK_POOL=1。単語リスト進捗 47/474。
+  追加トピック: Labeled/Unlabeled Data、Supervised/Unsupervised/Reinforcement Learning、Vector Database、Vector、Embedding、AWS KMS、Amazon OpenSearch Service、Amazon Neptune、Encryption at Rest/in Transit、Aurora PostgreSQL pgvector。
+  新規SOURCES: vectorDb, embeddings, whatIsRl, kms, opensearch, neptune, mlParadigms, encRestTransit, auroraKb（いずれもWebFetch成功）。
+  見送り（`未`のまま次回へ）: 行27 Inclusivity、35 Tokenization、36 Robustness、41 Context Window、42 Safety、50 Veracity、54 Customer Managed Key（公式の定義ページを今回確認できていない）。正解最長の割合はVOCABで29%に調整済み。PRACTICE/MOCK_POOLは今回追加なし。

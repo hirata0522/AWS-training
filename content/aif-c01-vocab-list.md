@@ -40,23 +40,23 @@
 | 34 | Resource-based Policy | security | v33 |
 | 35 | Tokenization | genai | 未 |
 | 36 | Robustness | responsible | 未 |
-| 37 | Labeled Data | aiml | 未 |
-| 38 | Vector Database | fm | 未 |
-| 39 | AWS KMS | security | 未 |
-| 40 | Unlabeled Data | aiml | 未 |
+| 37 | Labeled Data | aiml | v34 |
+| 38 | Vector Database | fm | v35 |
+| 39 | AWS KMS | security | v36 |
+| 40 | Unlabeled Data | aiml | v37 |
 | 41 | Context Window | genai | 未 |
 | 42 | Safety | responsible | 未 |
-| 43 | Supervised Learning | aiml | 未 |
-| 44 | Amazon OpenSearch Service | fm | 未 |
-| 45 | Encryption at Rest | security | 未 |
-| 46 | Embedding | genai | 未 |
-| 47 | Unsupervised Learning | aiml | 未 |
-| 48 | Amazon Neptune | fm | 未 |
-| 49 | Encryption in Transit | security | 未 |
+| 43 | Supervised Learning | aiml | v38 |
+| 44 | Amazon OpenSearch Service | fm | v39 |
+| 45 | Encryption at Rest | security | v40 |
+| 46 | Embedding | genai | v41 |
+| 47 | Unsupervised Learning | aiml | v42 |
+| 48 | Amazon Neptune | fm | v43 |
+| 49 | Encryption in Transit | security | v44 |
 | 50 | Veracity | responsible | 未 |
-| 51 | Reinforcement Learning | aiml | 未 |
-| 52 | Vector | genai | 未 |
-| 53 | Amazon Aurora PostgreSQL pgvector | fm | 未 |
+| 51 | Reinforcement Learning | aiml | v45 |
+| 52 | Vector | genai | v46 |
+| 53 | Amazon Aurora PostgreSQL pgvector | fm | v47 |
 | 54 | Customer Managed Key | security | 未 |
 | 55 | Semi-supervised Learning | aiml | 未 |
 | 56 | Transparency | responsible | 未 |
