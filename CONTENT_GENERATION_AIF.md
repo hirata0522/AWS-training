@@ -287,3 +287,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   既存データの修正: SOURCES末尾（personalize行）のカンマ漏れを追記時に修正（新規追加分と一体の構文修正）。
   WebFetch失敗（404）: aws.amazon.com/what-is/autoencoder/。VAE は出典未確認で `未` のまま。LoRA/PEFTもAWS公式ページがWebSearchで見つからず `未` のまま。
   メモ: 正解最長割合はVOCAB 43% / PRACTICE 39% / MOCK 55%とまだ高め。次回以降は不正解を長めに。
+- 2026-10-19（定期実行・12回目）: 単語リスト行133,135,134,130,138,144,153,145,149,154,150,151,146,155の14語のVOCABを追加（v96〜v109）、PRACTICEを4件（p39〜p42: matching 1 / single 2 / multi 1）、MOCK_POOLを3件（m21〜m23: single）追加。累計 VOCAB=109 / PRACTICE=42 / MOCK_POOL=23。単語リスト進捗 109/473（除外1）。
+  追加トピック: 過学習/学習不足、ハルシネーション、Guardrailsの各フィルター（拒否トピック/単語/機密情報/グラウンディングチェック）、推論方式（バッチ/リアルタイム/非同期）、Bedrock Provisioned Throughput / Model Invocation Logging / Custom Model Import / Prompt Caching。
+  新規SOURCES: underOver, sagemakerDeploy, bedrockBatch, provThroughput, invocationLogging, guardrailsComp, customModelImport, promptCaching, hallucination（いずれもWebFetch成功）。改訂履歴ページは今回未確認（v1.1のまま扱った）。nodeでの読み込み確認済み。
+  見送り: 行136 Amazon Bedrock Agents / 141 Action Group は、公式ドキュメントに「Bedrock Agents（Classic）は新規顧客の受付を終了、AgentCore を推奨」とあり、試験ガイドv1.1での位置付け確認が必要なため `未` のまま（次回に確認）。
+  メモ: 正解最長割合が VOCAB 43% / PRACTICE 45% / MOCK 56% と高い。次回以降は不正解の選択肢を正解より長く書くこと。

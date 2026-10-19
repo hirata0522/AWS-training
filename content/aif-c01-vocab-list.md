@@ -133,32 +133,32 @@
 | 127 | AWS WAF | security | 未 |
 | 128 | Hyperparameter Tuning | aiml | 未 |
 | 129 | Machine Translation | genai | 未 |
-| 130 | Denied Topics | responsible | 未 |
+| 130 | Denied Topics | responsible | v99 |
 | 131 | Representative Dataset | fm | 未 |
 | 132 | AWS Audit Manager | security | 未 |
-| 133 | Overfitting | aiml | 未 |
-| 134 | Hallucination | genai | 未 |
-| 135 | Underfitting | aiml | 未 |
+| 133 | Overfitting | aiml | v96 |
+| 134 | Hallucination | genai | v98 |
+| 135 | Underfitting | aiml | v97 |
 | 136 | Amazon Bedrock Agents | fm | 未 |
 | 137 | AWS Organizations | security | 未 |
-| 138 | Word Filters | responsible | 未 |
+| 138 | Word Filters | responsible | v100 |
 | 139 | Bias (ML) | aiml | 未 |
 | 140 | Nondeterminism | genai | 未 |
 | 141 | Action Group | fm | 未 |
 | 142 | Service Control Policy (SCP) | security | 未 |
 | 143 | Variance | aiml | 未 |
-| 144 | Sensitive Information Filters | responsible | 未 |
-| 145 | Batch Inference | aiml | 未 |
-| 146 | Amazon Bedrock Custom Model Import | fm | 未 |
+| 144 | Sensitive Information Filters | responsible | v101 |
+| 145 | Batch Inference | aiml | v103 |
+| 146 | Amazon Bedrock Custom Model Import | fm | v108 |
 | 147 | IAM Identity Center | security | 未 |
 | 148 | Interpretability | genai | 未 |
-| 149 | Real-time Inference | aiml | 未 |
-| 150 | Amazon Bedrock Provisioned Throughput | fm | 未 |
-| 151 | Amazon Bedrock Model Invocation Logging | security | 未 |
+| 149 | Real-time Inference | aiml | v104 |
+| 150 | Amazon Bedrock Provisioned Throughput | fm | v106 |
+| 151 | Amazon Bedrock Model Invocation Logging | security | v107 |
 | 152 | Pre-training | genai | 未 |
-| 153 | Contextual Grounding Check | responsible | 未 |
-| 154 | Asynchronous Inference | aiml | 未 |
-| 155 | Prompt Caching | fm | 未 |
+| 153 | Contextual Grounding Check | responsible | v102 |
+| 154 | Asynchronous Inference | aiml | v105 |
+| 155 | Prompt Caching | fm | v109 |
 | 156 | Data Lineage | security | 未 |
 | 157 | Serverless Inference | aiml | 未 |
 | 158 | FM Lifecycle | genai | 未 |
