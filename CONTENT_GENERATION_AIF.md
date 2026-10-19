@@ -276,3 +276,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: guardrails, inspector, artifact, rlhf（いずれもWebFetch成功）。対象サービス一覧もWebFetchで再確認。nodeでの読み込み確認済み。
   除外: 行117 Amazon GuardDuty（対象サービス一覧に無いため）。Trusted Advisor（行113）は一覧に有るが公式ページ未確認のため `未` のまま。
   メモ: MOCK_POOLの正解最長割合が60%と高い（件数が少ないため）。次回以降は不正解を長めにして調整すること。
+- 2026-10-19（定期実行・10回目）: 単語リスト行82,85,90,104,261の5語のVOCABを追加（v83〜v87）、PRACTICEを2件（p31,p32: single）、MOCK_POOLを1件（m16: single）追加。累計 VOCAB=87 / PRACTICE=32 / MOCK_POOL=16。単語リスト進捗 87/474（除外1）。追加は件数少なめ（公式ページで確認できる出典が見つかった用語のみ）。
+  追加トピック: 時系列データ、構造化/非構造化データ、レコメンデーション、Amazon Personalize。
+  新規SOURCES: structuredData, timeSeries, personalize（いずれもWebFetch成功）。改訂履歴ページは今回未確認（v1.1のまま扱った）。nodeでの読み込み確認済み。
+  WebFetch失敗（404）: aws.amazon.com/what-is/{recommendation-engine, recommendation-system, text-summarization, semi-supervised-learning, tokenization}。Semi-supervised Learning / Tokenization / Summarization 等は出典未確認のため `未` のまま。
+  メモ: VOCABの正解最長割合が41%と高め。次回以降は不正解を長めに書くこと。

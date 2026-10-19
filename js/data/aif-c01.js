@@ -65,7 +65,10 @@ var SOURCES = {
   guardrails:{label:'Amazon Bedrock Guardrails で有害なコンテンツを検出・フィルタリングする', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html'},
   inspector:{label:'Amazon Inspector とは', url:'https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html'},
   artifact:{label:'AWS Artifact とは', url:'https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html'},
-  rlhf:{label:'AWS: 人間のフィードバックからの強化学習(RLHF)とは', url:'https://aws.amazon.com/what-is/reinforcement-learning-from-human-feedback/'}
+  rlhf:{label:'AWS: 人間のフィードバックからの強化学習(RLHF)とは', url:'https://aws.amazon.com/what-is/reinforcement-learning-from-human-feedback/'},
+  structuredData:{label:'AWS: 構造化データと非構造化データの違い', url:'https://aws.amazon.com/compare/the-difference-between-structured-data-and-unstructured-data/'},
+  timeSeries:{label:'AWS: 時系列データベースとは', url:'https://aws.amazon.com/what-is/time-series-database/'},
+  personalize:{label:'Amazon Personalize とは', url:'https://docs.aws.amazon.com/personalize/latest/dg/what-is-personalize.html'}
 };
 
 var VOCAB = [
@@ -151,6 +154,11 @@ var VOCAB = [
   {id:'v80', term:'Amazon Inspector', domain:'security', source:SOURCES.inspector, q:{text:'EC2インスタンス、ECRのコンテナイメージ、Lambda関数を自動的に検出し、ソフトウェアの脆弱性や意図しないネットワーク露出を継続的にスキャンするサービスはどれですか？', choices:['Amazon Macie','AWS Config','AWS CloudTrail','Amazon Inspector'], correct:3, why:['Macieは、S3内の機密データを検出して保護するサービスで、ワークロードの脆弱性をスキャンするものではありません。','AWS Configはリソースの構成変更を記録・評価するサービスで、ソフトウェアの脆弱性スキャンは行いません。','CloudTrailはAPI操作を記録して監査に使うサービスで、脆弱性のスキャンは行いません。','正しい。Amazon Inspectorは脆弱性管理サービスで、検出した問題をfindingとして報告します。']}},
   {id:'v81', term:'AWS Artifact', domain:'security', source:SOURCES.artifact, q:{text:'監査人に提出するため、AWSのISOやSOCなどのコンプライアンスレポートをオンデマンドでダウンロードしたい場合に使うサービスはどれですか？', choices:['AWS Trusted Advisor','AWS Artifact','AWS Config','Amazon Macie'], correct:1, why:['Trusted Advisorは、コスト最適化やセキュリティなどの観点でアカウントを推奨事項に沿って確認するサービスで、AWSの監査レポートを提供するものではありません。','正しい。AWS ArtifactはAWSのセキュリティ・コンプライアンスに関するドキュメントをオンデマンドで提供し、AWSとの契約（agreement）の確認・承諾にも使えます。','AWS Configは、お客様自身のリソースの構成を記録・評価するサービスです。','Macieは、S3内の機密データを検出するサービスです。']}},
   {id:'v82', term:'Reinforcement Learning from Human Feedback (RLHF)', domain:'fm', source:SOURCES.rlhf, q:{text:'RLHF（人間のフィードバックからの強化学習）の説明として正しいものはどれですか？', choices:['人間が好む応答を評価した結果から報酬モデルを作り、それを使って大規模言語モデルの出力を人間の好みに近づける','大きな教師モデルの出力を使って、小さな生徒モデルを学習させ、推論コストを下げる','ラベルのない大量のテキストから、データ自体を教師として言語の特徴を学習する','モデルの出力に含まれる個人情報を、推論時に検出してマスキングする'], correct:0, why:['正しい。人間が複数の応答を好みの順に評価し、その評価で報酬モデルを学習させ、報酬が高くなる応答を出すようモデルを最適化します。','教師モデルと生徒モデルを使うのは、蒸留（Distillation）の手法です。','ラベルなしデータから自己学習するのは、自己教師あり学習の説明です。','個人情報の検出とマスキングは、Guardrailsの機密情報フィルターなどの役割です。']}},
+  {id:'v83', term:'Time-series Data', domain:'aiml', source:SOURCES.timeSeries, q:{text:'Time-series Data（時系列データ）の説明として正しいものはどれですか？', choices:['画像や音声など、行と列の固定スキーマに収まらない形式のデータ','ラベル（正解）が付与されていない生のデータ','各値にタイムスタンプが紐づき、時間の順序で記録される測定値（IoTセンサーの値、株価、消費電力など）','複数のテーブルを主キーと外部キーで関連付けて保存したデータ'], correct:2, why:['行と列の固定スキーマに収まらないデータは非構造化データの説明で、時系列かどうかとは関係ありません。','ラベルの有無で分けたときの「ラベルなしデータ」の説明です。','正しい。時系列データは各値がタイムスタンプと結びつき、IoTセンサーの値、アプリケーションの性能指標、株価、エネルギー消費量などの継続的なイベントの流れが典型例です。','リレーショナルデータベースの構造の説明で、時間の順序を表すものではありません。']}},
+  {id:'v84', term:'Structured Data', domain:'aiml', source:SOURCES.structuredData, q:{text:'Structured Data（構造化データ）の例として最も適切なものはどれですか？', choices:['社内の文書ファイルやチャットの会話記録','動画ファイルや音声ファイル','SNSに投稿された自由記述のテキスト','リレーショナルデータベースのテーブルに格納された売上データ（行と列で定義されたデータ）'], correct:3, why:['文書ファイルやチャットの記録は、決まったスキーマを持たない非構造化データの例です。','動画や音声は非構造化データで、行と列のモデルには当てはまりません。','自由記述のテキストも非構造化データです。','正しい。構造化データは固定のデータモデル（典型的には行と列のテーブル）に収まるデータで、AuroraやRDS、Redshiftなどに格納されます。']}},
+  {id:'v85', term:'Unstructured Data', domain:'aiml', source:SOURCES.structuredData, q:{text:'Unstructured Data（非構造化データ）に該当するものはどれですか？', choices:['事前定義されたスキーマを持たない動画ファイル、文書、SNS投稿、チャットの記録など','列の型が定義された在庫管理テーブル','主キーで管理される顧客マスタ','決まったフォーマットで保存された財務データの表'], correct:0, why:['正しい。非構造化データは事前定義されたデータモデルや属性を持たず、「スキーマに収まらない」データです。S3とデータレイクで保管・分析するのが一般的です。','列の型が定義されたテーブルは構造化データです。','主キーで管理される顧客マスタはリレーショナルな構造化データです。','決まった形式の表形式データは構造化データです。']}},
+  {id:'v86', term:'Recommendation System', domain:'aiml', source:SOURCES.personalize, q:{text:'ユーザーの過去のクリックや購入などの行動データをもとに、ユーザーごとに関心の高そうな商品や動画を提示する仕組みを何と呼びますか？', choices:['異常検知（Anomaly Detection）','レコメンデーションシステム（Recommendation System）','時系列予測（Forecasting）','音声認識（Speech Recognition）'], correct:1, why:['異常検知は、通常のパターンから外れたデータを見つけるための手法で、アイテムの提示は目的ではありません。','正しい。レコメンデーションは、ユーザーとアイテムのやり取りのデータなどから、ユーザーごとの推奨アイテムを生成します。AWSではAmazon Personalizeが代表的なサービスです。','時系列予測は、過去の時系列データから将来の値を予測する手法です。','音声認識は、音声をテキストに変換する技術です。']}},
+  {id:'v87', term:'Amazon Personalize', domain:'aiml', source:SOURCES.personalize, q:{text:'Amazon Personalizeの説明として正しいものはどれですか？', choices:['文書やフォームからテキストやデータを抽出するサービス','ユーザーとアイテムのやり取りのデータをもとにアイテムの推奨を生成する、フルマネージドの機械学習サービス','テキストから感情やキーフレーズを分析するサービス','会話型のチャットボットを構築するサービス'], correct:1, why:['文書からの抽出はAmazon Textractの役割です。','正しい。Personalizeは、クリックなどのアイテムのインタラクションデータを使って、動画や商品のおすすめ、次の最適なアクション、ユーザーセグメントなどを生成します。','テキストの感情分析はAmazon Comprehendの役割です。','会話型のボットの構築はAmazon Lexの役割です。']}},
 ];
 
 var PRACTICE = [
@@ -249,6 +257,12 @@ var PRACTICE = [
   {id:'p30', domain:'security', type:'single', source:SOURCES.artifact, text:'規制当局への報告のため、AWSのインフラストラクチャが特定のコンプライアンス標準に準拠していることを示す公式の証明書や監査レポートを入手する必要があります。次のうち、これらのドキュメントを追加料金なしでダウンロードできるサービスはどれですか？',
     choices:['AWS Artifact','AWS CloudTrail','Amazon Inspector','AWS Secrets Manager'], correct:[0],
     why:['正しい。AWS Artifactは、AWSのセキュリティ・コンプライアンス関連ドキュメントやアカウントの契約を無料で提供します。','CloudTrailは、お客様のアカウント内のAPI操作を記録するサービスで、AWS自身の監査レポートを提供するものではありません。','Inspectorは、お客様のワークロードの脆弱性をスキャンするサービスです。','Secrets Managerは、認証情報などのシークレットを管理するサービスです。']},
+  {id:'p31', domain:'aiml', type:'single', source:SOURCES.personalize, text:'動画配信アプリで、視聴履歴をもとに「あなたへのおすすめ」をユーザーごとに表示したい場合に最も適したAWSサービスはどれですか？',
+    choices:['Amazon Textract','Amazon Personalize','Amazon Transcribe','Amazon Comprehend'], correct:[1],
+    why:['Textractは、文書やフォームからテキストや表を抽出するサービスで、アイテムの推奨は行いません。','正しい。Personalizeは、ユーザーのアイテムとのやり取りのデータからアイテムの推奨を生成できます。','Transcribeは、音声をテキストに変換するサービスです。','Comprehendは、テキストの感情分析やエンティティ抽出を行うサービスです。']},
+  {id:'p32', domain:'aiml', type:'single', source:SOURCES.structuredData, text:'次のうち、構造化データ（Structured Data）に最も当てはまるものはどれですか？',
+    choices:['顧客から届いたメール本文','コールセンターの通話録音','Amazon Auroraのテーブルに格納された注文データ','店舗の防犯カメラの映像'], correct:[2],
+    why:['メール本文は決まったスキーマを持たない非構造化データです。','通話録音は音声で、非構造化データです。','正しい。行と列で定義された固定のデータモデルに収まるデータが構造化データです。','映像は非構造化データです。']},
 ];
 
 var MOCK_POOL = [
@@ -297,6 +311,9 @@ var MOCK_POOL = [
   {id:'m15', domain:'fm', type:'single', source:SOURCES.rlhf, text:'RLHFで「報酬モデル」はどのような役割を果たしますか？',
     choices:['学習データから個人情報を検出して、自動的に削除する','人間の好みの評価から学習し、任意の応答を人間がどれだけ高く評価するかを推定する','大きなモデルの出力を再現するために、小さなモデルの重みを圧縮する','モデルの推論結果が、参照元の文書に基づいているかを判定する'], correct:[1],
     why:['個人情報の検出は、MacieやGuardrailsなどの役割で、報酬モデルとは関係がありません。','正しい。人間が複数の応答を好みの順に評価した結果で報酬モデルを学習させ、その推定値でモデルを最適化します。','教師モデルの出力を使って小さなモデルを学習させるのは蒸留の手法で、報酬モデルの役割ではありません。','応答が参照元に基づいているかを判定するのは、Guardrailsのグラウンディングチェックなどの役割です。']},
+  {id:'m16', domain:'aiml', type:'single', source:SOURCES.timeSeries, text:'工場のIoTセンサーが一定間隔で記録する温度や振動の測定値のように、タイムスタンプと結びついて時間の順序で蓄積されるデータを何と呼びますか？',
+    choices:['ラベル付きデータ（Labeled Data）','非構造化データ（Unstructured Data）','リレーショナルデータ（Relational Data）','時系列データ（Time-series Data）'], correct:[3],
+    why:['ラベル付きデータは、正解が付与されたデータで、時間との結びつきを示すものではありません。','非構造化データは、スキーマを持たない動画や文書などです。センサーの測定値は値とタイムスタンプで構成されています。','リレーショナルデータは、テーブル間の関係で構成されるデータで、時間順の蓄積を表す用語ではありません。','正しい。各値がタイムスタンプと結びつき、時間の順序で記録されるデータが時系列データです。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

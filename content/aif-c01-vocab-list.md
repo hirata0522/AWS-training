@@ -85,15 +85,15 @@
 | 79 | Trustworthiness | responsible | 未 |
 | 80 | Tabular Data | aiml | 未 |
 | 81 | Prompt | genai | 未 |
-| 82 | Time-series Data | aiml | 未 |
+| 82 | Time-series Data | aiml | v83 |
 | 83 | Continued Pre-training | fm | 未 |
 | 84 | Policy in AgentCore | security | 未 |
-| 85 | Structured Data | aiml | 未 |
+| 85 | Structured Data | aiml | v84 |
 | 86 | Truthfulness | responsible | 未 |
 | 87 | Prompt Engineering | genai |v61 |
 | 88 | Instruction Tuning | fm | 未 |
 | 89 | AWS CloudTrail | security |v64 |
-| 90 | Unstructured Data | aiml | 未 |
+| 90 | Unstructured Data | aiml | v85 |
 | 91 | Transfer Learning | fm | v76 |
 | 92 | Amazon CloudWatch | security |v66 |
 | 93 | Computer Vision | aiml |v62 |
@@ -107,7 +107,7 @@
 | 101 | Governance (Responsible AI) | responsible | 未 |
 | 102 | Domain Adaptation | fm | 未 |
 | 103 | Amazon Inspector | security | v80 |
-| 104 | Recommendation System | aiml | 未 |
+| 104 | Recommendation System | aiml | v86 |
 | 105 | Summarization | genai | 未 |
 | 106 | Fraud Detection | aiml | 未 |
 | 107 | Parameter-efficient Fine-tuning (PEFT) | fm | 未 |
@@ -264,7 +264,7 @@
 | 258 | Infrastructure Protection | security | 未 |
 | 259 | Amazon Translate | aiml | 未 |
 | 260 | Amazon Q Business | genai | 未 |
-| 261 | Amazon Personalize | aiml | 未 |
+| 261 | Amazon Personalize | aiml | v87 |
 | 262 | Recall-Oriented Understudy for Gisting Evaluation (ROUGE) | fm | 未 |
 | 263 | Data Lifecycle | security | 未 |
 | 264 | Amazon SageMaker Model Governance | responsible | 未 |
