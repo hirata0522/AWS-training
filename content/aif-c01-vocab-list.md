@@ -76,7 +76,7 @@
 | 70 | Generative Adversarial Network (GAN) | genai | v55 |
 | 71 | Interpretability vs Explainability | responsible | 未 |
 | 72 | Dimensionality Reduction | aiml | v56 |
-| 73 | In-context Learning | fm | 未 |
+| 73 | In-context Learning | fm | v138 |
 | 74 | Amazon VPC Endpoint | security | v57 |
 | 75 | Anomaly Detection | aiml | v58 |
 | 76 | Variational Autoencoder (VAE) | genai | 未 |
@@ -155,11 +155,11 @@
 | 149 | Real-time Inference | aiml | v104 |
 | 150 | Amazon Bedrock Provisioned Throughput | fm | v106 |
 | 151 | Amazon Bedrock Model Invocation Logging | security | v107 |
-| 152 | Pre-training | genai | 未 |
+| 152 | Pre-training | genai | v135 |
 | 153 | Contextual Grounding Check | responsible | v102 |
 | 154 | Asynchronous Inference | aiml | v105 |
 | 155 | Prompt Caching | fm | v109 |
-| 156 | Data Lineage | security | 未 |
+| 156 | Data Lineage | security | v134 |
 | 157 | Serverless Inference | aiml | v120 |
 | 158 | FM Lifecycle | genai | 未 |
 | 159 | Automated Reasoning Checks | responsible | v121 |
@@ -167,18 +167,18 @@
 | 161 | Instruction | fm | 未 |
 | 162 | Data Cataloging | security | 未 |
 | 163 | Data Pre-processing | aiml | 未 |
-| 164 | Token-based Pricing | genai | 未 |
+| 164 | Token-based Pricing | genai | v132 |
 | 165 | Context (Prompt) | fm | 未 |
 | 166 | AWS Glue Data Catalog | security | v122 |
 | 167 | Data Splitting (Train/Validation/Test) | aiml | 未 |
 | 168 | Environmental Sustainability (AI) | responsible | 未 |
-| 169 | Input Tokens vs Output Tokens | genai | 未 |
+| 169 | Input Tokens vs Output Tokens | genai | v133 |
 | 170 | Negative Prompt | fm | 未 |
 | 171 | Data Quality Assessment | security | 未 |
 | 172 | Accuracy | aiml | 未 |
 | 173 | Precision | aiml | 未 |
 | 174 | Intellectual Property Infringement | responsible | 未 |
-| 175 | Zero-shot Prompting | fm | 未 |
+| 175 | Zero-shot Prompting | fm | v136 |
 | 176 | Privacy-enhancing Technologies | security | 未 |
 | 177 | Provisioned Throughput | genai | 未 |
 | 178 | Recall | aiml | 未 |
@@ -188,7 +188,7 @@
 | 182 | On-Demand Throughput | genai | 未 |
 | 183 | Loss of Customer Trust | responsible | 未 |
 | 184 | Area Under the Curve (AUC) | aiml | 未 |
-| 185 | Few-shot Prompting | fm | 未 |
+| 185 | Few-shot Prompting | fm | v137 |
 | 186 | Data Masking | security | 未 |
 | 187 | Context Engineering | genai | 未 |
 | 188 | Confusion Matrix | aiml | 未 |
@@ -197,7 +197,7 @@
 | 191 | PII (Personally Identifiable Information) | security | 未 |
 | 192 | ROC Curve | aiml | 未 |
 | 193 | Agentic AI | genai | 未 |
-| 194 | Prompt Template | fm | 未 |
+| 194 | Prompt Template | fm | v139 |
 | 195 | Data Access Control | security | 未 |
 | 196 | Mean Squared Error (MSE) | aiml | 未 |
 | 197 | Dataset Diversity | responsible | 未 |
@@ -272,13 +272,13 @@
 | 266 | AWS Transform | aiml | 未 |
 | 267 | Bilingual Evaluation Understudy (BLEU) | fm | 未 |
 | 268 | Data Residency | security | 未 |
-| 269 | Amazon SageMaker Data Wrangler | aiml | 未 |
+| 269 | Amazon SageMaker Data Wrangler | aiml | v142 |
 | 270 | Kiro | genai | 未 |
 | 271 | Amazon SageMaker Role Manager | responsible | 未 |
 | 272 | BERTScore | fm | 未 |
 | 273 | Data Retention | security | 未 |
-| 274 | Amazon SageMaker Feature Store | aiml | 未 |
-| 275 | Amazon SageMaker Model Monitor | aiml | 未 |
+| 274 | Amazon SageMaker Feature Store | aiml | v140 |
+| 275 | Amazon SageMaker Model Monitor | aiml | v141 |
 | 276 | Strands Agents | genai | v119 |
 | 277 | Perplexity | fm | 未 |
 | 278 | Data Governance | security | 未 |

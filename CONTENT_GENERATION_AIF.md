@@ -301,3 +301,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: serverlessInf, automatedReasoning, glueCatalog, actionGroup, agentcorePolicy, comprehend, lex, polly, rekognition, textract, transcribe, translate（いずれもWebFetch成功。agentcorePolicyはWebSearchで見つけた docs.aws.amazon.com/bedrock-agentcore/.../policy.md をWebFetchで本文確認）。nodeでの読み込み確認済み。
   除外: 行122 AWS Security Hub / 127 AWS WAF / 132 AWS Audit Manager（対象サービス一覧に無いため）、315 Amazon SageMaker Serverless Inference（行157 Serverless Inferenceと重複）。
   メモ: VOCABの正解最長割合が46%と高いまま（既存分の影響大）。次回以降は不正解を正解より長く書くこと。Bedrock Agents（Classic）は新規受付終了の注記があるため、Action Groupの問題は概念説明にとどめた。
+- 2026-10-19（定期実行・9回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行164,169,156,152,175,185,73,194,274,275,269の11語のVOCABを追加（v132〜v142）、PRACTICEを6件（p52〜p57: single 4 / multi 1 / ordering 1）、MOCK_POOLを4件（m32〜m35: single 3 / multi 1）追加。累計 VOCAB=142 / PRACTICE=57 / MOCK_POOL=35。単語リスト進捗 142/469（除外5）。
+  追加トピック: Bedrockのトークン課金（入力/出力トークン、バッチモード、Provisioned Throughput）、ML Lineage Tracking、事前学習、zero-shot/few-shot/in-context learning、プロンプトテンプレート、SageMaker Feature Store（オンライン/オフライン）、Model Monitor、Data Wrangler。
+  新規SOURCES: bedrockPricing, lineage, promptGuide, featureStore, modelMonitor, dataWrangler（いずれもWebFetch成功）。nodeでの読み込み確認済み。
+  注意: Model Monitorは新規顧客の受け付け終了、Data WranglerはSageMaker Canvasに統合済みの注記があり、解説に反映した。
+  WebFetch失敗（404）: aws.amazon.com/what-is/{fraud-detection, data-preprocessing, exploratory-data-analysis}。Fraud Detection / EDA / Data Pre-processing は出典未確認のため `未` のまま。SCP（行142）はAWS Organizationsが対象サービス一覧に無いため見送り。
+  メモ: 正解最長割合は VOCAB 49% / PRACTICE 40% / MOCK 51% と高いまま。次回以降は不正解を正解より長く書くこと。
