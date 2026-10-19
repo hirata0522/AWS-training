@@ -68,7 +68,12 @@ var SOURCES = {
   rlhf:{label:'AWS: 人間のフィードバックからの強化学習(RLHF)とは', url:'https://aws.amazon.com/what-is/reinforcement-learning-from-human-feedback/'},
   structuredData:{label:'AWS: 構造化データと非構造化データの違い', url:'https://aws.amazon.com/compare/the-difference-between-structured-data-and-unstructured-data/'},
   timeSeries:{label:'AWS: 時系列データベースとは', url:'https://aws.amazon.com/what-is/time-series-database/'},
-  personalize:{label:'Amazon Personalize とは', url:'https://docs.aws.amazon.com/personalize/latest/dg/what-is-personalize.html'}
+  personalize:{label:'Amazon Personalize とは', url:'https://docs.aws.amazon.com/personalize/latest/dg/what-is-personalize.html'},
+  featureEng:{label:'AWS: 特徴量エンジニアリングとは', url:'https://aws.amazon.com/what-is/feature-engineering/'},
+  dataLabeling:{label:'AWS: データラベリングとは', url:'https://aws.amazon.com/what-is/data-labeling/'},
+  amt:{label:'SageMaker AI: 自動モデルチューニング（ハイパーパラメータチューニング）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning.html'},
+  trustedAdvisor:{label:'AWS Trusted Advisor', url:'https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html'},
+  contentFilters:{label:'Amazon Bedrock Guardrails: コンテンツフィルター', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-content-filters.html'},
 };
 
 var VOCAB = [
@@ -159,6 +164,14 @@ var VOCAB = [
   {id:'v85', term:'Unstructured Data', domain:'aiml', source:SOURCES.structuredData, q:{text:'Unstructured Data（非構造化データ）に該当するものはどれですか？', choices:['事前定義されたスキーマを持たない動画ファイル、文書、SNS投稿、チャットの記録など','列の型が定義された在庫管理テーブル','主キーで管理される顧客マスタ','決まったフォーマットで保存された財務データの表'], correct:0, why:['正しい。非構造化データは事前定義されたデータモデルや属性を持たず、「スキーマに収まらない」データです。S3とデータレイクで保管・分析するのが一般的です。','列の型が定義されたテーブルは構造化データです。','主キーで管理される顧客マスタはリレーショナルな構造化データです。','決まった形式の表形式データは構造化データです。']}},
   {id:'v86', term:'Recommendation System', domain:'aiml', source:SOURCES.personalize, q:{text:'ユーザーの過去のクリックや購入などの行動データをもとに、ユーザーごとに関心の高そうな商品や動画を提示する仕組みを何と呼びますか？', choices:['異常検知（Anomaly Detection）','レコメンデーションシステム（Recommendation System）','時系列予測（Forecasting）','音声認識（Speech Recognition）'], correct:1, why:['異常検知は、通常のパターンから外れたデータを見つけるための手法で、アイテムの提示は目的ではありません。','正しい。レコメンデーションは、ユーザーとアイテムのやり取りのデータなどから、ユーザーごとの推奨アイテムを生成します。AWSではAmazon Personalizeが代表的なサービスです。','時系列予測は、過去の時系列データから将来の値を予測する手法です。','音声認識は、音声をテキストに変換する技術です。']}},
   {id:'v87', term:'Amazon Personalize', domain:'aiml', source:SOURCES.personalize, q:{text:'Amazon Personalizeの説明として正しいものはどれですか？', choices:['文書やフォームからテキストやデータを抽出するサービス','ユーザーとアイテムのやり取りのデータをもとにアイテムの推奨を生成する、フルマネージドの機械学習サービス','テキストから感情やキーフレーズを分析するサービス','会話型のチャットボットを構築するサービス'], correct:1, why:['文書からの抽出はAmazon Textractの役割です。','正しい。Personalizeは、クリックなどのアイテムのインタラクションデータを使って、動画や商品のおすすめ、次の最適なアクション、ユーザーセグメントなどを生成します。','テキストの感情分析はAmazon Comprehendの役割です。','会話型のボットの構築はAmazon Lexの役割です。']}},
+  {id:'v88', term:'Feature', domain:'aiml', source:SOURCES.featureEng, q:{text:'機械学習における「特徴量（Feature）」の説明として正しいものはどれですか？', choices:['モデルが予測した結果を、正解と照らし合わせて評価するための指標','モデルの学習を始める前に、学習率やバッチサイズなどに設定する値','モデルが学習と推論の際に予測を行うために使う入力変数（例：曲の評価や視聴履歴）','モデルが予測する対象となる、正解として人が付与した情報（例：画像に写っているのは鳥）'], correct:2, why:['これは評価指標の説明で、特徴量は入力として使う変数です。','これはハイパーパラメータの説明です。学習の前に人が設定する値で、データの入力変数ではありません。','正しい。特徴量は、モデルが学習と推論の際に予測を行うために使う入力です。音楽のおすすめなら、曲の評価・視聴履歴・視聴時間が特徴量になります。','これはラベルの説明です。ラベルは予測の対象となる正解の情報で、入力として使う特徴量とは区別されます。']}},
+  {id:'v89', term:'Feature Engineering', domain:'aiml', source:SOURCES.featureEng, q:{text:'特徴量エンジニアリング（Feature Engineering）の説明として正しいものはどれですか？', choices:['生データから変数を抽出し、学習や予測に使える形に変換・整形するプロセス','生データの一部を人が確認し、画像や文章に正解のタグを付けて教師データを作成するプロセス','既存の学習済みモデルを別のタスクに再利用して、必要な学習データの量を減らすプロセス','複数の設定値の組み合わせで学習ジョブを繰り返し、最も性能の高いモデルを自動的に探すプロセス'], correct:0, why:['正しい。生データから変数を抽出・変換して、モデルが学習と予測に使える特徴量にするプロセスです。','これはデータラベリングの説明です。特徴量エンジニアリングは入力変数の加工が中心で、正解を付ける作業ではありません。','これは転移学習の説明です。特徴量の作成とは別の手法です。','これは自動モデルチューニング（ハイパーパラメータチューニング）の説明です。']}},
+  {id:'v90', term:'Label', domain:'aiml', source:SOURCES.dataLabeling, q:{text:'教師あり学習における「ラベル（Label）」の説明として正しいものはどれですか？', choices:['モデルの入力として使われる、売上や気温などの数値データそのもの','学習を始める前に人が設定する、学習率や木の深さなどの調整用の値','データの重複を取り除いたり欠損値を埋めたりした後の、整形済みの入力データ','生データに付与される、写真に鳥が写っているかどうかなど、モデルが学習する手がかりとなる正解の情報'], correct:3, why:['これは入力データや特徴量の説明です。ラベルは予測の対象となる正解の情報です。','これはハイパーパラメータの説明です。','これはデータクレンジング後の入力データの説明で、正解を表すラベルとは異なります。','正しい。ラベルは、画像・テキスト・動画などの生データに付ける正解の情報で、モデルが学習するための文脈を与えます。']}},
+  {id:'v91', term:'Hyperparameter', domain:'aiml', source:SOURCES.amt, q:{text:'Amazon SageMaker AIの自動モデルチューニング（ハイパーパラメータチューニング）が行うこととして正しいものはどれですか？', choices:['指定したハイパーパラメータの範囲を探索しながら多数の学習ジョブを実行し、選んだ評価指標で最も良いモデルを作る値の組み合わせを見つける','学習済みのモデルから不要な重みを取り除いて、推論に必要なモデルのサイズを小さくする','画像や文書に人手でラベルを付けるための作業者とワークフローを用意して、教師データを作成する','学習後のモデルが特定の属性のグループに対して偏った予測をしていないかを、自動的に検出して報告する'], correct:0, why:['正しい。自動モデルチューニングは、指定したアルゴリズムとハイパーパラメータの範囲を使って多数の学習ジョブを実行し、指定した指標で最も性能の高いモデルになる値を選びます。','これはモデルの圧縮・軽量化の説明で、ハイパーパラメータの探索ではありません。','これはSageMaker Ground Truthなどのデータラベリングの説明です。','これはSageMaker Clarifyなどのバイアス検出の役割です。']}},
+  {id:'v92', term:'Data Labeling', domain:'fm', source:SOURCES.dataLabeling, q:{text:'データラベリング（Data Labeling）とSageMaker Ground Truthの説明として正しいものはどれですか？', choices:['モデルの学習済みの重みを暗号化して、他のアカウントから参照できないように保護する','学習済みのモデルが出力した文章の中から、個人情報を自動的に検出してマスクする','生データにラベルを付けて教師データを作るプロセスで、Ground Truthは人間のラベル付け担当者とラベリングのワークフローを提供して、その作業の手間を減らす','モデルの推論リクエストを複数のインスタンスに振り分けて、リアルタイムの応答時間を短縮する'], correct:2, why:['これは暗号化（KMSなど）の役割で、データラベリングとは関係がありません。','これは個人情報の検出・マスクの説明で、Macie や Bedrock Guardrails の役割です。','正しい。データラベリングは生データに正解のラベルを付けるプロセスです。SageMaker Ground Truthは、公開・非公開の人間のラベラーと組み込みのワークフローを提供し、教師データ作成の手間を減らします。','これは推論エンドポイントのスケーリングの説明です。']}},
+  {id:'v93', term:'AWS Trusted Advisor (Governance)', domain:'security', source:SOURCES.trustedAdvisor, q:{text:'AWS Trusted Advisorの説明として正しいものはどれですか？', choices:['AWS環境を検査し、コスト削減、可用性やパフォーマンスの向上、セキュリティ上の問題の解消につながる機会があれば推奨事項を提示するサービス','AWSアカウントで行われたAPI呼び出しのイベントを記録し、誰がいつどの操作をしたかを後から確認できるようにするサービス','S3に保存されたデータを調べて、個人情報などの機密データを検出するサービス','AWSリソースの構成変更を継続的に記録し、設定が定めたルールに準拠しているかを評価するサービス'], correct:0, why:['正しい。Trusted Advisorは、AWS環境を検査してベストプラクティスに照らした推奨事項を提示します。','これはAWS CloudTrailの説明です。','これはAmazon Macieの説明です。','これはAWS Configの説明です。']}},
+  {id:'v94', term:'Content Filters', domain:'responsible', source:SOURCES.contentFilters, q:{text:'Amazon Bedrock Guardrailsのコンテンツフィルターについて正しい説明はどれですか？', choices:['モデルの学習データから著作権のある文章を取り除き、モデルを学習し直す','特定の単語や定義した話題が含まれる入力だけを対象にして、それ以外の有害性は評価しない','モデルが生成した応答の事実関係を、元の文書と照合して誤りを検出する','Hate、Insults、Sexual、Violence、Misconductといった有害なカテゴリについて、ユーザーの入力とモデルの応答の自然言語を検出してフィルタリングする'], correct:3, why:['コンテンツフィルターは学習データを加工するものではなく、入力や応答を検査します。','特定の単語や話題を対象にするのは単語フィルターや拒否トピックです。コンテンツフィルターは有害なカテゴリを検出します。','応答の根拠との照合はグラウンディングチェックの役割です。','正しい。コンテンツフィルターは、有害なカテゴリに該当するユーザーの入力とモデルの応答を検出してフィルタリングします。カテゴリごとに強度を設定できます。']}},
+  {id:'v95', term:'Prompt', domain:'genai', source:SOURCES.promptEng, q:{text:'生成AIにおける「プロンプト（Prompt）」の説明として正しいものはどれですか？', choices:['モデルの学習に使うために集めた大量のテキストデータの集まり','生成AIに特定のタスクの実行を依頼する自然言語のテキスト','モデルがテキストを細かく分割した単位で、料金の計算にも使われる単位','モデルが学習済みの知識を保存するために使う、数値のベクトルのデータベース'], correct:1, why:['これは学習データの説明です。','正しい。プロンプトは、生成AIに特定のタスクを実行するよう依頼する自然言語のテキストです。','これはトークンの説明です。','これはベクトルデータベースの説明で、プロンプトとは異なります。']}},
 ];
 
 var PRACTICE = [
@@ -263,6 +276,25 @@ var PRACTICE = [
   {id:'p32', domain:'aiml', type:'single', source:SOURCES.structuredData, text:'次のうち、構造化データ（Structured Data）に最も当てはまるものはどれですか？',
     choices:['顧客から届いたメール本文','コールセンターの通話録音','Amazon Auroraのテーブルに格納された注文データ','店舗の防犯カメラの映像'], correct:[2],
     why:['メール本文は決まったスキーマを持たない非構造化データです。','通話録音は音声で、非構造化データです。','正しい。行と列で定義された固定のデータモデルに収まるデータが構造化データです。','映像は非構造化データです。']},
+  {id:'p33', domain:'responsible', type:'single', source:SOURCES.contentFilters, text:'Amazon Bedrock Guardrailsのコンテンツフィルターで、犯罪行為に関する情報を求めたり、人や組織を欺いたり悪用したりする方法を提供したりする入力・応答を検出するカテゴリはどれですか？',
+    choices:['Misconduct','Insults','Violence','Hate'], correct:[0],
+    why:['正しい。Misconductは、犯罪行為や、人・グループ・組織を傷つけたりだましたりすることに関する情報を求めたり提供したりする入力と応答を対象にします。','Insultsは、相手をおとしめたり、からかったり、見下したりするいじめのような言葉づかいです。','Violenceは、身体的な痛みや傷害を美化したり、その脅しをしたりする内容です。','Hateは、人種や性別などのアイデンティティに基づいて個人やグループを差別・攻撃する内容です。']},
+  {id:'p34', domain:'genai', type:'single', source:SOURCES.promptEng, text:'複雑な質問に答えさせるとき、質問をより小さな論理的な手順に分解して考えさせ、複数回の推論から最も多い結論を採用するプロンプト技法はどれですか？',
+    choices:['Directional-stimulus prompting：キーワードなどのヒントを加えて出力を誘導する技法','Chain-of-thought prompting：複雑な質問を小さな論理的ステップに分けて推論させる技法','Generated knowledge prompting：先に関連する事実をモデルに生成させてから回答させる技法','Self-refine prompting：回答を自己批評させて、停止条件まで修正を繰り返す技法'], correct:[1],
+    why:['Directional-stimulus promptingは、キーワードなどのヒントを加えて出力を誘導する技法です。','正しい。Chain-of-thoughtは、複雑な質問を小さな論理的ステップに分けて推論させる技法で、複数回の推論から最も多い結論を選ぶこともできます。','Generated knowledge promptingは、先に関連する事実をモデルに生成させ、それを使ってタスクを完成させる技法です。','Self-refine promptingは、回答を自己批評して修正を繰り返す技法で、手順に分解して考える技法ではありません。']},
+  {id:'p35', domain:'aiml', type:'matching', source:SOURCES.featureEng, text:'データ準備とモデル改善に関する次の作業に、最も適した用語をそれぞれ選んでください。',
+    prompts:['生データから変数を抽出・変換し、学習に使える特徴量にする','画像に「鳥が写っている」などの正解のタグを人が付けて教師データを作る','ハイパーパラメータの範囲を探索し、最も評価指標の良いモデルを見つける'],
+    options:['自動モデルチューニング（ハイパーパラメータチューニング）','転移学習','特徴量エンジニアリング','データラベリング'], correct:[2,3,0],
+    why:['特徴量エンジニアリングは、生データから変数を抽出・変換して学習や予測に使える形にするプロセスです。','データラベリングは、生データに正解のラベルを付けて、モデルが学習する文脈を与えるプロセスです。','自動モデルチューニングは、指定したハイパーパラメータの範囲を探索して、最も性能の良いモデルを見つけます。なお、転移学習は学習済みのモデルを別のタスクに再利用する手法なので、どれにも当てはまりません。']},
+  {id:'p36', domain:'genai', type:'ordering', source:SOURCES.promptEng, text:'Self-refine prompting（自己改善プロンプト）の流れを、正しい順に並べてください。',
+    items:['モデルに問題を解かせて、最初の回答を出させる','モデルに自分の回答を批評させる','批評をもとに回答を修正する','停止条件を満たすまで批評と修正を繰り返す'],
+    why:['最初に、モデルが問題を解いて回答を出します。','次に、モデル自身がその回答を批評します。','批評で見つかった問題点をもとに、回答を修正します。','最後に、あらかじめ決めた停止条件を満たすまで、批評と修正を繰り返します。']},
+  {id:'p37', domain:'security', type:'multi', source:SOURCES.trustedAdvisor, text:'AWS Trusted Advisorについて正しい説明はどれですか？（2つ選択）',
+    choices:['AWSアカウント内のAPI呼び出しを記録して、操作の監査証跡を提供する','Basic Supportプランでは、Service Limitsカテゴリのすべてのチェックと、SecurityおよびFault toleranceカテゴリの一部のチェックを利用できる','S3バケット内の機密データを検出して分類する','AWS環境を検査し、コスト削減や可用性・パフォーマンスの向上、セキュリティ上の問題の解消の機会を推奨する','リソースの構成変更の履歴を記録し、ルールへの準拠状況を評価する'], correct:[1,3],
+    why:['誤り。API呼び出しの記録はAWS CloudTrailの役割です。','正しい。Basic Supportプランでは、Service Limitsカテゴリのすべてのチェックと、SecurityおよびFault toleranceカテゴリの一部のチェックを利用できます。','誤り。機密データの検出はAmazon Macieの役割です。','正しい。Trusted Advisorは、AWS環境を検査して、コスト削減、可用性・パフォーマンスの向上、セキュリティの隙間の解消の機会を推奨します。','誤り。構成履歴の記録とルール評価はAWS Configの役割です。']},
+  {id:'p38', domain:'fm', type:'single', source:SOURCES.dataLabeling, text:'ある企業が、ラベル付きデータを効率よく増やしたいと考えています。少量のデータにラベルを付けたモデルで、確信度の高いデータは自動でラベル付けし、確信度の低いデータは人に確認させる仕組みを表す考え方はどれですか？',
+    choices:['ハイパーパラメータチューニングで、確信度のしきい値を探索する','特徴量エンジニアリングで、ラベルを入力変数に変換する','強化学習で、人間の評価から報酬を最大化する','Human-in-the-loop：人間のラベルをモデルに戻して、自動化できる範囲を広げていく'], correct:[3],
+    why:['ハイパーパラメータチューニングは、学習に使う設定値を探索する手法で、ラベル付けの自動化の仕組みではありません。','特徴量エンジニアリングは、生データから入力変数を作る作業で、ラベルを自動で付けるものではありません。','強化学習は、環境とのやり取りで得た報酬を最大化する学習で、確信度に応じて人に確認させる仕組みではありません。','正しい。人間が付けたラベルをモデルに戻すことで、モデルが自動でラベルを付けられる範囲が徐々に広がります。']},
 ];
 
 var MOCK_POOL = [
@@ -314,6 +346,18 @@ var MOCK_POOL = [
   {id:'m16', domain:'aiml', type:'single', source:SOURCES.timeSeries, text:'工場のIoTセンサーが一定間隔で記録する温度や振動の測定値のように、タイムスタンプと結びついて時間の順序で蓄積されるデータを何と呼びますか？',
     choices:['ラベル付きデータ（Labeled Data）','非構造化データ（Unstructured Data）','リレーショナルデータ（Relational Data）','時系列データ（Time-series Data）'], correct:[3],
     why:['ラベル付きデータは、正解が付与されたデータで、時間との結びつきを示すものではありません。','非構造化データは、スキーマを持たない動画や文書などです。センサーの測定値は値とタイムスタンプで構成されています。','リレーショナルデータは、テーブル間の関係で構成されるデータで、時間順の蓄積を表す用語ではありません。','正しい。各値がタイムスタンプと結びつき、時間の順序で記録されるデータが時系列データです。']},
+  {id:'m17', domain:'responsible', type:'single', source:SOURCES.contentFilters, text:'Amazon Bedrock Guardrailsのコンテンツフィルターについて、ユーザーの入力と、モデルが生成する応答のフィルターの強度に関する説明として正しいものはどれですか？',
+    choices:['入力と応答には同じ強度しか設定できず、カテゴリごとに強度を変えることもできないため、全体で一律の設定になる','入力と応答で異なる強度（None、Low、Medium、High）を設定でき、カテゴリごとにも設定できる','入力にだけ強度を設定でき、モデルの応答はフィルターの対象にならない','強度はHighだけが選べ、有害なコンテンツを検出した場合は必ず遮断される'], correct:[1],
+    why:['誤り。入力と応答で異なる強度を設定でき、カテゴリごとにも設定できます。','正しい。入力と応答で異なるフィルターの強度を設定でき、カテゴリごとにNone、Low、Medium、Highから選べます。','誤り。コンテンツフィルターは、ユーザーの入力とモデルの応答の両方を評価します。','誤り。強度はNone、Low、Medium、Highから選べ、有害コンテンツを検出したときの動作も、遮断（Block）か、検出のみ（Detect、何もしない）かを選べます。']},
+  {id:'m18', domain:'aiml', type:'single', source:SOURCES.featureEng, text:'音楽配信サービスが、曲のおすすめを予測するモデルを作っています。次のうち、モデルの特徴量（Feature）の例はどれですか？',
+    choices:['ユーザーの曲の評価、視聴履歴、視聴時間','モデルの学習率とバッチサイズの設定値','ユーザーが実際に最後まで聴いたかどうかを人が付けた正解のタグ','モデルのおすすめがどれだけ当たったかを示す評価スコア'], correct:[0],
+    why:['正しい。特徴量は、モデルが学習と推論の際に予測のために使う入力で、曲の評価、視聴履歴、視聴時間は代表的な例です。','学習率やバッチサイズはハイパーパラメータで、入力データの特徴量ではありません。','正解のタグはラベルです。入力として使う特徴量とは区別されます。','評価スコアは、モデルの性能を測る指標で、入力の特徴量ではありません。']},
+  {id:'m19', domain:'security', type:'single', source:SOURCES.trustedAdvisor, text:'Basic Supportプランのアカウントで、AWS Trusted Advisorのコンソールから利用できるチェックとして正しいものはどれですか？',
+    choices:['すべてのカテゴリのすべてのチェックを利用でき、自動更新も有効になる','Cost optimizationカテゴリのすべてのチェックだけを利用でき、他のカテゴリは利用できない','Service Limitsカテゴリのすべてのチェックと、SecurityおよびFault toleranceカテゴリの一部のチェックを利用できる','どのカテゴリのチェックも利用できず、API経由でのみ結果を取得できる'], correct:[2],
+    why:['誤り。すべてのチェックを利用できるのは、Business Support+、Enterprise Support、Unified Operationsのプランです。Basicでは自動更新も使えません。','誤り。Basic SupportでCost optimizationのチェックがすべて使えるわけではありません。','正しい。Basic Supportでは、Service Limitsカテゴリのすべてのチェックと、SecurityおよびFault toleranceカテゴリの一部のチェックを利用できます。Securityのチェックは手動で更新する必要があります。','誤り。一部のチェックはコンソールで利用できます。']},
+  {id:'m20', domain:'genai', type:'single', source:SOURCES.promptEng, text:'プロンプトエンジニアリングの説明として正しいものはどれですか？',
+    choices:['基盤モデルの重みを、特定の業務のデータを使った追加の学習で更新して、その業務の用語や文体に適応させる','出力に含まれる個人情報を、モデルの外側で検出して削除する','ベクトルデータベースにドキュメントを登録して、検索できる状態にする','形式や言い回しなどを選び、繰り返しのテストで改善しながら、生成AIから望む出力を引き出すように導く実践'], correct:[3],
+    why:['これはファインチューニングの説明です。プロンプトエンジニアリングはモデルの重みを変更しません。','これはGuardrailsなどの機能で、プロンプトエンジニアリングとは異なります。','これはRAGの準備（ナレッジベースへの取り込み）の説明です。','正しい。プロンプトエンジニアリングは、形式、言い回し、単語、記号を選び、繰り返しテストして改善しながら、望む出力に導く実践です。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

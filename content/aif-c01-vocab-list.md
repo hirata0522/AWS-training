@@ -84,7 +84,7 @@
 | 78 | Amazon Bedrock AgentCore Identity | security | 未 |
 | 79 | Trustworthiness | responsible | 未 |
 | 80 | Tabular Data | aiml | 未 |
-| 81 | Prompt | genai | 未 |
+| 81 | Prompt | genai | v95 |
 | 82 | Time-series Data | aiml | v83 |
 | 83 | Continued Pre-training | fm | 未 |
 | 84 | Policy in AgentCore | security | 未 |
@@ -116,20 +116,20 @@
 | 110 | Forecasting | aiml | 未 |
 | 111 | Image Generation | genai | 未 |
 | 112 | LoRA | fm | 未 |
-| 113 | AWS Trusted Advisor (Governance) | security | 未 |
-| 114 | Feature | aiml | 未 |
+| 113 | AWS Trusted Advisor (Governance) | security | v93 |
+| 114 | Feature | aiml | v88 |
 | 115 | Amazon Bedrock Guardrails | responsible | v79 |
 | 116 | Reinforcement Learning from Human Feedback (RLHF) | fm | v82 |
 | 117 | Amazon GuardDuty | security | 除外 |
 | 118 | Code Generation | genai | 未 |
-| 119 | Feature Engineering | aiml | 未 |
-| 120 | Label | aiml | 未 |
+| 119 | Feature Engineering | aiml | v89 |
+| 120 | Label | aiml | v90 |
 | 121 | Data Curation | fm | 未 |
 | 122 | AWS Security Hub | security | 未 |
 | 123 | AI Assistant | genai | 未 |
-| 124 | Content Filters | responsible | 未 |
-| 125 | Hyperparameter | aiml | 未 |
-| 126 | Data Labeling | fm | 未 |
+| 124 | Content Filters | responsible | v94 |
+| 125 | Hyperparameter | aiml | v91 |
+| 126 | Data Labeling | fm | v92 |
 | 127 | AWS WAF | security | 未 |
 | 128 | Hyperparameter Tuning | aiml | 未 |
 | 129 | Machine Translation | genai | 未 |

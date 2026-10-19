@@ -281,3 +281,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: structuredData, timeSeries, personalize（いずれもWebFetch成功）。改訂履歴ページは今回未確認（v1.1のまま扱った）。nodeでの読み込み確認済み。
   WebFetch失敗（404）: aws.amazon.com/what-is/{recommendation-engine, recommendation-system, text-summarization, semi-supervised-learning, tokenization}。Semi-supervised Learning / Tokenization / Summarization 等は出典未確認のため `未` のまま。
   メモ: VOCABの正解最長割合が41%と高め。次回以降は不正解を長めに書くこと。
+- 2026-10-19（定期実行・11回目）: 単語リスト行114,119,120,125,126,113,124,81の8語のVOCABを追加（v88〜v95）、PRACTICEを6件（p33〜p38: single 3 / multi 1 / ordering 1 / matching 1）、MOCK_POOLを4件（m17〜m20: single）追加。累計 VOCAB=95 / PRACTICE=38 / MOCK_POOL=20。単語リスト進捗 95/473（除外1）。
+  追加トピック: Feature、Feature Engineering、Label、Hyperparameter（SageMaker AI自動モデルチューニング）、Data Labeling（Ground Truth）、AWS Trusted Advisor、Bedrock Guardrailsコンテンツフィルター、Prompt、Self-refine/Chain-of-thought。
+  新規SOURCES: featureEng, dataLabeling, amt, trustedAdvisor, contentFilters（いずれもWebFetch成功）。改訂履歴ページは今回未確認（v1.1のまま扱った）。nodeでの読み込み確認済み。
+  既存データの修正: SOURCES末尾（personalize行）のカンマ漏れを追記時に修正（新規追加分と一体の構文修正）。
+  WebFetch失敗（404）: aws.amazon.com/what-is/autoencoder/。VAE は出典未確認で `未` のまま。LoRA/PEFTもAWS公式ページがWebSearchで見つからず `未` のまま。
+  メモ: 正解最長割合はVOCAB 43% / PRACTICE 39% / MOCK 55%とまだ高め。次回以降は不正解を長めに。
