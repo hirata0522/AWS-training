@@ -81,7 +81,7 @@
 | 75 | Anomaly Detection | aiml | v58 |
 | 76 | Variational Autoencoder (VAE) | genai | 未 |
 | 77 | Fine-tuning | fm |v59 |
-| 78 | Amazon Bedrock AgentCore Identity | security | 未 |
+| 78 | Amazon Bedrock AgentCore Identity | security | v112 |
 | 79 | Trustworthiness | responsible | 未 |
 | 80 | Tabular Data | aiml | 未 |
 | 81 | Prompt | genai | v95 |
@@ -131,7 +131,7 @@
 | 125 | Hyperparameter | aiml | v91 |
 | 126 | Data Labeling | fm | v92 |
 | 127 | AWS WAF | security | 未 |
-| 128 | Hyperparameter Tuning | aiml | 未 |
+| 128 | Hyperparameter Tuning | aiml | v111 |
 | 129 | Machine Translation | genai | 未 |
 | 130 | Denied Topics | responsible | v99 |
 | 131 | Representative Dataset | fm | 未 |
@@ -139,7 +139,7 @@
 | 133 | Overfitting | aiml | v96 |
 | 134 | Hallucination | genai | v98 |
 | 135 | Underfitting | aiml | v97 |
-| 136 | Amazon Bedrock Agents | fm | 未 |
+| 136 | Amazon Bedrock Agents | fm | v110 |
 | 137 | AWS Organizations | security | 未 |
 | 138 | Word Filters | responsible | v100 |
 | 139 | Bias (ML) | aiml | 未 |
@@ -236,7 +236,7 @@
 | 230 | Workflow Orchestration | genai | 未 |
 | 231 | Self-hosted API | aiml | 未 |
 | 232 | Label Quality Analysis | responsible | 未 |
-| 233 | Amazon Bedrock Prompt Management | fm | 未 |
+| 233 | Amazon Bedrock Prompt Management | fm | v114 |
 | 234 | Output Validation | security | 未 |
 | 235 | Traditional ML vs Foundation Models | aiml | 未 |
 | 236 | Multi-agent Communication Patterns | genai | 未 |
@@ -251,15 +251,15 @@
 | 245 | Amazon Polly | aiml | 未 |
 | 246 | Amazon Q | genai | 未 |
 | 247 | Amazon Rekognition | aiml | 未 |
-| 248 | Amazon Bedrock Model Evaluation | fm | 未 |
+| 248 | Amazon Bedrock Model Evaluation | fm | v115 |
 | 249 | Threat Detection | security | 未 |
-| 250 | Amazon SageMaker Clarify | responsible | 未 |
+| 250 | Amazon SageMaker Clarify | responsible | v116 |
 | 251 | Amazon Textract | aiml | 未 |
 | 252 | Amazon Q Developer | genai | 未 |
 | 253 | Human-in-the-loop Evaluation | fm | 未 |
 | 254 | Vulnerability Management | security | 未 |
 | 255 | Amazon Transcribe | aiml | 未 |
-| 256 | Amazon SageMaker Model Cards | responsible | 未 |
+| 256 | Amazon SageMaker Model Cards | responsible | v117 |
 | 257 | Benchmark Dataset | fm | 未 |
 | 258 | Infrastructure Protection | security | 未 |
 | 259 | Amazon Translate | aiml | 未 |
@@ -279,12 +279,12 @@
 | 273 | Data Retention | security | 未 |
 | 274 | Amazon SageMaker Feature Store | aiml | 未 |
 | 275 | Amazon SageMaker Model Monitor | aiml | 未 |
-| 276 | Strands Agents | genai | 未 |
+| 276 | Strands Agents | genai | v119 |
 | 277 | Perplexity | fm | 未 |
 | 278 | Data Governance | security | 未 |
 | 279 | Amazon Bedrock Model Evaluations | responsible | 未 |
 | 280 | Amazon SageMaker Pipelines | aiml | 未 |
-| 281 | Amazon Bedrock AgentCore | genai | 未 |
+| 281 | Amazon Bedrock AgentCore | genai | v113 |
 | 282 | LLM-as-a-judge | fm | 未 |
 | 283 | Governance Framework | security | 未 |
 | 284 | Amazon SageMaker Ground Truth | aiml | 未 |
@@ -308,7 +308,7 @@
 | 302 | Business Objective Alignment | fm | 未 |
 | 303 | Team Training Requirements | security | 未 |
 | 304 | Amazon SageMaker Real-Time Inference | aiml | 未 |
-| 305 | Amazon SageMaker JumpStart | genai | 未 |
+| 305 | Amazon SageMaker JumpStart | genai | v118 |
 | 306 | RAG Evaluation | fm | 未 |
 | 307 | Regulatory Compliance (AI) | security | 未 |
 | 308 | User Feedback Mechanism | responsible | 未 |

@@ -292,3 +292,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: underOver, sagemakerDeploy, bedrockBatch, provThroughput, invocationLogging, guardrailsComp, customModelImport, promptCaching, hallucination（いずれもWebFetch成功）。改訂履歴ページは今回未確認（v1.1のまま扱った）。nodeでの読み込み確認済み。
   見送り: 行136 Amazon Bedrock Agents / 141 Action Group は、公式ドキュメントに「Bedrock Agents（Classic）は新規顧客の受付を終了、AgentCore を推奨」とあり、試験ガイドv1.1での位置付け確認が必要なため `未` のまま（次回に確認）。
   メモ: 正解最長割合が VOCAB 43% / PRACTICE 45% / MOCK 56% と高い。次回以降は不正解の選択肢を正解より長く書くこと。
+- 2026-10-19（定期実行・7回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リストのうち公式ページで確認できた10語のVOCABを追加（v110〜v119）、PRACTICEを5件（p43〜p47: ordering 1 / matching 1 / single 2 / multi 1）、MOCK_POOLを5件（m24〜m28: matching 1 / ordering 1 / single 3）追加。累計 VOCAB=119 / PRACTICE=47 / MOCK_POOL=28。単語リスト進捗 119/473（除外1）。
+  追加トピック: Bedrock Agents、Hyperparameter Tuning、AgentCore（Identity含む）、Prompt Management、Bedrock Model Evaluation、SageMaker Clarify、Model Cards、JumpStart、Strands Agents。
+  新規SOURCES: bedrockAgents, agentcore, promptMgmt, bedrockEval, clarify, modelCards, jumpstart, strands（いずれもWebFetch成功）。
+  注意: Bedrock Agents（Classic）とSageMaker Clarifyは公式ドキュメント上「新規顧客の受け付け終了」の注記あり。Bedrock Agentsは新規はAgentCore推奨。問題は概念説明にとどめた。
+  見送り（`未`のまま）: 従来どおり定義ページ未確認の行（Inclusivity、Tokenization等）。リスト順ではなく、確認できた用語を優先した。nodeでの読み込み確認済み。
