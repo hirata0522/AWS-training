@@ -263,3 +263,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: bedrockCustom, promptEng, whatIsCv, whatIsNlp, cloudtrail, awsConfig, cloudwatch（いずれもWebFetch成功）。改訂履歴ページは今回未確認（v1.1のまま扱った）。
   既存データの修正（明確なバグ）: m1 末尾のカンマ漏れ（構文エラー）を修正。nodeでの読み込み確認済み。
   見送り: 行83 Continued Pre-training は Bedrock のカスタマイズ公式ページに記載がなく確認できず `未` のまま。PRACTICE/MOCKは件数が少ないため形式・ドメイン（responsible/fmなど）の補充が次回以降の課題。
+- 2026-10-19（定期実行・7回目）: 単語リスト行54,56,42,36,65,57の6語のVOCABを追加（v67〜v72）、PRACTICEを3件（p15〜p17）、MOCK_POOLを2件（m4,m5）追加。累計 VOCAB=72 / PRACTICE=17 / MOCK_POOL=5。単語リスト進捗 72/474。
+  追加トピック: Customer Managed Key、責任あるAIの側面（Transparency/Safety/Robustness/Explainability）、Self-supervised Learning。
+  新規SOURCES: kmsKeys, whatIsFm（WebFetch成功。責任あるAIの定義は aws.amazon.com/ai/responsible-ai/ を再確認）。改訂履歴ページは今回未確認（v1.1のまま扱った）。nodeでの読み込み確認済み。
+  見送り: Multi-modal Model は公式ページに「multimodal」の用語定義が見つからず `未` のまま。MOCK_POOLは件数が少なく正解最長割合(80%)が高いので、次回以降は不正解を長めにして調整すること。

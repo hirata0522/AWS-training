@@ -39,13 +39,13 @@
 | 33 | Amazon Bedrock Knowledge Bases | fm | v32 |
 | 34 | Resource-based Policy | security | v33 |
 | 35 | Tokenization | genai | 未 |
-| 36 | Robustness | responsible | 未 |
+| 36 | Robustness | responsible | v70 |
 | 37 | Labeled Data | aiml | v34 |
 | 38 | Vector Database | fm | v35 |
 | 39 | AWS KMS | security | v36 |
 | 40 | Unlabeled Data | aiml | v37 |
 | 41 | Context Window | genai | 未 |
-| 42 | Safety | responsible | 未 |
+| 42 | Safety | responsible | v69 |
 | 43 | Supervised Learning | aiml | v38 |
 | 44 | Amazon OpenSearch Service | fm | v39 |
 | 45 | Encryption at Rest | security | v40 |
@@ -57,10 +57,10 @@
 | 51 | Reinforcement Learning | aiml | v45 |
 | 52 | Vector | genai | v46 |
 | 53 | Amazon Aurora PostgreSQL pgvector | fm | v47 |
-| 54 | Customer Managed Key | security | 未 |
+| 54 | Customer Managed Key | security | v67 |
 | 55 | Semi-supervised Learning | aiml | 未 |
-| 56 | Transparency | responsible | 未 |
-| 57 | Self-supervised Learning | aiml | 未 |
+| 56 | Transparency | responsible | v68 |
+| 57 | Self-supervised Learning | aiml | v72 |
 | 58 | Multi-modal Model | genai | 未 |
 | 59 | Semantic Search | fm | 未 |
 | 60 | AWS Secrets Manager | security | v48 |
@@ -68,7 +68,7 @@
 | 62 | Hybrid Search | fm | 未 |
 | 63 | Amazon Macie | security | v50 |
 | 64 | Diffusion Model | genai | v51 |
-| 65 | Explainability | responsible | 未 |
+| 65 | Explainability | responsible | v71 |
 | 66 | Regression | aiml | v52 |
 | 67 | Reranking | fm | 未 |
 | 68 | AWS PrivateLink | security | v53 |

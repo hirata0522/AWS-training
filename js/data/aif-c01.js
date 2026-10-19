@@ -54,7 +54,9 @@ var SOURCES = {
   whatIsNlp:{label:'AWS: 自然言語処理(NLP)とは', url:'https://aws.amazon.com/what-is/nlp/'},
   cloudtrail:{label:'AWS CloudTrail とは', url:'https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html'},
   awsConfig:{label:'AWS Config とは', url:'https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html'},
-  cloudwatch:{label:'Amazon CloudWatch とは', url:'https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html'}
+  cloudwatch:{label:'Amazon CloudWatch とは', url:'https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html'},
+  kmsKeys:{label:'AWS KMS keys（カスタマーマネージド・AWSマネージド・AWS所有）', url:'https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html'},
+  whatIsFm:{label:'AWS: 基盤モデルとは', url:'https://aws.amazon.com/what-is/foundation-models/'}
 };
 
 var VOCAB = [
@@ -124,6 +126,12 @@ var VOCAB = [
   {id:'v64', term:'AWS CloudTrail', domain:'security', source:SOURCES.cloudtrail, q:{text:'AWSアカウント内で「誰が・いつ・どのAPIを呼び出したか」を記録し、監査やガバナンスに使えるサービスはどれですか？', choices:['AWS Config','Amazon CloudWatch','AWS CloudTrail','AWS Key Management Service'], correct:2, why:['Configはリソースの構成と変更履歴を記録するサービスで、API呼び出しの主体を記録するものではありません。','CloudWatchはメトリクス・ログ・アラームによる監視のサービスです。','正しい。ユーザー、ロール、AWSサービスの操作をイベントとして記録し、運用・リスク監査に使います。','KMSは暗号鍵を管理するサービスで、操作の監査記録が主目的ではありません。']}},
   {id:'v65', term:'AWS Config', domain:'security', source:SOURCES.awsConfig, q:{text:'EC2セキュリティグループなどのリソース構成の履歴を記録し、ルールで準拠状況を評価できるサービスはどれですか？', choices:['AWS CloudTrail','AWS Config','Amazon Macie','AWS Secrets Manager'], correct:1, why:['CloudTrailはAPI呼び出し（操作）の記録で、リソース構成の時系列変化の評価が主目的ではありません。','正しい。リソース構成と過去の状態を記録し、Configルールで設定の準拠・非準拠を評価します。','Macieは S3 内の機密データを検出するサービスです。','Secrets Managerは認証情報などのシークレットを管理するサービスです。']}},
   {id:'v66', term:'Amazon CloudWatch', domain:'security', source:SOURCES.cloudwatch, q:{text:'AWSリソースやアプリケーションのメトリクスを収集し、しきい値に基づくアラームやダッシュボードで監視するサービスはどれですか？', choices:['Amazon CloudWatch','AWS CloudTrail','AWS Config','AWS PrivateLink'], correct:0, why:['正しい。メトリクス、ログ、アラーム、ダッシュボードで運用状況をリアルタイムに監視します。','CloudTrailはAPI操作の監査記録で、性能メトリクスの監視用ではありません。','Configはリソース構成の履歴・準拠評価のサービスです。','PrivateLinkはVPCから他サービスへプライベート接続するための仕組みです。']}},
+  {id:'v67', term:'Customer Managed Key', domain:'security', source:SOURCES.kmsKeys, q:{text:'AWS KMSで、キーポリシー・ローテーション・無効化・削除のスケジュールまでお客様自身が完全に管理できるキーの種類はどれですか？', choices:['AWS owned key（AWSサービスが所有・管理し、お客様のアカウント外に存在するキー）','AWS managed key（サービスがお客様のアカウント内に作成し、プロパティは変更できないキー）','Domain key（HSM内のメモリにのみ存在し、バッキングキーをラップするキー）','Customer managed key（お客様が作成・所有し、ライフサイクルを制御するキー）'], correct:3, why:['AWS owned keyはAWSサービスが管理し、お客様はポリシーの変更も監査もできません。','AWS managed keyはお客様のアカウント内に存在しますが、ローテーションやキーポリシーを変更できません。','Domain keyは KMS内部のキー階層の一部で、お客様が管理するキーの種類ではありません。','正しい。Customer managed keyは、お客様が作成・所有し、キーポリシー、有効化/無効化、ローテーション、削除などを完全に制御できます。月額料金と使用料金がかかります。']}},
+  {id:'v68', term:'Transparency', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'AWSが示す責任あるAIの中核的な側面のうち、「ステークホルダーがAIシステムとの関わり方について十分な情報に基づいて選択できるようにすること」を指すものはどれですか？', choices:['Controllability（AIシステムの挙動を監視し制御する仕組みを持つこと）','Veracity and robustness（予期しない入力や敵対的な入力でも正しい出力を得ること）','Transparency（利用者が十分な情報に基づいて選択できるようにすること）','Governance（プロバイダーやデプロイ担当者を含むAIサプライチェーンにベストプラクティスを組み込むこと）'], correct:2, why:['Controllabilityは、AIの挙動を監視・誘導する仕組みを指し、情報開示を指すものではありません。','Veracity and robustnessは、出力の正確さと頑健性に関する側面です。','正しい。Transparencyは、AIシステムとの関わり方についてステークホルダーが十分な情報に基づいた判断をできるようにすることです。','Governanceは、AIサプライチェーン全体にベストプラクティスを取り入れるための側面です。']}},
+  {id:'v69', term:'Safety', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'AWSが示す責任あるAIの中核的な側面のうち、「有害なシステム出力や誤用を防ぐこと」に該当するものはどれですか？', choices:['Fairness（異なるステークホルダーグループへの影響を考慮すること）','Explainability（システムの出力を理解し評価すること）','Privacy and security（データやモデルを適切に取得・利用・保護すること）','Safety（有害な出力や誤用を防ぐこと）'], correct:3, why:['Fairnessは、さまざまなグループへの影響を考慮する側面です。','Explainabilityは、出力を理解・評価できることに関する側面です。','Privacy and securityは、データやモデルの取得・利用・保護に関する側面です。','正しい。Safetyは、有害なシステム出力や誤用を防ぐことを指します。']}},
+  {id:'v70', term:'Robustness', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'責任あるAIにおけるveracity and robustness（真実性と頑健性）の説明として正しいものはどれですか？', choices:['予期しない入力や敵対的な入力があっても、正しいシステム出力を得られるようにすること','AIシステムの挙動を監視し、必要に応じて人が制御できる仕組みを持つこと','モデルの内部の計算過程を人間が追跡できるほど単純な構造にすること','学習データに含まれる個人情報を暗号化して保管すること'], correct:0, why:['正しい。Veracity and robustnessは、予期しない入力や敵対的な入力に対しても正しい出力を得ることを指します。','これはControllability（制御可能性）の説明です。','これはExplainabilityに関連する考え方ですが、robustnessの定義ではありません。','これはPrivacy and securityに関する対策で、robustnessの定義ではありません。']}},
+  {id:'v71', term:'Explainability', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'責任あるAIの側面における「Explainability（説明可能性）」の説明として最も適切なものはどれですか？', choices:['AIシステムの出力を理解し評価できるようにすること','個人情報を匿名化したうえで学習に利用すること','AIの挙動を監視し、必要に応じて人が操作を止められるようにすること','AIの開発に関わる提供者や利用者にガバナンスのベストプラクティスを適用すること'], correct:0, why:['正しい。Explainabilityは、システムの出力を理解し評価できるようにすることです。','これはプライバシー保護に関する対策で、Explainabilityの定義ではありません。','これはControllabilityの説明です。','これはGovernanceの説明です。']}},
+  {id:'v72', term:'Self-supervised Learning', domain:'aiml', source:SOURCES.whatIsFm, q:{text:'基盤モデルが大量のラベルなしデータから学習できる仕組みとして、AWSが説明している学習方法はどれですか？', choices:['教師あり学習（人手でラベル付けされたデータセットで学習する）','強化学習（報酬を最大化する行動を試行錯誤で学ぶ）','教師なし学習（クラスタリングなどでデータの構造だけを見つける）','自己教師あり学習（入力データ自体からラベルを作り出して学習する）'], correct:3, why:['教師あり学習は人手によるラベル付きデータが必要で、基盤モデルの大規模事前学習の特徴とは異なります。','強化学習は報酬に基づく試行錯誤で学ぶ手法です。','教師なし学習はラベルを使わない点は似ていますが、入力データからラベルを自動生成して予測課題を作る点が自己教師あり学習の特徴です。','正しい。基盤モデルは、入力データ自体からラベルを作り出す自己教師あり学習を使って学習します。']}},
 ];
 
 var PRACTICE = [
@@ -172,6 +180,15 @@ var PRACTICE = [
   {id:'p14', domain:'genai', type:'single', source:SOURCES.promptEng, text:'複雑な質問を小さな論理的ステップに分解させ、モデルに中間の推論を行わせるプロンプト手法はどれですか？',
     choices:['ゼロショットで出力形式のみ指定する','Chain-of-thought（思考の連鎖）プロンプティング','ストップシーケンスを設定する','temperatureを0にする'], correct:[1],
     why:['ゼロショットは例を示さず指示するだけで、推論ステップの分解とは異なります。','正しい。推論の中間ステップを踏ませることで複雑な質問に対応しやすくします。','ストップシーケンスは生成を止める文字列の設定です。','temperatureは出力のランダム性の調整であり、推論の分解ではありません。']},
+  {id:'p15', domain:'responsible', type:'single', source:SOURCES.responsibleAi, text:'ある企業が、生成AIチャットボットが有害な出力をしたり悪用されたりしないようにすることを重視しています。AWSが示す責任あるAIの側面のうち、最も関連が深いものはどれですか？',
+    choices:['Transparency','Explainability','Safety','Governance'], correct:[2],
+    why:['Transparencyは、利用者がAIとの関わり方を十分な情報に基づいて選べるようにする側面で、有害出力の防止そのものではありません。','Explainabilityは、出力を理解し評価できることに関する側面です。','正しい。Safetyは、有害なシステム出力や誤用を防ぐことを指します。','Governanceは、AIサプライチェーン全体にベストプラクティスを組み込む側面で、有害出力の防止に直接対応するものではありません。']},
+  {id:'p16', domain:'security', type:'single', source:SOURCES.kmsKeys, text:'コンプライアンス要件のため、データ暗号化に使うキーのローテーションと削除のタイミングを自社で決め、キーポリシーも自社で管理する必要があります。どのキーの種類を使うべきですか？',
+    choices:['AWS owned key','AWS managed key','Customer managed key','Amazon Bedrock Guardrails'], correct:[2],
+    why:['AWS owned keyはAWSサービスが所有・管理し、お客様はポリシーの変更やキー使用の監査ができません。','AWS managed keyはお客様のアカウント内にありますが、ローテーションやキーポリシーを変更できません。','正しい。Customer managed keyでは、キーポリシー、ローテーション、無効化、削除のスケジュールなどをお客様が完全に制御できます。','Guardrailsは入出力のコンテンツを制御する機能で、暗号化キーの種類ではありません。']},
+  {id:'p17', domain:'aiml', type:'single', source:SOURCES.whatIsFm, text:'基盤モデルが、人手でラベル付けされていない大量のデータから、入力データ自体を使ってラベルを作り出して学習する方式を何と呼びますか？',
+    choices:['自己教師あり学習','教師あり学習','強化学習','次元削減'], correct:[0],
+    why:['正しい。基盤モデルは自己教師あり学習で、入力データからラベルを作り出して学習します。','教師あり学習は、人手でラベル付けされたデータセットを使って学習する方式です。','強化学習は、報酬を最大化するよう試行錯誤で学ぶ方式です。','次元削減は特徴量の数を減らす前処理・分析手法で、学習方式の名称ではありません。']},
 ];
 
 var MOCK_POOL = [
@@ -184,6 +201,12 @@ var MOCK_POOL = [
   {id:'m3', domain:'security', type:'single', source:SOURCES.cloudwatch, text:'EC2インスタンスのCPU使用率がしきい値を超えたら通知したい場合に使うサービスはどれですか？',
     choices:['Amazon CloudWatch','AWS CloudTrail','AWS Config','AWS KMS'], correct:[0],
     why:['正しい。メトリクスに対するアラームで通知や自動アクションを設定できます。','CloudTrailはAPI操作の記録です。','Configは構成の履歴・準拠評価です。','KMSは暗号鍵管理です。']},
+  {id:'m4', domain:'responsible', type:'single', source:SOURCES.responsibleAi, text:'ステークホルダーが、AIシステムをどのように利用するかについて十分な情報に基づいて選択できるようにする取り組みは、責任あるAIのどの側面に当たりますか？',
+    choices:['Controllability','Veracity and robustness','Transparency','Privacy and security'], correct:[2],
+    why:['Controllabilityは、AIの挙動を監視し制御する仕組みに関する側面です。','Veracity and robustnessは、予期しない入力でも正しい出力を得ることに関する側面です。','正しい。Transparencyは、利用者が十分な情報に基づいて関わり方を選べるようにする側面です。','Privacy and securityは、データやモデルの取得・利用・保護に関する側面です。']},
+  {id:'m5', domain:'security', type:'single', source:SOURCES.kmsKeys, text:'AWS KMSのAWS managed keyの特徴として正しいものはどれですか？',
+    choices:['お客様がキーポリシーを自由に編集し、削除をスケジュールできる','お客様のアカウント内に存在し、AWSサービスが代理で使用する。お客様はキーを閲覧できるが、ローテーションやポリシーは変更できない','AWSサービスのアカウント内に存在し、お客様はキーのメタデータも閲覧できない','お客様のアカウント内に存在し、毎月の存在料金がかかる'], correct:[1],
+    why:['これはCustomer managed keyの特徴です。','正しい。AWS managed keyはお客様のアカウント内に作成され、閲覧や監査はできますが、プロパティの変更、ローテーション、キーポリシーの変更、削除はできません。','これはAWS owned keyの特徴です。','月額の存在料金がかかるのはCustomer managed keyで、AWS managed keyには月額料金はありません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）
