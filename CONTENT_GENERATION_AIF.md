@@ -328,3 +328,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: supervisedLearning, titanMultimodalEmb（いずれもWebFetch成功。既存の promptEng / provThroughput / agenticAi / guardrails も本文を再確認）。nodeでの読み込み確認済み。
   WebFetch失敗（404）: aws.amazon.com/what-is/multimodal-ai/, aws.amazon.com/what-is/autoencoder/。VAE（行76）はAWS公式の出典が見つからず `未` のまま。今回は件数が目安（15〜25）に届かず9件にとどまった（出典確認が取れた項目のみ追加）。promptEng には zero-shot/few-shot/prompt chaining の記載がなく、Single-shot / Prompt Chaining は `未` のまま。
   メモ: 正解最長割合は VOCAB 54% / PRACTICE 44% / MOCK 47% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。
+- 2026-10-20（定期実行・5回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行198,129,181,191の4語のVOCABを追加（v174〜v177）、PRACTICEを4件（p78〜p81: single）、MOCK_POOLを3件（m52〜m54: single）追加。累計 VOCAB=177 / PRACTICE=81 / MOCK_POOL=54。単語リスト進捗 177/470（除外5）。件数は目安（15〜25）に届かず11件（出典確認が取れた項目のみ）。
+  追加トピック: MLOps、機械翻訳（Amazon Translate）、F1スコア、PII（Comprehend）。
+  新規SOURCES: mlops, machineTranslation（WebFetch成功）、comprehendF1, piiComprehend（WebSearchで docs.aws.amazon.com の該当ページを確認。WebFetchは未実施）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 55% / PRACTICE 46% / MOCK 46% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。

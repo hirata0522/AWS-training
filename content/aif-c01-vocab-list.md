@@ -132,7 +132,7 @@
 | 126 | Data Labeling | fm | v92 |
 | 127 | AWS WAF | security | 除外 |
 | 128 | Hyperparameter Tuning | aiml | v111 |
-| 129 | Machine Translation | genai | 未 |
+| 129 | Machine Translation | genai | v175 |
 | 130 | Denied Topics | responsible | v99 |
 | 131 | Representative Dataset | fm | 未 |
 | 132 | AWS Audit Manager | security | 除外 |
@@ -184,7 +184,7 @@
 | 178 | Recall | aiml | v144 |
 | 179 | Single-shot Prompting | fm | 未 |
 | 180 | Data Anonymization | security | 未 |
-| 181 | F1 Score | aiml | 未 |
+| 181 | F1 Score | aiml | v176 |
 | 182 | On-Demand Throughput | genai | 未 |
 | 183 | Loss of Customer Trust | responsible | 未 |
 | 184 | Area Under the Curve (AUC) | aiml | v147 |
@@ -194,14 +194,14 @@
 | 188 | Confusion Matrix | aiml | v146 |
 | 189 | End User Risk | responsible | 未 |
 | 190 | Chain-of-Thought Prompting | fm | v172 |
-| 191 | PII (Personally Identifiable Information) | security | 未 |
+| 191 | PII (Personally Identifiable Information) | security | v177 |
 | 192 | ROC Curve | aiml | 未 |
 | 193 | Agentic AI | genai | v153 |
 | 194 | Prompt Template | fm | v139 |
 | 195 | Data Access Control | security | 未 |
 | 196 | Mean Squared Error (MSE) | aiml | 未 |
 | 197 | Dataset Diversity | responsible | 未 |
-| 198 | MLOps | aiml | 未 |
+| 198 | MLOps | aiml | v174 |
 | 199 | Prompt Chaining | fm | 未 |
 | 200 | Data Integrity | security | 未 |
 | 201 | AI Agent | genai | v173 |

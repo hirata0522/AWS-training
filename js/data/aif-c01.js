@@ -124,7 +124,11 @@ var SOURCES = {
   splitsLeakage:{label:'AWS規範ガイダンス: データの分割とデータリーク', url:'https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html'},
   tabularAlgos:{label:'SageMaker AI: 表形式データ向け組み込みアルゴリズム', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/algorithms-tabular.html'},
   supervisedLearning:{label:'AWS: 教師あり学習とは', url:'https://aws.amazon.com/what-is/supervised-learning/'},
-  titanMultimodalEmb:{label:'Amazon Bedrock: Amazon Titan Multimodal Embeddings G1', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-multiemb-models.html'}
+  titanMultimodalEmb:{label:'Amazon Bedrock: Amazon Titan Multimodal Embeddings G1', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-multiemb-models.html'},
+  mlops:{label:'AWS: MLOpsとは', url:'https://aws.amazon.com/what-is/mlops/'},
+  machineTranslation:{label:'AWS: 機械翻訳とは', url:'https://aws.amazon.com/what-is/machine-translation/'},
+  comprehendF1:{label:'Amazon Comprehend: ClassifierEvaluationMetrics（F1スコア・適合率・再現率）', url:'https://docs.aws.amazon.com/comprehend/latest/APIReference/API_ClassifierEvaluationMetrics.html'},
+  piiComprehend:{label:'Amazon Comprehend: 個人を特定できる情報 (PII)', url:'https://docs.aws.amazon.com/comprehend/latest/dg/pii.html'}
 };
 
 var VOCAB = [
@@ -301,6 +305,10 @@ var VOCAB = [
   {id:'v171', term:'Provisioned Throughput', domain:'genai', source:SOURCES.provThroughput, q:{text:'Amazon BedrockのProvisioned Throughputの説明として正しいものはどれですか？', choices:['モデルの利用ごとに、処理した入力・出力トークン数に応じて課金し、事前の購入や時間単位の固定料金は発生しない','複数のモデルの応答を比較して、最も精度の高いモデルを自動で選択する','モデルに対して固定のコストで高いスループットを確保する。時間単位で課金され、1か月または6か月のコミットメントで割引になる','学習用データをS3から取り込み、指定した基盤モデルに対するファインチューニングのジョブを自動で実行して新しいモデルを作成する'], correct:2, why:['誤り。これはオンデマンドの課金方法の説明です。Provisioned Throughputは時間単位で課金されます。','誤り。Provisioned Throughputはモデルの選択機能ではなく、処理容量（Model Unit）を確保するものです。','正しい。購入したModel Unit数と、コミットメント期間（なし／1か月／6か月）に応じて時間単位で課金され、期間が長いほど割引になります。','誤り。カスタマイズジョブは別の機能です。Provisioned Throughputは推論の処理容量を確保します。']}},
   {id:'v172', term:'Chain-of-Thought Prompting', domain:'fm', source:SOURCES.promptEng, q:{text:'Chain-of-thought（思考の連鎖）プロンプティングの説明として正しいものはどれですか？', choices:['複雑な質問を小さな部分に分解して、モデルが途中の推論ステップを踏むよう促す手法','モデルのパラメータを新しいデータで更新して、特定のタスクへの精度を高める手法','応答の短さを優先して、モデルに理由を示さず結論だけを出力させる手法','出力が不適切な内容を含まないかを、別のモデルで自動検査して遮断する手法'], correct:0, why:['正しい。AWSの解説では、複雑な質問を小さな論理的な部分に分解し、思考の流れを模倣させることで、モデルに途中経過を踏んだ推論をさせる手法とされています。','誤り。これはファインチューニングの説明で、プロンプトの工夫ではありません。','誤り。chain-of-thoughtは途中の推論ステップを出させる手法で、結論だけを返させるものではありません。','誤り。これはガードレールなどによる出力検査の説明です。']}},
   {id:'v173', term:'AI Agent', domain:'genai', source:SOURCES.agenticAi, q:{text:'AIエージェント（agentic AI）に関する説明として正しいものはどれですか？', choices:['事前に用意された固定の回答だけを返す仕組みで、目標を達成するための行動計画を立てたり外部のツールを呼び出したりはしない','ユーザーからの指示を1ステップずつ受け取って処理し、毎回の細かな指示がなければ次の動作に進めない','モデルの学習データを自動でラベル付けするための、データ前処理専用の仕組みである','与えられた目標に向けて自律的に行動する。推論エンジン・メモリ・ツールなどを使い、行動計画を立てて外部システムも操作する'], correct:3, why:['誤り。固定の回答を返すだけの仕組みは、エージェントではなく従来型のものです。','誤り。AWSの解説では、従来のAIが段階的な指示を必要とするのに対し、エージェントは事前に決められた目標に向けて自律的に行動するとされています。','誤り。エージェントはデータ前処理専用のものではありません。','正しい。推論エンジン、メモリ、ツールなどのコンポーネントを備え、行動計画を立てて外部システムを通じて行動します。']}},
+  {id:'v174', term:'MLOps', domain:'aiml', source:SOURCES.mlops, q:{text:'MLOps（機械学習オペレーション）の説明として正しいものはどれですか？', choices:['モデルの学習時にハイパーパラメータを自動で調整し、精度を最大化するための手法','学習データの各項目に人手で正解ラベルを付け、教師あり学習用のデータセットを作成する作業','データ準備からモデルの学習・デプロイ・監視までのMLライフサイクルを自動化・標準化し、開発と運用を統合する一連の手法','基盤モデルの出力に含まれる有害な内容を検出し、利用者に表示する前にフィルタリングする仕組み'], correct:2, why:['誤り。これはハイパーパラメータチューニング（自動モデルチューニング）の説明です。','誤り。これはデータラベリングの説明です。','正しい。MLOpsはMLのワークフローとデプロイを自動化・簡素化し、バージョン管理、CI/CD、継続的な学習、モニタリング、ガバナンスなどを含みます。','誤り。これはガードレール（Guardrailsなど）の役割です。']}},
+  {id:'v175', term:'Machine Translation', domain:'genai', source:SOURCES.machineTranslation, q:{text:'機械翻訳（machine translation）に関する説明として正しいものはどれですか？', choices:['画像内の文字を読み取り、表やフォームの構造を保ったままテキストとして抽出する技術','話された音声を認識して文字起こしし、字幕やコールの記録に利用する技術','入力テキストを音声に変換して、自然な声で読み上げる技術','AIを使って人手を介さずに、テキストをある言語から別の言語へ自動で翻訳する技術。現在はニューラル機械翻訳が標準的な手法'], correct:3, why:['誤り。これはAmazon Textractのような文書抽出の説明です。','誤り。これは音声認識（Amazon Transcribe）の説明です。','誤り。これは音声合成（Amazon Polly）の説明です。','正しい。AWSのサービスではAmazon Translateがニューラル機械翻訳サービスで、カスタム用語集で独自の用語を指定できます。']}},
+  {id:'v176', term:'F1 Score', domain:'aiml', source:SOURCES.comprehendF1, q:{text:'分類モデルの評価指標であるF1スコアの説明として正しいものはどれですか？', choices:['適合率（precision）と再現率（recall）の調和平均で、1が最良・0が最悪の値になる','予測が正解だった件数を全予測件数で割った割合で、クラスの偏りの影響を最も受けにくい指標','モデルが生成した要約文と参照要約との単語の重なりを測る、要約タスク向けの指標','予測値と実際の値の差を二乗して平均した値で、回帰モデルの誤差の大きさを表す指標'], correct:0, why:['正しい。Amazon Comprehendのドキュメントでは、F1スコアは適合率と再現率の調和平均で、分類器の精度を測る指標とされています。','誤り。これは正解率（accuracy）の説明です。クラスが偏ったデータでは正解率だけでは性能を判断しにくくなります。','誤り。これはROUGEの説明です。','誤り。これは平均二乗誤差（MSE）の説明です。']}},
+  {id:'v177', term:'PII (Personally Identifiable Information)', domain:'security', source:SOURCES.piiComprehend, q:{text:'PII（個人を特定できる情報）の例として、Amazon Comprehendのドキュメントに挙げられているものはどれですか？', choices:['住所、銀行口座番号、電話番号など、個人を識別するために使われうる個人データ','モデルの学習に使うハイパーパラメータの設定値と、学習ジョブの実行時間の記録','基盤モデルが出力する推論結果の、トークン数と処理にかかった時間','AWSアカウントのIAMポリシーに含まれる、許可されるアクションの一覧'], correct:0, why:['正しい。PIIは、個人を識別するために使われうる個人データへの参照で、ComprehendではPIIの位置の特定や、非同期ジョブでの墨消し（リダクション）ができます。','誤り。これらはモデルや学習ジョブに関するメタデータで、個人を特定する情報ではありません。','誤り。これらは推論の利用状況に関する指標で、個人を特定する情報ではありません。','誤り。IAMポリシーの内容はアクセス権限の設定で、PIIには該当しません。']}},
 ];
 
 var PRACTICE = [
@@ -546,6 +554,18 @@ var PRACTICE = [
   {id:'p77', domain:'fm', type:'single', source:SOURCES.promptEng, text:'複雑な推論が必要な質問で、モデルの回答の質を高めるために、質問を小さな論理的な部分に分解し、途中の推論ステップを示させるプロンプトの手法はどれですか？',
     choices:['Temperatureを0に近づけて、同じ入力に対してなるべく毎回同じ傾向の応答になるよう設定する','Chain-of-thoughtプロンプティング：思考の流れを模倣した、段階的な推論をモデルに促す','Stop sequencesを設定して、応答を特定の文字列で打ち切る','Maximum tokensを増やして、応答の長さの上限を引き上げる'], correct:[1],
     why:['誤り。Temperatureは応答のランダム性を制御するもので、推論の手順を促すものではありません。','正しい。複雑な質問を小さな論理的な部分に分解し、途中の推論ステップを踏むよう促す手法です。','誤り。Stop sequencesは応答を止める文字列を指定するもので、推論の質を高める手法ではありません。','誤り。Maximum tokensは出力の長さの上限であり、推論の手順を促すものではありません。']},
+  {id:'p78', domain:'aiml', type:'single', source:SOURCES.mlops, text:'データの取り込みから前処理、学習、検証、デプロイ、監視までを自動化し、新しいデータでモデルを継続的に再学習・再デプロイしたい。この考え方はどれですか？',
+    choices:['AutoML：特徴量の選択とモデルの選定を自動化して、モデル開発を簡素化する','MLOps：MLのワークフローとデプロイを自動化し、CI/CDや継続的な学習・モニタリングを取り入れて運用する','データラベリング：学習用データに人手で正解ラベルを付けて、データセットを作成する','転移学習：事前学習済みモデルの知識を、別のタスクの学習に再利用する'], correct:[1],
+    why:['誤り。AutoMLはモデル開発自体の簡素化であり、デプロイや継続的な運用のライフサイクル全体の自動化を指すものではありません。','正しい。MLOpsはMLのライフサイクルを自動化・標準化し、継続的学習やモニタリングも含みます。','誤り。データラベリングは学習データの準備作業です。','誤り。転移学習はモデルの学習方法の一つで、運用の自動化の考え方ではありません。']},
+  {id:'p79', domain:'genai', type:'single', source:SOURCES.machineTranslation, text:'ウェブサイトの商品説明を多数の言語にローカライズしたい。ブランド名や製品名は訳さずに維持したい。最も適したサービスと機能はどれですか？',
+    choices:['Amazon Transcribe：音声を文字起こしして、字幕を生成する','Amazon Comprehend：テキストから感情やキーフレーズを分析する','Amazon Polly：テキストを自然な音声に変換する','Amazon Translate：ニューラル機械翻訳を行い、カスタム用語集でブランド名などの訳を指定する'], correct:[3],
+    why:['誤り。Transcribeは音声からテキストへの変換です。','誤り。Comprehendは感情やキーフレーズなどのテキスト分析で、言語間の翻訳はしません。','誤り。Pollyはテキストから音声への変換です。','正しい。Amazon Translateはニューラル機械翻訳サービスで、カスタム用語集でブランド名や製品名を指定できます。']},
+  {id:'p80', domain:'aiml', type:'single', source:SOURCES.comprehendF1, text:'スパム判定モデルで、「スパムと判定したメールのうち実際にスパムだった割合」と「実際のスパムのうちモデルが検出できた割合」の両方を一つの値でバランスよく評価したい。どの指標が適していますか？',
+    choices:['平均二乗誤差（MSE）：予測値と実際の値の差の二乗平均で、回帰の誤差を表す','ROUGE：生成した要約と参照要約の単語の重なりを測る','F1スコア：適合率と再現率の調和平均で、分類器の精度をまとめて表す','BLEU：機械翻訳の結果を参照訳と比較して評価する'], correct:[2],
+    why:['誤り。MSEは回帰の評価指標で、適合率と再現率を扱う分類の指標ではありません。','誤り。ROUGEは要約の評価指標です。','正しい。F1スコアは適合率と再現率の調和平均で、1が最良、0が最悪です。','誤り。BLEUは翻訳の評価指標です。']},
+  {id:'p81', domain:'security', type:'single', source:SOURCES.piiComprehend, text:'カスタマーサポートのチャットログを分析する前に、含まれる住所や電話番号などの個人情報を検出し、非同期の処理で墨消ししたい。最も適したサービスはどれですか？',
+    choices:['Amazon Comprehend：PIIエンティティの検出と、非同期ジョブでの墨消しができる','AWS CloudTrail：AWSアカウントのAPI呼び出しの履歴を記録する','AWS KMS：データの暗号化に使う鍵を作成・管理する','Amazon Inspector：ワークロードのソフトウェア脆弱性をスキャンする'], correct:[0],
+    why:['正しい。ComprehendはPIIの位置の特定ができ、墨消しは非同期のバッチジョブで行います。','誤り。CloudTrailはAPI操作の監査ログで、テキスト中の個人情報の検出はしません。','誤り。KMSは鍵管理で、テキスト中のPIIの検出・墨消しはしません。','誤り。Inspectorは脆弱性の検出で、PIIの検出とは目的が異なります。']},
 ];
 
 var MOCK_POOL = [
@@ -705,6 +725,15 @@ var MOCK_POOL = [
   {id:'m51', domain:'genai', type:'single', source:SOURCES.agenticAi, text:'AIエージェント（agentic AI）の特徴として最も適切なものはどれですか？',
     choices:['ユーザーが各ステップを指示しなくても、決められた目標に向けて自律的に行動し、ツールを使う','常に人間による承認を各ステップで受けなければ、次の処理に進めず、自律的に目標を追うことはできない','学習済みのモデルを再学習せず、固定の応答テンプレートだけを返す','画像や音声などのデータを、決められた形式に変換するだけの前処理の仕組みである'], correct:[0],
     why:['正しい。AWSの解説では、事前に決められた目標を達成するために、人の細かな監督なしで自律的に行動できるシステムとされています。','誤り。エージェントは、複雑なタスクを継続的な人の監督なしに進められる点が特徴です。','誤り。固定の応答を返すだけの仕組みは、エージェントとは言えません。','誤り。データ形式の変換だけを行うものは、エージェントの説明ではありません。']},
+  {id:'m52', domain:'aiml', type:'single', source:SOURCES.mlops, text:'MLOpsの主な目的として最も適切なものはどれですか？',
+    choices:['データ準備からデプロイ、監視までのMLワークフローを自動化・標準化し、開発と運用を統合する','学習データのバイアスを検出するために、データセットの属性ごとの分布を人手で確認する','基盤モデルの応答を安全に保つため、有害なコンテンツのフィルターを設定する','学習済みの大規模モデルを、より小さいモデルに圧縮して推論コストを下げる'], correct:[0],
+    why:['正しい。MLOpsはMLのライフサイクル全体の自動化と運用を扱います。','誤り。これはバイアス検出（SageMaker Clarifyなど）の取り組みです。','誤り。これはGuardrailsの役割です。','誤り。これはモデル蒸留などの手法の説明です。']},
+  {id:'m53', domain:'aiml', type:'single', source:SOURCES.comprehendF1, text:'適合率と再現率の調和平均で表される分類モデルの評価指標はどれですか？',
+    choices:['正解率（accuracy）','平均二乗誤差（MSE）','F1スコア','BERTScore'], correct:[2],
+    why:['誤り。正解率は全予測のうち正解だった割合です。','誤り。MSEは回帰の誤差指標です。','正しい。F1スコアは適合率と再現率の調和平均です。','誤り。BERTScoreは生成テキストの意味的類似度を評価する指標です。']},
+  {id:'m54', domain:'security', type:'single', source:SOURCES.piiComprehend, text:'PIIに該当する情報の組み合わせとして、最も適切なものはどれですか？',
+    choices:['モデルのハイパーパラメータとエポック数','顧客の住所・電話番号・銀行口座番号','APIリクエストの数と平均レイテンシー','学習ジョブの名前とS3バケットのリージョン'], correct:[1],
+    why:['誤り。モデルの設定値で、個人を特定する情報ではありません。','正しい。個人を識別するために使われうる個人データがPIIです。','誤り。利用状況の指標で、個人情報ではありません。','誤り。ジョブやリソースの属性で、個人情報ではありません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）
