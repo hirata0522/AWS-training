@@ -140,17 +140,17 @@
 | 134 | Hallucination | genai | v98 |
 | 135 | Underfitting | aiml | v97 |
 | 136 | Amazon Bedrock Agents | fm | v110 |
-| 137 | AWS Organizations | security | 未 |
+| 137 | AWS Organizations | security | 除外 |
 | 138 | Word Filters | responsible | v100 |
 | 139 | Bias (ML) | aiml | 未 |
 | 140 | Nondeterminism | genai | 未 |
 | 141 | Action Group | fm | v123 |
-| 142 | Service Control Policy (SCP) | security | 未 |
+| 142 | Service Control Policy (SCP) | security | 除外 |
 | 143 | Variance | aiml | 未 |
 | 144 | Sensitive Information Filters | responsible | v101 |
 | 145 | Batch Inference | aiml | v103 |
 | 146 | Amazon Bedrock Custom Model Import | fm | v108 |
-| 147 | IAM Identity Center | security | 未 |
+| 147 | IAM Identity Center | security | 除外 |
 | 148 | Interpretability | genai | 未 |
 | 149 | Real-time Inference | aiml | v104 |
 | 150 | Amazon Bedrock Provisioned Throughput | fm | v106 |
@@ -165,7 +165,7 @@
 | 159 | Automated Reasoning Checks | responsible | v121 |
 | 160 | Exploratory Data Analysis (EDA) | aiml | 未 |
 | 161 | Instruction | fm | 未 |
-| 162 | Data Cataloging | security | 未 |
+| 162 | Data Cataloging | security | v183 |
 | 163 | Data Pre-processing | aiml | 未 |
 | 164 | Token-based Pricing | genai | v132 |
 | 165 | Context (Prompt) | fm | 未 |
@@ -173,7 +173,7 @@
 | 167 | Data Splitting (Train/Validation/Test) | aiml | v163 |
 | 168 | Environmental Sustainability (AI) | responsible | 未 |
 | 169 | Input Tokens vs Output Tokens | genai | v133 |
-| 170 | Negative Prompt | fm | 未 |
+| 170 | Negative Prompt | fm | v178 |
 | 171 | Data Quality Assessment | security | 未 |
 | 172 | Accuracy | aiml | v145 |
 | 173 | Precision | aiml | v143 |
@@ -189,7 +189,7 @@
 | 183 | Loss of Customer Trust | responsible | 未 |
 | 184 | Area Under the Curve (AUC) | aiml | v147 |
 | 185 | Few-shot Prompting | fm | v137 |
-| 186 | Data Masking | security | 未 |
+| 186 | Data Masking | security | v179 |
 | 187 | Context Engineering | genai | 未 |
 | 188 | Confusion Matrix | aiml | v146 |
 | 189 | End User Risk | responsible | 未 |
@@ -316,7 +316,7 @@
 | 310 | Amazon SageMaker Asynchronous Inference | aiml | 未 |
 | 311 | Agent Evaluation | fm | 未 |
 | 312 | ISO/IEC 42001 | security | 未 |
-| 313 | Amazon Nova | genai | 未 |
+| 313 | Amazon Nova | genai | v182 |
 | 314 | AI Decision Transparency | responsible | 未 |
 | 315 | Amazon SageMaker Serverless Inference | aiml | 除外 |
 | 316 | Amazon Bedrock Converse API | fm | 未 |
@@ -331,7 +331,7 @@
 | 325 | AWS Glue | aiml | 未 |
 | 326 | Amazon Bedrock Batch Inference | fm | 未 |
 | 327 | GDPR | security | 未 |
-| 328 | AWS Glue DataBrew | aiml | 未 |
+| 328 | AWS Glue DataBrew | aiml | v181 |
 | 329 | Amazon Bedrock Data Automation | genai | 未 |
 | 330 | Algorithmic Bias | responsible | 未 |
 | 331 | Model Context Window Management | fm | 未 |
@@ -342,7 +342,7 @@
 | 336 | SOC Reports | security | 未 |
 | 337 | Amazon Redshift | aiml | 未 |
 | 338 | Sampling Bias | responsible | 未 |
-| 339 | AWS Lake Formation | aiml | 未 |
+| 339 | AWS Lake Formation | aiml | v180 |
 | 340 | Document Chunking Strategy | fm | 未 |
 | 341 | Compliance Reports | security | 未 |
 | 342 | Amazon Bedrock Playground | genai | 未 |

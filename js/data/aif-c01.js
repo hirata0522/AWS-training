@@ -128,7 +128,13 @@ var SOURCES = {
   mlops:{label:'AWS: MLOpsとは', url:'https://aws.amazon.com/what-is/mlops/'},
   machineTranslation:{label:'AWS: 機械翻訳とは', url:'https://aws.amazon.com/what-is/machine-translation/'},
   comprehendF1:{label:'Amazon Comprehend: ClassifierEvaluationMetrics（F1スコア・適合率・再現率）', url:'https://docs.aws.amazon.com/comprehend/latest/APIReference/API_ClassifierEvaluationMetrics.html'},
-  piiComprehend:{label:'Amazon Comprehend: 個人を特定できる情報 (PII)', url:'https://docs.aws.amazon.com/comprehend/latest/dg/pii.html'}
+  piiComprehend:{label:'Amazon Comprehend: 個人を特定できる情報 (PII)', url:'https://docs.aws.amazon.com/comprehend/latest/dg/pii.html'},
+  clarifyExplain:{label:'SageMaker AI: モデルの説明可能性 (Clarify)', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html'},
+  novaImagePrompt:{label:'Amazon Nova Canvas: プロンプトのベストプラクティス', url:'https://docs.aws.amazon.com/nova/latest/userguide/prompting-image-generation.html'},
+  comprehendRedaction:{label:'Amazon Comprehend API: RedactionConfig', url:'https://docs.aws.amazon.com/comprehend/latest/APIReference/API_RedactionConfig.html'},
+  lakeFormation:{label:'AWS Lake Formation とは', url:'https://docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html'},
+  databrew:{label:'AWS Glue DataBrew とは', url:'https://docs.aws.amazon.com/databrew/latest/dg/what-is.html'},
+  nova:{label:'Amazon Nova とは', url:'https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html'}
 };
 
 var VOCAB = [
@@ -309,6 +315,13 @@ var VOCAB = [
   {id:'v175', term:'Machine Translation', domain:'genai', source:SOURCES.machineTranslation, q:{text:'機械翻訳（machine translation）に関する説明として正しいものはどれですか？', choices:['画像内の文字を読み取り、表やフォームの構造を保ったままテキストとして抽出する技術','話された音声を認識して文字起こしし、字幕やコールの記録に利用する技術','入力テキストを音声に変換して、自然な声で読み上げる技術','AIを使って人手を介さずに、テキストをある言語から別の言語へ自動で翻訳する技術。現在はニューラル機械翻訳が標準的な手法'], correct:3, why:['誤り。これはAmazon Textractのような文書抽出の説明です。','誤り。これは音声認識（Amazon Transcribe）の説明です。','誤り。これは音声合成（Amazon Polly）の説明です。','正しい。AWSのサービスではAmazon Translateがニューラル機械翻訳サービスで、カスタム用語集で独自の用語を指定できます。']}},
   {id:'v176', term:'F1 Score', domain:'aiml', source:SOURCES.comprehendF1, q:{text:'分類モデルの評価指標であるF1スコアの説明として正しいものはどれですか？', choices:['適合率（precision）と再現率（recall）の調和平均で、1が最良・0が最悪の値になる','予測が正解だった件数を全予測件数で割った割合で、クラスの偏りの影響を最も受けにくい指標','モデルが生成した要約文と参照要約との単語の重なりを測る、要約タスク向けの指標','予測値と実際の値の差を二乗して平均した値で、回帰モデルの誤差の大きさを表す指標'], correct:0, why:['正しい。Amazon Comprehendのドキュメントでは、F1スコアは適合率と再現率の調和平均で、分類器の精度を測る指標とされています。','誤り。これは正解率（accuracy）の説明です。クラスが偏ったデータでは正解率だけでは性能を判断しにくくなります。','誤り。これはROUGEの説明です。','誤り。これは平均二乗誤差（MSE）の説明です。']}},
   {id:'v177', term:'PII (Personally Identifiable Information)', domain:'security', source:SOURCES.piiComprehend, q:{text:'PII（個人を特定できる情報）の例として、Amazon Comprehendのドキュメントに挙げられているものはどれですか？', choices:['住所、銀行口座番号、電話番号など、個人を識別するために使われうる個人データ','モデルの学習に使うハイパーパラメータの設定値と、学習ジョブの実行時間の記録','基盤モデルが出力する推論結果の、トークン数と処理にかかった時間','AWSアカウントのIAMポリシーに含まれる、許可されるアクションの一覧'], correct:0, why:['正しい。PIIは、個人を識別するために使われうる個人データへの参照で、ComprehendではPIIの位置の特定や、非同期ジョブでの墨消し（リダクション）ができます。','誤り。これらはモデルや学習ジョブに関するメタデータで、個人を特定する情報ではありません。','誤り。これらは推論の利用状況に関する指標で、個人を特定する情報ではありません。','誤り。IAMポリシーの内容はアクセス権限の設定で、PIIには該当しません。']}},
+
+  {id:'v178', term:'Negative Prompt', domain:'fm', source:SOURCES.novaImagePrompt, q:{text:'Amazon Nova Canvasなどの画像生成で、画像に含めたくない物や特徴を指定するために使うものはどれですか？', choices:['プロンプトに「バナナなし」のような否定語を入れて、含めたくない物を指示する','negativeTextパラメータに、除外したい物や特徴を指定する','seedパラメータに、除外したい物の名前を入力して画像から取り除く','プロンプトの末尾に最も重要な詳細を置いて、長さを1024文字以内に収める'], correct:1, why:['誤り。画像生成モデルは「no」「not」「without」などの否定を理解できず、「バナナなし」と書くとかえってバナナが含まれる可能性があります。','正しい。除外したい物や特徴は、ネガティブプロンプト（negativeText）に「bananas」のように否定語を使わずに指定します。','誤り。seedは生成結果のバリエーションを変えるための値で、物を除外する指定には使いません。','誤り。プロンプトは1024文字以内ですが、末尾に置くのは重要度の低い詳細で、除外の指定とは関係ありません。']}},
+  {id:'v179', term:'Data Masking', domain:'security', source:SOURCES.comprehendRedaction, q:{text:'Amazon ComprehendのPII墨消し（RedactionConfig）で、検出したPIIをマスク文字で置き換えるか、PIIの種別名で置き換えるかを選ぶ設定はどれですか？', choices:['PiiEntityTypes：墨消しの対象とするPIIの種類（NAME、EMAILなど）を配列で指定する','MaskCharacter：置き換えに使う文字を、!@#$%&*のいずれか1文字で指定する','Amazon Macieの機密データ検出ジョブ：S3内の機密データを見つけて、置き換え方法を指定する','MaskMode：MASK（マスク文字）かREPLACE_WITH_PII_ENTITY_TYPE（種別名）かを指定する'], correct:3, why:['誤り。PiiEntityTypesは、どの種類のPIIを対象にするかを指定する設定で、置き換え方法は決めません。','誤り。MaskCharacterは、マスクに使う1文字を指定する設定です。マスク文字か種別名かの選択はMaskModeで行います。','誤り。Macieは、S3内の機密データを検出するサービスで、Comprehendの墨消し設定ではありません。','正しい。MaskModeで、PIIをマスク文字で置き換える（MASK）か、PIIの種別名で置き換える（REPLACE_WITH_PII_ENTITY_TYPE）かを選びます。']}},
+  {id:'v180', term:'AWS Lake Formation', domain:'aiml', source:SOURCES.lakeFormation, q:{text:'S3上のデータレイクのデータに対し、データベース・テーブル・列・行・セルの各レベルでのアクセス制御を一元的に管理できるサービスはどれですか？', choices:['AWS Glue DataBrew：コードなしでデータをクリーニング・正規化する','AWS Lake Formation：IAMを補うきめ細かなアクセス制御を一元管理する','Amazon Macie：S3内の機密データを検出して通知する','AWS Data Exchange：サードパーティのデータを購読したり提供したりする'], correct:1, why:['誤り。DataBrewは、MLや分析のためのデータ準備ツールで、アクセス制御の管理は行いません。','正しい。Lake Formationは、データレイクのデータを一元的に管理・保護・共有します。IAMの権限モデルを補う独自の権限モデルで、列・行・セルレベルまできめ細かく制御できます。','誤り。Macieは機密データを検出するサービスで、データレイクの権限管理はしません。','誤り。Data Exchangeは、データのライセンス提供・購読のためのサービスで、データレイク内の権限管理とは役割が異なります。']}},
+  {id:'v181', term:'AWS Glue DataBrew', domain:'aiml', source:SOURCES.databrew, q:{text:'コードを書かずに、ビジュアルな画面操作でデータのクリーニングや正規化ができる、分析・ML向けのデータ準備ツールはどれですか？', choices:['Amazon Comprehend：テキストから感情やキーフレーズ、固有表現を抽出する','AWS Lake Formation：データレイクのデータのアクセス権限を一元管理する','Amazon SageMaker Ground Truth：学習データにラベルを付けるための作業を支援する','AWS Glue DataBrew：250以上の変換をポイント＆クリックで適用する'], correct:3, why:['誤り。Comprehendは、テキスト分析のためのNLPサービスで、データ準備ツールではありません。','誤り。Lake Formationは、データレイクのガバナンスやアクセス制御のためのサービスです。','誤り。Ground Truthは、学習データへのラベル付けを支援するもので、欠損値の補完などの変換は行いません。','正しい。DataBrewはビジュアルなデータ準備ツールで、250以上の変換を使い、コードなしでデータをクリーニング・正規化できます。変換手順はレシピとして保存・再利用できます。']}},
+  {id:'v182', term:'Amazon Nova', domain:'genai', source:SOURCES.nova, q:{text:'Amazon Novaの説明として最も適切なものはどれですか？', choices:['SageMaker AIで自前のエンドポイントを用意した場合にのみ、APIから呼び出せるようになる、テキスト専用の基盤モデルである','Amazon Comprehendのコンソールから呼び出して、テキストの感情分析だけを行う、事前学習済みのNLPモデルである','Amazon Bedrock経由のAPIで利用でき、理解・画像や動画の生成・音声といった用途のモデルがある','Amazon Lexと組み合わせた場合にのみ利用できる、会話ボット専用の基盤モデルである'], correct:2, why:['誤り。Novaは、SageMaker AIのエンドポイントを用意しなくても、Bedrock経由で利用できます。テキスト専用でもありません。','誤り。Novaは感情分析専用のNLPモデルではなく、Comprehendとも別の基盤モデル群です。','正しい。Novaはテキスト・画像・動画・音声などに対応する基盤モデル群で、Bedrock経由のAPIで利用します。理解、創作（Canvas、Reel）、音声（Sonic）といったカテゴリがあります。','誤り。Novaは、Lexとの組み合わせに限定されるモデルではありません。']}},
+  {id:'v183', term:'Data Cataloging', domain:'security', source:SOURCES.lakeFormation, q:{text:'データレイクにおける「データのカタログ化」の説明として、最も適切なものはどれですか？', choices:['データを複数のリージョンに自動でコピーして、可用性を高める','学習データの個人情報を伏せ字にして、モデルへの漏えいを防ぐ','データの暗号化に使うキーを、定期的にローテーションして管理する','データのスキーマなどのメタデータを一元的なカタログに登録して、データを検索・発見しやすくする'], correct:3, why:['誤り。これはデータの複製・レプリケーションの説明で、カタログ化ではありません。','誤り。これはデータのマスキングや墨消しの説明です。','誤り。これはKMSなどによる暗号化キー管理の説明です。','正しい。AWS Glueのクローラーでデータのスキーマを読み取り、検索可能なData Catalogに保存します。Lake Formationは、そのカタログ上のデータベース・テーブル・列の権限も管理できます。']}},
 ];
 
 var PRACTICE = [
@@ -566,6 +579,23 @@ var PRACTICE = [
   {id:'p81', domain:'security', type:'single', source:SOURCES.piiComprehend, text:'カスタマーサポートのチャットログを分析する前に、含まれる住所や電話番号などの個人情報を検出し、非同期の処理で墨消ししたい。最も適したサービスはどれですか？',
     choices:['Amazon Comprehend：PIIエンティティの検出と、非同期ジョブでの墨消しができる','AWS CloudTrail：AWSアカウントのAPI呼び出しの履歴を記録する','AWS KMS：データの暗号化に使う鍵を作成・管理する','Amazon Inspector：ワークロードのソフトウェア脆弱性をスキャンする'], correct:[0],
     why:['正しい。ComprehendはPIIの位置の特定ができ、墨消しは非同期のバッチジョブで行います。','誤り。CloudTrailはAPI操作の監査ログで、テキスト中の個人情報の検出はしません。','誤り。KMSは鍵管理で、テキスト中のPIIの検出・墨消しはしません。','誤り。Inspectorは脆弱性の検出で、PIIの検出とは目的が異なります。']},
+
+  {id:'p82', domain:'responsible', type:'single', source:SOURCES.clarifyExplain, text:'ローン審査のMLモデルが申込者を否認した理由を、規制当局や顧客に説明できるようにしたいと考えています。各特徴量が個々の予測にどれだけ影響したかを、モデルに依存しない特徴量寄与（SHAP）で示す機能を提供するのはどれですか？',
+    choices:['Amazon Bedrock Guardrails：生成AIの入出力から、不適切な内容や拒否トピックをフィルタリングする','Amazon SageMaker Model Monitor：本番環境のモデルの品質やデータドリフトを継続的に監視する','Amazon SageMaker Clarify：Shapley値に基づく特徴量の寄与度で予測を説明する','Amazon Augmented AI（A2I）：信頼度の低い予測を、人間のレビュアーに回して確認してもらう'], correct:[2],
+    why:['誤り。Guardrailsは生成AIアプリの入出力を制御するもので、予測の理由を説明する機能ではありません。','誤り。Model Monitorは本番モデルの品質やドリフトを監視するもので、個々の予測の理由は説明しません。','正しい。Clarifyはモデルに依存しない特徴量寄与のアプローチで、SHAPを使い、学習後や推論時に予測の理由を説明します。なお公式ドキュメントでは、Clarifyは新規顧客の受け付けを終了しているとされています。','誤り。A2Iは人間によるレビューを組み込む仕組みで、特徴量の寄与度を算出するものではありません。']},
+  {id:'p83', domain:'responsible', type:'matching', source:SOURCES.responsibleAi, text:'AWSが示す責任あるAIの中核的な側面について、それぞれの説明に当てはまるものを選んでください。',
+    prompts:['モデルやデータを、適切に取得・使用・保護する','有害なシステム出力や悪用を防ぐ','AIシステムの挙動を監視し、必要に応じて誘導するしくみを持つ','想定外の入力や敵対的な入力があっても、正しい出力を得る'],
+    options:['Governance','Veracity and robustness','Privacy and security','Controllability','Safety'], correct:[2,4,3,1],
+    why:['Privacy and securityは、データやモデルを適切に取得・使用・保護することです。','Safetyは、有害なシステム出力や悪用を防ぐことです。','Controllabilityは、AIシステムの挙動を監視し誘導するしくみを持つことです。','Veracity and robustnessは、想定外の入力や敵対的な入力があっても正しい出力を得ることです。使わない選択肢のGovernanceは、プロバイダーやデプロイ担当者を含むAIのサプライチェーンに、ベストプラクティスを取り入れることです。']},
+  {id:'p84', domain:'security', type:'single', source:SOURCES.lakeFormation, text:'S3上のデータレイクを複数の分析・MLサービスが利用しています。個人情報を含む列や行へのアクセスを、IAMポリシーだけに頼らず一元的に制御したい場合、最も適切なサービスはどれですか？',
+    choices:['Amazon Macie：S3バケット内の機密データを検出する','AWS Glue DataBrew：データをクリーニング・正規化する','AWS Lake Formation：列・行・セルレベルのアクセスを一元管理する','AWS Secrets Manager：認証情報やAPIキーを安全に保管する'], correct:[2],
+    why:['誤り。Macieは機密データを検出して知らせるもので、列や行ごとのアクセス権限を管理するものではありません。','誤り。DataBrewはデータ準備のツールで、アクセス制御の管理はしません。','正しい。Lake FormationはIAMの権限モデルを補い、データベース・テーブル・列・行・セルの各レベルでアクセス権限を一元的に管理します。','誤り。Secrets Managerは認証情報などの秘密情報の保管・ローテーションのためのサービスで、データレイクの権限管理ではありません。']},
+  {id:'p85', domain:'fm', type:'single', source:SOURCES.novaImagePrompt, text:'Amazon Nova Canvasで「バナナを含まないフルーツバスケット」の画像を生成したいと考えています。AWSのガイドに沿った、最も適切なプロンプトの書き方はどれですか？',
+    choices:['プロンプトに「バナナを含まない」と書き、ネガティブプロンプトは使わない','プロンプトに「フルーツバスケット」と書き、negativeTextにバナナ（bananas）を指定する','プロンプトに「バナナなしのフルーツバスケット」と書き、negativeTextにも「バナナなし」と書く','プロンプトを長く書き、最も重要な情報を末尾に置いて、1024文字を超えても構わないようにする'], correct:[1],
+    why:['誤り。画像生成モデルは否定を理解できず、「含まない」と書くとかえってバナナが含まれる可能性があります。','正しい。含めたい内容はプロンプトに、除外したい物はnegativeTextに、否定語を使わずに指定します。','誤り。ネガティブプロンプトにも、否定語（no、not、withoutなど）は使わないよう案内されています。','誤り。プロンプトは1024文字以内にする必要があります。長い場合は重要度の低い詳細を末尾に置きます。']},
+  {id:'p86', domain:'security', type:'multi', source:SOURCES.comprehendRedaction, text:'Amazon ComprehendのPII墨消し（RedactionConfig）の説明として正しいものはどれですか？（2つ選択）',
+    choices:['PiiEntityTypesには、墨消し対象としてALLのみを指定でき、特定の種別だけを選ぶことはできない','MaskModeで、PIIをマスク文字で置き換えるか、PIIの種別名で置き換えるかを選べる','MaskCharacterには、長さに制限なく任意の文字列を指定できる','MaskCharacterには、!@#$%&*のいずれか1文字を指定できる','MaskModeを指定すると、PIIがKMSで暗号化された文字列に置き換えられる'], correct:[1,3],
+    why:['誤り。PiiEntityTypesには、NAME、EMAIL、ADDRESSなどの種別を指定でき、ALLも選べます。','正しい。MaskModeにはMASKとREPLACE_WITH_PII_ENTITY_TYPEがあります。','誤り。MaskCharacterは長さ1の固定です。','正しい。MaskCharacterは、!@#$%&*のいずれか1文字で、墨消しした各文字を置き換えます。','誤り。MaskModeはマスク文字か種別名かの選択で、暗号化とは関係ありません。']},
 ];
 
 var MOCK_POOL = [
@@ -734,6 +764,19 @@ var MOCK_POOL = [
   {id:'m54', domain:'security', type:'single', source:SOURCES.piiComprehend, text:'PIIに該当する情報の組み合わせとして、最も適切なものはどれですか？',
     choices:['モデルのハイパーパラメータとエポック数','顧客の住所・電話番号・銀行口座番号','APIリクエストの数と平均レイテンシー','学習ジョブの名前とS3バケットのリージョン'], correct:[1],
     why:['誤り。モデルの設定値で、個人を特定する情報ではありません。','正しい。個人を識別するために使われうる個人データがPIIです。','誤り。利用状況の指標で、個人情報ではありません。','誤り。ジョブやリソースの属性で、個人情報ではありません。']},
+
+  {id:'m55', domain:'responsible', type:'multi', source:SOURCES.clarifyExplain, text:'SageMaker Clarifyのモデルの説明可能性（explainability）について正しいものはどれですか？（2つ選択）',
+    choices:['生成AIの出力に含まれるPIIを自動で伏せ字にして、利用者に返すデータを保護する','本番環境のエンドポイントの入出力を常時キャプチャし、ドリフトが起きたときにアラームを送る','モデルに依存しない特徴量寄与で、学習後や推論時に予測の理由を説明する','SHAPの実装を使い、特定の予測に対する各特徴量の重要度（Shapley値）を示す','モデルが人間のレビュアーの確認なしに予測できるよう、信頼度のしきい値を自動で調整する'], correct:[2,3],
+    why:['誤り。PIIの伏せ字はGuardrailsの機密情報フィルターなどの役割で、Clarifyの説明可能性とは関係ありません。','誤り。入出力のキャプチャとドリフト検出は、Model Monitorの役割です。','正しい。Clarifyはモデルに依存しない特徴量寄与のアプローチで、学習後の理解と、推論時の1件ごとの説明に使えます。','正しい。ClarifyはSHAPの実装を提供し、Shapley値で各特徴量の重要度を示します。','誤り。信頼度に応じて人間のレビューを挟むのはA2Iの役割で、Clarifyはしきい値を調整しません。']},
+  {id:'m56', domain:'aiml', type:'single', source:SOURCES.databrew, text:'分析担当者が、プログラミングなしで画面上の操作だけで、欠損値の補完やスキーマの不整合の修正といったデータ準備をしたいと考えています。最も適切なサービスはどれですか？',
+    choices:['Amazon Textract：スキャンした文書やPDFから、テキスト・表・フォームのデータを抽出する','AWS Glue DataBrew：250以上の変換をポイント＆クリックで適用する','Amazon Translate：テキストを、別の言語にニューラル機械翻訳で変換する','Amazon Rekognition：画像や動画を分析して、物体・顔・テキストなどを検出する'], correct:[1],
+    why:['誤り。Textractは文書からデータを抽出するサービスで、データセットの欠損値などの修正は行いません。','正しい。DataBrewはサーバーレスのビジュアルなデータ準備ツールで、コードなしでデータのクリーニング・正規化ができます。','誤り。Translateは言語の翻訳をするサービスで、データ準備には使いません。','誤り。Rekognitionは画像・動画の分析サービスで、表形式データの準備には使いません。']},
+  {id:'m57', domain:'genai', type:'single', source:SOURCES.nova, text:'Amazon Novaの説明として正しいものはどれですか？',
+    choices:['SageMaker AIで自前のエンドポイントを用意した場合にのみ、APIから呼び出せる基盤モデルである','テキストの理解に特化しており、画像や動画の生成、音声の入出力には対応していない','Amazon Comprehendのコンソールから呼び出して、感情分析だけを行う事前学習済みのモデルである','Amazon Bedrock経由のAPIで利用でき、理解・画像や動画の生成・音声の各用途のモデルがある'], correct:[3],
+    why:['誤り。NovaはSageMaker AIのエンドポイントを用意しなくても、Bedrock経由で利用できます。','誤り。Novaには、画像生成のCanvas、動画生成のReel、音声のSonicなどのモデルもあります。','誤り。Novaは感情分析専用のモデルではなく、Comprehendとは別の基盤モデル群です。','正しい。Novaはテキスト・画像・動画・音声などに対応する基盤モデル群で、Bedrock経由のAPIで利用します。']},
+  {id:'m58', domain:'security', type:'single', source:SOURCES.lakeFormation, text:'Lake Formationで管理されるデータレイクのデータに、どのユーザーやロールが、どのサービスから、いつアクセスしようとしたかを監査したい場合、公式ドキュメントで説明されている方法はどれですか？',
+    choices:['AWS CloudTrailで、Lake Formation経由のデータアクセス履歴のログを確認する','Amazon Inspectorでデータレイクの脆弱性スキャンを実行して、アクセスしたユーザーを特定する','AWS Secrets Managerの自動ローテーションのログから、データアクセスの履歴を確認する','AWS Artifactから監査レポートをダウンロードして、各ユーザーのアクセス日時を調べる'], correct:[0],
+    why:['正しい。Lake FormationはCloudTrailで包括的な監査ログを提供し、どのユーザーやロールが、どのサービスから、いつアクセスしようとしたかを確認できます。','誤り。Inspectorは脆弱性を検出するサービスで、データアクセスの履歴は記録しません。','誤り。Secrets Managerのログは、シークレットの操作に関するもので、データレイクのアクセス履歴ではありません。','誤り。Artifactは、AWSのコンプライアンスレポートを提供するもので、個々のデータアクセスの履歴は含みません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

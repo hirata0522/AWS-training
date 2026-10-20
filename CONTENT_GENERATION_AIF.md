@@ -332,3 +332,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: MLOps、機械翻訳（Amazon Translate）、F1スコア、PII（Comprehend）。
   新規SOURCES: mlops, machineTranslation（WebFetch成功）、comprehendF1, piiComprehend（WebSearchで docs.aws.amazon.com の該当ページを確認。WebFetchは未実施）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 46% / MOCK 46% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。
+- 2026-10-20（定期実行・6回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。対象サービス一覧はWebFetchで再確認。単語リスト行170,186,339,328,313,162の6語のVOCABを追加（v178〜v183）、PRACTICEを5件（p82〜p86: single 3 / matching 1 / multi 1）、MOCK_POOLを4件（m55〜m58: single 3 / multi 1）追加。累計 VOCAB=183 / PRACTICE=86 / MOCK_POOL=58。単語リスト進捗 183/470（除外8）。
+  追加トピック: Negative Prompt（Nova Canvas）、Comprehend PII墨消し（MaskMode/MaskCharacter/PiiEntityTypes）、Lake Formation（きめ細かなアクセス制御・CloudTrail監査）、Glue DataBrew、Amazon Nova、データカタログ、責任あるAIの8側面（responsibleAiを再確認）、SageMaker Clarifyの説明可能性（SHAP）。
+  新規SOURCES: clarifyExplain, novaImagePrompt, comprehendRedaction, lakeFormation, databrew, nova（いずれもWebFetch成功）。nodeでの読み込み確認済み。
+  除外: 行137 AWS Organizations / 142 SCP / 147 IAM Identity Center（対象サービス一覧に無いため）。
+  見送り: Interpretability / Accountability / Environmental Sustainability などは公式の定義ページ未確認のため `未` のまま（Accountability・Interpretabilityはresponsible-aiページに記載なし）。
+  メモ: 正解最長割合は VOCAB 55% / PRACTICE 46% / MOCK 43% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。
