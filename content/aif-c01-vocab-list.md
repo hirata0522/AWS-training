@@ -83,7 +83,7 @@
 | 77 | Fine-tuning | fm |v59 |
 | 78 | Amazon Bedrock AgentCore Identity | security | v112 |
 | 79 | Trustworthiness | responsible | 未 |
-| 80 | Tabular Data | aiml | 未 |
+| 80 | Tabular Data | aiml | v164 |
 | 81 | Prompt | genai | v95 |
 | 82 | Time-series Data | aiml | v83 |
 | 83 | Continued Pre-training | fm | 未 |
@@ -91,7 +91,7 @@
 | 85 | Structured Data | aiml | v84 |
 | 86 | Truthfulness | responsible | 未 |
 | 87 | Prompt Engineering | genai |v61 |
-| 88 | Instruction Tuning | fm | 未 |
+| 88 | Instruction Tuning | fm | v161 |
 | 89 | AWS CloudTrail | security |v64 |
 | 90 | Unstructured Data | aiml | v85 |
 | 91 | Transfer Learning | fm | v76 |
@@ -102,26 +102,26 @@
 | 96 | Natural Language Processing (NLP) | aiml |v63 |
 | 97 | Model Distillation | fm |v60 |
 | 98 | AWS Config | security |v65 |
-| 99 | Text Generation | genai | 未 |
+| 99 | Text Generation | genai | v167 |
 | 100 | Speech Recognition | aiml | v78 |
 | 101 | Governance (Responsible AI) | responsible | v158 |
-| 102 | Domain Adaptation | fm | 未 |
+| 102 | Domain Adaptation | fm | v162 |
 | 103 | Amazon Inspector | security | v80 |
 | 104 | Recommendation System | aiml | v86 |
-| 105 | Summarization | genai | 未 |
+| 105 | Summarization | genai | v166 |
 | 106 | Fraud Detection | aiml | 未 |
 | 107 | Parameter-efficient Fine-tuning (PEFT) | fm | 未 |
 | 108 | AWS Artifact | security | v81 |
 | 109 | Accountability | responsible | 未 |
 | 110 | Forecasting | aiml | 未 |
-| 111 | Image Generation | genai | 未 |
+| 111 | Image Generation | genai | v168 |
 | 112 | LoRA | fm | 未 |
 | 113 | AWS Trusted Advisor (Governance) | security | v93 |
 | 114 | Feature | aiml | v88 |
 | 115 | Amazon Bedrock Guardrails | responsible | v79 |
 | 116 | Reinforcement Learning from Human Feedback (RLHF) | fm | v82 |
 | 117 | Amazon GuardDuty | security | 除外 |
-| 118 | Code Generation | genai | 未 |
+| 118 | Code Generation | genai | v165 |
 | 119 | Feature Engineering | aiml | v89 |
 | 120 | Label | aiml | v90 |
 | 121 | Data Curation | fm | 未 |
@@ -170,7 +170,7 @@
 | 164 | Token-based Pricing | genai | v132 |
 | 165 | Context (Prompt) | fm | 未 |
 | 166 | AWS Glue Data Catalog | security | v122 |
-| 167 | Data Splitting (Train/Validation/Test) | aiml | 未 |
+| 167 | Data Splitting (Train/Validation/Test) | aiml | v163 |
 | 168 | Environmental Sustainability (AI) | responsible | 未 |
 | 169 | Input Tokens vs Output Tokens | genai | v133 |
 | 170 | Negative Prompt | fm | 未 |

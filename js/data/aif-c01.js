@@ -118,7 +118,11 @@ var SOURCES = {
   agenticAi:{label:'AWS: エージェント型AIとは', url:'https://aws.amazon.com/what-is/agentic-ai/'},
   judgeMetrics:{label:'Amazon Bedrock: LLM-as-a-judge の組み込みメトリクス', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-metrics.html'},
   mcpWhat:{label:'AWS規範ガイダンス: MCPとは', url:'https://docs.aws.amazon.com/prescriptive-guidance/latest/mcp-strategies/what-is-mcp.html'},
-  bedrockTerms:{label:'Amazon Bedrock: 主要な用語', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/key-definitions.html'}
+  bedrockTerms:{label:'Amazon Bedrock: 主要な用語', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/key-definitions.html'},
+  instrFt:{label:'SageMaker JumpStart: プロンプト指示によるLLMのファインチューニング', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-fine-tuning-instruction-based.html'},
+  domainAdapt:{label:'SageMaker JumpStart: ドメイン適応によるLLMのファインチューニング', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-fine-tuning-domain-adaptation.html'},
+  splitsLeakage:{label:'AWS規範ガイダンス: データの分割とデータリーク', url:'https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html'},
+  tabularAlgos:{label:'SageMaker AI: 表形式データ向け組み込みアルゴリズム', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/algorithms-tabular.html'}
 };
 
 var VOCAB = [
@@ -282,6 +286,14 @@ var VOCAB = [
   {id:'v158', term:'Governance (Responsible AI)', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'AWSが挙げる責任あるAIの側面「Governance」の説明として正しいものはどれですか？', choices:['モデルの学習に使うデータを暗号化し、アクセスできるユーザーをIAMで制限すること','プロバイダーやデプロイヤーを含むAIのサプライチェーン全体に、ベストプラクティスを取り入れること','モデルの出力が特定のグループに不利にならないよう、ステークホルダーへの影響を考慮すること','モデルの予測結果について、人間が理解できる形で根拠を示し、出力を評価できるようにすること'], correct:1, why:['誤り。データの保護はPrivacy and securityの観点です。','正しい。AWSはGovernanceを「プロバイダーやデプロイヤーを含むAIサプライチェーンにベストプラクティスを組み込むこと」と説明しています。','誤り。これはFairnessの説明です。','誤り。これはExplainabilityの説明です。']}},
   {id:'v159', term:'Model Context Protocol (MCP)', domain:'genai', source:SOURCES.mcpWhat, q:{text:'Model Context Protocol（MCP）の説明として正しいものはどれですか？', choices:['AIエージェントを外部のツールやデータに接続するための標準的な方式で、「AIアプリケーションのUSB-C」と表現されることがある','基盤モデルのパラメータを少量のラベル付きデータで更新し、独自のカスタムモデルを作成するための学習手法','入力トークンと出力トークンの数に応じて、推論リクエストの料金を計算するための課金方式','モデルの出力に含まれる有害な内容や機密情報を検出して、自動的にブロックするためのフィルタリング機能'], correct:0, why:['正しい。MCPはエージェントが外部の機能やデータに接続するための汎用の標準で、ツールをホストするMCPサーバー経由でJSON-RPC 2.0により検出・呼び出しを行います。','誤り。これはファインチューニングの説明です。','誤り。これはトークンベースの課金モデルの説明です。','誤り。これはBedrock Guardrailsのような安全対策の説明です。']}},
   {id:'v160', term:'Controllability (Responsible AI)', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'AWSが挙げる責任あるAIの側面「Controllability」の説明として正しいものはどれですか？', choices:['データとモデルを適切に取得・利用・保護すること','ステークホルダーがAIシステムとの関わり方を十分な情報に基づいて選べるようにすること','AIシステムの挙動を監視し、誘導するための仕組みを持つこと','予期しない入力や敵対的な入力があっても、正しい出力を得ること'], correct:2, why:['誤り。これはPrivacy and securityの説明です。','誤り。これはTransparencyの説明です。','正しい。AWSはControllabilityを「AIシステムの挙動を監視・誘導する仕組みを持つこと」と説明しています。','誤り。これはVeracity and robustnessの説明です。']}},
+  {id:'v161', term:'Instruction Tuning', domain:'fm', source:SOURCES.instrFt, q:{text:'Instruction tuning（instruction-based fine-tuning）の説明として正しいものはどれですか？', choices:['ラベルなしのドメイン固有テキストだけを使って、業界用語への対応力を高める方法','指示の形式で書いたプロンプトとレスポンスのペアを与え、特定タスクでの性能を高める方法','大きな教師モデルの知識を、小さくて高速な生徒モデルへ移して軽量化する方法','プロンプトの中に数個の例を示して、モデルの重みを変えずに出力を誘導する方法'], correct:1, why:['誤り。これはドメイン適応（domain adaptation）の説明です。プロンプトとレスポンスのペアは必要ありません。','正しい。SageMaker JumpStartのドキュメントでは、ラベル付きの例をプロンプトとレスポンスのペアにして指示の形式で与え、モデルの重みを更新すると説明されています。','誤り。これは蒸留（distillation）の説明です。','誤り。これはfew-shotプロンプティングの説明です。モデルの重みは変更されません。']}},
+  {id:'v162', term:'Domain Adaptation', domain:'fm', source:SOURCES.domainAdapt, q:{text:'ドメイン適応（domain adaptation）によるファインチューニングの説明として正しいものはどれですか？', choices:['プロンプトとレスポンスのペアを大量に用意し、質問応答の形式をモデルに学習させる方法','外部のナレッジベースを検索し、取得した文書をプロンプトに追加して回答を生成させる方法','モデルの重みは変更せず、プロンプトの書き方を工夫して専門用語を使わせる方法','限られたドメイン固有のデータで事前学習済みモデルを適応させ、業界用語や専門用語に対応させる方法'], correct:3, why:['誤り。これはinstruction-based fine-tuningの説明です。ドメイン適応は構造化されていないテキスト（CSV/JSON/TXT）をそのまま使えます。','誤り。これはRAGの説明です。モデルの重みは変更されません。','誤り。プロンプトエンジニアリングの説明です。ドメイン適応はモデルの重みを変更します。','正しい。プロンプトエンジニアリングだけでは十分にカスタマイズできないときに、業界用語や専門用語などに対応させるために使い、モデルの重みを変更します。']}},
+  {id:'v163', term:'Data Splitting (Train/Validation/Test)', domain:'aiml', source:SOURCES.splitsLeakage, q:{text:'ML開発でデータを学習用・検証用・テスト用の3つに分割する主な目的として正しいものはどれですか？', choices:['検証データでハイパーパラメータを調整し、未使用のテストデータで最終的な汎化性能を評価するため','学習に使うデータの件数を増やして、モデルの学習にかかる時間を大幅に短縮するため','個人情報を含むデータを暗号化し、学習用と検証用で別々のバケットに保管するため','ラベルのないデータに自動でラベルを付与して、教師あり学習で使えるようにするため'], correct:0, why:['正しい。検証用データはハイパーパラメータの選択と調整に、テスト用データは最終評価に使い、データリークと過学習を防ぎます。','誤り。分割は学習データを増やすためではなく、評価の信頼性を保つために行います。','誤り。暗号化はデータ保護の話で、データ分割の目的ではありません。','誤り。ラベル付与はData Labelingの役割です。']}},
+  {id:'v164', term:'Tabular Data', domain:'aiml', source:SOURCES.tabularAlgos, q:{text:'SageMaker AIのドキュメントにおける「表形式データ（tabular data）」の説明として正しいものはどれですか？', choices:['画像・音声・動画のように、行と列の構造を持たない非構造化データ','時刻を持つ観測値が一定の間隔で並んだ、時系列に特化したデータ','行（観測値）と列（特徴量）からなる表の形に整理されたデータセット','ノードとエッジで関係性を表現するグラフ構造のデータセット'], correct:2, why:['誤り。これは非構造化データの説明です。','誤り。時系列データは時間の順序に着目したデータで、表形式データそのものの定義ではありません。','正しい。表形式データは行（観測値）と列（特徴量）の表として整理され、XGBoostやLinear Learnerなどの組み込みアルゴリズムで分類・回帰に使えます。','誤り。これはグラフデータです（Amazon Neptuneなどが扱います）。']}},
+  {id:'v165', term:'Code Generation', domain:'genai', source:SOURCES.whatIsGenai, q:{text:'生成AIの活用例のうち、「コード生成（code generation）」の説明として最も適切なものはどれですか？', choices:['ネットワークトラフィックを解析して、ソースコードへの攻撃を自動的に遮断する','既存の画像を解析して、より鮮明で細部がはっきりした画像を作り出す','音声ファイルを書き起こして、文字データとして保存する','開発タスクに対して新しいソフトウェアコードの候補を生成し、開発者を支援する'], correct:3, why:['誤り。これはセキュリティ製品の役割で、生成AIのコード生成ではありません。','誤り。これは画像生成の例です。','誤り。これは音声認識（Amazon Transcribeなど）の例です。','正しい。「生成AIとは」のページでは、コード生成を有望な活用例とし、開発タスクに対する新しいコードの提案を生成する例を挙げています。']}},
+  {id:'v166', term:'Summarization', domain:'genai', source:SOURCES.whatIsGenai, q:{text:'生成AIの「要約（summarization）」の用途として最も適切なものはどれですか？', choices:['日本語のテキストを別の言語へ変換して、多言語で提供する','さまざまな情報源から重要な情報を抽出してまとめ、ナレッジ検索などに活用する','少ない入力から、これまで存在しなかった新しい画像を描き出す','ユーザーの過去の購入履歴から、次に買いそうな商品を予測して提示する'], correct:1, why:['誤り。これは翻訳の説明です。','正しい。AWSは、あらゆる情報源からデータを抽出・要約してナレッジ検索機能に活用する例を挙げています。LLMは要約のような言語タスクが得意です。','誤り。これは画像生成の説明です。','誤り。これはレコメンデーション（Amazon Personalizeなど）の説明です。']}},
+  {id:'v167', term:'Text Generation', domain:'genai', source:SOURCES.whatIsGenai, q:{text:'大規模言語モデル(LLM)が扱うタスクとして、AWSの「生成AIとは」のページに挙げられている組み合わせはどれですか？', choices:['テキスト生成、分類、自由形式の会話、情報抽出','表形式データの回帰分析だけを行い、自然言語はまったく扱えない','画像のピクセル単位の物体検出のみを行い、文章は一切生成できない','学習データの文章を検索してそのまま返すだけで、新しい文章は生成できない'], correct:0, why:['正しい。LLMはテキスト生成、分類、自由形式の会話、情報抽出などの言語タスクに使われ、少ない入力からコンテンツを生成できます。','誤り。LLMは自然言語を扱うモデルです。','誤り。物体検出はコンピュータビジョンの領域で、LLMの説明ではありません。','誤り。生成AIは学習したパターンから新しいコンテンツを生成します。']}},
+  {id:'v168', term:'Image Generation', domain:'genai', source:SOURCES.whatIsGenai, q:{text:'生成AIにおける画像生成（image generation）の説明として正しいものはどれですか？', choices:['画像に写っている文字を読み取り、構造化データとして出力する','画像内の物体や顔を検出して、ラベルを付与して返す','入力から新しい画像やより鮮明な画像を作り出す。GANは本物のような画像の生成に使われる','画像の保存容量を減らすため、画質を保ったまま可逆圧縮する'], correct:2, why:['誤り。これはAmazon Textractなどの文書抽出の役割です。','誤り。これは画像認識（Amazon Rekognitionなど）の役割です。','正しい。「生成AIとは」のページでは、画像生成によって画像を解析し、より鮮明な画像を作る例を挙げ、GANが本物らしい画像の生成に使われると説明しています。','誤り。圧縮はデータ処理の話で、生成AIではありません。']}},
 ];
 
 var PRACTICE = [
@@ -494,6 +506,24 @@ var PRACTICE = [
   {id:'p66', domain:'genai', type:'single', source:SOURCES.bedrockTerms, text:'Amazon Bedrockの用語として、「基盤モデルとエンタープライズのデータやアプリケーションの間を調整して、タスクを遂行するプロセス」を指すものはどれですか？',
     choices:['Provisioned Throughput','Embedding','Orchestration','Model evaluation'], correct:[2],
     why:['誤り。Provisioned Throughputは、モデル推論で処理するトークンの量や速度を増やすために購入するスループットの水準です。','誤り。Embeddingは、入力を数値のベクトルに変換して類似性を比較できるようにする処理です。','正しい。Bedrockの用語集では、Orchestrationを「基盤モデルとエンタープライズのデータやアプリケーションを調整してタスクを遂行するプロセス」としています。','誤り。Model evaluationは、モデルの出力を評価・比較して最適なモデルを決めるプロセスです。']},
+  {id:'p67', domain:'fm', type:'single', source:SOURCES.domainAdapt, text:'製品固有の専門用語が多い社内文書の言語表現にモデルを慣れさせたいが、プロンプトの工夫だけでは不十分でした。モデルの重みを変更して、ドメイン固有の言葉に対応させる手法として最も適切なものはどれですか？',
+    choices:['Few-shotプロンプティングで、プロンプトに数個の例を追加する','ドメイン適応（domain adaptation）ファインチューニングで、限られたドメイン固有データにモデルを適応させる','Bedrock Guardrailsの単語フィルターで、専門用語の入出力を制御する','推論パラメータのtemperatureを下げて、出力のばらつきを抑える'], correct:[1],
+    why:['誤り。Few-shotはモデルの重みを変更せず、プロンプト内の例で出力を誘導する方法です。','正しい。プロンプトエンジニアリングで足りないときに、業界用語や専門用語に対応させるためのファインチューニングで、モデルの重みを変更します。','誤り。単語フィルターは特定の語句をブロックする機能で、モデルに専門用語を学習させるものではありません。','誤り。temperatureは出力のランダム性を調整するだけで、知識や語彙は変わりません。']},
+  {id:'p68', domain:'fm', type:'single', source:SOURCES.instrFt, text:'SageMaker JumpStartの基盤モデルをinstruction-based fine-tuningする場合に用意する学習データとして正しいものはどれですか？',
+    choices:['ラベルのない大量の文書を1つのテキストにまとめたもの','入力画像と、正解の物体の位置座標のペア','指示として書かれたプロンプトと、期待するレスポンスのペア（ラベル付きの例）','教師モデルが生成した埋め込みベクトルだけを並べたもの'], correct:[2],
+    why:['誤り。ラベルなしの文書はドメイン適応で使うデータです。','誤り。これは物体検出モデルの学習データです。','正しい。instruction-based fine-tuningはラベル付きの例をプロンプトとレスポンスのペアにして指示の形式で与え、JSON Lines形式のデータとして用意します。','誤り。埋め込みベクトルだけでは、指示に対する応答の例になりません。']},
+  {id:'p69', domain:'aiml', type:'single', source:SOURCES.splitsLeakage, text:'データを適切に分割せず、学習に使ったデータでそのままモデルをテストしてしまった場合に起こりやすいことはどれですか？',
+    choices:['モデルの推論にかかるコストが大きく下がる','モデルが学習不足になり、評価指標が極端に低く出る','トークン数が増えて、プロンプトが長くなる','データリークが発生し、評価指標が実力以上に高く出て、過学習が見過ごされる'], correct:[3],
+    why:['誤り。評価の方法とコストは別の話です。','誤り。学習済みデータでテストすると、むしろ指標は高く出ます。','誤り。トークン数は評価データの分割とは関係ありません。','正しい。学習に使ったデータでテストするとデータリークが起き、非常に高い指標が出て過学習に気づけません。']},
+  {id:'p70', domain:'aiml', type:'single', source:SOURCES.splitsLeakage, text:'データを学習用・検証用・テスト用に分割するとき、検証用データの主な用途はどれですか？',
+    choices:['学習プロセスを制御するハイパーパラメータの選択と調整','モデルを本番に展開する直前に行う最終的な性能評価（テスト用データの役割）','学習用データが足りないときに、そのまま学習に追加して件数を増やすこと','データに含まれる個人情報を匿名化して、モデルが記憶しないようにすること'], correct:[0],
+    why:['正しい。検証用データはハイパーパラメータの選択と調整に使い、十分な結果が出たらテスト用データで最終評価します。','誤り。最終評価はテスト用データの役割です。','誤り。検証用データを学習に混ぜると、評価の独立性が失われます。','誤り。匿名化はデータ保護の話で、検証用データの用途ではありません。']},
+  {id:'p71', domain:'genai', type:'multi', source:SOURCES.whatIsGenai, text:'AWSの「生成AIとは」のページに沿った、生成AIの活用の説明として正しいものはどれですか？（2つ選択）',
+    choices:['コード生成：開発タスクに対して、新しいソフトウェアコードの提案を生成する','画像生成：画像に写っている個人を識別して、本人確認の結果を返す','要約：長文を要約するには、必ず対象の文書全体でモデルをファインチューニングしなければならない','文章生成：LLMが少ない入力から、文章などのコンテンツを生成できる','翻訳：トランスフォーマーは翻訳には使えないため、翻訳には従来のRNNだけが使われる'], correct:[0, 3],
+    why:['正しい。コード生成は生成AIの有望な活用例として挙げられています。','誤り。個人の識別は画像認識の役割で、画像生成ではありません。','誤り。要約にファインチューニングは必須ではありません。','正しい。LLMはテキスト生成、分類、自由形式の会話、情報抽出などに使われます。','誤り。トランスフォーマーにより翻訳や要約などのタスクが大きく進歩したと説明されています。']},
+  {id:'p72', domain:'security', type:'single', source:SOURCES.macie, text:'Amazon S3に保存した学習用データに、個人情報などの機密データが含まれていないかを自動で検出したい場合に最も適したサービスはどれですか？',
+    choices:['AWS CloudTrail：アカウント内のAPI呼び出しを記録して監査に使う','Amazon Macie：S3内の機密データを検出して可視化・保護する','AWS KMS：暗号化キーを作成・管理して、データを暗号化する','AWS Config：リソースの構成変更を記録して、設定の準拠状況を評価する'], correct:[1],
+    why:['誤り。CloudTrailは誰がいつ何をしたかというAPI操作の記録です。データの中身は調べません。','正しい。Macieは機械学習とパターンマッチングでS3内の機密データを検出し、可視化します。','誤り。KMSは暗号化キーの管理サービスで、機密データの検出は行いません。','誤り。Configはリソースの構成履歴と準拠評価のサービスです。']},
 ];
 
 var MOCK_POOL = [
@@ -627,6 +657,19 @@ var MOCK_POOL = [
   {id:'m43', domain:'responsible', type:'multi', source:SOURCES.responsibleAi, text:'AWSが挙げる責任あるAIの側面の説明として正しいものはどれですか？（2つ選択）',
     choices:['Fairness：モデルを学習させるデータの総量を最大化すること','Privacy and security：データとモデルを適切に取得・利用・保護すること','Safety：システムの応答時間を短縮し、可用性を高めること','Transparency：モデル内部の計算式をすべて公開することを法的に義務づけること','Controllability：AIシステムの挙動を監視し、誘導するための仕組みを持つこと'], correct:[1, 4],
     why:['誤り。Fairnessは、異なるグループのステークホルダーへの影響を考慮することです。','正しい。Privacy and securityの説明です。','誤り。Safetyは、有害な出力や悪用を防ぐことです。可用性の話ではありません。','誤り。Transparencyは、利用者が関わり方を十分な情報に基づいて選べるようにすることです。','正しい。Controllabilityの説明です。']},
+  {id:'m44', domain:'fm', type:'matching', source:SOURCES.bedrockCustom, text:'Amazon Bedrockのモデルのカスタマイズ手法について、それぞれの説明に当てはまるものを選んでください。',
+    prompts:['ラベル付きのデータを与え、特定タスクでの性能を高める','大きな教師モデルの知識を、小さく高速な生徒モデルへ移す','報酬関数が返すフィードバックスコアから、モデルが繰り返し学習する'],
+    options:['Reinforcement fine-tuning','Prompt caching','Supervised fine-tuning','Provisioned Throughput','Distillation'], correct:[2,4,0],
+    why:['Supervised fine-tuningは、ラベル付きの入出力例でモデルを学習させ、特定タスクの性能を高めます。','Distillationは、教師モデルの応答を使って生徒モデルをファインチューニングし、小さく高速でコスト効率の良いモデルにします。','Reinforcement fine-tuningは、AWS Lambdaなどで定義した報酬関数の評価スコアからモデルが学習します。なお、Prompt cachingは繰り返し使うプロンプトの処理を再利用する機能、Provisioned Throughputは推論の処理能力を購入する仕組みで、いずれもカスタマイズ手法ではないため当てはまりません。']},
+  {id:'m45', domain:'fm', type:'single', source:SOURCES.domainAdapt, text:'特定業界の文書（構造のないテキスト）は大量にありますが、プロンプトとレスポンスのペアは用意できません。SageMaker JumpStartの基盤モデルを業界の言葉に適応させる方法として最も適切なものはどれですか？',
+    choices:['instruction-based fine-tuning：プロンプトとレスポンスのペアを学習データとして使う','ドメイン適応（domain adaptation）ファインチューニング：CSV・JSON・TXTのドメイン固有データをそのまま使う','Few-shotプロンプティング：モデルの重みを更新して、数個の例を学習させる','推論パラメータの調整：top-pを下げて、専門用語が出やすいようにモデルを再学習させる'], correct:[1],
+    why:['誤り。instruction-based fine-tuningにはプロンプトとレスポンスのペアが必要です。','正しい。ドメイン適応はCSV・JSON・TXT形式のドメイン固有データを使って、業界用語などに対応させます。','誤り。Few-shotはプロンプト内の例で出力を誘導する方法で、重みは更新されません。','誤り。top-pの調整は出力の選択範囲を変えるだけで、モデルの再学習ではありません。']},
+  {id:'m46', domain:'aiml', type:'single', source:SOURCES.tabularAlgos, text:'行（観測値）と列（特徴量）で整理された表形式データの分類・回帰に使える、SageMaker AIの組み込みアルゴリズムはどれですか？',
+    choices:['Object Detection（画像内の物体の検出）','BlazingText（テキストの分類・単語埋め込み）','Image Classification（画像の分類）','XGBoost（勾配ブースティング木）'], correct:[3],
+    why:['誤り。Object Detectionは画像向けのアルゴリズムです。','誤り。BlazingTextはテキスト向けのアルゴリズムです。','誤り。Image Classificationは画像向けのアルゴリズムです。','正しい。XGBoostは表形式データ向け組み込みアルゴリズムの1つで、分類・回帰に使えます。']},
+  {id:'m47', domain:'aiml', type:'multi', source:SOURCES.splitsLeakage, text:'データの分割とデータリークの防止に関するベストプラクティスとして正しいものはどれですか？（2つ選択）',
+    choices:['評価指標を高く見せるため、テストデータにも学習データと同じサンプルを含める','データは少なくとも、学習用・検証用・テスト用の3つに分割する','データが少ない場合や不均衡な場合は、層化（stratified）分割を使って各分割のクラス分布をそろえる','本番の推論時には使えない特徴量でも、学習時に利用できるものはすべて使う','データに重複が多くても、分割すればリークは起きないので、重複の確認は不要である'], correct:[1, 2],
+    why:['誤り。テストデータに学習データを含めるとデータリークになり、過学習を見逃します。','正しい。検証用はハイパーパラメータの調整、テスト用は最終評価に使います。','正しい。小さなデータセットや不均衡なデータでは層化分割で、各分割のクラス分布を近づけます。','誤り。本番で使えない特徴量を使うとデータリークになります。','誤り。重複サンプルが多いと、分割後も共通のサンプルが残り、過学習が汎化と誤認される恐れがあります。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

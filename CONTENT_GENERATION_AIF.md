@@ -318,3 +318,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: mcpWhat（docs.aws.amazon.com/prescriptive-guidance/.../what-is-mcp.html）、bedrockTerms（Bedrock key-definitions）（いずれもWebFetch成功。責任あるAIの定義は aws.amazon.com/ai/responsible-ai/ を再確認）。nodeでの読み込み確認済み。
   見送り: Tokenization（Bedrockの用語集にはTokenの定義のみで専用ページなし）、Context Engineering は公式の定義ページ未確認のため `未` のまま。Accountabilityは責任あるAIの8側面に含まれず未確認。
   メモ: 正解最長割合は VOCAB 53% / PRACTICE 41% / MOCK 48% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。
+- 2026-10-20（定期実行・3回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行88,102,167,80,118,105,99,111の8語のVOCABを追加（v161〜v168）、PRACTICEを6件（p67〜p72: single 5 / multi 1）、MOCK_POOLを4件（m44〜m47: matching 1 / single 2 / multi 1）追加。累計 VOCAB=168 / PRACTICE=72 / MOCK_POOL=47。単語リスト進捗 168/470（除外5）。
+  追加トピック: Instruction tuning、Domain adaptation、データ分割（学習/検証/テスト）とデータリーク、表形式データ、生成AIの用途（コード生成・要約・文章生成・画像生成）、Bedrockのカスタマイズ手法の組み合わせ、Macie。
+  新規SOURCES: instrFt, domainAdapt, splitsLeakage, tabularAlgos（いずれもWebFetch成功）。生成AIの用途は既存 whatIsGenai を再確認。nodeでの読み込み確認済み。
+  見送り: Continued Pre-training は Bedrock カスタマイズ公式ページ（custom-models.html）に記載がなく `未` のまま。LoRA/PEFT/Bias・Variance はAWS公式ページがWebSearchで見つからず `未` のまま。
+  メモ: 正解最長割合は VOCAB 54% / PRACTICE 42% / MOCK 50% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。
