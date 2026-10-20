@@ -355,3 +355,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   除外: 行246 Amazon Q（既存の Amazon Q Business 項目と重複のため）。
   見送り: BLEU（行267）は取得した公式ページにBLEUの記載がなく `未` のまま。Bedrock Prompt Optimization はWebFetchで本文が取得できず `未` のまま。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 40% / MOCK 46% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-20（定期実行・10回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行228 Prompt Leaking のVOCABを追加（v196）、PRACTICEを2件（p98: single / p99: matching）、MOCK_POOLを1件（m69: single）追加。累計 VOCAB=196 / PRACTICE=99 / MOCK_POOL=69。単語リスト進捗 196/466（除外9）。件数は目安に届かず4件（出典を本文で確認できた項目のみ）。
+  追加トピック: プロンプトリーケージ/ジェイルブレイク/プロンプトインジェクションの区別、Guardrailsの入力タグ。新規SOURCESなし（promptAttackをWebFetchで本文再確認。Prompt Leakageは「Standard tierのみ」の記載あり）。nodeでの読み込み確認済み。
+  見送り: Prompt Hijacking（goal hijackingの記載のみで定義が弱い）、ReAct / Prompt Chaining / Single-shot（promptEng・promptGuideのページに記載なし）は `未` のまま。

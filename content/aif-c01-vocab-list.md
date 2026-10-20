@@ -231,7 +231,7 @@
 | 225 | Grounding Techniques | security | 未 |
 | 226 | Subgroup Analysis | responsible | 未 |
 | 227 | Managed API Service | aiml | 未 |
-| 228 | Prompt Leaking | fm | 未 |
+| 228 | Prompt Leaking | fm | v196 |
 | 229 | Confidence Scoring | security | 未 |
 | 230 | Workflow Orchestration | genai | 未 |
 | 231 | Self-hosted API | aiml | 未 |
