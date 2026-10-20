@@ -323,3 +323,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: instrFt, domainAdapt, splitsLeakage, tabularAlgos（いずれもWebFetch成功）。生成AIの用途は既存 whatIsGenai を再確認。nodeでの読み込み確認済み。
   見送り: Continued Pre-training は Bedrock カスタマイズ公式ページ（custom-models.html）に記載がなく `未` のまま。LoRA/PEFT/Bias・Variance はAWS公式ページがWebSearchで見つからず `未` のまま。
   メモ: 正解最長割合は VOCAB 54% / PRACTICE 42% / MOCK 50% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。
+- 2026-10-20（定期実行・4回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行55,58,177,190,201の5語のVOCABを追加（v169〜v173）、PRACTICEを5件（p73〜p77: single 4 / multi 1）、MOCK_POOLを4件（m48〜m51: ordering 1 / matching 1 / single 2）追加。累計 VOCAB=173 / PRACTICE=77 / MOCK_POOL=51。単語リスト進捗 173/470（除外5）。
+  追加トピック: 半教師あり学習、マルチモーダル（Titan Multimodal Embeddings G1）、Provisioned Throughput（Model Unit・コミットメント）、Chain-of-thought、AIエージェント、Guardrailsのフィルター（contextual grounding / denied topics / word / sensitive info / content）。
+  新規SOURCES: supervisedLearning, titanMultimodalEmb（いずれもWebFetch成功。既存の promptEng / provThroughput / agenticAi / guardrails も本文を再確認）。nodeでの読み込み確認済み。
+  WebFetch失敗（404）: aws.amazon.com/what-is/multimodal-ai/, aws.amazon.com/what-is/autoencoder/。VAE（行76）はAWS公式の出典が見つからず `未` のまま。今回は件数が目安（15〜25）に届かず9件にとどまった（出典確認が取れた項目のみ追加）。promptEng には zero-shot/few-shot/prompt chaining の記載がなく、Single-shot / Prompt Chaining は `未` のまま。
+  メモ: 正解最長割合は VOCAB 54% / PRACTICE 44% / MOCK 47% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。

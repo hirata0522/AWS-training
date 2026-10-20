@@ -58,10 +58,10 @@
 | 52 | Vector | genai | v46 |
 | 53 | Amazon Aurora PostgreSQL pgvector | fm | v47 |
 | 54 | Customer Managed Key | security | v67 |
-| 55 | Semi-supervised Learning | aiml | 未 |
+| 55 | Semi-supervised Learning | aiml | v169 |
 | 56 | Transparency | responsible | v68 |
 | 57 | Self-supervised Learning | aiml | v72 |
-| 58 | Multi-modal Model | genai | 未 |
+| 58 | Multi-modal Model | genai | v170 |
 | 59 | Semantic Search | fm | v73 |
 | 60 | AWS Secrets Manager | security | v48 |
 | 61 | Classification | aiml | v49 |
@@ -180,7 +180,7 @@
 | 174 | Intellectual Property Infringement | responsible | 未 |
 | 175 | Zero-shot Prompting | fm | v136 |
 | 176 | Privacy-enhancing Technologies | security | 未 |
-| 177 | Provisioned Throughput | genai | 未 |
+| 177 | Provisioned Throughput | genai | v171 |
 | 178 | Recall | aiml | v144 |
 | 179 | Single-shot Prompting | fm | 未 |
 | 180 | Data Anonymization | security | 未 |
@@ -193,7 +193,7 @@
 | 187 | Context Engineering | genai | 未 |
 | 188 | Confusion Matrix | aiml | v146 |
 | 189 | End User Risk | responsible | 未 |
-| 190 | Chain-of-Thought Prompting | fm | 未 |
+| 190 | Chain-of-Thought Prompting | fm | v172 |
 | 191 | PII (Personally Identifiable Information) | security | 未 |
 | 192 | ROC Curve | aiml | 未 |
 | 193 | Agentic AI | genai | v153 |
@@ -204,7 +204,7 @@
 | 198 | MLOps | aiml | 未 |
 | 199 | Prompt Chaining | fm | 未 |
 | 200 | Data Integrity | security | 未 |
-| 201 | AI Agent | genai | 未 |
+| 201 | AI Agent | genai | v173 |
 | 202 | Model Monitoring | aiml | 未 |
 | 203 | Balanced Dataset | responsible | 未 |
 | 204 | ReAct Prompting | fm | 未 |

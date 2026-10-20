@@ -122,7 +122,9 @@ var SOURCES = {
   instrFt:{label:'SageMaker JumpStart: プロンプト指示によるLLMのファインチューニング', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-fine-tuning-instruction-based.html'},
   domainAdapt:{label:'SageMaker JumpStart: ドメイン適応によるLLMのファインチューニング', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/jumpstart-foundation-models-fine-tuning-domain-adaptation.html'},
   splitsLeakage:{label:'AWS規範ガイダンス: データの分割とデータリーク', url:'https://docs.aws.amazon.com/prescriptive-guidance/latest/ml-operations-planning/splits-leakage.html'},
-  tabularAlgos:{label:'SageMaker AI: 表形式データ向け組み込みアルゴリズム', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/algorithms-tabular.html'}
+  tabularAlgos:{label:'SageMaker AI: 表形式データ向け組み込みアルゴリズム', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/algorithms-tabular.html'},
+  supervisedLearning:{label:'AWS: 教師あり学習とは', url:'https://aws.amazon.com/what-is/supervised-learning/'},
+  titanMultimodalEmb:{label:'Amazon Bedrock: Amazon Titan Multimodal Embeddings G1', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-multiemb-models.html'}
 };
 
 var VOCAB = [
@@ -294,6 +296,11 @@ var VOCAB = [
   {id:'v166', term:'Summarization', domain:'genai', source:SOURCES.whatIsGenai, q:{text:'生成AIの「要約（summarization）」の用途として最も適切なものはどれですか？', choices:['日本語のテキストを別の言語へ変換して、多言語で提供する','さまざまな情報源から重要な情報を抽出してまとめ、ナレッジ検索などに活用する','少ない入力から、これまで存在しなかった新しい画像を描き出す','ユーザーの過去の購入履歴から、次に買いそうな商品を予測して提示する'], correct:1, why:['誤り。これは翻訳の説明です。','正しい。AWSは、あらゆる情報源からデータを抽出・要約してナレッジ検索機能に活用する例を挙げています。LLMは要約のような言語タスクが得意です。','誤り。これは画像生成の説明です。','誤り。これはレコメンデーション（Amazon Personalizeなど）の説明です。']}},
   {id:'v167', term:'Text Generation', domain:'genai', source:SOURCES.whatIsGenai, q:{text:'大規模言語モデル(LLM)が扱うタスクとして、AWSの「生成AIとは」のページに挙げられている組み合わせはどれですか？', choices:['テキスト生成、分類、自由形式の会話、情報抽出','表形式データの回帰分析だけを行い、自然言語はまったく扱えない','画像のピクセル単位の物体検出のみを行い、文章は一切生成できない','学習データの文章を検索してそのまま返すだけで、新しい文章は生成できない'], correct:0, why:['正しい。LLMはテキスト生成、分類、自由形式の会話、情報抽出などの言語タスクに使われ、少ない入力からコンテンツを生成できます。','誤り。LLMは自然言語を扱うモデルです。','誤り。物体検出はコンピュータビジョンの領域で、LLMの説明ではありません。','誤り。生成AIは学習したパターンから新しいコンテンツを生成します。']}},
   {id:'v168', term:'Image Generation', domain:'genai', source:SOURCES.whatIsGenai, q:{text:'生成AIにおける画像生成（image generation）の説明として正しいものはどれですか？', choices:['画像に写っている文字を読み取り、構造化データとして出力する','画像内の物体や顔を検出して、ラベルを付与して返す','入力から新しい画像やより鮮明な画像を作り出す。GANは本物のような画像の生成に使われる','画像の保存容量を減らすため、画質を保ったまま可逆圧縮する'], correct:2, why:['誤り。これはAmazon Textractなどの文書抽出の役割です。','誤り。これは画像認識（Amazon Rekognitionなど）の役割です。','正しい。「生成AIとは」のページでは、画像生成によって画像を解析し、より鮮明な画像を作る例を挙げ、GANが本物らしい画像の生成に使われると説明しています。','誤り。圧縮はデータ処理の話で、生成AIではありません。']}},
+  {id:'v169', term:'Semi-supervised Learning', domain:'aiml', source:SOURCES.supervisedLearning, q:{text:'半教師あり学習（semi-supervised learning）の説明として正しいものはどれですか？', choices:['少量のラベル付きデータと大量のラベルなしデータを組み合わせて、教師あり学習と教師なし学習の手法を併用する','すべてのデータに人手で正解ラベルを付けたうえで、入力とそれに対応する正解の関係をモデルに繰り返し学習させ、新しい入力の予測に使う','ラベルを一切使わず、データ内のパターンや関係性だけを見つけ出す','エージェントが環境の中で行動し、得られた報酬を最大化するように方策を学習する'], correct:0, why:['正しい。AWSの解説では、教師あり学習と教師なし学習の手法を組み合わせ、少量のラベル付きデータと大量のラベルなしデータを併用すると説明しています。','誤り。これは教師あり学習の説明です。','誤り。これは教師なし学習の説明です。','誤り。これは強化学習の説明です。']}},
+  {id:'v170', term:'Multi-modal Model', domain:'genai', source:SOURCES.titanMultimodalEmb, q:{text:'マルチモーダル（multi-modal）なモデルの例として、Amazon Titan Multimodal Embeddings G1の説明で正しいものはどれですか？', choices:['テキストだけを入力として、英語の文章を別の言語へ翻訳する','画像を入力として、画像内の文字を読み取って構造化データに変換する','音声を入力として、話された内容を文字起こしして字幕を生成する','テキスト・画像、またはその組み合わせを共通の意味空間の埋め込みに変換し、テキストや画像類似度での画像検索などに使える'], correct:3, why:['誤り。これは翻訳サービス（Amazon Translateなど）の役割で、入力もテキストのみです。','誤り。文書からの抽出はAmazon Textractの役割です。','誤り。音声の文字起こしはAmazon Transcribeの役割です。','正しい。Titan Multimodal Embeddings G1は、テキスト・画像・その組み合わせを共有の意味空間の埋め込みに変換し、マルチモーダル検索やレコメンドに使えます。']}},
+  {id:'v171', term:'Provisioned Throughput', domain:'genai', source:SOURCES.provThroughput, q:{text:'Amazon BedrockのProvisioned Throughputの説明として正しいものはどれですか？', choices:['モデルの利用ごとに、処理した入力・出力トークン数に応じて課金し、事前の購入や時間単位の固定料金は発生しない','複数のモデルの応答を比較して、最も精度の高いモデルを自動で選択する','モデルに対して固定のコストで高いスループットを確保する。時間単位で課金され、1か月または6か月のコミットメントで割引になる','学習用データをS3から取り込み、指定した基盤モデルに対するファインチューニングのジョブを自動で実行して新しいモデルを作成する'], correct:2, why:['誤り。これはオンデマンドの課金方法の説明です。Provisioned Throughputは時間単位で課金されます。','誤り。Provisioned Throughputはモデルの選択機能ではなく、処理容量（Model Unit）を確保するものです。','正しい。購入したModel Unit数と、コミットメント期間（なし／1か月／6か月）に応じて時間単位で課金され、期間が長いほど割引になります。','誤り。カスタマイズジョブは別の機能です。Provisioned Throughputは推論の処理容量を確保します。']}},
+  {id:'v172', term:'Chain-of-Thought Prompting', domain:'fm', source:SOURCES.promptEng, q:{text:'Chain-of-thought（思考の連鎖）プロンプティングの説明として正しいものはどれですか？', choices:['複雑な質問を小さな部分に分解して、モデルが途中の推論ステップを踏むよう促す手法','モデルのパラメータを新しいデータで更新して、特定のタスクへの精度を高める手法','応答の短さを優先して、モデルに理由を示さず結論だけを出力させる手法','出力が不適切な内容を含まないかを、別のモデルで自動検査して遮断する手法'], correct:0, why:['正しい。AWSの解説では、複雑な質問を小さな論理的な部分に分解し、思考の流れを模倣させることで、モデルに途中経過を踏んだ推論をさせる手法とされています。','誤り。これはファインチューニングの説明で、プロンプトの工夫ではありません。','誤り。chain-of-thoughtは途中の推論ステップを出させる手法で、結論だけを返させるものではありません。','誤り。これはガードレールなどによる出力検査の説明です。']}},
+  {id:'v173', term:'AI Agent', domain:'genai', source:SOURCES.agenticAi, q:{text:'AIエージェント（agentic AI）に関する説明として正しいものはどれですか？', choices:['事前に用意された固定の回答だけを返す仕組みで、目標を達成するための行動計画を立てたり外部のツールを呼び出したりはしない','ユーザーからの指示を1ステップずつ受け取って処理し、毎回の細かな指示がなければ次の動作に進めない','モデルの学習データを自動でラベル付けするための、データ前処理専用の仕組みである','与えられた目標に向けて自律的に行動する。推論エンジン・メモリ・ツールなどを使い、行動計画を立てて外部システムも操作する'], correct:3, why:['誤り。固定の回答を返すだけの仕組みは、エージェントではなく従来型のものです。','誤り。AWSの解説では、従来のAIが段階的な指示を必要とするのに対し、エージェントは事前に決められた目標に向けて自律的に行動するとされています。','誤り。エージェントはデータ前処理専用のものではありません。','正しい。推論エンジン、メモリ、ツールなどのコンポーネントを備え、行動計画を立てて外部システムを通じて行動します。']}},
 ];
 
 var PRACTICE = [
@@ -524,6 +531,21 @@ var PRACTICE = [
   {id:'p72', domain:'security', type:'single', source:SOURCES.macie, text:'Amazon S3に保存した学習用データに、個人情報などの機密データが含まれていないかを自動で検出したい場合に最も適したサービスはどれですか？',
     choices:['AWS CloudTrail：アカウント内のAPI呼び出しを記録して監査に使う','Amazon Macie：S3内の機密データを検出して可視化・保護する','AWS KMS：暗号化キーを作成・管理して、データを暗号化する','AWS Config：リソースの構成変更を記録して、設定の準拠状況を評価する'], correct:[1],
     why:['誤り。CloudTrailは誰がいつ何をしたかというAPI操作の記録です。データの中身は調べません。','正しい。Macieは機械学習とパターンマッチングでS3内の機密データを検出し、可視化します。','誤り。KMSは暗号化キーの管理サービスで、機密データの検出は行いません。','誤り。Configはリソースの構成履歴と準拠評価のサービスです。']},
+  {id:'p73', domain:'security', type:'single', source:SOURCES.guardrails, text:'RAGアプリケーションで、モデルの応答が検索で取得した情報に基づいていない（グラウンディングされていない）場合に、ハルシネーションとして検出してブロックまたは警告したい。Amazon Bedrock Guardrailsのどの機能が最も適していますか？',
+    choices:['Word filters：ブロックしたい単語やフレーズを指定し、それを含む入力や応答を大文字小文字を区別せずにブロックする','Denied topics：アプリケーションにとって望ましくない話題を定義してブロックする','Sensitive information filters：個人情報などの機密情報をブロックまたはマスクする','Contextual grounding checks：応答が参照元に基づいていない、または質問と無関係な場合を検出する'], correct:[3],
+    why:['誤り。Word filtersは指定した単語やフレーズに一致するものをブロックするもので、事実との整合は判定しません。','誤り。Denied topicsは話題の制限のためのもので、応答が参照元に基づいているかは判定しません。','誤り。Sensitive information filtersはPIIなどの機密情報を扱うためのものです。','正しい。Contextual grounding checksは、応答が参照元に基づいていない場合や質問に無関係な場合を検出し、RAGアプリケーションでブロックまたは警告できます。']},
+  {id:'p74', domain:'genai', type:'single', source:SOURCES.provThroughput, text:'Amazon Bedrockで、カスタマイズ（ファインチューニング）したモデルを使って推論を行うために必要になるものはどれですか？',
+    choices:['Provisioned Throughputを購入する','Amazon Q Businessのアプリケーションを作成する','Amazon SageMaker AIのモデルレジストリにモデルを必ず登録し直す','AWS Config のルールで、モデルの構成変更を記録する'], correct:[0],
+    why:['正しい。カスタマイズしたモデルは、Provisioned Throughputを購入しないと使えません。料金はカスタマイズ元のベースモデルと同じです。','誤り。Amazon Q Businessは企業向けのAIアシスタントで、カスタムモデルを使うための必須条件ではありません。','誤り。SageMaker AIのモデルレジストリへの登録は必須ではありません。','誤り。AWS Configは構成変更の記録サービスで、モデルの推論に必要なものではありません。']},
+  {id:'p75', domain:'security', type:'multi', source:SOURCES.guardrails, text:'Amazon Bedrock Guardrailsで設定できるフィルターとして正しいものはどれですか？（2つ選択）',
+    choices:['Content filters：Hate、Insults、Sexual、Violence、Misconduct、Prompt Attackなどのカテゴリごとに強度を設定して、有害なコンテンツを検出する','Model distillation filters：大きなモデルの知識を小さなモデルに移して、応答の長さを自動で短縮する','Network filters：VPC内のトラフィックを検査して、不正な通信をブロックする','Sensitive information filters：入力や応答に含まれるPIIなどの機密情報をブロックまたはマスクする','Training filters：モデルの学習データから、重複したデータを自動的に削除する'], correct:[0, 3],
+    why:['正しい。Content filtersは、定義済みの有害コンテンツのカテゴリごとにフィルターの強度を設定できます。','誤り。蒸留はモデルのカスタマイズの手法で、Guardrailsのフィルターではありません。','誤り。ネットワークのトラフィック検査はGuardrailsの機能ではありません。','正しい。Sensitive information filtersは、PIIなどの機密情報をブロックまたはマスクでき、正規表現による検出も設定できます。','誤り。Guardrailsは入力と応答を評価するもので、学習データの整理は行いません。']},
+  {id:'p76', domain:'genai', type:'single', source:SOURCES.titanMultimodalEmb, text:'「テキストの説明文」や「類似の画像」を入力として、ECサイトで似た商品画像を検索できるようにしたい。Amazon Bedrockのどのモデルが最も適していますか？',
+    choices:['Amazon Titan Multimodal Embeddings G1：テキストと画像を共通の意味空間の埋め込みに変換する','Amazon Rekognition：画像や動画から物体・顔・テキストなどを検出して、ラベルや信頼度を付与して返す','Amazon Textract：スキャンした文書から、文字や表を抽出する','Amazon Polly：テキストを自然な音声に変換して読み上げる'], correct:[0],
+    why:['正しい。テキスト・画像・その組み合わせを共有の意味空間の埋め込みにするため、テキストや画像の類似度による画像検索やレコメンドに使えます。','誤り。Rekognitionは画像の分析（物体・顔の検出など）で、類似画像の意味検索の仕組みそのものではありません。','誤り。Textractは文書からのテキスト・表の抽出です。','誤り。Pollyはテキストから音声への変換です。']},
+  {id:'p77', domain:'fm', type:'single', source:SOURCES.promptEng, text:'複雑な推論が必要な質問で、モデルの回答の質を高めるために、質問を小さな論理的な部分に分解し、途中の推論ステップを示させるプロンプトの手法はどれですか？',
+    choices:['Temperatureを0に近づけて、同じ入力に対してなるべく毎回同じ傾向の応答になるよう設定する','Chain-of-thoughtプロンプティング：思考の流れを模倣した、段階的な推論をモデルに促す','Stop sequencesを設定して、応答を特定の文字列で打ち切る','Maximum tokensを増やして、応答の長さの上限を引き上げる'], correct:[1],
+    why:['誤り。Temperatureは応答のランダム性を制御するもので、推論の手順を促すものではありません。','正しい。複雑な質問を小さな論理的な部分に分解し、途中の推論ステップを踏むよう促す手法です。','誤り。Stop sequencesは応答を止める文字列を指定するもので、推論の質を高める手法ではありません。','誤り。Maximum tokensは出力の長さの上限であり、推論の手順を促すものではありません。']},
 ];
 
 var MOCK_POOL = [
@@ -670,6 +692,19 @@ var MOCK_POOL = [
   {id:'m47', domain:'aiml', type:'multi', source:SOURCES.splitsLeakage, text:'データの分割とデータリークの防止に関するベストプラクティスとして正しいものはどれですか？（2つ選択）',
     choices:['評価指標を高く見せるため、テストデータにも学習データと同じサンプルを含める','データは少なくとも、学習用・検証用・テスト用の3つに分割する','データが少ない場合や不均衡な場合は、層化（stratified）分割を使って各分割のクラス分布をそろえる','本番の推論時には使えない特徴量でも、学習時に利用できるものはすべて使う','データに重複が多くても、分割すればリークは起きないので、重複の確認は不要である'], correct:[1, 2],
     why:['誤り。テストデータに学習データを含めるとデータリークになり、過学習を見逃します。','正しい。検証用はハイパーパラメータの調整、テスト用は最終評価に使います。','正しい。小さなデータセットや不均衡なデータでは層化分割で、各分割のクラス分布を近づけます。','誤り。本番で使えない特徴量を使うとデータリークになります。','誤り。重複サンプルが多いと、分割後も共通のサンプルが残り、過学習が汎化と誤認される恐れがあります。']},
+  {id:'m48', domain:'genai', type:'ordering', source:SOURCES.provThroughput, text:'Amazon BedrockでProvisioned Throughputを使うまでの流れを、正しい順に並べてください。',
+    items:['購入するModel Unit数と、コミットメント期間（なし／1か月／6か月）を決める','ベースモデルまたはカスタムモデルに対して、Provisioned Throughputを購入する','Provisioned Throughputで作成されたプロビジョニング済みモデルを用意する','プロビジョニング済みモデルを使って、モデル推論を実行する'],
+    why:['まず必要なModel Unit数とコミットメント期間を決めます。期間が長いほど時間単価は割引になります。','次に、決めた条件で、ベースまたはカスタムモデル向けにProvisioned Throughputを購入します。','購入するとプロビジョニング済みモデルが作成されます。','最後に、作成されたプロビジョニング済みモデルで推論を実行します。']},
+  {id:'m49', domain:'security', type:'matching', source:SOURCES.guardrails, text:'それぞれの要件に最も適したAmazon Bedrock Guardrailsのフィルターを選んでください。',
+    prompts:['投資アドバイスなど、アプリケーションの目的に合わない話題への質問や応答をブロックしたい','問い合わせ記録の要約から、氏名や住所などのPIIを伏せ字にしたい','競合他社名など、特定の単語やフレーズを含むやり取りをブロックしたい'],
+    options:['Contextual grounding checks','Word filters','Content filters','Denied topics','Sensitive information filters'], correct:[3,4,1],
+    why:['Denied topicsは、アプリケーションにとって望ましくない話題を定義してブロックします。','Sensitive information filtersは、PIIなどの機密情報をブロックまたはマスクします。','Word filtersは、指定した単語やフレーズを含むやり取りをブロックします。なお、Content filtersは有害カテゴリ、Contextual grounding checksは参照元に基づかない応答の検出が目的で、ここでは当てはまりません。']},
+  {id:'m50', domain:'aiml', type:'single', source:SOURCES.supervisedLearning, text:'ラベル付きデータが少量しかなく、ラベルなしデータは大量にある。ラベル付けのコストを抑えつつ、両方のデータを活用して学習したい場合に適した学習方法はどれですか？',
+    choices:['教師あり学習：入力データに対応するラベル付きの出力データがすべてそろっていることを前提に学習する','教師なし学習：ラベルを使わず、データ内のパターンのみを見つける','強化学習：報酬を最大化する行動を、試行錯誤で学ぶ','半教師あり学習：少量のラベル付きデータと大量のラベルなしデータを併用して学習する'], correct:[3],
+    why:['誤り。教師あり学習は、入力に対応するラベル付きの出力データが必要です。','誤り。教師なし学習はラベル付きデータを活用せず、ラベル付きデータが少量ある状況を生かせません。','誤り。強化学習は報酬に基づいて行動を学ぶもので、ラベルの有無に関する状況とは別の学習方法です。','正しい。半教師あり学習は、教師あり学習と教師なし学習を組み合わせ、少量のラベル付きデータと大量のラベルなしデータを併用します。']},
+  {id:'m51', domain:'genai', type:'single', source:SOURCES.agenticAi, text:'AIエージェント（agentic AI）の特徴として最も適切なものはどれですか？',
+    choices:['ユーザーが各ステップを指示しなくても、決められた目標に向けて自律的に行動し、ツールを使う','常に人間による承認を各ステップで受けなければ、次の処理に進めず、自律的に目標を追うことはできない','学習済みのモデルを再学習せず、固定の応答テンプレートだけを返す','画像や音声などのデータを、決められた形式に変換するだけの前処理の仕組みである'], correct:[0],
+    why:['正しい。AWSの解説では、事前に決められた目標を達成するために、人の細かな監督なしで自律的に行動できるシステムとされています。','誤り。エージェントは、複雑なタスクを継続的な人の監督なしに進められる点が特徴です。','誤り。固定の応答を返すだけの仕組みは、エージェントとは言えません。','誤り。データ形式の変換だけを行うものは、エージェントの説明ではありません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）
