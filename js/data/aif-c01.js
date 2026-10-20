@@ -141,6 +141,9 @@ var SOURCES = {
   dataInsights:{label:'Data Wrangler: データとデータ品質のインサイト（Data Quality and Insights Report）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-data-insights.html'},
   fraudDetector:{label:'Amazon Fraud Detector とは', url:'https://docs.aws.amazon.com/frauddetector/latest/ug/what-is-frauddetector.html'},
   forecast:{label:'Amazon Forecast とは', url:'https://docs.aws.amazon.com/forecast/latest/dg/what-is-forecast.html'},
+  fmevalAuto:{label:'Amazon SageMaker AI: fmeval ライブラリを使った自動評価', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-foundation-model-evaluate-auto-lib.html'},
+  quickWhat:{label:'Amazon Quick とは', url:'https://docs.aws.amazon.com/quicksuite/latest/userguide/what-is.html'},
+  qBizWhat:{label:'Amazon Q Business とは', url:'https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html'},
 };
 
 var VOCAB = [
@@ -338,6 +341,8 @@ var VOCAB = [
   {id:'v191', term:'Exploratory Data Analysis (EDA)', domain:'aiml', source:SOURCES.dataWrangler, q:{text:'機械学習モデルを学習させる前に、データの欠損値・外れ値・分布などを調べて、データの特徴や問題点を把握するプロセスはどれですか？', choices:['ハイパーパラメータチューニング：モデルの設定値を調整して精度を高める', 'モデルのデプロイ：学習済みモデルを本番環境で推論に使えるようにする', 'データのラベリング：学習用データに正解ラベルを付ける', '探索的データ分析（EDA）：可視化や統計でデータを調べ、特徴や問題を把握する'], correct:3, why:['誤り。ハイパーパラメータチューニングは学習時の設定値の調整で、データの特徴を調べる工程ではありません。', '誤り。デプロイは学習後の工程で、データの把握とは別です。', '誤り。ラベリングは正解ラベルを付ける作業で、データの傾向を調べる分析ではありません。', '正しい。探索的データ分析（EDA）は、ヒストグラムや散布図などの可視化や統計でデータを調べ、欠損値・外れ値・偏りなどの問題を把握するプロセスです。SageMaker Data Wranglerには、こうした分析のための可視化・分析ツールがあります。']}},
   {id:'v192', term:'Data Pre-processing', domain:'aiml', source:SOURCES.dataWrangler, q:{text:'機械学習用のデータを、コードをほとんど書かずに取り込み・変換・特徴量化・分析できる、Amazon SageMaker AIの機能はどれですか？', choices:['Amazon SageMaker Clarify：バイアスの検出とモデルの説明可能性を提供する', 'Amazon SageMaker Data Wrangler：データの取り込み、変換、特徴量化、分析を行う', 'Amazon SageMaker Ground Truth：データにラベルを付ける作業を支援する', 'Amazon SageMaker Feature Store：特徴量を保存し、学習と推論で再利用できるようにする'], correct:1, why:['誤り。Clarifyはバイアスの検出や説明可能性のための機能で、データの変換・前処理を行うものではありません。', '正しい。Data Wranglerは、S3・Athena・Redshiftなどからのデータ取り込み、文字列や数値の整形、カテゴリのエンコード、データ分析までを、ほぼコードなしで行えるデータ前処理・特徴量エンジニアリングの機能です。現在はSageMaker Canvasに統合されています。', '誤り。Ground Truthはラベル付けの支援サービスで、データの変換や特徴量化は担いません。', '誤り。Feature Storeは特徴量の保存・共有の場所で、データの変換や分析を行う機能ではありません。']}},
   {id:'v193', term:'Data Quality Assessment', domain:'security', source:SOURCES.dataInsights, q:{text:'SageMaker Data Wranglerにインポートしたデータについて、欠損値や外れ値の数、ターゲットリークやデータの不均衡といった問題を自動で検出して報告する機能はどれですか？', choices:['Data Wranglerの Drop duplicates 変換：重複した行を取り除く', 'Amazon SageMaker Model Monitor：本番モデルの入力データ品質のドリフトを検出する', 'Data Quality and Insights Report：欠損値・外れ値・ターゲットリークなどを分析する', 'Amazon Macie：S3内の機密データを検出して通知する'], correct:2, why:['誤り。Drop duplicatesは重複行を取り除く変換で、データ品質を分析して報告する機能ではありません。', '誤り。Model Monitorは本番運用中のモデルを監視する機能で、Data Wranglerにインポートした学習前のデータの分析とは用途が異なります。', '正しい。Data Quality and Insights Reportは、インポートしたデータの欠損値・無効値・外れ値の数などの概要を示し、ターゲットリークや不均衡といった問題があれば警告します。データのクリーニングや処理の判断材料になります。', '誤り。Macieは機密データを検出するサービスで、MLデータの品質分析を行うものではありません。']}},
+  {id:'v194', term:'Recall-Oriented Understudy for Gisting Evaluation (ROUGE)', domain:'fm', source:SOURCES.fmevalAuto, q:{text:'テキスト要約の自動評価で、生成された要約と参照要約を、重なり合う単語列（unigram・bigram・最長一致系列）で比較する指標はどれですか？', choices:['BERTScore：生成文と参照文の文埋め込みを比較して、意味的な近さを測る指標','ROUGE：生成された要約と参照要約を、重なる単語列の一致度で比較する指標','F1スコア：適合率と再現率の調和平均で、分類タスクの精度を評価する指標','Accuracy（正解率）：全予測のうち正しく予測できたものの割合を示す指標'], correct:1, why:['誤り。BERTScoreは埋め込みを使って意味的な類似度を測る指標で、単語列の重なりを数えるROUGEとは方式が異なります。','正しい。ROUGE-1はunigram、ROUGE-2はbigram、ROUGE-Lは最長一致する単語列を使って、生成要約と参照要約を比較します。','誤り。F1スコアは適合率と再現率を組み合わせる分類の指標で、要約文どうしの比較には使いません。','誤り。正解率は分類で全予測のうち正しかった割合を表す指標で、要約の評価指標ではありません。']}},
+  {id:'v195', term:'Amazon Quick', domain:'genai', source:SOURCES.quickWhat, q:{text:'Amazon Quickの説明として正しいものはどれですか？', choices:['Amazon Pollyと同様に、テキストを自然な音声に変換して読み上げるための音声合成サービスである','Amazon Lexと同様に、インテントとスロットを定義して音声やテキストの会話ボットを構築するサービスである','自然言語のチャットでAIエージェントに依頼し、タスクの自動化・データ分析・調査・Webアプリ構築を行えるAIサービスである','SageMaker AIと同様に、MLモデルの構築・トレーニング・デプロイのためのノートブック環境を提供するサービスである'], correct:2, why:['誤り。音声合成はAmazon Pollyの役割です。','誤り。会話ボットの構築はAmazon Lexの役割です。','正しい。Quickは自然言語チャットでAIエージェントに依頼し、接続したデータやアプリを使って、自動化・分析・調査・アプリ構築を行います。BIのQuick Sight（旧QuickSight）もQuickの機能の1つです。','誤り。MLモデルの構築・デプロイの環境はSageMaker AIが提供します。Quickはモデルをホストせず、MLの専門知識なしで使えるフルマネージドなサービスです。']}},
 ];
 
 var PRACTICE = [
@@ -641,6 +646,12 @@ var PRACTICE = [
     prompts:['Amazon S3・Athena・Redshiftなどのデータソースからデータを読み込む', '文字列や数値の整形、カテゴリのエンコードなどでデータを加工する', 'データの品質を自動で検証し、データ内の異常を検出する'],
     options:['Transform', 'Generate Data Insights', 'Import', 'Export'], correct:[2,0,1],
     why:['Importが、S3・Athena・Redshift・Snowflake・Databricksなどからデータを読み込みます。', 'Transformが、文字列・数値の整形やカテゴリのエンコードなどの変換と特徴量化を行います。', 'Generate Data Insightsが、データ品質を自動検証して異常を検出します。Exportは、データ準備のワークフローをS3やSageMaker Pipelinesなどへ出力する機能で、読み込みや変換・分析そのものではありません。']},
+  {id:'p96', domain:'fm', type:'single', source:SOURCES.fmevalAuto, text:'SageMaker AIのfmevalライブラリで、テキスト要約タスクの精度を評価するSummarizationAccuracyアルゴリズムが返す指標の組み合わせとして正しいものはどれですか？',
+    choices:['Precision、Recall、Balanced accuracy（分類タスクの精度の指標）','ROUGE-N、Meteor、BERTScore','Toxicity、Prompt stereotyping、Factual knowledge','MSE、RMSE、MAE（回帰タスクの誤差の指標）'], correct:[1],
+    why:['誤り。これらは分類タスク用のClassificationAccuracyが返す指標で、要約には使いません。','正しい。SummarizationAccuracyはROUGE-N、Meteor、BERTScoreのスコアを返します。','誤り。これらは精度ではなく、毒性・ステレオタイプ・事実知識という別の評価ディメンション（別のアルゴリズム）です。','誤り。これらは回帰モデルの誤差の指標で、生成された要約の評価には使いません。']},
+  {id:'p97', domain:'fm', type:'single', source:SOURCES.fmevalAuto, text:'fmevalでSummarizationAccuracyのrouge_typeに rougeL を指定した場合、生成された要約と参照要約のどのような点を比較しますか？',
+    choices:['重なる単語1語ずつ（unigram）の一致','連続する2語の組（bigram）の一致','最も長く一致する単語の並び','文を埋め込みベクトルにして比べた意味的な類似度'], correct:[2],
+    why:['誤り。unigramの一致を比較するのはrouge1です。','誤り。bigramの一致を比較するのはrouge2です。','正しい。ROUGE-Lは、生成要約と参照要約で最も長く一致する単語の並びを比較します。','誤り。埋め込みで意味的な近さを測るのはBERTScoreで、ROUGEではありません。']},
 ];
 
 var MOCK_POOL = [
@@ -846,6 +857,12 @@ var MOCK_POOL = [
   {id:'m66', domain:'aiml', type:'single', source:SOURCES.forecast, text:'時系列予測のマネージドサービスであるAmazon Forecastについて、正しい説明はどれですか？',
     choices:['時系列データの欠損値に対して、複数の補完方法を使って自動で対処できる', '学習済みの基盤モデルを選んで、プロンプトで文章を生成するサービスである', '画像に写った物体や人物を検出して、ラベルを付けるサービスである', '音声ファイルをテキストに書き起こすサービスである'], correct:[0],
     why:['正しい。Forecastは、欠損値に対して複数の補完（filling）方法を用意しており、自動で対処できます。', '誤り。基盤モデルをプロンプトで使って文章を生成するのはAmazon Bedrockなどで、Forecastではありません。', '誤り。画像の物体検出はAmazon Rekognitionなどの役割で、Forecastの機能ではありません。', '誤り。音声の書き起こしはAmazon Transcribeの役割で、Forecastの機能ではありません。']},
+  {id:'m67', domain:'fm', type:'single', source:SOURCES.fmevalAuto, text:'ある企業が、生成された要約が参照要約と、単語の一致だけでなく意味的にどれだけ近いかを、文の埋め込みを使って自動評価したいと考えています。適した指標はどれですか？',
+    choices:['ROUGE-1：重なる単語（unigram）の一致を数えて、生成要約と参照要約を比較する指標','ROUGE-L：最も長く一致する単語の並びを使って、生成要約と参照要約を比較する指標','Accuracy：全予測のうち正しく予測できたものの割合を表す、分類タスクの指標','BERTScore'], correct:[3],
+    why:['誤り。ROUGE-1は単語の一致を数える指標で、埋め込みによる意味的な近さは測りません。','誤り。ROUGE-Lも単語の並びの一致を使う指標で、埋め込みは使いません。','誤り。正解率は分類の指標で、要約文どうしの比較には使いません。','正しい。BERTScoreは生成文と参照文の文埋め込みを計算して比較するため、単語が違っても意味が近ければ高いスコアになります。']},
+  {id:'m68', domain:'genai', type:'single', source:SOURCES.quickWhat, text:'営業チームが、自然言語のチャットで、接続した社内のデータやアプリを使った調査・分析・業務の自動化を1つのAIサービスで行いたいと考えています。モデルの管理やMLの専門知識は不要にしたい場合、最も適したサービスはどれですか？',
+    choices:['Amazon SageMaker AI：MLモデルを構築・トレーニング・デプロイするためのフルマネージドな環境','Amazon Rekognition：画像や動画から物体・顔・テキストなどを検出するサービス','Amazon Quick','Amazon Transcribe：音声をテキストに変換する自動音声認識サービス'], correct:[2],
+    why:['誤り。SageMaker AIはモデル構築・デプロイの環境で、MLの知識が必要になり、チャットで業務を自動化するサービスではありません。','誤り。Rekognitionは画像・動画の分析サービスで、社内データを使った調査や自動化には使いません。','正しい。Quickは自然言語チャットでAIエージェントが接続データ・アプリを使い、調査・分析・自動化を行うフルマネージドなサービスです。','誤り。Transcribeは音声のテキスト化のサービスで、業務の調査や自動化は行いません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

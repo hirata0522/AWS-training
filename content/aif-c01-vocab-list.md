@@ -249,7 +249,7 @@
 | 243 | Amazon Bedrock Prompt Optimization | fm | 未 |
 | 244 | Application Security | security | 未 |
 | 245 | Amazon Polly | aiml | v127 |
-| 246 | Amazon Q | genai | 未 |
+| 246 | Amazon Q | genai | 除外 |
 | 247 | Amazon Rekognition | aiml | v128 |
 | 248 | Amazon Bedrock Model Evaluation | fm | v115 |
 | 249 | Threat Detection | security | 未 |
@@ -265,10 +265,10 @@
 | 259 | Amazon Translate | aiml | v131 |
 | 260 | Amazon Q Business | genai | v152 |
 | 261 | Amazon Personalize | aiml | v87 |
-| 262 | Recall-Oriented Understudy for Gisting Evaluation (ROUGE) | fm | 未 |
+| 262 | Recall-Oriented Understudy for Gisting Evaluation (ROUGE) | fm | v194 |
 | 263 | Data Lifecycle | security | 未 |
 | 264 | Amazon SageMaker Model Governance | responsible | 未 |
-| 265 | Amazon Quick | genai | 未 |
+| 265 | Amazon Quick | genai | v195 |
 | 266 | AWS Transform | aiml | 未 |
 | 267 | Bilingual Evaluation Understudy (BLEU) | fm | 未 |
 | 268 | Data Residency | security | 未 |

@@ -349,3 +349,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   WebFetch失敗/情報不足: aws.amazon.com/what-is/data-preprocessing/ と data-anonymization/（404）、Bedrock pricingページにOn-Demandの定義なし → On-Demand Throughput / Data Anonymization は `未` のまま。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 41% / MOCK 48% と高いまま。次回以降も不正解を正解より長く書くこと。
   注意: 初回pushでSOURCESの直前行のカンマ欠落による構文エラーがあり、直後に修正pushした（nodeでの読み込み確認済み）。
+- 2026-10-20（定期実行・9回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行262 ROUGE・265 Amazon Quick の2語のVOCABを追加（v194,v195）、PRACTICEを2件（p96,p97: single）、MOCK_POOLを2件（m67,m68: single）追加。累計 VOCAB=195 / PRACTICE=97 / MOCK_POOL=68。単語リスト進捗 195/466（除外9）。件数は目安に届かず6件（出典を本文で確認できた用語のみ）。
+  追加トピック: ROUGE（rouge1/rouge2/rougeL、SummarizationAccuracyの指標=ROUGE-N/Meteor/BERTScore）、BERTScore、Amazon Quick。
+  新規SOURCES: fmevalAuto, quickWhat（WebFetch成功）、qBizWhat（WebFetch成功。ただしQ Business項目は既存の重複のため未使用）。nodeでの読み込み確認済み。
+  除外: 行246 Amazon Q（既存の Amazon Q Business 項目と重複のため）。
+  見送り: BLEU（行267）は取得した公式ページにBLEUの記載がなく `未` のまま。Bedrock Prompt Optimization はWebFetchで本文が取得できず `未` のまま。
+  メモ: 正解最長割合は VOCAB 55% / PRACTICE 40% / MOCK 46% と高いまま。次回以降も不正解を正解より長く書くこと。
