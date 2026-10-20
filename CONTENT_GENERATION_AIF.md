@@ -362,3 +362,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrockのツール使用（クライアント側/サーバー側モード）。新規SOURCES: toolUse（docs.aws.amazon.com/bedrock/.../tool-use.html、WebFetch成功）。nodeでの読み込み確認済み。
   WebFetch失敗/情報不足: SageMaker Clarifyの clarify-bias-metric-cddl.html は本文が取得できず（Demographic Parity等は `未` のまま）。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 41% / MOCK 48% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-20（定期実行・12回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。VOCABの追加なし、PRACTICEを3件（p101〜p103: single）、MOCK_POOLを2件（m71,m72: single）追加。累計 VOCAB=197 / PRACTICE=103 / MOCK_POOL=72。単語リスト進捗 197/466（除外9）。件数は目安に届かず5件（出典を本文で確認できた項目のみ）。
+  追加トピック: 過学習/学習不足への対応（正則化・特徴量・柔軟性）、SageMaker Clarifyの説明可能性（SHAP・PDP）。新規SOURCESなし（underOver / clarifyExplain をWebFetchで本文再確認。ClarifyとAmazon Machine Learningは新規顧客受け付け終了の注記あり）。nodeでの読み込み確認済み。
+  見送り: Bias (ML) / Variance は underOver ページにbias・varianceの定義記載がなく `未` のまま。
