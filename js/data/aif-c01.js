@@ -137,6 +137,10 @@ var SOURCES = {
   lakeFormation:{label:'AWS Lake Formation とは', url:'https://docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html'},
   databrew:{label:'AWS Glue DataBrew とは', url:'https://docs.aws.amazon.com/databrew/latest/dg/what-is.html'},
   nova:{label:'Amazon Nova とは', url:'https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html'}
+  dataWrangler:{label:'SageMaker AI: Data Wrangler でML用データを準備する', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler.html'},
+  dataInsights:{label:'Data Wrangler: データとデータ品質のインサイト（Data Quality and Insights Report）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-data-insights.html'},
+  fraudDetector:{label:'Amazon Fraud Detector とは', url:'https://docs.aws.amazon.com/frauddetector/latest/ug/what-is-frauddetector.html'},
+  forecast:{label:'Amazon Forecast とは', url:'https://docs.aws.amazon.com/forecast/latest/dg/what-is-forecast.html'},
 };
 
 var VOCAB = [
@@ -329,6 +333,11 @@ var VOCAB = [
   {id:'v186', term:'Jailbreaking', domain:'fm', source:SOURCES.promptAttack, q:{text:'「Do Anything Now（DAN）」のようなプロンプトで、基盤モデルが本来持つ安全性やモデレーションの仕組みを回避させ、有害な内容を生成させようとする攻撃を何と呼びますか？', choices:['Jailbreak（ジェイルブレイク）', 'Overfitting（過学習）', 'Hallucination（ハルシネーション）', 'Fine-tuning（ファインチューニング）'], correct:0, why:['正しい。ジェイルブレイクは、モデルが元々備える安全性・モデレーション機能を回避して有害・危険な内容を生成させるよう設計されたプロンプトです。', '誤り。過学習は、学習データに適合しすぎて未知のデータで性能が落ちる状態で、攻撃ではありません。', '誤り。ハルシネーションは、もっともらしいが事実でない内容を出力する現象で、ユーザーが意図的に行う攻撃ではありません。', '誤り。ファインチューニングは、追加データでモデルを調整する手法で、攻撃ではありません。']}},
   {id:'v187', term:'Data Drift', domain:'aiml', source:SOURCES.modelMonitor, q:{text:'本番環境のモデルに入力されるデータの傾向が、モデルを学習させたときのデータから徐々に変わっていく現象を何と呼びますか？', choices:['過学習：学習データに適合しすぎて、未知のデータに対する性能が下がる状態', 'バイアス：学習データの偏りによって、特定のグループに不利な予測をする状態', 'ハルシネーション：事実に基づかない内容を、もっともらしく出力してしまう現象', 'データドリフト：本番データの傾向が学習時のデータからずれていく現象'], correct:3, why:['誤り。過学習は学習の仕方の問題で、本番データの傾向が時間とともに変わる現象ではありません。', '誤り。バイアスはデータの偏りによる不公平な予測の問題で、データの傾向の経時変化ではありません。', '誤り。ハルシネーションは生成AIの出力の問題で、入力データの傾向の変化ではありません。', '正しい。SageMaker Model Monitorは学習データから作ったベースラインと本番データを比較し、データ品質のドリフトを検出します。']}},
   {id:'v188', term:'Model Monitoring', domain:'aiml', source:SOURCES.modelMonitor, q:{text:'本番環境のMLモデルを継続的に監視し、品質のずれ（ドリフト）を検出したらアラートで知らせる、Amazon SageMaker AIの機能はどれですか？', choices:['Amazon SageMaker Ground Truth：学習データにラベルを付ける作業を支援する', 'Amazon SageMaker Model Monitor：本番モデルの品質のずれを検出して通知する', 'Amazon SageMaker Feature Store：特徴量を保存し、学習と推論で再利用できるようにする', 'Amazon SageMaker Model Registry：モデルのバージョンを登録して承認状態を管理する'], correct:1, why:['誤り。Ground Truthはデータへのラベル付けのサービスで、本番モデルの監視は行いません。', '正しい。Model Monitorは本番のMLモデルの品質を監視し、データ品質・モデル品質・バイアス・特徴量寄与のドリフトを検出して通知します。', '誤り。Feature Storeは特徴量の保存・共有のための機能で、モデルの監視は行いません。', '誤り。Model Registryはモデルのバージョン管理の機能で、本番データのドリフト検出は行いません。']}},
+  {id:'v189', term:'Fraud Detection', domain:'aiml', source:SOURCES.fraudDetector, q:{text:'不正なオンライン取引や偽アカウントの作成をMLで検出するカスタムモデルを構築し、スコアに応じて「承認」「レビューへ回す」などの結果を割り当てられる、フルマネージドのサービスはどれですか？', choices:['Amazon Macie：S3内の機密データを検出して可視化する', 'Amazon GuardDuty：AWSアカウントやワークロードに対する不審な動きや脅威を継続的に検出する', 'Amazon Fraud Detector：不正検知のカスタムモデルを学習し、判定ロジックで結果を割り当てる', 'Amazon Inspector：EC2やコンテナなどのソフトウェアの脆弱性を自動でスキャンする'], correct:2, why:['誤り。Macieは機密データの検出サービスで、不正取引の判定モデルは構築しません。', '誤り。GuardDutyはAWS環境への脅威検出サービスで、自社の取引データから不正検知モデルを作るものではありません。', '正しい。Amazon Fraud Detectorは、MLで不正な取引や偽アカウント作成などを検出するカスタムモデルを学習・デプロイし、判定ロジックでモデルのスコアに「通す」「レビューに回す」などの結果を割り当てます。なお2025年11月7日以降は新規顧客の受け付けを終了しています。', '誤り。Inspectorは脆弱性管理のサービスで、不正取引の検出は行いません。']}},
+  {id:'v190', term:'Forecasting', domain:'aiml', source:SOURCES.forecast, q:{text:'過去の時系列データ（売上や需要など）から将来の値を予測する、AWSのマネージドなサービスとして正しいものはどれですか？', choices:['Amazon Forecast：統計・機械学習アルゴリズムで時系列の将来値を予測する', 'Amazon Comprehend：テキストから感情やエンティティを抽出する', 'Amazon Personalize：ユーザーごとのレコメンデーションを生成する', 'Amazon Textract：スキャンした文書から文字や表を抽出する'], correct:0, why:['正しい。Amazon Forecastは、統計・機械学習アルゴリズムを使って時系列データから高精度な予測を行います。小売の需要計画や人員・サーバー容量の計画などに使われます。なお現在は新規顧客の受け付けを終了しています。', '誤り。Comprehendはテキスト分析のサービスで、時系列の将来予測は行いません。', '誤り。Personalizeはレコメンデーションのサービスで、需要などの時系列予測を目的としたものではありません。', '誤り。Textractは文書からのデータ抽出サービスで、将来値の予測は行いません。']}},
+  {id:'v191', term:'Exploratory Data Analysis (EDA)', domain:'aiml', source:SOURCES.dataWrangler, q:{text:'機械学習モデルを学習させる前に、データの欠損値・外れ値・分布などを調べて、データの特徴や問題点を把握するプロセスはどれですか？', choices:['ハイパーパラメータチューニング：モデルの設定値を調整して精度を高める', 'モデルのデプロイ：学習済みモデルを本番環境で推論に使えるようにする', 'データのラベリング：学習用データに正解ラベルを付ける', '探索的データ分析（EDA）：可視化や統計でデータを調べ、特徴や問題を把握する'], correct:3, why:['誤り。ハイパーパラメータチューニングは学習時の設定値の調整で、データの特徴を調べる工程ではありません。', '誤り。デプロイは学習後の工程で、データの把握とは別です。', '誤り。ラベリングは正解ラベルを付ける作業で、データの傾向を調べる分析ではありません。', '正しい。探索的データ分析（EDA）は、ヒストグラムや散布図などの可視化や統計でデータを調べ、欠損値・外れ値・偏りなどの問題を把握するプロセスです。SageMaker Data Wranglerには、こうした分析のための可視化・分析ツールがあります。']}},
+  {id:'v192', term:'Data Pre-processing', domain:'aiml', source:SOURCES.dataWrangler, q:{text:'機械学習用のデータを、コードをほとんど書かずに取り込み・変換・特徴量化・分析できる、Amazon SageMaker AIの機能はどれですか？', choices:['Amazon SageMaker Clarify：バイアスの検出とモデルの説明可能性を提供する', 'Amazon SageMaker Data Wrangler：データの取り込み、変換、特徴量化、分析を行う', 'Amazon SageMaker Ground Truth：データにラベルを付ける作業を支援する', 'Amazon SageMaker Feature Store：特徴量を保存し、学習と推論で再利用できるようにする'], correct:1, why:['誤り。Clarifyはバイアスの検出や説明可能性のための機能で、データの変換・前処理を行うものではありません。', '正しい。Data Wranglerは、S3・Athena・Redshiftなどからのデータ取り込み、文字列や数値の整形、カテゴリのエンコード、データ分析までを、ほぼコードなしで行えるデータ前処理・特徴量エンジニアリングの機能です。現在はSageMaker Canvasに統合されています。', '誤り。Ground Truthはラベル付けの支援サービスで、データの変換や特徴量化は担いません。', '誤り。Feature Storeは特徴量の保存・共有の場所で、データの変換や分析を行う機能ではありません。']}},
+  {id:'v193', term:'Data Quality Assessment', domain:'security', source:SOURCES.dataInsights, q:{text:'SageMaker Data Wranglerにインポートしたデータについて、欠損値や外れ値の数、ターゲットリークやデータの不均衡といった問題を自動で検出して報告する機能はどれですか？', choices:['Data Wranglerの Drop duplicates 変換：重複した行を取り除く', 'Amazon SageMaker Model Monitor：本番モデルの入力データ品質のドリフトを検出する', 'Data Quality and Insights Report：欠損値・外れ値・ターゲットリークなどを分析する', 'Amazon Macie：S3内の機密データを検出して通知する'], correct:2, why:['誤り。Drop duplicatesは重複行を取り除く変換で、データ品質を分析して報告する機能ではありません。', '誤り。Model Monitorは本番運用中のモデルを監視する機能で、Data Wranglerにインポートした学習前のデータの分析とは用途が異なります。', '正しい。Data Quality and Insights Reportは、インポートしたデータの欠損値・無効値・外れ値の数などの概要を示し、ターゲットリークや不均衡といった問題があれば警告します。データのクリーニングや処理の判断材料になります。', '誤り。Macieは機密データを検出するサービスで、MLデータの品質分析を行うものではありません。']}},
 ];
 
 var PRACTICE = [
@@ -619,6 +628,19 @@ var PRACTICE = [
     prompts:['精度などのモデル品質指標のドリフトを監視する','入力データの品質のドリフトを監視する','モデルの予測に含まれるバイアスの変化を監視する'],
     options:['Bias drift','Feature attribution drift','Data quality','Model quality','Model Cards'], correct:[3,2,0],
     why:['Model qualityが、精度などのモデル品質指標のドリフトを監視します。','Data qualityが、入力データの品質のドリフトを監視します。','Bias driftが、予測のバイアスの変化を監視します。Feature attribution driftは特徴量の寄与度の変化の監視、Model Cardsはモデルの情報を文書化する機能で、いずれも当てはまりません。']},
+  {id:'p92', domain:'aiml', type:'single', source:SOURCES.forecast, text:'ある小売企業が、過去の販売実績の時系列データから将来の商品需要を予測し、店舗ごとの在庫と価格を調整したいと考えています。時系列予測に特化したAWSのマネージドサービスはどれですか？',
+    choices:['Amazon Comprehend', 'Amazon Lex', 'Amazon Textract', 'Amazon Forecast'], correct:[3],
+    why:['誤り。Comprehendはテキストの感情分析やエンティティ抽出を行うサービスで、時系列の需要予測は行いません。', '誤り。Lexは音声やテキストの会話ボットを構築するサービスで、需要予測の用途ではありません。', '誤り。Textractは文書から文字や表を抽出するサービスで、将来値の予測はできません。', '正しい。Amazon Forecastは、過去の時系列データから統計・機械学習アルゴリズムで将来の値を予測するサービスで、小売の需要計画が代表的な用途です。現在は新規顧客の受け付けを終了しています。']},
+  {id:'p93', domain:'security', type:'single', source:SOURCES.fraudDetector, text:'あるEC事業者が、オンライン決済での不正取引や偽アカウントの作成をMLで検出し、モデルのスコアに応じて「承認」「レビューに回す」といった結果を割り当てたいと考えています。この用途に特化したAWSのサービスはどれですか？',
+    choices:['Amazon Fraud Detector', 'Amazon GuardDuty', 'Amazon Inspector：EC2インスタンスやコンテナイメージの脆弱性を継続的にスキャンして、重大度付きの検出結果を報告する', 'Amazon Macie'], correct:[0],
+    why:['正しい。Amazon Fraud Detectorは、自社の不正データから不正検知モデルを学習・デプロイし、判定ロジックでスコアに「通す」「レビューに回す」などの結果を割り当てます。2025年11月7日以降は新規顧客の受け付けを終了しています。', '誤り。GuardDutyはAWS環境に対する脅威を検出するサービスで、自社の決済データから不正検知モデルを構築するものではありません。', '誤り。Inspectorは脆弱性スキャンのサービスで、取引の不正検知は行いません。', '誤り。Macieは機密データの検出サービスで、不正取引の判定は行いません。']},
+  {id:'p94', domain:'aiml', type:'multi', source:SOURCES.dataInsights, text:'SageMaker Data Wranglerの Data Quality and Insights Report で確認できる内容として正しいものはどれですか？（2つ選択）',
+    choices:['本番エンドポイントのリアルタイム推論のレイテンシ', '欠損値・無効値・外れ値の数などのデータの概要', '基盤モデルが1か月に消費したトークン数', 'ターゲットリークやデータの不均衡といった問題の警告', 'モデルの学習に使った計算リソースにかかった費用の内訳'], correct:[1,3],
+    why:['誤り。レイテンシは本番エンドポイントの運用指標で、インポートしたデータの分析結果には含まれません。', '正しい。レポートの概要には、欠損値・無効値・特徴量の型・外れ値の数などが示されます。', '誤り。トークン数は基盤モデルの利用量に関する指標で、このレポートの内容ではありません。', '正しい。ターゲットリークや不均衡などの問題がある場合は、レポートがその警告を示します。', '誤り。費用の内訳はデータの品質分析とは別で、このレポートには含まれません。']},
+  {id:'p95', domain:'aiml', type:'matching', source:SOURCES.dataWrangler, text:'SageMaker Data Wranglerの機能について、それぞれの説明に当てはまるものを選んでください。',
+    prompts:['Amazon S3・Athena・Redshiftなどのデータソースからデータを読み込む', '文字列や数値の整形、カテゴリのエンコードなどでデータを加工する', 'データの品質を自動で検証し、データ内の異常を検出する'],
+    options:['Transform', 'Generate Data Insights', 'Import', 'Export'], correct:[2,0,1],
+    why:['Importが、S3・Athena・Redshift・Snowflake・Databricksなどからデータを読み込みます。', 'Transformが、文字列・数値の整形やカテゴリのエンコードなどの変換と特徴量化を行います。', 'Generate Data Insightsが、データ品質を自動検証して異常を検出します。Exportは、データ準備のワークフローをS3やSageMaker Pipelinesなどへ出力する機能で、読み込みや変換・分析そのものではありません。']},
 ];
 
 var MOCK_POOL = [
@@ -812,6 +834,18 @@ var MOCK_POOL = [
   {id:'m62', domain:'aiml', type:'ordering', source:SOURCES.modelMonitor, text:'SageMaker Model Monitorで本番のモデルを監視するまでの流れを、正しい順に並べてください。',
     items:['エンドポイントで、受信リクエストとモデルの予測のデータキャプチャを有効にする','モデルの学習に使ったデータセットから、指標と制約を含むベースラインを作成する','何を・どのくらいの頻度で収集・分析し、どのレポートを出すかを指定した監視スケジュールを作成する','ベースラインと比較したレポートを確認し、違反やCloudWatchの通知を確認する'],
     why:['まず、監視対象となる入力と予測をキャプチャできるようにします。','次に、学習データセットからベースラインを作り、比較の基準となる指標と制約を用意します。','基準ができたら、収集・分析の内容と頻度、出力するレポートを指定した監視スケジュールを作ります。','最後に、最新のデータとベースラインを比較したレポートと通知を確認し、違反に対処します。']},
+  {id:'m63', domain:'aiml', type:'single', source:SOURCES.dataWrangler, text:'データサイエンティストが、モデルの学習を始める前に、ヒストグラムや散布図でデータの分布を確認し、欠損値や外れ値などの問題を把握しようとしています。この工程を表す用語はどれですか？',
+    choices:['ファインチューニング', '探索的データ分析（EDA）', 'モデルの蒸留', 'データの匿名化'], correct:[1],
+    why:['誤り。ファインチューニングは学習済みモデルを追加データで調整する手法で、データの傾向を調べる工程ではありません。', '正しい。探索的データ分析（EDA）は、可視化や統計でデータの分布・欠損・外れ値などを調べ、問題を把握する工程です。Data Wranglerにも散布図やヒストグラムなどの可視化・分析ツールがあります。', '誤り。蒸留は大きなモデルの知識を小さなモデルへ移す手法で、データの把握とは関係がありません。', '誤り。匿名化は個人を特定できないようにデータを加工する手法で、データの特徴を調べる分析ではありません。']},
+  {id:'m64', domain:'aiml', type:'single', source:SOURCES.dataWrangler, text:'ある企業は、S3やAthenaにあるデータを、コードをほとんど書かずに取り込み、整形・特徴量化してから機械学習の学習に使いたいと考えています。最も適したSageMaker AIの機能はどれですか？',
+    choices:['Amazon SageMaker Ground Truth', 'Amazon SageMaker Model Monitor', 'Amazon SageMaker Data Wrangler', 'Amazon SageMaker Clarify'], correct:[2],
+    why:['誤り。Ground Truthはデータへのラベル付けを支援するサービスで、データの整形や特徴量化が目的ではありません。', '誤り。Model Monitorは本番モデルの品質のずれを監視する機能で、学習前のデータ準備には使いません。', '正しい。Data Wranglerは、S3やAthenaなどからのデータ取り込み、変換、特徴量化、分析を、ほぼコードなしで行えます。', '誤り。Clarifyはバイアス検出や説明可能性のための機能で、データの変換・前処理が主目的ではありません。']},
+  {id:'m65', domain:'aiml', type:'single', source:SOURCES.dataInsights, text:'Data Wranglerのレポートで、ある特徴量の予測力のスコアがちょうど1（完全な予測）になっていました。このときに最も疑うべきものはどれですか？',
+    choices:['モデルが過学習ではなく学習不足になっている', '学習データの量が不足している', 'ターゲットリーク（予測時には使えない列がデータに含まれている）', 'データの種類が数値ではなくカテゴリになっている'], correct:[2],
+    why:['誤り。スコア1は予測が非常に当たっていることを示すので、学習不足の兆候とは考えにくいです。', '誤り。データ量の不足は予測力が低くなる要因になり得ますが、スコア1の原因として疑うものではありません。', '正しい。スコア1は完全な予測力を意味し、多くの場合ターゲットリークを示します。ターゲットリークは、予測時点では得られない列（ターゲット列の複製など）がデータに含まれているときに起こります。', '誤り。特徴量の型（数値かカテゴリか）は、スコアが1になる原因として疑うものではありません。']},
+  {id:'m66', domain:'aiml', type:'single', source:SOURCES.forecast, text:'時系列予測のマネージドサービスであるAmazon Forecastについて、正しい説明はどれですか？',
+    choices:['時系列データの欠損値に対して、複数の補完方法を使って自動で対処できる', '学習済みの基盤モデルを選んで、プロンプトで文章を生成するサービスである', '画像に写った物体や人物を検出して、ラベルを付けるサービスである', '音声ファイルをテキストに書き起こすサービスである'], correct:[0],
+    why:['正しい。Forecastは、欠損値に対して複数の補完（filling）方法を用意しており、自動で対処できます。', '誤り。基盤モデルをプロンプトで使って文章を生成するのはAmazon Bedrockなどで、Forecastではありません。', '誤り。画像の物体検出はAmazon Rekognitionなどの役割で、Forecastの機能ではありません。', '誤り。音声の書き起こしはAmazon Transcribeの役割で、Forecastの機能ではありません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

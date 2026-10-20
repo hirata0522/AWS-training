@@ -109,11 +109,11 @@
 | 103 | Amazon Inspector | security | v80 |
 | 104 | Recommendation System | aiml | v86 |
 | 105 | Summarization | genai | v166 |
-| 106 | Fraud Detection | aiml | 未 |
+| 106 | Fraud Detection | aiml | v189 |
 | 107 | Parameter-efficient Fine-tuning (PEFT) | fm | 未 |
 | 108 | AWS Artifact | security | v81 |
 | 109 | Accountability | responsible | 未 |
-| 110 | Forecasting | aiml | 未 |
+| 110 | Forecasting | aiml | v190 |
 | 111 | Image Generation | genai | v168 |
 | 112 | LoRA | fm | 未 |
 | 113 | AWS Trusted Advisor (Governance) | security | v93 |
@@ -163,10 +163,10 @@
 | 157 | Serverless Inference | aiml | v120 |
 | 158 | FM Lifecycle | genai | 未 |
 | 159 | Automated Reasoning Checks | responsible | v121 |
-| 160 | Exploratory Data Analysis (EDA) | aiml | 未 |
+| 160 | Exploratory Data Analysis (EDA) | aiml | v191 |
 | 161 | Instruction | fm | 未 |
 | 162 | Data Cataloging | security | v183 |
-| 163 | Data Pre-processing | aiml | 未 |
+| 163 | Data Pre-processing | aiml | v192 |
 | 164 | Token-based Pricing | genai | v132 |
 | 165 | Context (Prompt) | fm | 未 |
 | 166 | AWS Glue Data Catalog | security | v122 |
@@ -174,7 +174,7 @@
 | 168 | Environmental Sustainability (AI) | responsible | 未 |
 | 169 | Input Tokens vs Output Tokens | genai | v133 |
 | 170 | Negative Prompt | fm | v178 |
-| 171 | Data Quality Assessment | security | 未 |
+| 171 | Data Quality Assessment | security | v193 |
 | 172 | Accuracy | aiml | v145 |
 | 173 | Precision | aiml | v143 |
 | 174 | Intellectual Property Infringement | responsible | 未 |

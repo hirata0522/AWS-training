@@ -343,3 +343,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: promptAttack, canvasMetrics（いずれもWebFetch成功。modelMonitorも本文を再確認し、新規顧客の受け付け終了の注記あり）。nodeでの読み込み確認済み。
   見送り: ROC Curve は取得した公式ページにAUCの記載のみでROC曲線の定義が無く `未` のまま。
   メモ: 正解最長割合は VOCAB 54% / PRACTICE 43% / MOCK 46% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。
+- 2026-10-20（定期実行・8回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行106,110,160,163,171の5語のVOCABを追加（v189〜v193）、PRACTICEを4件（p92〜p95: single 2 / multi 1 / matching 1）、MOCK_POOLを4件（m63〜m66: single）追加。累計 VOCAB=193 / PRACTICE=95 / MOCK_POOL=66。単語リスト進捗 193/467（除外8）。件数は目安に届かず13件（出典を本文で確認できた用語のみ）。
+  追加トピック: Fraud Detection（Amazon Fraud Detector）、Forecasting（Amazon Forecast）、EDA、Data Pre-processing（Data Wrangler）、Data Quality Assessment（Data Quality and Insights Report）、ターゲットリーク。いずれも Fraud Detector / Forecast は新規顧客受け付け終了の注記を解説に明記。
+  新規SOURCES: dataWrangler, dataInsights, fraudDetector, forecast（いずれもWebFetch成功）。
+  WebFetch失敗/情報不足: aws.amazon.com/what-is/data-preprocessing/ と data-anonymization/（404）、Bedrock pricingページにOn-Demandの定義なし → On-Demand Throughput / Data Anonymization は `未` のまま。
+  メモ: 正解最長割合は VOCAB 55% / PRACTICE 41% / MOCK 48% と高いまま。次回以降も不正解を正解より長く書くこと。
