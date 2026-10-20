@@ -225,7 +225,7 @@
 | 219 | Prompt Hijacking | fm | 未 |
 | 220 | Hallucination Detection | security | 未 |
 | 221 | Technical Debt (ML) | aiml | 未 |
-| 222 | Tool Use (Agents) | genai | 未 |
+| 222 | Tool Use (Agents) | genai | v197 |
 | 223 | Open Source Pre-trained Model | aiml | 未 |
 | 224 | Jailbreaking | fm | v186 |
 | 225 | Grounding Techniques | security | 未 |

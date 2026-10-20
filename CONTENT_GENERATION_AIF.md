@@ -358,3 +358,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-20（定期実行・10回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行228 Prompt Leaking のVOCABを追加（v196）、PRACTICEを2件（p98: single / p99: matching）、MOCK_POOLを1件（m69: single）追加。累計 VOCAB=196 / PRACTICE=99 / MOCK_POOL=69。単語リスト進捗 196/466（除外9）。件数は目安に届かず4件（出典を本文で確認できた項目のみ）。
   追加トピック: プロンプトリーケージ/ジェイルブレイク/プロンプトインジェクションの区別、Guardrailsの入力タグ。新規SOURCESなし（promptAttackをWebFetchで本文再確認。Prompt Leakageは「Standard tierのみ」の記載あり）。nodeでの読み込み確認済み。
   見送り: Prompt Hijacking（goal hijackingの記載のみで定義が弱い）、ReAct / Prompt Chaining / Single-shot（promptEng・promptGuideのページに記載なし）は `未` のまま。
+- 2026-10-20（定期実行・11回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行222 Tool Use (Agents) のVOCABを追加（v197）、PRACTICEを1件（p100: single）、MOCK_POOLを1件（m70: single）追加。累計 VOCAB=197 / PRACTICE=100 / MOCK_POOL=70。単語リスト進捗 197/466（除外9）。件数は目安に届かず3件（出典を本文で確認できた項目のみ）。
+  追加トピック: Bedrockのツール使用（クライアント側/サーバー側モード）。新規SOURCES: toolUse（docs.aws.amazon.com/bedrock/.../tool-use.html、WebFetch成功）。nodeでの読み込み確認済み。
+  WebFetch失敗/情報不足: SageMaker Clarifyの clarify-bias-metric-cddl.html は本文が取得できず（Demographic Parity等は `未` のまま）。
+  メモ: 正解最長割合は VOCAB 55% / PRACTICE 41% / MOCK 48% と高いまま。次回以降も不正解を正解より長く書くこと。
