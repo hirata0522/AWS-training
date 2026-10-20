@@ -348,3 +348,4 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: dataWrangler, dataInsights, fraudDetector, forecast（いずれもWebFetch成功）。
   WebFetch失敗/情報不足: aws.amazon.com/what-is/data-preprocessing/ と data-anonymization/（404）、Bedrock pricingページにOn-Demandの定義なし → On-Demand Throughput / Data Anonymization は `未` のまま。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 41% / MOCK 48% と高いまま。次回以降も不正解を正解より長く書くこと。
+  注意: 初回pushでSOURCESの直前行のカンマ欠落による構文エラーがあり、直後に修正pushした（nodeでの読み込み確認済み）。

@@ -136,7 +136,7 @@ var SOURCES = {
   comprehendRedaction:{label:'Amazon Comprehend API: RedactionConfig', url:'https://docs.aws.amazon.com/comprehend/latest/APIReference/API_RedactionConfig.html'},
   lakeFormation:{label:'AWS Lake Formation とは', url:'https://docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html'},
   databrew:{label:'AWS Glue DataBrew とは', url:'https://docs.aws.amazon.com/databrew/latest/dg/what-is.html'},
-  nova:{label:'Amazon Nova とは', url:'https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html'}
+  nova:{label:'Amazon Nova とは', url:'https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html'},
   dataWrangler:{label:'SageMaker AI: Data Wrangler でML用データを準備する', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler.html'},
   dataInsights:{label:'Data Wrangler: データとデータ品質のインサイト（Data Quality and Insights Report）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/data-wrangler-data-insights.html'},
   fraudDetector:{label:'Amazon Fraud Detector とは', url:'https://docs.aws.amazon.com/frauddetector/latest/ug/what-is-frauddetector.html'},
