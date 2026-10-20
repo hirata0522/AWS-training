@@ -199,20 +199,20 @@
 | 193 | Agentic AI | genai | v153 |
 | 194 | Prompt Template | fm | v139 |
 | 195 | Data Access Control | security | 未 |
-| 196 | Mean Squared Error (MSE) | aiml | 未 |
+| 196 | Mean Squared Error (MSE) | aiml | v184 |
 | 197 | Dataset Diversity | responsible | 未 |
 | 198 | MLOps | aiml | v174 |
 | 199 | Prompt Chaining | fm | 未 |
 | 200 | Data Integrity | security | 未 |
 | 201 | AI Agent | genai | v173 |
-| 202 | Model Monitoring | aiml | 未 |
+| 202 | Model Monitoring | aiml | v188 |
 | 203 | Balanced Dataset | responsible | 未 |
 | 204 | ReAct Prompting | fm | 未 |
 | 205 | Data Leakage Prevention | security | 未 |
 | 206 | Multi-agent System | genai | v154 |
 | 207 | Model Re-training | aiml | 未 |
-| 208 | Data Drift | aiml | 未 |
-| 209 | Prompt Injection | fm | 未 |
+| 208 | Data Drift | aiml | v187 |
+| 209 | Prompt Injection | fm | v185 |
 | 210 | Output Filtering and Validation | security | 未 |
 | 211 | Model Context Protocol (MCP) | genai | v159 |
 | 212 | Curated Data Sources | responsible | 未 |
@@ -227,7 +227,7 @@
 | 221 | Technical Debt (ML) | aiml | 未 |
 | 222 | Tool Use (Agents) | genai | 未 |
 | 223 | Open Source Pre-trained Model | aiml | 未 |
-| 224 | Jailbreaking | fm | 未 |
+| 224 | Jailbreaking | fm | v186 |
 | 225 | Grounding Techniques | security | 未 |
 | 226 | Subgroup Analysis | responsible | 未 |
 | 227 | Managed API Service | aiml | 未 |

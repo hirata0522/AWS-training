@@ -338,3 +338,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   除外: 行137 AWS Organizations / 142 SCP / 147 IAM Identity Center（対象サービス一覧に無いため）。
   見送り: Interpretability / Accountability / Environmental Sustainability などは公式の定義ページ未確認のため `未` のまま（Accountability・Interpretabilityはresponsible-aiページに記載なし）。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 46% / MOCK 43% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。
+- 2026-10-20（定期実行・7回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行196,209,224,208,202の5語のVOCABを追加（v184〜v188）、PRACTICEを5件（p87〜p91: single 3 / multi 1 / matching 1）、MOCK_POOLを4件（m59〜m62: single 3 / ordering 1）追加。累計 VOCAB=188 / PRACTICE=91 / MOCK_POOL=62。単語リスト進捗 188/467（除外8）。件数は目安に届かず14件（出典を本文で確認できた用語のみ）。
+  追加トピック: MSE（回帰指標）、プロンプトインジェクション/ジェイルブレイク/プロンプトリーケージ（Guardrailsのプロンプト攻撃フィルターと入力タグ）、データドリフト、Model Monitorの監視の種類とワークフロー、Precision（誤検知コストが高い場合）。
+  新規SOURCES: promptAttack, canvasMetrics（いずれもWebFetch成功。modelMonitorも本文を再確認し、新規顧客の受け付け終了の注記あり）。nodeでの読み込み確認済み。
+  見送り: ROC Curve は取得した公式ページにAUCの記載のみでROC曲線の定義が無く `未` のまま。
+  メモ: 正解最長割合は VOCAB 54% / PRACTICE 43% / MOCK 46% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。
