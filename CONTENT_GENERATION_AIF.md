@@ -313,3 +313,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   注意: Ground Truth・Q Businessは新規顧客の受け付け終了、Q DeveloperのIDEプラグインは2027-04-30にサポート終了（Kiro案内）の注記があり、解説に反映した。
   WebFetch失敗（404）: aws.amazon.com/what-is/mcp/。Kiroは公式AWSドメインの定義ページを確認できず見送り。MCP・Context Window・Tokenization等は `未` のまま。
   メモ: 正解最長割合は VOCAB 52% / PRACTICE 38% / MOCK 52% と高いまま。次回以降は不正解を正解より長く書くこと。
+- 2026-10-20（定期実行・2回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行41,50,95,101,211の5語＋末尾追記の行475 Controllabilityの計6語のVOCABを追加（v155〜v160）、PRACTICEを5件（p62〜p66: matching 1 / single 3 / multi 1）、MOCK_POOLを5件（m39〜m43: single 4 / multi 1）追加。累計 VOCAB=160 / PRACTICE=66 / MOCK_POOL=43。単語リスト進捗 160/470（除外5）。
+  追加トピック: 責任あるAIの8側面（Veracity and robustness / Privacy and security / Governance / Controllability / Transparency 等）、Context Window、Model Context Protocol (MCP)、Bedrockの用語（Orchestration）。
+  新規SOURCES: mcpWhat（docs.aws.amazon.com/prescriptive-guidance/.../what-is-mcp.html）、bedrockTerms（Bedrock key-definitions）（いずれもWebFetch成功。責任あるAIの定義は aws.amazon.com/ai/responsible-ai/ を再確認）。nodeでの読み込み確認済み。
+  見送り: Tokenization（Bedrockの用語集にはTokenの定義のみで専用ページなし）、Context Engineering は公式の定義ページ未確認のため `未` のまま。Accountabilityは責任あるAIの8側面に含まれず未確認。
+  メモ: 正解最長割合は VOCAB 53% / PRACTICE 41% / MOCK 48% と高いまま（既存分の影響大）。次回以降も不正解を正解より長く書くこと。

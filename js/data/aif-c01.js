@@ -116,7 +116,9 @@ var SOURCES = {
   qDeveloper:{label:'Amazon Q Developer とは', url:'https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/what-is.html'},
   qBusiness:{label:'Amazon Q Business とは', url:'https://docs.aws.amazon.com/amazonq/latest/business-use-dg/what-is.html'},
   agenticAi:{label:'AWS: エージェント型AIとは', url:'https://aws.amazon.com/what-is/agentic-ai/'},
-  judgeMetrics:{label:'Amazon Bedrock: LLM-as-a-judge の組み込みメトリクス', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-metrics.html'}
+  judgeMetrics:{label:'Amazon Bedrock: LLM-as-a-judge の組み込みメトリクス', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-metrics.html'},
+  mcpWhat:{label:'AWS規範ガイダンス: MCPとは', url:'https://docs.aws.amazon.com/prescriptive-guidance/latest/mcp-strategies/what-is-mcp.html'},
+  bedrockTerms:{label:'Amazon Bedrock: 主要な用語', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/key-definitions.html'}
 };
 
 var VOCAB = [
@@ -274,6 +276,12 @@ var VOCAB = [
   {id:'v152', term:'Amazon Q Business', domain:'genai', source:SOURCES.qBusiness, q:{text:'Amazon Q Businessの説明として正しいものはどれですか？', choices:['IDEの中でコードの補完や生成を行い、開発者の生産性を高めるための生成AIアシスタント','文書から文字、表、フォームの内容を抽出するための機械学習サービス','自社でモデルを学習・デプロイするための、フルマネージドな機械学習プラットフォーム','S3やSharePointなどの企業データに接続し、ユーザーの権限に応じた回答を出典付きで返す、フルマネージドの生成AIアシスタント'], correct:3, why:['誤り。Amazon Q Developerの説明です。','誤り。Amazon Textractの説明です。','誤り。Amazon SageMaker AIの説明です。','正しい。社内ヘルプデスクなどの用途に使え、回答はユーザーがアクセス権を持つコンテンツに基づきます。なお公式ドキュメントには、新規顧客の受け付け終了とAmazon Quickへの案内の注記があります。']}},
   {id:'v153', term:'Agentic AI', domain:'genai', source:SOURCES.agenticAi, q:{text:'エージェント型AI（Agentic AI）の説明として最も適切なものはどれですか？', choices:['事前に決められたゴールに向けて、人が逐一指示しなくても自律的に行動して複雑なタスクをこなせるAIシステム','入力された画像から物体や顔を検出し、ラベルを付けるAIシステム','過去の売上データから将来の需要を予測する、時系列データ専用の統計モデル','学習データにないラベルをあらかじめ付与するために、人の作業者が手動で入力を行うワークフロー'], correct:0, why:['正しい。AWSは「あらかじめ決められた目標を達成するために、独立して行動できる自律的なAIシステム」と説明しています。推論、記憶、ツールの利用などを組み合わせます。','誤り。コンピュータビジョン（Amazon Rekognitionなど）の説明です。','誤り。予測（フォーキャスティング）の説明で、エージェント型AIの定義ではありません。','誤り。データラベリング（SageMaker Ground Truthなど）の説明です。']}},
   {id:'v154', term:'Multi-agent System', domain:'genai', source:SOURCES.agenticAi, q:{text:'マルチエージェントシステムの説明として正しいものはどれですか？', choices:['1つのAIエージェントが1つのモデルに対して、同じプロンプトを繰り返し送り続ける仕組み','複数のAIエージェントが協調し、複雑なワークフローを小さな部分に分解して処理する仕組み','複数のFMの出力を平均して、1つの回答にまとめるためのモデル評価の手法','複数のリージョンにモデルを複製して、障害時の可用性を高めるデプロイ方法'], correct:1, why:['誤り。複数のエージェントが関わる仕組みではありません。','正しい。AWSの説明では、エージェント同士が対等に協力する水平型と、階層構造で下位のエージェントが単純なタスクを担当する垂直型の構成が挙げられています。','誤り。モデル評価の手法ではなく、エージェント同士の協調の仕組みを指します。','誤り。デプロイの可用性に関する話で、マルチエージェントの定義ではありません。']}},
+  {id:'v155', term:'Context Window', domain:'genai', source:SOURCES.mcpWhat, q:{text:'コンテキストウィンドウの説明として正しいものはどれですか？', choices:['モデルをトレーニングするときに、1回のバッチで処理できる学習データのファイル数の上限','LLMがリクエストごとに保持できる会話履歴を、日数で表した保存期間の設定値','モデルが一度に考慮できるトークン数のことで、プロンプトやツール定義、会話履歴もこの枠を消費する','推論リクエストを同時に受け付けられるユーザー数の上限を、リージョンごとに定めたクォータ'], correct:2, why:['誤り。トレーニングデータの処理量ではなく、推論時にモデルが一度に扱えるトークン量の話です。','誤り。日数で表す保存期間ではなく、トークン数で表される上限です。','正しい。コンテキストウィンドウは、モデルが一度に考慮できるトークン数です。システムプロンプト、ユーザープロンプト、ツール定義、会話履歴が同じ枠を取り合います。','誤り。同時接続数やクォータの話で、コンテキストウィンドウとは別の概念です。']}},
+  {id:'v156', term:'Veracity', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'AWSが挙げる責任あるAIの側面のうち、「予期しない入力や敵対的な入力があっても、正しい出力を得ること」に当たるものはどれですか？', choices:['Veracity and robustness（正確性と堅牢性）','Controllability（制御可能性）','Governance（ガバナンス）','Transparency（透明性）'], correct:0, why:['正しい。AWSは「Veracity and robustness」を、予期しない入力や敵対的な入力があっても正しいシステム出力を得ることと説明しています。','誤り。Controllabilityは、AIシステムの挙動を監視し誘導する仕組みを持つことです。','誤り。Governanceは、プロバイダーやデプロイヤーを含むAIサプライチェーンにベストプラクティスを組み込むことです。','誤り。Transparencyは、ステークホルダーがAIシステムとの関わり方を十分な情報に基づいて選べるようにすることです。']}},
+  {id:'v157', term:'Privacy (Responsible AI)', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'AWSが挙げる責任あるAIの側面「Privacy and security」の説明として正しいものはどれですか？', choices:['AIシステムが出力する有害な内容や悪用を防ぐこと','AIシステムの挙動を監視・誘導するための仕組みを持つこと','予期しない入力や敵対的な入力があっても、正しい出力を得ること','データとモデルを適切に取得し、利用し、保護すること'], correct:3, why:['誤り。これはSafetyの説明です。','誤り。これはControllabilityの説明です。','誤り。これはVeracity and robustnessの説明です。','正しい。AWSはPrivacy and securityを「データとモデルを適切に取得・利用・保護すること」と説明しています。']}},
+  {id:'v158', term:'Governance (Responsible AI)', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'AWSが挙げる責任あるAIの側面「Governance」の説明として正しいものはどれですか？', choices:['モデルの学習に使うデータを暗号化し、アクセスできるユーザーをIAMで制限すること','プロバイダーやデプロイヤーを含むAIのサプライチェーン全体に、ベストプラクティスを取り入れること','モデルの出力が特定のグループに不利にならないよう、ステークホルダーへの影響を考慮すること','モデルの予測結果について、人間が理解できる形で根拠を示し、出力を評価できるようにすること'], correct:1, why:['誤り。データの保護はPrivacy and securityの観点です。','正しい。AWSはGovernanceを「プロバイダーやデプロイヤーを含むAIサプライチェーンにベストプラクティスを組み込むこと」と説明しています。','誤り。これはFairnessの説明です。','誤り。これはExplainabilityの説明です。']}},
+  {id:'v159', term:'Model Context Protocol (MCP)', domain:'genai', source:SOURCES.mcpWhat, q:{text:'Model Context Protocol（MCP）の説明として正しいものはどれですか？', choices:['AIエージェントを外部のツールやデータに接続するための標準的な方式で、「AIアプリケーションのUSB-C」と表現されることがある','基盤モデルのパラメータを少量のラベル付きデータで更新し、独自のカスタムモデルを作成するための学習手法','入力トークンと出力トークンの数に応じて、推論リクエストの料金を計算するための課金方式','モデルの出力に含まれる有害な内容や機密情報を検出して、自動的にブロックするためのフィルタリング機能'], correct:0, why:['正しい。MCPはエージェントが外部の機能やデータに接続するための汎用の標準で、ツールをホストするMCPサーバー経由でJSON-RPC 2.0により検出・呼び出しを行います。','誤り。これはファインチューニングの説明です。','誤り。これはトークンベースの課金モデルの説明です。','誤り。これはBedrock Guardrailsのような安全対策の説明です。']}},
+  {id:'v160', term:'Controllability (Responsible AI)', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'AWSが挙げる責任あるAIの側面「Controllability」の説明として正しいものはどれですか？', choices:['データとモデルを適切に取得・利用・保護すること','ステークホルダーがAIシステムとの関わり方を十分な情報に基づいて選べるようにすること','AIシステムの挙動を監視し、誘導するための仕組みを持つこと','予期しない入力や敵対的な入力があっても、正しい出力を得ること'], correct:2, why:['誤り。これはPrivacy and securityの説明です。','誤り。これはTransparencyの説明です。','正しい。AWSはControllabilityを「AIシステムの挙動を監視・誘導する仕組みを持つこと」と説明しています。','誤り。これはVeracity and robustnessの説明です。']}},
 ];
 
 var PRACTICE = [
@@ -470,6 +478,22 @@ var PRACTICE = [
   {id:'p61', domain:'aiml', type:'ordering', source:SOURCES.modelRegistry, text:'SageMaker Model Registryでの一般的なワークフローを、正しい順に並べてください。',
     items:['特定の問題に対するモデルを管理するModel Groupを作成する','モデルを学習するMLパイプラインを作成する','パイプラインの実行ごとに、モデルバージョンをModel Groupに登録する','Model Groupを1つ以上のModel Registry Collectionに追加する'],
     why:['最初に、同じ問題を解く複数のモデルをまとめて管理する入れ物としてModel Groupを作成します。','次に、モデルを学習するMLパイプラインを作成します。','パイプラインを実行するたびに、できたモデルを新しいバージョンとしてModel Groupに登録します。','最後に、Model GroupをCollectionに追加して、カテゴリごとに整理します。']},
+  {id:'p62', domain:'responsible', type:'matching', source:SOURCES.responsibleAi, text:'AWSが挙げる責任あるAIの側面と、その説明を組み合わせてください。',
+    prompts:['AIシステムの挙動を監視し、誘導するための仕組みを持つこと','予期しない入力や敵対的な入力があっても、正しい出力を得ること','プロバイダーやデプロイヤーを含むAIサプライチェーンに、ベストプラクティスを取り入れること','ステークホルダーがAIシステムとの関わり方を、十分な情報に基づいて選べるようにすること'],
+    options:['Governance','Fairness','Transparency','Controllability','Veracity and robustness'], correct:[3, 4, 0, 2],
+    why:['Controllabilityの説明です。','Veracity and robustnessの説明です。','Governanceの説明です。','Transparencyの説明です。なお、Fairness（異なるグループへの影響を考慮すること）はこの中のどれにも当てはまりません。']},
+  {id:'p63', domain:'genai', type:'single', source:SOURCES.mcpWhat, text:'社内のエージェントに数百個のツール定義とその詳細な説明を毎回プロンプトに含めたところ、応答が遅くなり、精度も下がりました。主な原因として最も適切なものはどれですか？',
+    choices:['ツール定義がシステムプロンプトや会話履歴と一緒にコンテキストウィンドウを消費し、モデルが関連情報を見つけにくくなる','ツールの数が増えるたびに、基盤モデルのパラメータが自動的に再学習され、推論が不安定になる','ツール定義は入力トークンとして数えられないため、課金は増えないがモデルの精度だけが低下する','ツール定義を含めると、モデルのリージョン間のレプリケーションが発生して推論の遅延が増える'], correct:[0],
+    why:['正しい。ツール定義と説明はシステムプロンプトやユーザープロンプト、会話履歴と同じ有限のコンテキストウィンドウを消費します。ウィンドウが埋まると、関連情報の特定が難しくなり、性能が下がります。','誤り。推論時にモデルのパラメータが自動で更新されることはありません。','誤り。ツール定義もプロンプトの一部としてモデルに渡されるため、コンテキストウィンドウを消費します。','誤り。ツール定義の追加でリージョン間レプリケーションが起きることはありません。']},
+  {id:'p64', domain:'genai', type:'single', source:SOURCES.mcpWhat, text:'複数のチームが同じ外部システムごとに、それぞれのエージェントに独自のツールを実装しており、重複や統制の難しさが問題になっています。ツールをMCPサーバーとして集約する主な利点はどれですか？',
+    choices:['ファインチューニングなしでモデルの精度が向上し、ハルシネーションが完全になくなる','エージェントのコンテキストウィンドウが無制限になり、ツール定義の数を気にしなくてよくなる','エージェントが利用するツールがすべて自動で最小権限になり、IAMポリシーの設計が不要になる','ツールの提供方法が標準化され、集中管理しやすくなり、エージェントとツールの開発・運用を切り離せる'], correct:[3],
+    why:['誤り。MCPはモデルの精度やハルシネーションを直接改善するものではありません。','誤り。コンテキストウィンドウの上限は変わりません。MCPでも、ツールの設計や説明の書き方が性能に影響します。','誤り。AWSのガイドでも、MCPだけではスケーリングやガバナンスの課題すべては解決しないとされています。','正しい。MCPはツールのパッケージ化・提示・呼び出し方を標準化し、集中管理しやすくします。ツールの追加や更新のたびにエージェントを再デプロイする必要も減ります。']},
+  {id:'p65', domain:'genai', type:'multi', source:SOURCES.mcpWhat, text:'Model Context Protocol（MCP）について正しいものはどれですか？（2つ選択）',
+    choices:['エージェントを外部のツールやデータに接続するための標準で、「AIアプリケーションのUSB-C」と表現されることがある','基盤モデルのパラメータを更新して、独自のカスタムモデルを作成するための学習プロトコルである','MCPを導入すれば、スケーリングやガバナンスの課題はすべて自動的に解決される','MCPサーバーがツールをホストし、エージェントはJSON-RPC 2.0でツールの検出と呼び出しを行う','入力トークンと出力トークンの数に応じて推論料金を計算するための課金プロトコルである'], correct:[0, 3],
+    why:['正しい。MCPはエージェントと外部の機能をつなぐ汎用の標準です。','誤り。モデルのカスタマイズ（ファインチューニングなど）とは別の話です。','誤り。AWSのガイドは、MCPだけでは課題すべては解決せず、ツール設計やガバナンス戦略との組み合わせが必要としています。','正しい。MCPサーバーが仲介役としてツールをホストし、JSON-RPC 2.0で検出・呼び出しが行われます。','誤り。課金方式ではなく、ツール接続の標準です。']},
+  {id:'p66', domain:'genai', type:'single', source:SOURCES.bedrockTerms, text:'Amazon Bedrockの用語として、「基盤モデルとエンタープライズのデータやアプリケーションの間を調整して、タスクを遂行するプロセス」を指すものはどれですか？',
+    choices:['Provisioned Throughput','Embedding','Orchestration','Model evaluation'], correct:[2],
+    why:['誤り。Provisioned Throughputは、モデル推論で処理するトークンの量や速度を増やすために購入するスループットの水準です。','誤り。Embeddingは、入力を数値のベクトルに変換して類似性を比較できるようにする処理です。','正しい。Bedrockの用語集では、Orchestrationを「基盤モデルとエンタープライズのデータやアプリケーションを調整してタスクを遂行するプロセス」としています。','誤り。Model evaluationは、モデルの出力を評価・比較して最適なモデルを決めるプロセスです。']},
 ];
 
 var MOCK_POOL = [
@@ -588,6 +612,21 @@ var MOCK_POOL = [
   {id:'m38', domain:'genai', type:'multi', source:SOURCES.agenticAi, text:'マルチエージェントシステムについて正しいものはどれですか？（2つ選択）',
     choices:['複数のAIエージェントが協力して、複雑なワークフローを小さな部分に分解して処理する','1つのエージェントだけで構成され、他のエージェントやシステムとは通信しない','必ず人が各ステップを承認しないと次の処理に進めない','エージェントが同じスキルレベルで対等に協力する水平型の構成がある','学習データのラベルを付けるための作業者を管理するためのサービスの名称である'], correct:[0, 3],
     why:['正しい。複数のエージェントが協調して複雑なワークフローを処理します。','誤り。エージェントは他のエージェントやシステムと通信して連携できます。','誤り。エージェント型AIは人が逐一指示しなくても自律的に行動できるのが特徴です。','正しい。AWSは、同程度のスキルのエージェントが横並びで協力する水平型と、階層構造の垂直型を挙げています。','誤り。これはSageMaker Ground Truthのようなデータラベリングの話で、マルチエージェントの説明ではありません。']},
+  {id:'m39', domain:'responsible', type:'single', source:SOURCES.responsibleAi, text:'ある企業が、チャットボットに悪意のある入力や想定外の入力が来ても、正しい回答を返せるようにしたいと考えています。AWSが挙げる責任あるAIの側面のうち、最も関係が深いものはどれですか？',
+    choices:['Transparency：利用者がAIシステムとの関わり方を、十分な情報に基づいて選べるようにすること','Controllability：AIシステムの挙動を監視・誘導する仕組みを持つこと','Veracity and robustness：想定外や敵対的な入力があっても、正しい出力を得ること','Fairness：AIシステムが異なるグループのステークホルダーに与える影響を考慮すること'], correct:[2],
+    why:['誤り。Transparencyは、利用者が関わり方を選べるように情報を提供することです。','誤り。Controllabilityは、挙動を監視・誘導する仕組みの話で、入力に対する出力の正しさそのものではありません。','正しい。想定外・敵対的な入力でも正しい出力を維持することは、Veracity and robustnessに当たります。','誤り。Fairnessは、異なるグループへの影響を考慮することです。']},
+  {id:'m40', domain:'responsible', type:'single', source:SOURCES.responsibleAi, text:'AIサプライチェーンに関わるプロバイダーやデプロイヤーを含め、組織全体でAIのベストプラクティスを取り入れる取り組みは、AWSが挙げる責任あるAIのどの側面に当たりますか？',
+    choices:['Governance','Safety','Explainability','Privacy and security'], correct:[0],
+    why:['正しい。Governanceは、プロバイダーやデプロイヤーを含むAIサプライチェーンにベストプラクティスを取り入れることです。','誤り。Safetyは、有害なシステム出力や悪用を防ぐことです。','誤り。Explainabilityは、システムの出力を理解し評価できるようにすることです。','誤り。Privacy and securityは、データとモデルを適切に取得・利用・保護することです。']},
+  {id:'m41', domain:'responsible', type:'single', source:SOURCES.responsibleAi, text:'AIシステムの出力や挙動を継続的にモニタリングし、問題があれば人が介入して調整できる仕組みを整えることは、AWSが挙げる責任あるAIのどの側面に当たりますか？',
+    choices:['Fairness','Veracity and robustness','Transparency','Controllability'], correct:[3],
+    why:['誤り。Fairnessは、異なるグループへの影響を考慮することです。','誤り。Veracity and robustnessは、想定外・敵対的な入力でも正しい出力を得ることです。','誤り。Transparencyは、利用者が関わり方を十分な情報に基づいて選べるようにすることです。','正しい。Controllabilityは、AIシステムの挙動を監視し、誘導するための仕組みを持つことです。']},
+  {id:'m42', domain:'genai', type:'single', source:SOURCES.mcpWhat, text:'LLMのコンテキストウィンドウについて正しいものはどれですか？',
+    choices:['モデルが同時に処理できるユーザー数の上限を示し、増やすにはProvisioned Throughputが必要になる','モデルが一度に考慮できるトークン数で、システムプロンプトやツール定義、会話履歴も同じ枠を消費する','モデルのトレーニングに使ったデータの総量を示し、大きいほど推論時の応答が必ず正確になる','推論リクエストの入力にのみ適用される上限で、モデルが生成する出力のトークンとは無関係である'], correct:[1],
+    why:['誤り。同時利用者数ではなく、一度に考慮できるトークン量の上限です。','正しい。システムプロンプト、ユーザープロンプト、ツール定義、会話履歴が同じ有限の枠を取り合います。','誤り。トレーニングデータの量ではありません。','誤り。入力と出力の合計がウィンドウの対象になる点に注意が必要です（モデルにより扱いが異なるため、詳細はモデルのドキュメントを確認します）。']},
+  {id:'m43', domain:'responsible', type:'multi', source:SOURCES.responsibleAi, text:'AWSが挙げる責任あるAIの側面の説明として正しいものはどれですか？（2つ選択）',
+    choices:['Fairness：モデルを学習させるデータの総量を最大化すること','Privacy and security：データとモデルを適切に取得・利用・保護すること','Safety：システムの応答時間を短縮し、可用性を高めること','Transparency：モデル内部の計算式をすべて公開することを法的に義務づけること','Controllability：AIシステムの挙動を監視し、誘導するための仕組みを持つこと'], correct:[1, 4],
+    why:['誤り。Fairnessは、異なるグループのステークホルダーへの影響を考慮することです。','正しい。Privacy and securityの説明です。','誤り。Safetyは、有害な出力や悪用を防ぐことです。可用性の話ではありません。','誤り。Transparencyは、利用者が関わり方を十分な情報に基づいて選べるようにすることです。','正しい。Controllabilityの説明です。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

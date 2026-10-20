@@ -44,7 +44,7 @@
 | 38 | Vector Database | fm | v35 |
 | 39 | AWS KMS | security | v36 |
 | 40 | Unlabeled Data | aiml | v37 |
-| 41 | Context Window | genai | 未 |
+| 41 | Context Window | genai | v155 |
 | 42 | Safety | responsible | v69 |
 | 43 | Supervised Learning | aiml | v38 |
 | 44 | Amazon OpenSearch Service | fm | v39 |
@@ -53,7 +53,7 @@
 | 47 | Unsupervised Learning | aiml | v42 |
 | 48 | Amazon Neptune | fm | v43 |
 | 49 | Encryption in Transit | security | v44 |
-| 50 | Veracity | responsible | 未 |
+| 50 | Veracity | responsible | v156 |
 | 51 | Reinforcement Learning | aiml | v45 |
 | 52 | Vector | genai | v46 |
 | 53 | Amazon Aurora PostgreSQL pgvector | fm | v47 |
@@ -98,13 +98,13 @@
 | 92 | Amazon CloudWatch | security |v66 |
 | 93 | Computer Vision | aiml |v62 |
 | 94 | Chunking | genai | v77 |
-| 95 | Privacy (Responsible AI) | responsible | 未 |
+| 95 | Privacy (Responsible AI) | responsible | v157 |
 | 96 | Natural Language Processing (NLP) | aiml |v63 |
 | 97 | Model Distillation | fm |v60 |
 | 98 | AWS Config | security |v65 |
 | 99 | Text Generation | genai | 未 |
 | 100 | Speech Recognition | aiml | v78 |
-| 101 | Governance (Responsible AI) | responsible | 未 |
+| 101 | Governance (Responsible AI) | responsible | v158 |
 | 102 | Domain Adaptation | fm | 未 |
 | 103 | Amazon Inspector | security | v80 |
 | 104 | Recommendation System | aiml | v86 |
@@ -214,7 +214,7 @@
 | 208 | Data Drift | aiml | 未 |
 | 209 | Prompt Injection | fm | 未 |
 | 210 | Output Filtering and Validation | security | 未 |
-| 211 | Model Context Protocol (MCP) | genai | 未 |
+| 211 | Model Context Protocol (MCP) | genai | v159 |
 | 212 | Curated Data Sources | responsible | 未 |
 | 213 | Model Registry | aiml | v148 |
 | 214 | Prompt Poisoning | fm | 未 |
@@ -478,3 +478,4 @@
 | 472 | Agent Orchestration | fm | 未 |
 | 473 | Responsible AI Auditing | security | 未 |
 | 474 | AWS Well-Architected Tool | aiml | 未 |
+| 475 | Controllability (Responsible AI) | responsible | v160 |
