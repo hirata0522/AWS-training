@@ -307,3 +307,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   注意: Model Monitorは新規顧客の受け付け終了、Data WranglerはSageMaker Canvasに統合済みの注記があり、解説に反映した。
   WebFetch失敗（404）: aws.amazon.com/what-is/{fraud-detection, data-preprocessing, exploratory-data-analysis}。Fraud Detection / EDA / Data Pre-processing は出典未確認のため `未` のまま。SCP（行142）はAWS Organizationsが対象サービス一覧に無いため見送り。
   メモ: 正解最長割合は VOCAB 49% / PRACTICE 40% / MOCK 51% と高いまま。次回以降は不正解を正解より長く書くこと。
+- 2026-10-20（定期実行）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行173,178,172,188,184,213,280,284,252,260,193,206の12語のVOCABを追加（v143〜v154）、PRACTICEを4件（p58〜p61: single 2 / matching 1 / ordering 1）、MOCK_POOLを3件（m36〜m38: single 2 / multi 1）追加。累計 VOCAB=154 / PRACTICE=61 / MOCK_POOL=38。単語リスト進捗 154/469（除外5）。
+  追加トピック: 分類指標（Precision/Recall/Accuracy/Confusion Matrix/AUC）、SageMaker Model Registry・Pipelines・Ground Truth、Amazon Q Developer/Q Business、Agentic AI・マルチエージェント、Bedrock LLM-as-a-judgeの組み込みメトリクス（Faithfulness/Stereotyping）。
+  新規SOURCES: binaryInsights, modelRegistry, sagemakerPipelines, groundTruth, qDeveloper, qBusiness, agenticAi, judgeMetrics（いずれもWebFetch成功。binaryInsightsは旧Amazon Machine Learningのドキュメントだが指標の定義が公式に記載されている）。
+  注意: Ground Truth・Q Businessは新規顧客の受け付け終了、Q DeveloperのIDEプラグインは2027-04-30にサポート終了（Kiro案内）の注記があり、解説に反映した。
+  WebFetch失敗（404）: aws.amazon.com/what-is/mcp/。Kiroは公式AWSドメインの定義ページを確認できず見送り。MCP・Context Window・Tokenization等は `未` のまま。
+  メモ: 正解最長割合は VOCAB 52% / PRACTICE 38% / MOCK 52% と高いまま。次回以降は不正解を正解より長く書くこと。

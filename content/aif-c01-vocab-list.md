@@ -175,28 +175,28 @@
 | 169 | Input Tokens vs Output Tokens | genai | v133 |
 | 170 | Negative Prompt | fm | 未 |
 | 171 | Data Quality Assessment | security | 未 |
-| 172 | Accuracy | aiml | 未 |
-| 173 | Precision | aiml | 未 |
+| 172 | Accuracy | aiml | v145 |
+| 173 | Precision | aiml | v143 |
 | 174 | Intellectual Property Infringement | responsible | 未 |
 | 175 | Zero-shot Prompting | fm | v136 |
 | 176 | Privacy-enhancing Technologies | security | 未 |
 | 177 | Provisioned Throughput | genai | 未 |
-| 178 | Recall | aiml | 未 |
+| 178 | Recall | aiml | v144 |
 | 179 | Single-shot Prompting | fm | 未 |
 | 180 | Data Anonymization | security | 未 |
 | 181 | F1 Score | aiml | 未 |
 | 182 | On-Demand Throughput | genai | 未 |
 | 183 | Loss of Customer Trust | responsible | 未 |
-| 184 | Area Under the Curve (AUC) | aiml | 未 |
+| 184 | Area Under the Curve (AUC) | aiml | v147 |
 | 185 | Few-shot Prompting | fm | v137 |
 | 186 | Data Masking | security | 未 |
 | 187 | Context Engineering | genai | 未 |
-| 188 | Confusion Matrix | aiml | 未 |
+| 188 | Confusion Matrix | aiml | v146 |
 | 189 | End User Risk | responsible | 未 |
 | 190 | Chain-of-Thought Prompting | fm | 未 |
 | 191 | PII (Personally Identifiable Information) | security | 未 |
 | 192 | ROC Curve | aiml | 未 |
-| 193 | Agentic AI | genai | 未 |
+| 193 | Agentic AI | genai | v153 |
 | 194 | Prompt Template | fm | v139 |
 | 195 | Data Access Control | security | 未 |
 | 196 | Mean Squared Error (MSE) | aiml | 未 |
@@ -209,14 +209,14 @@
 | 203 | Balanced Dataset | responsible | 未 |
 | 204 | ReAct Prompting | fm | 未 |
 | 205 | Data Leakage Prevention | security | 未 |
-| 206 | Multi-agent System | genai | 未 |
+| 206 | Multi-agent System | genai | v154 |
 | 207 | Model Re-training | aiml | 未 |
 | 208 | Data Drift | aiml | 未 |
 | 209 | Prompt Injection | fm | 未 |
 | 210 | Output Filtering and Validation | security | 未 |
 | 211 | Model Context Protocol (MCP) | genai | 未 |
 | 212 | Curated Data Sources | responsible | 未 |
-| 213 | Model Registry | aiml | 未 |
+| 213 | Model Registry | aiml | v148 |
 | 214 | Prompt Poisoning | fm | 未 |
 | 215 | Audit Trail | security | 未 |
 | 216 | ML Pipeline | aiml | 未 |
@@ -255,7 +255,7 @@
 | 249 | Threat Detection | security | 未 |
 | 250 | Amazon SageMaker Clarify | responsible | v116 |
 | 251 | Amazon Textract | aiml | v129 |
-| 252 | Amazon Q Developer | genai | 未 |
+| 252 | Amazon Q Developer | genai | v151 |
 | 253 | Human-in-the-loop Evaluation | fm | 未 |
 | 254 | Vulnerability Management | security | 未 |
 | 255 | Amazon Transcribe | aiml | v130 |
@@ -263,7 +263,7 @@
 | 257 | Benchmark Dataset | fm | 未 |
 | 258 | Infrastructure Protection | security | 未 |
 | 259 | Amazon Translate | aiml | v131 |
-| 260 | Amazon Q Business | genai | 未 |
+| 260 | Amazon Q Business | genai | v152 |
 | 261 | Amazon Personalize | aiml | v87 |
 | 262 | Recall-Oriented Understudy for Gisting Evaluation (ROUGE) | fm | 未 |
 | 263 | Data Lifecycle | security | 未 |
@@ -283,11 +283,11 @@
 | 277 | Perplexity | fm | 未 |
 | 278 | Data Governance | security | 未 |
 | 279 | Amazon Bedrock Model Evaluations | responsible | 未 |
-| 280 | Amazon SageMaker Pipelines | aiml | 未 |
+| 280 | Amazon SageMaker Pipelines | aiml | v149 |
 | 281 | Amazon Bedrock AgentCore | genai | v113 |
 | 282 | LLM-as-a-judge | fm | 未 |
 | 283 | Governance Framework | security | 未 |
-| 284 | Amazon SageMaker Ground Truth | aiml | 未 |
+| 284 | Amazon SageMaker Ground Truth | aiml | v150 |
 | 285 | Open Source Model Licensing | responsible | 未 |
 | 286 | Amazon SageMaker Canvas | aiml | 未 |
 | 287 | Task Completion Rate | fm | 未 |
