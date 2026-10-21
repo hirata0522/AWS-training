@@ -380,3 +380,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCESなし（bedrockTerms と guardrails を WebFetch で本文再確認、成功）。
   見送り: Context Engineering は公式ドキュメントが検索で見つからず `未` のまま。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 45% / MOCK 45% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・5回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。VOCABの追加なし、PRACTICEを7件（p124〜p130: single 5 / multi 1 / matching 1）、MOCK_POOLを7件（m90〜m96: single 6 / ordering 1）追加。累計 VOCAB=205 / PRACTICE=130 / MOCK_POOL=96。単語リスト進捗 205/466（除外9）。計14件。
+  追加トピック: Provisioned Throughput（カスタムモデルの利用条件・コミットメント期間・時間課金・手順）、バッチ推論（S3入出力・プロビジョンドモデル非対応）、KBのチャンキング方式（デフォルト/階層型/セマンティック/なし）、Model Cards（用途・リスク評価）、Macie。
+  新規SOURCESなし（provThroughput / bedrockBatch / bedrockChunking / modelCards / macie をWebFetchで本文再確認、すべて成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 43% と高いまま。次回以降も不正解を正解より長く書くこと。
