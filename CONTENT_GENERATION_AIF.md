@@ -392,3 +392,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: VAEのエンコーダー/デコーダー/潜在空間（whatIsGenai をWebFetch成功で本文確認）、責任あるAIの8側面の定義（responsibleAi をWebFetch成功で再確認）。新規SOURCESなし。
   見送り: Inclusivity / Accountability / Trustworthiness は responsibleAi ページに定義の記載がなく `未` のまま。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 44% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・8回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。PRACTICEを5件（p140〜p144: single 4 / multi 1）、MOCK_POOLを3件（m105〜m107: single）追加。VOCAB追加なし。累計 VOCAB=208 / PRACTICE=144 / MOCK_POOL=107。単語リスト進捗 208/467（除外9）。計8件。
+  追加トピック: Bedrockのカスタマイズ手法（教師ありFT・強化FT・蒸留、トレーニング課金はトークン数×エポック数）、SageMaker JumpStartのドメイン適応FT。出典は bedrockCustom / domainAdapt をWebFetch成功で本文確認。新規SOURCESなし。
+  見送り: 行83 Continued Pre-training は、Bedrockのカスタマイズ手法ページ（現行）に継続事前学習の記載が無く、公式の定義ページを確認できないため `未` のまま（次回以降に再確認、確認できなければ `除外`）。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 44% と高いまま。今回の追加分は不正解を長めに書いて調整。
