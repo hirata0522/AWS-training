@@ -409,3 +409,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: プロンプトの構成要素（指示/コンテキスト/入力/デモンストレーション例）、プロンプトテンプレート、Bedrockモデルは過去のやり取りを記憶しない、Guardrailsのプロンプト攻撃フィルター（Jailbreak/Prompt Injection/Prompt Leakage、InvokeModelでの入力タグ必須、toolResultは評価対象外、LeakageはStandardティアのみ）。
   新規SOURCESなし。promptAttack / promptGuide の本文をWebFetchで再確認（成功）。nodeでの読み込み確認済み。WebFetch: aws.amazon.com/what-is/prompt-engineering/ にはReAct・プロンプトチェーンの記載なし → ReAct/Prompt Chaining は `未` のまま。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 40% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・12回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行220 Hallucination Detection・225 Grounding Techniques のVOCABを追加（v217,v218）、PRACTICEを7件（p166〜p172: single 5 / multi 1 / matching 1）、MOCK_POOLを5件（m121〜m125: single）追加。累計 VOCAB=218 / PRACTICE=172 / MOCK_POOL=125。単語リストは218/467（除外9）。計14件。
+  追加トピック: Bedrock Guardrailsのcontextual grounding check（grounding/relevance、しきい値0〜0.99、出力のみ評価、ApplyGuardrailの追加コンテンツブロック、Converseのgrounding_source qualifier）、RAG・具体的なプロンプトによるハルシネーション低減。
+  新規SOURCES: contextualGrounding（WebFetch成功・本文確認）。hallucination も本文を再確認（WebFetch成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 40% と高いまま。次回以降も不正解を正解より長く書くこと。

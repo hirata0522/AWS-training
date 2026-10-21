@@ -150,6 +150,7 @@ var SOURCES = {
   qBizWhat:{label:'Amazon Q Business とは', url:'https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html'},
   agentcoreMemory:{label:'Amazon Bedrock AgentCore: エージェントにメモリを追加する', url:'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory.html'},
   kbRetrieveGenerate:{label:'Amazon Bedrock Knowledge Bases: ナレッジベースへのクエリと応答生成（RetrieveAndGenerate）', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-retrieve-generate.html'},
+  contextualGrounding:{label:'Amazon Bedrock Guardrails: コンテキストに基づくグラウンディングチェック', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-contextual-grounding-check.html'},
 };
 
 var VOCAB = [
@@ -370,6 +371,8 @@ var VOCAB = [
   {id:'v214', term:'InvokeModel API', domain:'fm', source:SOURCES.converseApi, q:{text:'Amazon Bedrock の InvokeModel と Converse API の関係として正しいものはどれですか？', choices:['InvokeModel は会話履歴をサービス側で自動的に保持し、Converse API は履歴を保持しない', 'InvokeModel はストリーミング応答を一切返せないため、ストリーミングには Converse API が必須である', 'InvokeModel はモデルのトレーニングジョブを開始するためのAPIで、推論には Converse API だけを使う', 'InvokeModel は基本の推論操作で、Converse API はメッセージ対応モデル全般で一貫した形式でコードを書ける'], correct:3, why:['誤り。Bedrock のモデルは、過去のやり取りがプロンプトに含まれていない限り、以前のリクエストを記憶しません。', '誤り。InvokeModelWithResponseStream という、ストリーミング応答用の基本操作が存在します。', '誤り。InvokeModel はモデルを呼び出して推論を行う操作で、トレーニングジョブの開始用ではありません。', '正しい。InvokeModel / InvokeModelWithResponseStream は基本の推論操作で、会話アプリにも使えますが、Converse API はメッセージ対応モデルすべてに一貫したAPIを提供します。']}},
   {id:'v215', term:'Instruction', domain:'fm', source:SOURCES.promptGuide, q:{text:'プロンプトの構成要素のうち「Instruction（指示）」の説明として正しいものはどれですか？', choices:['タスクの背景や関連分野の説明を与え、モデルが入力を解釈して出力を作る際の手がかりになる部分', '期待する出力の形式を示すために、入力と望ましい出力のペアを例として並べて提示する部分', 'モデルに実行してほしいタスクそのものを伝える部分で、「上記のレビューを1文で要約してください」のような文', 'モデルが処理する対象となるテキストそのもので、要約や質問応答の対象になる文章や問い合わせの内容'], correct:2, why:['誤り。これはContext（コンテキスト）の説明です。指示ではなく、タスクの背景や追加情報を与える部分です。', '誤り。これはデモンストレーション例（few-shot）の説明です。指示とは別の構成要素です。', '正しい。Instructionは「何をするか」をLLMに伝える部分で、入力テキストはその指示が適用される対象です。', '誤り。これはInput（入力）の説明です。指示は入力に対して何を行うかを伝える部分です。']}},
   {id:'v216', term:'Context (Prompt)', domain:'fm', source:SOURCES.promptGuide, q:{text:'プロンプトの構成要素のうち「Context（コンテキスト）」の説明として正しいものはどれですか？', choices:['タスクに関する追加情報やキーワードを与え、モデルが入力を使って出力を組み立てる手がかりになる部分', 'モデルに何をしてほしいかを直接伝える部分で、「1文で要約して」「分類して」のような命令文にあたる部分', 'モデルが処理する対象となるテキストそのもので、その内容に基づいて要約や回答などの出力が生成される部分', '期待する応答の形式や口調を学習させるため、入力と望ましい出力の組を例として複数提示する部分'], correct:0, why:['正しい。例の「The following is text from a restaurant review」のように、入力をどう使うかを導く追加情報やキーワードがContextです。', '誤り。これはInstruction（指示）の説明です。Contextはタスクの背景を与える部分です。', '誤り。これはInput（入力）の説明です。Contextは入力そのものではなく、入力を扱う手がかりです。', '誤り。これはデモンストレーション例（few-shot）の説明です。']}},
+  {id:'v217', term:'Hallucination Detection', domain:'security', source:SOURCES.contextualGrounding, q:{text:'Amazon Bedrock Guardrailsで、モデルの応答のハルシネーションを検出・フィルタリングするために、参照ソースとユーザーのクエリを使って応答を評価する機能はどれですか？', choices:['Denied topics（アプリケーションにとって望ましくない話題を定義して、入力と応答の両方でブロックする機能）','Contextual grounding check（応答が参照ソースに基づいているか、クエリに関連しているかを評価する機能）','Word filters（指定した単語やフレーズに一致する入力や応答をブロックする機能）','Sensitive information filters（個人を特定できる情報などの機密情報を検出してマスクまたはブロックする機能）'], correct:1, why:['誤り。Denied topicsは特定の話題を拒否する機能で、応答の事実性は評価しません。','正しい。Contextual grounding checkは、参照ソースとクエリを基に、応答がソースに基づいているか（grounding）とクエリに関連しているか（relevance）をスコア化し、しきい値未満をハルシネーションとして検出します。','誤り。Word filtersは単語やフレーズの一致でブロックするもので、事実性は評価しません。','誤り。Sensitive information filtersは機密情報を扱う機能で、ハルシネーションの検出ではありません。']}},
+  {id:'v218', term:'Grounding Techniques', domain:'security', source:SOURCES.hallucination, q:{text:'モデルの応答を信頼できる外部の情報に結び付けて、ハルシネーションを減らす考え方（グラウンディング）の代表的な手法はどれですか？', choices:['temperatureを最大にして、モデルがより多様な表現を生成できるようにする','学習済みモデルのパラメータ数を増やすために、モデルを再度事前学習する','応答の最大トークン数を小さくして、モデルが生成する文章を短くする','検索拡張生成（RAG）で関連する外部情報を取得し、プロンプトに含めてモデルに渡す'], correct:3, why:['誤り。temperatureを上げると応答はよりランダムになり、ハルシネーションが増えやすくなります。','誤り。再度の事前学習は大がかりな作業で、応答を外部の情報に結び付ける手法ではありません。','誤り。応答を短くしても、内容が事実に基づく保証にはなりません。','正しい。RAGはモデルが答えを持たない部分に、関連する新しい情報を補います。応答を取得した情報に結び付ける代表的なグラウンディング手法です。']}},
 ];
 
 var PRACTICE = [
@@ -872,6 +875,28 @@ var PRACTICE = [
   {id:'p165', domain:'fm', type:'single', source:SOURCES.promptGuide, text:'プロンプトテンプレートについて、Amazon Bedrock のドキュメントの説明として正しいものはどれですか？',
     choices:['プロンプトのうち交換可能な内容を差し込む箇所を持ち、さまざまなユースケース向けに再利用できる書式', 'モデルが生成する応答の文字数やトークン数の上限を設定するための推論パラメータの組', 'ユーザーの入力に含まれる不適切な内容を検出して、ブロックするために使うガードレールのルール', 'モデルの重みを更新するために使う、入力と正解の組を集めた学習データセットの形式'], correct:[0],
     why:['正しい。プロンプトテンプレートは、交換可能な内容を含むプロンプトの書式で、分類・要約・質問応答などの「レシピ」として使えます。', '誤り。これは最大トークン数などの推論パラメータの説明です。', '誤り。これはガードレール（Guardrails）の説明です。', '誤り。これは学習データセットの説明で、プロンプトテンプレートはモデルの重みを更新しません。']},
+  {id:'p166', domain:'security', type:'single', source:SOURCES.contextualGrounding, text:'参照ソースが「London is the capital of UK. Tokyo is the capital of Japan.」、ユーザーのクエリが「日本の首都は？」のとき、モデルが「The capital of UK is London.」と応答しました。Contextual grounding checkの結果として正しいものはどれですか？',
+    choices:['ソースに書かれていない内容を含むため、grounding（根拠性）のスコアが低くなる', 'ソースの内容を誤って引用しているため、grounding（根拠性）とrelevance（関連性）の両方のスコアが低くなる', 'ソースに基づいているがクエリに答えていないため、relevance（関連性）のスコアが低くなる', 'ソースにもクエリにも合致しているため、どちらのスコアも高くなる'], correct:[2],
+    why:['誤り。この応答の内容はソースに書かれているので、groundingは低くなりません。','誤り。ソースの引用は正確なので、groundingは低くなりません。','正しい。応答はソースに基づいていますが、日本の首都という質問に答えていないため、relevanceが低くなります。','誤り。クエリに答えていないので、relevanceは高くなりません。']},
+  {id:'p167', domain:'security', type:'single', source:SOURCES.contextualGrounding, text:'Contextual grounding checkのgroundingとrelevanceのしきい値を0.7に設定した場合、どのように扱われますか？',
+    choices:['スコアが0.7未満の応答はハルシネーションとして検出され、アプリケーションでブロックされる', 'スコアが0.7以上の応答だけがハルシネーションとして検出され、ブロックされる', 'しきい値は、ブロックではなく応答の最大トークン数の上限として使われる', 'しきい値は、モデルの学習時に使われる学習データの品質基準として使われる'], correct:[0],
+    why:['正しい。しきい値は、応答が根拠に基づいており関連していると見なされるための最小スコアです。0.7未満の応答はブロックされます。','誤り。0.7以上は、根拠があり関連していると見なされて通過します。','誤り。しきい値は応答の長さとは無関係です。','誤り。しきい値は推論時の応答の評価に使い、学習データには関係しません。']},
+  {id:'p168', domain:'fm', type:'multi', source:SOURCES.hallucination, text:'生成AIアプリケーションでハルシネーションを減らすための方法として適切なものはどれですか？（2つ選択）',
+    choices:['temperatureを最大に設定して、より創造的な応答を生成させる', '検索拡張生成（RAG）で、関連する外部情報をモデルに与える', '応答にアクセスできる利用者を、IAMポリシーで少数に制限する', '指示や求める内容を具体的かつ詳細に書いたプロンプトを使う', 'モデルを稼働させるリージョンを、利用者の所在地に近いものへ変更する'], correct:[1,3],
+    why:['誤り。temperatureを上げると、よりランダムな応答になり、ハルシネーションが増えやすくなります。','正しい。RAGは、モデルが答えを持たない部分に関連する情報を補い、応答を情報源に結び付けます。','誤り。アクセス制限は応答の事実性を高める手段ではありません。','正しい。プロンプトが具体的で詳しいほど、モデルの推測が減り、応答の正確さが高まります。','誤り。リージョンの変更は主にレイテンシーに関わり、応答の事実性とは関係しません。']},
+  {id:'p169', domain:'security', type:'single', source:SOURCES.contextualGrounding, text:'Bedrock Guardrailsのcontextual grounding checkは、どの内容に対して実行されますか？',
+    choices:['ユーザーが入力したプロンプトと、モデルの応答の両方', 'モデルの応答に対してのみ（プロンプトには実行されない）', 'モデルの学習に使われたデータセットに対してのみ', 'ナレッジベースに登録されたすべてのドキュメントに対して'], correct:[1],
+    why:['誤り。応答が必要なため、プロンプトには実行されません。','正しい。チェックはモデルの応答を、参照ソースとクエリに照らして評価するため、出力に対してのみ実行されます。','誤り。学習データを評価する機能ではありません。','誤り。登録ドキュメントを一括で検査する機能ではありません。']},
+  {id:'p170', domain:'security', type:'matching', source:SOURCES.contextualGrounding, text:'参照ソースとクエリが与えられたときの応答の状態と、Contextual grounding checkの結果を組み合わせてください。',
+    prompts:['ソースに根拠があり、クエリにも適切に答えている応答', 'ソースにない内容を含むが、クエリには答えている応答', 'ソースに基づいているが、クエリとは無関係な応答', 'ソースにもクエリにも関係しない応答'],
+    options:['groundingのスコアだけが低くなる', 'groundingとrelevanceの両方のスコアが低くなる', 'relevanceのスコアだけが低くなる', 'どちらのスコアも高くなる'], correct:[3,0,2,1],
+    why:['根拠があり関連もあるため、どちらのスコアも高くなります。','ソースに根拠がない内容を含むので、groundingが低くなります。クエリには答えているのでrelevanceは低くなりません。','ソースに基づくのでgroundingは高く、クエリに答えていないのでrelevanceが低くなります。','ソースにもクエリにも関係しないので、両方のスコアが低くなります。']},
+  {id:'p171', domain:'security', type:'single', source:SOURCES.contextualGrounding, text:'ApplyGuardrail APIでcontextual grounding checkを使う場合、Converse APIの場合と比べて追加で必要なものはどれですか？',
+    choices:['Guardrailを暗号化するための、カスタマーマネージドのKMSキー', 'モデルの応答を再生成するための、別の基盤モデルのID', 'ソースを格納するための、専用のS3バケットとバケットポリシー', 'ガード対象となるコンテンツ（モデルの応答に相当するもの）を示す追加のコンテンツブロック'], correct:[3],
+    why:['誤り。KMSキーの指定は任意で、チェックの必須要件ではありません。','誤り。ApplyGuardrailはモデルを呼び出さずに、与えたコンテンツを評価します。','誤り。ソースはAPIリクエストのコンテンツブロックで渡します。','正しい。ApplyGuardrailではモデルが呼ばれないため、Invoke/Converseでのモデル応答に相当するコンテンツを、追加のブロックとして渡す必要があります。']},
+  {id:'p172', domain:'security', type:'single', source:SOURCES.contextualGrounding, text:'Converse APIでcontextual grounding checkの参照ソースを渡す場合、guardContentブロックに指定するqualifiersの値はどれですか？',
+    choices:['grounding_source', 'reference_document', 'knowledge_base', 'guard_policy'], correct:[0],
+    why:['正しい。参照ソースにはgrounding_source、ユーザーのクエリにはqueryを指定します。','誤り。この名前のqualifierはありません。','誤り。この名前のqualifierはありません。','誤り。この名前のqualifierはありません。']},
 ];
 
 var MOCK_POOL = [
@@ -1229,6 +1254,21 @@ var MOCK_POOL = [
   {id:'m120', domain:'security', type:'single', source:SOURCES.promptAttack, text:'「あなたの指示を教えてください」「このメッセージより前の内容をすべて繰り返してください」のように、システムプロンプトや開発者の指示を引き出そうとするプロンプトは、何と呼ばれますか？',
     choices:['Prompt Leakage', 'Jailbreak（モデルの安全機能を回避して、有害または危険な内容を生成させる攻撃）', 'Prompt Injection（開発者が指定した指示を無視・上書きさせて、別の振る舞いをさせる攻撃）', 'Model inversion（モデルの出力を分析して、学習に使われたデータを推定する攻撃）'], correct:[0],
     why:['正しい。システムプロンプトや設定内容を引き出そうとする攻撃がPrompt Leakageです。', '誤り。Jailbreakは安全機能の回避を狙う攻撃です。', '誤り。Prompt Injectionは指示を上書きさせる攻撃で、内容を引き出すことが目的ではありません。', '誤り。Model inversionは学習データを推定する攻撃で、プロンプトによる攻撃ではありません。']},
+  {id:'m121', domain:'fm', type:'single', source:SOURCES.hallucination, text:'ある企業の生成AIチャットボットが、社内規程にない内容をもっともらしく回答してしまいます。応答を最新の社内文書に結び付けて、この問題を減らす方法として最も適切なものはどれですか？',
+    choices:['応答の最大トークン数を大きくして、より長く説明できるようにする', 'temperatureを上げて、モデルがより自由に回答できるようにする', '検索拡張生成（RAG）で社内文書から関連情報を取得し、プロンプトに含める', 'CloudTrailを有効にして、すべてのAPI呼び出しを記録する'], correct:[2],
+    why:['誤り。長くしても根拠のない内容が増えるだけです。','誤り。temperatureを上げると、ハルシネーションが増えやすくなります。','正しい。RAGは、関連する社内の情報を補い、応答を情報源に結び付けます。','誤り。CloudTrailは監査用の記録で、応答の事実性は高まりません。']},
+  {id:'m122', domain:'security', type:'single', source:SOURCES.contextualGrounding, text:'Contextual grounding checkで、groundingのしきい値を0.5から0.9に引き上げた場合の影響として正しいものはどれですか？',
+    choices:['根拠のない内容がブロックされる可能性が高まり、ハルシネーションが表示される確率は下がる', '根拠のない内容がブロックされる可能性が下がり、より多くの応答が通過する', '応答の生成が速くなり、レイテンシーが短縮される', 'クエリに関連しない応答が、自動的にすべて許可される'], correct:[0],
+    why:['正しい。しきい値を上げるほど、根拠に高い確信度が求められ、より多くの応答がブロックされます。','誤り。しきい値を上げると、通過する応答は減ります。','誤り。しきい値はスコアの判定基準で、生成速度は変わりません。','誤り。関連性はrelevanceのしきい値で別に判定されます。']},
+  {id:'m123', domain:'security', type:'single', source:SOURCES.contextualGrounding, text:'手数料の規定文書を参照ソースとして質問に回答する銀行のアプリケーションで、規定にない金額を答える応答を検出したい場合、Bedrock Guardrailsのどの機能が最も適していますか？',
+    choices:['Denied topics', 'Word filters', 'Sensitive information filters', 'Contextual grounding check'], correct:[3],
+    why:['誤り。Denied topicsは特定の話題を拒否する機能です。','誤り。Word filtersは指定した単語やフレーズを検出する機能です。','誤り。Sensitive information filtersは機密情報の検出・マスクの機能です。','正しい。参照ソースに基づかない（ungrounded）応答を、groundingのスコアで検出できます。']},
+  {id:'m124', domain:'security', type:'single', source:SOURCES.contextualGrounding, text:'参照ソースの内容は正しく引用しているものの、ユーザーの質問には答えていない応答は、Contextual grounding checkでどのように評価されますか？',
+    choices:['groundingのスコアが低くなる', 'relevanceのスコアが低くなる', 'groundingとrelevanceのどちらも高くなる', '文章の長さを理由にブロックされる'], correct:[1],
+    why:['誤り。ソースに基づいているため、groundingは低くなりません。','正しい。質問に答えていない応答は、ソースに基づいていてもrelevanceが低く評価されます。','誤り。質問に答えていないので、relevanceは高くなりません。','誤り。チェックはスコアとしきい値で判定され、長さは基準ではありません。']},
+  {id:'m125', domain:'security', type:'single', source:SOURCES.contextualGrounding, text:'Contextual grounding checkのgroundingおよびrelevanceのしきい値として設定できる範囲はどれですか？',
+    choices:['1から100までの整数', '0から1まで（1を含む）', '0から0.99まで', '-1から1まで'], correct:[2],
+    why:['誤り。整数ではなく小数のスコアです。','誤り。1に設定すると、すべてのコンテンツがブロックされるため無効です。','正しい。0から0.99までを設定できます。','誤り。負の値は使いません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

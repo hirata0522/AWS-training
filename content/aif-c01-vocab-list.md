@@ -223,12 +223,12 @@
 | 217 | Agent Memory Management | genai | v199 |
 | 218 | Demographic Parity | responsible | 未 |
 | 219 | Prompt Hijacking | fm | 未 |
-| 220 | Hallucination Detection | security | 未 |
+| 220 | Hallucination Detection | security | v217 |
 | 221 | Technical Debt (ML) | aiml | 未 |
 | 222 | Tool Use (Agents) | genai | v197 |
 | 223 | Open Source Pre-trained Model | aiml | 未 |
 | 224 | Jailbreaking | fm | v186 |
-| 225 | Grounding Techniques | security | 未 |
+| 225 | Grounding Techniques | security | v218 |
 | 226 | Subgroup Analysis | responsible | 未 |
 | 227 | Managed API Service | aiml | 未 |
 | 228 | Prompt Leaking | fm | v196 |
