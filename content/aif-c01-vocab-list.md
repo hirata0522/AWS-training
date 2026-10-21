@@ -319,11 +319,11 @@
 | 313 | Amazon Nova | genai | v182 |
 | 314 | AI Decision Transparency | responsible | 未 |
 | 315 | Amazon SageMaker Serverless Inference | aiml | 除外 |
-| 316 | Amazon Bedrock Converse API | fm | 未 |
+| 316 | Amazon Bedrock Converse API | fm | v210 |
 | 317 | NIST AI Risk Management Framework | security | 未 |
 | 318 | Amazon Titan | genai | 未 |
 | 319 | Amazon SageMaker Neo | aiml | 未 |
-| 320 | InvokeModel API | fm | 未 |
+| 320 | InvokeModel API | fm | v214 |
 | 321 | EU AI Act | security | 未 |
 | 322 | Amazon SageMaker Debugger | aiml | 未 |
 | 323 | Human-in-the-loop (A2I) | responsible | 未 |
@@ -337,7 +337,7 @@
 | 331 | Model Context Window Management | fm | 未 |
 | 332 | HIPAA | security | 未 |
 | 333 | Amazon EMR | aiml | 未 |
-| 334 | Amazon Bedrock Flows | genai | 未 |
+| 334 | Amazon Bedrock Flows | genai | v211 |
 | 335 | Embedding Model | fm | 未 |
 | 336 | SOC Reports | security | 未 |
 | 337 | Amazon Redshift | aiml | 未 |
@@ -345,13 +345,13 @@
 | 339 | AWS Lake Formation | aiml | v180 |
 | 340 | Document Chunking Strategy | fm | 未 |
 | 341 | Compliance Reports | security | 未 |
-| 342 | Amazon Bedrock Playground | genai | 未 |
+| 342 | Amazon Bedrock Playground | genai | v212 |
 | 343 | AWS Data Exchange | aiml | 未 |
 | 344 | Selection Bias | responsible | 未 |
 | 345 | Amazon Titan Embeddings | fm | 未 |
 | 346 | Data Poisoning | security | 未 |
 | 347 | Amazon Kinesis | aiml | 未 |
-| 348 | Amazon Bedrock Cross-Region Inference | genai | 未 |
+| 348 | Amazon Bedrock Cross-Region Inference | genai | v213 |
 | 349 | Amazon Athena | aiml | 未 |
 | 350 | Amazon Kendra GenAI Index | fm | 未 |
 | 351 | Model Inversion | security | 未 |

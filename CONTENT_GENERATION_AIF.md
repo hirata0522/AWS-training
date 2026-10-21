@@ -400,3 +400,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: AUC/ROC、カットオフのトレードオフ、過学習/過小適合の対処、フューショットプロンプティング。出典は binaryInsights / underOver / promptGuide をWebFetch成功で本文再確認。新規SOURCESなし。
   見送り: Bias (ML) / Variance は underOver ページに記載がなく、Single-shot Prompting も promptGuide に定義がない（zero-shot/few-shotのみ）ため `未` のまま。On-Demand Throughput も prov-throughput ページに定義記載なし。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 43% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・10回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行316,334,342,348,320のVOCABを追加（v210〜v214）、PRACTICEを8件（p150〜p157: single 5 / multi 1 / ordering 1 / matching 1）、MOCK_POOLを5件（m111〜m115: single）追加。累計 VOCAB=214 / PRACTICE=157 / MOCK_POOL=115。単語リストは214/467（除外9）。
+  追加トピック: Converse API/InvokeModel、Bedrock Flows（作成→テスト→バージョン→エイリアス）、Playground、クロスリージョン推論（Geographic/Global）、LLM-as-a-judgeの組み込みメトリクス、責任あるAIの8次元、AIバイアスの種類（測定/選択/アルゴリズム）。
+  新規SOURCES: converseApi, crossRegion, bedrockFlows（いずれもWebFetch成功）。responsibleAi / aiBias / bedrockTerms / judgeMetrics / promptGuide も本文を再確認（WebFetch成功）。nodeでの読み込み確認済み。
+  見送り: Accountability / Inclusivity は responsible-ai ページに定義がなく、Bias(ML)/Variance も ai-bias ページに記載がないため `未` のまま。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 41% と高いまま。次回以降も不正解を正解より長く書くこと。
