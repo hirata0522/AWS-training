@@ -38,7 +38,7 @@
 | 32 | Training Data | aiml | v31 |
 | 33 | Amazon Bedrock Knowledge Bases | fm | v32 |
 | 34 | Resource-based Policy | security | v33 |
-| 35 | Tokenization | genai | 未 |
+| 35 | Tokenization | genai | v203 |
 | 36 | Robustness | responsible | v70 |
 | 37 | Labeled Data | aiml | v34 |
 | 38 | Vector Database | fm | v35 |
@@ -208,12 +208,12 @@
 | 202 | Model Monitoring | aiml | v188 |
 | 203 | Balanced Dataset | responsible | 未 |
 | 204 | ReAct Prompting | fm | 未 |
-| 205 | Data Leakage Prevention | security | 未 |
+| 205 | Data Leakage Prevention | security | v205 |
 | 206 | Multi-agent System | genai | v154 |
 | 207 | Model Re-training | aiml | 未 |
 | 208 | Data Drift | aiml | v187 |
 | 209 | Prompt Injection | fm | v185 |
-| 210 | Output Filtering and Validation | security | 未 |
+| 210 | Output Filtering and Validation | security | v204 |
 | 211 | Model Context Protocol (MCP) | genai | v159 |
 | 212 | Curated Data Sources | responsible | 未 |
 | 213 | Model Registry | aiml | v148 |

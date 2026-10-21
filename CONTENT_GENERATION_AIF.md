@@ -375,3 +375,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-21（定期実行・3回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。VOCABの追加なし、PRACTICEを8件（p110〜p117: single 5 / matching 1 / multi 1 ほか）、MOCK_POOLを6件（m78〜m83: single 5 / multi 1）追加。累計 VOCAB=202 / PRACTICE=117 / MOCK_POOL=83。単語リスト進捗 202/466（除外9）。件数は目安に届かず14件（出典を本文で確認できた項目のみ）。
   追加トピック: 責任あるAIの8側面（responsibleAi をWebFetchで本文再確認）、Bedrockのカスタマイズ手法（教師ありファインチューニング／強化ファインチューニング／蒸留。bedrockCustom をWebFetchで再確認し、「Continued Pre-training」は同ページに記載がないため `未` のまま）、基盤モデルと従来MLの違い（whatIsGenai 再確認）。新規SOURCESなし。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 56% / PRACTICE 45% / MOCK 45% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・4回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行35,205,210の3語のVOCABを追加（v203〜v205）、PRACTICEを6件（p118〜p123: single 2 / multi 1 / ordering 1 / matching 1 ほか）、MOCK_POOLを6件（m84〜m89: single）追加。累計 VOCAB=205 / PRACTICE=123 / MOCK_POOL=89。単語リスト進捗 205/466（除外9）。
+  追加トピック: トークン、Guardrailsの出力フィルタリング/機密情報フィルター/単語フィルター/拒否トピック/コンテキストグラウンディング、RAGの流れ、埋め込み、モデルカスタマイズ、推論パラメータとハイパーパラメータ。
+  新規SOURCESなし（bedrockTerms と guardrails を WebFetch で本文再確認、成功）。
+  見送り: Context Engineering は公式ドキュメントが検索で見つからず `未` のまま。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 45% / MOCK 45% と高いまま。次回以降も不正解を正解より長く書くこと。
