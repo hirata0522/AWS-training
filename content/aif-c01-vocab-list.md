@@ -218,9 +218,9 @@
 | 212 | Curated Data Sources | responsible | 未 |
 | 213 | Model Registry | aiml | v148 |
 | 214 | Prompt Poisoning | fm | 未 |
-| 215 | Audit Trail | security | 未 |
-| 216 | ML Pipeline | aiml | 未 |
-| 217 | Agent Memory Management | genai | 未 |
+| 215 | Audit Trail | security | v201 |
+| 216 | ML Pipeline | aiml | v202 |
+| 217 | Agent Memory Management | genai | v199 |
 | 218 | Demographic Parity | responsible | 未 |
 | 219 | Prompt Hijacking | fm | 未 |
 | 220 | Hallucination Detection | security | 未 |
@@ -242,7 +242,7 @@
 | 236 | Multi-agent Communication Patterns | genai | 未 |
 | 237 | Amazon Comprehend | aiml | v125 |
 | 238 | Prompt Versioning | fm | v198 |
-| 239 | Source Citation | security | 未 |
+| 239 | Source Citation | security | v200 |
 | 240 | Amazon Lex | aiml | v126 |
 | 241 | Amazon Bedrock Studio | genai | 未 |
 | 242 | Human Audit | responsible | 未 |

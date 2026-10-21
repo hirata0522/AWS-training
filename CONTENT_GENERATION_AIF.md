@@ -368,3 +368,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-21（定期実行）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行238 Prompt Versioning のVOCABを追加（v198）、PRACTICEを1件（p104: multi、ハルシネーション低減策）、MOCK_POOLを1件（m73: single、プロンプトバリアント）追加。累計 VOCAB=198 / PRACTICE=104 / MOCK_POOL=73。単語リスト進捗 198/466（除外9）。件数は目安に届かず3件（出典を本文で確認できた項目のみ）。
   新規SOURCESなし（promptMgmt と hallucination を WebFetch で本文再確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 43% / MOCK 46% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・2回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行217,239,215,216の4語のVOCABを追加（v199〜v202）、PRACTICEを5件（p105〜p109: single 3 / ordering 1 / matching 1）、MOCK_POOLを4件（m74〜m77: single）追加。累計 VOCAB=202 / PRACTICE=109 / MOCK_POOL=77。単語リスト進捗 202/466（除外9）。件数は目安に届かず13件（出典を本文で確認できた項目のみ）。
+  追加トピック: AgentCore Memory（短期/長期メモリ）、RetrieveAndGenerateの引用（citations）とGuardrailsの適用範囲、モデル呼び出しログ（監査証跡）、MLパイプラインの段階。
+  新規SOURCES: agentcoreMemory, kbRetrieveGenerate（WebFetch成功）。invocationLogging / mlops も本文を再確認（成功）。hallucination ページには grounding・confidence scoring の記載がなく、Grounding Techniques / Hallucination Detection / Confidence Scoring は `未` のまま。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 56% / PRACTICE 44% / MOCK 45% と高いまま。次回以降も不正解を正解より長く書くこと。
