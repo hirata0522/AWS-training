@@ -396,3 +396,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrockのカスタマイズ手法（教師ありFT・強化FT・蒸留、トレーニング課金はトークン数×エポック数）、SageMaker JumpStartのドメイン適応FT。出典は bedrockCustom / domainAdapt をWebFetch成功で本文確認。新規SOURCESなし。
   見送り: 行83 Continued Pre-training は、Bedrockのカスタマイズ手法ページ（現行）に継続事前学習の記載が無く、公式の定義ページを確認できないため `未` のまま（次回以降に再確認、確認できなければ `除外`）。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 44% と高いまま。今回の追加分は不正解を長めに書いて調整。
+- 2026-10-21（定期実行・9回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行192 ROC Curve のVOCABを追加（v209）、PRACTICEを5件（p145〜p149: single 4 / multi 1）、MOCK_POOLを3件（m108〜m110: single）追加。累計 VOCAB=209 / PRACTICE=149 / MOCK_POOL=110。単語リストは209/467（除外9）。
+  追加トピック: AUC/ROC、カットオフのトレードオフ、過学習/過小適合の対処、フューショットプロンプティング。出典は binaryInsights / underOver / promptGuide をWebFetch成功で本文再確認。新規SOURCESなし。
+  見送り: Bias (ML) / Variance は underOver ページに記載がなく、Single-shot Prompting も promptGuide に定義がない（zero-shot/few-shotのみ）ため `未` のまま。On-Demand Throughput も prov-throughput ページに定義記載なし。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 43% と高いまま。次回以降も不正解を正解より長く書くこと。

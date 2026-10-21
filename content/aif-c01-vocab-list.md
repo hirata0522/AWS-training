@@ -195,7 +195,7 @@
 | 189 | End User Risk | responsible | 未 |
 | 190 | Chain-of-Thought Prompting | fm | v172 |
 | 191 | PII (Personally Identifiable Information) | security | v177 |
-| 192 | ROC Curve | aiml | 未 |
+| 192 | ROC Curve | aiml | v209 |
 | 193 | Agentic AI | genai | v153 |
 | 194 | Prompt Template | fm | v139 |
 | 195 | Data Access Control | security | 未 |
