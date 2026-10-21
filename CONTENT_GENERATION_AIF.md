@@ -405,3 +405,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: converseApi, crossRegion, bedrockFlows（いずれもWebFetch成功）。responsibleAi / aiBias / bedrockTerms / judgeMetrics / promptGuide も本文を再確認（WebFetch成功）。nodeでの読み込み確認済み。
   見送り: Accountability / Inclusivity は responsible-ai ページに定義がなく、Bias(ML)/Variance も ai-bias ページに記載がないため `未` のまま。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 41% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・11回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行161 Instruction・165 Context (Prompt) のVOCABを追加（v215,v216）、PRACTICEを8件（p158〜p165: single 5 / multi 1 / matching 1 / single 1）、MOCK_POOLを5件（m116〜m120: single）追加。累計 VOCAB=216 / PRACTICE=165 / MOCK_POOL=120。単語リストは216/467（除外9）。
+  追加トピック: プロンプトの構成要素（指示/コンテキスト/入力/デモンストレーション例）、プロンプトテンプレート、Bedrockモデルは過去のやり取りを記憶しない、Guardrailsのプロンプト攻撃フィルター（Jailbreak/Prompt Injection/Prompt Leakage、InvokeModelでの入力タグ必須、toolResultは評価対象外、LeakageはStandardティアのみ）。
+  新規SOURCESなし。promptAttack / promptGuide の本文をWebFetchで再確認（成功）。nodeでの読み込み確認済み。WebFetch: aws.amazon.com/what-is/prompt-engineering/ にはReAct・プロンプトチェーンの記載なし → ReAct/Prompt Chaining は `未` のまま。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 40% と高いまま。次回以降も不正解を正解より長く書くこと。

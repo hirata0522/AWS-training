@@ -164,11 +164,11 @@
 | 158 | FM Lifecycle | genai | 未 |
 | 159 | Automated Reasoning Checks | responsible | v121 |
 | 160 | Exploratory Data Analysis (EDA) | aiml | v191 |
-| 161 | Instruction | fm | 未 |
+| 161 | Instruction | fm | v215 |
 | 162 | Data Cataloging | security | v183 |
 | 163 | Data Pre-processing | aiml | v192 |
 | 164 | Token-based Pricing | genai | v132 |
-| 165 | Context (Prompt) | fm | 未 |
+| 165 | Context (Prompt) | fm | v216 |
 | 166 | AWS Glue Data Catalog | security | v122 |
 | 167 | Data Splitting (Train/Validation/Test) | aiml | v163 |
 | 168 | Environmental Sustainability (AI) | responsible | 未 |
