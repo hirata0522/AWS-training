@@ -79,7 +79,7 @@
 | 73 | In-context Learning | fm | v138 |
 | 74 | Amazon VPC Endpoint | security | v57 |
 | 75 | Anomaly Detection | aiml | v58 |
-| 76 | Variational Autoencoder (VAE) | genai | 未 |
+| 76 | Variational Autoencoder (VAE) | genai | v208 |
 | 77 | Fine-tuning | fm |v59 |
 | 78 | Amazon Bedrock AgentCore Identity | security | v112 |
 | 79 | Trustworthiness | responsible | 未 |

@@ -388,3 +388,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Guardrailsのプロンプト攻撃フィルター（ジェイルブレイク/プロンプトインジェクション/プロンプトリーケージ、入力タグ、toolResult非対象、Detectアクション）、SageMaker ClarifyのSHAP、Bedrock評価ジョブの種類。
   新規SOURCESなし（promptAttack / clarifyExplain / bedrockEval をWebFetchで本文再確認、すべて成功）。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 45% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・7回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行76 Variational Autoencoder (VAE) のVOCABを追加（v208）、PRACTICEを3件（p137〜p139: single 2 / matching 1）、MOCK_POOLを2件（m103,m104: single）追加。累計 VOCAB=208 / PRACTICE=139 / MOCK_POOL=104。単語リスト進捗 208/467（除外9）。計6件（出典を本文で確認できた項目のみ）。
+  追加トピック: VAEのエンコーダー/デコーダー/潜在空間（whatIsGenai をWebFetch成功で本文確認）、責任あるAIの8側面の定義（responsibleAi をWebFetch成功で再確認）。新規SOURCESなし。
+  見送り: Inclusivity / Accountability / Trustworthiness は responsibleAi ページに定義の記載がなく `未` のまま。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 44% と高いまま。次回以降も不正解を正解より長く書くこと。
