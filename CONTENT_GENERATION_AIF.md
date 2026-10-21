@@ -372,3 +372,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: AgentCore Memory（短期/長期メモリ）、RetrieveAndGenerateの引用（citations）とGuardrailsの適用範囲、モデル呼び出しログ（監査証跡）、MLパイプラインの段階。
   新規SOURCES: agentcoreMemory, kbRetrieveGenerate（WebFetch成功）。invocationLogging / mlops も本文を再確認（成功）。hallucination ページには grounding・confidence scoring の記載がなく、Grounding Techniques / Hallucination Detection / Confidence Scoring は `未` のまま。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 56% / PRACTICE 44% / MOCK 45% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・3回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。VOCABの追加なし、PRACTICEを8件（p110〜p117: single 5 / matching 1 / multi 1 ほか）、MOCK_POOLを6件（m78〜m83: single 5 / multi 1）追加。累計 VOCAB=202 / PRACTICE=117 / MOCK_POOL=83。単語リスト進捗 202/466（除外9）。件数は目安に届かず14件（出典を本文で確認できた項目のみ）。
+  追加トピック: 責任あるAIの8側面（responsibleAi をWebFetchで本文再確認）、Bedrockのカスタマイズ手法（教師ありファインチューニング／強化ファインチューニング／蒸留。bedrockCustom をWebFetchで再確認し、「Continued Pre-training」は同ページに記載がないため `未` のまま）、基盤モデルと従来MLの違い（whatIsGenai 再確認）。新規SOURCESなし。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 56% / PRACTICE 45% / MOCK 45% と高いまま。次回以降も不正解を正解より長く書くこと。
