@@ -414,7 +414,7 @@
 | 408 | Epoch | fm | 未 |
 | 409 | Amazon SageMaker Network Isolation | security | 未 |
 | 410 | AWS Inferentia | aiml | 未 |
-| 411 | SHAP Values | responsible | 未 |
+| 411 | SHAP Values | responsible | v206 |
 | 412 | Customer Lifetime Value | genai | 未 |
 | 413 | Amazon EC2 for ML | aiml | 未 |
 | 414 | Learning Rate | fm | 未 |
@@ -479,3 +479,4 @@
 | 473 | Responsible AI Auditing | security | 未 |
 | 474 | AWS Well-Architected Tool | aiml | 未 |
 | 475 | Controllability (Responsible AI) | responsible | v160 |
+| 476 | Prompt Leakage | security | v207 |

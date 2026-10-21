@@ -384,3 +384,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Provisioned Throughput（カスタムモデルの利用条件・コミットメント期間・時間課金・手順）、バッチ推論（S3入出力・プロビジョンドモデル非対応）、KBのチャンキング方式（デフォルト/階層型/セマンティック/なし）、Model Cards（用途・リスク評価）、Macie。
   新規SOURCESなし（provThroughput / bedrockBatch / bedrockChunking / modelCards / macie をWebFetchで本文再確認、すべて成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 43% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-21（定期実行・6回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行411 SHAP Values＋末尾追記の行476 Prompt Leakageの2語のVOCABを追加（v206,v207）、PRACTICEを6件（p131〜p136: single 4 / multi 1 / matching 1）、MOCK_POOLを6件（m97〜m102: single）追加。累計 VOCAB=207 / PRACTICE=136 / MOCK_POOL=102。単語リスト進捗 207/467（除外9）。計14件。
+  追加トピック: Guardrailsのプロンプト攻撃フィルター（ジェイルブレイク/プロンプトインジェクション/プロンプトリーケージ、入力タグ、toolResult非対象、Detectアクション）、SageMaker ClarifyのSHAP、Bedrock評価ジョブの種類。
+  新規SOURCESなし（promptAttack / clarifyExplain / bedrockEval をWebFetchで本文再確認、すべて成功）。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 45% と高いまま。次回以降も不正解を正解より長く書くこと。
