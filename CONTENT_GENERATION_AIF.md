@@ -365,3 +365,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-20（定期実行・12回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。VOCABの追加なし、PRACTICEを3件（p101〜p103: single）、MOCK_POOLを2件（m71,m72: single）追加。累計 VOCAB=197 / PRACTICE=103 / MOCK_POOL=72。単語リスト進捗 197/466（除外9）。件数は目安に届かず5件（出典を本文で確認できた項目のみ）。
   追加トピック: 過学習/学習不足への対応（正則化・特徴量・柔軟性）、SageMaker Clarifyの説明可能性（SHAP・PDP）。新規SOURCESなし（underOver / clarifyExplain をWebFetchで本文再確認。ClarifyとAmazon Machine Learningは新規顧客受け付け終了の注記あり）。nodeでの読み込み確認済み。
   見送り: Bias (ML) / Variance は underOver ページにbias・varianceの定義記載がなく `未` のまま。
+- 2026-10-21（定期実行）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行238 Prompt Versioning のVOCABを追加（v198）、PRACTICEを1件（p104: multi、ハルシネーション低減策）、MOCK_POOLを1件（m73: single、プロンプトバリアント）追加。累計 VOCAB=198 / PRACTICE=104 / MOCK_POOL=73。単語リスト進捗 198/466（除外9）。件数は目安に届かず3件（出典を本文で確認できた項目のみ）。
+  新規SOURCESなし（promptMgmt と hallucination を WebFetch で本文再確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 55% / PRACTICE 43% / MOCK 46% と高いまま。次回以降も不正解を正解より長く書くこと。

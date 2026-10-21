@@ -241,7 +241,7 @@
 | 235 | Traditional ML vs Foundation Models | aiml | 未 |
 | 236 | Multi-agent Communication Patterns | genai | 未 |
 | 237 | Amazon Comprehend | aiml | v125 |
-| 238 | Prompt Versioning | fm | 未 |
+| 238 | Prompt Versioning | fm | v198 |
 | 239 | Source Citation | security | 未 |
 | 240 | Amazon Lex | aiml | v126 |
 | 241 | Amazon Bedrock Studio | genai | 未 |
