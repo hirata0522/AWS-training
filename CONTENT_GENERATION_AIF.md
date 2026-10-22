@@ -443,3 +443,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock evaluationsの種類（プログラム的/人間のワーカー/judgeモデル/RAG評価とground truth、評価対象モデルの種類）、contextual grounding checkの閾値（0〜0.99）・ティア（Classic既定/Standardはクロスリージョン推論必須）・ApplyGuardrailの追加ブロック・ストリーミング時の挙動・出力のみが対象。
   新規SOURCESなし（contextualGrounding / bedrockEval の本文をWebFetchで確認・成功）。nodeは未使用（validate_content.pyのみ）。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 42% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-22（定期実行・8回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。VOCAB追加は0件（`未`の語は公式の定義ページ確認が難しいため）。PRACTICEを8件（p233〜p240: single 6 / multi 1 / matching 1。genai）、MOCK_POOLを6件（m164〜m169: single 5 / multi 1。genai）追加。累計 VOCAB=226 / PRACTICE=240 / MOCK_POOL=169。単語リストは226/467（除外9）。計14件。
+  追加トピック: 基盤モデルと従来MLの違い（自己教師あり学習・汎用性）、生成AIの制約（不正確さ・バイアス・コスト・説明可能性・プライバシー）、FMの課題（理解力・インフラ）、ビジネス機能別の活用例、合成データ、生成モデルと識別モデル、次トークン予測。
+  新規SOURCESなし。whatIsGenai / whatIsFm の本文をWebFetchで確認（成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 43% と高いまま。次回以降も不正解を正解より長く書くこと。
