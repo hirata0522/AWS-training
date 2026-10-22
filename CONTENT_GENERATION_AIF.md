@@ -439,3 +439,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: SageMaker AIの推論オプション（リアルタイム/サーバーレス/非同期、自動スケーリング）、データ分割（学習/検証/テスト、層化分割、重複サンプル、推論時に使えない特徴量によるデータリークとFeature Storeのタイムトラベルクエリ）、過少適合/過学習の対処、Bedrock主要用語（トークン、推論パラメータ、モデルカスタマイズ、エンベディング、Provisioned Throughput、エージェント、RAGの流れ）。
   新規SOURCESなし。sagemakerDeploy / underOver / splitsLeakage / bedrockTerms の本文をWebFetchで確認（すべて成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 41% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-22（定期実行・7回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。VOCAB追加は0件（`未`の語は公式の定義ページ確認が難しいため）。PRACTICEを9件（p224〜p232: single 7 / multi 1 ほか。fm/securityを補充）、MOCK_POOLを6件（m158〜m163: single 5 / multi 1）追加。累計 VOCAB=226 / PRACTICE=232 / MOCK_POOL=163。単語リストは226/467（除外9）。計15件。
+  追加トピック: Bedrock evaluationsの種類（プログラム的/人間のワーカー/judgeモデル/RAG評価とground truth、評価対象モデルの種類）、contextual grounding checkの閾値（0〜0.99）・ティア（Classic既定/Standardはクロスリージョン推論必須）・ApplyGuardrailの追加ブロック・ストリーミング時の挙動・出力のみが対象。
+  新規SOURCESなし（contextualGrounding / bedrockEval の本文をWebFetchで確認・成功）。nodeは未使用（validate_content.pyのみ）。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 42% と高いまま。次回以降も不正解を正解より長く書くこと。
