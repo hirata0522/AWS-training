@@ -431,3 +431,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 責任あるAIの側面（安全性/真実性と堅牢性/説明可能性/制御性/ガバナンス/透明性）、AIバイアスの原因・種類・軽減策、SageMaker Model Cards（用途・リスク評価）。
   新規SOURCESなし（responsibleAi / aiBias / modelCards の本文をWebFetchで再確認・成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 40% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-22（定期実行・5回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。VOCAB追加は0件（`未`の語は公式の定義ページ確認が難しいため）。PRACTICEを11件（p204〜p214: single 8 / multi 1 / matching 1 ほか。genai/aimlを補充）、MOCK_POOLを6件（m145〜m150: single）追加。累計 VOCAB=226 / PRACTICE=214 / MOCK_POOL=150。単語リストは226/467（除外9）。計17件。
+  追加トピック: GAN/拡散モデル/VAE、トランスフォーマー（自己注意・位置エンコーディング・RNNとの比較）、基盤モデルと生成AIの制約、MLの学習方法（教師あり/なし/半教師あり/強化）、埋め込み（Word2Vec/BERT/Titan Embeddings）。
+  新規SOURCESなし。whatIsGenai / transformers / embeddings / whatIsMl の本文をWebFetchで確認（すべて成功）。nodeは未使用（validate_content.pyのみ）。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 41% と高いまま。次回以降も不正解を正解より長く書くこと。
