@@ -451,3 +451,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 分類・数値予測の評価指標（Accuracy/Precision/Recall/F1/LogLoss/MAE/R2）、教師あり学習（分類と回帰）と教師なし学習の違い、MLOpsの利点とMLライフサイクルの手順。
   新規SOURCESなし。canvasMetrics / mlops / supervisedLearning の本文をWebFetchで確認（すべて成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 49% / MOCK 42% と高いまま。次回以降も不正解を正解より長く書くこと。responsibleドメイン（PRACTICE 34件）が最も不足。
+- 2026-10-22（定期実行・10回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを8件（p251〜p258: single 5 / multi 1 / matching 1 ほか。responsible）、MOCK_POOLを6件（m176〜m181: single 5 / multi 1。responsible）追加。累計 VOCAB=226 / PRACTICE=258 / MOCK_POOL=181。単語リストは226/467（除外9）。計14件。
+  追加トピック: 責任あるAIの8つの観点（Fairness/Explainability/Privacy and security/Safety/Controllability/Veracity and robustness/Governance/Transparency）、SageMaker Model Cards（リスク評価の値・想定用途・バージョン管理・PDFエクスポート）。
+  新規SOURCESなし。aws.amazon.com/ai/responsible-ai/ と SageMaker Model Cards の本文をWebFetchで確認（成功）。nodeは未使用。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 41% と高いまま。観点名のみの選択肢は長さがそろうため偏りにくい。
