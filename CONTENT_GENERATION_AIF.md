@@ -413,3 +413,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock Guardrailsのcontextual grounding check（grounding/relevance、しきい値0〜0.99、出力のみ評価、ApplyGuardrailの追加コンテンツブロック、Converseのgrounding_source qualifier）、RAG・具体的なプロンプトによるハルシネーション低減。
   新規SOURCES: contextualGrounding（WebFetch成功・本文確認）。hallucination も本文を再確認（WebFetch成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 40% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-22（定期実行）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行243,457,462,444,449のVOCABを追加（v219〜v223）、PRACTICEを7件（p173〜p179: single 5 / multi 1 / matching 1）、MOCK_POOLを5件（m126〜m130: single 4 / multi 1）追加。累計 VOCAB=223 / PRACTICE=179 / MOCK_POOL=130。単語リストは223/467（除外9）。計17件。
+  追加トピック: Bedrock Prompt Optimization（シンプルな最適化、OptimizePrompt）、Intelligent Prompt Routing（同一ファミリー内で応答品質予測により振り分け）、マルチエージェントコラボレーション（スーパーバイザー/コラボレーター）、Guardrailsの機密情報フィルター（Block/Mask、regex、ログにはマスクが適用されない）、ApplyGuardrail API。
+  新規SOURCES: promptOptimize, promptRouting, multiAgent, sensitiveFilters, applyGuardrail（いずれもWebFetch成功・本文確認）。nodeでの読み込み確認済み。
+  注意: Bedrock Agents（Classic）は新規顧客受付終了の注記あり。マルチエージェントの問題は概念（スーパーバイザー/コラボレーター）にとどめた。Continued Pre-training は Bedrock のカスタマイズ公式ページ（SFT/強化学習ファインチューニング/蒸留）に記載がなく `未` のまま。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 40% と高いまま。次回以降も不正解を正解より長く書くこと。

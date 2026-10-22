@@ -246,7 +246,7 @@
 | 240 | Amazon Lex | aiml | v126 |
 | 241 | Amazon Bedrock Studio | genai | 未 |
 | 242 | Human Audit | responsible | 未 |
-| 243 | Amazon Bedrock Prompt Optimization | fm | 未 |
+| 243 | Amazon Bedrock Prompt Optimization | fm | v219 |
 | 244 | Application Security | security | 未 |
 | 245 | Amazon Polly | aiml | v127 |
 | 246 | Amazon Q | genai | 除外 |
@@ -447,12 +447,12 @@
 | 441 | Speech Synthesis | genai | 未 |
 | 442 | Amazon RDS | aiml | 未 |
 | 443 | Foundation Model Evaluation Dataset | fm | 未 |
-| 444 | Amazon Bedrock Guardrails PII Redaction | security | 未 |
+| 444 | Amazon Bedrock Guardrails PII Redaction | security | v222 |
 | 445 | Amazon Aurora | aiml | 未 |
 | 446 | Large Multimodal Model | genai | 未 |
 | 447 | Data Provenance (Responsible) | responsible | 未 |
 | 448 | Text Classification Metrics | fm | 未 |
-| 449 | ApplyGuardrail API | security | 未 |
+| 449 | ApplyGuardrail API | security | v223 |
 | 450 | Amazon DocumentDB | aiml | 未 |
 | 451 | Amazon ElastiCache | aiml | 未 |
 | 452 | Human Evaluation Rubric | fm | 未 |
@@ -460,12 +460,12 @@
 | 454 | Small Language Model | genai | 未 |
 | 455 | Fairness Metrics | responsible | 未 |
 | 456 | Amazon CloudFront | aiml | 未 |
-| 457 | Amazon Bedrock Intelligent Prompt Routing | fm | 未 |
+| 457 | Amazon Bedrock Intelligent Prompt Routing | fm | v220 |
 | 458 | AI Governance Committee | security | 未 |
 | 459 | Open-weight Model | genai | 未 |
 | 460 | Amazon VPC | aiml | 未 |
 | 461 | Disparate Impact | responsible | 未 |
-| 462 | Amazon Bedrock Agents Multi-agent Collaboration | fm | 未 |
+| 462 | Amazon Bedrock Agents Multi-agent Collaboration | fm | v221 |
 | 463 | Risk Assessment (AI) | security | 未 |
 | 464 | AWS Budgets | aiml | 未 |
 | 465 | Proprietary Model | genai | 未 |
