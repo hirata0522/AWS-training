@@ -183,7 +183,7 @@
 | 177 | Provisioned Throughput | genai | v171 |
 | 178 | Recall | aiml | v144 |
 | 179 | Single-shot Prompting | fm | 未 |
-| 180 | Data Anonymization | security | 未 |
+| 180 | Data Anonymization | security | v224 |
 | 181 | F1 Score | aiml | v176 |
 | 182 | On-Demand Throughput | genai | 未 |
 | 183 | Loss of Customer Trust | responsible | 未 |
@@ -232,8 +232,8 @@
 | 226 | Subgroup Analysis | responsible | 未 |
 | 227 | Managed API Service | aiml | 未 |
 | 228 | Prompt Leaking | fm | v196 |
-| 229 | Confidence Scoring | security | 未 |
-| 230 | Workflow Orchestration | genai | 未 |
+| 229 | Confidence Scoring | security | v226 |
+| 230 | Workflow Orchestration | genai | v225 |
 | 231 | Self-hosted API | aiml | 未 |
 | 232 | Label Quality Analysis | responsible | 未 |
 | 233 | Amazon Bedrock Prompt Management | fm | v114 |

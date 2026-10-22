@@ -418,3 +418,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: promptOptimize, promptRouting, multiAgent, sensitiveFilters, applyGuardrail（いずれもWebFetch成功・本文確認）。nodeでの読み込み確認済み。
   注意: Bedrock Agents（Classic）は新規顧客受付終了の注記あり。マルチエージェントの問題は概念（スーパーバイザー/コラボレーター）にとどめた。Continued Pre-training は Bedrock のカスタマイズ公式ページ（SFT/強化学習ファインチューニング/蒸留）に記載がなく `未` のまま。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 40% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-22（定期実行・2回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。単語リスト行180,230,229のVOCABを追加（v224〜v226）、PRACTICEを8件（p180〜p187: single 5 / multi 1 / ordering 1 / matching 1）、MOCK_POOLを5件（m131〜m135: single 4 / multi 1）追加。累計 VOCAB=226 / PRACTICE=187 / MOCK_POOL=135。単語リストは226/467（除外9）。計16件。
+  追加トピック: Bedrock Agentsのランタイム（Pre-processing/Orchestration/Post-processing、rationale/observation、トレース）、ComprehendのPII検出・墨消し（リアルタイム/非同期バッチ、スコア）、SageMaker Clarifyの特徴量寄与（SHAP）とPDP。
+  新規SOURCES: agentsHow, comprehendPii, clarifyExplain（いずれもWebFetch成功・本文確認）。nodeでの読み込み確認済み。
+  見送り: Interpretability は AWS の explainable-ai ページに解釈可能性と説明可能性の明確な定義の区別がなく `未` のまま。Agentsは新規顧客受付終了（Classic）の注記があるため概念レベルにとどめた。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 39% と高いまま。次回以降も不正解を正解より長く書くこと。
