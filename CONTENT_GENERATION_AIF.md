@@ -427,3 +427,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Provisioned Throughput（カスタムモデルに必須、時間課金、MU、コミットメント無し/1か月/6か月と削除制限、期間による割引）、Chain-of-thought / Least-to-most / Self-refine プロンプト。
   新規SOURCESなし。provThroughput / promptEng の本文をWebFetchで再確認（成功）。bedrockPricing は On-Demand の定義を確認できず。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 39% と高いまま。単語リストの残りは公式ページで定義が確認できにくい語が多いので、次回は別の出典ページ（Bedrock docs 等）を探してから埋めること。
+- 2026-10-22（定期実行・4回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。VOCAB追加は0件（残りの `未` は公式の定義ページ確認が難しい語が多いため）。PRACTICEを10件（p194〜p203: single 6 / multi 2 / matching 1 ほか。responsibleドメインを補充）、MOCK_POOLを4件（m141〜m144: single 3 / multi 1）追加。累計 VOCAB=226 / PRACTICE=203 / MOCK_POOL=144。単語リストは226/467（除外9）。計14件。
+  追加トピック: 責任あるAIの側面（安全性/真実性と堅牢性/説明可能性/制御性/ガバナンス/透明性）、AIバイアスの原因・種類・軽減策、SageMaker Model Cards（用途・リスク評価）。
+  新規SOURCESなし（responsibleAi / aiBias / modelCards の本文をWebFetchで再確認・成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 40% と高いまま。次回以降も不正解を正解より長く書くこと。
