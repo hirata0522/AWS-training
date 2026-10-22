@@ -423,3 +423,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: agentsHow, comprehendPii, clarifyExplain（いずれもWebFetch成功・本文確認）。nodeでの読み込み確認済み。
   見送り: Interpretability は AWS の explainable-ai ページに解釈可能性と説明可能性の明確な定義の区別がなく `未` のまま。Agentsは新規顧客受付終了（Classic）の注記があるため概念レベルにとどめた。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 39% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-22（定期実行・3回目）: 改訂履歴ページは今回未確認（v1.1のまま扱った）。VOCAB追加は0件（On-Demand Throughput・Single-shot Prompting・Prompt Chaining は、Bedrock料金ページ・prompt-engineering ページ・prov-throughput ページで定義を確認できず `未` のまま）。PRACTICEを6件（p188〜p193: single 4 / matching 1 / multi 1）、MOCK_POOLを5件（m136〜m140: single 4 / multi 1）追加。累計 VOCAB=226 / PRACTICE=193 / MOCK_POOL=140。単語リストは226/467（除外9）。計11件。
+  追加トピック: Provisioned Throughput（カスタムモデルに必須、時間課金、MU、コミットメント無し/1か月/6か月と削除制限、期間による割引）、Chain-of-thought / Least-to-most / Self-refine プロンプト。
+  新規SOURCESなし。provThroughput / promptEng の本文をWebFetchで再確認（成功）。bedrockPricing は On-Demand の定義を確認できず。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 39% と高いまま。単語リストの残りは公式ページで定義が確認できにくい語が多いので、次回は別の出典ページ（Bedrock docs 等）を探してから埋めること。
