@@ -435,3 +435,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: GAN/拡散モデル/VAE、トランスフォーマー（自己注意・位置エンコーディング・RNNとの比較）、基盤モデルと生成AIの制約、MLの学習方法（教師あり/なし/半教師あり/強化）、埋め込み（Word2Vec/BERT/Titan Embeddings）。
   新規SOURCESなし。whatIsGenai / transformers / embeddings / whatIsMl の本文をWebFetchで確認（すべて成功）。nodeは未使用（validate_content.pyのみ）。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 47% / MOCK 41% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-22（定期実行・6回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。VOCAB追加は0件（Context Engineering・PEFT・LoRA は WebSearch でも docs.aws.amazon.com / aws.amazon.com の公式定義ページが見つからず `未` のまま。Bias/Variance も underOver ページに定義なし）。PRACTICEを9件（p215〜p223: single 6 / multi 1 / ordering 1 ほか。aiml/genaiを補充）、MOCK_POOLを7件（m151〜m157: single 5 / multi 1 / matching 1）追加。累計 VOCAB=226 / PRACTICE=223 / MOCK_POOL=157。単語リストは226/467（除外9）。計16件。
+  追加トピック: SageMaker AIの推論オプション（リアルタイム/サーバーレス/非同期、自動スケーリング）、データ分割（学習/検証/テスト、層化分割、重複サンプル、推論時に使えない特徴量によるデータリークとFeature Storeのタイムトラベルクエリ）、過少適合/過学習の対処、Bedrock主要用語（トークン、推論パラメータ、モデルカスタマイズ、エンベディング、Provisioned Throughput、エージェント、RAGの流れ）。
+  新規SOURCESなし。sagemakerDeploy / underOver / splitsLeakage / bedrockTerms の本文をWebFetchで確認（すべて成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 46% / MOCK 41% と高いまま。次回以降も不正解を正解より長く書くこと。
