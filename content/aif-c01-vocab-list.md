@@ -110,12 +110,12 @@
 | 104 | Recommendation System | aiml | v86 |
 | 105 | Summarization | genai | v166 |
 | 106 | Fraud Detection | aiml | v189 |
-| 107 | Parameter-efficient Fine-tuning (PEFT) | fm | 未 |
+| 107 | Parameter-efficient Fine-tuning (PEFT) | fm | v228 |
 | 108 | AWS Artifact | security | v81 |
 | 109 | Accountability | responsible | 未 |
 | 110 | Forecasting | aiml | v190 |
 | 111 | Image Generation | genai | v168 |
-| 112 | LoRA | fm | 未 |
+| 112 | LoRA | fm | v227 |
 | 113 | AWS Trusted Advisor (Governance) | security | v93 |
 | 114 | Feature | aiml | v88 |
 | 115 | Amazon Bedrock Guardrails | responsible | v79 |

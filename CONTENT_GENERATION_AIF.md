@@ -459,3 +459,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock Flows（ビジュアルビルダー、ワーキングドラフト/バージョン/エイリアス、InvokeFlow）、インテリジェントプロンプトルーティング（フォールバックモデル、応答品質の差）、クロスリージョン推論（ジオグラフィック/グローバル、CloudTrail記録）、Converse API。
   新規SOURCESなし（bedrockFlows / promptRouting / crossRegion / converseApi をWebFetchで本文確認、成功。converseApiは先頭部分のみ確認）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 42% と高いまま（今回は不正解を長めにする工夫はしたが既存分が多い）。fmは目標比率に対しまだ大きく不足。
+- 2026-10-22（定期実行・10回目）: 改訂履歴ページを確認（WebFetch成功）: 最新はv1.1（2026-04-30）のまま、新版なし。単語リスト行112 LoRA・行107 PEFT のVOCABを追加（v227,v228）、PRACTICEを4件（p269〜p272: single 3 / multi 1）、MOCK_POOLを3件（m189〜m191: single）追加。累計 VOCAB=228 / PRACTICE=272 / MOCK_POOL=191。単語リスト進捗 228/467（除外9）。計9件（出典を本文で確認できた項目のみ）。
+  追加トピック: LoRA/PEFT（SageMaker AIのアダプターページ、ベースモデル凍結・1エンドポイントで複数アダプター提供）、データ不足による低精度への対処（underOver）、ハルシネーション低減策（promptGuide）。
+  新規SOURCES: loraAdapters（WebFetch成功で本文確認）。underOver / promptGuide も本文を再確認（成功）。
+  見送り: 行179 Single-shot Prompting は promptGuide に記載なし、行139 Bias (ML)・行143 Variance は underOver に記載なしで、公式の定義ページ未確認のため `未` のまま。
+  メモ: 正解最長割合は VOCAB 56% / PRACTICE 48% / MOCK 42%。
