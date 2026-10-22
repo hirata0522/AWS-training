@@ -455,3 +455,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 責任あるAIの8つの観点（Fairness/Explainability/Privacy and security/Safety/Controllability/Veracity and robustness/Governance/Transparency）、SageMaker Model Cards（リスク評価の値・想定用途・バージョン管理・PDFエクスポート）。
   新規SOURCESなし。aws.amazon.com/ai/responsible-ai/ と SageMaker Model Cards の本文をWebFetchで確認（成功）。nodeは未使用。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 41% と高いまま。観点名のみの選択肢は長さがそろうため偏りにくい。
+- 2026-10-22（定期実行・11回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを10件（p259〜p268: single 6 / multi 1 / ordering 1 / matching 1 ほか。fm）、MOCK_POOLを7件（m182〜m188: single 5 / multi 1 / matching 1。fm）追加。累計 VOCAB=226 / PRACTICE=268 / MOCK_POOL=188。単語リストは226/467（除外9）。計17件。
+  追加トピック: Bedrock Flows（ビジュアルビルダー、ワーキングドラフト/バージョン/エイリアス、InvokeFlow）、インテリジェントプロンプトルーティング（フォールバックモデル、応答品質の差）、クロスリージョン推論（ジオグラフィック/グローバル、CloudTrail記録）、Converse API。
+  新規SOURCESなし（bedrockFlows / promptRouting / crossRegion / converseApi をWebFetchで本文確認、成功。converseApiは先頭部分のみ確認）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 42% と高いまま（今回は不正解を長めにする工夫はしたが既存分が多い）。fmは目標比率に対しまだ大きく不足。
