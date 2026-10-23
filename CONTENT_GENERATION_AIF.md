@@ -477,3 +477,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCESなし（bedrockEval, modelCards, fmevalAuto を再利用。bedrock evaluation / evaluation-judge / model-cards / fmeval の各ページをWebFetchで本文確認、成功）。改訂履歴ページはWebFetch未実施（v1.1のまま扱った）。nodeでの読み込み確認済み。
   見送り: BLEU・Perplexity は公式ページで定義を確認できず `未` のまま。
   メモ: 正解最長割合は VOCAB 56% / PRACTICE 49% / MOCK 43% と高いまま。次回以降は不正解を正解より長く書くこと。
+- 2026-10-23（定期実行・3回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを12件（p299〜p310: single 8 / multi 2 / ordering 1 / matching 1。aiml 7 / responsible 3 / security 2）、MOCK_POOLを6件（m205〜m210: single。aiml 3 / responsible 1 / security 2）追加。累計 VOCAB=232 / PRACTICE=310 / MOCK_POOL=210。単語リストは232/467（除外9）。計18件。
+  追加トピック: 学習方式の分類（教師あり/なし/半教師あり/強化）、MLライフサイクルの各フェーズ、データラベリング（ラベラーのコンセンサス、ML支援ラベリング、SageMaker Ground Truth）、フィーチャーエンジニアリング（Data Wrangler）、AIバイアスの原因と対策、Amazon Macie、AWS PrivateLink。
+  新規SOURCESなし（whatIsMl / dataLabeling / featureEng / aiBias / macie / privateLink を再利用。各ページをWebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 47% / MOCK 43% と高いまま。VOCABは出典未確認の未作成語が多く今回は見送り。
