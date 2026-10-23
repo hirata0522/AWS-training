@@ -481,3 +481,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 学習方式の分類（教師あり/なし/半教師あり/強化）、MLライフサイクルの各フェーズ、データラベリング（ラベラーのコンセンサス、ML支援ラベリング、SageMaker Ground Truth）、フィーチャーエンジニアリング（Data Wrangler）、AIバイアスの原因と対策、Amazon Macie、AWS PrivateLink。
   新規SOURCESなし（whatIsMl / dataLabeling / featureEng / aiBias / macie / privateLink を再利用。各ページをWebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 47% / MOCK 43% と高いまま。VOCABは出典未確認の未作成語が多く今回は見送り。
+- 2026-10-23（定期実行・4回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを13件（p311〜p323: single 11 / multi 1 / matching 1。genai）、MOCK_POOLを8件（m211〜m218: single 7 / multi 1。genai）追加。累計 VOCAB=232 / PRACTICE=323 / MOCK_POOL=218。単語リストは232/467（除外9）。計21件。
+  追加トピック: 基盤モデルの特徴・従来MLとの違い・自己教師あり学習・課題、LLMとFMの関係、次単語予測、GAN/VAE/拡散モデル/トランスフォーマーの仕組み、生成AIの説明可能性・セキュリティの課題、Bedrockの位置付け。
+  新規SOURCESなし。whatIsFm / whatIsGenai の本文をWebFetchで確認（成功。gan は既存の確認済みソースを再利用）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 43% と高いまま（次回以降は不正解を正解より長く書くこと）。genaiのPRACTICE/MOCKの不足はおおむね解消、aiml（PRACTICE）・responsible/security（VOCAB）が次の補充対象。
