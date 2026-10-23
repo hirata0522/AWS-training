@@ -502,3 +502,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: プロンプトの構成要素、ゼロショット/フューショット、プロンプトテンプレート、会話履歴をプロンプトに含める必要性、ハルシネーション低減策、Bedrock Agentsのビルド時構成・実行時フロー・アクショングループのスキーマ・トレース。
   新規SOURCESなし（promptGuide, agentsHow を再利用。両ページをWebFetchで本文確認、成功）。Bedrock Agentsは「Agents Classic」として新規顧客受付終了・AgentCore推奨の注記あり（試験範囲では引き続き概念として出題）。nodeは未使用。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 42% のまま。
+- 2026-10-23（定期実行・9回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを9件（p363〜p371: single 6 / multi 1 / matching 1ほか。responsible 5 / fm 4）、MOCK_POOLを5件（m239〜m243: single 4 / multi 1。responsible 3 / fm 2）追加。累計 VOCAB=235 / PRACTICE=371 / MOCK_POOL=243。単語リストは235/467（除外9）。計14件。
+  追加トピック: 責任あるAIの8側面の定義（Controllability/Veracity and robustness/Governance/Safety/Privacy and security/Transparency）、Bedrockのプロンプト設計（指示の位置、出力インジケーター、既定の出力、ホールドアウトテストセット、フューショットの例数）。
+  新規SOURCES: designPrompt（WebFetchで本文確認、成功）。responsibleAi の8側面もWebFetchで再確認（成功）。prompt chaining / ReAct / single-shot は prompt-engineering ページ（aws.amazon.com/what-is/prompt-engineering/）に記載がなく確認できず、VOCABは `未` のまま。nodeでの読み込み確認済み。
