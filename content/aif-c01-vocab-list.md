@@ -256,7 +256,7 @@
 | 250 | Amazon SageMaker Clarify | responsible | v116 |
 | 251 | Amazon Textract | aiml | v129 |
 | 252 | Amazon Q Developer | genai | v151 |
-| 253 | Human-in-the-loop Evaluation | fm | 未 |
+| 253 | Human-in-the-loop Evaluation | fm | v229 |
 | 254 | Vulnerability Management | security | 未 |
 | 255 | Amazon Transcribe | aiml | v130 |
 | 256 | Amazon SageMaker Model Cards | responsible | v117 |
@@ -267,7 +267,7 @@
 | 261 | Amazon Personalize | aiml | v87 |
 | 262 | Recall-Oriented Understudy for Gisting Evaluation (ROUGE) | fm | v194 |
 | 263 | Data Lifecycle | security | 未 |
-| 264 | Amazon SageMaker Model Governance | responsible | 未 |
+| 264 | Amazon SageMaker Model Governance | responsible | v231 |
 | 265 | Amazon Quick | genai | v195 |
 | 266 | AWS Transform | aiml | 未 |
 | 267 | Bilingual Evaluation Understudy (BLEU) | fm | 未 |
@@ -282,10 +282,10 @@
 | 276 | Strands Agents | genai | v119 |
 | 277 | Perplexity | fm | 未 |
 | 278 | Data Governance | security | 未 |
-| 279 | Amazon Bedrock Model Evaluations | responsible | 未 |
+| 279 | Amazon Bedrock Model Evaluations | responsible | v232 |
 | 280 | Amazon SageMaker Pipelines | aiml | v149 |
 | 281 | Amazon Bedrock AgentCore | genai | v113 |
-| 282 | LLM-as-a-judge | fm | 未 |
+| 282 | LLM-as-a-judge | fm | v230 |
 | 283 | Governance Framework | security | 未 |
 | 284 | Amazon SageMaker Ground Truth | aiml | v150 |
 | 285 | Open Source Model Licensing | responsible | 未 |

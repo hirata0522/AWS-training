@@ -472,3 +472,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 識別モデルと生成モデル、GAN/VAE/拡散モデル/トランスフォーマーの違い、トランスフォーマーの並列処理、生成AIの課題、zero-shot/few-shot、LLMのパラメータ・コンテキスト長・埋め込み・用途、合成データ。
   新規SOURCESなし。whatIsGenai / whatIsLlm の本文をWebFetchで確認（成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 42% と高いまま。genaiは目標比率に対しまだ不足。
+- 2026-10-23（定期実行）: 単語リスト行253,264,279,282の4語のVOCABを追加（v229〜v232）、PRACTICEを8件（p291〜p298: single 5 / multi 1 / matching 1 / single 1）、MOCK_POOLを4件（m201〜m204: single）追加。累計 VOCAB=232 / PRACTICE=298 / MOCK_POOL=204。単語リスト進捗 232/467（除外9）。
+  追加トピック: Bedrock評価ジョブの種類（programmatic / human workers / judge model / RAG評価）、SageMaker Model Cards（想定用途・リスク評価・バージョン管理）、FMEvalのprompt stereotyping・semantic robustness・ROUGE-L。
+  新規SOURCESなし（bedrockEval, modelCards, fmevalAuto を再利用。bedrock evaluation / evaluation-judge / model-cards / fmeval の各ページをWebFetchで本文確認、成功）。改訂履歴ページはWebFetch未実施（v1.1のまま扱った）。nodeでの読み込み確認済み。
+  見送り: BLEU・Perplexity は公式ページで定義を確認できず `未` のまま。
+  メモ: 正解最長割合は VOCAB 56% / PRACTICE 49% / MOCK 43% と高いまま。次回以降は不正解を正解より長く書くこと。
