@@ -464,3 +464,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: loraAdapters（WebFetch成功で本文確認）。underOver / promptGuide も本文を再確認（成功）。
   見送り: 行179 Single-shot Prompting は promptGuide に記載なし、行139 Bias (ML)・行143 Variance は underOver に記載なしで、公式の定義ページ未確認のため `未` のまま。
   メモ: 正解最長割合は VOCAB 56% / PRACTICE 48% / MOCK 42%。
+- 2026-10-23（定期実行）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを8件（p273〜p280: single 6 / multi 2。fm）、MOCK_POOLを4件（m192〜m195: single）追加。累計 VOCAB=228 / PRACTICE=280 / MOCK_POOL=195。単語リストは228/467（除外9）。計12件。
+  追加トピック: Bedrockのカスタマイズ手法（教師ありFT／強化FT／蒸留）、Provisioned Throughput（カスタムモデルに必須、時間課金、コミットメント）、few-shot/zero-shot、プロンプトテンプレート、会話履歴の保持。
+  新規SOURCESなし。bedrockCustom / provThroughput / promptGuide の本文をWebFetchで確認（成功）。what-is/prompt-engineering はprompt chaining・ReAct等の定義がなく未使用。
+  見送り: Continued Pre-training（bedrockCustomに記載なし）、On-Demand Throughput（provThroughputに定義なし）、Prompt Chaining / ReAct / Single-shot は公式の定義ページ未確認のため `未` のまま。nodeは未使用。
