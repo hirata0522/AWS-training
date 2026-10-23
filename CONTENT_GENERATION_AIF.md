@@ -494,3 +494,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrockのデータ保護（TLS 1.2以上、KMSで暗号化できるリソース、VPC/PrivateLink、VPCフローログ、CloudTrail推奨、Model Deployment Account）、過学習／学習不足とその対処。
   新規SOURCES: bedrockDataEnc, bedrockVpc, bedrockDataProt（いずれもWebFetchで本文確認、成功）。underOver も本文を再確認（成功）。data-retention ページは内容が変動しやすいため問題化を見送り。encryption-at-rest ページはWebFetchで内容が取得できず未使用。nodeは未使用。
   メモ: 正解最長割合は PRACTICE 47% / MOCK 44% と高いまま。
+- 2026-10-23（定期実行・7回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを12件（p341〜p352: single 9 / multi 1 / matching 1 ほか。aiml）、MOCK_POOLを4件（m229〜m232: single。aiml）追加。累計 VOCAB=235 / PRACTICE=352 / MOCK_POOL=232。
+  追加トピック: Comprehend（感情・エンティティ・PII・トピックモデリング・Custom分類）、Transcribe（バッチ/ストリーミング）、Rekognition（不適切コンテンツ・Custom Labels・Face Liveness）の使い分け。
+  新規SOURCES: comprehend, transcribe, rekognition（いずれもWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 44% と高いまま。
