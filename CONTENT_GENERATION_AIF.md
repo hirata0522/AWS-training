@@ -490,3 +490,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: clarifyPreBias, clarifyPostBias（いずれもWebFetchで本文確認、成功）。responsibleAi はWebFetchで8要素の定義を確認（成功）。
   見送り: Inclusivity・Variance等は公式ページで定義を確認できず `未` のまま。
   メモ: 正解最長割合は VOCAB 56% / PRACTICE 48% / MOCK 44% と高いまま。Clarifyは新規顧客の受付終了の注記あり（試験範囲では引き続き対象）。
+- 2026-10-23（定期実行・6回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを9件（p332〜p340: single 8 / multi 1。security 6 / aiml 3）、MOCK_POOLを5件（m224〜m228: single。security 3 / aiml 2）追加。累計 VOCAB=235 / PRACTICE=340 / MOCK_POOL=228。単語リストは235/467（除外9）。計14件。
+  追加トピック: Bedrockのデータ保護（TLS 1.2以上、KMSで暗号化できるリソース、VPC/PrivateLink、VPCフローログ、CloudTrail推奨、Model Deployment Account）、過学習／学習不足とその対処。
+  新規SOURCES: bedrockDataEnc, bedrockVpc, bedrockDataProt（いずれもWebFetchで本文確認、成功）。underOver も本文を再確認（成功）。data-retention ページは内容が変動しやすいため問題化を見送り。encryption-at-rest ページはWebFetchで内容が取得できず未使用。nodeは未使用。
+  メモ: 正解最長割合は PRACTICE 47% / MOCK 44% と高いまま。
