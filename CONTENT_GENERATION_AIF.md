@@ -468,3 +468,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrockのカスタマイズ手法（教師ありFT／強化FT／蒸留）、Provisioned Throughput（カスタムモデルに必須、時間課金、コミットメント）、few-shot/zero-shot、プロンプトテンプレート、会話履歴の保持。
   新規SOURCESなし。bedrockCustom / provThroughput / promptGuide の本文をWebFetchで確認（成功）。what-is/prompt-engineering はprompt chaining・ReAct等の定義がなく未使用。
   見送り: Continued Pre-training（bedrockCustomに記載なし）、On-Demand Throughput（provThroughputに定義なし）、Prompt Chaining / ReAct / Single-shot は公式の定義ページ未確認のため `未` のまま。nodeは未使用。
+- 2026-10-23（定期実行・2回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを10件（p281〜p290: single 7 / multi 1 / matching 1 ほか。genai）、MOCK_POOLを5件（m196〜m200: single 4 / multi 1。genai）追加。累計 VOCAB=228 / PRACTICE=290 / MOCK_POOL=200。単語リストは228/467（除外9）。計15件。
+  追加トピック: 識別モデルと生成モデル、GAN/VAE/拡散モデル/トランスフォーマーの違い、トランスフォーマーの並列処理、生成AIの課題、zero-shot/few-shot、LLMのパラメータ・コンテキスト長・埋め込み・用途、合成データ。
+  新規SOURCESなし。whatIsGenai / whatIsLlm の本文をWebFetchで確認（成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 42% と高いまま。genaiは目標比率に対しまだ不足。
