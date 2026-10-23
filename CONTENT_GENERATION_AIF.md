@@ -505,3 +505,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-23（定期実行・9回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを9件（p363〜p371: single 6 / multi 1 / matching 1ほか。responsible 5 / fm 4）、MOCK_POOLを5件（m239〜m243: single 4 / multi 1。responsible 3 / fm 2）追加。累計 VOCAB=235 / PRACTICE=371 / MOCK_POOL=243。単語リストは235/467（除外9）。計14件。
   追加トピック: 責任あるAIの8側面の定義（Controllability/Veracity and robustness/Governance/Safety/Privacy and security/Transparency）、Bedrockのプロンプト設計（指示の位置、出力インジケーター、既定の出力、ホールドアウトテストセット、フューショットの例数）。
   新規SOURCES: designPrompt（WebFetchで本文確認、成功）。responsibleAi の8側面もWebFetchで再確認（成功）。prompt chaining / ReAct / single-shot は prompt-engineering ページ（aws.amazon.com/what-is/prompt-engineering/）に記載がなく確認できず、VOCABは `未` のまま。nodeでの読み込み確認済み。
+- 2026-10-23（定期実行・10回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。単語リスト行286,290,294,298,289,295,299,301の8語のVOCABを追加（v236〜v243）、PRACTICEを8件（p372〜p379: single 6 / multi 1 / matching 1）、MOCK_POOLを4件（m244〜m247: single）追加。累計 VOCAB=243 / PRACTICE=379 / MOCK_POOL=247。単語リスト進捗 243/467（除外9）。計20件。
+  追加トピック: SageMaker Canvas / Autopilot / Studio / Model Registry / Experiments、Bedrock AgentCore（Runtime / Memory / Gateway / Identity / Observability / Code Interpreter）。
+  新規SOURCES: canvas, autopilot, studio, sagemakerExperiments, agentcoreServices（いずれもWebFetchで本文確認、成功。Model Registryも再確認）。nodeでの読み込み確認済み。
+  メモ: Autopilot UIはCanvasへ移行中、Experiments ClassicはMLflow連携が推奨との注記あり（解説に反映）。正解最長割合は VOCAB 57% と高いため、次回以降は不正解を長めに書くこと。

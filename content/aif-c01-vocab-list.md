@@ -289,22 +289,22 @@
 | 283 | Governance Framework | security | 未 |
 | 284 | Amazon SageMaker Ground Truth | aiml | v150 |
 | 285 | Open Source Model Licensing | responsible | 未 |
-| 286 | Amazon SageMaker Canvas | aiml | 未 |
+| 286 | Amazon SageMaker Canvas | aiml | v236 |
 | 287 | Task Completion Rate | fm | 未 |
 | 288 | Generative AI Security Scoping Matrix | security | 未 |
-| 289 | Amazon Bedrock AgentCore Runtime | genai | 未 |
-| 290 | Amazon SageMaker Autopilot | aiml | 未 |
+| 289 | Amazon Bedrock AgentCore Runtime | genai | v240 |
+| 290 | Amazon SageMaker Autopilot | aiml | v237 |
 | 291 | User Satisfaction | fm | 未 |
 | 292 | Review Cadence | security | 未 |
 | 293 | Safety vs Transparency Tradeoff | responsible | 未 |
-| 294 | Amazon SageMaker Studio | aiml | 未 |
-| 295 | Amazon Bedrock AgentCore Memory | genai | 未 |
+| 294 | Amazon SageMaker Studio | aiml | v238 |
+| 295 | Amazon Bedrock AgentCore Memory | genai | v241 |
 | 296 | Cost per Interaction | fm | 未 |
 | 297 | Transparency Standards | security | 未 |
-| 298 | Amazon SageMaker Model Registry | aiml | 未 |
-| 299 | Amazon Bedrock AgentCore Gateway | genai | 未 |
+| 298 | Amazon SageMaker Model Registry | aiml | v239 |
+| 299 | Amazon Bedrock AgentCore Gateway | genai | v242 |
 | 300 | Human-centered Design | responsible | 未 |
-| 301 | Amazon SageMaker Experiments | aiml | 未 |
+| 301 | Amazon SageMaker Experiments | aiml | v243 |
 | 302 | Business Objective Alignment | fm | 未 |
 | 303 | Team Training Requirements | security | 未 |
 | 304 | Amazon SageMaker Real-Time Inference | aiml | 未 |
