@@ -509,3 +509,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: SageMaker Canvas / Autopilot / Studio / Model Registry / Experiments、Bedrock AgentCore（Runtime / Memory / Gateway / Identity / Observability / Code Interpreter）。
   新規SOURCES: canvas, autopilot, studio, sagemakerExperiments, agentcoreServices（いずれもWebFetchで本文確認、成功。Model Registryも再確認）。nodeでの読み込み確認済み。
   メモ: Autopilot UIはCanvasへ移行中、Experiments ClassicはMLflow連携が推奨との注記あり（解説に反映）。正解最長割合は VOCAB 57% と高いため、次回以降は不正解を長めに書くこと。
+- 2026-10-23（定期実行・11回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを6件（p380〜p385: single 6。security）、MOCK_POOLを3件（m248〜m250: single。security）追加。累計 VOCAB=243 / PRACTICE=385 / MOCK_POOL=250。単語リストは243/467（除外9）。計9件。
+  追加トピック: IAMの既定の権限なし、フェデレーション/IAM Identity Center、リソースベースポリシー、SCP、IAMロール、ポリシー要素。
+  新規SOURCES: bedrockIam（security-iam.html をWebFetchで本文確認、成功）。nodeは未使用。
+  見送り: Data Access Control / Data Integrity 等のVOCABは定義ページ未確認のため `未` のまま。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 42%。
