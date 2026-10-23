@@ -160,6 +160,8 @@ var SOURCES = {
   multiAgent:{label:'Amazon Bedrock Agents: マルチエージェントコラボレーション', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-multi-agent-collaboration.html'},
   sensitiveFilters:{label:'Amazon Bedrock Guardrails: 機密情報フィルター', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-sensitive-filters.html'},
   applyGuardrail:{label:'Amazon Bedrock Guardrails: ApplyGuardrail API', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-use-independent-api.html'},
+  clarifyPreBias:{label:'SageMaker Clarify: 学習前のデータバイアス（用語: facet・bias・bias metric）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-detect-data-bias.html'},
+  clarifyPostBias:{label:'SageMaker Clarify: 学習後のデータとモデルのバイアス指標', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html'}
 };
 
 var VOCAB = [
@@ -396,6 +398,9 @@ var VOCAB = [
   {id:'v230', term:'LLM-as-a-judge', domain:'fm', source:SOURCES.bedrockEval, q:{text:'Amazon Bedrockの「judge model」を使うモデル評価ジョブの説明として正しいものはどれですか？', choices:['第2のLLMが生成モデルの各応答にスコアを付け、採点の説明も提供する','評価対象のモデル自身が自分の応答を採点し、外部のモデルは一切使わない','人間のワーカーがすべての応答を採点し、LLMは評価データの作成にだけ使う','応答と正解テキストの単語の重なりだけを、固定の数式で機械的に計算する'], correct:0, why:['正しい。評価モデルが応答を採点し、各プロンプトと応答のペアに対する説明も提供します。','誤り。生成モデルと評価モデルという2つの異なるモデルが必要です。','誤り。人手の採点は「人間のワーカーを使う評価ジョブ」という別の方式です。','誤り。単語の重なりを数式で測るのはROUGEなどの自動指標で、judge modelの方式ではありません。']}},
   {id:'v231', term:'Amazon SageMaker Model Governance', domain:'responsible', source:SOURCES.modelCards, q:{text:'Amazon SageMaker Model Cardsの用途として最も適切なものはどれですか？', choices:['モデルの学習データから個人情報を自動で検出し、マスキングする','モデルの用途やリスク評価、学習の詳細、評価結果を一元的に文書化し、ガバナンスや監査に役立てる','デプロイ済みモデルの入出力を継続的に監視して、データドリフトを検出する','学習データを人手でラベリングするワークフローを管理する'], correct:1, why:['誤り。個人情報の検出はAmazon Macieなどの役割で、Model Cardsの機能ではありません。','正しい。Model Cardsはモデルの想定用途・リスク評価・学習の詳細・評価結果を一箇所に記録し、ガバナンスと報告に役立てます。','誤り。継続的な監視はSageMaker Model Monitorの役割です。','誤り。ラベリングはSageMaker Ground Truthの役割です。']}},
   {id:'v232', term:'Amazon Bedrock Model Evaluations', domain:'responsible', source:SOURCES.bedrockEval, q:{text:'Amazon Bedrockの評価機能で、評価の対象にできるものとして正しい組み合わせはどれですか？', choices:['Bedrockのモデルだけで、ナレッジベースは対象外','ナレッジベースだけで、モデルの応答品質は対象外','Bedrockのモデルとナレッジベース、およびBedrock外のモデルやRAGソース','学習データセットの偏りだけで、モデルとナレッジベースは対象外'], correct:2, why:['誤り。モデルに加えてナレッジベースも評価できます。','誤り。ナレッジベースに加えてモデルの評価も可能です。','正しい。Bedrockのモデルとナレッジベース、およびBedrock外のモデルやRAGソースを評価できます。','誤り。データセットの偏りの分析はSageMaker Clarifyの領域です。']}},
+  {id:'v233', term:'Bias (ML)', domain:'aiml', source:SOURCES.clarifyPreBias, q:{text:'SageMaker Clarifyのドキュメントにおける「バイアス（bias）」の定義として最も適切なものはどれですか？', choices:['モデルの学習に使うデータの件数が少なすぎること','学習データやモデルの予測挙動に、年齢や所得層などのグループ間で偏りがあること','推論リクエストの応答に時間がかかり、遅延が大きいこと','学習用データで高い精度が出る一方、新しいデータで精度が下がること'], correct:1, why:['誤り。データ件数の不足はバイアスそのものではありません。データに十分な代表性がないことがバイアスの原因になり得ます。','正しい。学習データまたはモデルの予測挙動における、グループ間の不均衡がバイアスです。','誤り。これはレイテンシーの問題で、公平性とは関係しません。','誤り。これは過学習の説明です。']}},
+  {id:'v234', term:'Explainable AI (XAI)', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'AWSが示す責任あるAIの「説明可能性（Explainability）」の定義として最も適切なものはどれですか？', choices:['有害な出力や誤用を防ぐこと','AIシステムの出力を理解し評価できること','不正な入力や敵対的な入力に対しても正しい出力を得ること','AIの挙動を監視し、必要に応じて制御する仕組みを持つこと'], correct:1, why:['誤り。これは「安全性（Safety）」の説明です。','正しい。AWSは説明可能性を「システムの出力を理解し評価すること」としています。','誤り。これは「真実性と堅牢性（Veracity and robustness）」の説明です。','誤り。これは「制御可能性（Controllability）」の説明です。']}},
+  {id:'v235', term:'Fairness Metrics', domain:'responsible', source:SOURCES.clarifyPostBias, q:{text:'SageMaker Clarifyの学習後バイアス指標「Disparate Impact (DI)」について、値が1のときの意味はどれですか？', choices:['有利なfacetのほうが予測された肯定的結果の割合が高い','不利なfacetのほうが予測された肯定的結果の割合が高い','モデルの精度がちょうど100%である','facet間で予測された肯定的結果の割合が等しい（デモグラフィックパリティ）'], correct:3, why:['誤り。この状況ではDIは1未満になります。','誤り。この状況ではDIは1より大きくなります。','誤り。DIは精度ではなく、facet間の予測された肯定的結果の割合の比です。','正しい。DIが1のときはfacet間で予測された肯定的結果の割合が等しく、デモグラフィックパリティが成立しています。']}},
 ];
 
 var PRACTICE = [
@@ -1435,6 +1440,39 @@ var PRACTICE = [
   {id:'p323', domain:'genai', type:'single', source:SOURCES.whatIsFm, text:'Amazon社や他のAI企業が提供する基盤モデルを、API経由で利用できるフルマネージドサービスはどれですか？',
     choices:['Amazon SageMaker Ground Truth（学習データのラベル付け）','Amazon Bedrock','Amazon Q Developer（開発者向けの生成AIアシスタント）','Amazon Textract（文書からのテキスト抽出）'], correct:[1],
     why:['誤り。Ground Truthは学習データにラベルを付けるサービスです。','正しい。Amazon Bedrockは、Amazonや他のAI企業の基盤モデルにAPIでアクセスできるフルマネージドサービスです。','誤り。Q Developerは開発者向けの生成AIアシスタントで、複数の基盤モデルへのAPIアクセスを提供するサービスではありません。','誤り。Textractは文書からテキストやデータを抽出するサービスです。']},
+  {id:'p324', domain:'responsible', type:'single', source:SOURCES.responsibleAi,
+    text:'AWSが示す責任あるAIの「制御可能性（Controllability）」の説明として正しいものはどれですか？',
+    choices:['異なるステークホルダーグループへの影響を考慮すること','データやモデルを適切に取得・利用・保護すること','AIシステムの挙動を監視し、必要に応じて調整する仕組みを持つこと','ステークホルダーがAIシステムとの関わり方を十分な情報に基づいて判断できるようにすること'], correct:[2],
+    why:['誤り。これは「公平性（Fairness）」の説明です。','誤り。これは「プライバシーとセキュリティ」の説明です。','正しい。制御可能性は、AIシステムの挙動を監視し、方向付ける仕組みを持つことです。','誤り。これは「透明性（Transparency）」の説明です。']},
+  {id:'p325', domain:'responsible', type:'matching', source:SOURCES.responsibleAi,
+    text:'AWSが示す責任あるAIの各要素と、その説明を組み合わせてください。',
+    prompts:['安全性（Safety）','真実性と堅牢性（Veracity and robustness）','ガバナンス（Governance）','プライバシーとセキュリティ'],
+    options:['データやモデルを適切に取得・利用・保護すること','有害な出力や誤用を防ぐこと','AIのサプライチェーン（提供者・利用者を含む）にベストプラクティスを組み込むこと','異なるステークホルダーグループへの影響を考慮すること','不正な入力や敵対的な入力でも正しい出力を得ること'], correct:[1,4,2,0],
+    why:['安全性は有害なシステム出力や誤用を防ぐことです。','真実性と堅牢性は、予期しない入力や敵対的な入力に対しても正しい出力を得ることです。','ガバナンスは、プロバイダーと導入者を含むAIサプライチェーン全体にベストプラクティスを組み込むことです。','プライバシーとセキュリティはデータやモデルを適切に取得・利用・保護することです。使われない「異なるステークホルダーへの影響を考慮する」は公平性の説明です。']},
+  {id:'p326', domain:'responsible', type:'single', source:SOURCES.clarifyPreBias,
+    text:'SageMaker Clarifyの「学習前（pre-training）バイアス指標」の特徴として正しいものはどれですか？',
+    choices:['学習前の生データのバイアスを測定し、モデルの出力に依存しない','学習後のモデルの予測結果を使ってバイアスを測定する','デプロイ済みエンドポイントの推論リクエストだけを対象にする','モデルの推論レイテンシーとスループットを測定する'], correct:[0],
+    why:['正しい。学習前の指標は学習に使う前の生データのバイアスを検出し、モデルの出力に依存しません（モデル非依存）。','誤り。モデルの予測結果を使うのは学習後（post-training）の指標です。','誤り。デプロイ後の継続的な監視はベースラインに対するモニタリングの領域です。','誤り。レイテンシーやスループットは性能指標で、公平性の指標ではありません。']},
+  {id:'p327', domain:'responsible', type:'multi', source:SOURCES.clarifyPreBias,
+    text:'機械学習モデルがバイアスを学習してしまう、学習データ側の原因として適切なものはどれですか？（2つ選択）',
+    choices:['特定の人口統計グループの代表性が十分でない','学習データに偏ったラベルが含まれている','学習ジョブに使うインスタンスタイプが小さい','推論エンドポイントがマルチAZ構成になっていない','モデルのバージョン番号が古い'], correct:[0,1],
+    why:['正しい。特定グループのデータが少ないと、そのグループに対する予測精度が下がる偏りが生じます。','正しい。偏ったラベルで学習したモデルは、その偏りを再現・増幅する可能性があります。','誤り。インスタンスタイプは学習の速度やコストに関わるもので、データのバイアスの原因ではありません。','誤り。マルチAZは可用性の話で、バイアスとは関係しません。','誤り。バージョン番号の新旧はデータのバイアスの原因ではありません。']},
+  {id:'p328', domain:'responsible', type:'single', source:SOURCES.clarifyPreBias,
+    text:'SageMaker Clarifyの用語で、バイアスを測定する対象となる属性（年齢や性別など）を含む列・特徴量を指すものはどれですか？',
+    choices:['Label（ラベル）','Sample（サンプル）','Bias report（バイアスレポート）','Facet（ファセット）'], correct:[3],
+    why:['誤り。ラベルは学習の目的となる特徴量（観測された結果）です。','誤り。サンプルは特徴量とラベルの値で表される観測対象（表形式データの1行）です。','誤り。バイアスレポートは、データセット（またはデータセットとモデル）に対するバイアス指標の集まりです。','正しい。ファセットはバイアスを測定する対象となる属性を含む列または特徴量です。']},
+  {id:'p329', domain:'responsible', type:'single', source:SOURCES.clarifyPostBias,
+    text:'SageMaker Clarifyの学習後バイアス指標「DPPL (Difference in Positive Proportions in Predicted Labels)」は何を測定しますか？',
+    choices:['有利なfacetと不利なfacetの間の、予測された肯定的結果の割合の差','有利なfacetと不利なfacetの間の、予測精度（accuracy）の差','有利なfacetと不利なfacetの間の、再現率（recall）の差','有利なfacetと不利なfacetの間の、偽陽性と偽陰性の比の差'], correct:[0],
+    why:['正しい。DPPLは、facet間で肯定的に予測された結果の割合がどれだけ違うかを測ります。','誤り。これはAccuracy Difference (AD) です。','誤り。これはRecall Difference (RD) です。','誤り。これはTreatment Equality (TE) です。']},
+  {id:'p330', domain:'responsible', type:'single', source:SOURCES.clarifyPostBias,
+    text:'SageMaker Clarifyの学習後バイアス指標で、facet間の予測精度（accuracy）の違いを測るものはどれですか？',
+    choices:['Treatment Equality (TE)','Recall Difference (RD)','Accuracy Difference (AD)','Disparate Impact (DI)'], correct:[2],
+    why:['誤り。TEは偽陽性と偽陰性の比のfacet間の差を測ります。','誤り。RDはfacet間の再現率（真陽性をどれだけ見つけたか）の差を測ります。','正しい。ADは有利なfacetと不利なfacetの予測精度の差を測ります。','誤り。DIはfacet間の予測された肯定的結果の割合の比を測ります。']},
+  {id:'p331', domain:'responsible', type:'single', source:SOURCES.clarifyPreBias,
+    text:'SageMaker Clarifyでバイアスを測定できるタイミングとして正しい説明はどれですか？',
+    choices:['学習後のみで、学習前のデータには適用できない','学習前のデータと学習後のモデルで測定でき、デプロイ後もベースラインと比べて監視できる','学習前のみで、学習後のモデルには適用できない','デプロイ後のみで、学習前後には適用できない'], correct:[1],
+    why:['誤り。学習前の生データに対しても、モデルに依存しない指標でバイアスを測定できます。','正しい。バイアスは学習前後に測定でき、デプロイ後もエンドポイントでベースラインに対して監視できます。','誤り。学習後のモデルの予測に対する指標も用意されています。','誤り。バイアスはMLライフサイクルの各段階で検出・測定することが重要です。']},
 ];
 
 var MOCK_POOL = [
@@ -2129,6 +2167,26 @@ var MOCK_POOL = [
     text:'GPT系の言語モデルを支えるニューラルネットワークのアーキテクチャはどれですか？',
     choices:['トランスフォーマー','k-meansクラスタリング','線形回帰','決定木'], correct:[0],
     why:['正しい。トランスフォーマーはセルフアテンションを使い、GPT系の言語モデルを支えています。','誤り。k-meansは教師なし学習のクラスタリング手法です。','誤り。線形回帰は数値予測の手法で、言語モデルのアーキテクチャではありません。','誤り。決定木は分類や回帰に使う手法で、GPT系のアーキテクチャではありません。']},
+  {id:'m219', domain:'responsible', type:'single', source:SOURCES.clarifyPreBias,
+    text:'SageMaker Clarifyで、バイアスの測定対象となる属性を含む列を表す用語はどれですか？',
+    choices:['Predicted label','Group variable','Positive label values','Facet'], correct:[3],
+    why:['誤り。Predicted labelはモデルが予測したラベル（予測結果）です。','誤り。Group variableは、CDDという指標でサブグループを作るためのカテゴリ列です。','誤り。Positive label valuesは、あるグループにとって好ましい結果を示すラベルの値です。','正しい。Facetはバイアスを測定する対象となる属性を含む列・特徴量です。']},
+  {id:'m220', domain:'responsible', type:'single', source:SOURCES.clarifyPostBias,
+    text:'Disparate Impact (DI) の値が1未満のとき、何を示していますか？',
+    choices:['有利なfacetのほうが、予測された肯定的結果の割合が高い','不利なfacetのほうが、予測された肯定的結果の割合が高い','facet間で予測された肯定的結果の割合が等しい','モデルの再現率がfacet間で完全に一致している'], correct:[0],
+    why:['正しい。DIが1未満なら、有利なfacetの肯定的に予測される割合のほうが高いことを示します。','誤り。これはDIが1より大きい場合です。','誤り。これはDIが1の場合（デモグラフィックパリティ）です。','誤り。DIは再現率ではなく、予測された肯定的結果の割合の比です。']},
+  {id:'m221', domain:'responsible', type:'single', source:SOURCES.clarifyPostBias,
+    text:'「モデルが一方の年齢層のほうが、真陽性をより多く見つけている」という状況の偏りを測る学習後バイアス指標はどれですか？',
+    choices:['Recall Difference (RD)','Disparate Impact (DI)','Generalized entropy (GE)','Counterfactual Fliptest (FT)'], correct:[0],
+    why:['正しい。RDはモデルが各facetで真陽性をどれだけ見つけているか（再現率）の差を比べます。','誤り。DIは予測された肯定的結果の割合の比を見る指標で、真陽性の見つけやすさを直接比べるものではありません。','誤り。GEはモデルの予測によって各入力に割り当てられる利益の不平等を測る指標です。','誤り。FTは、特徴量が似た別facetのメンバーの予測が異なるかを調べる指標です。']},
+  {id:'m222', domain:'responsible', type:'single', source:SOURCES.responsibleAi,
+    text:'AWSが示す責任あるAIの「透明性（Transparency）」の説明として正しいものはどれですか？',
+    choices:['有害な出力や誤用を防ぐこと','AIシステムの出力を理解し評価できること','ステークホルダーがAIシステムとの関わり方を十分な情報に基づいて判断できるようにすること','AIのサプライチェーンにベストプラクティスを組み込むこと'], correct:[2],
+    why:['誤り。これは「安全性（Safety）」の説明です。','誤り。これは「説明可能性（Explainability）」の説明です。','正しい。透明性は、ステークホルダーがAIシステムとの関わり方を情報に基づいて選択できるようにすることです。','誤り。これは「ガバナンス（Governance）」の説明です。']},
+  {id:'m223', domain:'responsible', type:'single', source:SOURCES.clarifyPreBias,
+    text:'SageMaker Clarifyの学習前バイアス指標を、モデルの学習前に使う利点として最も適切なものはどれですか？',
+    choices:['デプロイ後のエンドポイントの推論リクエストを自動的にブロックできる','学習に使う前の生データ自体の偏りを、モデルの出力に頼らず確認できる','モデルの推論レイテンシーを短縮できる','学習ジョブのインスタンス料金を割り引ける'], correct:[1],
+    why:['誤り。リクエストのブロックはGuardrailsなどの役割で、バイアス指標の役割ではありません。','正しい。学習前の指標はモデル非依存で、生データに含まれる偏りを事前に把握するために使います。','誤り。バイアス指標はレイテンシーに影響しません。','誤り。バイアス指標は料金とは関係ありません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

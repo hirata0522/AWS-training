@@ -485,3 +485,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 基盤モデルの特徴・従来MLとの違い・自己教師あり学習・課題、LLMとFMの関係、次単語予測、GAN/VAE/拡散モデル/トランスフォーマーの仕組み、生成AIの説明可能性・セキュリティの課題、Bedrockの位置付け。
   新規SOURCESなし。whatIsFm / whatIsGenai の本文をWebFetchで確認（成功。gan は既存の確認済みソースを再利用）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 43% と高いまま（次回以降は不正解を正解より長く書くこと）。genaiのPRACTICE/MOCKの不足はおおむね解消、aiml（PRACTICE）・responsible/security（VOCAB）が次の補充対象。
+- 2026-10-23（定期実行・5回目）: 改訂履歴ページをWebFetchで確認（成功）。最新はv1.1（2026-04-30）のままで変更なし。VOCABを3件（v233〜v235: Bias (ML) / Explainable AI (XAI) / Fairness Metrics）、PRACTICEを8件（p324〜p331: single 6 / multi 1 / matching 1。responsible）、MOCK_POOLを5件（m219〜m223: single。responsible）追加。累計 VOCAB=235 / PRACTICE=331 / MOCK_POOL=223。単語リスト進捗 235/467（除外9）。計16件。
+  追加トピック: 責任あるAIの8要素の定義（制御可能性・安全性・真実性と堅牢性・ガバナンス・プライバシーとセキュリティ・透明性・説明可能性）、Clarifyのバイアス用語（facet・bias・bias metric）、学習前（モデル非依存）／学習後バイアス指標（DPPL・DI・AD・RD・TE・FT・GE）、バイアスの測定タイミング。
+  新規SOURCES: clarifyPreBias, clarifyPostBias（いずれもWebFetchで本文確認、成功）。responsibleAi はWebFetchで8要素の定義を確認（成功）。
+  見送り: Inclusivity・Variance等は公式ページで定義を確認できず `未` のまま。
+  メモ: 正解最長割合は VOCAB 56% / PRACTICE 48% / MOCK 44% と高いまま。Clarifyは新規顧客の受付終了の注記あり（試験範囲では引き続き対象）。

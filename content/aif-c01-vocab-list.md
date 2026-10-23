@@ -142,7 +142,7 @@
 | 136 | Amazon Bedrock Agents | fm | v110 |
 | 137 | AWS Organizations | security | 除外 |
 | 138 | Word Filters | responsible | v100 |
-| 139 | Bias (ML) | aiml | 未 |
+| 139 | Bias (ML) | aiml | v233 |
 | 140 | Nondeterminism | genai | 未 |
 | 141 | Action Group | fm | v123 |
 | 142 | Service Control Policy (SCP) | security | 除外 |
@@ -399,7 +399,7 @@
 | 393 | Multiple Comments Prompting | fm | 未 |
 | 394 | Amazon S3 Object Lock | security | 未 |
 | 395 | Cross-domain Performance | genai | 未 |
-| 396 | Explainable AI (XAI) | responsible | 未 |
+| 396 | Explainable AI (XAI) | responsible | v234 |
 | 397 | Amazon CodeGuru | aiml | 未 |
 | 398 | Experimentation (Prompt) | fm | 未 |
 | 399 | Amazon Bedrock Data Protection | security | 未 |
@@ -458,7 +458,7 @@
 | 452 | Human Evaluation Rubric | fm | 未 |
 | 453 | Logging Requirements for AI Interactions | security | 未 |
 | 454 | Small Language Model | genai | 未 |
-| 455 | Fairness Metrics | responsible | 未 |
+| 455 | Fairness Metrics | responsible | v235 |
 | 456 | Amazon CloudFront | aiml | 未 |
 | 457 | Amazon Bedrock Intelligent Prompt Routing | fm | v220 |
 | 458 | AI Governance Committee | security | 未 |
