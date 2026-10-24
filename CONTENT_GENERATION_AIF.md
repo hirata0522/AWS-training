@@ -551,3 +551,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: バッチ推論（非同期・S3入出力）、Provisioned Throughput（カスタムモデルに必須・時間課金・コミットメント種別・カスタムモデルの価格はベースモデルと同じ）、プロンプトキャッシュ（固定部分を先頭・TTL・ヒット非保証・バッチ非対応）、ツール使用（モデルはツールを直接実行しない・クライアント側の流れ）。
   新規SOURCESなし（bedrockBatch, provThroughput, promptCaching, toolUse を再利用。4ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 45% / VOCAB 57% と高いまま。
+- 2026-10-24（定期実行・10回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを13件（p475〜p487: single 7 / multi 2 / matching 2ほか。security 6 / responsible 6）、MOCK_POOLを6件（m306〜m311: single。security 4 / responsible 2）追加。累計 VOCAB=243 / PRACTICE=487 / MOCK_POOL=311。単語リスト進捗 243/466（除外10）。計19件（不足していたsecurity/responsibleを優先）。
+  追加トピック: Bedrockモデル呼び出しログ（既定は無効・出力先S3/CloudWatch Logs・100KB超はS3別オブジェクト・identity.arn・SSE-KMS時のキーポリシー）、Model Deployment Account（提供元はプロンプト/応答にアクセス不可）、TLS 1.2必須、AIバイアスの種類と対策（aiBias）。
+  新規SOURCESなし（invocationLogging, bedrockDataProt, aiBias を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 46% / VOCAB 57% と高いまま。
