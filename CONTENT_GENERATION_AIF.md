@@ -519,3 +519,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCESなし（bedrockCustom を再利用。custom-models.html をWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   見送り/除外: 行83 Continued Pre-training は現行の custom-models.html / fine-tuning ページに手法として記載がなく確認できないため `除外`。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 42% / VOCAB 57% と高いまま。
+- 2026-10-24（定期実行・2回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを10件（p394〜p403: single 8 / multi 1 / matching 1。genai 8 / fm 2）、MOCK_POOLを5件（m255〜m259: single。genai 4 / fm 1）追加。累計 VOCAB=243 / PRACTICE=403 / MOCK_POOL=259。単語リストは243/466（除外10）。計15件。
+  追加トピック: LLMの次トークン予測学習、埋め込み、モデルパラメータ、LLMのユースケース（テキスト分類・コード生成・ナレッジベース回答・コピーライティング）、ファインチューニングとフューショットの違い、トランスフォーマーの並列処理、Top K / Top Pの具体例。
+  新規SOURCESなし（whatIsLlm, bedrockInference を再利用。両ページをWebFetchで本文確認、成功）。nodeは未使用。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 42% / VOCAB 57% と高いまま。
