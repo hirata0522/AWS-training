@@ -527,3 +527,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 責任あるAIの側面（公平性・真実性と堅牢性・ガバナンス等）、AIバイアスの種類と緩和策（反事実的公平性等）、過学習/過小適合と対策、学習・検証・テスト分割とデータリーク（層化分割・重複・Feature Storeのタイムトラベル）、Macie。
   新規SOURCESなし（responsibleAi, aiBias, underOver, splitsLeakage を再利用。4ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 47% / MOCK 43% / VOCAB 57% と高いまま（今回追加分は正解が最長でない問題を意識して作成）。
+- 2026-10-24（定期実行・4回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。VOCAB追加は0件（残りの `未` は定義ページ未確認の用語が中心）。PRACTICEを12件（p414〜p425: single 6 / multi 2 / ordering 2 / matching 1ほか。security 5 / genai 3 / fm 4）、MOCK_POOLを5件（m266〜m270: single。security 3 / genai 1 / fm 1）追加。累計 VOCAB=243 / PRACTICE=425 / MOCK_POOL=270。計17件。
+  追加トピック: Bedrockのデータ保護（モデルプロバイダーはプロンプト/応答にアクセス不可、TLS 1.2必須）、モデル呼び出しログ（既定で無効、CloudWatch Logs/S3）、Guardrailsのフィルター種別、Prompt management（変数・バリアント・ワークフロー）、Bedrock Agents（アクショングループ・ナレッジベース・利用手順）。
+  新規SOURCESなし（bedrockDataProt, guardrailsComp, invocationLogging, promptMgmt, bedrockAgents を再利用。5ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 43% / VOCAB 57% と高いまま。Bedrock Agents ページには「Agents Classic は新規顧客に非公開、後継は AgentCore」との注記あり。Agents を正解にする問題は概念レベルに留めること。
