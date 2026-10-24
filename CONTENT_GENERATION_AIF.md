@@ -539,3 +539,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: プロンプトの構成要素、フューショット/ゼロショット、プロンプトテンプレート、APIでは会話履歴をプロンプトに含める必要があること、Bedrock評価（プログラム的/人手/judge model/RAG評価）、Bedrock Flows（バージョンの不変性・エイリアス・作成〜デプロイ手順・課金）。
   新規SOURCESなし（promptGuide, bedrockEval, bedrockFlows を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 47% / MOCK 43% / VOCAB 57% と高いまま。fmドメインを補充した。
+- 2026-10-24（定期実行・7回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを10件（p445〜p454: single 5 / multi 2 / ordering 1 / matching 1 ほか。responsible 5 / aiml 5）、MOCK_POOLを6件（m285〜m290: single 4 / multi 1 / matching 1。responsible 3 / aiml 3）追加。累計 VOCAB=243 / PRACTICE=454 / MOCK_POOL=290。単語リスト進捗 243/466。計16件。
+  追加トピック: SageMaker Model Cards（想定用途・リスク評価の値・不変バージョン・Clarify/Model Monitorの評価レポート取り込み）、SageMaker Model Monitor（監視の種類・ベースライン・データキャプチャ・監視手順・是正措置）。
+  新規SOURCESなし（modelCards, modelMonitor を再利用。両ページをWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: Model Monitor ページに「新規顧客には提供終了、既存顧客は継続利用可」との注記あり。概念レベルの問題に留めた。正解最長割合は PRACTICE 48% / MOCK 44% / VOCAB 57%。
