@@ -535,3 +535,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: RAGの利点・処理の流れ・外部データ更新、ハルシネーションの原因と低減策、生成AIの手法（GAN/VAE/拡散モデル/トランスフォーマー）・利点・課題、基盤モデルの定義。
   新規SOURCESなし（ragAws, hallucination, whatIsGenai を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 43% / VOCAB 57% と高いまま。genaiドメインを補充した。MOCK_POOLのordering(4件)・matching(7件)は引き続き少ない。
+- 2026-10-24（定期実行・6回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを8件（p437〜p444: single 5 / multi 1 / ordering 1 ほか。すべてfm）、MOCK_POOLを8件（m277〜m284: single 4 / multi 1 / matching 1 / ordering 1 ほか。すべてfm）追加。累計 VOCAB=243 / PRACTICE=444 / MOCK_POOL=284。単語リスト進捗 243/466。
+  追加トピック: プロンプトの構成要素、フューショット/ゼロショット、プロンプトテンプレート、APIでは会話履歴をプロンプトに含める必要があること、Bedrock評価（プログラム的/人手/judge model/RAG評価）、Bedrock Flows（バージョンの不変性・エイリアス・作成〜デプロイ手順・課金）。
+  新規SOURCESなし（promptGuide, bedrockEval, bedrockFlows を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 47% / MOCK 43% / VOCAB 57% と高いまま。fmドメインを補充した。
