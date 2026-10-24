@@ -547,3 +547,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Guardrailsのプロンプト攻撃の種類（ジェイルブレイク/インジェクション/リーケージ）と入力タグ、Macie（S3の機密データ検出・マネージド/カスタムデータ識別子・EventBridge連携）、Knowledge Basesの前処理と実行時の流れ・バイナリベクトル、MLワークフローと継続サイクル。
   新規SOURCESなし（promptAttack, macie, bedrockKb, mlWorkflow を再利用。4ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 45% / VOCAB 57% と高いまま。
+- 2026-10-24（定期実行・9回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを9件（p466〜p474: single 6 / multi 1 / ordering 1 / matching 1。すべてfm）、MOCK_POOLを6件（m300〜m305: single 5 / ordering 1。すべてfm）追加。累計 VOCAB=243 / PRACTICE=474 / MOCK_POOL=305。単語リスト進捗 243/466（除外10）。計15件。
+  追加トピック: バッチ推論（非同期・S3入出力）、Provisioned Throughput（カスタムモデルに必須・時間課金・コミットメント種別・カスタムモデルの価格はベースモデルと同じ）、プロンプトキャッシュ（固定部分を先頭・TTL・ヒット非保証・バッチ非対応）、ツール使用（モデルはツールを直接実行しない・クライアント側の流れ）。
+  新規SOURCESなし（bedrockBatch, provThroughput, promptCaching, toolUse を再利用。4ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 45% / VOCAB 57% と高いまま。
