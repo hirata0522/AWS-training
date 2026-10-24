@@ -514,3 +514,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: bedrockIam（security-iam.html をWebFetchで本文確認、成功）。nodeは未使用。
   見送り: Data Access Control / Data Integrity 等のVOCABは定義ページ未確認のため `未` のまま。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 42%。
+- 2026-10-24（定期実行）: 改訂履歴をWebFetchで確認（成功）。最新はv1.1（2026-04-30）のまま変更なし。VOCAB追加は0件、PRACTICEを8件（p386〜p393: single 6 / multi 1 / ordering 1。fm）、MOCK_POOLを4件（m251〜m254: single。fm）追加。累計 VOCAB=243 / PRACTICE=393 / MOCK_POOL=254。計12件。
+  追加トピック: Bedrockのカスタマイズ手法（教師ありファインチューニング・強化ファインチューニング・蒸留）、カスタマイズの課金（トークン数×エポック数＋月額保管料）、インコンテキスト学習との違い。
+  新規SOURCESなし（bedrockCustom を再利用。custom-models.html をWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  見送り/除外: 行83 Continued Pre-training は現行の custom-models.html / fine-tuning ページに手法として記載がなく確認できないため `除外`。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 42% / VOCAB 57% と高いまま。

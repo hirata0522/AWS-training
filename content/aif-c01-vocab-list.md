@@ -86,7 +86,7 @@
 | 80 | Tabular Data | aiml | v164 |
 | 81 | Prompt | genai | v95 |
 | 82 | Time-series Data | aiml | v83 |
-| 83 | Continued Pre-training | fm | 未 |
+| 83 | Continued Pre-training | fm | 除外 |
 | 84 | Policy in AgentCore | security | v124 |
 | 85 | Structured Data | aiml | v84 |
 | 86 | Truthfulness | responsible | 未 |
