@@ -560,3 +560,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: fmevalOverview（clarify-foundation-model-evaluate-overview.html、WebFetch成功）。fmevalAuto・judgeMetricsも再WebFetchで本文確認。nodeでの読み込み確認済み。
   見送り: BLEU・Perplexityは公式ページに定義が見つからず `未` のまま。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 46% / VOCAB 57% と高いまま。
+- 2026-10-24（定期実行）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。単語リスト行199,204,266,268の4語のVOCABを追加（v245〜v248）、PRACTICEを6件（p496〜p501: single 4 / multi 2）、MOCK_POOLを6件（m318〜m323: single 5 / multi 1）追加。累計 VOCAB=248 / PRACTICE=501 / MOCK_POOL=323。単語リスト進捗 248/466（除外10）。
+  追加トピック: AWS Transform、Prompt Chaining、ReAct Prompting、Data Residency（データ主権との違い）、グラウンディングチェック。
+  新規SOURCES: transform, promptChainSf, reactPg, dataSovereignty（いずれもWebFetch成功。kiro.dev はネットワーク不可のため Kiro は `未` のまま。aws.amazon.com側のKiro公式ページを次回探すこと）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 45% と依然高い。次回以降は不正解の選択肢を正解より長めに書くこと。未のまま残る行の多くは公式の定義ページが見つかっていない用語。

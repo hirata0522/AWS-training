@@ -202,12 +202,12 @@
 | 196 | Mean Squared Error (MSE) | aiml | v184 |
 | 197 | Dataset Diversity | responsible | 未 |
 | 198 | MLOps | aiml | v174 |
-| 199 | Prompt Chaining | fm | 未 |
+| 199 | Prompt Chaining | fm | v246 |
 | 200 | Data Integrity | security | 未 |
 | 201 | AI Agent | genai | v173 |
 | 202 | Model Monitoring | aiml | v188 |
 | 203 | Balanced Dataset | responsible | 未 |
-| 204 | ReAct Prompting | fm | 未 |
+| 204 | ReAct Prompting | fm | v247 |
 | 205 | Data Leakage Prevention | security | v205 |
 | 206 | Multi-agent System | genai | v154 |
 | 207 | Model Re-training | aiml | 未 |
@@ -269,9 +269,9 @@
 | 263 | Data Lifecycle | security | 未 |
 | 264 | Amazon SageMaker Model Governance | responsible | v231 |
 | 265 | Amazon Quick | genai | v195 |
-| 266 | AWS Transform | aiml | 未 |
+| 266 | AWS Transform | aiml | v245 |
 | 267 | Bilingual Evaluation Understudy (BLEU) | fm | 未 |
-| 268 | Data Residency | security | 未 |
+| 268 | Data Residency | security | v248 |
 | 269 | Amazon SageMaker Data Wrangler | aiml | v142 |
 | 270 | Kiro | genai | 未 |
 | 271 | Amazon SageMaker Role Manager | responsible | 未 |

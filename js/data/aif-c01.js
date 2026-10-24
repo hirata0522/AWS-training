@@ -14,6 +14,10 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  transform:{label:'AWS Transform とは', url:'https://docs.aws.amazon.com/transform/latest/userguide/what-is-service.html'},
+  promptChainSf:{label:'Step Functions: Amazon Bedrock でAIプロンプトチェーンを実行する', url:'https://docs.aws.amazon.com/step-functions/latest/dg/sample-bedrock-prompt-chaining.html'},
+  reactPg:{label:'AWS規範ガイダンス: RAGとReActプロンプティングによる高度な生成AIチャットアシスタントの開発', url:'https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/develop-advanced-generative-ai-chat-based-assistants-by-using-rag-and-react-prompting.html'},
+  dataSovereignty:{label:'AWS: データ主権とは（データレジデンシーとの違い）', url:'https://aws.amazon.com/what-is/data-sovereignty/'},
   comprehend:{label:'Amazon Comprehend とは', url:'https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html'},
   transcribe:{label:'Amazon Transcribe とは', url:'https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html'},
   rekognition:{label:'Amazon Rekognition とは', url:'https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html'},
@@ -424,6 +428,10 @@ var VOCAB = [
   {id:'v242', term:'Amazon Bedrock AgentCore Gateway', domain:'genai', source:SOURCES.agentcoreServices, q:{text:'AgentCore Gatewayを使う目的はどれですか？', choices:['既存のAPI、Lambda関数、サービスをModel Context Protocol (MCP) 互換ツールに変換し、エージェントから利用できるようにする','エージェントのセッションを隔離されたmicroVMで実行する','Webアプリケーションを操作するクラウドベースのブラウザ環境を提供する','エージェントの評価結果を集計して品質を測定する'], correct:0, why:['正しい。既存のMCPサーバーへの接続もでき、Gatewayのエンドポイント経由でエージェントに公開されます。','誤り。実行環境はAgentCore Runtime（Harness）の領域です。','誤り。これはAgentCore Browserの役割です。','誤り。これはAgentCore Evaluationsの役割です。']}},
   {id:'v243', term:'Amazon SageMaker Experiments', domain:'aiml', source:SOURCES.sagemakerExperiments, q:{text:'ML実験の入力・パラメータ・結果を「run」として記録し、実験として整理して比較できるSageMaker AIの機能はどれですか？', choices:['SageMaker Feature Store','SageMaker Clarify','SageMaker Experiments','SageMaker Ground Truth'], correct:2, why:['誤り。Feature Storeは特徴量を保存・共有するための機能です。','誤り。Clarifyはバイアス検出と説明可能性の機能です。','正しい。Experimentsは反復の入力・パラメータ・構成・結果をrunとして追跡し、実験として整理・比較できます（現在はMLflow連携の利用が推奨されています）。','誤り。Ground Truthはデータのラベリングを行うサービスです。']}},
   {id:'v244', term:'BERTScore', domain:'fm', source:SOURCES.fmevalOverview, q:{text:'テキスト要約の自動評価で、要約と参照要約の文埋め込みを計算して比較する指標はどれですか？', choices:['ROUGE-N：生成された要約と参照要約の間でN-gramの重なりを数える指標','Meteor：単語の重なりを、言い換えも考慮して計算する指標','BERTScore：生成された要約と参照要約の文埋め込みを計算して比較する指標','F1 over words：正規化した回答と参照の適合率と再現率の調和平均'], correct:2, why:['誤り。ROUGE-Nは埋め込みではなくN-gramの重なりを計算します。','誤り。Meteorは単語の重なりを言い換えも考慮して計算する指標で、埋め込みの比較ではありません。','正しい。BERTScoreは要約と参照の文埋め込みを計算して比較します（FMEvalはRoBERTaまたはDeBERTa系のモデルで埋め込みを計算）。','誤り。F1 over wordsは質問応答の精度指標で、要約の埋め込み比較ではありません。']}},
+  {id:'v245', term:'AWS Transform', domain:'aiml', source:SOURCES.transform, q:{text:'AWS Transformの説明として正しいものはどれですか？', choices:['ドキュメントや画像から文字・表・フォームを抽出し、移行作業の自動化には使わない機械学習サービスである','基盤モデルをAPIで利用でき、統一的なインターフェースでアプリ開発を支援するフルマネージドサービスである','エージェント型AIの体験により、メインフレームや仮想サーバー、.NETアプリなどのインフラ・アプリ・コードの移行とモダナイズを加速するサービスである','モデルのトレーニングからデプロイまでを一貫して行えるMLプラットフォームで、ノートブック環境も備えるサービスである'], correct:2, why:['誤り。文書から文字・表・フォームを抽出するのはAmazon Textractです。','誤り。基盤モデルをAPIで利用するのはAmazon Bedrockです。','正しい。AWS Transformは、インフラ・アプリケーション・コードの変換（移行とモダナイゼーション）を、エージェント型AIの体験で加速・簡素化するサービスです。','誤り。モデルの構築・学習・デプロイはAmazon SageMaker AIの役割です。']}},
+  {id:'v246', term:'Prompt Chaining', domain:'fm', source:SOURCES.promptChainSf, q:{text:'プロンプトチェーン（Prompt Chaining）の説明として最も適切なものはどれですか？', choices:['複数の基盤モデルの出力を平均化して、一つの最終回答の信頼性を高める手法','一つのプロンプトに多数の例を並べ、一度の呼び出しで出力形式を指定する手法','ユーザーの入力に含まれる有害な指示や機密情報を検出し、モデルへ送信する前にブロックまたはマスクする仕組み','複雑なタスクを複数のプロンプトに分け、前の呼び出しの出力を次のプロンプトに渡しながら順番に処理する手法'], correct:3, why:['誤り。複数モデルの出力を平均化する手法ではありません。プロンプトチェーンは処理を順番につなぎます。','誤り。例を並べて形式を示すのはフューショット（few-shot）プロンプティングです。','誤り。有害な入力の検出・ブロックはAmazon Bedrock Guardrailsの役割です。','正しい。プロンプトを連鎖させ、順番に解決することで、言語モデルから精度の高い応答を引き出します。AWSではStep Functionsなどで実装例が示されています。']}},
+  {id:'v247', term:'ReAct Prompting', domain:'fm', source:SOURCES.reactPg, q:{text:'ReAct（Reasoning and Acting）プロンプティングを用いるエージェントの動作として正しいものはどれですか？', choices:['推論を行わず、あらかじめ用意した固定の応答テンプレートを返すだけである','入力された質問を複数のステップに分解し、推論と、検索やデータベース照会などのツールの利用を繰り返しながら最終回答を導く','モデルの重みを更新して、特定ドメインの知識をモデルへ恒久的に学習させる','同じプロンプトを複数回実行し、最も多く出た回答を最終回答として採用する'], correct:1, why:['誤り。ReActは推論を伴い、固定テンプレートを返す方式ではありません。','正しい。AWSの規範ガイダンスのReActエージェントは、質問を複数ステップに分解し、RAG検索やDB照会をツールとして使いながら最終回答を生成します。','誤り。重みを更新するのはファインチューニングで、プロンプト技法のReActではありません。','誤り。多数決で回答を選ぶ手法は別の技法です。ReActはツール利用と推論の繰り返しが特徴です。']}},
+  {id:'v248', term:'Data Residency', domain:'security', source:SOURCES.dataSovereignty, q:{text:'AWSの定義で、データレジデンシー（Data Residency）とは何を指しますか？', choices:['データが物理的にどこ（地理的な場所）に保存されているか','データが存在する場所の法律が、そのデータにどのように適用されるかという考え方','データを保管中も転送中も暗号化して、第三者が読み取れないようにすること','データの保存期間を定め、期限を過ぎたデータを自動的に削除すること'], correct:0, why:['正しい。AWSは「データレジデンシーはデータが物理的に置かれている場所」と説明しています。','誤り。これはデータ主権（Data Sovereignty）の説明です。','誤り。暗号化は保管中・転送中のデータ保護で、データの所在地を指す言葉ではありません。','誤り。保存期間と削除はデータ保持（Data Retention）やライフサイクルの話です。']}},
 ];
 
 var PRACTICE = [
@@ -2165,6 +2173,24 @@ var PRACTICE = [
     text:'FMEvalの質問応答タスクの精度評価で用いられる指標を3つ選択してください。（3つ選択）',
     choices:['Exact match','ROUGE-L','Quasi-exact match','Balanced classification accuracy','F1 over words'], correct:[0,2,4],
     why:['正しい。回答が参照と完全一致したときに1、そうでなければ0とするスコアです。','誤り。ROUGE-Lは要約の評価で用いる、最長一致単語列を比較する指標です。','正しい。句読点や冠詞を除去（正規化）したうえで一致を判定するスコアです。','誤り。Balanced classification accuracyは分類タスクの指標です。','正しい。正規化した回答と参照の適合率と再現率の調和平均です。']},
+  {id:'p496', domain:'fm', type:'single', source:SOURCES.contextualGrounding, text:'RAGベースのQ&Aアプリで、生成された回答が参照した文書の内容に裏付けられていない（ハルシネーションの疑い）場合に、それを検出して回答をブロックまたは警告したいと考えています。最も適切な機能はどれですか？',
+    choices:['Amazon SageMaker Model Monitor','Amazon Bedrock Guardrails のコンテキストに基づくグラウンディングチェック','Amazon SageMaker Clarify のバイアス検出','Amazon Macie の機密データ検出'], correct:[1],
+    why:['誤り。Model Monitorはデプロイ済みモデルの入力データやモデル品質のドリフトを監視する機能で、回答が文書に裏付けられているかは判定しません。','正しい。グラウンディングチェックは、回答が参照ソースに裏付けられているか、質問に関連しているかを確認し、信頼度が低い回答をフィルタリングできます。','誤り。Clarifyはデータやモデルのバイアス検出と説明可能性のための機能です。','誤り。MacieはS3内の機密データを検出するサービスで、生成回答の事実性は検査しません。']},
+  {id:'p497', domain:'security', type:'single', source:SOURCES.dataSovereignty, text:'ある企業は、規制により顧客データを特定の国内にある場所にのみ物理的に保存しなければなりません。この「データが物理的にどこに置かれているか」に関する要件を表す用語はどれですか？',
+    choices:['データ主権（Data Sovereignty）','データ分類（Data Classification）','データレジデンシー（Data Residency）','データ整合性（Data Integrity）'], correct:[2],
+    why:['誤り。データ主権は、データが存在する場所の法律がそのデータにどう適用されるかを指します。物理的な所在地そのものではありません。','誤り。データ分類は機密度などでデータを区分する取り組みで、保存場所の要件を表す言葉ではありません。','正しい。データレジデンシーは、データが物理的にどこに置かれているかを指します。','誤り。データ整合性は、データが改ざんや破損なく正確であることを指します。']},
+  {id:'p498', domain:'aiml', type:'single', source:SOURCES.transform, text:'オンプレミスのVMware環境の仮想サーバーをAmazon EC2へ移行するにあたり、検出、移行計画の作成、リホストまでをエージェント型AIの支援で進めたいと考えています。最も適したサービスはどれですか？',
+    choices:['Amazon Bedrock Agents','AWS Transform','Amazon SageMaker JumpStart','Amazon Q Business'], correct:[1],
+    why:['誤り。Bedrock Agentsは、アプリケーションのタスクを自動化するエージェントを構築する機能で、サーバー移行に特化したサービスではありません。','正しい。AWS Transformは、VMwareなどの仮想サーバー環境のEC2への移行について、検出・移行計画・ネットワーク移行・リホストなどを支援します。','誤り。JumpStartは事前学習済みモデルやソリューションを使ってMLを始めるための機能です。','誤り。Amazon Q Businessは社内データを使った質問応答や業務支援のためのアシスタントです。']},
+  {id:'p499', domain:'genai', type:'single', source:SOURCES.reactPg, text:'チャットアシスタントが、複雑な質問をいくつかのステップに分解し、各ステップでRAG検索やデータベース照会をツールとして呼び出しながら回答を組み立てる設計にしたいと考えています。この考え方に当たるプロンプト技法はどれですか？',
+    choices:['ReAct プロンプティング','ゼロショットプロンプティング','ネガティブプロンプティング','Temperature の引き上げ'], correct:[0],
+    why:['正しい。ReActは推論とツール利用（行動）を繰り返す技法で、AWSの規範ガイダンスのエージェントも同様に質問を分解してRAG検索とDB照会を使い分けます。','誤り。ゼロショットは例を示さずにタスクを指示する方法で、ツール利用を繰り返す仕組みではありません。','誤り。ネガティブプロンプティングは出力させたくない内容を指示する方法で、ステップ分解やツール呼び出しとは別の考え方です。','誤り。Temperatureは出力のランダム性を調整する推論パラメータで、推論手順やツール利用を制御するものではありません。']},
+  {id:'p500', domain:'fm', type:'multi', source:SOURCES.promptChainSf, text:'複雑なタスクをLLMで複数ステップに分けて処理する手法として適切なものはどれですか？（2つ選択）',
+    choices:['前のプロンプトの出力を次のプロンプトの入力に渡して順に処理するプロンプトチェーン','推論とツールの利用を交互に行い、結果を踏まえて次の行動を決めるReActプロンプティング','Top-pの値を小さくして出力語彙を絞り込む','埋め込みベクトルの次元数を減らして保存容量を節約する','Temperatureを0にして毎回同じ出力に近づける'], correct:[0,1],
+    why:['正しい。プロンプトを順に連鎖させることで、複雑なタスクを段階的に処理できます。','正しい。ReActは推論とツール利用を繰り返して回答を導くため、複数ステップのタスクに向きます。','誤り。Top-pはサンプリング対象の語彙を絞る推論パラメータで、タスクを分割する手法ではありません。','誤り。次元削減はベクトルデータの扱いに関する話で、タスク分割とは関係がありません。','誤り。Temperatureは出力のランダム性の調整であり、ステップ分割の手法ではありません。']},
+  {id:'p501', domain:'aiml', type:'multi', source:SOURCES.transform, text:'AWS Transformが支援する作業として正しいものはどれですか？（2つ選択）',
+    choices:['画像や動画の中から顔やオブジェクトを検出する','IBM z/OSなどのメインフレームのモダナイズと移行','.NETアプリケーションをLinuxで動くクロスプラットフォームの.NETへモダナイズする','通話音声をテキストに文字起こしして話者を識別する','基盤モデルのトレーニングデータにラベルを付与する'], correct:[1,2],
+    why:['誤り。画像や動画の分析はAmazon Rekognitionの役割です。','正しい。AWS TransformはIBM z/OSなどのメインフレームのモダナイズ・移行を支援します。','正しい。.NETアプリケーションをLinux対応のクロスプラットフォーム.NETへモダナイズする用途が挙げられています。','誤り。音声の文字起こしはAmazon Transcribeの役割です。','誤り。データのラベル付けはSageMaker Ground Truthなどの役割です。']},
 ];
 
 var MOCK_POOL = [
@@ -3259,6 +3285,24 @@ var MOCK_POOL = [
     text:'FMEvalのSemantic robustnessで、テキスト要約タスクの評価に用いられる精度指標の組み合わせはどれですか？',
     choices:['ROUGE-N、Meteor、BERTScore','Exact match、Quasi-exact match、F1 over words','Precision、Recall、Balanced classification accuracy','Detoxify、Toxigen、RealToxicityPrompts'], correct:[0],
     why:['正しい。要約のSemantic robustnessは、これらの精度指標の差から求めます。','質問応答タスクの精度指標です。','分類タスクの精度指標です。','毒性評価で使う検出器やデータセットで、精度指標ではありません。']},
+  {id:'m318', domain:'security', type:'single', source:SOURCES.dataSovereignty, text:'AWSの説明で、データ主権（Data Sovereignty）とデータレジデンシー（Data Residency）の違いを正しく表しているものはどれですか？',
+    choices:['データ主権はデータが暗号化されているかどうか、データレジデンシーはデータが圧縮されているかどうかを表す','データ主権はデータの保存場所の法律の適用のされ方、データレジデンシーはデータが物理的に置かれている場所を表す','データ主権はデータが物理的に置かれている場所、データレジデンシーはその場所の法律の適用のされ方を表す','データ主権とデータレジデンシーは同じ意味で、どちらもバックアップの取得頻度を表す'], correct:[1],
+    why:['誤り。どちらも暗号化や圧縮の状態を表す言葉ではありません。','正しい。データレジデンシーは「データが物理的に置かれている場所」、データ主権は「その場所の法律がデータにどう適用されるか」です。','誤り。説明が逆です。','誤り。両者は別の概念で、バックアップ頻度とも関係がありません。']},
+  {id:'m319', domain:'genai', type:'single', source:SOURCES.reactPg, text:'ある社内アシスタントは、ユーザーの複雑な質問に対し、まず質問を分解し、必要に応じてドキュメント検索やSQL照会のツールを呼び出して結果を確認しながら、最終回答を生成します。この動作を支えるプロンプト技法はどれですか？',
+    choices:['Few-shot プロンプティング','ReAct プロンプティング','Temperature を最大にする設定','ファインチューニング'], correct:[1],
+    why:['誤り。Few-shotは例を示して出力形式や振る舞いを誘導する方法で、ツール呼び出しを繰り返す仕組みではありません。','正しい。ReActは、推論とツール利用（行動）を繰り返しながら回答を導く技法です。','誤り。Temperatureは出力のランダム性を調整するパラメータです。','誤り。ファインチューニングはモデルの重みを更新するカスタマイズ手法で、実行時のプロンプト技法ではありません。']},
+  {id:'m320', domain:'fm', type:'single', source:SOURCES.promptChainSf, text:'ある契約書レビューのアプリで、まず契約書を要約し、次にその要約から問題のある条項を抽出し、最後にそれらをリスク別に分類する、というようにLLMへの呼び出しを順番につなげて処理しています。この手法はどれですか？',
+    choices:['プロンプトチェーン（Prompt Chaining）','モデル蒸留（Model Distillation）','継続事前学習（Continued Pre-training）','バッチ推論（Batch Inference）'], correct:[0],
+    why:['正しい。前の呼び出しの出力を次のプロンプトに渡しながら順に処理する手法がプロンプトチェーンです。','誤り。モデル蒸留は大きなモデルの知識を小さなモデルに移す手法で、呼び出しを連鎖させる設計ではありません。','誤り。継続事前学習はラベルなしデータでモデルの知識を追加する手法です。','誤り。バッチ推論は大量の入力をまとめて処理する推論方式で、処理を段階的につなげる設計とは別の概念です。']},
+  {id:'m321', domain:'aiml', type:'single', source:SOURCES.transform, text:'ある企業が、ソースコードからアプリケーションをコンテナ化してAmazon ECSやAmazon EKSにデプロイするまでを、エージェント型AIで支援してもらいたいと考えています。最も適したAWSのサービスはどれですか？',
+    choices:['Amazon Textract','Amazon Comprehend','AWS Transform','Amazon Polly'], correct:[2],
+    why:['誤り。Textractは文書から文字・表・フォームを抽出するサービスです。','誤り。Comprehendはテキストから感情やエンティティなどを分析するNLPサービスです。','正しい。AWS Transformはソースコードのコンテナ化とECS/EKSへのデプロイなど、移行・モダナイゼーションの作業を支援します。','誤り。Pollyはテキストを音声に変換するサービスです。']},
+  {id:'m322', domain:'fm', type:'single', source:SOURCES.contextualGrounding, text:'RAGアプリで、モデルの回答が検索で取得した文書に基づいているか、また質問に関連しているかを判定し、信頼度が低い回答を除外したいと考えています。どのAmazon Bedrock Guardrailsの機能を使うべきですか？',
+    choices:['コンテキストに基づくグラウンディングチェック','機密情報フィルター','拒否トピック','単語フィルター'], correct:[0],
+    why:['正しい。グラウンディングチェックは、回答が参照ソースに裏付けられているかと質問への関連性を確認し、閾値に満たない回答をフィルタリングできます。','誤り。機密情報フィルターはPIIなどの機密情報を検出してブロックまたはマスクする機能です。','誤り。拒否トピックは特定のトピックに関するやり取りを制限する機能です。','誤り。単語フィルターは特定の単語やフレーズを検出してブロックする機能です。']},
+  {id:'m323', domain:'genai', type:'multi', source:SOURCES.promptChainSf, text:'複雑なタスクを複数のステップに分けて生成AIに処理させる設計として適切なものはどれですか？（2つ選択）',
+    choices:['ステップごとのプロンプトの出力を次のプロンプトへ渡すプロンプトチェーンを使う','質問を分解してツール呼び出しと推論を繰り返すReActプロンプティングを使う','すべての指示を1つのプロンプトに詰め込み、Maximum tokensを最小にする','Temperatureを最大にして毎回異なる出力を得る','学習データを増やすために同じ質問を繰り返し入力する'], correct:[0,1],
+    why:['正しい。プロンプトの連鎖はタスクの段階的な処理に適しています。','正しい。ReActは推論とツール利用を繰り返し、複数ステップのタスクに対応できます。','誤り。すべてを1つに詰め込みMaximum tokensを絞ると、ステップ分割ができず、出力が途中で切れるおそれもあります。','誤り。Temperatureを上げると出力のランダム性が増すだけで、タスクの分割にはなりません。','誤り。推論時に同じ質問を繰り返しても、モデルの学習データは増えません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）
