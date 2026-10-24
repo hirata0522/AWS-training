@@ -531,3 +531,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrockのデータ保護（モデルプロバイダーはプロンプト/応答にアクセス不可、TLS 1.2必須）、モデル呼び出しログ（既定で無効、CloudWatch Logs/S3）、Guardrailsのフィルター種別、Prompt management（変数・バリアント・ワークフロー）、Bedrock Agents（アクショングループ・ナレッジベース・利用手順）。
   新規SOURCESなし（bedrockDataProt, guardrailsComp, invocationLogging, promptMgmt, bedrockAgents を再利用。5ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 43% / VOCAB 57% と高いまま。Bedrock Agents ページには「Agents Classic は新規顧客に非公開、後継は AgentCore」との注記あり。Agents を正解にする問題は概念レベルに留めること。
+- 2026-10-24（定期実行・5回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを11件（p426〜p436: single 6 / multi 1 / ordering 1 / matching 2 ほか。すべてgenai）、MOCK_POOLを6件（m271〜m276: single 4 / multi 1 / matching 1。すべてgenai）追加。累計 VOCAB=243 / PRACTICE=436 / MOCK_POOL=276。計17件。
+  追加トピック: RAGの利点・処理の流れ・外部データ更新、ハルシネーションの原因と低減策、生成AIの手法（GAN/VAE/拡散モデル/トランスフォーマー）・利点・課題、基盤モデルの定義。
+  新規SOURCESなし（ragAws, hallucination, whatIsGenai を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 43% / VOCAB 57% と高いまま。genaiドメインを補充した。MOCK_POOLのordering(4件)・matching(7件)は引き続き少ない。
