@@ -555,3 +555,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrockモデル呼び出しログ（既定は無効・出力先S3/CloudWatch Logs・100KB超はS3別オブジェクト・identity.arn・SSE-KMS時のキーポリシー）、Model Deployment Account（提供元はプロンプト/応答にアクセス不可）、TLS 1.2必須、AIバイアスの種類と対策（aiBias）。
   新規SOURCESなし（invocationLogging, bedrockDataProt, aiBias を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 46% / VOCAB 57% と高いまま。
+- 2026-10-24（定期実行・11回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCABを1件（v244 BERTScore）、PRACTICEを8件（p488〜p495: fm 7 / responsible 1。single 5 / matching 1 / multi 1ほか）、MOCK_POOLを6件（m312〜m317: fm single）追加。累計 VOCAB=244 / PRACTICE=495 / MOCK_POOL=317。単語リスト進捗 244/466（除外10）。計15件。
+  追加トピック: FMEvalの評価観点（Factual knowledge / Semantic robustness / Prompt stereotyping / Toxicity）、要約・質問応答・分類の精度指標（ROUGE-N/Meteor/BERTScore、Exact match/F1 over words、Precision/Recall/BCA）、Bedrock LLM-as-a-judgeの組み込みメトリクス（Refusal/Harmfulness/Following instructions/Coherence）。
+  新規SOURCES: fmevalOverview（clarify-foundation-model-evaluate-overview.html、WebFetch成功）。fmevalAuto・judgeMetricsも再WebFetchで本文確認。nodeでの読み込み確認済み。
+  見送り: BLEU・Perplexityは公式ページに定義が見つからず `未` のまま。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 46% / VOCAB 57% と高いまま。

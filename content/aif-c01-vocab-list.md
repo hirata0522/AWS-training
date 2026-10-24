@@ -275,7 +275,7 @@
 | 269 | Amazon SageMaker Data Wrangler | aiml | v142 |
 | 270 | Kiro | genai | 未 |
 | 271 | Amazon SageMaker Role Manager | responsible | 未 |
-| 272 | BERTScore | fm | 未 |
+| 272 | BERTScore | fm | v244 |
 | 273 | Data Retention | security | 未 |
 | 274 | Amazon SageMaker Feature Store | aiml | v140 |
 | 275 | Amazon SageMaker Model Monitor | aiml | v141 |
