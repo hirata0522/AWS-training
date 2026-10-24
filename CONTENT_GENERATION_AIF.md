@@ -543,3 +543,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: SageMaker Model Cards（想定用途・リスク評価の値・不変バージョン・Clarify/Model Monitorの評価レポート取り込み）、SageMaker Model Monitor（監視の種類・ベースライン・データキャプチャ・監視手順・是正措置）。
   新規SOURCESなし（modelCards, modelMonitor を再利用。両ページをWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: Model Monitor ページに「新規顧客には提供終了、既存顧客は継続利用可」との注記あり。概念レベルの問題に留めた。正解最長割合は PRACTICE 48% / MOCK 44% / VOCAB 57%。
+- 2026-10-24（定期実行・8回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを11件（p455〜p465: single 6 / multi 1 / ordering 2 / matching 0 ほか。security 6 / genai 3 / aiml 2）、MOCK_POOLを9件（m291〜m299: single 5 / multi 1 / matching 1 / ordering 2 ほか）追加。累計 VOCAB=243 / PRACTICE=465 / MOCK_POOL=299。単語リスト進捗 243/466（除外10）。
+  追加トピック: Guardrailsのプロンプト攻撃の種類（ジェイルブレイク/インジェクション/リーケージ）と入力タグ、Macie（S3の機密データ検出・マネージド/カスタムデータ識別子・EventBridge連携）、Knowledge Basesの前処理と実行時の流れ・バイナリベクトル、MLワークフローと継続サイクル。
+  新規SOURCESなし（promptAttack, macie, bedrockKb, mlWorkflow を再利用。4ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 45% / VOCAB 57% と高いまま。
