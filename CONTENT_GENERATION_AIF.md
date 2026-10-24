@@ -523,3 +523,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: LLMの次トークン予測学習、埋め込み、モデルパラメータ、LLMのユースケース（テキスト分類・コード生成・ナレッジベース回答・コピーライティング）、ファインチューニングとフューショットの違い、トランスフォーマーの並列処理、Top K / Top Pの具体例。
   新規SOURCESなし（whatIsLlm, bedrockInference を再利用。両ページをWebFetchで本文確認、成功）。nodeは未使用。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 42% / VOCAB 57% と高いまま。
+- 2026-10-24（定期実行・3回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件（残りの `未` は定義ページ未確認の用語が中心）。PRACTICEを10件（p404〜p413: single 7 / multi 1 / matching 1 ほか。responsible 5 / aiml 4 / security 1）、MOCK_POOLを6件（m260〜m265: single 5 / multi 1。aiml 4 / responsible 2）追加。累計 VOCAB=243 / PRACTICE=413 / MOCK_POOL=265。計16件。
+  追加トピック: 責任あるAIの側面（公平性・真実性と堅牢性・ガバナンス等）、AIバイアスの種類と緩和策（反事実的公平性等）、過学習/過小適合と対策、学習・検証・テスト分割とデータリーク（層化分割・重複・Feature Storeのタイムトラベル）、Macie。
+  新規SOURCESなし（responsibleAi, aiBias, underOver, splitsLeakage を再利用。4ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 47% / MOCK 43% / VOCAB 57% と高いまま（今回追加分は正解が最長でない問題を意識して作成）。
