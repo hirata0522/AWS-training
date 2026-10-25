@@ -576,3 +576,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 機械学習の4種類（半教師あり・強化学習ほか）とMLの手順、過学習/学習不足の症状と対策、AIバイアスの種類（ラベル/除外/選択）と緩和策（反事実的公平性ほか）、SageMaker Model Cards、Model Monitorの4種類の監視。
   新規SOURCESなし（whatIsMl, underOver, aiBias, modelCards, modelMonitor を再利用。5ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 46% / VOCAB 57% と高いまま。aimlとresponsibleがドメイン目標に対し依然大きく不足。
+- 2026-10-25（定期実行・4回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを9件（p527〜p535: aiml。single 7 / multi 1 / matching 1）、MOCK_POOLを4件（m338〜m341: aiml single）追加。累計 VOCAB=248 / PRACTICE=535 / MOCK_POOL=341。計13件。
+  追加トピック: 強化学習（エージェント・報酬・探索と活用・モデルベース/モデルフリー・用途例）、特徴量エンジニアリング（Data Wrangler・Feature Store）。
+  新規SOURCESなし（whatIsRl, featureEng を再利用。2ページともWebFetchで本文確認、成功）。nodeでの読み込み確認は未実施（validate_content.pyのみ）。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 46% / VOCAB 57% と高いまま。件数は目安に届いていない。
