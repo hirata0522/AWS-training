@@ -564,3 +564,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: AWS Transform、Prompt Chaining、ReAct Prompting、Data Residency（データ主権との違い）、グラウンディングチェック。
   新規SOURCES: transform, promptChainSf, reactPg, dataSovereignty（いずれもWebFetch成功。kiro.dev はネットワーク不可のため Kiro は `未` のまま。aws.amazon.com側のKiro公式ページを次回探すこと）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 48% / MOCK 45% と依然高い。次回以降は不正解の選択肢を正解より長めに書くこと。未のまま残る行の多くは公式の定義ページが見つかっていない用語。
+- 2026-10-25（定期実行）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを10件（p502〜p511: genai。single 7 / multi 3）、MOCK_POOLを6件（m324〜m329: genai。single 5 / multi 1）追加。累計 VOCAB=248 / PRACTICE=511 / MOCK_POOL=329。単語リスト進捗 248/466（除外10）。計16件（不足していたgenaiを優先）。
+  追加トピック: 生成AIの定義・仕組み（次の単語予測）、FMと従来MLの違い・自己教師あり学習・構築の課題、LLM（トランスフォーマー・パラメータ・埋め込み・ゼロ/フューショット）、GAN/VAE/拡散モデル/トランスフォーマーの違い、生成AIの限界。
+  新規SOURCESなし（whatIsGenai, whatIsFm, whatIsLlm を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 45% / VOCAB 57% と高いまま（今回分は不正解を長めにした問題を混ぜた）。
