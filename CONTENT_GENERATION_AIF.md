@@ -588,3 +588,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 責任あるAIの8側面（公平性・制御可能性・ガバナンス・正確性と堅牢性・透明性・説明可能性・安全性・プライバシーとセキュリティ）、ルートユーザーの扱い、フェデレーションと一時認証情報、IAMの初期権限、SCP・アクセス許可の境界、CloudTrailのイベント履歴(90日)と証跡(trail)。
   新規SOURCESなし（responsibleAi, bedrockIam, cloudtrail を再利用。3ページともWebFetch成功）。AWS Audit Manager は「新規顧客の受付終了」と公式ページに記載があったため問題化を見送り。nodeでの読み込み確認は未実施（validate_content.pyのみ、エラーなし）。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 46% と高いまま。
+- 2026-10-25（定期実行・7回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを8件（p554〜p561: fm。single 5 / ordering 2 / matching 1）、MOCK_POOLを4件（m350〜m353: fm single）追加。累計 VOCAB=248 / PRACTICE=561 / MOCK_POOL=353。計12件（目安に届かず）。
+  追加トピック: Bedrock評価の方式（プログラム／審査モデル／人間／RAG評価）、RAGの前処理と実行時の流れ、埋め込みの目的、バイナリベクトルのトレードオフ。
+  新規SOURCESなし（bedrockEval, bedrockKb を再利用。2ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み（既存の最終項目p553/m349末尾にカンマを追加しただけで内容は未変更）。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 46% と高いまま。
