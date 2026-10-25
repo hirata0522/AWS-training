@@ -606,3 +606,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 過学習と学習不足とその対策、教師あり学習（分類・回帰）、AIバイアスの種類（選択/除外/ラベル等）と軽減策。
   新規SOURCESなし（underOver, supervisedLearning, aiBias を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 46% と高いまま。aimlが目標比率より大きく不足しているため、次回もaiml/security/responsibleを優先。
+- 2026-10-25（定期実行・11回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを12件（p595〜p606: security 12。single 9 / multi 2 / matching 1）、MOCK_POOLを6件（m371〜m376: genai single）追加。累計 VOCAB=248 / PRACTICE=606 / MOCK_POOL=376。計18件。
+  追加トピック: Macie（機密データ検出・カスタムデータ識別子・EventBridge連携）、Secrets Manager（ハードコード回避・自動ローテーション）、AWS Config（構成履歴・非準拠検出）、Inspector（EC2/ECR/Lambdaスキャン）、Artifact（レポート・agreement）、GuardDuty（Macieのドキュメントで関連サービスとして紹介）、基盤モデル・トランスフォーマー・拡散モデル・GAN・ハルシネーション対策・生成AIの課題。
+  新規SOURCESなし（macie, secretsManager, awsConfig, inspector, artifact, whatIsGenai, hallucination を再利用。7ページともWebFetchで本文確認、成功）。nodeでの読み込み確認は上記コマンドで実施。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 47% と高いまま。security PRACTICEが目標比率に対し不足していたため優先。
