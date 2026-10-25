@@ -572,3 +572,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: AgentCore Memory（短期/長期メモリ、ステートレス性、ワークフロー型エージェントでの利用）。
   新規SOURCESなし（agentcoreMemory を再利用。公式ページをWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   見送り: Accountability / Inclusivity / Context Engineering は AWS公式の定義ページ（aws.amazon.com/ai/responsible-ai/ に該当記述なし、Context Engineering の公式定義も見つからず）が確認できず `未` のまま。件数は目安（15〜25件）に届いていない。
+- 2026-10-25（定期実行・3回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件（未の行の多くは公式の定義ページが見つからないため見送り）。PRACTICEを12件（p515〜p526: aiml 5 / responsible 7。single 9 / multi 1 / matching 1 / ordering 1）、MOCK_POOLを6件（m332〜m337: aiml 3 / responsible 3。single 5 / multi 1）追加。累計 VOCAB=248 / PRACTICE=526 / MOCK_POOL=337。
+  追加トピック: 機械学習の4種類（半教師あり・強化学習ほか）とMLの手順、過学習/学習不足の症状と対策、AIバイアスの種類（ラベル/除外/選択）と緩和策（反事実的公平性ほか）、SageMaker Model Cards、Model Monitorの4種類の監視。
+  新規SOURCESなし（whatIsMl, underOver, aiBias, modelCards, modelMonitor を再利用。5ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 46% / VOCAB 57% と高いまま。aimlとresponsibleがドメイン目標に対し依然大きく不足。
