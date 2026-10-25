@@ -597,3 +597,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCESなし（hallucination, whatIsGenai, agenticAi, bedrockBatch, promptCaching, promptMgmt を再利用。6ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   見送り: Provisioned ThroughputのページはWebFetchで本文が取得できなかったため問題化せず。Amazon Q Businessは公式ページに「新規顧客の受付終了」とあるため問題化せず。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 46% と高いまま（今回の追加分は正解が最長でない選択肢も混ぜた）。genaiドメインが目標比率より少ないため、次回もgenaiを優先。
+- 2026-10-25（定期実行・9回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを10件（p575〜p584: genai。single 8 / multi 1 / matching 1）、MOCK_POOLを6件（m360〜m365: genai single）追加。累計 VOCAB=248 / PRACTICE=584 / MOCK_POOL=365。計16件。
+  追加トピック: 生成モデルと従来モデルの違い、拡散モデル/GAN/VAE/Transformerの区別、基盤モデルとLLM、生成AIの用途例・利点・課題。
+  新規SOURCESなし（whatIsGenai を再利用。WebFetch成功）。nodeでの読み込み確認済み。
+  見送り: Bedrock Agentsのページに「新規顧客の受付終了（Classic・maintenance mode）」とあったため問題化せず（AgentCore側で扱うこと）。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 46% と高いまま。
