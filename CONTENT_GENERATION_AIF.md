@@ -568,3 +568,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 生成AIの定義・仕組み（次の単語予測）、FMと従来MLの違い・自己教師あり学習・構築の課題、LLM（トランスフォーマー・パラメータ・埋め込み・ゼロ/フューショット）、GAN/VAE/拡散モデル/トランスフォーマーの違い、生成AIの限界。
   新規SOURCESなし（whatIsGenai, whatIsFm, whatIsLlm を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 45% / VOCAB 57% と高いまま（今回分は不正解を長めにした問題を混ぜた）。
+- 2026-10-25（定期実行・2回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを3件（p512〜p514: genai。single 2 / multi 1）、MOCK_POOLを2件（m330〜m331: genai。single）追加。累計 VOCAB=248 / PRACTICE=514 / MOCK_POOL=331。
+  追加トピック: AgentCore Memory（短期/長期メモリ、ステートレス性、ワークフロー型エージェントでの利用）。
+  新規SOURCESなし（agentcoreMemory を再利用。公式ページをWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  見送り: Accountability / Inclusivity / Context Engineering は AWS公式の定義ページ（aws.amazon.com/ai/responsible-ai/ に該当記述なし、Context Engineering の公式定義も見つからず）が確認できず `未` のまま。件数は目安（15〜25件）に届いていない。
