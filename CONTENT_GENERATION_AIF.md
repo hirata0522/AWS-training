@@ -602,3 +602,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCESなし（whatIsGenai を再利用。WebFetch成功）。nodeでの読み込み確認済み。
   見送り: Bedrock Agentsのページに「新規顧客の受付終了（Classic・maintenance mode）」とあったため問題化せず（AgentCore側で扱うこと）。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 46% と高いまま。
+- 2026-10-25（定期実行・10回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを10件（p585〜p594: aiml 5 / responsible 5。single 7 / multi 2 / matching 1）、MOCK_POOLを5件（m366〜m370: aiml 3 / responsible 2、すべてsingle）追加。累計 VOCAB=248 / PRACTICE=594 / MOCK_POOL=370。計15件。
+  追加トピック: 過学習と学習不足とその対策、教師あり学習（分類・回帰）、AIバイアスの種類（選択/除外/ラベル等）と軽減策。
+  新規SOURCESなし（underOver, supervisedLearning, aiBias を再利用。3ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 46% と高いまま。aimlが目標比率より大きく不足しているため、次回もaiml/security/responsibleを優先。
