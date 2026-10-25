@@ -592,3 +592,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock評価の方式（プログラム／審査モデル／人間／RAG評価）、RAGの前処理と実行時の流れ、埋め込みの目的、バイナリベクトルのトレードオフ。
   新規SOURCESなし（bedrockEval, bedrockKb を再利用。2ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み（既存の最終項目p553/m349末尾にカンマを追加しただけで内容は未変更）。
   メモ: 正解最長割合は PRACTICE 48% / MOCK 46% と高いまま。
+- 2026-10-25（定期実行・8回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを13件（p562〜p574: genai 5 / fm 8。single 6 / multi 2 / ordering 2 / matching 3）、MOCK_POOLを6件（m354〜m359: fm 3 / genai 3、すべてsingle）追加。累計 VOCAB=248 / PRACTICE=574 / MOCK_POOL=359。計19件。
+  追加トピック: ハルシネーションの原因と対策、生成AIの課題、エージェント型AI、Bedrockバッチ推論、プロンプトキャッシュ、Prompt management。
+  新規SOURCESなし（hallucination, whatIsGenai, agenticAi, bedrockBatch, promptCaching, promptMgmt を再利用。6ページともWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  見送り: Provisioned ThroughputのページはWebFetchで本文が取得できなかったため問題化せず。Amazon Q Businessは公式ページに「新規顧客の受付終了」とあるため問題化せず。
+  メモ: 正解最長割合は PRACTICE 48% / MOCK 46% と高いまま（今回の追加分は正解が最長でない選択肢も混ぜた）。genaiドメインが目標比率より少ないため、次回もgenaiを優先。
