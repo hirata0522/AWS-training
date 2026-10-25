@@ -584,3 +584,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrockプロンプトキャッシュ（静的内容を先頭に置く、キャッシュチェックポイント、TTL、キャッシュ読み取り課金、ヒット非保証、バッチ推論では非対応）。特定モデル名・数値は問題にしていない。
   新規SOURCESなし（promptCaching を再利用。公式ページをWebFetchで本文確認、成功）。nodeでの読み込み確認は未実施（validate_content.pyのみ、エラーなし）。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 46% と高いまま。
+- 2026-10-25（定期実行・6回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを14件（p540〜p553: responsible 7 / security 7。single 10 / multi 2 / matching 1…合計14）、MOCK_POOLを6件（m344〜m349: responsible 3 / security 3。single）追加。累計 VOCAB=248 / PRACTICE=553 / MOCK_POOL=349。計20件。
+  追加トピック: 責任あるAIの8側面（公平性・制御可能性・ガバナンス・正確性と堅牢性・透明性・説明可能性・安全性・プライバシーとセキュリティ）、ルートユーザーの扱い、フェデレーションと一時認証情報、IAMの初期権限、SCP・アクセス許可の境界、CloudTrailのイベント履歴(90日)と証跡(trail)。
+  新規SOURCESなし（responsibleAi, bedrockIam, cloudtrail を再利用。3ページともWebFetch成功）。AWS Audit Manager は「新規顧客の受付終了」と公式ページに記載があったため問題化を見送り。nodeでの読み込み確認は未実施（validate_content.pyのみ、エラーなし）。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 46% と高いまま。
