@@ -645,3 +645,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: sagemakerDeploy, sagemakerRealtime, sagemakerAsync, sagemakerBatch, sagemakerNeo, provThroughput（すべてWebFetchで本文確認、成功）。
   除外（状態を `除外` に変更）: #27 Inclusivity, #79 Trustworthiness, #86 Truthfulness, #109 Accountability, #121 Data Curation, #123 AI Assistant, #140 Nondeterminism, #143 Variance, #158 FM Lifecycle, #168 Environmental Sustainability (AI), #182 On-Demand Throughput。理由: AWS公式のresponsible-ai / what-is-machine-learning / what-is-generative-ai / Bedrock Provisioned Throughputページを確認したが、これらの用語を定義・説明した記述が見つからず、事実確認できないため。リスト順を守るため、確認できた304/309/310/319を先に作成した（以降の `未` 行にも同種の曖昧な用語が多い。公式ページで確認できるものから作ること）。
   メモ: 正解最長割合は VOCAB 56% / PRACTICE 50% / MOCK 48%と高止まり。次回以降は正解を最長にしない。
+- 2026-10-26（定期実行・20回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを8件（p667〜p674: fm 6 / security 2 / genai 1のうち single 4 / multi 1 / matching 1 / ordering 1）、MOCK_POOLを6件（m417〜m422: single 5 / multi 1）追加。累計 VOCAB=257 / PRACTICE=674 / MOCK_POOL=422。計14件。単語リスト進捗 257/454。
+  追加トピック: インテリジェントプロンプトルーティング（デフォルト/設定済みルーター・フォールバックモデル・英語最適化・同一ファミリー2モデル）、Prompt management（変数・バリアント・フローのプロンプトノード）、ApplyGuardrail API（モデル非依存・INPUT/OUTPUT・outputScope FULL）。
+  新規SOURCESなし（promptRouting, promptMgmt, applyGuardrail を再利用。3ページとも今回WebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 50% / MOCK 48% のまま。VOCABは未リストの用語の公式定義を確認できず今回は見送り。
