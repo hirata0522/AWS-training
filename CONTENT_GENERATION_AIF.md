@@ -640,3 +640,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: プロンプトキャッシュ（プレフィックス構成・バッチ推論非対応・キャッシュ読み取り課金・cacheReadInputTokens・TTL）、リランカーモデル（関連性での並べ替え・テキストのみ・既定ランキングの上書き）、バッチ推論（S3入出力・EventBridge通知・プロビジョンドモデル非対応）。
   新規SOURCESなし（promptCaching, bedrockRerank, bedrockBatch を再利用。promptCaching/batch-inference/rerank の3ページをWebFetchで確認、成功）。
   メモ: 正解最長割合は PRACTICE 50% / MOCK 47% と高止まり。fm/genaiが目標比率に対し不足のため優先した。
+- 2026-10-26（定期実行・19回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCABを4件（v254〜v257: aiml）、PRACTICEを6件（p661〜p666: aiml 4 / fm 2。single 5 / matching 1）、MOCK_POOLを5件（m412〜m416: single 4 / multi 1）追加。計15件。累計 VOCAB=257 / PRACTICE=666 / MOCK_POOL=416。単語リスト進捗 257/454（除外22）。
+  追加トピック: SageMaker AIの推論オプション（リアルタイム/非同期/バッチ変換）、SageMaker Neo、Bedrock Provisioned Throughput（カスタムモデルに必須・時間課金・MU・コミット期間）。
+  新規SOURCES: sagemakerDeploy, sagemakerRealtime, sagemakerAsync, sagemakerBatch, sagemakerNeo, provThroughput（すべてWebFetchで本文確認、成功）。
+  除外（状態を `除外` に変更）: #27 Inclusivity, #79 Trustworthiness, #86 Truthfulness, #109 Accountability, #121 Data Curation, #123 AI Assistant, #140 Nondeterminism, #143 Variance, #158 FM Lifecycle, #168 Environmental Sustainability (AI), #182 On-Demand Throughput。理由: AWS公式のresponsible-ai / what-is-machine-learning / what-is-generative-ai / Bedrock Provisioned Throughputページを確認したが、これらの用語を定義・説明した記述が見つからず、事実確認できないため。リスト順を守るため、確認できた304/309/310/319を先に作成した（以降の `未` 行にも同種の曖昧な用語が多い。公式ページで確認できるものから作ること）。
+  メモ: 正解最長割合は VOCAB 56% / PRACTICE 50% / MOCK 48%と高止まり。次回以降は正解を最長にしない。

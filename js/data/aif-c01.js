@@ -14,6 +14,12 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  sagemakerDeploy:{label:'Amazon SageMaker AI: 推論のためのモデルのデプロイ', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html'},
+  sagemakerRealtime:{label:'Amazon SageMaker AI: リアルタイム推論', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html'},
+  sagemakerAsync:{label:'Amazon SageMaker AI: 非同期推論', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html'},
+  sagemakerBatch:{label:'Amazon SageMaker AI: バッチ変換', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html'},
+  sagemakerNeo:{label:'Amazon SageMaker Neo', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/neo.html'},
+  provThroughput:{label:'Amazon Bedrock: Provisioned Throughput', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html'},
   transform:{label:'AWS Transform とは', url:'https://docs.aws.amazon.com/transform/latest/userguide/what-is-service.html'},
   promptChainSf:{label:'Step Functions: Amazon Bedrock でAIプロンプトチェーンを実行する', url:'https://docs.aws.amazon.com/step-functions/latest/dg/sample-bedrock-prompt-chaining.html'},
   reactPg:{label:'AWS規範ガイダンス: RAGとReActプロンプティングによる高度な生成AIチャットアシスタントの開発', url:'https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/develop-advanced-generative-ai-chat-based-assistants-by-using-rag-and-react-prompting.html'},
@@ -437,6 +443,18 @@ var VOCAB = [
   {id:'v251', term:'Dataset Diversity', domain:'responsible', source:SOURCES.aiBias, q:{text:'学習データの代表性を高めるために、AWSが挙げているデータのラベル付け（アノテーション）での工夫はどれですか？', choices:['ラベル付けを単一の担当者に任せ、基準のぶれをなくす', 'ラベル付けを自動化し、人間による確認を完全になくす', 'ラベル付けの対象を多数派のデータに絞って品質を保つ', '多様なメンバーでアノテーションチームを構成する'], correct:3, why:['誤り。単一の担当者だとその人の偏りがデータに入り込みやすくなります。', '誤り。人間の確認はバイアス低減に有効な手段とされています。', '誤り。多数派に絞ると、データの代表性が下がります。', '正しい。多様なアノテーションチームは、データが十分に代表的になる可能性を高めると説明されています。']}},
   {id:'v252', term:'Interpretability', domain:'genai', source:SOURCES.whatIsGenai, q:{text:'生成AIモデルが「ブラックボックス」と見なされることが多い理由として、AWSが挙げているものはどれですか？', choices:['モデルの複雑さと不透明さのため、内部の仕組みが分かりにくい', 'モデルがインターネットに接続できず、外部の情報を使えない', 'モデルが数値データしか入力として受け付けない', 'モデルの提供者が学習データの保管場所を公開していない'], correct:0, why:['正しい。生成AIモデルは複雑で不透明なためブラックボックスと見なされ、解釈可能性と透明性の向上が信頼につながるとされています。', '誤り。接続の有無は解釈可能性とは関係ありません。', '誤り。生成AIはテキストや画像など多様な入力を扱えます。', '誤り。ブラックボックスと呼ばれる理由は、モデルの複雑さと不透明さです。']}},
   {id:'v253', term:'Prompt Hijacking', domain:'fm', source:SOURCES.promptAttack, q:{text:'Prompt Hijacking（プロンプトによる目的の乗っ取り）に当たる攻撃例として、Amazon Bedrock Guardrailsのドキュメントが挙げているものはどれですか？', choices:['学習データに悪意のあるサンプルを混入させ、モデルの挙動を恒久的に変えること', 'モデルへのAPI呼び出しを大量に送り、サービスを利用不能にすること', 'ペルソナの乗っ取りを指示して、開発者が定めた本来の目的や指示を上書きさせること', '暗号化されていない通信経路から、モデルの応答を盗聴すること'], correct:2, why:['誤り。これは学習データを汚染する攻撃（データポイズニング）で、実行時のプロンプトによる攻撃とは別です。', '誤り。これは過負荷によるサービス妨害の話で、プロンプトの内容でモデルの目的を乗っ取る攻撃ではありません。', '正しい。Guardrailsのドキュメントは、ペルソナ乗っ取りの指示（ゴールハイジャック）や、以前の指示を無視させる指示をプロンプト攻撃の例として挙げています。', '誤り。通信の盗聴は転送中の暗号化で対処する話で、プロンプト攻撃とは異なります。']}},
+  {id:'v254', term:'Amazon SageMaker Real-Time Inference', domain:'aiml', source:SOURCES.sagemakerRealtime, q:{text:'SageMaker AIのリアルタイム推論が最も適しているワークロードはどれですか？',
+    choices:['S3上の大規模データセットを、永続的なエンドポイントなしでまとめて処理する', '要求が少ない時間帯はゼロまで縮退し、コールドスタートを許容する', '対話的で低レイテンシーが求められる推論', '数GBのペイロードをキューに入れ、最大1時間かけて処理する'], correct:2,
+    why:['誤り。永続エンドポイントを使わずに大規模データを処理するのはバッチ変換です。', '誤り。アイドル期間がありコールドスタートを許容できるのはサーバーレス推論です。', '正しい。リアルタイム推論は、リアルタイムで対話的な低レイテンシー要件のワークロードに適しています。', '誤り。大きなペイロードをキューで非同期に処理するのは非同期推論です。']}},
+  {id:'v255', term:'Amazon SageMaker Batch Transform', domain:'aiml', source:SOURCES.sagemakerBatch, q:{text:'永続的なエンドポイントを用意せずに、大規模なデータセットからまとめて推論結果を得たい場合に使うSageMaker AIの機能はどれですか？',
+    choices:['バッチ変換（Batch Transform）', 'リアルタイム推論エンドポイント', 'SageMaker Neo', 'SageMaker Model Monitor'], correct:0,
+    why:['正しい。バッチ変換は、大規模データセットの推論や、永続エンドポイントが不要な推論に使います。入出力にはS3を使います。', '誤り。リアルタイム推論は永続的なエンドポイントで低レイテンシーの応答を返す用途です。', '誤り。Neoは推論向けにモデルを最適化（コンパイル）する機能です。', '誤り。Model Monitorは本番環境のモデル品質を監視する機能です。']}},
+  {id:'v256', term:'Amazon SageMaker Asynchronous Inference', domain:'aiml', source:SOURCES.sagemakerAsync, q:{text:'SageMaker AIの非同期推論について正しい説明はどれですか？',
+    choices:['リクエストをキューに入れて非同期に処理し、大きなペイロードや長い処理時間に向く', '応答までの待ち時間を数ミリ秒に抑えるため、常にインスタンスを起動し続ける', 'モデルをエッジデバイス向けにコンパイルして実行速度を高める', 'S3を使わず、リクエスト本文を直接エンドポイントに同期送信する'], correct:0,
+    why:['正しい。受信リクエストをキューに入れて非同期に処理し、最大1GBのペイロード、最大1時間の処理時間に向きます。', '誤り。非同期推論はリクエストがないときインスタンス数をゼロまで縮退でき、常時起動は必須ではありません。', '誤り。これはSageMaker Neoの説明です。', '誤り。非同期推論ではリクエストのペイロードをS3に置き、そのポインタを渡して呼び出します。']}},
+  {id:'v257', term:'Amazon SageMaker Neo', domain:'aiml', source:SOURCES.sagemakerNeo, q:{text:'SageMaker Neoの役割として正しいものはどれですか？',
+    choices:['訓練データにラベルを付ける作業を人手で支援する', '学習済みモデルを対象のハードウェア向けに自動で最適化し、クラウドやエッジで効率よく動かす', 'モデルの推論結果から偏り（バイアス）を検出して報告する', '特徴量を一元管理し、訓練と推論で再利用できるようにする'], correct:1,
+    why:['誤り。ラベル付けの支援はSageMaker Ground Truthの役割です。', '正しい。Neoはコンパイラとランタイムで構成され、一度訓練したモデルをクラウドやエッジの様々なハードウェアに最適化して動かします。', '誤り。バイアスの検出はSageMaker Clarifyの役割です。', '誤り。特徴量の一元管理はSageMaker Feature Storeの役割です。']}},
 ];
 
 var PRACTICE = [
@@ -2720,6 +2738,25 @@ var PRACTICE = [
   {id:'p660', domain:'fm', type:'single', source:SOURCES.promptCaching, text:'Converse APIでプロンプトキャッシュを使った応答に含まれるcacheReadInputTokensは何を表しますか？',
     choices:['キャッシュから読み取られた入力トークン数','キャッシュに書き込まれた出力トークン数','キャッシュの有効期限（秒）','キャッシュ可能な最大トークン数'], correct:[0],
     why:['正しい。キャッシュから読み取られた入力トークンの数です。書き込まれた数はcacheWriteInputTokensで示されます。','誤り。書き込みはcacheWriteInputTokens、かつ対象は入力トークンです。','誤り。有効期限（TTL）を示す値ではありません。','誤り。上限値ではなく、実際に読み取られた数です。']},
+  {id:'p661', domain:'aiml', type:'single', source:SOURCES.sagemakerAsync, text:'ある企業は、最大1GBに及ぶ大きなペイロードを扱い、処理に数十分かかる推論を、ほぼリアルタイムの遅延要件で実行したいと考えています。リクエストが無い間はインスタンス数をゼロにして費用も抑えたいです。最も適した推論オプションはどれですか？',
+    choices:['リアルタイム推論エンドポイント', 'Amazon SageMaker Neo', 'Amazon SageMaker AI 非同期推論', 'Amazon SageMaker Batch Transform'], correct:[2],
+    why:['誤り。リアルタイム推論は対話的で低レイテンシーなワークロード向けで、リクエストのキューイングや長時間処理には向きません。', '誤り。Neoはモデルを最適化する機能で、推論の呼び出し方式ではありません。', '正しい。非同期推論はリクエストをキューに入れ、大きなペイロード（最大1GB）と長い処理時間（最大1時間）に対応し、リクエストがなければゼロまで縮退できます。', '誤り。バッチ変換はデータセットをまとめて処理するジョブで、個々のリクエストを近いリアルタイム性で処理する用途ではありません。']},
+  {id:'p662', domain:'aiml', type:'single', source:SOURCES.sagemakerBatch, text:'S3に保存された大規模なデータセット全体に対して、夜間にまとめて推論を実行し、結果もS3に出力したいです。常時稼働するエンドポイントは不要です。どれを選びますか？',
+    choices:['SageMaker AI のバッチ変換（Batch Transform）', 'SageMaker AI のリアルタイム推論エンドポイント', 'Amazon Bedrock の Provisioned Throughput', 'SageMaker Feature Store'], correct:[0],
+    why:['正しい。バッチ変換は大規模データセットの推論に使い、永続エンドポイントが不要で、S3の入力を処理して結果をS3に出力します。', '誤り。リアルタイム推論は常時稼働の永続エンドポイントを使うので、この要件に合いません。', '誤り。Provisioned ThroughputはBedrockのモデルの呼び出し容量を確保する仕組みです。', '誤り。Feature Storeは特徴量の保管と共有のためのサービスです。']},
+  {id:'p663', domain:'aiml', type:'single', source:SOURCES.sagemakerNeo, text:'一度訓練したMLモデルを、エッジデバイスやAWS Inferentiaなど様々なハードウェアで効率よく動かすため、対象環境向けに自動で最適化したいです。どの機能を使いますか？',
+    choices:['Amazon SageMaker Data Wrangler', 'Amazon SageMaker Model Registry', 'Amazon SageMaker Ground Truth', 'Amazon SageMaker Neo'], correct:[3],
+    why:['誤り。Data Wranglerはデータの準備・加工のための機能です。', '誤り。Model Registryはモデルのバージョンや承認状態を管理する機能です。', '誤り。Ground Truthはデータにラベルを付ける機能です。', '正しい。Neoはモデルを対象ハードウェア向けに自動で最適化し、クラウドインスタンス（Inferentia含む）やエッジデバイスで効率よく実行できるようにします。']},
+  {id:'p664', domain:'aiml', type:'matching', source:SOURCES.sagemakerDeploy, text:'それぞれの要件に最も適したSageMaker AIの推論オプションを選んでください。',
+    prompts:['対話的で低レイテンシーなアプリケーションからの推論', '大きなペイロードをキューに入れて、最大1時間かけて処理する推論', '永続エンドポイントを使わず、S3のデータセットをまとめて処理する推論', 'トラフィックの合間にアイドル期間があり、コールドスタートを許容できる推論'],
+    options:['バッチ変換', 'サーバーレス推論', 'SageMaker Neo', 'リアルタイム推論', '非同期推論'], correct:[3, 4, 0, 1],
+    why:['リアルタイム推論は、対話的で低レイテンシーの要件に向きます。', '非同期推論は、リクエストをキューに入れ、大きなペイロードと長い処理時間に対応します。', 'バッチ変換は、永続エンドポイントが不要な大規模データセットの推論に向きます。', 'サーバーレス推論は、インフラ管理が不要で、アイドル期間があってコールドスタートを許容できるワークロードに向きます。なおNeoは推論方式ではなくモデル最適化の機能なので、どの要件にも当てはまりません。']},
+  {id:'p665', domain:'fm', type:'single', source:SOURCES.provThroughput, text:'ある企業がAmazon Bedrockでファインチューニングしたカスタムモデルを本番アプリケーションから呼び出したいと考えています。必要な対応はどれですか？',
+    choices:['モデルのProvisioned Throughputを購入する', 'Amazon Macieでモデルを登録する', 'AWS Artifactでモデルのライセンスを取得する', 'SageMaker Model Monitorでモデルを公開する'], correct:[0],
+    why:['正しい。カスタマイズしたモデルを使うには、Provisioned Throughputの購入が必要です。', '誤り。Macieは機密データ検出のサービスで、モデルの呼び出しには関係しません。', '誤り。Artifactはコンプライアンス文書を取得するサービスです。', '誤り。Model Monitorは本番のモデル品質を監視する機能で、Bedrockのモデルの公開手段ではありません。']},
+  {id:'p666', domain:'fm', type:'single', source:SOURCES.provThroughput, text:'Amazon BedrockのProvisioned Throughputの課金について正しい説明はどれですか？',
+    choices:['リクエストごとの従量課金のみで、時間単位の課金はない', 'モデルユニット数とコミット期間で時間単価が決まり、期間が長いほど割引される', 'コミット期間は6か月のみで、短い期間は選べない', 'カスタムモデルの価格は、ベースモデルとは別に固定の高い料金が適用される'], correct:[1],
+    why:['誤り。Provisioned Throughputは購入した分を時間単位で課金します。', '正しい。時間単価はモデル、モデルユニット（MU）の数、コミット期間で決まり、期間が長いほど割引されます。', '誤り。コミットなし・1か月・6か月から選べます。', '誤り。カスタムモデルの価格は、カスタマイズ元のベースモデルと同じです。']},
 ];
 
 var MOCK_POOL = [
@@ -4110,6 +4147,21 @@ var MOCK_POOL = [
   {id:'m411', domain:'fm', type:'single', source:SOURCES.bedrockRerank, text:'Bedrockのリランキングについて正しい説明はどれですか？',
     choices:['データ取り込み時に文書を分割する処理である','画像と動画の両方に使える','モデルの重みを更新して精度を高める','テキストデータのみが対象である'], correct:[3],
     why:['誤り。文書の分割はチャンキングの役割です。','誤り。画像・動画は対象外です。','誤り。リランカーは再学習を行いません。','正しい。公式ドキュメントでは、リランキングはテキストデータのみ対象とされています。']},
+  {id:'m412', domain:'aiml', type:'single', source:SOURCES.sagemakerAsync, text:'非同期推論エンドポイントを呼び出す際のペイロードの渡し方として正しいものはどれですか？',
+    choices:['リクエストのペイロードをS3に置き、そのポインタを渡して呼び出す', 'ペイロードを直接HTTPの本文に入れ、同期的に応答を待つ', 'ペイロードをAmazon Macieに登録して呼び出す', 'ペイロードをAWS CloudTrailに記録して呼び出す'], correct:[0],
+    why:['正しい。ペイロードをS3に置き、そのポインタを渡して呼び出すと、SageMaker AIがキューに入れて処理し、結果をS3に出力します。', '誤り。同期的に応答を待つのはリアルタイム推論の呼び出し方です。', '誤り。Macieは機密データ検出のサービスで、呼び出しには使いません。', '誤り。CloudTrailはAPI呼び出しの監査ログ用です。']},
+  {id:'m413', domain:'aiml', type:'single', source:SOURCES.sagemakerBatch, text:'バッチ変換（Batch Transform）が適しているケースはどれですか？',
+    choices:['ユーザーの入力に数ミリ秒で応答するチャットアプリ', 'モデルを訓練するための特徴量をリアルタイムに配信する場合', '永続的なエンドポイントを必要とせずに、大規模データセットから推論を得たい場合', '訓練データに人手でラベルを付けたい場合'], correct:[2],
+    why:['誤り。低レイテンシーの応答はリアルタイム推論の領域です。', '誤り。特徴量の配信はFeature Storeの役割です。', '正しい。バッチ変換は大規模データセットの推論や、永続エンドポイントが不要な推論に使います。', '誤り。ラベル付けはGround Truthの役割です。']},
+  {id:'m414', domain:'aiml', type:'single', source:SOURCES.sagemakerNeo, text:'SageMaker Neoが自動で最適化の対象にする入力はどれですか？',
+    choices:['Gluon、Keras、MXNet、PyTorch、TensorFlow、ONNXなどのフレームワークのモデル', 'Amazon S3に保存された画像のみ', 'Amazon Bedrockが提供する基盤モデルのAPIレスポンス', 'AWS CloudTrailのログファイル'], correct:[0],
+    why:['正しい。Neoは様々なフレームワークのモデルを、対象のハードウェア向けに最適化します。', '誤り。Neoは画像データではなく学習済みモデルを最適化します。', '誤り。NeoはAPIレスポンスではなくモデル本体をコンパイルします。', '誤り。ログファイルは最適化の対象ではありません。']},
+  {id:'m415', domain:'fm', type:'multi', source:SOURCES.provThroughput, text:'Amazon BedrockのProvisioned Throughputについて正しい説明を2つ選択してください。（2つ選択）',
+    choices:['購入したスループットは時間単位で課金される', 'コミット期間は常に12か月で固定される', 'カスタマイズしたモデルを使うには購入が必要である', '購入すると、モデルが自動で再学習される', '料金はモデルのトークン数に関係なく一定である'], correct:[0, 2],
+    why:['正しい。購入したProvisioned Throughputは時間単位で課金されます。', '誤り。コミットなし・1か月・6か月から選べます。', '正しい。カスタマイズしたモデルを使うには、Provisioned Throughputの購入が必要です。', '誤り。スループットを確保するだけで、再学習は行われません。', '誤り。時間単価はモデルとモデルユニット数、コミット期間で決まります。']},
+  {id:'m416', domain:'aiml', type:'single', source:SOURCES.sagemakerRealtime, text:'SageMaker AIのリアルタイム推論エンドポイントの特徴として正しいものはどれですか？',
+    choices:['完全マネージドで自動スケーリングに対応する', 'リクエストがないときは必ず課金が停止する', 'S3経由でしか呼び出せない', '1回のジョブで終了し、結果を一括で返す'], correct:[0],
+    why:['正しい。リアルタイム推論のエンドポイントは完全マネージドで、自動スケーリングに対応します。', '誤り。常時稼働のエンドポイントのため、起動している間は課金されます。', '誤り。S3経由で呼び出すのは非同期推論です。', '誤り。ジョブ単位で結果を一括出力するのはバッチ変換です。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

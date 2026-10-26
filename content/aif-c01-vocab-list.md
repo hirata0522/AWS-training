@@ -30,7 +30,7 @@
 | 24 | Stop Sequences | fm | v24 |
 | 25 | IAM Policy | security | v25 |
 | 26 | Training | aiml | v26 |
-| 27 | Inclusivity | responsible | 未 |
+| 27 | Inclusivity | responsible | 除外 |
 | 28 | Token | genai | v27 |
 | 29 | Retrieval Augmented Generation (RAG) | fm | v28 |
 | 30 | Least Privilege | security | v29 |
@@ -82,14 +82,14 @@
 | 76 | Variational Autoencoder (VAE) | genai | v208 |
 | 77 | Fine-tuning | fm |v59 |
 | 78 | Amazon Bedrock AgentCore Identity | security | v112 |
-| 79 | Trustworthiness | responsible | 未 |
+| 79 | Trustworthiness | responsible | 除外 |
 | 80 | Tabular Data | aiml | v164 |
 | 81 | Prompt | genai | v95 |
 | 82 | Time-series Data | aiml | v83 |
 | 83 | Continued Pre-training | fm | 除外 |
 | 84 | Policy in AgentCore | security | v124 |
 | 85 | Structured Data | aiml | v84 |
-| 86 | Truthfulness | responsible | 未 |
+| 86 | Truthfulness | responsible | 除外 |
 | 87 | Prompt Engineering | genai |v61 |
 | 88 | Instruction Tuning | fm | v161 |
 | 89 | AWS CloudTrail | security |v64 |
@@ -112,7 +112,7 @@
 | 106 | Fraud Detection | aiml | v189 |
 | 107 | Parameter-efficient Fine-tuning (PEFT) | fm | v228 |
 | 108 | AWS Artifact | security | v81 |
-| 109 | Accountability | responsible | 未 |
+| 109 | Accountability | responsible | 除外 |
 | 110 | Forecasting | aiml | v190 |
 | 111 | Image Generation | genai | v168 |
 | 112 | LoRA | fm | v227 |
@@ -124,9 +124,9 @@
 | 118 | Code Generation | genai | v165 |
 | 119 | Feature Engineering | aiml | v89 |
 | 120 | Label | aiml | v90 |
-| 121 | Data Curation | fm | 未 |
+| 121 | Data Curation | fm | 除外 |
 | 122 | AWS Security Hub | security | 除外 |
-| 123 | AI Assistant | genai | 未 |
+| 123 | AI Assistant | genai | 除外 |
 | 124 | Content Filters | responsible | v94 |
 | 125 | Hyperparameter | aiml | v91 |
 | 126 | Data Labeling | fm | v92 |
@@ -143,10 +143,10 @@
 | 137 | AWS Organizations | security | 除外 |
 | 138 | Word Filters | responsible | v100 |
 | 139 | Bias (ML) | aiml | v233 |
-| 140 | Nondeterminism | genai | 未 |
+| 140 | Nondeterminism | genai | 除外 |
 | 141 | Action Group | fm | v123 |
 | 142 | Service Control Policy (SCP) | security | 除外 |
-| 143 | Variance | aiml | 未 |
+| 143 | Variance | aiml | 除外 |
 | 144 | Sensitive Information Filters | responsible | v101 |
 | 145 | Batch Inference | aiml | v103 |
 | 146 | Amazon Bedrock Custom Model Import | fm | v108 |
@@ -161,7 +161,7 @@
 | 155 | Prompt Caching | fm | v109 |
 | 156 | Data Lineage | security | v134 |
 | 157 | Serverless Inference | aiml | v120 |
-| 158 | FM Lifecycle | genai | 未 |
+| 158 | FM Lifecycle | genai | 除外 |
 | 159 | Automated Reasoning Checks | responsible | v121 |
 | 160 | Exploratory Data Analysis (EDA) | aiml | v191 |
 | 161 | Instruction | fm | v215 |
@@ -171,7 +171,7 @@
 | 165 | Context (Prompt) | fm | v216 |
 | 166 | AWS Glue Data Catalog | security | v122 |
 | 167 | Data Splitting (Train/Validation/Test) | aiml | v163 |
-| 168 | Environmental Sustainability (AI) | responsible | 未 |
+| 168 | Environmental Sustainability (AI) | responsible | 除外 |
 | 169 | Input Tokens vs Output Tokens | genai | v133 |
 | 170 | Negative Prompt | fm | v178 |
 | 171 | Data Quality Assessment | security | v193 |
@@ -185,7 +185,7 @@
 | 179 | Single-shot Prompting | fm | 除外 |
 | 180 | Data Anonymization | security | v224 |
 | 181 | F1 Score | aiml | v176 |
-| 182 | On-Demand Throughput | genai | 未 |
+| 182 | On-Demand Throughput | genai | 除外 |
 | 183 | Loss of Customer Trust | responsible | 未 |
 | 184 | Area Under the Curve (AUC) | aiml | v147 |
 | 185 | Few-shot Prompting | fm | v137 |
@@ -307,13 +307,13 @@
 | 301 | Amazon SageMaker Experiments | aiml | v243 |
 | 302 | Business Objective Alignment | fm | 未 |
 | 303 | Team Training Requirements | security | 未 |
-| 304 | Amazon SageMaker Real-Time Inference | aiml | 未 |
+| 304 | Amazon SageMaker Real-Time Inference | aiml | v254 |
 | 305 | Amazon SageMaker JumpStart | genai | v118 |
 | 306 | RAG Evaluation | fm | 未 |
 | 307 | Regulatory Compliance (AI) | security | 未 |
 | 308 | User Feedback Mechanism | responsible | 未 |
-| 309 | Amazon SageMaker Batch Transform | aiml | 未 |
-| 310 | Amazon SageMaker Asynchronous Inference | aiml | 未 |
+| 309 | Amazon SageMaker Batch Transform | aiml | v255 |
+| 310 | Amazon SageMaker Asynchronous Inference | aiml | v256 |
 | 311 | Agent Evaluation | fm | 未 |
 | 312 | ISO/IEC 42001 | security | 未 |
 | 313 | Amazon Nova | genai | v182 |
@@ -322,7 +322,7 @@
 | 316 | Amazon Bedrock Converse API | fm | v210 |
 | 317 | NIST AI Risk Management Framework | security | 未 |
 | 318 | Amazon Titan | genai | 未 |
-| 319 | Amazon SageMaker Neo | aiml | 未 |
+| 319 | Amazon SageMaker Neo | aiml | v257 |
 | 320 | InvokeModel API | fm | v214 |
 | 321 | EU AI Act | security | 未 |
 | 322 | Amazon SageMaker Debugger | aiml | 未 |
