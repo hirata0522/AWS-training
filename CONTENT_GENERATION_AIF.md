@@ -628,3 +628,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Knowledge Basesのチャンキング戦略（デフォルト/チャンキングなし/階層型/セマンティック）、RAGの前処理・実行時の流れ、クロスリージョン推論（地域別とグローバル、料金）、Converse API、拡散モデル/GAN/Transformerの区別、AI各サービスのユースケース対応。
   新規SOURCESなし（bedrockChunking, bedrockKb, crossRegion, converseApi を今回WebFetchで本文確認、diffusion/gan/polly は既存を再利用）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 48% のまま（高止まり。今後の追加は正解が最長でないものを優先）。ordering/matchingはMOCKでまだ目安(7〜8%)に不足。
+- 2026-10-26（定期実行・16回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを8件（p635〜p642: aiml。single 5 / ordering 1 / matching 1、ほか single 内訳含む）、MOCK_POOLを4件（m396〜m399: aiml。single 3 / multi 1）追加。累計 VOCAB=253 / PRACTICE=642 / MOCK_POOL=399。単語リスト進捗 253/465。
+  追加トピック: 機械学習の4分類（教師あり/なし/半教師あり/強化）とMLプロセス、ニューラルネットワークの層構造とCNN、コンピュータビジョンのタスク（分類/検出/追跡/セグメンテーション）。
+  新規SOURCESなし（whatIsMl, whatIsNn, whatIsCv を再利用。3ページともWebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 47% のまま。aimlが目標に対し不足のため優先。
