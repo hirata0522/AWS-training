@@ -198,7 +198,7 @@
 | 192 | ROC Curve | aiml | v209 |
 | 193 | Agentic AI | genai | v153 |
 | 194 | Prompt Template | fm | v139 |
-| 195 | Data Access Control | security | 未 |
+| 195 | Data Access Control | security | v260 |
 | 196 | Mean Squared Error (MSE) | aiml | v184 |
 | 197 | Dataset Diversity | responsible | v251 |
 | 198 | MLOps | aiml | v174 |
@@ -210,7 +210,7 @@
 | 204 | ReAct Prompting | fm | v247 |
 | 205 | Data Leakage Prevention | security | v205 |
 | 206 | Multi-agent System | genai | v154 |
-| 207 | Model Re-training | aiml | 未 |
+| 207 | Model Re-training | aiml | v261 |
 | 208 | Data Drift | aiml | v187 |
 | 209 | Prompt Injection | fm | v185 |
 | 210 | Output Filtering and Validation | security | v204 |

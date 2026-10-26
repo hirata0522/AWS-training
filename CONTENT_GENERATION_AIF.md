@@ -653,3 +653,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: データの完全性（チェックサム・Glue Data Quality）、バランスの取れたデータセットとAIバイアス、MCPの目的（ツール接続の標準化とガバナンス）。
   新規SOURCES: dataIntegrity（WebFetchで本文確認、成功）。mcpWhat と aiBias は再利用（今回WebFetchで再確認、成功）。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 50% / MOCK 48% と高止まり（今回追加分は正解を最長にしなかった）。
+- 2026-10-26（定期実行・22回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCABを2件（v260〜v261: Data Access Control / Model Re-training）、PRACTICEを5件（p678〜p682: security 2 / aiml 1 / genai 2、single 4 / multi 1）、MOCK_POOLを4件（m425〜m428: single）追加。累計 VOCAB=261 / PRACTICE=682 / MOCK_POOL=428。計11件（目安より少ない。公式ページで確認できた題材に限定）。単語リスト進捗 261/454（除外22）。
+  追加トピック: Lake Formationの列・行・セルレベル制御とLF-Tag・CloudTrail監査、Model Monitorの4種類の監視と再学習、AgentCore Memoryの短期/長期メモリ。
+  新規SOURCESなし（lakeFormation, modelMonitor, agentcoreMemory を再利用。3ページとも今回WebFetchで本文確認、成功。Model Monitorは新規顧客受付終了の注記あり、機能の概念問題に限定）。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 50% / MOCK 48%と高止まり（今回追加分は正解を最長にしなかった）。
