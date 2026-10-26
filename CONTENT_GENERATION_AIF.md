@@ -620,3 +620,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCESなし（promptAttack, promptGuide, provThroughput を再利用。3ページともWebFetch成功）。
   見送り/除外: Single-shot Prompting は公式promptガイドにzero/few-shotの定義のみでone-shotの記載がなく `除外`。Prompt Poisoning、On-Demand Throughput は公式ページで定義を確認できず `未` のまま。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 47% のまま（今回追加分は正解が最長でないものを中心にした）。
+- 2026-10-26（定期実行・14回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを9件（p617〜p625: aiml 5 / security 3 / genai 1 / fm 1のうち matching 1・multi 1・single 7）、MOCK_POOLを5件（m382〜m386: single）追加。累計 VOCAB=253 / PRACTICE=625 / MOCK_POOL=386。計14件。
+  追加トピック: 分類・回帰の評価指標（Precision/Recall/F1/AUC/BalancedAccuracy/MAE/RMSE）、Bedrock Guardrailsの各フィルター（Word filters / Sensitive information filters / Denied topics / Contextual grounding checks / Content filters）の使い分け。
+  新規SOURCESなし（canvasMetrics, guardrailsComp を再利用。2ページともWebFetch成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 47% のまま。単語リストは用語ごとの公式定義の確認に時間がかかるため今回は見送り。

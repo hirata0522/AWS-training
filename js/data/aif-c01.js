@@ -2594,6 +2594,24 @@ var PRACTICE = [
     why:['誤り。ゼロショットは入出力の例をプロンプトに含めない方法です。', '正しい。数個の入出力例を含める手法は、few-shotプロンプティングまたはin-context learningと呼ばれます。', '誤り。継続事前学習はモデルを追加データで再学習する手法で、プロンプトの工夫ではありません。', '誤り。ファインチューニングはモデルの重みを更新する手法です。']},
   {id:'p616', domain:'genai', type:'single', source:SOURCES.provThroughput, text:'Amazon Bedrockでカスタマイズしたモデルを推論に使うために必要なものはどれですか？', choices:['モデルを必ずSageMaker AIエンドポイントに移行する', 'Provisioned Throughputの購入', 'Bedrock Guardrailsの作成', 'Knowledge Basesの作成'], correct:[1],
     why:['誤り。カスタムモデルはBedrock上でProvisioned Throughputを購入して使います。', '正しい。カスタマイズしたモデルを使うにはProvisioned Throughputの購入が必要です。', '誤り。Guardrailsは安全対策であり、カスタムモデルの利用条件ではありません。', '誤り。Knowledge BasesはRAG用の機能で、カスタムモデルの利用条件ではありません。']},
+  {id:'p617', domain:'aiml', type:'single', source:SOURCES.canvasMetrics, text:'偽陽性（実際は陰性なのに陽性と予測すること）のコストが非常に高い分類タスクで、特に重視すべき指標はどれですか？', choices:['Recall（再現率）', 'RMSE', 'Precision（適合率）', 'MAE'], correct:[2],
+    why:['誤り。Recallは実際の陽性をどれだけ見逃さず拾えたかを表し、偽陰性のコストが高い場面で重視します。','誤り。RMSEは数値予測の誤差指標で、分類の偽陽性を評価する指標ではありません。','正しい。Precision = TP/(TP+FP) で、偽陽性のコストが高い場合に重要な指標とされています。','誤り。MAEは数値予測の平均絶対誤差で、分類タスクの指標ではありません。']},
+  {id:'p618', domain:'aiml', type:'single', source:SOURCES.canvasMetrics, text:'Recall（再現率）の説明として最も適切なものはどれですか？', choices:['実際に陽性であるデータのうち、モデルが正しく陽性と予測できた割合', '陽性と予測したもののうち、実際に陽性だった割合', '全予測のうち正しかった予測の割合', 'PrecisionとRecallの調和平均'], correct:[0],
+    why:['正しい。Recall = TP/(TP+FN) で、実際の陽性をどれだけ正しく捉えたかを表します。','誤り。これはPrecision（適合率）の説明です。','誤り。これはAccuracy（正解率）の説明です。','誤り。これはF1スコアの説明です。']},
+  {id:'p619', domain:'aiml', type:'single', source:SOURCES.canvasMetrics, text:'PrecisionとRecallの調和平均として計算され、クラスの偏りも考慮した指標はどれですか？', choices:['AUC', 'LogLoss', 'Accuracy', 'F1スコア'], correct:[3],
+    why:['誤り。AUCはモデルがカテゴリをどれだけうまく分離できるかを0〜1で示す指標です。','誤り。LogLoss（クロスエントロピー損失）は確率出力の質を評価する指標です。','誤り。Accuracyは全予測のうち正しかった割合で、PrecisionとRecallの調和平均ではありません。','正しい。F1 = 2×(precision×recall)/(precision+recall) で、PrecisionとRecallの調和平均です。']},
+  {id:'p620', domain:'aiml', type:'single', source:SOURCES.canvasMetrics, text:'住宅価格のような連続値を予測する回帰モデルの評価に適した指標はどれですか？', choices:['Precision', 'RMSE', 'Recall', 'AUC'], correct:[1],
+    why:['誤り。Precisionはカテゴリ予測（分類）の指標です。','正しい。RMSE（二乗平均平方根誤差）は数値予測の誤差を測る指標で、小さいほど当てはまりが良いことを示します。','誤り。Recallも分類タスクの指標です。','誤り。AUCはカテゴリの分離性能を示す分類の指標です。']},
+  {id:'p621', domain:'aiml', type:'multi', source:SOURCES.canvasMetrics, text:'数値予測（回帰）モデルの評価に使える指標はどれですか？（2つ選択）', choices:['Recall', 'MAE', 'Precision', 'RMSE', 'F1スコア'], correct:[1,3],
+    why:['誤り。Recallは分類タスクの指標です。','正しい。MAE（平均絶対誤差）は予測値と実際の値の差の平均で、数値予測の指標です。','誤り。Precisionは分類タスクの指標です。','正しい。RMSEは数値予測の誤差を測る指標で、大きな誤差や外れ値の存在を示すのに役立ちます。','誤り。F1スコアは分類タスクの指標です。']},
+  {id:'p622', domain:'security', type:'single', source:SOURCES.guardrailsComp, text:'顧客との会話の要約を生成するアプリで、要約に含まれる氏名や電話番号などの個人情報をマスクしたい場合、Amazon Bedrock Guardrailsのどの機能を使いますか？', choices:['Word filters', 'Sensitive information filters', 'Denied topics', 'Contextual grounding checks'], correct:[1],
+    why:['誤り。Word filtersは指定した単語・フレーズの完全一致を検出・ブロックする機能で、PIIの文脈検出は行いません。','正しい。Sensitive information filtersはPIIを検出し、入力や応答をブロックまたはマスクできます。','誤り。Denied topicsは避けたい話題を定義する機能です。','誤り。Contextual grounding checksはハルシネーションの検出用で、PIIの保護用ではありません。']},
+  {id:'p623', domain:'genai', type:'single', source:SOURCES.guardrailsComp, text:'RAGアプリで、モデルの回答が検索で取得した文書に基づいていない場合にブロックまたは警告したいとき、Amazon Bedrock Guardrailsのどの機能が適していますか？', choices:['Content filters', 'Denied topics', 'Contextual grounding checks', 'Sensitive information filters'], correct:[2],
+    why:['誤り。Content filtersはHate・Violenceなどの有害コンテンツを検出する機能です。','誤り。Denied topicsは特定の話題を避けるための機能です。','正しい。Contextual grounding checksは、応答が参照元情報に基づいていない、またはクエリと無関係な場合を検出してハルシネーションを抑えます。','誤り。Sensitive information filtersは個人情報などの検出用です。']},
+  {id:'p624', domain:'fm', type:'single', source:SOURCES.guardrailsComp, text:'競合他社の社名など、あらかじめ指定した特定の単語がやり取りに含まれる場合にブロックしたい場合、Amazon Bedrock Guardrailsのどの機能を使いますか？', choices:['Word filters', 'Sensitive information filters', 'Contextual grounding checks', 'Automated reasoning checks'], correct:[0],
+    why:['正しい。Word filtersは、カスタムの単語・フレーズ（競合他社名など）を完全一致で検出してブロックできます。','誤り。Sensitive information filtersはPIIやカスタム正規表現の検出向けです。','誤り。Contextual grounding checksは回答が参照元に基づいているかを確認する機能です。','誤り。Automated reasoning checksは回答が論理ルールやポリシーに従うかを検証する機能です。']},
+  {id:'p625', domain:'security', type:'matching', source:SOURCES.guardrailsComp, text:'それぞれの要件に最も適したAmazon Bedrock Guardrailsの機能を選んでください。', prompts:['銀行アシスタントで違法な投資助言の話題を避けたい', '応答に含まれる個人情報を検出してマスクしたい', '競合他社の社名を含むやり取りをブロックしたい', 'RAGの回答が取得した文書から逸脱していないか確認したい'], options:['Word filters', 'Contextual grounding checks', 'Content filters', 'Sensitive information filters', 'Denied topics'], correct:[4,3,0,1],
+    why:['Denied topicsは、アプリで避けたい話題を定義して検出・ブロックする機能です。','Sensitive information filtersはPIIを検出し、ブロックまたはマスクできます。','Word filtersはカスタムの単語・フレーズを完全一致で検出します。','Contextual grounding checksは参照元に基づかない応答を検出します。Content filtersはHate・Violenceなど事前定義の有害カテゴリ向けで、今回の要件には当てはまりません。']},
 ];
 
 var MOCK_POOL = [
@@ -3896,6 +3914,16 @@ var MOCK_POOL = [
     why:['正しい。開発者の指示を無視・上書きさせるプロンプトはプロンプトインジェクションです。', '誤り。プロンプトリークはシステムプロンプトなど機密情報の引き出しを狙うものです。', '誤り。データポイズニングは学習データを汚染する攻撃です。', '誤り。モデル反転は出力から学習データを推定する攻撃で、この例とは異なります。']},
   {id:'m381', domain:'fm', type:'single', source:SOURCES.promptGuide, text:'ゼロショットプロンプティングの説明として最も適切なものはどれですか？', choices:['プロンプトに入出力の例を含めず、指示のみでタスクを実行させる', 'プロンプトに数個の入出力ペアを例として含める', 'モデルの重みを更新して特定タスクに適応させる', '外部の文書を検索して回答の根拠にする'], correct:[0],
     why:['正しい。ゼロショットは入出力の例を与えず、指示だけでタスクを実行させる方法です。', '誤り。これはfew-shotプロンプティングの説明です。', '誤り。これはファインチューニングの説明です。', '誤り。これはRAGの説明です。']},
+  {id:'m382', domain:'aiml', type:'single', source:SOURCES.canvasMetrics, text:'スパムが全体の1%しかない不均衡なデータセットで、正負のクラス数の偏りを補正して評価したい場合に適した指標はどれですか？', choices:['LogLoss', 'BalancedAccuracy', 'MAE', 'RMSE'], correct:[1],
+    why:['誤り。LogLossは確率出力の質を評価する指標で、クラス不均衡の補正を目的としたものではありません。','正しい。BalancedAccuracyはTPとTNをそれぞれ正例数・負例数で正規化するため、クラス数が大きく異なる場合に適しています。','誤り。MAEは数値予測の誤差指標です。','誤り。RMSEも数値予測の誤差指標です。']},
+  {id:'m383', domain:'aiml', type:'single', source:SOURCES.canvasMetrics, text:'MAE（平均絶対誤差）について正しい説明はどれですか？', choices:['値が大きいほどモデルの当てはまりが良い', '分類モデルの正解率を表す', '確率出力の質を評価する指標である', '予測値と実際の値の差の絶対値を平均したもので、小さいほど当てはまりが良い'], correct:[3],
+    why:['誤り。MAEは小さいほど当てはまりが良いことを示します。','誤り。分類の正解率はAccuracyです。','誤り。確率出力の質を評価するのはLogLossです。','正しい。MAEは絶対誤差の合計を観測数で割ったもので、0から無限大の値を取り、小さいほど良いとされます。']},
+  {id:'m384', domain:'responsible', type:'single', source:SOURCES.guardrailsComp, text:'Amazon Bedrock Guardrailsのコンテンツフィルターが検出対象とするカテゴリとして、ドキュメントに記載されているものはどれですか？', choices:['Hate、Insults、Sexual、Violence、Misconduct', 'Latency、Throughput、Cost、Accuracy、Recall', 'Bias、Variance、Overfitting、Underfitting、Drift', 'Encryption、Logging、Tagging、Monitoring、Backup'], correct:[0],
+    why:['正しい。コンテンツフィルターはHate、Insults、Sexual、Violence、Misconduct（およびPrompt Attack）の事前定義カテゴリで有害コンテンツを検出します。','誤り。性能・コストに関する用語で、有害コンテンツのカテゴリではありません。','誤り。モデルの学習・性能に関する概念で、フィルターのカテゴリではありません。','誤り。運用・セキュリティ管理の用語で、有害コンテンツのカテゴリではありません。']},
+  {id:'m385', domain:'genai', type:'single', source:SOURCES.guardrailsComp, text:'生成AIの応答が参照元の情報に基づいていない、またはユーザーの質問と無関係な場合に、ハルシネーションとして検出するBedrock Guardrailsの機能はどれですか？', choices:['Word filters', 'Content filters', 'Contextual grounding checks', 'Denied topics'], correct:[2],
+    why:['誤り。Word filtersは指定語の完全一致による検出です。','誤り。Content filtersは有害カテゴリの検出用です。','正しい。Contextual grounding checksは、参照元に基づかない応答や質問に答えていない応答を検出・フィルタリングします。','誤り。Denied topicsは特定の話題を避ける機能です。']},
+  {id:'m386', domain:'security', type:'single', source:SOURCES.guardrailsComp, text:'Bedrock GuardrailsのSensitive information filtersについて、正しい説明はどれですか？', choices:['競合他社名などの完全一致する単語のみを検出する', '画像の生成を禁止する機能である', 'PIIなどの機密情報を文脈に応じて検出し、入力や応答をブロックまたはマスクできる', 'モデルの重みを暗号化して保管する機能である'], correct:[2],
+    why:['誤り。完全一致の単語検出はWord filtersの役割です。','誤り。画像生成の禁止とは関係がありません。','正しい。標準形式のPIIやカスタム正規表現を、文脈に基づく機械学習ベースの手法で検出し、ブロックまたはマスクできます。','誤り。暗号化はAWS KMSなどの役割で、このフィルターの機能ではありません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）
