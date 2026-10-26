@@ -624,3 +624,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 分類・回帰の評価指標（Precision/Recall/F1/AUC/BalancedAccuracy/MAE/RMSE）、Bedrock Guardrailsの各フィルター（Word filters / Sensitive information filters / Denied topics / Contextual grounding checks / Content filters）の使い分け。
   新規SOURCESなし（canvasMetrics, guardrailsComp を再利用。2ページともWebFetch成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 47% のまま。単語リストは用語ごとの公式定義の確認に時間がかかるため今回は見送り。
+- 2026-10-26（定期実行・15回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを9件（p626〜p634: fm 7 / genai 2。single 5 / multi 2 / ordering 1 / matching 1）、MOCK_POOLを9件（m387〜m395: single 5 / multi 1 / ordering 1 / matching 2）追加。累計 VOCAB=253 / PRACTICE=634 / MOCK_POOL=395。計18件。
+  追加トピック: Knowledge Basesのチャンキング戦略（デフォルト/チャンキングなし/階層型/セマンティック）、RAGの前処理・実行時の流れ、クロスリージョン推論（地域別とグローバル、料金）、Converse API、拡散モデル/GAN/Transformerの区別、AI各サービスのユースケース対応。
+  新規SOURCESなし（bedrockChunking, bedrockKb, crossRegion, converseApi を今回WebFetchで本文確認、diffusion/gan/polly は既存を再利用）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 48% のまま（高止まり。今後の追加は正解が最長でないものを優先）。ordering/matchingはMOCKでまだ目安(7〜8%)に不足。
