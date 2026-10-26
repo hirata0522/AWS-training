@@ -657,3 +657,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Lake Formationの列・行・セルレベル制御とLF-Tag・CloudTrail監査、Model Monitorの4種類の監視と再学習、AgentCore Memoryの短期/長期メモリ。
   新規SOURCESなし（lakeFormation, modelMonitor, agentcoreMemory を再利用。3ページとも今回WebFetchで本文確認、成功。Model Monitorは新規顧客受付終了の注記あり、機能の概念問題に限定）。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 50% / MOCK 48%と高止まり（今回追加分は正解を最長にしなかった）。
+- 2026-10-26（定期実行・23回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCABを1件（v262: Demographic Parity）、PRACTICEを3件（p683〜p685: responsible、single 2 / multi 1）、MOCK_POOLを2件（m429〜m430: single 1 / matching 1）追加。累計 VOCAB=262 / PRACTICE=685 / MOCK_POOL=430。計6件（目安より少ない。公式ページで本文確認できた題材に限定）。単語リスト進捗 262/454（除外22）。
+  追加トピック: Clarifyの学習後バイアス指標（DPPL / DI=1でデモグラフィックパリティ / CDDPL / AD / RD）。出典は clarifyPostBias をWebFetchで本文確認（成功）。新規SOURCESなし。
+  見送り: Context Engineering（行187）は公式ドキュメントが検索で見つからず `未` のまま。Clarifyは新規顧客受付終了の注記あり、指標の概念問題に限定。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 50% / MOCK 48% と高止まり。

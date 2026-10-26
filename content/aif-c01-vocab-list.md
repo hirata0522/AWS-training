@@ -221,7 +221,7 @@
 | 215 | Audit Trail | security | v201 |
 | 216 | ML Pipeline | aiml | v202 |
 | 217 | Agent Memory Management | genai | v199 |
-| 218 | Demographic Parity | responsible | 未 |
+| 218 | Demographic Parity | responsible | v262 |
 | 219 | Prompt Hijacking | fm | v253 |
 | 220 | Hallucination Detection | security | v217 |
 | 221 | Technical Debt (ML) | aiml | 未 |
