@@ -74,7 +74,7 @@
 | 68 | AWS PrivateLink | security | v53 |
 | 69 | Clustering | aiml | v54 |
 | 70 | Generative Adversarial Network (GAN) | genai | v55 |
-| 71 | Interpretability vs Explainability | responsible | 未 |
+| 71 | Interpretability vs Explainability | responsible | v249 |
 | 72 | Dimensionality Reduction | aiml | v56 |
 | 73 | In-context Learning | fm | v138 |
 | 74 | Amazon VPC Endpoint | security | v57 |
@@ -134,7 +134,7 @@
 | 128 | Hyperparameter Tuning | aiml | v111 |
 | 129 | Machine Translation | genai | v175 |
 | 130 | Denied Topics | responsible | v99 |
-| 131 | Representative Dataset | fm | 未 |
+| 131 | Representative Dataset | fm | v250 |
 | 132 | AWS Audit Manager | security | 除外 |
 | 133 | Overfitting | aiml | v96 |
 | 134 | Hallucination | genai | v98 |
@@ -151,7 +151,7 @@
 | 145 | Batch Inference | aiml | v103 |
 | 146 | Amazon Bedrock Custom Model Import | fm | v108 |
 | 147 | IAM Identity Center | security | 除外 |
-| 148 | Interpretability | genai | 未 |
+| 148 | Interpretability | genai | v252 |
 | 149 | Real-time Inference | aiml | v104 |
 | 150 | Amazon Bedrock Provisioned Throughput | fm | v106 |
 | 151 | Amazon Bedrock Model Invocation Logging | security | v107 |
@@ -200,7 +200,7 @@
 | 194 | Prompt Template | fm | v139 |
 | 195 | Data Access Control | security | 未 |
 | 196 | Mean Squared Error (MSE) | aiml | v184 |
-| 197 | Dataset Diversity | responsible | 未 |
+| 197 | Dataset Diversity | responsible | v251 |
 | 198 | MLOps | aiml | v174 |
 | 199 | Prompt Chaining | fm | v246 |
 | 200 | Data Integrity | security | 未 |

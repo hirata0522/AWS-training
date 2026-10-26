@@ -610,3 +610,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Macie（機密データ検出・カスタムデータ識別子・EventBridge連携）、Secrets Manager（ハードコード回避・自動ローテーション）、AWS Config（構成履歴・非準拠検出）、Inspector（EC2/ECR/Lambdaスキャン）、Artifact（レポート・agreement）、GuardDuty（Macieのドキュメントで関連サービスとして紹介）、基盤モデル・トランスフォーマー・拡散モデル・GAN・ハルシネーション対策・生成AIの課題。
   新規SOURCESなし（macie, secretsManager, awsConfig, inspector, artifact, whatIsGenai, hallucination を再利用。7ページともWebFetchで本文確認、成功）。nodeでの読み込み確認は上記コマンドで実施。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 47% と高いまま。security PRACTICEが目標比率に対し不足していたため優先。
+- 2026-10-26（定期実行・12回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCABを4件（v249〜v252: Interpretability vs Explainability / Representative Dataset / Dataset Diversity / Interpretability）、PRACTICEを6件（p607〜p612: responsible single）、MOCK_POOLを3件（m377〜m379: responsible single）追加。累計 VOCAB=252 / PRACTICE=612 / MOCK_POOL=379。計13件。単語リスト進捗 252/466。
+  追加トピック: 責任あるAIの8側面（公平性・説明可能性・プライバシーとセキュリティ・安全性・制御可能性・正確性と堅牢性・ガバナンス・透明性）の定義、AIバイアス軽減策（代表性の確認・多様なアノテーションチーム・継続的モニタリング）、生成AIのブラックボックス性。
+  新規SOURCESなし（responsibleAi, aiBias, whatIsGenai を再利用。3ページともWebFetch成功）。nodeでの読み込み確認済み。
+  見送り（未のまま）: Inclusivity / Trustworthiness / Truthfulness / Accountability / Intellectual Property Infringement / Environmental Sustainability 等は、今回取得した公式ページ本文に定義がなく確認できなかったため。AWS prompt-engineeringページにはzero/one/few-shotの定義がなかった（Single-shot Prompting等は別の公式ページで要確認）。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 47% のまま。
