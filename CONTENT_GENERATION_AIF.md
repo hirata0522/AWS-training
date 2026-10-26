@@ -636,3 +636,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: AWSの責任あるAIの8つの観点（Fairness/Explainability/Privacy and security/Safety/Controllability/Veracity and robustness/Governance/Transparency）、SageMaker Model Cards（用途・リスク評価・バージョン・PDF出力）、Bedrockモデル呼び出しログ（出力先・既定無効・記録内容・identity.arn・100KB超のS3保存）。
   新規SOURCESなし（responsibleAi, modelCards, invocationLogging を再利用。3ページともWebFetchで本文確認、成功。Clarifyのドキュメントはfetchで本文が取れなかったため今回は出題せず）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 47% のまま。responsible/security の不足分を優先して補った。
+- 2026-10-26（定期実行・18回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを8件（p653〜p660: fm single）、MOCK_POOLを6件（m406〜m411: fm single）追加。累計 VOCAB=253 / PRACTICE=660 / MOCK_POOL=411。計14件。単語リスト進捗 253/465。
+  追加トピック: プロンプトキャッシュ（プレフィックス構成・バッチ推論非対応・キャッシュ読み取り課金・cacheReadInputTokens・TTL）、リランカーモデル（関連性での並べ替え・テキストのみ・既定ランキングの上書き）、バッチ推論（S3入出力・EventBridge通知・プロビジョンドモデル非対応）。
+  新規SOURCESなし（promptCaching, bedrockRerank, bedrockBatch を再利用。promptCaching/batch-inference/rerank の3ページをWebFetchで確認、成功）。
+  メモ: 正解最長割合は PRACTICE 50% / MOCK 47% と高止まり。fm/genaiが目標比率に対し不足のため優先した。
