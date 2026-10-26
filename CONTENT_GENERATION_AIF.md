@@ -632,3 +632,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 機械学習の4分類（教師あり/なし/半教師あり/強化）とMLプロセス、ニューラルネットワークの層構造とCNN、コンピュータビジョンのタスク（分類/検出/追跡/セグメンテーション）。
   新規SOURCESなし（whatIsMl, whatIsNn, whatIsCv を再利用。3ページともWebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 49% / MOCK 47% のまま。aimlが目標に対し不足のため優先。
+- 2026-10-26（定期実行・17回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.1、2026-04-30）。VOCAB追加は0件。PRACTICEを10件（p643〜p652: responsible 7 / security 3。single 7 / multi 1 / matching 1ほか）、MOCK_POOLを6件（m400〜m405: single 5 / matching 1）追加。累計 VOCAB=253 / PRACTICE=652 / MOCK_POOL=405。単語リスト進捗 253/465。
+  追加トピック: AWSの責任あるAIの8つの観点（Fairness/Explainability/Privacy and security/Safety/Controllability/Veracity and robustness/Governance/Transparency）、SageMaker Model Cards（用途・リスク評価・バージョン・PDF出力）、Bedrockモデル呼び出しログ（出力先・既定無効・記録内容・identity.arn・100KB超のS3保存）。
+  新規SOURCESなし（responsibleAi, modelCards, invocationLogging を再利用。3ページともWebFetchで本文確認、成功。Clarifyのドキュメントはfetchで本文が取れなかったため今回は出題せず）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 49% / MOCK 47% のまま。responsible/security の不足分を優先して補った。
