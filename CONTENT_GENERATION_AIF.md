@@ -649,3 +649,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: インテリジェントプロンプトルーティング（デフォルト/設定済みルーター・フォールバックモデル・英語最適化・同一ファミリー2モデル）、Prompt management（変数・バリアント・フローのプロンプトノード）、ApplyGuardrail API（モデル非依存・INPUT/OUTPUT・outputScope FULL）。
   新規SOURCESなし（promptRouting, promptMgmt, applyGuardrail を再利用。3ページとも今回WebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 50% / MOCK 48% のまま。VOCABは未リストの用語の公式定義を確認できず今回は見送り。
+- 2026-10-26（定期実行・21回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCABを2件（v258〜v259: Data Integrity / Balanced Dataset）、PRACTICEを3件（p675〜p677: security 1 / genai 1 / responsible 1、すべてsingle）、MOCK_POOLを2件（m423〜m424: single）追加。累計 VOCAB=259 / PRACTICE=677 / MOCK_POOL=424。計7件（目安より少ない。公式ページでの事実確認が取れた題材に限定したため）。単語リスト進捗 259/454（除外22）。
+  追加トピック: データの完全性（チェックサム・Glue Data Quality）、バランスの取れたデータセットとAIバイアス、MCPの目的（ツール接続の標準化とガバナンス）。
+  新規SOURCES: dataIntegrity（WebFetchで本文確認、成功）。mcpWhat と aiBias は再利用（今回WebFetchで再確認、成功）。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 50% / MOCK 48% と高止まり（今回追加分は正解を最長にしなかった）。

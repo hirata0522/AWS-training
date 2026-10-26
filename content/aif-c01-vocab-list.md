@@ -203,10 +203,10 @@
 | 197 | Dataset Diversity | responsible | v251 |
 | 198 | MLOps | aiml | v174 |
 | 199 | Prompt Chaining | fm | v246 |
-| 200 | Data Integrity | security | 未 |
+| 200 | Data Integrity | security | v258 |
 | 201 | AI Agent | genai | v173 |
 | 202 | Model Monitoring | aiml | v188 |
-| 203 | Balanced Dataset | responsible | 未 |
+| 203 | Balanced Dataset | responsible | v259 |
 | 204 | ReAct Prompting | fm | v247 |
 | 205 | Data Leakage Prevention | security | v205 |
 | 206 | Multi-agent System | genai | v154 |

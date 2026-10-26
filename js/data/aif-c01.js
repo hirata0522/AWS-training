@@ -159,6 +159,7 @@ var SOURCES = {
   machineTranslation:{label:'AWS: 機械翻訳とは', url:'https://aws.amazon.com/what-is/machine-translation/'},
   comprehendF1:{label:'Amazon Comprehend: ClassifierEvaluationMetrics（F1スコア・適合率・再現率）', url:'https://docs.aws.amazon.com/comprehend/latest/APIReference/API_ClassifierEvaluationMetrics.html'},
   piiComprehend:{label:'Amazon Comprehend: 個人を特定できる情報 (PII)', url:'https://docs.aws.amazon.com/comprehend/latest/dg/pii.html'},
+  dataIntegrity:{label:'AWS: データ整合性（Data Integrity）とは', url:'https://aws.amazon.com/what-is/data-integrity/'},
   clarifyExplain:{label:'SageMaker AI: モデルの説明可能性 (Clarify)', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-model-explainability.html'},
   novaImagePrompt:{label:'Amazon Nova Canvas: プロンプトのベストプラクティス', url:'https://docs.aws.amazon.com/nova/latest/userguide/prompting-image-generation.html'},
   converseApi:{label:'Amazon Bedrock: Converse API を使った推論', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html'},
@@ -455,6 +456,12 @@ var VOCAB = [
   {id:'v257', term:'Amazon SageMaker Neo', domain:'aiml', source:SOURCES.sagemakerNeo, q:{text:'SageMaker Neoの役割として正しいものはどれですか？',
     choices:['訓練データにラベルを付ける作業を人手で支援する', '学習済みモデルを対象のハードウェア向けに自動で最適化し、クラウドやエッジで効率よく動かす', 'モデルの推論結果から偏り（バイアス）を検出して報告する', '特徴量を一元管理し、訓練と推論で再利用できるようにする'], correct:1,
     why:['誤り。ラベル付けの支援はSageMaker Ground Truthの役割です。', '正しい。Neoはコンパイラとランタイムで構成され、一度訓練したモデルをクラウドやエッジの様々なハードウェアに最適化して動かします。', '誤り。バイアスの検出はSageMaker Clarifyの役割です。', '誤り。特徴量の一元管理はSageMaker Feature Storeの役割です。']}},
+  {id:'v258', term:'Data Integrity', domain:'security', source:SOURCES.dataIntegrity, q:{text:'データの完全性（Data Integrity）に関する説明として正しいものはどれですか？',
+    choices:['保存データを暗号鍵で暗号化し、第三者に内容を読まれないようにすること', 'データがライフサイクル全体を通じて正確・一貫・完全な状態に保たれ、意図しない変更や破損がないこと', 'データの保存場所を特定の国やリージョンに限定し、法規制に対応すること', 'データを複数のリージョンへコピーして、障害時にも利用できる状態にしておくこと'], correct:1,
+    why:['誤り。暗号化は機密性（Confidentiality）を守る手段です。完全性は内容が正しく変わっていないことに関する概念です。', '正しい。データの完全性は、正確さ・一貫性・完全性をライフサイクル全体で維持することで、学習データの品質やAIの出力の信頼性の前提になります。', '誤り。これはデータレジデンシー／データ主権に関する説明です。', '誤り。これは可用性や耐障害性を高める対策で、内容が正しいことを保証する概念ではありません。']}},
+  {id:'v259', term:'Balanced Dataset', domain:'responsible', source:SOURCES.aiBias, q:{text:'バランスの取れたデータセット（Balanced Dataset）を学習に使う主な目的として最も適切なものはどれですか？',
+    choices:['特定の属性やグループへの偏りを減らし、モデルの出力が一部のグループに不利にならないようにする', 'データ量を減らして学習にかかる時間と費用を最小限に抑える', 'モデルが訓練データを完全に記憶し、訓練データでの誤差をゼロにする', '個人情報を含むデータを自動的に匿名化し、プライバシーを保護する'], correct:0,
+    why:['正しい。クラスや属性の分布が偏った学習データは、AIバイアスの原因になります。代表性のあるバランスの取れたデータを使うことで、偏った出力を減らせます。', '誤り。バランスを取る目的はコスト削減ではありません。', '誤り。訓練データを丸暗記させることは過学習につながり、公平性の向上にはなりません。', '誤り。匿名化はプライバシー保護の手法で、データの分布の偏りを直すものではありません。']}},
 ];
 
 var PRACTICE = [
@@ -2782,6 +2789,15 @@ var PRACTICE = [
   {id:'p674', domain:'genai', type:'ordering', source:SOURCES.promptMgmt, text:'Amazon BedrockのPrompt managementを使ってプロンプトを再利用する一般的な流れを、正しい順に並べてください。',
     items:['再利用したいプロンプトを、変数を含めて作成する', '実行するモデル（またはインファレンスプロファイル、エージェント）を選び、推論設定を調整する', '変数にテスト値を入れて実行し、バリアントの出力を比較する', 'モデル推論の実行時や、フローのプロンプトノードでアプリケーションに組み込む'],
     why:['まず、複数のユースケースで再利用できるよう変数付きのプロンプトを作成します。', '次に、推論を実行する対象を選び、必要に応じて推論設定を変更します。', '続いて変数に値を入れて実行し、バリアントを比較して最適なものを選びます。', '最後に、そのプロンプトをモデル推論の実行時に指定するか、フローのプロンプトノードに指定してアプリに組み込みます。']},
+  {id:'p675', domain:'security', type:'single', source:SOURCES.dataIntegrity, text:'ある企業が生成AI向けの学習データをAmazon S3にアップロードしています。転送や保存の途中でデータが破損・改ざんされていないことを検証したい場合、最も適切な仕組みはどれですか？',
+    choices:['Amazon Macieによる機密データの検出', 'S3のチェックサム（CRC-64/NVME、SHA-256など）によるアップロード時・ダウンロード時の検証', 'AWS PrivateLinkによるインターネットを経由しない接続', 'Amazon Inspectorによるワークロードの脆弱性スキャン'], correct:[1],
+    why:['Macieは機密データ（個人情報など）を検出するサービスで、データが破損していないかの検証には使いません。', 'S3ではアップロード・ダウンロード・コピー時にチェックサムを検証でき、不一致を検出できます。データの完全性を確認する代表的な方法です。', 'PrivateLinkは通信経路をプライベートにする仕組みで、データ内容の破損の有無を検証するものではありません。', 'Inspectorは脆弱性を検出するサービスで、データの完全性の検証とは目的が異なります。']},
+  {id:'p676', domain:'genai', type:'single', source:SOURCES.mcpWhat, text:'複数のAIエージェントが、社内のデータベースやAPIといった外部ツールを共通の方法で利用できるようにし、ツールの管理とガバナンスを一元化したいと考えています。最も適切なアプローチはどれですか？',
+    choices:['各エージェントに、それぞれ独自のツールを個別に埋め込む', 'ツールをモデルの再学習によってLLMに覚えさせる', 'ツールの定義をすべてシステムプロンプトに直接貼り付ける', 'ツールをMCPサーバーとして公開し、各エージェントがMCP経由で利用する'], correct:[3],
+    why:['エージェントごとに独自ツールを持つと、実装の重複や不統一が生じ、セキュリティポリシーの適用や利用状況の追跡が難しくなります。', 'ツールの利用は再学習ではなく、実行時にツールを呼び出す仕組みで実現します。再学習は費用も手間も大きく、ツール管理の一元化にもなりません。', 'ツール定義が増えるほどコンテキストウィンドウを消費し、性能や精度が下がるおそれがあります。管理の一元化にもなりません。', 'MCP（Model Context Protocol）は、エージェントが外部の機能やデータに接続するための標準的な仕組みです。ツールをMCPサーバーに集約すると、標準化と一元的なガバナンスがしやすくなります。']},
+  {id:'p677', domain:'responsible', type:'single', source:SOURCES.aiBias, text:'採用支援用のAIモデルが、特定の属性を持つ応募者を不利に評価する傾向を示しました。原因として最も可能性が高いものはどれですか？',
+    choices:['学習データに特定の属性のデータが少なく、母集団を代表していなかった', '推論時のtemperatureが高すぎて、出力がランダムになっていた', 'モデルの推論に使うインスタンスのメモリが不足していた', '学習データを暗号化したため、モデルが内容を読み取れなかった'], correct:[0],
+    why:['データに偏りや欠落があると、モデルはその偏りを学習します（選択バイアス）。代表性のあるバランスの取れたデータを使うことが、バイアス低減の基本です。', 'temperatureは出力のばらつきに関係しますが、特定の属性への一貫した不利な評価の主な原因とは考えにくいです。', 'メモリ不足は性能や可用性の問題で、評価の偏りの原因ではありません。', '暗号化データは適切な権限があれば復号して学習に使えます。属性への偏りの原因にはなりません。']},
 ];
 
 var MOCK_POOL = [
@@ -4205,6 +4221,12 @@ var MOCK_POOL = [
   {id:'m422', domain:'security', type:'multi', source:SOURCES.applyGuardrail, text:'Amazon Bedrock GuardrailsのApplyGuardrail APIについて正しい説明を2つ選択してください。（2つ選択）',
     choices:['ユーザー入力とモデル出力を、それぞれ独立に評価できる', '呼び出すたびにガードレール用のモデルを再学習する必要がある', '評価結果として、すべてのテキストが常に完全な形で返される', 'ガードレールの設定を変更するためには、アプリのコードを書き換える必要がある', '基盤モデルを呼び出さずに、任意のテキストを評価できる'], correct:[0, 4],
     why:['正しい。source を INPUT または OUTPUT に設定して、入力と出力を別々に評価できます。', '誤り。評価のたびに再学習することはありません。', '誤り。既定では検出されたコンテンツのみが返り、完全な出力にはoutputScopeの指定が必要です。', '誤り。ガードレールのポリシーは事前に構成したもので、APIでは識別子とバージョンを指定して利用します。', '正しい。ApplyGuardrail APIは基盤モデルから切り離されており、モデルを呼び出さずに使えます。']},
+  {id:'m423', domain:'security', type:'single', source:SOURCES.dataIntegrity, text:'AIの学習データの完全性（Data Integrity）を維持するための取り組みとして、最も適切なものはどれですか？',
+    choices:['学習データの保存場所を、すべて1つのリージョンに集約する', '学習データの形式をJSONからCSVに統一する', 'モデルの出力に免責事項を表示する', 'データパイプラインで検証ルールを設定し、不正または不完全なデータを検出して通知する'], correct:[3],
+    why:['保存場所の集約はレジデンシーや運用の話であり、データが正確で一貫していることの保証にはなりません。', '形式の統一は扱いやすさの面で役立ちますが、データの正確さや改ざん・破損の検出を保証するものではありません。', '免責事項の表示は透明性の取り組みで、データの完全性とは別です。', 'AWS Glue Data Qualityのようにルールでデータ品質を監視し、不完全なデータを検出して通知する仕組みは、完全性の維持に有効です。']},
+  {id:'m424', domain:'genai', type:'single', source:SOURCES.mcpWhat, text:'Model Context Protocol（MCP）が解決しようとする課題として最も適切なものはどれですか？',
+    choices:['AIエージェントが外部のツールやデータに接続する方法を標準化し、ツールの管理を統一しやすくする', 'LLMの学習に必要なGPUの台数を削減する', '基盤モデルの出力に含まれる有害なコンテンツを自動でフィルタリングする', '学習データに含まれる個人情報を匿名化する'], correct:[0],
+    why:['MCPはエージェントと外部機能をつなぐ標準で、「AIアプリケーション向けのUSB-C」と表現されます。ツールの重複や不統一、ガバナンスの課題に対応しやすくなります。', 'GPU台数の削減は、MCPの目的ではなく、モデルの学習・推論の効率化に関する話です。', '有害なコンテンツのフィルタリングはBedrock Guardrailsなどの役割です。', '個人情報の匿名化やPIIの検出はComprehendやMacieなどの領域で、MCPの役割ではありません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）
