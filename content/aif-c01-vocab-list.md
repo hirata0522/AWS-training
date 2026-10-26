@@ -182,7 +182,7 @@
 | 176 | Privacy-enhancing Technologies | security | 未 |
 | 177 | Provisioned Throughput | genai | v171 |
 | 178 | Recall | aiml | v144 |
-| 179 | Single-shot Prompting | fm | 未 |
+| 179 | Single-shot Prompting | fm | 除外 |
 | 180 | Data Anonymization | security | v224 |
 | 181 | F1 Score | aiml | v176 |
 | 182 | On-Demand Throughput | genai | 未 |
@@ -222,7 +222,7 @@
 | 216 | ML Pipeline | aiml | v202 |
 | 217 | Agent Memory Management | genai | v199 |
 | 218 | Demographic Parity | responsible | 未 |
-| 219 | Prompt Hijacking | fm | 未 |
+| 219 | Prompt Hijacking | fm | v253 |
 | 220 | Hallucination Detection | security | v217 |
 | 221 | Technical Debt (ML) | aiml | 未 |
 | 222 | Tool Use (Agents) | genai | v197 |
