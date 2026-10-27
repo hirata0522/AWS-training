@@ -678,3 +678,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Role Managerの3ペルソナ（データサイエンティスト/MLOps/SageMaker AIコンピューティング。新規顧客受付終了の注記あり）、Generative AI Security Scoping Matrixの5スコープと5分野、試験ガイドドメイン5の例示サービス・ガバナンス項目。
   新規SOURCES: roleManager, rolePersonas, scopingMatrix, domain5Guide（4ページともWebFetchで本文確認、成功）。
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 50% / MOCK 48% と高止まり（今回追加分は正解を最長にしなかった）。
+
+- 2026-10-27（定期実行・28回目）: 改訂履歴をWebFetchで確認（成功）。v1.2（2026-10-29）は対象外サービス一覧の削除のみで変化なし。VOCAB追加は0件（BLEU / Perplexity は fmeval ページに定義の記載がなく見送り、`未` のまま）。PRACTICEを7件（p713〜p719: fm 3 / responsible 3 ほか、single 5 / multi 1 / matching 1）、MOCK_POOLを4件（m451〜m454: single 3 / multi 1）追加。累計 VOCAB=269 / PRACTICE=719 / MOCK_POOL=454。計11件。単語リスト進捗 269/453（除外23）。
+  追加トピック: fmevalの要約精度（ROUGE-1/2/L、SummarizationAccuracyのスコア）、ClassificationAccuracyのスコア、Factual knowledge、プロンプトステレオタイピングの0.5、意味的頑健性の摂動（Butterfinger等）と決定論的モデルの条件、Toxicity detoxifyの7スコア。
+  新規SOURCESなし（fmevalAuto を再利用。ページ本文をWebFetchで確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 51% / MOCK 48% と高止まり（今回追加分は正解を最長にしなかった）。
