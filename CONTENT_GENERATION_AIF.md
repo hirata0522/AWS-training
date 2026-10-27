@@ -687,3 +687,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-27（定期実行・29回目）: 改訂履歴をWebFetchで確認（成功）。v1.2（2026-10-29）は対象外サービス一覧の削除のみで変化なし。VOCAB追加は0件（`未` の用語の公式定義ページを確認できず見送り）。PRACTICEを7件（p720〜p726: security、single 5 / multi 1 / matching 1）、MOCK_POOLを4件（m455〜m458: security、single）追加。累計 VOCAB=269 / PRACTICE=726 / MOCK_POOL=458。計11件。単語リスト進捗 269/453（除外23）。
   追加トピック: 機密情報フィルターのBlock/Mask/Detect、正規表現フィルター（lookTaround非対応）、ツール呼び出し引数は評価対象外、モデル呼び出しログとCloudWatchログデータ保護、トレースのmatchフィールド、PII分類、文脈による精度向上。
   新規SOURCESなし（sensitiveFilters を再利用。ページ本文をWebFetchで確認、成功）。nodeでの読み込み確認済み。
+
+- 2026-10-27（定期実行・30回目）: 改訂履歴をWebFetchで確認（成功）。v1.2（2026-10-29）は対象外サービス一覧の削除のみで変化なし。VOCAB追加は0件（`未` の用語の公式定義ページを確認できず見送り）。PRACTICEを10件（p727〜p736: genai 5 / aiml 5、single 7 / multi 1 / matching 1ほか）、MOCK_POOLを6件（m459〜m464: genai 3 / aiml 3、single 4 / multi 1 / matching 1）追加。累計 VOCAB=269 / PRACTICE=736 / MOCK_POOL=464。計16件。単語リスト進捗 269/453（除外23）。
+  追加トピック: 生成モデルと識別モデルの違い、生成AIのモデル種別（トランスフォーマー/GAN/VAE/拡散モデル）、基盤モデル、次単語予測、合成ラベル付きデータ、機械学習の種類（教師あり/教師なし/半教師あり/強化学習）と各々の利点・課題。
+  新規SOURCESなし（whatIsGenai, whatIsMl を再利用。2ページとも今回WebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 51% / MOCK 48% と高止まり（今回追加分は正解を最長にしなかった）。
