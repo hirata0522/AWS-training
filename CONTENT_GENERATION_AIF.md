@@ -711,3 +711,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Amazon Rekognition（Unsafe Content / Custom Labels / Face Liveness / Text Detection）、Amazon Transcribe（ストリーミング・バッチ）、Amazon Polly（TTS）。
   新規SOURCESなし（rekognition, transcribe, polly を再利用。3ページとも今回WebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 51% / MOCK 49% と高止まり（今回追加分は正解を最長にしなかった）。
+
+- 2026-10-27（定期実行・35回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件（`未` の用語の公式定義ページ未確認のため見送り）。PRACTICEを10件（p772〜p781: aiml、single 7 / multi 1 / matching 1ほか）、MOCK_POOLを6件（m482〜m487: aiml、single 4 / multi 1 / matching 1）追加。累計 VOCAB 269 / PRACTICE 781 / MOCK_POOL 487。計16件。単語リスト進捗 269 / 453。
+  追加トピック: Amazon Textract（AnalyzeExpense / AnalyzeID / Analyze Lending / Queries、同期・非同期処理、手書き・フォーム・表の抽出）、Amazon Translate（テキスト翻訳）、Amazon Lex V2（ASR+NLU、Lambda統合、リクエスト数ベースの従量課金）。
+  新規SOURCESなし（textract, translate, lex を再利用。3ページとも今回WebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 51% / MOCK 49% と高止まり。
