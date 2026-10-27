@@ -668,3 +668,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Guardrails機密情報フィルター（Block/Mask/検出のみ・正規表現・lookahead非対応・ログは未マスク）、Knowledge Basesのチャンキング戦略（デフォルト/固定サイズ/階層型/セマンティック/なし）と取り込み処理の順序、マルチエージェントコラボレーション（スーパーバイザー）、Bedrock Flowsの作成〜デプロイ手順。
   新規SOURCESなし（sensitiveFilters, bedrockChunking, multiAgent, bedrockFlows を再利用。4ページとも今回WebFetchで本文確認、成功。Bedrock Agentsは新規顧客受付終了の注記あり、概念問題に限定）。
   メモ: 正解最長割合は PRACTICE 51% / MOCK 48% と高止まり。
+
+- 2026-10-27（定期実行・26回目）: 改訂履歴は今回未確認（v1.1のまま扱った。24・25回目に確認済みのv1.2は対象外サービス一覧の削除のみ）。VOCAB追加は0件（`未` の用語の公式定義ページを確認できず見送り）。PRACTICEを6件（p699〜p704: fm、single 5 / multi 1）、MOCK_POOLを4件（m441〜m444: fm、single 3 / matching 1）追加。累計 VOCAB=267 / PRACTICE=704 / MOCK_POOL=444。計10件（目安より少ない。公式ページで本文確認できた題材に限定）。単語リスト進捗 267/453（除外23）。
+  追加トピック: Bedrockのjudgeベースのモデル評価の組み込み指標（Correctness / Completeness / Faithfulness / Helpfulness / Logical coherence / Relevance / Following instructions / Professional style and tone / Harmfulness / Stereotyping / Refusal）の使い分け。
+  新規SOURCES: evalMetrics（https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-metrics.html、WebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 51% / MOCK 48% と高止まり（今回追加分は正解を最長にしなかった）。
