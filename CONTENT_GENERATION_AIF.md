@@ -696,3 +696,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-27（定期実行・31回目）: 改訂履歴をWebFetchで確認（成功）。v1.2（2026-10-29）は対象外サービス一覧の削除のみで変化なし。VOCAB追加は0件（`未` の用語の公式定義ページを確認できず見送り）。PRACTICEを8件（p737〜p744: single 6 / multi 1 / matching 1）追加。累計 VOCAB 269 / PRACTICE 744 / MOCK_POOL 464。単語リスト進捗 269 / 453。
   追加トピック: Guardrailsのプロンプト攻撃（Jailbreak / Prompt Injection / Prompt Leakage=Standardのみ）、入力タグの必要性、コンテンツフィルターのカテゴリ（Hate/Insults/Sexual/Violence/Misconduct）、ツール利用時の評価対象外（toolResult・toolUse.input）、Block/Detect、強度の個別設定。
   新規SOURCESなし（promptAttack, contentFilters を再利用。2ページとも今回WebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+
+- 2026-10-27（定期実行・32回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件（`未` の用語の公式定義ページを確認できず見送り）。PRACTICEを10件（p745〜p754: single 9 / multi 1）、MOCK_POOLを5件（m465〜m469: single）追加。累計 VOCAB 269 / PRACTICE 754 / MOCK_POOL 469。単語リスト進捗 269 / 453。
+  追加トピック: コンテキストグラウンディングチェック（Grounding/Relevance、3要素、閾値0〜0.99、出力のみ対象、ApplyGuardrailの追加ブロック、Classic/Standardティア）、拒否トピック（名前・定義200文字・サンプル5個・避けるべき定義、ワードフィルターとの使い分け）。
+  新規SOURCES: groundCheck, deniedTopics（2ページともWebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 51% / MOCK 48% と高止まり。
