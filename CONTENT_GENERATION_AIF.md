@@ -706,3 +706,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Knowledge Basesのチャンキング戦略（デフォルト約300トークン・文境界保持、固定サイズのトークン数とオーバーラップ、階層型の親子置換、セマンティックのバッファサイズ/閾値/追加コスト、チャンキングなし、マルチモーダル）。
   新規SOURCESなし（bedrockChunking を再利用。ページは今回WebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 51% / MOCK 49% と高止まり。
+
+- 2026-10-27（定期実行・34回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件（`未` の用語の公式定義ページ未確認のため見送り）。PRACTICEを5件（p767〜p771: aiml、single）、MOCK_POOLを4件（m478〜m481: aiml、single）追加。累計 VOCAB 269 / PRACTICE 771 / MOCK_POOL 481。件数は目安に届かず9件（出典を本文で確認できた項目のみ）。
+  追加トピック: Amazon Rekognition（Unsafe Content / Custom Labels / Face Liveness / Text Detection）、Amazon Transcribe（ストリーミング・バッチ）、Amazon Polly（TTS）。
+  新規SOURCESなし（rekognition, transcribe, polly を再利用。3ページとも今回WebFetchで本文確認、成功）。nodeでの読み込み確認済み。
+  メモ: 正解最長割合は PRACTICE 51% / MOCK 49% と高止まり（今回追加分は正解を最長にしなかった）。

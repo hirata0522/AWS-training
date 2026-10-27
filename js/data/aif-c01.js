@@ -3109,6 +3109,21 @@ var PRACTICE = [
   {id:'p766', domain:'fm', type:'single', source:SOURCES.bedrockChunking, text:'階層型チャンキングで取得結果の件数が要求より少なくなることがある理由はどれですか？',
     choices:['複数の子チャンクが同じ親チャンクに置き換えられることがあるため', 'ベクトルインデックスが結果を自動的に間引くため', '親チャンクのトークン数が子より常に小さいため', 'セマンティックな類似度が0.5未満のものが除外されるため'], correct:[0],
     why:['正しい。子チャンクが親に置き換えられるため、返却数が要求量より少なくなることがあります。', '誤り。そのような間引きの仕組みは説明されていません。', '誤り。親チャンクは子チャンクより大きい設定です。', '誤り。固定の類似度閾値による除外ではありません。']},
+  {id:'p767', domain:'aiml', type:'single', source:SOURCES.rekognition, text:'オンラインフォーラムに投稿されたユーザー画像から、露骨な内容や暴力的な内容を自動的に検出してフィルタリングしたい場合、最も適したAmazon Rekognitionの機能はどれですか？',
+    choices:['Custom Labels によるロゴの検出', 'Face Liveness による本人の在席確認', 'Unsafe Content（不適切コンテンツ）の検出', 'Celebrity recognition による著名人の識別'], correct:[2],
+    why:['誤り。Custom Labels は自社固有のロゴや製品などを検出するカスタム分類器を作る機能です。', '誤り。Face Liveness は顔認証時に本人が実際にカメラの前にいるかを確認する機能です。', '正しい。Unsafe Content の検出は、露骨・不適切・暴力的なコンテンツを検出しフィルタリングします。', '誤り。著名人の識別は、政治家や俳優などを認識する機能で、不適切コンテンツの検出ではありません。']},
+  {id:'p768', domain:'aiml', type:'single', source:SOURCES.rekognition, text:'自社製品に固有のロゴや製品を画像から検出したい場合に、汎用の物体検出より適した Amazon Rekognition の機能はどれですか？',
+    choices:['Custom Labels', 'Image Properties', 'Text Detection', 'Facial Analysis'], correct:[0],
+    why:['正しい。Custom Labels は、ロゴ・製品・キャラクターなど自社のユースケース固有の対象を検出するカスタム分類器を構築します。', '誤り。Image Properties は画像の品質・色・鮮明度・コントラストなどを分析する機能です。', '誤り。Text Detection は画像内の印刷・手書き文字を認識する機能です。', '誤り。Facial Analysis は顔の検出・分析・比較に使う機能で、製品の検出用ではありません。']},
+  {id:'p769', domain:'aiml', type:'single', source:SOURCES.rekognition, text:'顔認証による本人確認で、印刷した写真やディープフェイク動画によるなりすましを防止するために使う Amazon Rekognition の機能はどれですか？',
+    choices:['Content Moderation', 'Image Properties', 'Custom Labels', 'Face Liveness'], correct:[3],
+    why:['誤り。Content Moderation は不適切コンテンツを検出する機能で、なりすまし対策ではありません。', '誤り。Image Properties は画像の品質や色などの分析機能です。', '誤り。Custom Labels は固有の対象を検出するカスタム分類器の機能です。', '正しい。Face Liveness は、ユーザーが実際にカメラの前にいることを確認し、写真・動画・3Dマスク・ディープフェイクなどのなりすましを検出します。']},
+  {id:'p770', domain:'aiml', type:'single', source:SOURCES.transcribe, text:'コンタクトセンターの通話録音などS3上の音声ファイルをテキストに変換したい場合に、最も適したAWSサービスはどれですか？',
+    choices:['Amazon Polly', 'Amazon Transcribe', 'Amazon Translate', 'Amazon Comprehend'], correct:[1],
+    why:['誤り。Amazon Polly はテキストを音声に変換するサービスで、方向が逆です。', '正しい。Amazon Transcribe は、機械学習を使って音声をテキストに変換する自動音声認識サービスで、S3上のファイルのバッチ処理にも対応します。', '誤り。Amazon Translate は、テキストをある言語から別の言語に翻訳するサービスです。', '誤り。Amazon Comprehend は、テキストから情報を抽出する自然言語処理サービスで、音声は直接扱いません。']},
+  {id:'p771', domain:'aiml', type:'single', source:SOURCES.polly, text:'視覚障害のある利用者向けに、アプリ内のニュース記事を自然な音声で読み上げさせたい場合、最も適したAWSサービスはどれですか？',
+    choices:['Amazon Transcribe', 'Amazon Lex', 'Amazon Rekognition', 'Amazon Polly'], correct:[3],
+    why:['誤り。Amazon Transcribe は音声をテキストに変換するサービスで、読み上げには使いません。', '誤り。Amazon Lex は音声・テキストの会話型ボットを構築するサービスで、記事の読み上げ専用ではありません。', '誤り。Amazon Rekognition は画像・動画の分析サービスです。', '正しい。Amazon Polly はテキストを自然な音声に変換し、ニュース朗読やアクセシビリティ向けのアプリに使われます。']},
 ];
 
 var MOCK_POOL = [
@@ -4700,6 +4715,18 @@ var MOCK_POOL = [
   {id:'m477', domain:'fm', type:'multi', source:SOURCES.bedrockChunking, text:'セマンティックチャンキングについて正しい説明はどれですか？（2つ選択）',
     choices:['構文ではなく意味的な内容に着目して分割する', '追加コストなしで利用できる', '基盤モデルを利用するため、追加の料金が発生する', '常に1チャンク500トークンに固定される', 'テキスト以外のコンテンツにのみ適用される'], correct:[0,2],
     why:['正しい。構文構造だけでなく意味的な内容に着目します。', '誤り。基盤モデルを使うため追加コストがかかります。', '正しい。コストはデータ量に依存します。', '誤り。最大トークン数は利用者が指定します。', '誤り。テキストドキュメント向けの戦略です。']},
+  {id:'m478', domain:'aiml', type:'single', source:SOURCES.transcribe, text:'音声をリアルタイムでテキスト化する（ストリーミング）機能と、S3上の録音ファイルをまとめて処理する（バッチ）機能の両方を提供するサービスはどれですか？',
+    choices:['Amazon Polly', 'Amazon Translate', 'Amazon Lex', 'Amazon Transcribe'], correct:[3],
+    why:['誤り。Polly はテキストから音声を生成するサービスです。', '誤り。Translate はテキストの翻訳サービスで、音声認識は行いません。', '誤り。Lex は対話ボット構築サービスで、汎用の文字起こしサービスではありません。', '正しい。Amazon Transcribe はストリーミングとS3上のファイルのバッチの両方で音声をテキストに変換できます。']},
+  {id:'m479', domain:'aiml', type:'single', source:SOURCES.rekognition, text:'画像内の物体・シーン・テキスト・顔を検出する、画像・動画向けのAWSのマネージドなコンピュータビジョンサービスはどれですか？',
+    choices:['Amazon Rekognition', 'Amazon Textract', 'Amazon Comprehend', 'Amazon Personalize'], correct:[0],
+    why:['正しい。Amazon Rekognition は深層学習を使い、画像や動画から物体・テキスト・不適切コンテンツ・顔などを検出します。', '誤り。Textract は主にスキャン文書などからテキストや表・フォームを抽出するサービスです。', '誤り。Comprehend はテキストを分析する自然言語処理サービスです。', '誤り。Personalize はレコメンデーションを生成するサービスです。']},
+  {id:'m480', domain:'aiml', type:'single', source:SOURCES.polly, text:'Amazon Polly の説明として正しいものはどれですか？',
+    choices:['音声ファイルを文字起こしして字幕を生成するサービス', 'テキストを自然な音声に変換するテキスト読み上げ（TTS）サービス', '画像から手書き文字を認識して構造化データを出力するサービス', '顧客レビューの感情を分析して肯定・否定を判定するサービス'], correct:[1],
+    why:['誤り。これは Amazon Transcribe の説明です。', '正しい。Polly はテキストを生き生きとした音声に変換する TTS サービスです。', '誤り。これは Textract などの文書処理サービスに近い説明です。', '誤り。これは Amazon Comprehend の説明です。']},
+  {id:'m481', domain:'aiml', type:'single', source:SOURCES.rekognition, text:'画像内の印刷された文字や手書き文字を、看板や横断幕のような向きのあるテキストも含めて検出できる Amazon Rekognition の機能はどれですか？',
+    choices:['Facial Analysis', 'Celebrity recognition', 'Text Detection', 'Image Properties'], correct:[2],
+    why:['誤り。Facial Analysis は顔の検出・分析・比較の機能です。', '誤り。Celebrity recognition は著名人を識別する機能です。', '正しい。Text Detection は、画像内の印刷・手書き文字を様々な言語で認識します。', '誤り。Image Properties は画像の品質・色・鮮明度などの分析です。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）
