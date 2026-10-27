@@ -177,7 +177,7 @@
 | 171 | Data Quality Assessment | security | v193 |
 | 172 | Accuracy | aiml | v145 |
 | 173 | Precision | aiml | v143 |
-| 174 | Intellectual Property Infringement | responsible | 未 |
+| 174 | Intellectual Property Infringement | responsible | v263 |
 | 175 | Zero-shot Prompting | fm | v136 |
 | 176 | Privacy-enhancing Technologies | security | 未 |
 | 177 | Provisioned Throughput | genai | v171 |
@@ -186,13 +186,13 @@
 | 180 | Data Anonymization | security | v224 |
 | 181 | F1 Score | aiml | v176 |
 | 182 | On-Demand Throughput | genai | 除外 |
-| 183 | Loss of Customer Trust | responsible | 未 |
+| 183 | Loss of Customer Trust | responsible | v264 |
 | 184 | Area Under the Curve (AUC) | aiml | v147 |
 | 185 | Few-shot Prompting | fm | v137 |
 | 186 | Data Masking | security | v179 |
-| 187 | Context Engineering | genai | 未 |
+| 187 | Context Engineering | genai | 除外 |
 | 188 | Confusion Matrix | aiml | v146 |
-| 189 | End User Risk | responsible | 未 |
+| 189 | End User Risk | responsible | v265 |
 | 190 | Chain-of-Thought Prompting | fm | v172 |
 | 191 | PII (Personally Identifiable Information) | security | v177 |
 | 192 | ROC Curve | aiml | v209 |
@@ -215,7 +215,7 @@
 | 209 | Prompt Injection | fm | v185 |
 | 210 | Output Filtering and Validation | security | v204 |
 | 211 | Model Context Protocol (MCP) | genai | v159 |
-| 212 | Curated Data Sources | responsible | 未 |
+| 212 | Curated Data Sources | responsible | v266 |
 | 213 | Model Registry | aiml | v148 |
 | 214 | Prompt Poisoning | fm | 未 |
 | 215 | Audit Trail | security | v201 |
@@ -229,7 +229,7 @@
 | 223 | Open Source Pre-trained Model | aiml | 未 |
 | 224 | Jailbreaking | fm | v186 |
 | 225 | Grounding Techniques | security | v218 |
-| 226 | Subgroup Analysis | responsible | 未 |
+| 226 | Subgroup Analysis | responsible | v267 |
 | 227 | Managed API Service | aiml | 未 |
 | 228 | Prompt Leaking | fm | v196 |
 | 229 | Confidence Scoring | security | v226 |
