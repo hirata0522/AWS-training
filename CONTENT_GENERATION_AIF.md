@@ -663,3 +663,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 正解最長割合は VOCAB 57% / PRACTICE 50% / MOCK 48% と高止まり。
 
 - 2026-10-27（定期実行・24回目）: 改訂履歴をWebFetchで確認（成功）。**試験ガイドv1.2（公開日 2026-10-29）が掲載されていた**（v1.0=2026-03-26、v1.1=2026-04-30）。改訂履歴ページには対象外サービス一覧からの削除（Amazon Elastic Transcoder / AWS Elemental MediaStore / AWS IoT 1-Click / IoT Analytics / IoT Events / Amazon Nimble Studio）のみ確認でき、目標・スキルの変更点は今回未精査。次回以降、ガイド本体とドメインページ（v1.2）を確認し直すこと。VOCABを5件（v263〜v267: Intellectual Property Infringement / Loss of Customer Trust / End User Risk / Curated Data Sources / Subgroup Analysis）、PRACTICEを5件（p686〜p690: responsible、single 4 / matching 1）、MOCK_POOLを4件（m431〜m434: single 3 / multi 1）追加。累計 VOCAB=267 / PRACTICE=690 / MOCK_POOL=434。計14件。新規SOURCES: domain4Guide（試験ガイドドメイン4ページ、WebFetch成功）。責任あるAIの8側面は aws.amazon.com/ai/responsible-ai/ をWebFetchで確認して作成。除外: Context Engineering（公式ドキュメントで定義を確認できず、第三者ブログのみ）。Clarify関連ページのWebFetchは本文が取得できず（内容の確認不可）。Privacy-enhancing Technologiesは公式の裏取りができなかったため未のまま持ち越し。
+
+- 2026-10-27（定期実行・25回目）: 改訂履歴をWebFetchで確認（成功）。v1.2（2026-10-29公開予定）は対象外サービス一覧からの削除のみ掲載で、24回目と変化なし。VOCAB追加は0件（`未` の用語は公式の定義ページを確認できなかったため見送り）。PRACTICEを8件（p691〜p698: security 3 / fm 4 / genai 1、single 4 / multi 1 / matching 1 / ordering 1の計7＋single）、MOCK_POOLを6件（m435〜m440: single 4 / multi 1 / ordering 1）追加。累計 VOCAB=267 / PRACTICE=698 / MOCK_POOL=440。計14件。単語リスト進捗 267/453。
+  追加トピック: Guardrails機密情報フィルター（Block/Mask/検出のみ・正規表現・lookahead非対応・ログは未マスク）、Knowledge Basesのチャンキング戦略（デフォルト/固定サイズ/階層型/セマンティック/なし）と取り込み処理の順序、マルチエージェントコラボレーション（スーパーバイザー）、Bedrock Flowsの作成〜デプロイ手順。
+  新規SOURCESなし（sensitiveFilters, bedrockChunking, multiAgent, bedrockFlows を再利用。4ページとも今回WebFetchで本文確認、成功。Bedrock Agentsは新規顧客受付終了の注記あり、概念問題に限定）。
+  メモ: 正解最長割合は PRACTICE 51% / MOCK 48% と高止まり。
