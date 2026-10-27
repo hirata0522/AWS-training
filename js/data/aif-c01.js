@@ -14,6 +14,10 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  roleManager:{label:'Amazon SageMaker AI: SageMaker Role Manager', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/role-manager.html'},
+  rolePersonas:{label:'Amazon SageMaker AI: Role Manager のペルソナリファレンス', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/role-manager-personas.html'},
+  scopingMatrix:{label:'AWS: Generative AI Security Scoping Matrix', url:'https://aws.amazon.com/ai/generative-ai/security/scoping-matrix/'},
+  domain5Guide:{label:'AIF-C01 試験ガイド: ドメイン5 AIソリューションのセキュリティ、コンプライアンス、ガバナンス', url:'https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01-domain5.html'},
   sagemakerDeploy:{label:'Amazon SageMaker AI: 推論のためのモデルのデプロイ', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html'},
   sagemakerRealtime:{label:'Amazon SageMaker AI: リアルタイム推論', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html'},
   sagemakerAsync:{label:'Amazon SageMaker AI: 非同期推論', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/async-inference.html'},
@@ -488,6 +492,12 @@ var VOCAB = [
   {id:'v267', term:'Subgroup Analysis', domain:'responsible', source:SOURCES.domain4Guide, q:{text:'モデルの性能を年齢層や性別などのグループごとに分けて評価し、特定のグループで精度が低くないかを確認する手法はどれですか？',
     choices:['ハイパーパラメータの自動チューニング', 'サブグループ分析（Subgroup Analysis）', 'モデルの量子化', 'データのシャーディング'], correct:1,
     why:['誤り。ハイパーパラメータのチューニングは全体の性能を高める作業で、グループ間の性能差の確認ではありません。', '正しい。サブグループ分析は、グループごとに性能を比較して偏りを見つける手法で、試験ガイドでもバイアスや信頼性を検出・監視する方法の例として挙げられています。', '誤り。量子化はモデルを小さくする最適化で、公平性の確認とは無関係です。', '誤り。シャーディングはデータの分割・分散保存の手法で、グループ別評価ではありません。']}},
+  {id:'v268', term:'Amazon SageMaker Role Manager', domain:'responsible', source:SOURCES.roleManager, q:{text:'データサイエンティストやMLOpsエンジニアなどのペルソナ別に、最小権限のIAMロールをSageMaker AIコンソールから作成・管理できるサービス機能はどれですか？',
+    choices:['AWS IAM Identity Center', 'Amazon SageMaker Role Manager', 'AWS Organizations のサービスコントロールポリシー（SCP）', 'Amazon Macie'], correct:1,
+    why:['誤り。IAM Identity Centerはワークフォース全体のシングルサインオンとアクセス管理のサービスで、MLのペルソナ別ロールを作る機能ではありません。', '正しい。Role Managerは、3つの事前設定ペルソナと一般的なML作業の定義済み権限を使い、最小権限のロールを作成・管理できます（現在は新規顧客の受付を終了しています）。', '誤り。SCPはアカウント全体で許可できる権限の上限を定めるもので、ペルソナ別のロールを生成するものではありません。', '誤り。Macieは、S3内の機密データを検出して保護するサービスです。']}},
+  {id:'v269', term:'Generative AI Security Scoping Matrix', domain:'security', source:SOURCES.scopingMatrix, q:{text:'生成AIの利用ケースを、モデルとデータの所有の度合いに応じて「コンシューマーアプリ」から「自社でゼロから学習したモデル」までの5つのスコープに分類し、セキュリティ上の検討事項を整理するAWSのフレームワークはどれですか？',
+    choices:['AWS Well-Architected Framework のコスト最適化の柱', 'AWS Artifact', 'Generative AI Security Scoping Matrix', 'Amazon SageMaker Model Cards'], correct:2,
+    why:['誤り。コスト最適化の柱は、不要な支出を避けるための設計原則であり、生成AIのスコープ分類ではありません。', '誤り。AWS Artifactは、AWSのコンプライアンスレポートや契約をダウンロードするためのポータルです。', '正しい。Scoping Matrixは、利用ケースを5つのスコープ（コンシューマーアプリ／エンタープライズアプリ／事前学習済みモデル／ファインチューニング済みモデル／自社学習モデル）に分類し、ガバナンス、法務・プライバシー、リスク管理、コントロール、レジリエンスの観点で整理します。', '誤り。Model Cardsは、モデルの用途やリスクなどを文書化する機能です。']}},
 ];
 
 var PRACTICE = [
@@ -2907,6 +2917,30 @@ var PRACTICE = [
   {id:'p704', domain:'fm', type:'single', source:SOURCES.evalMetrics, text:'Amazon Bedrockのjudgeベースのモデル評価で、「応答がプロンプトに含まれるすべての質問にどれだけ答えているか」を測る組み込み指標はどれですか？',
     choices:['Relevance（関連性）', 'Completeness（完全性）', 'Correctness（正確性）', 'Faithfulness（忠実性）'], correct:[1],
     why:['誤り。Relevanceは、回答がプロンプトにどれだけ関連しているかを測る指標で、質問すべてに答えたかは測りません。', '正しい。Completenessは、応答がプロンプト内のすべての質問にどれだけ答えているかを測ります。', '誤り。Correctnessは、応答が正しいかを測る指標です。', '誤り。Faithfulnessは、応答が与えられたコンテキストに忠実かを測る指標です。']},
+  {id:'p705', domain:'responsible', type:'single', source:SOURCES.rolePersonas, text:'Amazon SageMaker Role Managerの事前設定ペルソナのうち、SageMaker AIのトレーニングや推論などのコンピューティングリソースが他のAWSサービスにアクセスするためのロールを作成するのに使うものはどれですか？',
+    choices:['データサイエンティスト', 'MLOps', 'SageMaker AIコンピューティング', 'ビジネスアナリスト'], correct:[2],
+    why:['誤り。データサイエンティストのペルソナは、SageMaker AI環境での一般的なML開発や実験のためのユーザー実行ロール用です。', '誤り。MLOpsのペルソナは、パイプラインの管理など運用に関する作業のための権限用です。', '正しい。SageMaker AIコンピューティングのペルソナは、トレーニングや推論などのコンピューティングリソースが必要なAWSサービスにアクセスするためのサービス実行ロールを作成します。', '誤り。ビジネスアナリストというペルソナは、Role Managerの事前設定ペルソナ（データサイエンティスト、MLOps、SageMaker AIコンピューティング）にはありません。']},
+  {id:'p706', domain:'security', type:'single', source:SOURCES.scopingMatrix, text:'Generative AI Security Scoping Matrixで、サードパーティの既存の基盤モデルをAPI経由で利用して自社アプリケーションを構築するケース（RAGなど）が該当するスコープはどれですか？',
+    choices:['スコープ1：コンシューマーアプリ', 'スコープ3：事前学習済みモデル', 'スコープ4：ファインチューニング済みモデル', 'スコープ5：自社学習モデル'], correct:[1],
+    why:['誤り。コンシューマーアプリは、公開されているサードパーティの生成AIサービスをそのまま利用するケースです。', '正しい。スコープ3は、既存のサードパーティ基盤モデルをAPIで組み込んで自社アプリを作るケースで、RAGもその例です。', '誤り。ファインチューニング済みモデルは、自社データで既存の基盤モデルを調整して専用モデルを作るケースです。', '誤り。自社学習モデルは、自社が所有・取得したデータでゼロからモデルを構築するケースです。']},
+  {id:'p707', domain:'security', type:'single', source:SOURCES.scopingMatrix, text:'Generative AI Security Scoping Matrixで、自社データを使って既存の基盤モデルを調整し、特定の業務向けのモデルを作るケースが該当するスコープはどれですか？',
+    choices:['スコープ2：エンタープライズアプリ', 'スコープ3：事前学習済みモデル', 'スコープ4：ファインチューニング済みモデル', 'スコープ5：自社学習モデル'], correct:[2],
+    why:['誤り。エンタープライズアプリは、生成AI機能が組み込まれたサードパーティの業務アプリを、ベンダーとの契約のもとで利用するケースです。', '誤り。事前学習済みモデルは、モデル自体は変更せずAPI経由で利用するケースです。', '正しい。スコープ4は、既存の基盤モデルを自社のドメイン固有データで調整して特化モデルを作るケースです。', '誤り。自社学習モデルは、既存モデルを使わずゼロから学習するケースで、ファインチューニングとは異なります。']},
+  {id:'p708', domain:'security', type:'matching', source:SOURCES.scopingMatrix, text:'Generative AI Security Scoping Matrixの各スコープとその説明を組み合わせてください。',
+    prompts:['スコープ1（コンシューマーアプリ）', 'スコープ2（エンタープライズアプリ）', 'スコープ5（自社学習モデル）'], options:['生成AI機能を備えたサードパーティの業務アプリを、ベンダーとの事業契約のもとで利用する', '公開されたサードパーティの生成AIサービスを、提供元の規約のもとで利用する', '自社が所有・取得したデータでゼロからモデルを構築する', '既存の基盤モデルを自社データで調整する'], correct:[1,0,2],
+    why:['スコープ1は、無料・有料を問わず公開サードパーティ生成AIサービスを提供元の規約で利用するケースで、モデルや学習データは見えず変更もできません。', 'スコープ2は、生成AI機能が組み込まれたサードパーティのエンタープライズアプリを、通常は企業向けの保護を含む事業契約のもとで利用するケースです。', 'スコープ5は、自社が所有・取得したデータでモデルを一から構築・学習するケースで、モデルのあらゆる面を自社が所有します。']},
+  {id:'p709', domain:'security', type:'multi', source:SOURCES.scopingMatrix, text:'Generative AI Security Scoping Matrixでセキュリティ上の検討に使う分野（ディシプリン）はどれですか？（2つ選択）',
+    choices:['ガバナンスとコンプライアンス', 'マーケティングとブランディング', 'レジリエンス', 'ハードウェア調達', '人事評価'], correct:[0,2],
+    why:['正しい。ガバナンスとコンプライアンスは、リスクを抑えつつ事業を進めるためのポリシー・手順・報告を扱う分野です。', '誤り。マーケティングとブランディングは、Scoping Matrixのセキュリティ分野には含まれません。', '正しい。レジリエンスは、可用性と事業継続の設計を扱い、タイムアウトの設定、マルチリージョン展開、リトライやバックオフなどを含みます。', '誤り。ハードウェア調達は、このマトリクスの分野ではありません。', '誤り。人事評価は、このマトリクスの分野ではありません。']},
+  {id:'p710', domain:'security', type:'single', source:SOURCES.scopingMatrix, text:'Generative AI Security Scoping Matrixによると、基盤モデルはデータへのアクセス制御を行わないため、モデルにデータが渡る前に適用することが推奨されているものはどれですか？',
+    choices:['最小権限のアクセス制御', 'データの重複排除', 'モデルのパラメータ数の削減', 'GPUインスタンスの確保'], correct:[0],
+    why:['正しい。基盤モデルはデータへのアクセス制御を強制しないため、モデルに渡る前のデータに最小権限のアクセス制御を適用し、Amazon CognitoやIAM Identity Centerなどのアイデンティティサービスを使うことが推奨されています。', '誤り。重複排除はデータ品質やコストの話で、アクセス制御の代わりにはなりません。', '誤り。パラメータ数の削減はモデルの軽量化であり、データへのアクセス権限とは関係ありません。', '誤り。GPUの確保は性能面の話で、データのアクセス制御ではありません。']},
+  {id:'p711', domain:'security', type:'single', source:SOURCES.domain5Guide, text:'試験ガイドのドメイン5で、AIソリューションのガバナンスとコンプライアンスを支援するAWSのサービスとして挙げられているものの組み合わせはどれですか？',
+    choices:['AWS Config、Amazon Inspector、AWS Artifact、AWS CloudTrail、AWS Trusted Advisor', 'Amazon Polly、Amazon Lex、Amazon Translate、Amazon Textract', 'Amazon EC2、Amazon EBS、Amazon EFS、AWS Backup', 'Amazon SQS、Amazon SNS、AWS Step Functions、Amazon EventBridge'], correct:[0],
+    why:['正しい。タスク5.2の目標で、AWS Config、Amazon Inspector、AWS Artifact、AWS CloudTrail、AWS Trusted Advisorが例として挙げられています。', '誤り。これらはAIサービスで、ガバナンスやコンプライアンスを支援するサービスの例としては挙げられていません。', '誤り。コンピュートとストレージ関連のサービスで、ガバナンス支援の例ではありません。', '誤り。アプリケーション統合・オーケストレーション関連のサービスで、ガバナンス支援の例ではありません。']},
+  {id:'p712', domain:'security', type:'multi', source:SOURCES.domain5Guide, text:'試験ガイドのタスク5.1で、AIシステムを保護するためのAWSのサービスや機能の例として挙げられているものはどれですか？（2つ選択）', 
+    choices:['Amazon Macie', 'Amazon Lightsail', 'AWS PrivateLink', 'Amazon WorkSpaces', 'AWS Snowball'], correct:[0,2],
+    why:['正しい。Amazon Macieは、S3内の機密データの検出に使うサービスとして、AIシステムの保護の例に挙げられています。', '誤り。Lightsailは簡易的な仮想サーバーのサービスで、タスク5.1の例には挙げられていません。', '正しい。AWS PrivateLinkは、トラフィックをインターネットに出さずにサービスへ接続する手段として挙げられています。', '誤り。WorkSpacesはマネージドな仮想デスクトップのサービスで、例には挙げられていません。', '誤り。Snowballはデータ移行用のデバイスで、例には挙げられていません。']},
 ];
 
 var MOCK_POOL = [
@@ -4398,6 +4432,24 @@ var MOCK_POOL = [
   {id:'m444', domain:'fm', type:'single', source:SOURCES.evalMetrics, text:'Amazon Bedrockのjudgeベースのモデル評価で、応答に有害なコンテンツが含まれているかを評価する組み込み指標はどれですか？',
     choices:['Stereotyping（ステレオタイプ）', 'Harmfulness（有害性）', 'Refusal（拒否）', 'Helpfulness（有用性）'], correct:[1],
     why:['誤り。Stereotypingはステレオタイプの有無に絞った指標で、有害コンテンツ全般の評価ではありません。', '正しい。Harmfulnessは、応答に有害なコンテンツが含まれているかを評価します。', '誤り。Refusalは、応答がリクエストを断っているかを判定する指標です。', '誤り。Helpfulnessは、応答の有用性を測る指標で、有害性の評価ではありません。']},
+  {id:'m445', domain:'security', type:'single', source:SOURCES.scopingMatrix, text:'ある企業は、サードパーティの生成AI機能付き業務アプリを、ベンダーとの事業契約（企業向けの保護を含む）のもとで利用します。Generative AI Security Scoping Matrixでのスコープはどれですか？',
+    choices:['スコープ1：コンシューマーアプリ', 'スコープ2：エンタープライズアプリ', 'スコープ4：ファインチューニング済みモデル', 'スコープ5：自社学習モデル'], correct:[1],
+    why:['誤り。コンシューマーアプリは公開サービスを提供元の規約で利用するケースで、企業向けの事業契約は前提としません。', '正しい。スコープ2は、生成AI機能を備えたサードパーティのエンタープライズアプリを、事業契約のもとで利用するケースです。', '誤り。ファインチューニング済みモデルは、自社データで既存モデルを調整するケースです。', '誤り。自社学習モデルは、ゼロからモデルを構築するケースです。']},
+  {id:'m446', domain:'security', type:'single', source:SOURCES.scopingMatrix, text:'Generative AI Security Scoping Matrixで、プロンプトインジェクションなどの脅威モデリングが特に求められるのは、どのスコープの範囲ですか？',
+    choices:['スコープ1〜2（アプリケーションを利用する側）', 'スコープ3〜5（自社でモデルを組み込む・調整する・構築する側）', 'どのスコープでも不要', 'スコープ1のみ'], correct:[1],
+    why:['誤り。スコープ1〜2は、既存のアプリケーションを利用するケースで、脅威モデリングの対象として強調されているのはスコープ3〜5です。', '正しい。リスク管理の分野で、スコープ3〜5ではプロンプトインジェクションなどのリスクに対する脅威モデリングが含まれます。', '誤り。モデルを組み込むスコープでは、脅威モデリングが重要です。', '誤り。スコープ1は公開サービスの利用で、自社で脅威モデリングを行う対象とは言えません。']},
+  {id:'m447', domain:'responsible', type:'single', source:SOURCES.roleManager, text:'MLの管理者が、データサイエンティストやMLOpsエンジニアなどの職務に合わせた最小権限のIAMロールを、事前設定されたペルソナを使ってコンソールから作成したい場合、どの機能を使いますか？',
+    choices:['Amazon SageMaker Role Manager', 'Amazon SageMaker Model Monitor', 'AWS Trusted Advisor', 'Amazon Inspector'], correct:[0],
+    why:['正しい。Role Managerは、ペルソナ別のIAMロールを作成・管理し、一般的なML作業向けの定義済み権限を提供します。', '誤り。Model Monitorは、本番のモデルの品質やドリフトを監視する機能です。', '誤り。Trusted Advisorは、コスト、セキュリティ、耐障害性などのベストプラクティスの観点でアカウントをチェックするサービスです。', '誤り。Inspectorは、ワークロードのソフトウェア脆弱性を検出するサービスです。']},
+  {id:'m448', domain:'security', type:'single', source:SOURCES.domain5Guide, text:'試験ガイドのタスク5.2で、データガバナンス戦略の例として挙げられているものはどれですか？',
+    choices:['データのライフサイクル、ロギング、所在地（レジデンシー）、モニタリング、保持', 'GPUの世代、メモリ容量、ストレージ速度', 'UIの配色、フォント、ボタンの配置', 'ベンダーの広告予算、営業人員、展示会の出展'], correct:[0],
+    why:['正しい。データライフサイクル、ロギング、レジデンシー、モニタリング、オブザベーション、保持などが例として挙げられています。', '誤り。ハードウェア仕様の話で、データガバナンスの例ではありません。', '誤り。UIデザインの話で、データガバナンスの例ではありません。', '誤り。販売・マーケティングの話で、データガバナンスの例ではありません。']},
+  {id:'m449', domain:'security', type:'single', source:SOURCES.domain5Guide, text:'試験ガイドで、ガバナンスのプロセスの例として挙げられている項目の組み合わせはどれですか？',
+    choices:['ポリシー、レビューの頻度、レビュー戦略、ガバナンスフレームワーク、透明性基準、チームのトレーニング要件', 'コンテナイメージのビルド、ロードバランサー、DNS', 'ログのローテーション、バックアップの暗号化、スナップショット', 'ネットワークの帯域幅、リージョンの数、Availability Zone'], correct:[0],
+    why:['正しい。タスク5.2の「ガバナンスプロトコルに従うプロセス」の例として、ポリシー、レビューの頻度や戦略、Generative AI Security Scoping Matrixなどのフレームワーク、透明性基準、チームのトレーニング要件が挙げられています。', '誤り。インフラやネットワークの技術要素で、ガバナンスのプロセスの例ではありません。', '誤り。運用・バックアップの技術的な項目で、ガバナンスのプロセスの例としては挙げられていません。', '誤り。インフラの構成要素で、ガバナンスのプロセスの例ではありません。']},
+  {id:'m450', domain:'security', type:'multi', source:SOURCES.domain5Guide, text:'試験ガイドのタスク5.1で、AIシステムのセキュリティとプライバシーに関する考慮事項として挙げられているものはどれですか？（2つ選択）',
+    choices:['プロンプトインジェクション', 'モデルの色彩調整', 'データ漏えいの防止', 'GPUの冷却設計', 'フォントの埋め込み'], correct:[0,2],
+    why:['正しい。プロンプトインジェクションは、AIシステムのセキュリティ上の考慮事項として明示されています。', '誤り。モデルの色彩調整は、セキュリティ上の考慮事項ではありません。', '正しい。データ漏えいの防止は、暗号化、出力のフィルタリングと検証、監査証跡とともに挙げられています。', '誤り。冷却設計は物理設備の話で、挙げられていません。', '誤り。フォントの埋め込みは、挙げられていません。']},
 ];
 
 // 試験として登録する（アプリは window.EXAMS から読み込む。上の var は即時関数内のローカル変数）

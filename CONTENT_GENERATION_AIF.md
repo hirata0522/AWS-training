@@ -673,3 +673,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrockのjudgeベースのモデル評価の組み込み指標（Correctness / Completeness / Faithfulness / Helpfulness / Logical coherence / Relevance / Following instructions / Professional style and tone / Harmfulness / Stereotyping / Refusal）の使い分け。
   新規SOURCES: evalMetrics（https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-metrics.html、WebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   メモ: 正解最長割合は PRACTICE 51% / MOCK 48% と高止まり（今回追加分は正解を最長にしなかった）。
+
+- 2026-10-27（定期実行・27回目）: 改訂履歴は今回未確認（v1.1のまま扱った。v1.2は対象外サービス一覧の削除のみ確認済み）。VOCABを2件（v268〜v269: Amazon SageMaker Role Manager / Generative AI Security Scoping Matrix）、PRACTICEを8件（p705〜p712: security 7 / responsible 1、single 4 / multi 2 / matching 1）、MOCK_POOLを6件（m445〜m450: security 5 / responsible 1、single 5 / multi 1）追加。累計 VOCAB=269 / PRACTICE=712 / MOCK_POOL=450。計16件。単語リスト進捗 269/453。
+  追加トピック: Role Managerの3ペルソナ（データサイエンティスト/MLOps/SageMaker AIコンピューティング。新規顧客受付終了の注記あり）、Generative AI Security Scoping Matrixの5スコープと5分野、試験ガイドドメイン5の例示サービス・ガバナンス項目。
+  新規SOURCES: roleManager, rolePersonas, scopingMatrix, domain5Guide（4ページともWebFetchで本文確認、成功）。
+  メモ: 正解最長割合は VOCAB 57% / PRACTICE 50% / MOCK 48% と高止まり（今回追加分は正解を最長にしなかった）。

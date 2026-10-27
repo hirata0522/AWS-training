@@ -274,7 +274,7 @@
 | 268 | Data Residency | security | v248 |
 | 269 | Amazon SageMaker Data Wrangler | aiml | v142 |
 | 270 | Kiro | genai | 未 |
-| 271 | Amazon SageMaker Role Manager | responsible | 未 |
+| 271 | Amazon SageMaker Role Manager | responsible | v268 |
 | 272 | BERTScore | fm | v244 |
 | 273 | Data Retention | security | 未 |
 | 274 | Amazon SageMaker Feature Store | aiml | v140 |
@@ -291,7 +291,7 @@
 | 285 | Open Source Model Licensing | responsible | 未 |
 | 286 | Amazon SageMaker Canvas | aiml | v236 |
 | 287 | Task Completion Rate | fm | 未 |
-| 288 | Generative AI Security Scoping Matrix | security | 未 |
+| 288 | Generative AI Security Scoping Matrix | security | v269 |
 | 289 | Amazon Bedrock AgentCore Runtime | genai | v240 |
 | 290 | Amazon SageMaker Autopilot | aiml | v237 |
 | 291 | User Satisfaction | fm | 未 |
