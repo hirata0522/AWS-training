@@ -757,3 +757,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 過学習/過小適合の診断と対処、AUC（0.5・0付近の意味）、しきい値と真陽性/偽陽性のトレードオフ、精度・適合率・再現率・偽陽性率、データラベリング（モデル支援・ラベラー合意）、特徴量エンジニアリング、Data Wrangler/Feature Store/Ground Truthの対応づけ。
   新規SOURCESなし（underOver, binaryInsights, featureEng, dataLabeling を再利用。4ページともWebFetchで本文確認、成功。underOver/binaryInsightsはAmazon Machine Learning（新規受付終了）のページで、概念説明として利用）。
   メモ: 今回追加分は正解最長が多く（14件中10件）、PRACTICE全体の正解最長割合は52%と高止まり。次回以降、不正解を長めにするなど調整が必要。nodeでの読み込み確認済み（275/903/500）。
+
+- 2026-10-28（定期実行・44回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB・MOCK_POOLの追加は0件（MOCK_POOLは目標到達済み、VOCABは `未` の用語の公式定義ページ未確認のため見送り）。PRACTICEを16件（p904〜p919: security 10 / responsible 6、single 11 / multi 3 / matching 1ほか）追加。累計 VOCAB 275 / PRACTICE 919 / MOCK_POOL 500。単語リスト進捗 275 / 453。
+  追加トピック: AWS Artifact（コンプライアンス文書・契約・無料）、Amazon Macie（S3の機密データ検出、カスタムデータ識別子、policy finding、インベントリ監視、EventBridge連携）、CloudTrail（イベント履歴90日・証跡のS3配信）、Bedrockモデル呼び出しログ（既定無効・S3/CloudWatch Logs）、責任あるAIの8ディメンション（定義の対応づけ）。
+  新規SOURCESなし（artifact, macie, cloudtrail, invocationLogging, responsibleAi を再利用。5ページとも今回WebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 52% と高止まり。nodeでの読み込み確認済み（275/919/500）。
