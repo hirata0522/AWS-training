@@ -353,7 +353,7 @@
 | 347 | Amazon Kinesis | aiml | 未 |
 | 348 | Amazon Bedrock Cross-Region Inference | genai | v213 |
 | 349 | Amazon Athena | aiml | 未 |
-| 350 | Amazon Kendra GenAI Index | fm | 未 |
+| 350 | Amazon Kendra GenAI Index | fm | v271 |
 | 351 | Model Inversion | security | 未 |
 | 352 | Measurement Bias | responsible | 未 |
 | 353 | Model Latency | genai | 未 |
@@ -385,7 +385,7 @@
 | 379 | Role Prompting | fm | 未 |
 | 380 | Secure Data Engineering | security | 未 |
 | 381 | Harmful Content | responsible | 未 |
-| 382 | Amazon Kendra | aiml | 未 |
+| 382 | Amazon Kendra | aiml | v270 |
 | 383 | Lower Barrier to Entry | genai | 未 |
 | 384 | Output Format Specification | fm | 未 |
 | 385 | Amazon S3 Bucket Policy | security | 未 |

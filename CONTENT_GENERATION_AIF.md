@@ -721,3 +721,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: SageMaker JumpStart（事前学習済みモデル・ソリューションテンプレート）、Ground Truth（作業者の種類・自動データラベリング・S3入出力）、SageMaker Pipelines（オーケストレーション・課金・リネージ）、Bedrock Custom Model Import（S3のHugging Face形式、オンデマンド推論、バッチ推論・埋め込みモデル非対応）。
   新規SOURCESなし（jumpstart, groundTruth, sagemakerPipelines, customModelImport を再利用。4ページとも今回WebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 51% / MOCK 49% と高止まり。
+
+- 2026-10-28（定期実行・37回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCABを2件（v270〜v271: Amazon Kendra / Amazon Kendra GenAI Index）、PRACTICEを12件（p795〜p806: genai 10 / fm 2、single 9 / multi 2 / matching 1）、MOCK_POOLを8件（m491〜m498: single 7 / multi 1）追加。累計 VOCAB 271 / PRACTICE 806 / MOCK_POOL 498。単語リスト進捗 271 / 453。計22件。
+  追加トピック: Amazon Kendra（意味検索、アクセス権によるフィルタ、GenAI/Basic Developer Edition、新規顧客受付終了）、Amazon Q Business（権限考慮の回答と出典、IAM Identity Center/IAM、プラグイン、課金はサブスクリプション＋インデックス容量、Kendraをリトリーバーに利用可）、Amazon Bedrock Flows（ノード接続、バージョン/エイリアス、課金）。
+  新規SOURCES: kendra, qbusiness, bedrockFlows（3ページともWebFetchで本文確認、成功）。Kiro の公式ページ（docs.aws.amazon.com/kiro/...）は404のためVOCAB見送り。
+  メモ: 正解最長割合は PRACTICE 51% / MOCK 49% と高止まり。node未導入環境の場合は構造検証のみ。
