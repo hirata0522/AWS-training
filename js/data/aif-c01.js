@@ -197,7 +197,7 @@ var SOURCES = {
   clarifyPostBias:{label:'SageMaker Clarify: 学習後のデータとモデルのバイアス指標', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-measure-post-training-bias.html'},
   kendra:{label:'Amazon Kendra とは', url:'https://docs.aws.amazon.com/kendra/latest/dg/what-is-kendra.html'},
   qbusiness:{label:'Amazon Q Business とは', url:'https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html'},
-  bedrockFlows:{label:'Amazon Bedrock Flows でエンドツーエンドの生成AIワークフローを構築', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/flows.html'}
+  bedrockFlows:{label:'Amazon Bedrock Flows でエンドツーエンドの生成AIワークフローを構築', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/flows.html'},
   bda:{label:'Amazon Bedrock Data Automation とは', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/bda.html'},
   sagemakerDebugger:{label:'Amazon SageMaker Debugger', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html'},
   whatIsGlue:{label:'AWS Glue とは', url:'https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html'},

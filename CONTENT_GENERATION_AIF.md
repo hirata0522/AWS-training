@@ -741,3 +741,4 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: プロンプト手法（chain-of-thought / least-to-most / self-refine / directional-stimulus / generated knowledge / maieutic）とベストプラクティス、生成モデルの種類（GAN / 拡散モデル / トランスフォーマー）と制約、Bedrock Agents（利用手順の並び替え・トレース。新規顧客受付終了の注記あり）。
   新規SOURCESなし（promptEng, whatIsGenai, bedrockAgents を再利用。3ページとも今回WebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 51% と高止まり。node未導入のため構造検証のみ。
+  既存データの修正（明確なバグ）: SOURCES の bedrockFlows 行末のカンマ漏れ（JavaScript構文エラーでファイル全体が読み込めない状態だった）を修正。nodeでの読み込み確認済み（275/861/500）。今後も追加後に必ずnode確認を行うこと。
