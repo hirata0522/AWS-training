@@ -726,3 +726,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Amazon Kendra（意味検索、アクセス権によるフィルタ、GenAI/Basic Developer Edition、新規顧客受付終了）、Amazon Q Business（権限考慮の回答と出典、IAM Identity Center/IAM、プラグイン、課金はサブスクリプション＋インデックス容量、Kendraをリトリーバーに利用可）、Amazon Bedrock Flows（ノード接続、バージョン/エイリアス、課金）。
   新規SOURCES: kendra, qbusiness, bedrockFlows（3ページともWebFetchで本文確認、成功）。Kiro の公式ページ（docs.aws.amazon.com/kiro/...）は404のためVOCAB見送り。
   メモ: 正解最長割合は PRACTICE 51% / MOCK 49% と高止まり。node未導入環境の場合は構造検証のみ。
+
+- 2026-10-28（定期実行・38回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件（`未` の用語の公式定義ページ未確認のため見送り）。PRACTICEを15件（p807〜p821: fm 10 / genai 5、single 11 / multi 1 / ordering 1 / matching 1ほか）、MOCK_POOLを2件（m499〜m500: fm、single）追加。累計 VOCAB 271 / PRACTICE 821 / MOCK_POOL 500（目標到達）。単語リスト進捗 271 / 453。計17件。
+  追加トピック: Bedrock主要用語（推論パラメータ・トークン・モデルカスタマイズ・オーケストレーション・エージェント・Provisioned Throughput・RAGの流れ）、インテリジェントプロンプトルーティング（同一ファミリー内のルーティング、デフォルト/設定済みルーター、フォールバックモデル、英語最適化）、ナレッジベースのチャンキング（デフォルト約300トークン・階層型・セマンティック・チャンキングなし）、マルチエージェントのスーパーバイザー、Converse API。
+  新規SOURCESなし（bedrockTerms, promptRouting, bedrockChunking, multiAgent, converseApi を再利用。5ページとも今回WebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 52% / MOCK 49% と高止まり。
