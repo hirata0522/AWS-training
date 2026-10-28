@@ -742,3 +742,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCESなし（promptEng, whatIsGenai, bedrockAgents を再利用。3ページとも今回WebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 51% と高止まり。node未導入のため構造検証のみ。
   既存データの修正（明確なバグ）: SOURCES の bedrockFlows 行末のカンマ漏れ（JavaScript構文エラーでファイル全体が読み込めない状態だった）を修正。nodeでの読み込み確認済み（275/861/500）。今後も追加後に必ずnode確認を行うこと。
+
+- 2026-10-28（定期実行・41回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件（BLEUは参照ページに記載がなく確認できず見送り）。PRACTICEを15件（p862〜p876: fm 13 / responsible 2、single 9 / multi 3 / matching 1 / ordering 1）追加。MOCK_POOLは目標到達済みのため追加なし。累計 VOCAB 275 / PRACTICE 876 / MOCK_POOL 500。単語リスト進捗 275 / 453。
+  追加トピック: fmevalの評価（SummarizationAccuracyのROUGE-N/Meteor/BERTScore、ROUGE-1/2/L、分類精度の各スコア、Prompt stereotypingの0.5、Semantic robustnessの摂動、Toxicity、Factual knowledge）、Bedrock Prompt management（変数・バリアント・プロンプトビルダー・利用手順・組み込み方法）。
+  新規SOURCESなし（fmevalAuto, promptMgmt を再利用。2ページとも今回WebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 51% と高止まり。nodeでの読み込み確認済み（275/876/500）。
