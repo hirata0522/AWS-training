@@ -762,3 +762,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: AWS Artifact（コンプライアンス文書・契約・無料）、Amazon Macie（S3の機密データ検出、カスタムデータ識別子、policy finding、インベントリ監視、EventBridge連携）、CloudTrail（イベント履歴90日・証跡のS3配信）、Bedrockモデル呼び出しログ（既定無効・S3/CloudWatch Logs）、責任あるAIの8ディメンション（定義の対応づけ）。
   新規SOURCESなし（artifact, macie, cloudtrail, invocationLogging, responsibleAi を再利用。5ページとも今回WebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 52% と高止まり。nodeでの読み込み確認済み（275/919/500）。
+
+- 2026-10-28（定期実行・45回目）: 改訂履歴をWebFetchで確認。**ガイドの新版 v1.2（公開日 2026-10-29）が掲載されていた**（v1.1は2026-04-30）。確認できた変更は対象外サービスリストからの除外（Elastic Transcoder / Elemental MediaStore / IoT 1-Click / IoT Analytics / IoT Events / Nimble Studio ほか）のみで、ドメイン目標の変更内容は未確認。次回以降、v1.2のドメイン1〜5ページを確認して追加内容を合わせること（既存項目は変更しない）。
+  VOCAB・MOCK_POOLの追加は0件（MOCK_POOLは目標到達、VOCABは `未` 用語の公式定義ページ未確認のため見送り）。PRACTICEを16件（p920〜p935: fm 16、single 10 / multi 2 / ordering 1 / matching 1ほか）追加。累計 VOCAB 275 / PRACTICE 935 / MOCK_POOL 500。単語リスト進捗 275 / 453。
+  追加トピック: プロンプトキャッシュ（目的・TTL・課金・バッチ非対応）、リランカーモデル、ナレッジベースの検索タイプ（Hybrid/Semantic/既定）、メタデータフィルタリング、クエリ分解、ナレッジベースへのGuardrails適用、Bedrock Agentsの構成と流れ。
+  新規SOURCESなし（promptCaching, bedrockRerank, bedrockKbQuery, bedrockAgents を今回WebFetchで本文確認、すべて成功）。
+  メモ: 今回追加分は正解が最長の問題が多く（14件中10件）、PRACTICE全体の正解最長割合は52%のまま。次回は不正解を正解より長めに書くこと。Bedrock Agents ページには「新規顧客の受付終了、AgentCore推奨」の注記あり（今回の問題では断定せず）。
