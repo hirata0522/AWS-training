@@ -716,3 +716,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Amazon Textract（AnalyzeExpense / AnalyzeID / Analyze Lending / Queries、同期・非同期処理、手書き・フォーム・表の抽出）、Amazon Translate（テキスト翻訳）、Amazon Lex V2（ASR+NLU、Lambda統合、リクエスト数ベースの従量課金）。
   新規SOURCESなし（textract, translate, lex を再利用。3ページとも今回WebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 51% / MOCK 49% と高止まり。
+
+- 2026-10-28（定期実行・36回目）: 改訂履歴をWebFetchで確認（成功）。v1.2（2026-10-29）は対象外サービス一覧の削除のみで変化なし。VOCAB追加は0件（`未` の用語の公式定義ページ未確認のため見送り）。PRACTICEを13件（p782〜p794: aiml 10 / fm 4ほか、single 9 / multi 2 / matching 1）、MOCK_POOLを3件（m488〜m490: aiml 2 / fm 1、single）追加。累計 VOCAB 269 / PRACTICE 794 / MOCK_POOL 490。単語リスト進捗 269 / 453。
+  追加トピック: SageMaker JumpStart（事前学習済みモデル・ソリューションテンプレート）、Ground Truth（作業者の種類・自動データラベリング・S3入出力）、SageMaker Pipelines（オーケストレーション・課金・リネージ）、Bedrock Custom Model Import（S3のHugging Face形式、オンデマンド推論、バッチ推論・埋め込みモデル非対応）。
+  新規SOURCESなし（jumpstart, groundTruth, sagemakerPipelines, customModelImport を再利用。4ページとも今回WebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 51% / MOCK 49% と高止まり。
