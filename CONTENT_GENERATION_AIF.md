@@ -731,3 +731,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock主要用語（推論パラメータ・トークン・モデルカスタマイズ・オーケストレーション・エージェント・Provisioned Throughput・RAGの流れ）、インテリジェントプロンプトルーティング（同一ファミリー内のルーティング、デフォルト/設定済みルーター、フォールバックモデル、英語最適化）、ナレッジベースのチャンキング（デフォルト約300トークン・階層型・セマンティック・チャンキングなし）、マルチエージェントのスーパーバイザー、Converse API。
   新規SOURCESなし（bedrockTerms, promptRouting, bedrockChunking, multiAgent, converseApi を再利用。5ページとも今回WebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 52% / MOCK 49% と高止まり。
+
+- 2026-10-28（定期実行・39回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCABを4件（v272〜v275: Bedrock Batch Inference / Bedrock Data Automation / SageMaker Debugger / AWS Glue）、PRACTICEを12件（p822〜p833: aiml 7 / fm 2 / genai 3、single 8 / multi 2 / matching 1ほか）追加。MOCK_POOLは目標到達済みのため追加なし。累計 VOCAB 275 / PRACTICE 833 / MOCK_POOL 500。単語リスト進捗 275 / 453。計16件。
+  追加トピック: Bedrockバッチ推論（S3入出力・非同期）、Bedrock Data Automation（文書・画像・動画・音声の構造化、IDP、メディア分析、RAG向け）、SageMaker Debugger（学習中の問題検出・組み込みルール/アクション。新規顧客受付終了）、AWS Glue（サーバーレスETL・クローラー・FindMatches・Glue Studio、関連: Lake Formation/DataBrew）。
+  新規SOURCES: bda, sagemakerDebugger, whatIsGlue（3ページともWebFetchで本文確認、成功。bedrockBatchも再確認）。
+  メモ: 正解最長割合は PRACTICE 52% / VOCAB 57% と高止まり。node未導入のため構造検証のみ。

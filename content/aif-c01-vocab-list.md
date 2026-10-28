@@ -325,14 +325,14 @@
 | 319 | Amazon SageMaker Neo | aiml | v257 |
 | 320 | InvokeModel API | fm | v214 |
 | 321 | EU AI Act | security | 未 |
-| 322 | Amazon SageMaker Debugger | aiml | 未 |
+| 322 | Amazon SageMaker Debugger | aiml | v274 |
 | 323 | Human-in-the-loop (A2I) | responsible | 未 |
 | 324 | Amazon Bedrock Marketplace | genai | 未 |
-| 325 | AWS Glue | aiml | 未 |
-| 326 | Amazon Bedrock Batch Inference | fm | 未 |
+| 325 | AWS Glue | aiml | v275 |
+| 326 | Amazon Bedrock Batch Inference | fm | v272 |
 | 327 | GDPR | security | 未 |
 | 328 | AWS Glue DataBrew | aiml | v181 |
-| 329 | Amazon Bedrock Data Automation | genai | 未 |
+| 329 | Amazon Bedrock Data Automation | genai | v273 |
 | 330 | Algorithmic Bias | responsible | 未 |
 | 331 | Model Context Window Management | fm | 未 |
 | 332 | HIPAA | security | 未 |
