@@ -768,3 +768,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: プロンプトキャッシュ（目的・TTL・課金・バッチ非対応）、リランカーモデル、ナレッジベースの検索タイプ（Hybrid/Semantic/既定）、メタデータフィルタリング、クエリ分解、ナレッジベースへのGuardrails適用、Bedrock Agentsの構成と流れ。
   新規SOURCESなし（promptCaching, bedrockRerank, bedrockKbQuery, bedrockAgents を今回WebFetchで本文確認、すべて成功）。
   メモ: 今回追加分は正解が最長の問題が多く（14件中10件）、PRACTICE全体の正解最長割合は52%のまま。次回は不正解を正解より長めに書くこと。Bedrock Agents ページには「新規顧客の受付終了、AgentCore推奨」の注記あり（今回の問題では断定せず）。
+
+- 2026-10-28（定期実行・46回目）: 改訂履歴は今回未確認（前回ログのv1.2掲載の件は引き続き要確認、v1.1のまま扱った）。VOCAB・MOCK_POOLの追加は0件（MOCK_POOLは目標到達、VOCABは `未` 用語の公式定義ページ未確認のため見送り）。PRACTICEを15件（p936〜p950: genai 15、single 9 / multi 1 / ordering 1 / matching 2ほか）追加。累計 VOCAB 275 / PRACTICE 950 / MOCK_POOL 500。単語リスト進捗 275 / 453。
+  追加トピック: 生成AIと従来MLの違い、次単語予測の仕組み、生成モデルの種類（拡散モデル/GAN/VAE/トランスフォーマー）、生成AIの課題（正確性・バイアス・説明可能性・プライバシー）、ユースケース（チャットボット・合成データ）、Bedrock主要用語（推論/推論パラメータ/オーケストレーション/エンベディング/Provisioned Throughput/RAGの流れ）。
+  新規SOURCESなし（whatIsGenai, bedrockTerms を再利用。2ページとも今回WebFetchで本文確認、成功）。
+  メモ: 今回追加分は正解が最長の問題が多く、PRACTICE全体の正解最長割合は52%のまま。nodeでの読み込み確認済み（275/950/500）。
