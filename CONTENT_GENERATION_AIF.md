@@ -752,3 +752,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock Guardrailsの各フィルター（コンテンツフィルターのカテゴリ、拒否トピック、単語フィルター、機密情報フィルター、コンテキストグラウンディング、Automated Reasoning、ApplyGuardrail API、バージョン）。
   新規SOURCESなし（guardrails を再利用。ページはWebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 52% と高止まり。node未導入のため構造検証のみ。
+
+- 2026-10-28（定期実行・43回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件、MOCK_POOLは目標到達済みのため追加なし。PRACTICEを15件（p889〜p903: すべてaiml、single 12 / multi 2 / matching 1）追加。累計 VOCAB 275 / PRACTICE 903 / MOCK_POOL 500。単語リスト進捗 275 / 453。
+  追加トピック: 過学習/過小適合の診断と対処、AUC（0.5・0付近の意味）、しきい値と真陽性/偽陽性のトレードオフ、精度・適合率・再現率・偽陽性率、データラベリング（モデル支援・ラベラー合意）、特徴量エンジニアリング、Data Wrangler/Feature Store/Ground Truthの対応づけ。
+  新規SOURCESなし（underOver, binaryInsights, featureEng, dataLabeling を再利用。4ページともWebFetchで本文確認、成功。underOver/binaryInsightsはAmazon Machine Learning（新規受付終了）のページで、概念説明として利用）。
+  メモ: 今回追加分は正解最長が多く（14件中10件）、PRACTICE全体の正解最長割合は52%と高止まり。次回以降、不正解を長めにするなど調整が必要。nodeでの読み込み確認済み（275/903/500）。
