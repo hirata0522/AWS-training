@@ -747,3 +747,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: fmevalの評価（SummarizationAccuracyのROUGE-N/Meteor/BERTScore、ROUGE-1/2/L、分類精度の各スコア、Prompt stereotypingの0.5、Semantic robustnessの摂動、Toxicity、Factual knowledge）、Bedrock Prompt management（変数・バリアント・プロンプトビルダー・利用手順・組み込み方法）。
   新規SOURCESなし（fmevalAuto, promptMgmt を再利用。2ページとも今回WebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 51% と高止まり。nodeでの読み込み確認済み（275/876/500）。
+
+- 2026-10-28（定期実行・42回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件。PRACTICEを12件（p877〜p888: responsible 6 / security 5 / fm 1、single 7 / multi 2 / matching 1ほか）追加。MOCK_POOLは目標到達済みのため追加なし。累計 VOCAB 275 / PRACTICE 888 / MOCK_POOL 500。単語リスト進捗 275 / 453。
+  追加トピック: Bedrock Guardrailsの各フィルター（コンテンツフィルターのカテゴリ、拒否トピック、単語フィルター、機密情報フィルター、コンテキストグラウンディング、Automated Reasoning、ApplyGuardrail API、バージョン）。
+  新規SOURCESなし（guardrails を再利用。ページはWebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 52% と高止まり。node未導入のため構造検証のみ。
