@@ -736,3 +736,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrockバッチ推論（S3入出力・非同期）、Bedrock Data Automation（文書・画像・動画・音声の構造化、IDP、メディア分析、RAG向け）、SageMaker Debugger（学習中の問題検出・組み込みルール/アクション。新規顧客受付終了）、AWS Glue（サーバーレスETL・クローラー・FindMatches・Glue Studio、関連: Lake Formation/DataBrew）。
   新規SOURCES: bda, sagemakerDebugger, whatIsGlue（3ページともWebFetchで本文確認、成功。bedrockBatchも再確認）。
   メモ: 正解最長割合は PRACTICE 52% / VOCAB 57% と高止まり。node未導入のため構造検証のみ。
+
+- 2026-10-28（定期実行・40回目）: 改訂履歴は今回未確認（v1.1のまま扱った）。VOCAB追加は0件（`未` の用語の公式定義ページ未確認のため見送り）。PRACTICEを13件（p834〜p846: すべてgenai、single 8 / multi 2 / ordering 1 / matching 1ほか）追加。MOCK_POOLは目標到達済みのため追加なし。累計 VOCAB 275 / PRACTICE 846 / MOCK_POOL 500。単語リスト進捗 275 / 453。
+  追加トピック: プロンプト手法（chain-of-thought / least-to-most / self-refine / directional-stimulus / generated knowledge / maieutic）とベストプラクティス、生成モデルの種類（GAN / 拡散モデル / トランスフォーマー）と制約、Bedrock Agents（利用手順の並び替え・トレース。新規顧客受付終了の注記あり）。
+  新規SOURCESなし（promptEng, whatIsGenai, bedrockAgents を再利用。3ページとも今回WebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 51% と高止まり。node未導入のため構造検証のみ。
