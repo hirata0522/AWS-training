@@ -321,7 +321,7 @@
 | 315 | Amazon SageMaker Serverless Inference | aiml | 除外 |
 | 316 | Amazon Bedrock Converse API | fm | v210 |
 | 317 | NIST AI Risk Management Framework | security | 未 |
-| 318 | Amazon Titan | genai | 未 |
+| 318 | Amazon Titan | genai | v283 |
 | 319 | Amazon SageMaker Neo | aiml | v257 |
 | 320 | InvokeModel API | fm | v214 |
 | 321 | EU AI Act | security | 未 |
@@ -375,7 +375,7 @@
 | 369 | Prompt Context Injection | fm | 未 |
 | 370 | Red Teaming | security | 未 |
 | 371 | Multilingual Support | genai | 未 |
-| 372 | Amazon Augmented AI (A2I) | aiml | 未 |
+| 372 | Amazon Augmented AI (A2I) | aiml | v276 |
 | 373 | Toxicity | responsible | 未 |
 | 374 | System Prompt | fm | 未 |
 | 375 | Penetration Testing (AI) | security | 未 |
@@ -389,15 +389,15 @@
 | 383 | Lower Barrier to Entry | genai | 未 |
 | 384 | Output Format Specification | fm | 未 |
 | 385 | Amazon S3 Bucket Policy | security | 未 |
-| 386 | Amazon Comprehend Medical | aiml | 未 |
+| 386 | Amazon Comprehend Medical | aiml | v281 |
 | 387 | Conversational Capabilities | genai | 未 |
 | 388 | Misinformation | responsible | 未 |
 | 389 | Amazon Transcribe Medical | aiml | 未 |
 | 390 | Specificity and Concision | fm | 未 |
-| 391 | S3 Block Public Access | security | 未 |
+| 391 | S3 Block Public Access | security | v279 |
 | 392 | Amazon Lookout for Metrics | aiml | 未 |
 | 393 | Multiple Comments Prompting | fm | 未 |
-| 394 | Amazon S3 Object Lock | security | 未 |
+| 394 | Amazon S3 Object Lock | security | v280 |
 | 395 | Cross-domain Performance | genai | 未 |
 | 396 | Explainable AI (XAI) | responsible | v234 |
 | 397 | Amazon CodeGuru | aiml | 未 |
@@ -410,10 +410,10 @@
 | 404 | Hyperparameter Tuning for FM | fm | 未 |
 | 405 | Amazon Bedrock VPC Configuration | security | 未 |
 | 406 | Average Revenue per User (ARPU) | genai | 未 |
-| 407 | AWS Trainium | aiml | 未 |
+| 407 | AWS Trainium | aiml | v277 |
 | 408 | Epoch | fm | 未 |
 | 409 | Amazon SageMaker Network Isolation | security | 未 |
-| 410 | AWS Inferentia | aiml | 未 |
+| 410 | AWS Inferentia | aiml | v278 |
 | 411 | SHAP Values | responsible | v206 |
 | 412 | Customer Lifetime Value | genai | 未 |
 | 413 | Amazon EC2 for ML | aiml | 未 |
@@ -432,7 +432,7 @@
 | 426 | AWS AI Service Cards | responsible | 未 |
 | 427 | Amazon EC2 Accelerated Computing Instances | aiml | 未 |
 | 428 | Catastrophic Forgetting | fm | 未 |
-| 429 | Multi-factor Authentication (MFA) | security | 未 |
+| 429 | Multi-factor Authentication (MFA) | security | v282 |
 | 430 | Unimodal vs Multimodal | genai | 未 |
 | 431 | Amazon S3 | aiml | 未 |
 | 432 | Responsible AI Policy | responsible | 未 |

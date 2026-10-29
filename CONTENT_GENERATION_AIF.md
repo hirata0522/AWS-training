@@ -773,3 +773,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: 生成AIと従来MLの違い、次単語予測の仕組み、生成モデルの種類（拡散モデル/GAN/VAE/トランスフォーマー）、生成AIの課題（正確性・バイアス・説明可能性・プライバシー）、ユースケース（チャットボット・合成データ）、Bedrock主要用語（推論/推論パラメータ/オーケストレーション/エンベディング/Provisioned Throughput/RAGの流れ）。
   新規SOURCESなし（whatIsGenai, bedrockTerms を再利用。2ページとも今回WebFetchで本文確認、成功）。
   メモ: 今回追加分は正解が最長の問題が多く、PRACTICE全体の正解最長割合は52%のまま。nodeでの読み込み確認済み（275/950/500）。
+
+- 2026-10-29（定期実行・47回目）: 改訂履歴をWebFetchで確認。**v1.2（2026-10-29公開）の掲載を再確認**。判明している変更は対象外サービスリストからの除外（Elastic Transcoder / Elemental MediaStore / IoT 1-Click / IoT Analytics / IoT Events / Nimble Studio）のみで、対象サービス一覧（WebFetch成功）に変化は見当たらず、追加はv1.1のまま実施。
+  VOCABを8件（v276〜v283: A2I / Trainium / Inferentia / S3 Block Public Access / Amazon S3 Object Lock / Comprehend Medical / MFA / Amazon Titan）、PRACTICEを11件（p951〜p961: security 8 / aiml 2 / responsible 1、single 8 / multi 1 / matching 1ほか）追加。MOCK_POOLは目標到達済みのため追加なし。累計 VOCAB 283 / PRACTICE 961 / MOCK_POOL 500。単語リスト進捗 283 / 453。
+  新規SOURCES: a2i, trainium, inferentia, s3Bpa, s3ObjectLock, comprehendMedical, iamMfa, titan（いずれもWebFetchで本文確認、成功。A2Iは最初のURLが本文なしだったため別URLで再確認。A2Iは新規顧客受付終了の注記あり）。
+  見送り: 行270 Kiro は kiro.dev がネットワーク制限で取得できず、AWS公式ページに定義がないため `未` のまま（kiro.dev の許可が必要）。
+  メモ: 正解最長割合は VOCAB 55% / PRACTICE 52% と高止まり（今回追加分は意識的に不正解を長めにした問題を含む）。nodeでの読み込み確認済み（283/961/500）。
