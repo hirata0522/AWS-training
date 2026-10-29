@@ -260,7 +260,7 @@
 | 254 | Vulnerability Management | security | 未 |
 | 255 | Amazon Transcribe | aiml | v130 |
 | 256 | Amazon SageMaker Model Cards | responsible | v117 |
-| 257 | Benchmark Dataset | fm | 未 |
+| 257 | Benchmark Dataset | fm | v287 |
 | 258 | Infrastructure Protection | security | 未 |
 | 259 | Amazon Translate | aiml | v131 |
 | 260 | Amazon Q Business | genai | v152 |

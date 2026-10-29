@@ -814,3 +814,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   出典: whatIsFm・jumpstart・bedrock を WebFetch で本文確認（成功）。新規SOURCESなし。
   見送り: Self-hosted API / Technical Debt / Prompt Poisoning / Output Validation 等は公式ページでの裏取りが取れておらず `未` のまま。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 52% と高いまま。次回以降も不正解を正解より長く書くこと。
+- 2026-10-29（定期実行・2回目）: 改訂履歴を再確認（WebFetch成功）。v1.2（2026-10-29）の変更は対象外サービス一覧からの6サービス削除のみで、前回ログと同じ。試験ガイド本体・ドメインページのv1.2再確認は未実施（引き続き次回以降の課題）。
+  今回の追加: VOCAB 1件（v287: Benchmark Dataset）、PRACTICE 7件（p1057〜p1063: single 6 / multi 1）。計8件（目安より少ない。BLEU・Perplexity等は公式ページで定義を確認できず、kiro.dev は名前解決できず取得失敗のため見送り）。累計 VOCAB=287 / PRACTICE=1063 / MOCK_POOL=500。単語リスト進捗 287/453（除外23）。
+  追加トピック: Bedrock モデル評価の組み込みデータセット（BOLD・RealToxicityPrompts・T-REx）とjudgeメトリクス（Faithfulness・Refusal・Stereotyping・Helpfulness・Harmfulness）。
+  新規SOURCES: evalGeneralText（model-evaluation-tasks-general-text.html、WebFetch成功）。judgeMetrics（model-evaluation-metrics.html）も本文確認成功。
+  見送り: BLEU / Perplexity（Bedrock・SageMaker の評価ページで定義が取れず）、Kiro（kiro.dev ネットワーク不可）。
+  メモ: 正解最長割合は VOCAB 55% / PRACTICE 52%。node未使用（validate_content.pyのみ確認）。
