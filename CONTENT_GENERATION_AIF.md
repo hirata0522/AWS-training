@@ -830,3 +830,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: プロンプトインジェクション対策（責任共有、入力の検証とサニタイズ、Agentsの事前処理プロンプト・ガードレール関連付け、セキュリティテスト手法、Guardrailsによる検出）。
   新規SOURCES: promptInjection（docs.aws.amazon.com/bedrock/latest/userguide/prompt-injection.html、WebFetch成功）。
   メモ: 正解最長割合は PRACTICE 52% のまま。nodeでの読み込み確認済み（290/1076/500）。件数は目安より少ない（出典を確認できた範囲に限定）。
+- 2026-10-29（定期実行・5回目）: 改訂履歴を再確認（WebFetch成功）。v1.2（2026-10-29）が最新で変更は対象外サービス一覧の削除のみ（前回と同じ）。VOCAB・MOCK_POOLの追加は0件。PRACTICEを6件（p1077〜p1082: security、single 4 / multi 1 / matching 1）追加。累計 VOCAB=290 / PRACTICE=1082 / MOCK_POOL=500。単語リスト進捗 290/453（除外23）。
+  追加トピック: Bedrock Guardrails 機密情報フィルター（Block/Mask/検出のみ、カスタム正規表現、組み込みPII種類、確率的ML検出、モデル呼び出しログには元の入力が残る点）。
+  新規SOURCES: なし（既存 sensitiveFilters を再利用。guardrails-sensitive-filters.html をWebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 52%。件数は目安より少ない（出典を確認できた範囲に限定）。
