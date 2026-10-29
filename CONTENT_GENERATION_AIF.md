@@ -809,3 +809,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Amazon Bedrock Data Automation（用途・ビジュアルグラウンディングと信頼度スコア・メディア分析・RAG向け抽出）、Bedrock Flows（ノード連結・ドラフト/バージョン/エイリアス・InvokeFlow・料金・作成〜デプロイ手順）。
   新規SOURCESなし（bda, bedrockFlows を今回WebFetchで本文確認、どちらも成功）。
   メモ: 正解最長割合は PRACTICE 52% のまま。node未使用（validate_content.pyのみ確認）。
+- 2026-10-29（定期実行）: **改訂履歴ページに試験ガイド v1.2（2026-10-29公開）が出現**（WebFetch成功）。ページ本文で確認できた変更は「対象外サービス一覧から Amazon Elastic Transcoder / AWS Elemental MediaStore / AWS IoT 1-Click / IoT Analytics / IoT Events / Amazon Nimble Studio を削除」のみで、目標・ドメイン内容の差分は取得できず。次回以降、試験ガイド本体とドメイン1〜5ページ・対象サービス一覧をv1.2で再確認し、追加・削除された項目があれば単語リスト末尾へ追記すること（既存項目は変更しない）。
+  今回の追加: VOCAB 3件（v284〜v286: Traditional ML vs Foundation Models / Open Source Pre-trained Model / Managed API Service）、PRACTICE 3件（p1054〜p1056: single）。計6件。累計 VOCAB=286 / PRACTICE=1056。単語リスト進捗 286/453（除外23）。
+  出典: whatIsFm・jumpstart・bedrock を WebFetch で本文確認（成功）。新規SOURCESなし。
+  見送り: Self-hosted API / Technical Debt / Prompt Poisoning / Output Validation 等は公式ページでの裏取りが取れておらず `未` のまま。
+  メモ: 正解最長割合は VOCAB 55% / PRACTICE 52% と高いまま。次回以降も不正解を正解より長く書くこと。

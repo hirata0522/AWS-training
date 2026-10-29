@@ -226,11 +226,11 @@
 | 220 | Hallucination Detection | security | v217 |
 | 221 | Technical Debt (ML) | aiml | 未 |
 | 222 | Tool Use (Agents) | genai | v197 |
-| 223 | Open Source Pre-trained Model | aiml | 未 |
+| 223 | Open Source Pre-trained Model | aiml | v285 |
 | 224 | Jailbreaking | fm | v186 |
 | 225 | Grounding Techniques | security | v218 |
 | 226 | Subgroup Analysis | responsible | v267 |
-| 227 | Managed API Service | aiml | 未 |
+| 227 | Managed API Service | aiml | v286 |
 | 228 | Prompt Leaking | fm | v196 |
 | 229 | Confidence Scoring | security | v226 |
 | 230 | Workflow Orchestration | genai | v225 |
@@ -238,7 +238,7 @@
 | 232 | Label Quality Analysis | responsible | 未 |
 | 233 | Amazon Bedrock Prompt Management | fm | v114 |
 | 234 | Output Validation | security | 未 |
-| 235 | Traditional ML vs Foundation Models | aiml | 未 |
+| 235 | Traditional ML vs Foundation Models | aiml | v284 |
 | 236 | Multi-agent Communication Patterns | genai | 未 |
 | 237 | Amazon Comprehend | aiml | v125 |
 | 238 | Prompt Versioning | fm | v198 |
