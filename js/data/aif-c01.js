@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  promptInjection:{label:'Amazon Bedrock: プロンプトインジェクションのセキュリティ', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-injection.html'},
   groundCheck:{label:'Amazon Bedrock Guardrails: コンテキストグラウンディングチェックでハルシネーションをフィルタリングする', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-contextual-grounding-check.html'},
   deniedTopics:{label:'Amazon Bedrock Guardrails: 拒否トピックで有害なコンテンツをブロックする', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-denied-topics.html'},
   roleManager:{label:'Amazon SageMaker AI: SageMaker Role Manager', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/role-manager.html'},
@@ -4334,6 +4335,30 @@ var PRACTICE = [
   {id:'p1070', domain:'security', type:'single', source:SOURCES.iso42001, text:'ISO/IEC 42001 の認証を取得した AWS の AI サービスとして、AWS が公表している組み合わせはどれですか？',
     choices:['Amazon Bedrock、Amazon Q Business、Amazon Textract、Amazon Transcribe', 'Amazon Polly、Amazon Lex、Amazon Kendra、Amazon Personalize', 'Amazon Rekognition、Amazon Comprehend、Amazon Translate、Amazon Forecast', 'Amazon Bedrock と Amazon SageMaker AI の 2 つのみ'], correct:[0],
     why:['正しい。AWS は、これらのサービスを対象とした ISO/IEC 42001 の認定認証の取得を発表しています。', '誤り。この組み合わせは、認証の対象として公表されたものではありません。', '誤り。この組み合わせは、認証の対象として公表されたものではありません。', '誤り。対象サービスは 2 つではなく、Bedrock・Q Business・Textract・Transcribe の 4 つです。']},
+  {id:'p1071', domain:'security', type:'single', source:SOURCES.promptInjection, text:'Amazon Bedrock を使うアプリケーションでのプロンプトインジェクション対策について、責任共有モデルに沿った説明として正しいものはどれですか？',
+    choices:['プロンプトインジェクション対策は、モデルプロバイダーだけが責任を負う', 'Bedrock サービス側がすべてのプロンプトインジェクションを自動的に防ぐため、顧客側の対策は不要である', 'AWS が基盤インフラを保護するが、プロンプトインジェクションの防止はアプリケーションを開発する顧客の責任である', '対策の責任は AWS と顧客で完全に半分ずつ分担され、顧客のコード修正は不要である'],
+    correct:[2],
+    why:['誤り。責任共有モデルでは、アプリケーションの安全な開発は顧客の責任です。', '誤り。Bedrock は安全な基盤を提供しますが、アプリケーション側の脆弱性まで自動で防ぐわけではありません。', '正しい。公式ドキュメントでは、プロンプトインジェクションはアプリケーションレベルのセキュリティ上の懸念であり、SQL インジェクションと同様に顧客が対策する責任があるとされています。', '誤り。責任範囲は半分ずつではなく、基盤は AWS、アプリケーションは顧客という分担です。']},
+  {id:'p1072', domain:'security', type:'single', source:SOURCES.promptInjection, text:'プロンプトインジェクション対策として、Bedrock の API に渡す前にユーザー入力に対して行うべき対策はどれですか？',
+    choices:['ユーザー入力をそのまま連結して、システムプロンプトの末尾に追加する', 'ユーザー入力を検証し、特殊文字の削除やエスケープなどのサニタイズを行う', '入力内容の確認は行わず、モデルの temperature を 0 に固定する', '入力の代わりに、Amazon Macie でモデルの出力ログだけを検査する'],
+    correct:[1],
+    why:['誤り。入力をそのまま文字列連結するのは避けるべき書き方です。', '正しい。公式ドキュメントのベストプラクティスとして、入力の検証とサニタイズ（特殊文字の削除・エスケープ、想定した形式の確認）が挙げられています。', '誤り。temperature はランダム性の調整であり、プロンプトインジェクションの防止策ではありません。', '誤り。Macie は S3 内の機密データを検出するサービスで、入力の検証の代わりにはなりません。']},
+  {id:'p1073', domain:'security', type:'multi', source:SOURCES.promptInjection, text:'Amazon Bedrock Agents を作成する際に、プロンプトインジェクションの影響を抑えるために公式ドキュメントが挙げている手法として適切なものはどれですか？（2つ選択）',
+    choices:['エージェントの権限を広げるため、IAM ロールに管理者権限を付与する', 'エージェントにガードレールを関連付ける', 'システムプロンプトでは、エージェントができることを曖昧なままにしておく', '高度なプロンプトでデフォルトの事前処理プロンプトを有効にし、入力が安全かどうかを判定させる', '事前処理プロンプトを無効にして、応答速度を優先する'],
+    correct:[1,3],
+    why:['誤り。最小権限の原則に反し、被害を拡大させます。', '正しい。ガードレールをエージェントに関連付けることで、プロンプト攻撃の検出などを適用できます。', '誤り。システムプロンプトでは、エージェントができること・できないことの範囲を明確に定義することが推奨されています。', '正しい。事前処理プロンプトは、基盤モデルを使ってユーザー入力を処理して安全かどうかを判定する軽量なプロンプトです。', '誤り。事前処理プロンプトはむしろ有効にすることが推奨されています。']},
+  {id:'p1074', domain:'security', type:'single', source:SOURCES.promptInjection, text:'Bedrock Agents の事前処理プロンプト（pre-processing prompt）の説明として正しいものはどれですか？',
+    choices:['基盤モデルを使い、ユーザー入力を安全に処理できるかを判定する軽量なプロンプトである', 'エージェントの最終回答を、ユーザーの言語に翻訳するためのプロンプトである', 'ナレッジベースに取り込む文書を、チャンクに分割する方法を指定するプロンプトである', 'モデルの学習データから個人情報を削除するために使うプロンプトである'],
+    correct:[0],
+    why:['正しい。デフォルトの事前処理プロンプトを有効にすると、入力が安全かどうかを判定でき、独自の分類カテゴリを加えることもできます。', '誤り。翻訳を目的とするものではありません。', '誤り。チャンク分割はナレッジベースのデータ取り込み設定で指定します。', '誤り。学習データの加工はプロンプトの役割ではありません。']},
+  {id:'p1075', domain:'security', type:'single', source:SOURCES.promptInjection, text:'Bedrock のアプリケーションに対する定期的なセキュリティテストとして、公式ドキュメントが挙げている手法の組み合わせはどれですか？',
+    choices:['コストの異常検知、請求アラーム、リザーブドインスタンスの購入', 'モデルの再学習、ハイパーパラメータ調整、A/B テスト', 'ペネトレーションテスト、静的コード解析、動的アプリケーションセキュリティテスト（DAST）', '負荷テスト、カオスエンジニアリング、バックアップの復元訓練'],
+    correct:[2],
+    why:['誤り。コスト管理の手段であり、セキュリティテストではありません。', '誤り。モデル開発やテストの手法であり、脆弱性の検出が目的ではありません。', '正しい。プロンプトインジェクションなどの脆弱性を、これらの手法で定期的にテストすることが推奨されています。', '誤り。可用性や耐障害性の確認であり、プロンプトインジェクションの検出が目的ではありません。']},
+  {id:'p1076', domain:'security', type:'single', source:SOURCES.promptInjection, text:'Bedrock のアプリケーションで、プロンプトインジェクションを含むプロンプト攻撃の検出を、アプリ側のコードを大きく変えずに追加するために最も適切な機能はどれですか？',
+    choices:['Amazon Bedrock Model Evaluation', 'Amazon SageMaker Clarify', 'AWS CloudTrail', 'Amazon Bedrock Guardrails'],
+    correct:[3],
+    why:['誤り。モデル評価は品質や安全性を測定するもので、実行時の入力を防ぐ機能ではありません。', '誤り。Clarify はバイアスの検出とモデルの説明可能性のためのサービスです。', '誤り。CloudTrail は API 呼び出しの監査ログを記録するもので、入力内容の攻撃は検出しません。', '正しい。公式ドキュメントでは、Guardrails でプロンプトインジェクション攻撃から保護できると説明されています。']},
 ];
 
 var MOCK_POOL = [

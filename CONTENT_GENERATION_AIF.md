@@ -826,3 +826,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: bedrockMarketplace（WebFetch成功）、iso42001（AWS Machine Learning Blog、WebFetch成功）。a2i は既存を再利用（WebFetch成功。なお当該ページに「A2Iは新規顧客の受付を終了」との注記あり。問題には使っていない）。
   見送り: NIST AI RMF / EU AI Act 等は公式AWSページでの裏取りが間に合わず `未` のまま。
   メモ: 正解最長割合は VOCAB 56% / PRACTICE 52% と高いまま。node でも読み込み確認済み。
+- 2026-10-29（定期実行・4回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB・MOCK_POOLの追加は0件。PRACTICEを6件（p1071〜p1076: security、single 5 / multi 1）追加。累計 VOCAB=290 / PRACTICE=1076 / MOCK_POOL=500。単語リスト進捗 290/453（除外23）。
+  追加トピック: プロンプトインジェクション対策（責任共有、入力の検証とサニタイズ、Agentsの事前処理プロンプト・ガードレール関連付け、セキュリティテスト手法、Guardrailsによる検出）。
+  新規SOURCES: promptInjection（docs.aws.amazon.com/bedrock/latest/userguide/prompt-injection.html、WebFetch成功）。
+  メモ: 正解最長割合は PRACTICE 52% のまま。nodeでの読み込み確認済み（290/1076/500）。件数は目安より少ない（出典を確認できた範囲に限定）。
