@@ -804,3 +804,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: MLの学習タイプ（教師あり/なし/半教師あり/強化）、MLの学習プロセス・実装ライフサイクル、AIバイアスの種類（アルゴリズム/測定/選択/ラベル）と軽減策・反事実的公平性、責任あるAIの側面（Controllability/Veracity and robustness/Safety/Governance）。
   新規SOURCESなし（whatIsMl, aiBias, responsibleAi を今回WebFetchで本文確認、いずれも成功）。
   メモ: 正解最長割合は PRACTICE 52% のまま。nodeでの読み込み確認済み。
+
+- 2026-10-29（定期実行・53回目）: 改訂履歴は今回未確認（v1.2掲載の件は引き続き要確認）。VOCAB・MOCK_POOLの追加は0件（MOCK_POOLは目標到達、VOCABは `未` 用語の公式定義ページ未確認のため見送り。Kiroは引き続き未取得）。PRACTICEを12件（p1042〜p1053: fm 5 / genai 7、single 8 / multi 1 / ordering 1 / matching 1ほか）追加。累計 VOCAB 283 / PRACTICE 1053 / MOCK_POOL 500。
+  追加トピック: Amazon Bedrock Data Automation（用途・ビジュアルグラウンディングと信頼度スコア・メディア分析・RAG向け抽出）、Bedrock Flows（ノード連結・ドラフト/バージョン/エイリアス・InvokeFlow・料金・作成〜デプロイ手順）。
+  新規SOURCESなし（bda, bedrockFlows を今回WebFetchで本文確認、どちらも成功）。
+  メモ: 正解最長割合は PRACTICE 52% のまま。node未使用（validate_content.pyのみ確認）。
