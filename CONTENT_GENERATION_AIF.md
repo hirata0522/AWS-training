@@ -820,3 +820,9 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: evalGeneralText（model-evaluation-tasks-general-text.html、WebFetch成功）。judgeMetrics（model-evaluation-metrics.html）も本文確認成功。
   見送り: BLEU / Perplexity（Bedrock・SageMaker の評価ページで定義が取れず）、Kiro（kiro.dev ネットワーク不可）。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 52%。node未使用（validate_content.pyのみ確認）。
+- 2026-10-29（定期実行・3回目）: 改訂履歴を再確認（WebFetch成功）。v1.2（2026-10-29）が最新で、変更は対象外サービス一覧からの6サービス削除のみ（前回と同じ）。
+  今回の追加: VOCAB 3件（v288 Human-in-the-loop (A2I) / v289 ISO/IEC 42001 / v290 Amazon Bedrock Marketplace）、PRACTICE 7件（p1064〜p1070: single 4 / multi 1 / ordering 1 / matching 0 ＋ single 1）。計10件（目安より少ない。出典を確認できた範囲に限定したため）。累計 VOCAB=290 / PRACTICE=1070 / MOCK_POOL=500。単語リスト進捗 290/453（除外23）。
+  追加トピック: Bedrock Marketplace（探す→購読→SageMaker AIエンドポイントにデプロイ→呼び出し、Agents/Knowledge Bases/Guardrails連携）、A2I（低信頼度・サンプル抽出の人間レビュー）、ISO/IEC 42001（AWSの認証対象: Bedrock・Q Business・Textract・Transcribe）。
+  新規SOURCES: bedrockMarketplace（WebFetch成功）、iso42001（AWS Machine Learning Blog、WebFetch成功）。a2i は既存を再利用（WebFetch成功。なお当該ページに「A2Iは新規顧客の受付を終了」との注記あり。問題には使っていない）。
+  見送り: NIST AI RMF / EU AI Act 等は公式AWSページでの裏取りが間に合わず `未` のまま。
+  メモ: 正解最長割合は VOCAB 56% / PRACTICE 52% と高いまま。node でも読み込み確認済み。

@@ -315,7 +315,7 @@
 | 309 | Amazon SageMaker Batch Transform | aiml | v255 |
 | 310 | Amazon SageMaker Asynchronous Inference | aiml | v256 |
 | 311 | Agent Evaluation | fm | 未 |
-| 312 | ISO/IEC 42001 | security | 未 |
+| 312 | ISO/IEC 42001 | security | v289 |
 | 313 | Amazon Nova | genai | v182 |
 | 314 | AI Decision Transparency | responsible | 未 |
 | 315 | Amazon SageMaker Serverless Inference | aiml | 除外 |
@@ -326,8 +326,8 @@
 | 320 | InvokeModel API | fm | v214 |
 | 321 | EU AI Act | security | 未 |
 | 322 | Amazon SageMaker Debugger | aiml | v274 |
-| 323 | Human-in-the-loop (A2I) | responsible | 未 |
-| 324 | Amazon Bedrock Marketplace | genai | 未 |
+| 323 | Human-in-the-loop (A2I) | responsible | v288 |
+| 324 | Amazon Bedrock Marketplace | genai | v290 |
 | 325 | AWS Glue | aiml | v275 |
 | 326 | Amazon Bedrock Batch Inference | fm | v272 |
 | 327 | GDPR | security | 未 |

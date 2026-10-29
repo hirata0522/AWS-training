@@ -210,6 +210,8 @@ var SOURCES = {
   comprehendMedical:{label:'Amazon Comprehend Medical とは', url:'https://docs.aws.amazon.com/comprehend-medical/latest/dev/comprehendmedical-welcome.html'},
   iamMfa:{label:'IAM の多要素認証 (MFA)', url:'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html'},
   titan:{label:'Amazon Titan モデルの概要', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-models.html'},
+  bedrockMarketplace:{label:'Amazon Bedrock: Amazon Bedrock Marketplace', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/amazon-bedrock-marketplace.html'},
+  iso42001:{label:'AWS: AWS が ISO/IEC 42001:2023 AI マネジメントシステムの認定を取得（AWS Machine Learning Blog）', url:'https://aws.amazon.com/blogs/machine-learning/aws-achieves-iso-iec-420012023-artificial-intelligence-management-system-accredited-certification/'},
 };
 
 var VOCAB = [
@@ -569,6 +571,15 @@ var VOCAB = [
   {id:'v287', term:'Benchmark Dataset', domain:'fm', source:SOURCES.evalGeneralText, q:{text:'Amazon Bedrock のモデル評価で用意されている BOLD や RealToxicityPrompts のような「組み込みデータセット」の位置付けとして、最も適切なものはどれですか？',
     choices:['評価対象のモデルを追加で学習させ、特定の業務知識を覚えさせるために使うデータセットである', '公開されている標準的なプロンプト集で、公平性・毒性・正確性などをモデル間で一定の基準で比べるために使う', '利用者のアプリケーションに保存された顧客データを自動で収集し、評価用に匿名化したデータセットである', '推論時にモデルへ渡す社内文書を格納し、検索拡張生成（RAG）で参照させるためのデータセットである'], correct:1,
     why:['誤り。評価用データセットはモデルの出力を測るために使うもので、モデルを学習させる目的ではありません。', '正しい。ベンチマークデータセットは公開された標準的なプロンプト集です。BOLD は公平性、RealToxicityPrompts は毒性の評価などに使われ、異なるモデルを同じ基準で比較できます。', '誤り。組み込みデータセットは公開データセットであり、利用者の顧客データから作られるものではありません。独自データを使う場合は自前のプロンプトデータセットを用意します。', '誤り。これは RAG のナレッジベースの説明です。評価用データセットとは目的が異なります。']}},
+  {id:'v288', term:'Human-in-the-loop (A2I)', domain:'responsible', source:SOURCES.a2i, q:{text:'Amazon Augmented AI（A2I）が提供する「ヒューマンインザループ」の仕組みとして、最も適切なものはどれですか？',
+    choices:['モデルの学習データに含まれる個人情報を自動で検出し、マスキングしてから学習に使う仕組み', '生成AIの入出力に含まれる有害な内容をリアルタイムで遮断し、人手の確認なしに拒否する仕組み', '信頼度の低い予測や無作為に抽出した予測を人間のレビュー担当者に回し、結果を確認・修正してもらう仕組み', 'モデルの精度が下がったことを検知して、人間の承認なしに自動で再学習とデプロイを実行する仕組み'], correct:2,
+    why:['誤り。個人情報の検出は Amazon Macie や Amazon Comprehend の領域であり、A2I の役割ではありません。', '誤り。これは Amazon Bedrock Guardrails の説明です。A2I は人間がレビューに加わる仕組みです。', '正しい。A2I は、信頼度の低い予測や定期的なサンプルに対して人間のレビューワークフローを組み込めるサービスです。Textract や Rekognition などの予測のレビューに使えます。', '誤り。モデル品質の継続監視は SageMaker Model Monitor が担い、A2I は人間による確認を組み込む仕組みです。']}},
+  {id:'v289', term:'ISO/IEC 42001', domain:'security', source:SOURCES.iso42001, q:{text:'ISO/IEC 42001 の説明として最も適切なものはどれですか？',
+    choices:['AI システムの責任ある開発と利用を促進するための要求事項と管理策を定めた、国際的なマネジメントシステム規格', 'クレジットカード情報を扱う事業者が満たすべき、決済データの保護に関するセキュリティ基準', '機械学習モデルの推論精度を測るために使われる、標準化されたベンチマークテストの名称', '米国の医療情報を保護するために、保護対象保健情報の取り扱いを規制する法律'], correct:0,
+    why:['正しい。ISO/IEC 42001 は AI マネジメントシステムの国際規格で、AWS は Amazon Bedrock などを対象にこの認証を取得しています。', '誤り。これは PCI DSS の説明です。', '誤り。ISO/IEC 42001 は性能評価のテストではなく、組織の AI 管理体制に関する規格です。', '誤り。これは HIPAA の説明です。']}},
+  {id:'v290', term:'Amazon Bedrock Marketplace', domain:'genai', source:SOURCES.bedrockMarketplace, q:{text:'Amazon Bedrock Marketplace の説明として最も適切なものはどれですか？',
+    choices:['Bedrock で作成したエージェントやプロンプトを、他の AWS アカウントの利用者に有料で販売できる場所', 'AWS の各サービスの利用料金を比較して、最も安い構成を自動で選択してくれる料金計算ツール', 'Bedrock のモデルをオンプレミスのサーバーにダウンロードして、AWS の外で実行するための配布サイト', '100 以上の人気・新興・特化型の基盤モデルを探して購読し、SageMaker AI のエンドポイントにデプロイして Bedrock API から使えるカタログ'], correct:3,
+    why:['誤り。Bedrock Marketplace は基盤モデルを探して利用するためのカタログであり、エージェントやプロンプトを販売する場ではありません。', '誤り。料金の比較・見積もりは AWS Pricing Calculator などの役割です。', '誤り。モデルは SageMaker AI が管理するエンドポイントにデプロイして利用します。', '正しい。Bedrock の標準モデルに加えて 100 以上のモデルを 1 つのカタログから探せます。デプロイ後は Bedrock の API で呼び出し、Agents・Knowledge Bases・Guardrails と組み合わせられます。']}},
 ];
 
 var PRACTICE = [
@@ -4302,6 +4313,27 @@ var PRACTICE = [
     choices:['T-REx（Wikipedia のナレッジベーストリプル）で Real world knowledge（RWK）スコアを計算する', 'RealToxicityPrompts で Real world knowledge（RWK）スコアを計算する', 'BOLD で毒性スコアを計算する', 'WikiText2 で単語誤り率（Word error rate）を計算して堅牢性を評価する'],
     correct:[0],
     why:['正しい。正確性は T-REx データセットを使い、モデルの事実知識を測る Real world knowledge（RWK）スコアで評価されます。', '誤り。RealToxicityPrompts は毒性の評価に使うデータセットで、計算されるのは毒性の指標です。', '誤り。BOLD は堅牢性（単語誤り率）や公平性の評価に使われるデータセットで、毒性スコアの計算用ではありません。', '誤り。堅牢性の評価で単語誤り率を計算するのは BOLD データセットとの組み合わせです。']},
+  {id:'p1064', domain:'genai', type:'single', source:SOURCES.bedrockMarketplace, text:'Amazon Bedrock Marketplace のモデルを SageMaker AI のエンドポイントにデプロイした後、Bedrock の機能とどのように組み合わせて使えますか？',
+    choices:['Bedrock の API ではなく SageMaker AI の専用 API でしか呼び出せず、Bedrock の機能とは連携できない', 'Bedrock の InvokeModel や Converse オペレーションで呼び出せ、Agents・Knowledge Bases・Guardrails などのツールと使える', 'Bedrock のコンソールからのみ利用でき、アプリケーションから API 経由で呼び出すことはできない', 'Bedrock Marketplace のモデルはファインチューニング専用で、推論には使えない'], correct:[1],
+    why:['誤り。Bedrock の API を通じてアクセスでき、Bedrock のツールとネイティブに連携できます。', '正しい。デプロイしたモデルは InvokeModel・Converse オペレーションやコンソールから利用でき、Agents・Knowledge Bases・Guardrails と組み合わせられます。', '誤り。コンソールに加えて InvokeModel・Converse オペレーションからも呼び出せます。', '誤り。デプロイしたエンドポイントを呼び出して推論に使うことができます。']},
+  {id:'p1065', domain:'genai', type:'single', source:SOURCES.bedrockMarketplace, text:'Amazon Bedrock Marketplace でモデルを購読してデプロイするとき、そのモデルを動かすエンドポイントを管理するサービスはどれですか？',
+    choices:['Amazon Bedrock Knowledge Bases', 'AWS Lambda', 'Amazon Bedrock AgentCore', 'Amazon SageMaker AI'], correct:[3],
+    why:['誤り。Knowledge Bases は RAG のための仕組みで、モデルのエンドポイントを管理しません。', '誤り。Lambda はサーバーレスの関数実行サービスで、Marketplace のモデルのエンドポイントを管理しません。', '誤り。AgentCore はエージェントを大規模に運用するための基盤で、Marketplace のモデルのエンドポイントは管理しません。', '正しい。購読したモデルは SageMaker AI が管理するエンドポイントにデプロイされます。']},
+  {id:'p1066', domain:'genai', type:'ordering', source:SOURCES.bedrockMarketplace, text:'Amazon Bedrock Marketplace のモデルを利用する手順を、正しい順に並べてください。',
+    items:['カタログからモデルを探す', 'モデルを購読する', 'モデルを SageMaker AI のエンドポイントにデプロイする', 'エンドポイントを呼び出して推論を実行する'],
+    why:['まず 1 つのカタログから用途に合うモデルを探します。', '利用したいモデルを選んだら購読します。', '購読後、SageMaker AI が管理するエンドポイントにデプロイします。', 'デプロイ後、Bedrock の API からエンドポイントを呼び出して利用します。']},
+  {id:'p1067', domain:'responsible', type:'single', source:SOURCES.a2i, text:'Amazon Rekognition が不適切なコンテンツの判定に低い信頼度を返したときに、人間のレビュー担当者に確認を依頼できるサービスはどれですか？',
+    choices:['Amazon SageMaker Model Monitor', 'Amazon SageMaker Clarify', 'Amazon Augmented AI (A2I)', 'Amazon SageMaker Model Cards'], correct:[2],
+    why:['誤り。Model Monitor は本番モデルの品質やドリフトを監視するサービスで、個々の予測を人間に回しません。', '誤り。Clarify はバイアスの検出と説明可能性のためのサービスです。', '正しい。A2I は Rekognition などの低信頼度の予測を、人間のレビューワークフローに回せます。', '誤り。Model Cards はモデルの情報を文書化するための機能です。']},
+  {id:'p1068', domain:'responsible', type:'multi', source:SOURCES.a2i, text:'Amazon Augmented AI (A2I) で実現できることとして適切なものはどれですか？（2つ選択）',
+    choices:['生成AIのプロンプトに含まれる有害な内容を、人手を介さずに自動で遮断する', 'Amazon Textract が抽出したキーと値のペアを、人間のレビュー担当者に確認してもらう', 'モデルの学習データに含まれる偏りを統計的に検出し、バイアス指標として出力する', 'Amazon Rekognition が返した予測から無作為にサンプルを抽出し、人間にレビューさせる', 'AWS アカウント内のリソースに対する API 呼び出しの履歴を記録して監査する'], correct:[1,3],
+    why:['誤り。有害内容の自動遮断は Bedrock Guardrails の役割です。', '正しい。Textract が抽出した重要なキーと値のペアを人間にレビューさせられます。', '誤り。バイアスの検出は SageMaker Clarify の役割です。', '正しい。Rekognition などの予測から無作為にサンプルを抽出し、人間のレビューに回せます。', '誤り。API 呼び出しの記録は AWS CloudTrail の役割です。']},
+  {id:'p1069', domain:'security', type:'single', source:SOURCES.iso42001, text:'AWS が ISO/IEC 42001 の認証を取得していることは、利用者にとってどのような意味を持ちますか？',
+    choices:['AWS の AI サービス上で構築した利用者のアプリケーションも、自動的に ISO/IEC 42001 の認証対象になる', 'AWS が AI サービスの開発・運用に伴うリスクと機会を管理していることを、独立した第三者が検証したという追加の保証になる', 'AWS の AI サービスで生成されたすべての出力の正確性が、第三者によって保証される', 'AWS の AI サービスは、利用者が責任共有モデルに基づく責任を負わなくてよくなる'], correct:[1],
+    why:['誤り。AWS の認証は AWS 自身の AI 管理プロセスを対象とするもので、利用者のシステムは対象外です。利用者が自身で認証を目指す際の助けにはなり得ます。', '正しい。独立した第三者が、AWS が AI に関するリスクと機会を積極的に管理していることを検証した、という追加の保証です。', '誤り。出力の正確性を保証するものではなく、マネジメントシステムを評価する認証です。', '誤り。認証を取得していても責任共有モデルは変わらず、利用者側の責任は残ります。']},
+  {id:'p1070', domain:'security', type:'single', source:SOURCES.iso42001, text:'ISO/IEC 42001 の認証を取得した AWS の AI サービスとして、AWS が公表している組み合わせはどれですか？',
+    choices:['Amazon Bedrock、Amazon Q Business、Amazon Textract、Amazon Transcribe', 'Amazon Polly、Amazon Lex、Amazon Kendra、Amazon Personalize', 'Amazon Rekognition、Amazon Comprehend、Amazon Translate、Amazon Forecast', 'Amazon Bedrock と Amazon SageMaker AI の 2 つのみ'], correct:[0],
+    why:['正しい。AWS は、これらのサービスを対象とした ISO/IEC 42001 の認定認証の取得を発表しています。', '誤り。この組み合わせは、認証の対象として公表されたものではありません。', '誤り。この組み合わせは、認証の対象として公表されたものではありません。', '誤り。対象サービスは 2 つではなく、Bedrock・Q Business・Textract・Transcribe の 4 つです。']},
 ];
 
 var MOCK_POOL = [
