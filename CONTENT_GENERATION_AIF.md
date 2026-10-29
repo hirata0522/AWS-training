@@ -789,3 +789,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: AIバイアスの種類（測定・除外・選択・ラベル・リコール）と原因・緩和策（反事実的公平性）、SageMaker Clarify、SageMaker Model Cards（用途・リスク評価・バージョン管理）、KMSキーの3種類（カスタマーマネージド/AWSマネージド/AWS所有）の違い。
   新規SOURCESなし（aiBias, modelCards, kmsKeys を今回WebFetchで本文確認、すべて成功）。
   メモ: 正解最長割合は PRACTICE 52% のまま。node未使用（validate_content.pyのみ確認）。
+
+- 2026-10-29（定期実行・50回目）: 改訂履歴は今回未確認（v1.2掲載の件は引き続き要確認）。VOCAB・MOCK_POOLの追加は0件（MOCK_POOLは目標到達、VOCABは `未` 用語の公式定義ページ未確認のため見送り。Kiroは引き続き未取得）。PRACTICEを15件（p993〜p1007: aiml 15、single 13 / multi 1 / ordering 1）追加。累計 VOCAB 283 / PRACTICE 1007 / MOCK_POOL 500。単語リスト進捗 283 / 453。
+  追加トピック: 過学習と学習不足（検出・対策）、データ分割（学習/検証/テスト、層化分割）とデータリーク、Feature Storeのタイムトラベルクエリ、特徴量エンジニアリング（定義・工程・Data Wrangler・Feature Store）。
+  新規SOURCESなし（underOver, splitsLeakage, featureEng を今回WebFetchで本文確認、すべて成功。underOverのページはAmazon Machine Learningサービス自体の旧ドキュメントで更新終了の注記あり、概念説明のみ利用）。
+  メモ: 正解最長割合は PRACTICE 52% のまま。node未使用（validate_content.pyのみ確認）。
