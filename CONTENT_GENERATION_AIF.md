@@ -779,3 +779,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: a2i, trainium, inferentia, s3Bpa, s3ObjectLock, comprehendMedical, iamMfa, titan（いずれもWebFetchで本文確認、成功。A2Iは最初のURLが本文なしだったため別URLで再確認。A2Iは新規顧客受付終了の注記あり）。
   見送り: 行270 Kiro は kiro.dev がネットワーク制限で取得できず、AWS公式ページに定義がないため `未` のまま（kiro.dev の許可が必要）。
   メモ: 正解最長割合は VOCAB 55% / PRACTICE 52% と高止まり（今回追加分は意識的に不正解を長めにした問題を含む）。nodeでの読み込み確認済み（283/961/500）。
+
+- 2026-10-29（定期実行・48回目）: 改訂履歴をWebFetchで確認（v1.2・2026-10-29公開のまま。変更は対象外サービスリストからの除外のみで、ドメイン目標の変更は確認できず）。VOCAB・MOCK_POOLの追加は0件（MOCK_POOLは目標到達、VOCABは `未` 用語の公式定義ページ未確認のため見送り。Kiroは引き続きkiro.dev未取得）。PRACTICEを16件（p962〜p977: genai 16、single 10 / multi 2 / ordering 2 / matching 2）追加。累計 VOCAB 283 / PRACTICE 977 / MOCK_POOL 500。単語リスト進捗 283 / 453。
+  追加トピック: LLMの単語埋め込み・フューショット/ゼロショット・ファインチューニング、トランスフォーマー（並列処理・位置エンコーディング）、エージェント型AI（定義・特徴・4段階サイクル・単一/水平/垂直構成・インシデント対応）、MCP（目的・利点・ツール利用の課題・ツール呼び出しの流れ）。
+  新規SOURCESなし（whatIsLlm, transformers, agenticAi, mcpWhat を今回WebFetchで本文確認、すべて成功）。
+  メモ: 正解最長割合は PRACTICE 52% のまま。nodeでの読み込み確認済み（283/977/500）。
