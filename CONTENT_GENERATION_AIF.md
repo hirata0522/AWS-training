@@ -784,3 +784,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: LLMの単語埋め込み・フューショット/ゼロショット・ファインチューニング、トランスフォーマー（並列処理・位置エンコーディング）、エージェント型AI（定義・特徴・4段階サイクル・単一/水平/垂直構成・インシデント対応）、MCP（目的・利点・ツール利用の課題・ツール呼び出しの流れ）。
   新規SOURCESなし（whatIsLlm, transformers, agenticAi, mcpWhat を今回WebFetchで本文確認、すべて成功）。
   メモ: 正解最長割合は PRACTICE 52% のまま。nodeでの読み込み確認済み（283/977/500）。
+
+- 2026-10-29（定期実行・49回目）: 改訂履歴は今回未確認（v1.1のまま扱った。v1.2掲載の件は引き続き要確認）。VOCAB・MOCK_POOLの追加は0件（MOCK_POOLは目標到達、VOCABは `未` 用語の公式定義ページ未確認のため見送り。Kiroは引き続き未取得）。PRACTICEを15件（p978〜p992: responsible 9 / security 6、single 9 / multi 2 / matching 2ほか）追加。累計 VOCAB 283 / PRACTICE 992 / MOCK_POOL 500。単語リスト進捗 283 / 453。
+  追加トピック: AIバイアスの種類（測定・除外・選択・ラベル・リコール）と原因・緩和策（反事実的公平性）、SageMaker Clarify、SageMaker Model Cards（用途・リスク評価・バージョン管理）、KMSキーの3種類（カスタマーマネージド/AWSマネージド/AWS所有）の違い。
+  新規SOURCESなし（aiBias, modelCards, kmsKeys を今回WebFetchで本文確認、すべて成功）。
+  メモ: 正解最長割合は PRACTICE 52% のまま。node未使用（validate_content.pyのみ確認）。
