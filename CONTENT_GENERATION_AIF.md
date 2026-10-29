@@ -799,3 +799,8 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: FMEvalのタスク別組み込みデータセット（Gigaword/Government Report/TriviaQA/BoolQ/NaturalQuestions/TREX/CrowS-Pairs/Women's E-Commerce Clothing Reviews/RealToxicityPrompts）、質問応答・要約・分類の精度指標、評価観点（Semantic robustness/Prompt stereotyping/Toxicity/Factual knowledge）、人による評価の方式（個別・比較）、Bedrock評価ジョブの種類（プログラム的/人間のワーカー/judgeモデル/RAG評価）。
   新規SOURCESなし（fmevalOverview, bedrockEval を今回WebFetchで本文確認、どちらも成功）。
   メモ: 正解最長割合は PRACTICE 52% のまま。nodeでの読み込み確認済み（283/1023/500）。
+
+- 2026-10-29（定期実行・52回目）: 改訂履歴は今回未確認。VOCAB・MOCK_POOLの追加は0件（MOCK_POOLは目標到達、VOCABは見送り）。PRACTICEを18件（p1024〜p1041: aiml 7 / responsible 11、single 12 / multi 1 / ordering 2 / matching 2ほか）追加。累計 VOCAB 283 / PRACTICE 1041 / MOCK_POOL 500。単語リスト進捗 283 / 453。
+  追加トピック: MLの学習タイプ（教師あり/なし/半教師あり/強化）、MLの学習プロセス・実装ライフサイクル、AIバイアスの種類（アルゴリズム/測定/選択/ラベル）と軽減策・反事実的公平性、責任あるAIの側面（Controllability/Veracity and robustness/Safety/Governance）。
+  新規SOURCESなし（whatIsMl, aiBias, responsibleAi を今回WebFetchで本文確認、いずれも成功）。
+  メモ: 正解最長割合は PRACTICE 52% のまま。nodeでの読み込み確認済み。
