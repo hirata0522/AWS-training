@@ -280,7 +280,7 @@
 | 274 | Amazon SageMaker Feature Store | aiml | v140 |
 | 275 | Amazon SageMaker Model Monitor | aiml | v141 |
 | 276 | Strands Agents | genai | v119 |
-| 277 | Perplexity | fm | 未 |
+| 277 | Perplexity | fm | v297 |
 | 278 | Data Governance | security | 未 |
 | 279 | Amazon Bedrock Model Evaluations | responsible | v232 |
 | 280 | Amazon SageMaker Pipelines | aiml | v149 |
@@ -314,7 +314,7 @@
 | 308 | User Feedback Mechanism | responsible | 未 |
 | 309 | Amazon SageMaker Batch Transform | aiml | v255 |
 | 310 | Amazon SageMaker Asynchronous Inference | aiml | v256 |
-| 311 | Agent Evaluation | fm | 未 |
+| 311 | Agent Evaluation | fm | v298 |
 | 312 | ISO/IEC 42001 | security | v289 |
 | 313 | Amazon Nova | genai | v182 |
 | 314 | AI Decision Transparency | responsible | 未 |

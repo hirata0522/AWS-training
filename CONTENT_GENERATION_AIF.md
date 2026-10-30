@@ -861,3 +861,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: コンテキストグラウンディングチェック（Grounding/Relevanceの違い、しきい値、必要な3要素）、データポイズニング対策（Transcribe毒性検出、ApplyGuardrail API）。
   新規SOURCES: なし（groundCheck・dataPoisoning を再利用。両ページをWebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 52%。件数は目安より少ない（出典確認済みの題材に限定）。nodeでの読み込み確認済み。
+- 2026-10-30（定期実行・8回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29。新たな変更なし）。VOCABを2件追加（v297 Perplexity / v298 Agent Evaluation）。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=298 / PRACTICE=1111 / MOCK_POOL=500。単語リスト進捗 298/452（除外25）。
+  新規SOURCES: ldaPerplexity（SageMaker AI LDAページ。perplexityの定義と「低いほど良い」をWebFetchで確認）、agentcoreEval（AgentCore Evaluations how-it-works。WebFetch成功）。
+  メモ: 件数は目安より大幅に少ない（出典を本文確認できた題材に限定）。VOCABの正解最長割合は57%と高いまま（次回以降、不正解を長めにして是正）。nodeでの読み込み確認済み。

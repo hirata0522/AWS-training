@@ -14,6 +14,8 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  ldaPerplexity:{label:'Amazon SageMaker AI: Latent Dirichlet Allocation (LDA) アルゴリズム（perplexity の説明）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/lda.html'},
+  agentcoreEval:{label:'Amazon Bedrock AgentCore: Evaluations の仕組み', url:'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/how-it-works-evaluations.html'},
   multiAgent:{label:'Amazon Bedrock Agents: マルチエージェントコラボレーション', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-multi-agent-collaboration.html'},
   agentsMemory:{label:'Amazon Bedrock Agents: メモリで複数セッションにまたがる会話コンテキストを保持する', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-memory.html'},
   promptInjection:{label:'Amazon Bedrock: プロンプトインジェクションのセキュリティ', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-injection.html'},
@@ -605,6 +607,12 @@ var VOCAB = [
   {id:'v296', term:'RAG Evaluation', domain:'fm', source:SOURCES.ragEval, q:{text:'Amazon Bedrock の RAG 評価（RAG evaluation）の説明として最も適切なものはどれですか？',
     choices:['ナレッジベースのドキュメントを自動的にチャンク分割して埋め込みを作成する機能', 'モデルの応答に含まれる有害な内容をブロックするためのフィルター機能', '基盤モデルをファインチューニングして、RAG用の応答精度を高める学習ジョブ', '計算された指標を使って、RAGシステムが関連情報をどれだけ適切に取得し、回答にどれだけ役立てているかを評価する機能'], correct:3,
     why:['誤り。チャンク分割と埋め込みの作成はナレッジベースのデータ取り込みの処理で、評価ではありません。','誤り。有害コンテンツのブロックは Guardrails の役割です。','誤り。RAG 評価は学習ジョブではなく、既存のナレッジベース等の性能を測るものです。','正しい。検索（取得）の有効性と、生成された回答が質問にどれだけ答えているかを指標で評価し、ナレッジベース等を比較できます。']}},
+  {id:'v297', term:'Perplexity', domain:'fm', source:SOURCES.ldaPerplexity, q:{text:'言語モデルの評価指標 perplexity（パープレキシティ）の説明として最も適切なものはどれですか？',
+    choices:['生成した要約と参照要約の語の重なりを測る指標で、値が高いほど良い', 'テスト データに対する単語ごとの尤度の幾何平均の逆数を表す指標で、値が低いほど汎化性能が良い', '翻訳結果と参照訳の n-gram の一致度を測る指標で、値が高いほど良い', '分類結果のうち、正と予測したものが実際に正だった割合を表す指標'], correct:1,
+    why:['誤り。語の重なりで要約を評価するのは ROUGE です。','正しい。perplexity は言語モデリングの内部的な評価指標で、テスト データの単語ごとの尤度の幾何平均の逆数を測り、低いほど汎化性能が良いことを示します。','誤り。n-gram の一致度で翻訳を評価するのは BLEU です。','誤り。これは適合率（precision）の説明です。']}},
+  {id:'v298', term:'Agent Evaluation', domain:'fm', source:SOURCES.agentcoreEval, q:{text:'Amazon Bedrock AgentCore Evaluations で計算できる指標の説明として最も適切なものはどれですか？',
+    choices:['エージェントが呼び出したツールの正確さや、エンドツーエンドのタスク完了（ゴール達成）の正しさ', 'エージェントが利用する VPC エンドポイントの帯域幅とパケット損失率', 'エージェントの学習データに含まれる個人情報の件数', 'エージェントのコンテナ イメージに含まれる脆弱性の数'], correct:0,
+    why:['正しい。AgentCore Evaluations はタスク完了の正しさ、ツール呼び出しの正確さ、独自に定義したカスタム指標を計算してエージェントの性能を評価します。','誤り。ネットワーク性能の測定は、エージェントの振る舞いの品質評価ではありません。','誤り。個人情報の検出は Amazon Macie や Comprehend などの役割です。','誤り。脆弱性スキャンは Amazon Inspector などの役割です。']}},
 ];
 
 var PRACTICE = [
