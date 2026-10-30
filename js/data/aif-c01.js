@@ -17,6 +17,8 @@ var SOURCES = {
   ldaPerplexity:{label:'Amazon SageMaker AI: Latent Dirichlet Allocation (LDA) アルゴリズム（perplexity の説明）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/lda.html'},
   agentcoreEval:{label:'Amazon Bedrock AgentCore: Evaluations の仕組み', url:'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/how-it-works-evaluations.html'},
   dataGov:{label:'AWS: データガバナンスとは', url:'https://aws.amazon.com/what-is/data-governance/'},
+  hipaa:{label:'AWS: HIPAA コンプライアンス', url:'https://aws.amazon.com/compliance/hipaa-compliance/'},
+  gdpr:{label:'AWS: GDPR センター', url:'https://aws.amazon.com/compliance/gdpr-center/'},
   titanTextEmb:{label:'Amazon Bedrock: Amazon Titan Text Embeddings モデル', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html'},
   multiAgent:{label:'Amazon Bedrock Agents: マルチエージェントコラボレーション', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-multi-agent-collaboration.html'},
   agentsMemory:{label:'Amazon Bedrock Agents: メモリで複数セッションにまたがる会話コンテキストを保持する', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-memory.html'},
@@ -624,6 +626,14 @@ var VOCAB = [
   {id:'v301', term:'Data Governance', domain:'security', source:SOURCES.dataGov, q:{text:'データガバナンス（data governance）の説明として最も適切なものはどれですか？',
     choices:['データを誰が・どのように・いつ使えるかを定める役割・責任・標準・ポリシーの枠組みで、データ品質やコンプライアンスの確保にも関わる', 'データを暗号化鍵で保護する仕組みのことで、保管中のデータを暗号化する技術的な機能だけを指す', 'モデルの学習時にハイパーパラメータを自動で調整し、予測精度を高めるための手法である', 'データを別リージョンへ複製して、障害発生時の可用性を高めるためのバックアップ手法である'], correct:0,
     why:['正しい。データの利用に関する役割・責任・標準を定め、品質・セキュリティ・規制対応を支える枠組みで、AI/ML の学習・推論データにも適用されます。','誤り。暗号化は AWS KMS などによる技術的対策の一部で、ガバナンスはポリシーや責任体制を含むより広い概念です。','誤り。ハイパーパラメータの調整はモデル開発の作業で、データガバナンスとは別です。','誤り。リージョン間の複製は耐障害性の施策であり、データガバナンスの定義ではありません。']}},
+  {id:'v302', term:'HIPAA', domain:'security', source:SOURCES.hipaa, q:{text:'AWS で HIPAA（米国の医療保険の携行性と責任に関する法律）の対象となる医療情報（PHI）を扱う際の説明として適切なものはどれですか？',
+    choices:['PHI を処理・保存・送信するには AWS とビジネスアソシエイト契約（BAA）を締結し、BAA で定められた HIPAA 対象サービスを使う', 'AWS が HIPAA 認証を発行するため、認証済みのリージョンを選べば BAA は不要で、どのサービスでも PHI を扱える', 'HIPAA は EU 域内の個人データの保護を定める法律で、PHI の取り扱いにはデータ保護責任者の任命が必須である', 'HIPAA は決済カード情報を保護するための業界標準であり、PHI の保護は対象外である'],
+    correct:0,
+    why:['正しい。AWS は HIPAA 上のビジネスアソシエイトにあたり、PHI を扱う場合は BAA（AWS Artifact で締結・管理）が必要で、PHI は HIPAA eligible services に限って扱います。','誤り。クラウドサービスプロバイダーに対する HIPAA の認証制度はなく、BAA の締結と対象サービスの利用が必要です。','誤り。EU の個人データ保護法は GDPR です。HIPAA は米国の医療情報に関する連邦法です。','誤り。決済カード情報の標準は PCI DSS です。HIPAA は医療情報（PHI）のプライバシーとセキュリティを対象とします。']}},
+  {id:'v303', term:'GDPR', domain:'security', source:SOURCES.gdpr, q:{text:'GDPR（EU 一般データ保護規則）と AWS の責任共有モデルについて、正しい説明はどれですか？',
+    choices:['EU 域内の組織だけが対象で、EU 域外の組織が EU 域内の個人のデータを扱う場合は適用されない', 'GDPR 対応は AWS がすべて担うため、顧客はデータの保存場所や暗号化、アクセス管理を設定する必要がない', 'GDPR は責任共有モデルを変えず、顧客はデータの保存場所・暗号化・アクセス管理を自ら制御し、AWS は処理者として責任を分担する', 'GDPR は米国の医療情報を保護する法律であり、AWS Artifact の BAA を締結することで対応が完了する'],
+    correct:2,
+    why:['誤り。GDPR は EU 域内の個人のデータを扱う域外の組織にも適用されます。','誤り。責任共有モデルは変わらず、データの保存場所・暗号化・アクセス管理は顧客が制御します。','正しい。GDPR は責任共有モデルを変えません。AWS はデータ処理者（サブプロセッサー）などの立場を担い、顧客はデータ管理者または処理者としての責任を負います。','誤り。米国の医療情報を対象とするのは HIPAA で、GDPR は EU の個人情報保護法です。']}},
 ];
 
 var PRACTICE = [

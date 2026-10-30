@@ -870,3 +870,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。VOCABの正解最長割合は57%と高いまま（次回以降、不正解を長めに）。nodeでの読み込み確認済み。
 - 2026-10-30（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v301 Data Governance）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=301 / PRACTICE=1111 / MOCK_POOL=500。
   新規SOURCES: dataGov（aws.amazon.com/what-is/data-governance/、WebFetch成功）。件数は目安より少ない（出典を本文確認できた題材に限定）。
+- 2026-10-30（定期実行・11回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 2件（v302 HIPAA / v303 GDPR）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=303 / PRACTICE=1111 / MOCK_POOL=500。
+  新規SOURCES: hipaa（aws.amazon.com/compliance/hipaa-compliance/、WebFetch成功。BAA・HIPAA eligible services・認証制度なしを確認）、gdpr（aws.amazon.com/compliance/gdpr-center/、WebFetch成功。責任共有モデルが変わらない点・域外適用を確認）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。VOCABの正解最長割合は57%と高いまま。nodeは未使用。

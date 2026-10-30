@@ -330,12 +330,12 @@
 | 324 | Amazon Bedrock Marketplace | genai | v290 |
 | 325 | AWS Glue | aiml | v275 |
 | 326 | Amazon Bedrock Batch Inference | fm | v272 |
-| 327 | GDPR | security | 未 |
+| 327 | GDPR | security | v303 |
 | 328 | AWS Glue DataBrew | aiml | v181 |
 | 329 | Amazon Bedrock Data Automation | genai | v273 |
 | 330 | Algorithmic Bias | responsible | 未 |
 | 331 | Model Context Window Management | fm | 未 |
-| 332 | HIPAA | security | 未 |
+| 332 | HIPAA | security | v302 |
 | 333 | Amazon EMR | aiml | 未 |
 | 334 | Amazon Bedrock Flows | genai | v211 |
 | 335 | Embedding Model | fm | v299 |
