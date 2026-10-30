@@ -857,3 +857,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: guardduty（What is Amazon GuardDuty、WebFetch成功）、ragEval（Bedrock evaluations RAG評価、WebFetch成功）。Inspector は既存 SOURCES を再利用（WebFetchで内容再確認済み）。
   見送り: 特になし（#176 Privacy-enhancing Technologies は引き続き `未`）。
   メモ: 正解最長割合は PRACTICE 52%。validate OK。node は未使用。
+- 2026-10-30（定期実行・7回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB・MOCK_POOLの追加は0件。PRACTICEを6件（p1106〜p1111: responsible 4・security 2、single 6）追加。累計 VOCAB=296 / PRACTICE=1111 / MOCK_POOL=500。単語リスト進捗 296/452（除外25）。
+  追加トピック: コンテキストグラウンディングチェック（Grounding/Relevanceの違い、しきい値、必要な3要素）、データポイズニング対策（Transcribe毒性検出、ApplyGuardrail API）。
+  新規SOURCES: なし（groundCheck・dataPoisoning を再利用。両ページをWebFetchで本文確認、成功）。
+  メモ: 正解最長割合は PRACTICE 52%。件数は目安より少ない（出典確認済みの題材に限定）。nodeでの読み込み確認済み。
