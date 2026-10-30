@@ -22,6 +22,7 @@ var SOURCES = {
   roleManager:{label:'Amazon SageMaker AI: SageMaker Role Manager', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/role-manager.html'},
   rolePersonas:{label:'Amazon SageMaker AI: Role Manager のペルソナリファレンス', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/role-manager-personas.html'},
   scopingMatrix:{label:'AWS: Generative AI Security Scoping Matrix', url:'https://aws.amazon.com/ai/generative-ai/security/scoping-matrix/'},
+  dataPoisoning:{label:'AWS Well-Architected Generative AI Lens: モデル学習ワークフローにデータ浄化フィルターを実装する (GENSEC06-BP01)', url:'https://docs.aws.amazon.com/wellarchitected/latest/generative-ai-lens/gensec06-bp01.html'},
   bedrockRetention:{label:'Amazon Bedrock: データ保持 (Data retention)', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html'},
   domain5Guide:{label:'AIF-C01 試験ガイド: ドメイン5 AIソリューションのセキュリティ、コンプライアンス、ガバナンス', url:'https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01-domain5.html'},
   sagemakerDeploy:{label:'Amazon SageMaker AI: 推論のためのモデルのデプロイ', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html'},
@@ -590,6 +591,9 @@ var VOCAB = [
   {id:'v292', term:'Data Retention', domain:'security', source:SOURCES.bedrockRetention, q:{text:'Amazon Bedrock の推論リクエストにおけるデータ保持（Data retention）の設定として正しいものはどれですか？',
     choices:['リージョンごとにアカウント単位またはプロジェクト単位で、プロンプトと出力を保持するかどうかのモードを設定できる', 'すべてのリージョンに一括で適用され、一度設定すると AWS アカウント内のどのモデルでも変更できない', 'プロンプトと出力は常に無期限で保存され、利用者が保持の有無を選ぶ手段は用意されていない', 'モデルプロバイダーが保持ポリシーを一方的に決めるため、利用者側の設定は一切反映されない'], correct:0,
     why:['正しい。保持の設定はリージョンごとで、アカウント単位またはプロジェクト単位で管理します。none（ゼロデータ保持）などのモードがあります。','誤り。設定はリージョン単位で、他のリージョンには引き継がれません。','誤り。利用者は保持の有無をモード（none など）で制御できます。','誤り。保持ポリシーは利用者側が管理でき、none の設定でモデルが保持を要求する場合はリクエストがブロックされます。']}},
+  {id:'v293', term:'Data Poisoning', domain:'security', source:SOURCES.dataPoisoning, q:{text:'生成AIにおけるデータポイズニング（Data Poisoning）の説明として最も適切なものはどれですか？',
+    choices:['プロンプトに悪意ある指示を埋め込み、推論時にモデルの動作を乗っ取ろうとする攻撃', '事前学習、ドメイン適応、ファインチューニングの際に、有害・誤り・無関係なデータがモデルに混入し、モデルがそれを学習してしまうこと', 'モデルの出力から学習データに含まれる個人情報を復元しようとする攻撃', 'モデルの推論エンドポイントに大量のリクエストを送り、サービスを利用不能にする攻撃'], correct:1,
+    why:['誤り。これはプロンプトインジェクションの説明です。ポイズニングは学習・カスタマイズ用データへの混入が対象です。','正しい。意図的か過失かを問わず汚染されたデータが学習に使われ、モデルがそれを学習した時点で成立します。','誤り。これは学習データの漏えい（モデルからの情報抽出）に関する攻撃で、ポイズニングとは異なります。','誤り。これはサービス拒否（DoS）攻撃の説明です。']}},
 ];
 
 var PRACTICE = [
@@ -4440,6 +4444,18 @@ var PRACTICE = [
     choices:['プロジェクトが inherit のため、モデルのデフォルトが優先され、アカウントの設定は無視される','none が適用される。プロジェクト、アカウント、モデルのデフォルトの順で、最初の inherit 以外の値が採用される','アカウントとプロジェクトの設定が矛盾するため、リクエストはすべて拒否される','リージョンに関係なく、すべてのリージョンで同じ none が自動的に適用される'],
     correct:[1],
     why:['誤り。inherit は意見なしを意味し、より広いスコープであるアカウントの設定に従います。','正しい。有効なモードは、プロジェクト → アカウント → モデルのデフォルトの順で、最初に inherit 以外となる値で決まります。','誤り。inherit は矛盾ではなく、上位の設定に従う指定です。','誤り。設定はリージョン単位で、他のリージョンには伝わりません。']},
+  {id:'p1095', domain:'security', type:'single', source:SOURCES.dataPoisoning, text:'AWS の Well-Architected Generative AI Lens によると、データポイズニングへの対策はどの段階で行うのが最も効果的ですか？',
+    choices:['モデルの学習やカスタマイズを始める前に、データパイプラインでデータを検査・浄化する', 'モデルのデプロイ後に、ユーザーからの苦情が届いてから該当データを削除する', 'モデルの出力に対してのみ、アプリケーション側でフィルタリングを行う', '推論エンドポイントの前段に WAF を配置してリクエストを制限する'],
+    correct:[0],
+    why:['正しい。データポイズニングは学習・カスタマイズ前のデータ層で対処するのが最善で、データ浄化フィルターをパイプラインに組み込みます。','誤り。事後対応ではモデルがすでに汚染データを学習してしまっています。','誤り。出力フィルタリングは有用ですが、学習データの汚染そのものは防げません。','誤り。WAF はリクエストの制御であり、学習データの混入を防ぐ手段ではありません。']},
+  {id:'p1096', domain:'security', type:'single', source:SOURCES.dataPoisoning, text:'テキストデータをモデルのカスタマイズに使う前に、有害・不適切な内容を検出して取り除くために利用が提案されているものはどれですか？',
+    choices:['Amazon Macie', 'AWS CloudTrail', 'Amazon Bedrock Guardrails の API', 'Amazon Inspector'],
+    correct:[2],
+    why:['誤り。Macie は S3 内の機密データ（PII など）を検出するサービスで、有害コンテンツの判定用ではありません。','誤り。CloudTrail は API 呼び出しの監査ログ用です。','正しい。Generative AI Lens は、テキストデータのフィルタリングに Bedrock Guardrails の API を使うことを挙げています。','誤り。Inspector は脆弱性を検出するサービスです。']},
+  {id:'p1097', domain:'security', type:'single', source:SOURCES.dataPoisoning, text:'ある会社が、ファインチューニング用の社内データに誤情報や偏った内容が混入していないか心配しています。この懸念に最も関係する脅威はどれですか？',
+    choices:['データポイズニング', 'モデル反転攻撃', 'クレデンシャルの漏えい', 'リージョン障害による可用性低下'],
+    correct:[0],
+    why:['正しい。意図的か過失かを問わず、不適切なデータが学習に混入してモデルがそれを学習するのがデータポイズニングです。','誤り。モデル反転は出力から学習データを復元しようとする攻撃で、混入データの問題ではありません。','誤り。認証情報の漏えいはアクセス管理の問題で、学習データの品質とは別です。','誤り。可用性の問題であり、データ内容の汚染とは関係ありません。']},
 ];
 
 var MOCK_POOL = [

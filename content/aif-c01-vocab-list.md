@@ -217,7 +217,7 @@
 | 211 | Model Context Protocol (MCP) | genai | v159 |
 | 212 | Curated Data Sources | responsible | v266 |
 | 213 | Model Registry | aiml | v148 |
-| 214 | Prompt Poisoning | fm | 未 |
+| 214 | Prompt Poisoning | fm | 除外 |
 | 215 | Audit Trail | security | v201 |
 | 216 | ML Pipeline | aiml | v202 |
 | 217 | Agent Memory Management | genai | v199 |
@@ -349,7 +349,7 @@
 | 343 | AWS Data Exchange | aiml | 未 |
 | 344 | Selection Bias | responsible | 未 |
 | 345 | Amazon Titan Embeddings | fm | 未 |
-| 346 | Data Poisoning | security | 未 |
+| 346 | Data Poisoning | security | v293 |
 | 347 | Amazon Kinesis | aiml | 未 |
 | 348 | Amazon Bedrock Cross-Region Inference | genai | v213 |
 | 349 | Amazon Athena | aiml | 未 |

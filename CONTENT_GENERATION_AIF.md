@@ -849,3 +849,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock のデータ保持モード（none=ゼロデータ保持、リージョン単位でアカウント／プロジェクトに設定、有効モードはプロジェクト→アカウント→モデルのデフォルトの最初の inherit 以外）。特定モデル名・保持日数は変わりやすいため問題にしていない。
   新規SOURCES: bedrockRetention（data-retention.html、WebFetch成功）。Generative AI Security Scoping Matrix のブログもWebFetch成功（既存問題で十分カバー済み）。
   見送り: Perplexity は WebSearch で AWS 公式ページが見つからず `未` のまま（公式出典が確認でき次第）。
+- 2026-10-30（定期実行・5回目）: 改訂履歴を確認（WebFetch成功）。v1.2（2026-10-29）が最新で変更なし。VOCAB 1件（v293 Data Poisoning）、PRACTICE 3件（p1095〜p1097: security、single 3）追加。計4件（目安より少ない）。累計 VOCAB=293 / PRACTICE=1097 / MOCK_POOL=500。単語リスト進捗 293/452（除外25）。
+  新規SOURCES: dataPoisoning（Well-Architected Generative AI Lens GENSEC06-BP01、WebFetch成功）。
+  除外: #214 Prompt Poisoning（AWS公式に同名の用語がなく、#346 Data Poisoning と実質重複）。#176 Privacy-enhancing Technologies は WebSearch で Clean Rooms の差分プライバシーは確認できたが、公式ページ本体を fetch していないため `未` のまま。
+  メモ: 正解最長割合は PRACTICE 52%。validate OK。
