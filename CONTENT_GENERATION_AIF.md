@@ -845,3 +845,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-30（定期実行・3回目）: 追加0件（時間内に出典を確認できた題材が不足）。対象サービス一覧（WebFetch成功）で Kiro が Developer Tools に載っていることは確認したが、aws.amazon.com/kiro/ は404、docs.aws.amazon.com 配下の公式説明ページを特定できず、第三者情報のみだったため出典不備。BLEU も SageMaker AI の fmeval 概要ページ（WebFetch成功）・Bedrock評価ページ・machine-translation ページのいずれにも記載がなく、公式出典を確認できなかった。
   除外: #267 Bilingual Evaluation Understudy (BLEU)、#270 Kiro（いずれも公式AWSページで事実確認できず。Kiroは公式docsページが見つかり次第、末尾に再追記して復活可）。
   累計 VOCAB=291 / PRACTICE=1092 / MOCK_POOL=500。
+- 2026-10-30（定期実行・4回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v292 Data Retention）、PRACTICE 2件（p1093〜p1094: security、single 2）追加。計3件（目安より少ない）。累計 VOCAB=292 / PRACTICE=1094 / MOCK_POOL=500。単語リスト進捗 292/452（除外24）。
+  追加トピック: Bedrock のデータ保持モード（none=ゼロデータ保持、リージョン単位でアカウント／プロジェクトに設定、有効モードはプロジェクト→アカウント→モデルのデフォルトの最初の inherit 以外）。特定モデル名・保持日数は変わりやすいため問題にしていない。
+  新規SOURCES: bedrockRetention（data-retention.html、WebFetch成功）。Generative AI Security Scoping Matrix のブログもWebFetch成功（既存問題で十分カバー済み）。
+  見送り: Perplexity は WebSearch で AWS 公式ページが見つからず `未` のまま（公式出典が確認でき次第）。

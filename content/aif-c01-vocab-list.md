@@ -276,7 +276,7 @@
 | 270 | Kiro | genai | 除外 |
 | 271 | Amazon SageMaker Role Manager | responsible | v268 |
 | 272 | BERTScore | fm | v244 |
-| 273 | Data Retention | security | 未 |
+| 273 | Data Retention | security | v292 |
 | 274 | Amazon SageMaker Feature Store | aiml | v140 |
 | 275 | Amazon SageMaker Model Monitor | aiml | v141 |
 | 276 | Strands Agents | genai | v119 |

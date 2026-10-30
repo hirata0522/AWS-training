@@ -22,6 +22,7 @@ var SOURCES = {
   roleManager:{label:'Amazon SageMaker AI: SageMaker Role Manager', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/role-manager.html'},
   rolePersonas:{label:'Amazon SageMaker AI: Role Manager のペルソナリファレンス', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/role-manager-personas.html'},
   scopingMatrix:{label:'AWS: Generative AI Security Scoping Matrix', url:'https://aws.amazon.com/ai/generative-ai/security/scoping-matrix/'},
+  bedrockRetention:{label:'Amazon Bedrock: データ保持 (Data retention)', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html'},
   domain5Guide:{label:'AIF-C01 試験ガイド: ドメイン5 AIソリューションのセキュリティ、コンプライアンス、ガバナンス', url:'https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01-domain5.html'},
   sagemakerDeploy:{label:'Amazon SageMaker AI: 推論のためのモデルのデプロイ', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/deploy-model.html'},
   sagemakerRealtime:{label:'Amazon SageMaker AI: リアルタイム推論', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html'},
@@ -586,6 +587,9 @@ var VOCAB = [
   {id:'v291', term:'Multi-agent Communication Patterns', domain:'genai', source:SOURCES.multiAgent, q:{text:'Amazon Bedrock Agents のマルチエージェントコラボレーションにおける、スーパーバイザーエージェントとコラボレーターエージェントの関係として正しいものはどれですか？',
     choices:['すべてのエージェントが対等で、利用者の質問を全員が同時に受け取り、最初に回答を返したエージェントの結果だけが採用される', 'スーパーバイザーが利用者の質問を受け取り、計画を立てて専門のコラボレーターへタスクを振り分け、結果を取りまとめて応答する階層的な関係', 'コラボレーターが利用者の質問を受け取り、回答できないときだけ別のコラボレーターに転送するため、スーパーバイザーは不要である', 'スーパーバイザーはナレッジベースやガードレールを使えず、コラボレーターのみがそれらの機能を利用できる'], correct:1,
     why:['誤り。マルチエージェントは階層型のモデルで、スーパーバイザーが調整役を担います。早い者勝ちの方式ではありません。','正しい。スーパーバイザーが利用者とのやり取りを受け持ち、計画を作成して関連するリクエストをコラボレーターに振り分けます。','誤り。利用者の質問を受けて計画・オーケストレーションを行うのはスーパーバイザーです。','誤り。スーパーバイザーを含む各エージェントは、ツール、アクショングループ、ナレッジベース、ガードレールなど Bedrock Agents のすべての機能を利用できます。']}},
+  {id:'v292', term:'Data Retention', domain:'security', source:SOURCES.bedrockRetention, q:{text:'Amazon Bedrock の推論リクエストにおけるデータ保持（Data retention）の設定として正しいものはどれですか？',
+    choices:['リージョンごとにアカウント単位またはプロジェクト単位で、プロンプトと出力を保持するかどうかのモードを設定できる', 'すべてのリージョンに一括で適用され、一度設定すると AWS アカウント内のどのモデルでも変更できない', 'プロンプトと出力は常に無期限で保存され、利用者が保持の有無を選ぶ手段は用意されていない', 'モデルプロバイダーが保持ポリシーを一方的に決めるため、利用者側の設定は一切反映されない'], correct:0,
+    why:['正しい。保持の設定はリージョンごとで、アカウント単位またはプロジェクト単位で管理します。none（ゼロデータ保持）などのモードがあります。','誤り。設定はリージョン単位で、他のリージョンには引き継がれません。','誤り。利用者は保持の有無をモード（none など）で制御できます。','誤り。保持ポリシーは利用者側が管理でき、none の設定でモデルが保持を要求する場合はリクエストがブロックされます。']}},
 ];
 
 var PRACTICE = [
@@ -4428,6 +4432,14 @@ var PRACTICE = [
     choices:['3つの担当エージェントの学習データを再学習して1つのモデルに統合する','質問が既存ローン・新規ローン・一般質問のどれに当たるかを判断し、適切な担当エージェントへ振り分ける','担当エージェントが使うナレッジベースのドキュメントをチャンクに分割して埋め込みを作成する','担当エージェントの応答に含まれる個人情報を、ガードレール専用の機能としてマスクする'],
     correct:[1],
     why:['誤り。マルチエージェントは再学習ではなく、エージェント同士の協調によるものです。','正しい。公式の例でも、スーパーバイザーが質問の種類を判断して適切なコラボレーターへ振り分けるとされています。','誤り。チャンキングと埋め込みはナレッジベースの取り込み処理で、まとめ役の役割ではありません。','誤り。個人情報のマスクは Guardrails の機能です。まとめ役の主な役割は振り分けと調整です。']},
+  {id:'p1093', domain:'security', type:'single', source:SOURCES.bedrockRetention, text:'ある企業は、Amazon Bedrock の推論リクエストのプロンプトと出力が AWS の永続ストレージに書き込まれないようにしたいと考えています。設定すべき保持モードはどれですか？',
+    choices:['aws_review', 'inherit', 'default', 'none'],
+    correct:[3],
+    why:['誤り。aws_review は、人間によるレビューのために入力と出力を AWS が保持することを許可するモードです。','誤り。inherit は、より広いスコープの設定に従う（その階層では設定しない）という意味で、保持を止めるモードではありません。','誤り。default はモデル自体の保持ポリシーに従うモードで、安全性や不正利用防止のために保持される場合があります。','正しい。none はゼロデータ保持で、リクエストとレスポンスのデータは永続ストレージに書き込まれません。']},
+  {id:'p1094', domain:'security', type:'single', source:SOURCES.bedrockRetention, text:'Amazon Bedrock でプロジェクトのデータ保持モードが inherit、アカウントのモードが none の場合、そのプロジェクトからのリクエストに適用される有効なモードはどれですか？',
+    choices:['プロジェクトが inherit のため、モデルのデフォルトが優先され、アカウントの設定は無視される','none が適用される。プロジェクト、アカウント、モデルのデフォルトの順で、最初の inherit 以外の値が採用される','アカウントとプロジェクトの設定が矛盾するため、リクエストはすべて拒否される','リージョンに関係なく、すべてのリージョンで同じ none が自動的に適用される'],
+    correct:[1],
+    why:['誤り。inherit は意見なしを意味し、より広いスコープであるアカウントの設定に従います。','正しい。有効なモードは、プロジェクト → アカウント → モデルのデフォルトの順で、最初に inherit 以外となる値で決まります。','誤り。inherit は矛盾ではなく、上位の設定に従う指定です。','誤り。設定はリージョン単位で、他のリージョンには伝わりません。']},
 ];
 
 var MOCK_POOL = [
