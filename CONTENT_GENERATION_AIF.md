@@ -868,3 +868,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: titanTextEmb（Titan Text Embeddings ドキュメント。V2のベクトルサイズ1,024/512/256・用途・類似度計算はベクトルDB側であることをWebFetchで確認）。
   WebFetch失敗/情報なし: SageMaker Clarifyのバイアス種別ページはバイアスの定義が取得できず（Sampling/Selection/Measurement Biasは `未` のまま）。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。VOCABの正解最長割合は57%と高いまま（次回以降、不正解を長めに）。nodeでの読み込み確認済み。
+- 2026-10-30（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v301 Data Governance）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=301 / PRACTICE=1111 / MOCK_POOL=500。
+  新規SOURCES: dataGov（aws.amazon.com/what-is/data-governance/、WebFetch成功）。件数は目安より少ない（出典を本文確認できた題材に限定）。

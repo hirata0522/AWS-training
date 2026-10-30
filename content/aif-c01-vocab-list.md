@@ -281,7 +281,7 @@
 | 275 | Amazon SageMaker Model Monitor | aiml | v141 |
 | 276 | Strands Agents | genai | v119 |
 | 277 | Perplexity | fm | v297 |
-| 278 | Data Governance | security | 未 |
+| 278 | Data Governance | security | v301 |
 | 279 | Amazon Bedrock Model Evaluations | responsible | v232 |
 | 280 | Amazon SageMaker Pipelines | aiml | v149 |
 | 281 | Amazon Bedrock AgentCore | genai | v113 |

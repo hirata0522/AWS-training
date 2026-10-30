@@ -16,6 +16,7 @@ var DOMAINS = {
 var SOURCES = {
   ldaPerplexity:{label:'Amazon SageMaker AI: Latent Dirichlet Allocation (LDA) アルゴリズム（perplexity の説明）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/lda.html'},
   agentcoreEval:{label:'Amazon Bedrock AgentCore: Evaluations の仕組み', url:'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/how-it-works-evaluations.html'},
+  dataGov:{label:'AWS: データガバナンスとは', url:'https://aws.amazon.com/what-is/data-governance/'},
   titanTextEmb:{label:'Amazon Bedrock: Amazon Titan Text Embeddings モデル', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html'},
   multiAgent:{label:'Amazon Bedrock Agents: マルチエージェントコラボレーション', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-multi-agent-collaboration.html'},
   agentsMemory:{label:'Amazon Bedrock Agents: メモリで複数セッションにまたがる会話コンテキストを保持する', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-memory.html'},
@@ -620,6 +621,9 @@ var VOCAB = [
   {id:'v300', term:'Amazon Titan Embeddings', domain:'fm', source:SOURCES.titanTextEmb, q:{text:'Amazon Titan Text Embeddings V2 の説明として正しいものはどれですか？',
     choices:['テキストを受け取ってチャットの応答を生成する、会話向けのテキスト生成モデルである', '画像のみを入力としてベクトルを出力し、テキストの入力には対応していない画像専用の埋め込みモデルである', '画像から文字を抽出してテキスト化するための OCR 機能を提供するモデルである', 'テキストをベクトルに変換する埋め込みモデルで、RAG・文書検索・分類などに利用でき、出力ベクトルのサイズを選べる'], correct:3,
     why:['誤り。Titan Text Embeddings は応答を生成せず、テキストをベクトルに変換します。','誤り。V2 はテキストを入力とする埋め込みモデルです（画像対応は Titan Multimodal Embeddings G1）。','誤り。文字の抽出は Amazon Textract の役割です。','正しい。出力ベクトルサイズは 1,024（既定）・512・256 から選べ、RAG・文書検索・再ランキング・分類などの用途に使われます。']}},
+  {id:'v301', term:'Data Governance', domain:'security', source:SOURCES.dataGov, q:{text:'データガバナンス（data governance）の説明として最も適切なものはどれですか？',
+    choices:['データを誰が・どのように・いつ使えるかを定める役割・責任・標準・ポリシーの枠組みで、データ品質やコンプライアンスの確保にも関わる', 'データを暗号化鍵で保護する仕組みのことで、保管中のデータを暗号化する技術的な機能だけを指す', 'モデルの学習時にハイパーパラメータを自動で調整し、予測精度を高めるための手法である', 'データを別リージョンへ複製して、障害発生時の可用性を高めるためのバックアップ手法である'], correct:0,
+    why:['正しい。データの利用に関する役割・責任・標準を定め、品質・セキュリティ・規制対応を支える枠組みで、AI/ML の学習・推論データにも適用されます。','誤り。暗号化は AWS KMS などによる技術的対策の一部で、ガバナンスはポリシーや責任体制を含むより広い概念です。','誤り。ハイパーパラメータの調整はモデル開発の作業で、データガバナンスとは別です。','誤り。リージョン間の複製は耐障害性の施策であり、データガバナンスの定義ではありません。']}},
 ];
 
 var PRACTICE = [
