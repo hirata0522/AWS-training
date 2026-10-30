@@ -853,3 +853,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: dataPoisoning（Well-Architected Generative AI Lens GENSEC06-BP01、WebFetch成功）。
   除外: #214 Prompt Poisoning（AWS公式に同名の用語がなく、#346 Data Poisoning と実質重複）。#176 Privacy-enhancing Technologies は WebSearch で Clean Rooms の差分プライバシーは確認できたが、公式ページ本体を fetch していないため `未` のまま。
   メモ: 正解最長割合は PRACTICE 52%。validate OK。
+- 2026-10-30（定期実行・6回目）: 改訂履歴を確認（WebFetch成功）。v1.2（2026-10-29）が最新で、今回も追加の変更なし。VOCAB 3件（v294 Threat Detection / v295 Vulnerability Management / v296 RAG Evaluation）、PRACTICE 8件（p1098〜p1105: security 6・fm 2、single 5・multi 1・matching 1）追加。計11件（目安より少ない）。累計 VOCAB=296 / PRACTICE=1105 / MOCK_POOL=500。単語リスト進捗 296/452（除外25）。
+  新規SOURCES: guardduty（What is Amazon GuardDuty、WebFetch成功）、ragEval（Bedrock evaluations RAG評価、WebFetch成功）。Inspector は既存 SOURCES を再利用（WebFetchで内容再確認済み）。
+  見送り: 特になし（#176 Privacy-enhancing Technologies は引き続き `未`）。
+  メモ: 正解最長割合は PRACTICE 52%。validate OK。node は未使用。

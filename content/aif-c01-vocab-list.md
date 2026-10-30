@@ -252,12 +252,12 @@
 | 246 | Amazon Q | genai | 除外 |
 | 247 | Amazon Rekognition | aiml | v128 |
 | 248 | Amazon Bedrock Model Evaluation | fm | v115 |
-| 249 | Threat Detection | security | 未 |
+| 249 | Threat Detection | security | v294 |
 | 250 | Amazon SageMaker Clarify | responsible | v116 |
 | 251 | Amazon Textract | aiml | v129 |
 | 252 | Amazon Q Developer | genai | v151 |
 | 253 | Human-in-the-loop Evaluation | fm | v229 |
-| 254 | Vulnerability Management | security | 未 |
+| 254 | Vulnerability Management | security | v295 |
 | 255 | Amazon Transcribe | aiml | v130 |
 | 256 | Amazon SageMaker Model Cards | responsible | v117 |
 | 257 | Benchmark Dataset | fm | v287 |
@@ -309,7 +309,7 @@
 | 303 | Team Training Requirements | security | 未 |
 | 304 | Amazon SageMaker Real-Time Inference | aiml | v254 |
 | 305 | Amazon SageMaker JumpStart | genai | v118 |
-| 306 | RAG Evaluation | fm | 未 |
+| 306 | RAG Evaluation | fm | v296 |
 | 307 | Regulatory Compliance (AI) | security | 未 |
 | 308 | User Feedback Mechanism | responsible | 未 |
 | 309 | Amazon SageMaker Batch Transform | aiml | v255 |
