@@ -864,3 +864,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-30（定期実行・8回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29。新たな変更なし）。VOCABを2件追加（v297 Perplexity / v298 Agent Evaluation）。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=298 / PRACTICE=1111 / MOCK_POOL=500。単語リスト進捗 298/452（除外25）。
   新規SOURCES: ldaPerplexity（SageMaker AI LDAページ。perplexityの定義と「低いほど良い」をWebFetchで確認）、agentcoreEval（AgentCore Evaluations how-it-works。WebFetch成功）。
   メモ: 件数は目安より大幅に少ない（出典を本文確認できた題材に限定）。VOCABの正解最長割合は57%と高いまま（次回以降、不正解を長めにして是正）。nodeでの読み込み確認済み。
+- 2026-10-30（定期実行・9回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29。新たな変更なし）。VOCABを2件追加（v299 Embedding Model / v300 Amazon Titan Embeddings）。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=300 / PRACTICE=1111 / MOCK_POOL=500。単語リスト進捗 300/452（除外25）。
+  新規SOURCES: titanTextEmb（Titan Text Embeddings ドキュメント。V2のベクトルサイズ1,024/512/256・用途・類似度計算はベクトルDB側であることをWebFetchで確認）。
+  WebFetch失敗/情報なし: SageMaker Clarifyのバイアス種別ページはバイアスの定義が取得できず（Sampling/Selection/Measurement Biasは `未` のまま）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。VOCABの正解最長割合は57%と高いまま（次回以降、不正解を長めに）。nodeでの読み込み確認済み。

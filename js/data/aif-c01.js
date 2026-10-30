@@ -16,6 +16,7 @@ var DOMAINS = {
 var SOURCES = {
   ldaPerplexity:{label:'Amazon SageMaker AI: Latent Dirichlet Allocation (LDA) アルゴリズム（perplexity の説明）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/lda.html'},
   agentcoreEval:{label:'Amazon Bedrock AgentCore: Evaluations の仕組み', url:'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/how-it-works-evaluations.html'},
+  titanTextEmb:{label:'Amazon Bedrock: Amazon Titan Text Embeddings モデル', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html'},
   multiAgent:{label:'Amazon Bedrock Agents: マルチエージェントコラボレーション', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-multi-agent-collaboration.html'},
   agentsMemory:{label:'Amazon Bedrock Agents: メモリで複数セッションにまたがる会話コンテキストを保持する', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-memory.html'},
   promptInjection:{label:'Amazon Bedrock: プロンプトインジェクションのセキュリティ', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-injection.html'},
@@ -613,6 +614,12 @@ var VOCAB = [
   {id:'v298', term:'Agent Evaluation', domain:'fm', source:SOURCES.agentcoreEval, q:{text:'Amazon Bedrock AgentCore Evaluations で計算できる指標の説明として最も適切なものはどれですか？',
     choices:['エージェントが呼び出したツールの正確さや、エンドツーエンドのタスク完了（ゴール達成）の正しさ', 'エージェントが利用する VPC エンドポイントの帯域幅とパケット損失率', 'エージェントの学習データに含まれる個人情報の件数', 'エージェントのコンテナ イメージに含まれる脆弱性の数'], correct:0,
     why:['正しい。AgentCore Evaluations はタスク完了の正しさ、ツール呼び出しの正確さ、独自に定義したカスタム指標を計算してエージェントの性能を評価します。','誤り。ネットワーク性能の測定は、エージェントの振る舞いの品質評価ではありません。','誤り。個人情報の検出は Amazon Macie や Comprehend などの役割です。','誤り。脆弱性スキャンは Amazon Inspector などの役割です。']}},
+  {id:'v299', term:'Embedding Model', domain:'fm', source:SOURCES.titanTextEmb, q:{text:'RAG システムにおける埋め込みモデル（embedding model）の役割として最も適切なものはどれですか？',
+    choices:['文章などの非構造化テキストを意味を表すベクトルに変換する。類似度の計算と検索はベクトルデータベース側が行う', '入力テキストに対する最終的な回答文を生成し、取得した文書の内容をわかりやすく要約して返す', 'ベクトルデータベース内のインデックスを管理して、類似度の高い文書を高速に検索して返す', '利用者の入力から有害な内容や機密情報を検出して、ブロックまたはマスクする'], correct:0,
+    why:['正しい。埋め込みモデルはテキストを (1 x n) のベクトルにする役割で、類似度の計算と検索そのものはベクトルデータベースが行います。','誤り。回答の生成は基盤モデル（テキスト生成モデル）の役割で、埋め込みモデルはベクトルを出力します。','誤り。ベクトルの保存・検索はベクトルデータベース（OpenSearch Service 等）の役割です。','誤り。有害コンテンツや機密情報の検出は Bedrock Guardrails の役割です。']}},
+  {id:'v300', term:'Amazon Titan Embeddings', domain:'fm', source:SOURCES.titanTextEmb, q:{text:'Amazon Titan Text Embeddings V2 の説明として正しいものはどれですか？',
+    choices:['テキストを受け取ってチャットの応答を生成する、会話向けのテキスト生成モデルである', '画像のみを入力としてベクトルを出力し、テキストの入力には対応していない画像専用の埋め込みモデルである', '画像から文字を抽出してテキスト化するための OCR 機能を提供するモデルである', 'テキストをベクトルに変換する埋め込みモデルで、RAG・文書検索・分類などに利用でき、出力ベクトルのサイズを選べる'], correct:3,
+    why:['誤り。Titan Text Embeddings は応答を生成せず、テキストをベクトルに変換します。','誤り。V2 はテキストを入力とする埋め込みモデルです（画像対応は Titan Multimodal Embeddings G1）。','誤り。文字の抽出は Amazon Textract の役割です。','正しい。出力ベクトルサイズは 1,024（既定）・512・256 から選べ、RAG・文書検索・再ランキング・分類などの用途に使われます。']}},
 ];
 
 var PRACTICE = [

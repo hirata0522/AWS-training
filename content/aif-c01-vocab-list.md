@@ -338,7 +338,7 @@
 | 332 | HIPAA | security | 未 |
 | 333 | Amazon EMR | aiml | 未 |
 | 334 | Amazon Bedrock Flows | genai | v211 |
-| 335 | Embedding Model | fm | 未 |
+| 335 | Embedding Model | fm | v299 |
 | 336 | SOC Reports | security | 未 |
 | 337 | Amazon Redshift | aiml | 未 |
 | 338 | Sampling Bias | responsible | 未 |
@@ -348,7 +348,7 @@
 | 342 | Amazon Bedrock Playground | genai | v212 |
 | 343 | AWS Data Exchange | aiml | 未 |
 | 344 | Selection Bias | responsible | 未 |
-| 345 | Amazon Titan Embeddings | fm | 未 |
+| 345 | Amazon Titan Embeddings | fm | v300 |
 | 346 | Data Poisoning | security | v293 |
 | 347 | Amazon Kinesis | aiml | 未 |
 | 348 | Amazon Bedrock Cross-Region Inference | genai | v213 |
