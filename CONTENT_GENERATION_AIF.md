@@ -834,3 +834,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock Guardrails 機密情報フィルター（Block/Mask/検出のみ、カスタム正規表現、組み込みPII種類、確率的ML検出、モデル呼び出しログには元の入力が残る点）。
   新規SOURCES: なし（既存 sensitiveFilters を再利用。guardrails-sensitive-filters.html をWebFetchで本文確認、成功）。
   メモ: 正解最長割合は PRACTICE 52%。件数は目安より少ない（出典を確認できた範囲に限定）。
+- 2026-10-30（定期実行）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB・MOCK_POOLの追加は0件。PRACTICEを5件（p1083〜p1087: genai、single 4 / multi 1）追加。累計 VOCAB=290 / PRACTICE=1087 / MOCK_POOL=500。単語リスト進捗 290/453（除外23）。
+  追加トピック: Bedrock Agents（Classic）のメモリ（有効化と保存期間1〜365日、memoryId、セッション関連付けの条件、非同期の要約）。
+  新規SOURCES: agentsMemory（agents-memory.html、WebFetch成功。ページに「Bedrock Agents Classic は新規顧客の受付終了、AgentCoreを検討」との注記あり）。intelligent prompt routing ページも確認したが既存問題で十分カバー済みのため追加せず。
+  メモ: 正解最長割合は PRACTICE 52%。件数は目安より少ない（出典確認済みの未カバー話題が見つからず）。nodeでの読み込み確認済み（290/1087/500）。

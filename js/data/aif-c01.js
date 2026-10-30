@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  agentsMemory:{label:'Amazon Bedrock Agents: メモリで複数セッションにまたがる会話コンテキストを保持する', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-memory.html'},
   promptInjection:{label:'Amazon Bedrock: プロンプトインジェクションのセキュリティ', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-injection.html'},
   groundCheck:{label:'Amazon Bedrock Guardrails: コンテキストグラウンディングチェックでハルシネーションをフィルタリングする', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-contextual-grounding-check.html'},
   deniedTopics:{label:'Amazon Bedrock Guardrails: 拒否トピックで有害なコンテンツをブロックする', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-denied-topics.html'},
@@ -4383,6 +4384,26 @@ var PRACTICE = [
     choices:['ログの input フィールドには、ガードレールによる介入に関係なく元のリクエストがそのまま記録されるため、ログ側の保護（例: CloudWatch のログデータ保護）が別途必要になる','マスクされた入力だけがログに記録されるため、ログ側の追加対策は不要である','ログの保存時に Guardrails が自動的に PII を削除する','モデル呼び出しログは Guardrails を設定すると自動的に無効化される'],
     correct:[0],
     why:['正しい。PII のマスクはモデルへ送る入力と返される応答に適用されますが、呼び出しログの input には元のリクエストが残ります。ログの機密情報は CloudWatch のログデータ保護などで別途守ります。','誤り。ログには元の未加工のリクエストが記録されます。','誤り。Guardrails がログ内の PII を自動で削除することはありません。','誤り。ガードレールの設定でログが自動的に無効になることはありません。']},
+  {id:'p1083', domain:'genai', type:'single', source:SOURCES.agentsMemory, text:'Amazon Bedrock Agents（Classic）で、同じユーザーの過去の複数セッションの要約を新しい会話に引き継ぎたい場合、エージェントの設定として正しいものはどれですか？',
+    choices:['エージェントのメモリ設定を有効にし、保存期間を指定する','エージェントに Guardrails を関連付けて過去の会話を保持させる','ナレッジベースのチャンキング戦略を階層型に変更する','エージェントの Provisioned Throughput を購入してコンテキストを延長する'],
+    correct:[0],
+    why:['正しい。エージェントはメモリを有効にして保存期間を指定すると、複数セッションにまたがる会話コンテキストを保持できます。','誤り。Guardrails は入力と応答の内容を制御する機能で、会話履歴の保持は行いません。','誤り。チャンキングはナレッジベースの文書の分割方法で、会話の記憶とは無関係です。','誤り。Provisioned Throughput は呼び出し容量を確保する購入オプションで、会話の記憶には関係しません。']},
+  {id:'p1084', domain:'genai', type:'single', source:SOURCES.agentsMemory, text:'Amazon Bedrock Agents のメモリを複数のユーザーで利用するとき、ユーザーごとに記憶を分けて次回のセッションに読み込ませるために必要なことはどれですか？',
+    choices:['ユーザーごとに別々のナレッジベースを作成する','同じユーザーには毎回同じ memoryId を指定してエージェントを呼び出す','ユーザーごとに別々の基盤モデルを選択する','セッションごとに新しいエージェントエイリアスを作成する'],
+    correct:[1],
+    why:['誤り。ナレッジベースは文書検索用で、会話メモリの分離とは別の仕組みです。','正しい。エージェントは memoryId ごとにメモリを保存し、同じ memoryId で呼び出すと各セッションの要約が現在のセッションに読み込まれます。','誤り。基盤モデルの選択はメモリの分離に関係しません。','誤り。エイリアスはエージェントのバージョン管理用で、ユーザー別のメモリとは関係しません。']},
+  {id:'p1085', domain:'genai', type:'single', source:SOURCES.agentsMemory, text:'Amazon Bedrock Agents でメモリを有効にした場合、セッションの保存期間についての説明として正しいものはどれですか？',
+    choices:['セッション要約は7日間のみ保存され、変更できない','セッション要約は保存期間の指定にかかわらず永久に保存される','保存期間は設定できず、会話が終了すると同時に削除される','最大365日間保持され、1〜365日の範囲で保存期間を設定できる'],
+    correct:[3],
+    why:['誤り。7日間固定ではなく、保存期間を設定できます。','誤り。指定した期間を過ぎたセッション要約は削除されます。','誤り。保存期間は1〜365日の範囲で任意に設定できます。','正しい。メモリを有効にするとセッションは最大365日保持され、1〜365日で保存期間を設定でき、それを超えた要約は削除されます。']},
+  {id:'p1086', domain:'genai', type:'multi', source:SOURCES.agentsMemory, text:'Amazon Bedrock Agents のメモリについて正しい記述はどれですか？（2つ選択）',
+    choices:['メモリを有効にしても、会話コンテキストは単一セッション内でしか保持されない','メモリは基盤モデルを使ってセッションを要約する処理（メモリの要約）によって作られる','メモリに保存されたセッション要約は、いつでも削除してクリアできる','メモリはユーザーが sessionId を指定した時点で自動的に全ユーザー間で共有される','メモリの要約は、エージェントの応答が返る前に同期的に実行される'],
+    correct:[1,2],
+    why:['誤り。メモリを有効にすると複数セッションにまたがる会話コンテキストを保持できます（既定では単一セッションのみ）。','正しい。エージェントはメモリ要約のプロンプトテンプレートで基盤モデルを呼び出し、セッションを要約します。','正しい。保存されたセッションを削除すれば、メモリをいつでもクリアできます。','誤り。メモリは memoryId ごとに保存されるので、ユーザーごとに分けて扱います。','誤り。要約はセッション終了後に非同期のフローで実行されます。']},
+  {id:'p1087', domain:'genai', type:'single', source:SOURCES.agentsMemory, text:'Amazon Bedrock Agents でメモリを有効にしたとき、現在のセッションがメモリコンテキストに関連付けられるタイミングとして正しいものはどれですか？',
+    choices:['エージェントを初めて作成した時点','同じ sessionId で endSession を true にして呼び出したとき、または idleSessionTimeout が経過したとき','アクショングループが Lambda 関数を呼び出した時点','ナレッジベースの同期ジョブが完了した時点'],
+    correct:[1],
+    why:['誤り。作成時点では会話セッションはまだ存在しません。','正しい。セッションを明示的に終了したとき、またはアイドルセッションのタイムアウトが経過したときに、メモリコンテキストに関連付けられます。','誤り。アクショングループの呼び出しはメモリの関連付けとは関係しません。','誤り。ナレッジベースの同期は文書の取り込み処理で、会話メモリとは別です。']},
 ];
 
 var MOCK_POOL = [
