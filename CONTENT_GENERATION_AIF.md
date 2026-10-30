@@ -842,3 +842,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: multiAgent（agents-multi-agent-collaboration.html、WebFetch成功。Bedrock Agents Classic は新規受付終了の注記あり）。確認できたのはスーパーバイザー/コラボレーターの階層関係・役割明確化・保存後に関連付ける手順のみで、routingモードの詳細は子ページ取得が不十分だったため問題にしていない。
   除外: Amazon Bedrock Studio（公式ページで現状を確認できず）。
   メモ: 正解最長割合は PRACTICE 52%。validate OK。
+- 2026-10-30（定期実行・3回目）: 追加0件（時間内に出典を確認できた題材が不足）。対象サービス一覧（WebFetch成功）で Kiro が Developer Tools に載っていることは確認したが、aws.amazon.com/kiro/ は404、docs.aws.amazon.com 配下の公式説明ページを特定できず、第三者情報のみだったため出典不備。BLEU も SageMaker AI の fmeval 概要ページ（WebFetch成功）・Bedrock評価ページ・machine-translation ページのいずれにも記載がなく、公式出典を確認できなかった。
+  除外: #267 Bilingual Evaluation Understudy (BLEU)、#270 Kiro（いずれも公式AWSページで事実確認できず。Kiroは公式docsページが見つかり次第、末尾に再追記して復活可）。
+  累計 VOCAB=291 / PRACTICE=1092 / MOCK_POOL=500。

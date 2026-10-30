@@ -270,10 +270,10 @@
 | 264 | Amazon SageMaker Model Governance | responsible | v231 |
 | 265 | Amazon Quick | genai | v195 |
 | 266 | AWS Transform | aiml | v245 |
-| 267 | Bilingual Evaluation Understudy (BLEU) | fm | 未 |
+| 267 | Bilingual Evaluation Understudy (BLEU) | fm | 除外 |
 | 268 | Data Residency | security | v248 |
 | 269 | Amazon SageMaker Data Wrangler | aiml | v142 |
-| 270 | Kiro | genai | 未 |
+| 270 | Kiro | genai | 除外 |
 | 271 | Amazon SageMaker Role Manager | responsible | v268 |
 | 272 | BERTScore | fm | v244 |
 | 273 | Data Retention | security | 未 |
