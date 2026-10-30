@@ -838,3 +838,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   追加トピック: Bedrock Agents（Classic）のメモリ（有効化と保存期間1〜365日、memoryId、セッション関連付けの条件、非同期の要約）。
   新規SOURCES: agentsMemory（agents-memory.html、WebFetch成功。ページに「Bedrock Agents Classic は新規顧客の受付終了、AgentCoreを検討」との注記あり）。intelligent prompt routing ページも確認したが既存問題で十分カバー済みのため追加せず。
   メモ: 正解最長割合は PRACTICE 52%。件数は目安より少ない（出典確認済みの未カバー話題が見つからず）。nodeでの読み込み確認済み（290/1087/500）。
+- 2026-10-30（定期実行・2回目）: 改訂履歴を再確認（WebFetch成功）。v1.2（2026-10-29）が最新で変更は対象外サービス一覧の削除のみ。VOCAB 1件（v291 Multi-agent Communication Patterns）、PRACTICE 5件（p1088〜p1092: genai、single 5）追加。計6件（目安より少ない）。累計 VOCAB=291 / PRACTICE=1092 / MOCK_POOL=500。単語リスト進捗 291/452（除外24）。
+  新規SOURCES: multiAgent（agents-multi-agent-collaboration.html、WebFetch成功。Bedrock Agents Classic は新規受付終了の注記あり）。確認できたのはスーパーバイザー/コラボレーターの階層関係・役割明確化・保存後に関連付ける手順のみで、routingモードの詳細は子ページ取得が不十分だったため問題にしていない。
+  除外: Amazon Bedrock Studio（公式ページで現状を確認できず）。
+  メモ: 正解最長割合は PRACTICE 52%。validate OK。

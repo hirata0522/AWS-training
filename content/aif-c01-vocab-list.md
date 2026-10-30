@@ -239,12 +239,12 @@
 | 233 | Amazon Bedrock Prompt Management | fm | v114 |
 | 234 | Output Validation | security | 未 |
 | 235 | Traditional ML vs Foundation Models | aiml | v284 |
-| 236 | Multi-agent Communication Patterns | genai | 未 |
+| 236 | Multi-agent Communication Patterns | genai | v291 |
 | 237 | Amazon Comprehend | aiml | v125 |
 | 238 | Prompt Versioning | fm | v198 |
 | 239 | Source Citation | security | v200 |
 | 240 | Amazon Lex | aiml | v126 |
-| 241 | Amazon Bedrock Studio | genai | 未 |
+| 241 | Amazon Bedrock Studio | genai | 除外 |
 | 242 | Human Audit | responsible | 未 |
 | 243 | Amazon Bedrock Prompt Optimization | fm | v219 |
 | 244 | Application Security | security | 未 |
