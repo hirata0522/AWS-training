@@ -909,3 +909,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-31（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v316 Vector Index）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=316 / PRACTICE=1118 / MOCK_POOL=500。
   新規SOURCES: なし（vectorDb を再利用。WebFetch成功。k-NNインデックス、HNSW・IVFの記述を確認）。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=1。
+- 2026-10-31（定期実行・11回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。VOCAB 4件（v317 Grounding / v318 System Prompt / v319 Amazon Fraud Detector / v320 Amazon Forecast）、PRACTICE 3件（p1119〜p1121、いずれもコンテキストグラウンディングチェック、responsible）追加。MOCK_POOLは目標500達成済みで追加0件。累計 VOCAB=320 / PRACTICE=1121 / MOCK_POOL=500。単語リスト進捗 320/447（除外29）。
+  新規SOURCES: なし（contextualGrounding / converseApi / fraudDetector / forecast を再利用。各ページをWebFetchで本文確認、すべて成功。Fraud Detector は2025-11-07以降、Forecast も新規顧客の受付終了の注記を確認し、問題文・解説に明記）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。VOCAB正解位置=0,0,2,1。

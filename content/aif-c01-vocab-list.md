@@ -368,7 +368,7 @@
 | 362 | Customer Feedback Metric | aiml | 未 |
 | 363 | Cost-Benefit Analysis (AI) | aiml | 未 |
 | 364 | Model Size | genai | 未 |
-| 365 | Grounding | fm | 未 |
+| 365 | Grounding | fm | v317 |
 | 366 | Supply Chain Risk (AI) | security | 未 |
 | 367 | Model Drift Monitoring | responsible | 未 |
 | 368 | Amazon Mechanical Turk | aiml | 未 |
@@ -377,11 +377,11 @@
 | 371 | Multilingual Support | genai | 未 |
 | 372 | Amazon Augmented AI (A2I) | aiml | v276 |
 | 373 | Toxicity | responsible | 未 |
-| 374 | System Prompt | fm | 未 |
+| 374 | System Prompt | fm | v318 |
 | 375 | Penetration Testing (AI) | security | 未 |
-| 376 | Amazon Fraud Detector | aiml | 未 |
+| 376 | Amazon Fraud Detector | aiml | v319 |
 | 377 | Speed to Market | genai | 未 |
-| 378 | Amazon Forecast | aiml | 未 |
+| 378 | Amazon Forecast | aiml | v320 |
 | 379 | Role Prompting | fm | 未 |
 | 380 | Secure Data Engineering | security | 未 |
 | 381 | Harmful Content | responsible | 未 |
