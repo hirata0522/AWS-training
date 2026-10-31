@@ -18,6 +18,8 @@ var SOURCES = {
   agentcoreEval:{label:'Amazon Bedrock AgentCore: Evaluations の仕組み', url:'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/how-it-works-evaluations.html'},
   dataGov:{label:'AWS: データガバナンスとは', url:'https://aws.amazon.com/what-is/data-governance/'},
   hipaa:{label:'AWS: HIPAA コンプライアンス', url:'https://aws.amazon.com/compliance/hipaa-compliance/'},
+  emr:{label:'Amazon EMR: What is Amazon EMR?', url:'https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html'},
+  soc:{label:'AWS: SOC コンプライアンス FAQ', url:'https://aws.amazon.com/compliance/soc-faqs/'},
   gdpr:{label:'AWS: GDPR センター', url:'https://aws.amazon.com/compliance/gdpr-center/'},
   titanTextEmb:{label:'Amazon Bedrock: Amazon Titan Text Embeddings モデル', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html'},
   multiAgent:{label:'Amazon Bedrock Agents: マルチエージェントコラボレーション', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-multi-agent-collaboration.html'},
@@ -634,6 +636,14 @@ var VOCAB = [
     choices:['EU 域内の組織だけが対象で、EU 域外の組織が EU 域内の個人のデータを扱う場合は適用されない', 'GDPR 対応は AWS がすべて担うため、顧客はデータの保存場所や暗号化、アクセス管理を設定する必要がない', 'GDPR は責任共有モデルを変えず、顧客はデータの保存場所・暗号化・アクセス管理を自ら制御し、AWS は処理者として責任を分担する', 'GDPR は米国の医療情報を保護する法律であり、AWS Artifact の BAA を締結することで対応が完了する'],
     correct:2,
     why:['誤り。GDPR は EU 域内の個人のデータを扱う域外の組織にも適用されます。','誤り。責任共有モデルは変わらず、データの保存場所・暗号化・アクセス管理は顧客が制御します。','正しい。GDPR は責任共有モデルを変えません。AWS はデータ処理者（サブプロセッサー）などの立場を担い、顧客はデータ管理者または処理者としての責任を負います。','誤り。米国の医療情報を対象とするのは HIPAA で、GDPR は EU の個人情報保護法です。']}},
+  {id:'v304', term:'Amazon EMR', domain:'aiml', source:SOURCES.emr, q:{text:'Amazon EMR の説明として正しいものはどれですか？',
+    choices:['Apache Hadoop や Apache Spark などのビッグデータフレームワークを実行し、大量のデータを処理・分析するマネージドクラスタープラットフォームである','機密データを自動的に検出し、Amazon S3 内の個人情報を分類して可視化するマネージドサービスである','基盤モデルを API 経由で利用し、プロンプトに対する応答を生成するフルマネージドサービスである','列指向ストレージを使ってペタバイト規模の構造化データに SQL クエリを実行する、マネージドなデータウェアハウスである'],
+    correct:0,
+    why:['正解。Amazon EMR（旧 Elastic MapReduce）は Hadoop や Spark などを実行して大量データを処理するマネージドクラスタープラットフォームで、S3 や DynamoDB との間でデータを移動・変換することもできます。','誤り。機密データの検出と分類は Amazon Macie の役割です。','誤り。基盤モデルを API で利用するのは Amazon Bedrock です。','誤り。これはデータウェアハウスである Amazon Redshift の説明です。']}},
+  {id:'v305', term:'SOC Reports', domain:'security', source:SOURCES.soc, q:{text:'AWS の SOC レポートについて、正しい説明はどれですか？',
+    choices:['SOC 1 と SOC 2 は AWS Artifact から取得でき（閲覧には NDA が必要）、SOC 3 は NDA 不要で AWS のウェブサイトから公開されている', 'SOC レポートは AWS Config のルールを有効にすると自動的に生成され、顧客のアカウント内の構成変更履歴が記録される', 'SOC 2 は財務報告に関する内部統制だけを対象とし、セキュリティや可用性は対象外である', 'SOC 3 は AWS の内部情報を詳細に含む非公開レポートで、AWS サポートに問い合わせた顧客のみが入手できる'],
+    correct:0,
+    why:['正解。SOC 1・SOC 2 は AWS Artifact で取得でき NDA が必要で、SOC 3 は公開の要約レポートです。','誤り。SOC レポートは AWS が受ける第三者監査の報告書であり、AWS Config が生成するものではありません。','誤り。財務報告に関する内部統制は SOC 1 の主題で、SOC 2 はセキュリティ・可用性・機密性・プライバシーが対象です。','誤り。SOC 3 は内部情報を含まない公開用の要約で、誰でもダウンロードできます。']}},
 ];
 
 var PRACTICE = [

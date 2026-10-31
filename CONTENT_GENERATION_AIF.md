@@ -873,3 +873,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-30（定期実行・11回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 2件（v302 HIPAA / v303 GDPR）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=303 / PRACTICE=1111 / MOCK_POOL=500。
   新規SOURCES: hipaa（aws.amazon.com/compliance/hipaa-compliance/、WebFetch成功。BAA・HIPAA eligible services・認証制度なしを確認）、gdpr（aws.amazon.com/compliance/gdpr-center/、WebFetch成功。責任共有モデルが変わらない点・域外適用を確認）。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。VOCABの正解最長割合は57%と高いまま。nodeは未使用。
+- 2026-10-31（定期実行）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 2件（v304 Amazon EMR / v305 SOC Reports）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=305 / PRACTICE=1111 / MOCK_POOL=500。単語リスト進捗 305/449（除外27）。
+  新規SOURCES: emr（EMR管理ガイド What is Amazon EMR、WebFetch成功）、soc（aws.amazon.com/compliance/soc-faqs/、WebFetch成功。SOC1/2はAWS Artifact＋NDA、SOC3は公開を確認）。
+  WebFetch失敗: aws.amazon.com/what-is/amazon-emr/ と aws.amazon.com/compliance/soc/ は404のため不採用。
+  メモ: 今回追加分の正解位置は両方0（次回以降で1〜3に寄せる）。VOCAB正解最長割合58%。validate OK。

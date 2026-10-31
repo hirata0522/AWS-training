@@ -336,10 +336,10 @@
 | 330 | Algorithmic Bias | responsible | 未 |
 | 331 | Model Context Window Management | fm | 未 |
 | 332 | HIPAA | security | v302 |
-| 333 | Amazon EMR | aiml | 未 |
+| 333 | Amazon EMR | aiml | v304 |
 | 334 | Amazon Bedrock Flows | genai | v211 |
 | 335 | Embedding Model | fm | v299 |
-| 336 | SOC Reports | security | 未 |
+| 336 | SOC Reports | security | v305 |
 | 337 | Amazon Redshift | aiml | 未 |
 | 338 | Sampling Bias | responsible | 未 |
 | 339 | AWS Lake Formation | aiml | v180 |
