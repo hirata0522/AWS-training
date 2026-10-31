@@ -237,7 +237,7 @@
 | 231 | Self-hosted API | aiml | 未 |
 | 232 | Label Quality Analysis | responsible | 未 |
 | 233 | Amazon Bedrock Prompt Management | fm | v114 |
-| 234 | Output Validation | security | 未 |
+| 234 | Output Validation | security | v311 |
 | 235 | Traditional ML vs Foundation Models | aiml | v284 |
 | 236 | Multi-agent Communication Patterns | genai | v291 |
 | 237 | Amazon Comprehend | aiml | v125 |
