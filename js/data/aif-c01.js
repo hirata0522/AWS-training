@@ -84,6 +84,7 @@ var SOURCES = {
   auroraKb:{label:'Bedrock のナレッジベースとしての Aurora PostgreSQL', url:'https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.VectorDB.html'},
   secretsManager:{label:'AWS Secrets Manager とは', url:'https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html'},
   macie:{label:'Amazon Macie とは', url:'https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html'},
+  infraProtection:{label:'AWS Well-Architected Security Pillar: インフラストラクチャ保護', url:'https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/infrastructure-protection.html'},
   privateLink:{label:'AWS PrivateLink とは', url:'https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html'},
   diffusion:{label:'AWS: 拡散モデル（Stable Diffusion）とは', url:'https://aws.amazon.com/what-is/stable-diffusion/'},
   gan:{label:'AWS: GAN（敵対的生成ネットワーク）とは', url:'https://aws.amazon.com/what-is/gan/'},
@@ -708,6 +709,10 @@ var VOCAB = [
     choices:['Amazon Personalize：ユーザーの行動履歴から商品のレコメンドを生成するサービス', 'Amazon Forecast：履歴データを基に高精度な時系列予測を生成するサービス', 'Amazon Comprehend：テキストから感情やエンティティを抽出するサービス', 'Amazon Kendra：自然言語の質問で社内文書を検索できるインテリジェントな検索サービス'],
     correct:1,
     why:['誤り。Personalize はおすすめの生成が目的で、時系列の数値予測のためのサービスではありません。','正解。Forecast は小売の需要計画やリソース計画などの時系列予測に使えます。なお現在は新規顧客が利用できなくなっています。','誤り。Comprehend は自然言語処理（テキスト分析）のサービスです。','誤り。Kendra は検索サービスで、将来値の予測は行いません。']}},
+  {id:'v321', term:'Infrastructure Protection', domain:'security', source:SOURCES.infraProtection, q:{text:'AWS Well-Architected Frameworkのセキュリティの柱で、多層防御などの制御手法により、ネットワーク境界やアカウント境界といった信頼境界の定義、システムの堅牢化やパッチ適用、WAFやAPIゲートウェイなどのポリシー適用ポイントを通じて、ワークロードを不正アクセスや脆弱性から守る考え方はどれですか？',
+    choices:['Data Classification：データの機密度に応じて分類し、保護レベルを決める取り組み', 'Incident Response：セキュリティインシデントの発生に備え、対応手順を整え、実際に対処する取り組み', 'Identity and Access Management：誰がどのリソースに何をできるかを制御し、認証と認可を管理する取り組み', 'Infrastructure Protection：多層防御で信頼境界・システム構成・ポリシー適用ポイントを守る取り組み'],
+    correct:3,
+    why:['誤り。データ分類は、データの機密度に応じて保護レベルを決める取り組みで、ネットワークやシステム構成の保護そのものではありません。','誤り。インシデント対応は、侵害や障害が起きたときの準備と対処に関する取り組みで、事前の境界・構成の防御とは別の領域です。','誤り。IDとアクセス管理は認証と認可を扱う領域です。信頼境界やパッチ適用、WAFといった防御策を含むインフラストラクチャ保護とは区別されます。','正解。インフラストラクチャ保護は、多層防御などの制御手法で、ワークロードを意図しないアクセスや脆弱性から守る取り組みです。']}},
 ];
 
 var PRACTICE = [
