@@ -906,3 +906,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: なし（aiBias を再利用。ページをWebFetchで本文確認、成功。Selection/Measurement/Algorithm bias の定義を確認）。
   WebFetch情報なし: #338 Sampling Bias は同ページに定義がないため `未` のまま。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=2,1,0。
+- 2026-10-31（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v316 Vector Index）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=316 / PRACTICE=1118 / MOCK_POOL=500。
+  新規SOURCES: なし（vectorDb を再利用。WebFetch成功。k-NNインデックス、HNSW・IVFの記述を確認）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=1。

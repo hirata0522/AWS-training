@@ -358,7 +358,7 @@
 | 352 | Measurement Bias | responsible | v314 |
 | 353 | Model Latency | genai | 未 |
 | 354 | Return on Investment (ROI) | aiml | 未 |
-| 355 | Vector Index | fm | 未 |
+| 355 | Vector Index | fm | v316 |
 | 356 | Adversarial Attack | security | 未 |
 | 357 | Cost per User | aiml | 未 |
 | 358 | Model Complexity | genai | 未 |
