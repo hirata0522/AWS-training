@@ -340,19 +340,19 @@
 | 334 | Amazon Bedrock Flows | genai | v211 |
 | 335 | Embedding Model | fm | v299 |
 | 336 | SOC Reports | security | v305 |
-| 337 | Amazon Redshift | aiml | 未 |
+| 337 | Amazon Redshift | aiml | v307 |
 | 338 | Sampling Bias | responsible | 未 |
 | 339 | AWS Lake Formation | aiml | v180 |
 | 340 | Document Chunking Strategy | fm | 未 |
 | 341 | Compliance Reports | security | 未 |
 | 342 | Amazon Bedrock Playground | genai | v212 |
-| 343 | AWS Data Exchange | aiml | 未 |
+| 343 | AWS Data Exchange | aiml | v308 |
 | 344 | Selection Bias | responsible | 未 |
 | 345 | Amazon Titan Embeddings | fm | v300 |
 | 346 | Data Poisoning | security | v293 |
-| 347 | Amazon Kinesis | aiml | 未 |
+| 347 | Amazon Kinesis | aiml | 除外 |
 | 348 | Amazon Bedrock Cross-Region Inference | genai | v213 |
-| 349 | Amazon Athena | aiml | 未 |
+| 349 | Amazon Athena | aiml | 除外 |
 | 350 | Amazon Kendra GenAI Index | fm | v271 |
 | 351 | Model Inversion | security | 未 |
 | 352 | Measurement Bias | responsible | 未 |

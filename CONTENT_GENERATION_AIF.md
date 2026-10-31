@@ -881,3 +881,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: cleanRoomsDP（Clean Rooms Differential Privacy、WebFetch成功。クエリ結果へのノイズ付加・再識別防止を確認）。
   WebFetch失敗: Well-Architected Security Pillar の SEC05 ページは本文が取得できず（#258 Infrastructure Protection は `未` のまま）。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。
+- 2026-10-31（定期実行・3回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。対象サービス一覧をWebFetchで確認（成功）。VOCAB 2件（v307 Amazon Redshift / v308 AWS Data Exchange）追加。PRACTICE・MOCK_POOLの追加は0件（MOCK_POOLは目標達成済み）。累計 VOCAB=308 / PRACTICE=1111 / MOCK_POOL=500。単語リスト進捗 308/447（除外29）。
+  新規SOURCES: redshift（Redshift管理ガイド What is、WebFetch成功）、dataExchange（Data Exchangeユーザーガイド What is、WebFetch成功）。
+  除外: #347 Amazon Kinesis、#349 Amazon Athena（対象サービス一覧のAnalyticsに無いため）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。VOCAB正解最長割合58%。validate OK。

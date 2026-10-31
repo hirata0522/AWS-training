@@ -21,6 +21,8 @@ var SOURCES = {
   emr:{label:'Amazon EMR: What is Amazon EMR?', url:'https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html'},
   cleanRoomsDP:{label:'AWS Clean Rooms: Differential Privacy', url:'https://docs.aws.amazon.com/clean-rooms/latest/userguide/differential-privacy.html'},
   soc:{label:'AWS: SOC コンプライアンス FAQ', url:'https://aws.amazon.com/compliance/soc-faqs/'},
+  redshift:{label:'Amazon Redshift 管理ガイド: What is Amazon Redshift?', url:'https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html'},
+  dataExchange:{label:'AWS Data Exchange ユーザーガイド: What is AWS Data Exchange?', url:'https://docs.aws.amazon.com/data-exchange/latest/userguide/what-is.html'},
   gdpr:{label:'AWS: GDPR センター', url:'https://aws.amazon.com/compliance/gdpr-center/'},
   titanTextEmb:{label:'Amazon Bedrock: Amazon Titan Text Embeddings モデル', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html'},
   multiAgent:{label:'Amazon Bedrock Agents: マルチエージェントコラボレーション', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-multi-agent-collaboration.html'},
@@ -649,6 +651,14 @@ var VOCAB = [
     choices:['クエリ結果にあらかじめ調整されたノイズを加え、個人のデータが結果にどれだけ寄与したかを分かりにくくして再識別を防ぐ', 'データを保存時に AWS KMS のキーで暗号化し、キーを持つ利用者だけが元のデータを復号して閲覧できるようにする', 'テキストに含まれる氏名や住所などの PII を検出し、出力から自動的に取り除いて不適切な内容をブロックする', 'データセット内の機密データの場所を機械学習で自動検出し、公開状態の S3 バケットがあれば警告を通知する'],
     correct:0,
     why:['正解。差分プライバシーはクエリ結果にノイズを加えて集計的な洞察だけを返し、個人のデータの寄与を隠します。','誤り。保存時の暗号化は KMS などによるデータ保護で、クエリ結果から個人を推測されるリスクへの対策ではありません。','誤り。PII の検出・マスクは Guardrails の機能で、差分プライバシーの説明ではありません。','誤り。機密データの自動検出と通知は Amazon Macie の役割です。']}},
+  {id:'v307', term:'Amazon Redshift', domain:'aiml', source:SOURCES.redshift, q:{text:'Amazon Redshift の説明として正しいものはどれですか？',
+    choices:['リレーショナルデータをミリ秒未満で処理するインメモリのキャッシュサービスで、ML の推論結果の保存に使う', 'ペタバイト規模の分析クエリを標準的な SQL で実行できる、フルマネージドのデータウェアハウスサービス', 'ログやドキュメントを全文検索するための検索・分析エンジンで、ベクトル検索にも対応するサービス', 'グラフ構造のデータを格納し、エンティティ間の関係を高速にたどるためのグラフデータベースサービス'],
+    correct:1,
+    why:['誤り。インメモリキャッシュは Amazon ElastiCache の役割で、Redshift はデータウェアハウスです。','正解。Redshift はフルマネージドでペタバイト規模のデータウェアハウスで、使い慣れた SQL ツールや BI ツールから分析できます。','誤り。全文検索・ベクトル検索は Amazon OpenSearch Service の役割です。','誤り。グラフデータベースは Amazon Neptune です。']}},
+  {id:'v308', term:'AWS Data Exchange', domain:'aiml', source:SOURCES.dataExchange, q:{text:'AWS Data Exchange の説明として正しいものはどれですか？',
+    choices:['ML モデルの学習用データに人手でラベルを付ける作業者を手配するサービス', 'S3 バケット間でオブジェクトを自動的にコピーして、リージョン間のレプリケーションを管理するサービス', '機密データを自動で検出して分類し、S3 内の個人情報を可視化するセキュリティサービス', '他の組織が提供するデータセットを、データグラントや AWS Marketplace のデータ製品として共有・購読できるサービス'],
+    correct:3,
+    why:['誤り。ラベル付けの作業者を手配するのは SageMaker Ground Truth です。','誤り。リージョン間のレプリケーションは S3 のレプリケーション機能の役割です。','誤り。機密データの検出・分類は Amazon Macie の役割です。','正解。Data Exchange は、他組織とのデータ権限の共有や、AWS Marketplace 上のデータ製品の購読・提供を一元管理するサービスです。']}},
 ];
 
 var PRACTICE = [
