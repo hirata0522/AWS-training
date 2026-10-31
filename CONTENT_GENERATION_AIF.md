@@ -902,3 +902,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: なし（dataGov を再利用。WebFetch成功。フレームワーク・役割/責任/標準の記述を確認）。
   WebFetch情報なし: #263 Data Lifecycle は同ページが名称のみで段階の説明がないため `未` のまま。
   メモ: 件数は目安より少ない。正解位置=0。
+- 2026-10-31（定期実行・9回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 3件（v313 Selection Bias / v314 Measurement Bias / v315 Algorithmic Bias）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=315 / PRACTICE=1118 / MOCK_POOL=500。単語リスト進捗 315/447（除外29）。
+  新規SOURCES: なし（aiBias を再利用。ページをWebFetchで本文確認、成功。Selection/Measurement/Algorithm bias の定義を確認）。
+  WebFetch情報なし: #338 Sampling Bias は同ページに定義がないため `未` のまま。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=2,1,0。

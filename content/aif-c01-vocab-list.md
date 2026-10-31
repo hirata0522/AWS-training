@@ -333,7 +333,7 @@
 | 327 | GDPR | security | v303 |
 | 328 | AWS Glue DataBrew | aiml | v181 |
 | 329 | Amazon Bedrock Data Automation | genai | v273 |
-| 330 | Algorithmic Bias | responsible | 未 |
+| 330 | Algorithmic Bias | responsible | v315 |
 | 331 | Model Context Window Management | fm | 未 |
 | 332 | HIPAA | security | v302 |
 | 333 | Amazon EMR | aiml | v304 |
@@ -347,7 +347,7 @@
 | 341 | Compliance Reports | security | 未 |
 | 342 | Amazon Bedrock Playground | genai | v212 |
 | 343 | AWS Data Exchange | aiml | v308 |
-| 344 | Selection Bias | responsible | 未 |
+| 344 | Selection Bias | responsible | v313 |
 | 345 | Amazon Titan Embeddings | fm | v300 |
 | 346 | Data Poisoning | security | v293 |
 | 347 | Amazon Kinesis | aiml | 除外 |
@@ -355,7 +355,7 @@
 | 349 | Amazon Athena | aiml | 除外 |
 | 350 | Amazon Kendra GenAI Index | fm | v271 |
 | 351 | Model Inversion | security | 未 |
-| 352 | Measurement Bias | responsible | 未 |
+| 352 | Measurement Bias | responsible | v314 |
 | 353 | Model Latency | genai | 未 |
 | 354 | Return on Investment (ROI) | aiml | 未 |
 | 355 | Vector Index | fm | 未 |
