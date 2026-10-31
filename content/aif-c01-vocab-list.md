@@ -179,7 +179,7 @@
 | 173 | Precision | aiml | v143 |
 | 174 | Intellectual Property Infringement | responsible | v263 |
 | 175 | Zero-shot Prompting | fm | v136 |
-| 176 | Privacy-enhancing Technologies | security | 未 |
+| 176 | Privacy-enhancing Technologies | security | v306 |
 | 177 | Provisioned Throughput | genai | v171 |
 | 178 | Recall | aiml | v144 |
 | 179 | Single-shot Prompting | fm | 除外 |

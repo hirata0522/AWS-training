@@ -877,3 +877,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: emr（EMR管理ガイド What is Amazon EMR、WebFetch成功）、soc（aws.amazon.com/compliance/soc-faqs/、WebFetch成功。SOC1/2はAWS Artifact＋NDA、SOC3は公開を確認）。
   WebFetch失敗: aws.amazon.com/what-is/amazon-emr/ と aws.amazon.com/compliance/soc/ は404のため不採用。
   メモ: 今回追加分の正解位置は両方0（次回以降で1〜3に寄せる）。VOCAB正解最長割合58%。validate OK。
+- 2026-10-31（定期実行・2回目）: 改訂履歴をWebFetchで確認（最新はv1.2、2026-10-29。新たな変更なし）。VOCAB 1件（v306 Privacy-enhancing Technologies）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=306 / PRACTICE=1111 / MOCK_POOL=500。単語リスト進捗 306/449（除外27）。
+  新規SOURCES: cleanRoomsDP（Clean Rooms Differential Privacy、WebFetch成功。クエリ結果へのノイズ付加・再識別防止を確認）。
+  WebFetch失敗: Well-Architected Security Pillar の SEC05 ページは本文が取得できず（#258 Infrastructure Protection は `未` のまま）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。

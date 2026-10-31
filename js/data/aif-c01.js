@@ -19,6 +19,7 @@ var SOURCES = {
   dataGov:{label:'AWS: データガバナンスとは', url:'https://aws.amazon.com/what-is/data-governance/'},
   hipaa:{label:'AWS: HIPAA コンプライアンス', url:'https://aws.amazon.com/compliance/hipaa-compliance/'},
   emr:{label:'Amazon EMR: What is Amazon EMR?', url:'https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html'},
+  cleanRoomsDP:{label:'AWS Clean Rooms: Differential Privacy', url:'https://docs.aws.amazon.com/clean-rooms/latest/userguide/differential-privacy.html'},
   soc:{label:'AWS: SOC コンプライアンス FAQ', url:'https://aws.amazon.com/compliance/soc-faqs/'},
   gdpr:{label:'AWS: GDPR センター', url:'https://aws.amazon.com/compliance/gdpr-center/'},
   titanTextEmb:{label:'Amazon Bedrock: Amazon Titan Text Embeddings モデル', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-embedding-models.html'},
@@ -644,6 +645,10 @@ var VOCAB = [
     choices:['SOC 1 と SOC 2 は AWS Artifact から取得でき（閲覧には NDA が必要）、SOC 3 は NDA 不要で AWS のウェブサイトから公開されている', 'SOC レポートは AWS Config のルールを有効にすると自動的に生成され、顧客のアカウント内の構成変更履歴が記録される', 'SOC 2 は財務報告に関する内部統制だけを対象とし、セキュリティや可用性は対象外である', 'SOC 3 は AWS の内部情報を詳細に含む非公開レポートで、AWS サポートに問い合わせた顧客のみが入手できる'],
     correct:0,
     why:['正解。SOC 1・SOC 2 は AWS Artifact で取得でき NDA が必要で、SOC 3 は公開の要約レポートです。','誤り。SOC レポートは AWS が受ける第三者監査の報告書であり、AWS Config が生成するものではありません。','誤り。財務報告に関する内部統制は SOC 1 の主題で、SOC 2 はセキュリティ・可用性・機密性・プライバシーが対象です。','誤り。SOC 3 は内部情報を含まない公開用の要約で、誰でもダウンロードできます。']}},
+  {id:'v306', term:'Privacy-enhancing Technologies', domain:'security', source:SOURCES.cleanRoomsDP, q:{text:'プライバシー強化技術（PETs）の一例である AWS Clean Rooms の差分プライバシー（Differential Privacy）について、正しい説明はどれですか？',
+    choices:['クエリ結果にあらかじめ調整されたノイズを加え、個人のデータが結果にどれだけ寄与したかを分かりにくくして再識別を防ぐ', 'データを保存時に AWS KMS のキーで暗号化し、キーを持つ利用者だけが元のデータを復号して閲覧できるようにする', 'テキストに含まれる氏名や住所などの PII を検出し、出力から自動的に取り除いて不適切な内容をブロックする', 'データセット内の機密データの場所を機械学習で自動検出し、公開状態の S3 バケットがあれば警告を通知する'],
+    correct:0,
+    why:['正解。差分プライバシーはクエリ結果にノイズを加えて集計的な洞察だけを返し、個人のデータの寄与を隠します。','誤り。保存時の暗号化は KMS などによるデータ保護で、クエリ結果から個人を推測されるリスクへの対策ではありません。','誤り。PII の検出・マスクは Guardrails の機能で、差分プライバシーの説明ではありません。','誤り。機密データの自動検出と通知は Amazon Macie の役割です。']}},
 ];
 
 var PRACTICE = [
