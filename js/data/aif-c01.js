@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  gtConsolidation:{label:'Amazon SageMaker Ground Truth: アノテーションの統合 (Annotation consolidation)', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html'},
   ldaPerplexity:{label:'Amazon SageMaker AI: Latent Dirichlet Allocation (LDA) アルゴリズム（perplexity の説明）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/lda.html'},
   agentcoreEval:{label:'Amazon Bedrock AgentCore: Evaluations の仕組み', url:'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/how-it-works-evaluations.html'},
   dataGov:{label:'AWS: データガバナンスとは', url:'https://aws.amazon.com/what-is/data-governance/'},
@@ -4606,6 +4607,11 @@ var PRACTICE = [
     prompts:['フォームの重要なキーと値のペアを人間が確認する', '低信頼度の不適切な画像の判定を人間が確認する', 'レビュー結果をもとに、文字起こしのカスタム語彙を作成する'],
     options:['Amazon Comprehend', 'Amazon Transcribe', 'Amazon Rekognition', 'Amazon Textract'], correct:[3,2,1],
     why:['Textract は文書からテキストやキーと値のペアを抽出するサービスで、A2I でその内容を人が確認できます。','Rekognition は画像・動画の分析サービスで、不適切なコンテンツの低信頼度判定を A2I で人が確認できます。','Transcribe は音声の文字起こしで、人間のレビュー結果からカスタム語彙を作れます。Comprehend は感情分析などのテキスト分析で、この3つには当てはまりません。']},
+  {id:'p1118', domain:'aiml', type:'single', source:SOURCES.gtConsolidation,
+    text:'SageMaker Ground Truth のラベリングジョブで、複数の作業者が付けた個別のアノテーションを1つのラベルにまとめる処理を何と呼びますか？',
+    choices:['アノテーションの統合（annotation consolidation）','特徴量エンジニアリング（feature engineering）','データ拡張（data augmentation）','モデルドリフトの検出（drift detection）'],
+    correct:[0],
+    why:['正しい。複数の作業者のアノテーションを組み合わせ、真のラベルの確率的な推定値として1つのラベルを作ります。','誤り。特徴量エンジニアリングは学習用の入力特徴を作る・変換する工程で、作業者の回答の統合ではありません。','誤り。データ拡張は既存データから学習データを水増しする手法です。','誤り。ドリフト検出は本番データの分布変化を監視する仕組み(Model Monitor等)です。']},
 ];
 
 var MOCK_POOL = [

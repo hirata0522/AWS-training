@@ -895,3 +895,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: なし（guardrails を再利用。ページをWebFetchで本文確認、成功。入力・応答の両方の評価、ApplyGuardrail単独利用を確認）。
   WebFetch失敗/情報なし: Well-Architected ML Lens の lifecycle ページは本文が取得できず（#221 Technical Debt (ML) は `未` のまま）。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=1、正解は最長ではない。
+- 2026-10-31（定期実行・7回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。PRACTICE 1件（p1118 アノテーション統合、aiml）追加。VOCAB・MOCK_POOLは追加0件。累計 VOCAB=311 / PRACTICE=1118 / MOCK_POOL=500。
+  新規SOURCES: gtConsolidation（Ground Truth の annotation consolidation ページをWebFetchで本文確認、成功。同ページに「Ground Truth は新規顧客の受付を終了」との注記あり）。
+  メモ: #232 Label Quality Analysis は公式ページで同名概念を確認できず `未` のまま。件数は目安より少ない。
