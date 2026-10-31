@@ -245,7 +245,7 @@
 | 239 | Source Citation | security | v200 |
 | 240 | Amazon Lex | aiml | v126 |
 | 241 | Amazon Bedrock Studio | genai | 除外 |
-| 242 | Human Audit | responsible | 未 |
+| 242 | Human Audit | responsible | v310 |
 | 243 | Amazon Bedrock Prompt Optimization | fm | v219 |
 | 244 | Application Security | security | 未 |
 | 245 | Amazon Polly | aiml | v127 |

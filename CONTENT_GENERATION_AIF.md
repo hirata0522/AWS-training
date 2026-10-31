@@ -888,3 +888,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-31（定期実行・4回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v309 Document Chunking Strategy）、PRACTICE 2件（p1112 ハイブリッド検索 / p1113 クエリ分解）追加。MOCK_POOLは目標達成済みで追加0件。累計 VOCAB=309 / PRACTICE=1113 / MOCK_POOL=500。単語リスト進捗 309/447（除外29）。
   新規SOURCES: なし（bedrockChunking・bedrockKbQuery を再利用。両ページをWebFetchで本文確認、成功）。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置はVOCAB=1、PRACTICE=3,2。
+- 2026-10-31（定期実行・5回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29。サービス範囲の新たな変更なし）。VOCAB 1件（v310 Human Audit）、PRACTICE 4件（p1114〜p1117: single 2 / multi 1 / matching 1、すべて responsible）追加。MOCK_POOLは目標達成済みで追加0件。累計 VOCAB=310 / PRACTICE=1117 / MOCK_POOL=500。単語リスト進捗 310/447（除外29）。
+  新規SOURCES: なし（a2i を再利用。A2I ページをWebFetchで本文確認、成功。ページに「A2I は新規顧客の受付を終了」との注記があるため、サービス選択の唯一解とするような問題は避け、ヒューマンレビューの仕組みの理解に絞った）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置は VOCAB=2、PRACTICE=3,0,[1,3]。正解最長割合は VOCAB 58% / PRACTICE 52% / MOCK 49% と高止まり（今後の追加分は不正解を長めにして調整すること）。
