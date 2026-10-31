@@ -286,7 +286,7 @@
 | 280 | Amazon SageMaker Pipelines | aiml | v149 |
 | 281 | Amazon Bedrock AgentCore | genai | v113 |
 | 282 | LLM-as-a-judge | fm | v230 |
-| 283 | Governance Framework | security | 未 |
+| 283 | Governance Framework | security | v312 |
 | 284 | Amazon SageMaker Ground Truth | aiml | v150 |
 | 285 | Open Source Model Licensing | responsible | 未 |
 | 286 | Amazon SageMaker Canvas | aiml | v236 |

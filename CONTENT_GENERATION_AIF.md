@@ -898,3 +898,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-10-31（定期実行・7回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。PRACTICE 1件（p1118 アノテーション統合、aiml）追加。VOCAB・MOCK_POOLは追加0件。累計 VOCAB=311 / PRACTICE=1118 / MOCK_POOL=500。
   新規SOURCES: gtConsolidation（Ground Truth の annotation consolidation ページをWebFetchで本文確認、成功。同ページに「Ground Truth は新規顧客の受付を終了」との注記あり）。
   メモ: #232 Label Quality Analysis は公式ページで同名概念を確認できず `未` のまま。件数は目安より少ない。
+- 2026-10-31（定期実行・8回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v312 Governance Framework）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=312 / PRACTICE=1118 / MOCK_POOL=500。
+  新規SOURCES: なし（dataGov を再利用。WebFetch成功。フレームワーク・役割/責任/標準の記述を確認）。
+  WebFetch情報なし: #263 Data Lifecycle は同ページが名称のみで段階の説明がないため `未` のまま。
+  メモ: 件数は目安より少ない。正解位置=0。
