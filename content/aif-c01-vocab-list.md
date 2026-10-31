@@ -343,7 +343,7 @@
 | 337 | Amazon Redshift | aiml | v307 |
 | 338 | Sampling Bias | responsible | 未 |
 | 339 | AWS Lake Formation | aiml | v180 |
-| 340 | Document Chunking Strategy | fm | 未 |
+| 340 | Document Chunking Strategy | fm | v309 |
 | 341 | Compliance Reports | security | 未 |
 | 342 | Amazon Bedrock Playground | genai | v212 |
 | 343 | AWS Data Exchange | aiml | v308 |

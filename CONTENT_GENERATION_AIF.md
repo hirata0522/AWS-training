@@ -885,3 +885,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: redshift（Redshift管理ガイド What is、WebFetch成功）、dataExchange（Data Exchangeユーザーガイド What is、WebFetch成功）。
   除外: #347 Amazon Kinesis、#349 Amazon Athena（対象サービス一覧のAnalyticsに無いため）。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。VOCAB正解最長割合58%。validate OK。
+- 2026-10-31（定期実行・4回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v309 Document Chunking Strategy）、PRACTICE 2件（p1112 ハイブリッド検索 / p1113 クエリ分解）追加。MOCK_POOLは目標達成済みで追加0件。累計 VOCAB=309 / PRACTICE=1113 / MOCK_POOL=500。単語リスト進捗 309/447（除外29）。
+  新規SOURCES: なし（bedrockChunking・bedrockKbQuery を再利用。両ページをWebFetchで本文確認、成功）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置はVOCAB=1、PRACTICE=3,2。
