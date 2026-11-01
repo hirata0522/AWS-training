@@ -936,3 +936,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: gensec01Bp01（Well-Architected Generative AI Lens GENSEC01-BP01 をWebFetchで本文確認、成功）。
   WebSearch: NIST AI RMF のAWS公式ページは見つからず #317 は `未` のまま。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=3,2。
+- 2026-11-01（定期実行・7回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。PRACTICE 3件（p1130〜p1132: single、responsible 2 / security 1、Bedrock Guardrailsのセーフガードティア Classic/Standard の違い）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=325 / PRACTICE=1132 / MOCK_POOL=500。
+  新規SOURCES: guardrailTiers（guardrails-tiers ページをWebFetchで本文確認、成功）。プロンプト攻撃ページ(promptAttack)は既存問題で網羅済みのため追加なし。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=0,3,1。
