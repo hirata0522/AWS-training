@@ -946,3 +946,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-01（定期実行・9回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。追加は0件。累計 VOCAB=326 / PRACTICE=1132 / MOCK_POOL=500。単語リスト進捗 326/447（除外30）。
   除外: #338 Sampling Bias — AWS公式「AIバイアスとは」ページ(aws.amazon.com/what-is/ai-bias/)をWebFetchで確認したが "sampling bias" の語は無く、近い概念 Selection Bias は v313 で作成済みのため実質重複と判断。
   メモ: 残りの `未` 行は出典となる公式ページの本文確認が難しいものが多く、今回は無理に追加しなかった。
+- 2026-11-01（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICEを6件（p1133〜p1138: single 4 / multi 1 / matching 1、aiml: 転移学習・強化学習の基本概念）追加。VOCAB追加なし、MOCK_POOLは目標到達済み。累計 VOCAB=326 / PRACTICE=1138 / MOCK_POOL=500。
+  出典: transferLearning / whatIsRl を WebFetch で本文確認（成功）。新規SOURCESなし。transferLearningページには feature extraction と fine-tuning の対比記載がないため問題化せず。nodeでの読み込み確認済み。
+  メモ: 残りの `未` の単語は出典確認が難しいものが多く今回も見送り。
