@@ -160,6 +160,7 @@ var SOURCES = {
   lineage:{label:'Amazon SageMaker ML Lineage Tracking', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html'},
   loraAdapters:{label:'SageMaker AI: LoRAアダプターを使うモデルの推奨設定（LoRAの説明）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/generative-ai-inference-recommendations-adapters.html'},
   designPrompt:{label:'Amazon Bedrock: プロンプトの設計', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/design-a-prompt.html'},
+  latencyOpt:{label:'Amazon Bedrock: レイテンシ最適化推論 (Latency optimized inference)', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/latency-optimized-inference.html'},
   promptGuide:{label:'Amazon Bedrock: プロンプトエンジニアリングの概念', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-engineering-guidelines.html'},
   featureStore:{label:'Amazon SageMaker Feature Store', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html'},
   modelMonitor:{label:'Amazon SageMaker Model Monitor', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html'},
@@ -719,6 +720,10 @@ var VOCAB = [
     choices:['Application Security：SDLC全体にセキュリティ統制とテストを組み込み、欠陥を早期に見つけて修正する取り組み', 'Infrastructure Protection：ネットワーク境界やシステムの堅牢化によってワークロードを守る取り組み', 'Data Protection：保存中・転送中のデータを分類し、暗号化などで保護する取り組み', 'Detection：ログの収集と分析によって、セキュリティイベントや想定外の動作を特定する取り組み'],
     correct:0,
     why:['正解。アプリケーションセキュリティ（AppSec）は、ワークロードのセキュリティ特性を設計・構築・テストするプロセス全体を指し、早期に欠陥を見つけるほど修正のコストと複雑さが小さくなります。','誤り。インフラストラクチャ保護は、信頼境界の定義やシステムの堅牢化など、基盤側の防御を扱う領域です。','誤り。データ保護は、データの分類・暗号化・アクセス制御を扱う領域で、開発プロセスへの統制の組み込みが中心ではありません。','誤り。検出は、ログ収集や分析でイベントを特定する領域で、設計・開発段階の欠陥予防とは別です。']}},
+  {id:'v323', term:'Model Latency', domain:'genai', source:SOURCES.latencyOpt, q:{text:'生成AIアプリケーションで、リクエストを送ってからモデルの応答が返るまでの所要時間を指す指標はどれですか？Amazon Bedrockでは、対応モデルで呼び出し時のパラメータ（performanceConfig の latency）を設定することで、この時間を短縮する「最適化」オプションを選べます。',
+    choices:['Model Accuracy：モデルの出力が正解とどれだけ一致するかを表す品質の指標', 'Model Throughput：単位時間あたりに処理できるリクエストやトークンの量を表す指標', 'Model Latency：リクエストから応答までの遅延時間で、応答性能を左右する指標', 'Model Drift：時間の経過とともに入力データの傾向が変わり、性能が劣化していく現象'],
+    correct:2,
+    why:['誤り。精度は出力の品質を表す指標で、応答の速さとは別の観点です。','誤り。スループットは単位時間あたりの処理量で、1回のリクエストの待ち時間を指すものではありません。','正解。レイテンシはリクエストから応答までの遅延時間です。Bedrockの対応モデルでは performanceConfig の latency を optimized にすると、追加のセットアップやファインチューニングなしで応答時間を短縮でき、既定は standard です。','誤り。ドリフトはデータや環境の変化による性能劣化で、応答時間とは関係しません。']}},
 ];
 
 var PRACTICE = [

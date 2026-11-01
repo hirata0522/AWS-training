@@ -925,3 +925,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=1,3,0。
 - 2026-11-01（定期実行・3回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。出典を本文確認できた題材がなく、VOCAB・PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=322 / PRACTICE=1127 / MOCK_POOL=500。
   WebFetch失敗: SageMaker AIの clarify-bias-detection-and-mitigation / clarify-fairness-and-explainability / data-bias-reports はタイトルのみ返り本文取得不可、aws.amazon.com/what-is/adversarial-machine-learning/ は404。#338 Sampling Bias・#356 Adversarial Attack は `未` のまま。
+- 2026-11-01（定期実行・4回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v323 Model Latency）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=323 / PRACTICE=1127 / MOCK_POOL=500。単語リスト進捗 323/447（除外29）。
+  新規SOURCES: latencyOpt（Bedrock latency-optimized-inference ページをWebFetchで本文確認、成功。performanceConfig の latency=standard|optimized を確認、特定モデル名は問題に含めない）。nodeでの読み込み確認済み。
+  WebFetch失敗: Mechanical Turk の docs ページは403。aws.amazon.com/what-is/ai-bias/ に Sampling Bias / Bias-variance tradeoff の定義はなく #338・#359 は `未` のまま。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=2。

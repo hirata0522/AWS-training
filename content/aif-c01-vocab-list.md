@@ -356,7 +356,7 @@
 | 350 | Amazon Kendra GenAI Index | fm | v271 |
 | 351 | Model Inversion | security | 未 |
 | 352 | Measurement Bias | responsible | v314 |
-| 353 | Model Latency | genai | 未 |
+| 353 | Model Latency | genai | v323 |
 | 354 | Return on Investment (ROI) | aiml | 未 |
 | 355 | Vector Index | fm | v316 |
 | 356 | Adversarial Attack | security | 未 |
