@@ -85,6 +85,7 @@ var SOURCES = {
   secretsManager:{label:'AWS Secrets Manager とは', url:'https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html'},
   macie:{label:'Amazon Macie とは', url:'https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html'},
   infraProtection:{label:'AWS Well-Architected Security Pillar: インフラストラクチャ保護', url:'https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/infrastructure-protection.html'},
+  appSec:{label:'AWS Well-Architected Security Pillar: アプリケーションセキュリティ', url:'https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/application-security.html'},
   privateLink:{label:'AWS PrivateLink とは', url:'https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html'},
   diffusion:{label:'AWS: 拡散モデル（Stable Diffusion）とは', url:'https://aws.amazon.com/what-is/stable-diffusion/'},
   gan:{label:'AWS: GAN（敵対的生成ネットワーク）とは', url:'https://aws.amazon.com/what-is/gan/'},
@@ -713,6 +714,10 @@ var VOCAB = [
     choices:['Data Classification：データの機密度に応じて分類し、保護レベルを決める取り組み', 'Incident Response：セキュリティインシデントの発生に備え、対応手順を整え、実際に対処する取り組み', 'Identity and Access Management：誰がどのリソースに何をできるかを制御し、認証と認可を管理する取り組み', 'Infrastructure Protection：多層防御で信頼境界・システム構成・ポリシー適用ポイントを守る取り組み'],
     correct:3,
     why:['誤り。データ分類は、データの機密度に応じて保護レベルを決める取り組みで、ネットワークやシステム構成の保護そのものではありません。','誤り。インシデント対応は、侵害や障害が起きたときの準備と対処に関する取り組みで、事前の境界・構成の防御とは別の領域です。','誤り。IDとアクセス管理は認証と認可を扱う領域です。信頼境界やパッチ適用、WAFといった防御策を含むインフラストラクチャ保護とは区別されます。','正解。インフラストラクチャ保護は、多層防御などの制御手法で、ワークロードを意図しないアクセスや脆弱性から守る取り組みです。']}},
+  {id:'v322', term:'Application Security', domain:'security', source:SOURCES.appSec, q:{text:'AWS Well-Architected Frameworkのセキュリティの柱で、開発するワークロードのセキュリティ特性を設計・構築・テストする全体のプロセスを指し、脅威モデリングや自動テスト、コードレビュー、依存関係の管理などをソフトウェア開発ライフサイクル（SDLC）に組み込む考え方はどれですか？',
+    choices:['Application Security：SDLC全体にセキュリティ統制とテストを組み込み、欠陥を早期に見つけて修正する取り組み', 'Infrastructure Protection：ネットワーク境界やシステムの堅牢化によってワークロードを守る取り組み', 'Data Protection：保存中・転送中のデータを分類し、暗号化などで保護する取り組み', 'Detection：ログの収集と分析によって、セキュリティイベントや想定外の動作を特定する取り組み'],
+    correct:0,
+    why:['正解。アプリケーションセキュリティ（AppSec）は、ワークロードのセキュリティ特性を設計・構築・テストするプロセス全体を指し、早期に欠陥を見つけるほど修正のコストと複雑さが小さくなります。','誤り。インフラストラクチャ保護は、信頼境界の定義やシステムの堅牢化など、基盤側の防御を扱う領域です。','誤り。データ保護は、データの分類・暗号化・アクセス制御を扱う領域で、開発プロセスへの統制の組み込みが中心ではありません。','誤り。検出は、ログ収集や分析でイベントを特定する領域で、設計・開発段階の欠陥予防とは別です。']}},
 ];
 
 var PRACTICE = [
@@ -4668,6 +4673,21 @@ var PRACTICE = [
     choices:['スコアが 0.7 未満の応答がハルシネーションとして検出され、アプリケーションでブロックされる', 'スコアが 0.7 を超える応答だけが、ユーザーの質問と一致したものとしてモデルの再学習に使われる', 'しきい値は 0.7 以上に設定する必要があり、0.7 未満のスコアの応答だけが許可される', 'しきい値を上げるほどブロックされる応答が減り、ハルシネーションが表示される確率が高くなる'],
     correct:[0],
     why:['正解。ドキュメントでは、しきい値が 0.7 の場合、グラウンディングまたは関連性のスコアが 0.7 未満の応答はハルシネーションとして検出されブロックされると説明されています。','誤り。グラウンディングチェックは応答のフィルタリングを行う機能で、モデルの再学習には使いません。','誤り。しきい値は 0〜0.99 の範囲で設定でき、スコアが低い応答がブロックされます。','誤り。逆で、しきい値を上げるとブロックされる可能性が高まり、ハルシネーションが表示される確率は下がります。']},
+  {id:'p1122', domain:'security', type:'single', source:SOURCES.appSec,
+    text:'生成AIアプリケーションを開発するチームが、セキュリティ上の設計上の欠陥を、修正コストが小さい段階で見つけたいと考えています。Well-Architected Frameworkのアプリケーションセキュリティの考え方に沿った最も適切な取り組みはどれですか？',
+    choices:['リリース直前の1回だけ外部の診断を依頼し、指摘事項を次のリリースで直す', '設計フェーズで脅威モデリングを行い、以降のSDLCで自動テストを継続的に実施する', '本番稼働後にログを分析して、問題が起きてから原因を調査する運用を整える', 'セキュリティ担当者だけがコードを確認し、開発チームはセキュリティに関与しない体制にする'],
+    correct:[1],
+    why:['誤り。ドキュメントでは、欠陥の修正コストはSDLCの早い段階ほど低いとされており、リリース直前の1回だけの確認では遅すぎます。','正解。脅威モデリングを設計段階で行うと設計上の欠陥を早期に把握でき、テストの自動化を重ねることでフィードバックの質と速度も上がります。','誤り。本番後のログ分析は検出の取り組みであり、欠陥が本番に入ること自体を防ぐものではありません。','誤り。ドキュメントはセキュリティの責任をワークロードチームに持たせるプログラム（SEC11-BP08）を推奨しており、分離する体制は逆です。']},
+  {id:'p1123', domain:'security', type:'multi', source:SOURCES.appSec,
+    text:'Well-Architected Frameworkのアプリケーションセキュリティ（SEC11）に含まれるベストプラクティスとして正しいものはどれですか？（2つ選択）',
+    choices:['ネットワークACLのルールを四半期ごとにすべて手作業で見直す', '開発とリリースのライフサイクル全体でテストを自動化する', 'パッケージや依存関係を提供するサービスを一元化する', 'モデルの学習データを匿名化してからS3に保存する', 'すべてのAPIコールをCloudTrailに記録し、リアルタイムに監視する'],
+    correct:[1,2],
+    why:['誤り。ネットワークACLの見直しはインフラストラクチャ保護の話題で、SEC11のベストプラクティスの項目ではありません。','正解。SEC11-BP02として、開発とリリースのライフサイクル全体でテストを自動化することが挙げられています。','正解。SEC11-BP05として、パッケージと依存関係のサービスを一元化することが挙げられています。','誤り。データの匿名化はデータ保護の話題で、SEC11の項目ではありません。','誤り。APIコールの記録と監視は検出（ログ）の領域で、SEC11の項目ではありません。']},
+  {id:'p1124', domain:'security', type:'single', source:SOURCES.appSec,
+    text:'アプリケーションセキュリティの実装ガイドラインが重点を置く4つの領域として正しい組み合わせはどれですか？',
+    choices:['組織と文化、パイプラインの安全性、パイプライン内のセキュリティ、依存関係の管理', 'ID管理、データ分類、ネットワーク分離、インシデント対応', '脅威の検出、ログの保存、コンプライアンス監査、コスト最適化', 'モデルの評価、プロンプト管理、ガードレール、人間によるレビュー'],
+    correct:[0],
+    why:['正解。ガイドラインは、組織と文化、security of the pipeline、security in the pipeline、依存関係の管理の4領域に重点を置いています。','誤り。これらはセキュリティの柱の他の領域にまたがる項目で、AppSecの4領域ではありません。','誤り。検出・監査・コスト最適化は、AppSecの4領域には含まれません。','誤り。これらは責任あるAIや生成AIの機能の項目で、AppSecの4領域ではありません。']},
 ];
 
 var MOCK_POOL = [

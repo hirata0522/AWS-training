@@ -916,3 +916,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: infraProtection（Well-Architected Security Pillar のインフラ保護ページをWebFetchで本文確認、成功）。
   WebFetch/検索で出典未確認: #321 EU AI Act（aws.amazon.com/compliance/eu-ai-act/ は404）、#317 NIST AI RMF（AWS公式の説明ページが見つからず）は `未` のまま。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=3。
+- 2026-11-01（定期実行）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。VOCAB 1件（v322 Application Security）、PRACTICE 3件（p1122〜p1124: single 2 / multi 1、すべて security）追加。MOCK_POOLは目標達成済みで追加0件。累計 VOCAB=322 / PRACTICE=1124 / MOCK_POOL=500。単語リスト進捗 322/447（除外29）。
+  新規SOURCES: appSec（Well-Architected Security Pillar のアプリケーションセキュリティページをWebFetchで本文確認、成功）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置はVOCAB=0、PRACTICE=1,[1,2],0。

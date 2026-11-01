@@ -247,7 +247,7 @@
 | 241 | Amazon Bedrock Studio | genai | 除外 |
 | 242 | Human Audit | responsible | v310 |
 | 243 | Amazon Bedrock Prompt Optimization | fm | v219 |
-| 244 | Application Security | security | 未 |
+| 244 | Application Security | security | v322 |
 | 245 | Amazon Polly | aiml | v127 |
 | 246 | Amazon Q | genai | 除外 |
 | 247 | Amazon Rekognition | aiml | v128 |
