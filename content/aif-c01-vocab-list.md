@@ -378,7 +378,7 @@
 | 372 | Amazon Augmented AI (A2I) | aiml | v276 |
 | 373 | Toxicity | responsible | 未 |
 | 374 | System Prompt | fm | v318 |
-| 375 | Penetration Testing (AI) | security | 未 |
+| 375 | Penetration Testing (AI) | security | v327 |
 | 376 | Amazon Fraud Detector | aiml | v319 |
 | 377 | Speed to Market | genai | 未 |
 | 378 | Amazon Forecast | aiml | v320 |

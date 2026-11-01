@@ -949,3 +949,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-01（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICEを6件（p1133〜p1138: single 4 / multi 1 / matching 1、aiml: 転移学習・強化学習の基本概念）追加。VOCAB追加なし、MOCK_POOLは目標到達済み。累計 VOCAB=326 / PRACTICE=1138 / MOCK_POOL=500。
   出典: transferLearning / whatIsRl を WebFetch で本文確認（成功）。新規SOURCESなし。transferLearningページには feature extraction と fine-tuning の対比記載がないため問題化せず。nodeでの読み込み確認済み。
   メモ: 残りの `未` の単語は出典確認が難しいものが多く今回も見送り。
+- 2026-11-01（定期実行・11回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v327 Penetration Testing (AI)、#375）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=327 / PRACTICE=1138 / MOCK_POOL=500。単語リスト進捗 327/447（除外30）。
+  出典: 既存 promptInjection を再利用（prompt-injection ページをWebFetchで本文確認、成功。ペネトレーションテスト・静的コード解析・DASTによる定期テストを推奨）。正解位置=2。
+  WebFetch失敗: Mechanical Turk の docs.aws.amazon.com/AWSMechTurk/... は403（#368は `未`）。Red Teaming (#370) はAWS公式の専用ページがWebSearchで見つからず `未` のまま。
+  メモ: 残りの `未` は出典確認が難しいものが多く、件数は目安より大幅に少ない。
