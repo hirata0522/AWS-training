@@ -161,6 +161,7 @@ var SOURCES = {
   loraAdapters:{label:'SageMaker AI: LoRAアダプターを使うモデルの推奨設定（LoRAの説明）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/generative-ai-inference-recommendations-adapters.html'},
   designPrompt:{label:'Amazon Bedrock: プロンプトの設計', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/design-a-prompt.html'},
   latencyOpt:{label:'Amazon Bedrock: レイテンシ最適化推論 (Latency optimized inference)', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/latency-optimized-inference.html'},
+  aiServiceCards:{label:'AWS AI Service Cards: 責任あるAIのための透明性ドキュメント（ブログ）', url:'https://aws.amazon.com/blogs/machine-learning/introducing-aws-ai-service-cards-a-new-resource-to-enhance-transparency-and-advance-responsible-ai/'},
   promptGuide:{label:'Amazon Bedrock: プロンプトエンジニアリングの概念', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-engineering-guidelines.html'},
   featureStore:{label:'Amazon SageMaker Feature Store', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html'},
   modelMonitor:{label:'Amazon SageMaker Model Monitor', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html'},
@@ -724,6 +725,14 @@ var VOCAB = [
     choices:['Model Accuracy：モデルの出力が正解とどれだけ一致するかを表す品質の指標', 'Model Throughput：単位時間あたりに処理できるリクエストやトークンの量を表す指標', 'Model Latency：リクエストから応答までの遅延時間で、応答性能を左右する指標', 'Model Drift：時間の経過とともに入力データの傾向が変わり、性能が劣化していく現象'],
     correct:2,
     why:['誤り。精度は出力の品質を表す指標で、応答の速さとは別の観点です。','誤り。スループットは単位時間あたりの処理量で、1回のリクエストの待ち時間を指すものではありません。','正解。レイテンシはリクエストから応答までの遅延時間です。Bedrockの対応モデルでは performanceConfig の latency を optimized にすると、追加のセットアップやファインチューニングなしで応答時間を短縮でき、既定は standard です。','誤り。ドリフトはデータや環境の変化による性能劣化で、応答時間とは関係しません。']}},
+  {id:'v324', term:'AWS AI Service Cards', domain:'responsible', source:SOURCES.aiServiceCards, q:{text:'AWS が一部の AI サービスについて公開している「AI Service Cards」の説明として正しいものはどれですか？',
+    choices:['サービスの想定ユースケースと制限、責任あるAIの設計上の考慮事項、デプロイと性能最適化のガイダンスを1か所にまとめた責任あるAIのドキュメントである', 'AI サービスの月額料金とリージョンごとの提供状況を一覧にした料金表である', 'AI モデルの学習データを顧客がダウンロードして再学習に使えるようにするデータセット配布サービスである', 'ユーザー自身が自社で開発した ML モデルの目的やリスク評価を記録するために SageMaker AI 上に作成するドキュメントである'],
+    correct:0,
+    why:['正解。AI Service Cards は基本概念、想定ユースケースと制限、責任あるAIの設計上の考慮事項（公平性・バイアス、説明可能性、性能の期待値など）、デプロイと性能最適化のガイダンスを提供する透明性のためのドキュメントです。','誤り。料金やリージョン情報の提供が目的ではありません。','誤り。学習データの配布ではなく、サービスの特性と制限を説明するドキュメントです。','誤り。これは SageMaker Model Cards の説明です。AI Service Cards は AWS が自社の AI サービスについて公開するものです。']}},
+  {id:'v325', term:'Amazon Bedrock VPC Configuration', domain:'security', source:SOURCES.bedrockVpc, q:{text:'Amazon Bedrock の利用で、VPC 内のリソースからインターネットを経由せずにプライベートに Bedrock へ接続したい場合に利用するものはどれですか？',
+    choices:['インターネットゲートウェイとパブリック IP アドレスを VPC に追加する', 'AWS PrivateLink による VPC インターフェイスエンドポイントを作成する', 'AWS Shield Advanced を有効にして Bedrock への通信を保護する', 'AWS Config ルールで Bedrock のモデル呼び出しを記録する'],
+    correct:1,
+    why:['誤り。パブリックなインターネット経路を使う構成で、プライベート接続の目的に反します。','正解。AWS PrivateLink による VPC インターフェイスエンドポイントを作成すると、VPC と Bedrock の間にプライベート接続を確立できます。VPC では VPC フローログでトラフィックを監視することもできます。','誤り。Shield Advanced は DDoS 対策のサービスで、プライベート接続を提供するものではありません。','誤り。AWS Config はリソース構成の記録・評価のサービスで、ネットワーク経路を変えるものではありません。']}},
 ];
 
 var PRACTICE = [

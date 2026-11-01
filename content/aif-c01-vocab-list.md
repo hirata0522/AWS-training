@@ -408,7 +408,7 @@
 | 402 | AWS DeepRacer | aiml | 未 |
 | 403 | Feature Importance | responsible | 未 |
 | 404 | Hyperparameter Tuning for FM | fm | 未 |
-| 405 | Amazon Bedrock VPC Configuration | security | 未 |
+| 405 | Amazon Bedrock VPC Configuration | security | v325 |
 | 406 | Average Revenue per User (ARPU) | genai | 未 |
 | 407 | AWS Trainium | aiml | v277 |
 | 408 | Epoch | fm | 未 |
@@ -429,7 +429,7 @@
 | 423 | Tag-based Access Control | security | 未 |
 | 424 | Regional Coverage | genai | 未 |
 | 425 | Amazon EKS | aiml | 未 |
-| 426 | AWS AI Service Cards | responsible | 未 |
+| 426 | AWS AI Service Cards | responsible | v324 |
 | 427 | Amazon EC2 Accelerated Computing Instances | aiml | 未 |
 | 428 | Catastrophic Forgetting | fm | 未 |
 | 429 | Multi-factor Authentication (MFA) | security | v282 |

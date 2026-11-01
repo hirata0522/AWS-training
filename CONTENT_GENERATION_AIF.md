@@ -929,3 +929,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: latencyOpt（Bedrock latency-optimized-inference ページをWebFetchで本文確認、成功。performanceConfig の latency=standard|optimized を確認、特定モデル名は問題に含めない）。nodeでの読み込み確認済み。
   WebFetch失敗: Mechanical Turk の docs ページは403。aws.amazon.com/what-is/ai-bias/ に Sampling Bias / Bias-variance tradeoff の定義はなく #338・#359 は `未` のまま。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=2。
+- 2026-11-01（定期実行・5回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 2件（v324 AWS AI Service Cards / v325 Amazon Bedrock VPC Configuration）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=325 / PRACTICE=1127 / MOCK_POOL=500。単語リスト進捗 325/447（除外29）。
+  新規SOURCES: aiServiceCards（AWS MLブログをWebFetchで本文確認、成功。4セクション構成を確認）。bedrockVpc を再利用（WebFetch成功、PrivateLink/VPCフローログの記述を確認）。nodeでの読み込み確認済み。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=0,1。
