@@ -932,3 +932,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-01（定期実行・5回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 2件（v324 AWS AI Service Cards / v325 Amazon Bedrock VPC Configuration）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=325 / PRACTICE=1127 / MOCK_POOL=500。単語リスト進捗 325/447（除外29）。
   新規SOURCES: aiServiceCards（AWS MLブログをWebFetchで本文確認、成功。4セクション構成を確認）。bedrockVpc を再利用（WebFetch成功、PrivateLink/VPCフローログの記述を確認）。nodeでの読み込み確認済み。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=0,1。
+- 2026-11-01（定期実行・6回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。PRACTICE 2件（p1128〜p1129: single、security、基盤モデルエンドポイントの最小権限IAMとPrivateLink）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=325 / PRACTICE=1129 / MOCK_POOL=500。
+  新規SOURCES: gensec01Bp01（Well-Architected Generative AI Lens GENSEC01-BP01 をWebFetchで本文確認、成功）。
+  WebSearch: NIST AI RMF のAWS公式ページは見つからず #317 は `未` のまま。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=3,2。

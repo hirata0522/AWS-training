@@ -85,6 +85,7 @@ var SOURCES = {
   secretsManager:{label:'AWS Secrets Manager とは', url:'https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html'},
   macie:{label:'Amazon Macie とは', url:'https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html'},
   infraProtection:{label:'AWS Well-Architected Security Pillar: インフラストラクチャ保護', url:'https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/infrastructure-protection.html'},
+  gensec01Bp01:{label:'AWS Well-Architected Generative AI Lens: 基盤モデルエンドポイントへの最小権限アクセスを付与する (GENSEC01-BP01)', url:'https://docs.aws.amazon.com/wellarchitected/latest/generative-ai-lens/gensec01-bp01.html'},
   appSec:{label:'AWS Well-Architected Security Pillar: アプリケーションセキュリティ', url:'https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/application-security.html'},
   privateLink:{label:'AWS PrivateLink とは', url:'https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html'},
   diffusion:{label:'AWS: 拡散モデル（Stable Diffusion）とは', url:'https://aws.amazon.com/what-is/stable-diffusion/'},
@@ -4715,6 +4716,16 @@ var PRACTICE = [
     text:'Amazon Bedrock Knowledge Basesを使ったRAGアプリケーションでガードレールを設定する際の注意点として、公式ドキュメントに記載されている内容はどれですか？',
     choices:['ガードレールは入力と基盤モデルが生成した応答に適用されるが、実行時にナレッジベースから取得された参照情報には適用されない', 'ガードレールはナレッジベースから取得されたすべての参照チャンクに自動的に適用され、不適切な内容は検索結果から取り除かれる', 'ガードレールはナレッジベースのデータソース（S3バケット内のファイル）に対して、取り込みの際に1度だけ適用される', 'ガードレールはユーザーの入力にのみ適用され、基盤モデルが生成した応答にはどのような場合も適用されない'], correct:[0],
     why:['正解。ドキュメントには、ガードレールは入力とLLMが生成した応答にのみ適用され、実行時にナレッジベースから取得された参照には適用されないと記載されています。','誤り。取得された参照にはガードレールは適用されません。','誤り。ガードレールはデータの取り込み時ではなく、実行時の入力と応答に適用されます。','誤り。ガードレールは入力と生成された応答の両方に適用できます。']},
+  {id:'p1128', domain:'security', type:'single', source:SOURCES.gensec01Bp01,
+    text:'Well-Architected Generative AI Lensに沿って、基盤モデルのエンドポイントへのアクセスを許可された主体だけに限定したい場合、最も適切な対応はどれですか？',
+    choices:['エンドポイントを呼び出すすべてのユーザーに共通のIAMユーザーを1つ発行し、その認証情報を共有する', 'Amazon Macieを有効にして、エンドポイントへのリクエスト内の機密データを検出する', 'AWS Configルールでエンドポイントの構成変更履歴を記録する', '対象エンドポイントのARNと必要なアクションだけを許可するカスタムポリシーをIAMロールに付与する'],
+    correct:[3],
+    why:['誤り。認証情報の共有は最小権限と個人の追跡可能性の原則に反します。','誤り。Macieは主にS3内の機密データを検出するサービスで、エンドポイントへのアクセス制御の手段ではありません。','誤り。AWS Configは構成の記録・評価であり、呼び出しの認可を制御するものではありません。','正解。特定のリソースARNと必要なアクションに限定したポリシーをIAMロールに付与するのが、最小権限の基本的な実装手順です。']},
+  {id:'p1129', domain:'security', type:'single', source:SOURCES.gensec01Bp01,
+    text:'VPC内のアプリケーションからAmazon Bedrockなどの生成AIサービスへ、インターネットを経由せずに通信を保護したい場合に使うサービスはどれですか？',
+    choices:['Amazon CloudFront', 'AWS Shield', 'AWS PrivateLink', 'Amazon Route 53'],
+    correct:[2],
+    why:['誤り。CloudFrontはコンテンツ配信ネットワークで、VPCから生成AIサービスへのプライベート接続を提供するものではありません。','誤り。ShieldはDDoS対策サービスで、プライベート接続を作るものではありません。','正解。ドキュメントでは、AWS PrivateLinkでカスタマーVPCからAmazonの生成AIサービスへの接続を確立し、通信をさらに保護できると説明されています。','誤り。Route 53はDNSサービスで、プライベートなサービス接続を提供するものではありません。']},
 ];
 
 var MOCK_POOL = [
