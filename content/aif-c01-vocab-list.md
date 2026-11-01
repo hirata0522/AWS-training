@@ -370,13 +370,13 @@
 | 364 | Model Size | genai | 未 |
 | 365 | Grounding | fm | v317 |
 | 366 | Supply Chain Risk (AI) | security | 未 |
-| 367 | Model Drift Monitoring | responsible | 未 |
+| 367 | Model Drift Monitoring | responsible | v329 |
 | 368 | Amazon Mechanical Turk | aiml | 未 |
 | 369 | Prompt Context Injection | fm | 未 |
 | 370 | Red Teaming | security | 未 |
 | 371 | Multilingual Support | genai | 未 |
 | 372 | Amazon Augmented AI (A2I) | aiml | v276 |
-| 373 | Toxicity | responsible | 未 |
+| 373 | Toxicity | responsible | v328 |
 | 374 | System Prompt | fm | v318 |
 | 375 | Penetration Testing (AI) | security | v327 |
 | 376 | Amazon Fraud Detector | aiml | v319 |

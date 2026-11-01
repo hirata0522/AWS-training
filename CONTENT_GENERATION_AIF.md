@@ -953,3 +953,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   出典: 既存 promptInjection を再利用（prompt-injection ページをWebFetchで本文確認、成功。ペネトレーションテスト・静的コード解析・DASTによる定期テストを推奨）。正解位置=2。
   WebFetch失敗: Mechanical Turk の docs.aws.amazon.com/AWSMechTurk/... は403（#368は `未`）。Red Teaming (#370) はAWS公式の専用ページがWebSearchで見つからず `未` のまま。
   メモ: 残りの `未` は出典確認が難しいものが多く、件数は目安より大幅に少ない。
+- 2026-11-01（定期実行・12回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 2件（v328 Toxicity #373、v329 Model Drift Monitoring #367）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=329 / PRACTICE=1138 / MOCK_POOL=500。単語リスト進捗 329/446（除外30）。
+  出典: 既存 contentFilters（guardrails-content-filters をWebFetchで本文確認、成功）、modelMonitor（model-monitor をWebFetchで本文確認、成功。新規顧客受付終了の注記あり、問題文では機能説明に限定）。正解位置=1,3。
+  メモ: 残りの `未` は出典確認が難しいものが多く、件数は目安より少ない。
