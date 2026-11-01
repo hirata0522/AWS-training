@@ -923,3 +923,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   新規SOURCES: kbRetrieve（kb-test-retrieve ページをWebFetchで本文確認、成功）。nodeでの読み込み確認済み。
   WebSearch/WebFetchで出典未確認: #351 Model Inversion・#331/Context Window（AWS公式の定義ページが検索で見つからず）、#221 Technical Debt (ML)（ML Lensページ本文取得不可）は `未` のまま。#360 Retriever は公式ページに用語としての定義がなく `未` のまま。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=1,3,0。
+- 2026-11-01（定期実行・3回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。出典を本文確認できた題材がなく、VOCAB・PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=322 / PRACTICE=1127 / MOCK_POOL=500。
+  WebFetch失敗: SageMaker AIの clarify-bias-detection-and-mitigation / clarify-fairness-and-explainability / data-bias-reports はタイトルのみ返り本文取得不可、aws.amazon.com/what-is/adversarial-machine-learning/ は404。#338 Sampling Bias・#356 Adversarial Attack は `未` のまま。
