@@ -341,7 +341,7 @@
 | 335 | Embedding Model | fm | v299 |
 | 336 | SOC Reports | security | v305 |
 | 337 | Amazon Redshift | aiml | v307 |
-| 338 | Sampling Bias | responsible | 未 |
+| 338 | Sampling Bias | responsible | 除外 |
 | 339 | AWS Lake Formation | aiml | v180 |
 | 340 | Document Chunking Strategy | fm | v309 |
 | 341 | Compliance Reports | security | 未 |

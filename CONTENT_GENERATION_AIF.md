@@ -943,3 +943,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   SOURCES: 既存 kbRetrieve を再利用（kb-test-retrieve ページをWebFetchで本文確認、成功。Retrieve APIは関連チャンクを返すのみ）。正解位置=0。
   WebFetch失敗: aws.amazon.com/what-is/prompt-injection/ は404。#351 Model Inversion・#356 Adversarial Attack・#361 Model Theft は出典未確認のため `未` のまま。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-01（定期実行・9回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。追加は0件。累計 VOCAB=326 / PRACTICE=1132 / MOCK_POOL=500。単語リスト進捗 326/447（除外30）。
+  除外: #338 Sampling Bias — AWS公式「AIバイアスとは」ページ(aws.amazon.com/what-is/ai-bias/)をWebFetchで確認したが "sampling bias" の語は無く、近い概念 Selection Bias は v313 で作成済みのため実質重複と判断。
+  メモ: 残りの `未` 行は出典となる公式ページの本文確認が難しいものが多く、今回は無理に追加しなかった。
