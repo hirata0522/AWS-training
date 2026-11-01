@@ -208,6 +208,7 @@ var SOURCES = {
   quickWhat:{label:'Amazon Quick とは', url:'https://docs.aws.amazon.com/quicksuite/latest/userguide/what-is.html'},
   qBizWhat:{label:'Amazon Q Business とは', url:'https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html'},
   agentcoreMemory:{label:'Amazon Bedrock AgentCore: エージェントにメモリを追加する', url:'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory.html'},
+  kbRetrieve:{label:'Amazon Bedrock Knowledge Bases: ナレッジベースへのクエリとデータの取得（Retrieve）', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-retrieve.html'},
   kbRetrieveGenerate:{label:'Amazon Bedrock Knowledge Bases: ナレッジベースへのクエリと応答生成（RetrieveAndGenerate）', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-retrieve-generate.html'},
   contextualGrounding:{label:'Amazon Bedrock Guardrails: コンテキストに基づくグラウンディングチェック', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-contextual-grounding-check.html'},
   promptOptimize:{label:'Amazon Bedrock: プロンプトの最適化（シンプルな最適化）', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html'},
@@ -4688,6 +4689,18 @@ var PRACTICE = [
     choices:['組織と文化、パイプラインの安全性、パイプライン内のセキュリティ、依存関係の管理', 'ID管理、データ分類、ネットワーク分離、インシデント対応', '脅威の検出、ログの保存、コンプライアンス監査、コスト最適化', 'モデルの評価、プロンプト管理、ガードレール、人間によるレビュー'],
     correct:[0],
     why:['正解。ガイドラインは、組織と文化、security of the pipeline、security in the pipeline、依存関係の管理の4領域に重点を置いています。','誤り。これらはセキュリティの柱の他の領域にまたがる項目で、AppSecの4領域ではありません。','誤り。検出・監査・コスト最適化は、AppSecの4領域には含まれません。','誤り。これらは責任あるAIや生成AIの機能の項目で、AppSecの4領域ではありません。']},
+  {id:'p1125', domain:'fm', type:'single', source:SOURCES.kbRetrieve,
+    text:'Amazon Bedrock Knowledge Basesで、基盤モデルによる回答の生成は行わず、クエリに関連するソースデータのチャンク（テキストなど）だけを取得したい場合に使うAPI操作はどれですか？',
+    choices:['RetrieveAndGenerate API。クエリに関連するチャンクを検索した上で、それを基に基盤モデルが回答を生成して返す', 'Retrieve API。ナレッジベースのデータソースから、クエリに関連するソースチャンクをその関連度スコアとともに返す', 'InvokeModel API。指定した基盤モデルにプロンプトを直接送り、ナレッジベースを使わずに応答を生成させる', 'ApplyGuardrail API。ガードレールの設定に基づいて、入力や応答の内容を評価して介入結果だけを返す'], correct:[1],
+    why:['誤り。RetrieveAndGenerateは取得に加えて基盤モデルによる回答生成まで行うAPIで、チャンクのみが欲しい要件には合いません。','正解。Retrieve APIはクエリに関連するソースチャンクを返し、各結果にはcontent・metadata・location・scoreが含まれます。回答生成は行いません。','誤り。InvokeModelはナレッジベースを参照せず、モデルを直接呼び出すAPIです。','誤り。ApplyGuardrailはコンテンツの評価用で、ナレッジベースからの検索結果を取得するAPIではありません。']},
+  {id:'p1126', domain:'fm', type:'single', source:SOURCES.kbRetrieve,
+    text:'Amazon Bedrock Knowledge BasesのRetrieve APIで返される各検索結果（KnowledgeBaseRetrievalResult）に含まれ、結果の関連度を分析してランキングを確認するために使える項目はどれですか？',
+    choices:['location。チャンクが属するドキュメントのURIまたはURLを示し、情報の出典を特定するために使う', 'metadata。ソースドキュメントに付与された属性をキーと値のJSONとして保持し、絞り込みなどに使う', 'content。取得したテキストまたは画像のソースチャンクそのものを保持する', 'score。ドキュメントの関連度スコアで、結果のランキングを分析するために使える'], correct:[3],
+    why:['誤り。locationはチャンクの出典（ドキュメントのURI/URL）を示す項目で、関連度を表すものではありません。','誤り。metadataはソースに付けた属性のキーと値で、関連度スコアではありません。','誤り。contentはチャンクの本文（またはbyteContentの画像）を保持する項目です。','正解。scoreはドキュメントの関連度スコアで、結果のランキングを分析するために使えます。']},
+  {id:'p1127', domain:'responsible', type:'single', source:SOURCES.kbRetrieve,
+    text:'Amazon Bedrock Knowledge Basesを使ったRAGアプリケーションでガードレールを設定する際の注意点として、公式ドキュメントに記載されている内容はどれですか？',
+    choices:['ガードレールは入力と基盤モデルが生成した応答に適用されるが、実行時にナレッジベースから取得された参照情報には適用されない', 'ガードレールはナレッジベースから取得されたすべての参照チャンクに自動的に適用され、不適切な内容は検索結果から取り除かれる', 'ガードレールはナレッジベースのデータソース（S3バケット内のファイル）に対して、取り込みの際に1度だけ適用される', 'ガードレールはユーザーの入力にのみ適用され、基盤モデルが生成した応答にはどのような場合も適用されない'], correct:[0],
+    why:['正解。ドキュメントには、ガードレールは入力とLLMが生成した応答にのみ適用され、実行時にナレッジベースから取得された参照には適用されないと記載されています。','誤り。取得された参照にはガードレールは適用されません。','誤り。ガードレールはデータの取り込み時ではなく、実行時の入力と応答に適用されます。','誤り。ガードレールは入力と生成された応答の両方に適用できます。']},
 ];
 
 var MOCK_POOL = [
