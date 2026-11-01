@@ -939,3 +939,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-01（定期実行・7回目）: 改訂履歴をWebFetchで確認（最新は引き続きv1.2、2026-10-29）。PRACTICE 3件（p1130〜p1132: single、responsible 2 / security 1、Bedrock Guardrailsのセーフガードティア Classic/Standard の違い）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=325 / PRACTICE=1132 / MOCK_POOL=500。
   新規SOURCES: guardrailTiers（guardrails-tiers ページをWebFetchで本文確認、成功）。プロンプト攻撃ページ(promptAttack)は既存問題で網羅済みのため追加なし。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。正解位置=0,3,1。
+- 2026-11-01（定期実行・8回目）: 改訂履歴は今回未確認（v1.2のまま扱い）。VOCAB 1件（v326 Retriever）追加。PRACTICE・MOCK_POOLの追加は0件。累計 VOCAB=326 / PRACTICE=1132 / MOCK_POOL=500。単語リスト進捗 326/447（除外29）。
+  SOURCES: 既存 kbRetrieve を再利用（kb-test-retrieve ページをWebFetchで本文確認、成功。Retrieve APIは関連チャンクを返すのみ）。正解位置=0。
+  WebFetch失敗: aws.amazon.com/what-is/prompt-injection/ は404。#351 Model Inversion・#356 Adversarial Attack・#361 Model Theft は出典未確認のため `未` のまま。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。

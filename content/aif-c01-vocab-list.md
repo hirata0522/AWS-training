@@ -363,7 +363,7 @@
 | 357 | Cost per User | aiml | 未 |
 | 358 | Model Complexity | genai | 未 |
 | 359 | Bias-variance Tradeoff | responsible | 未 |
-| 360 | Retriever | fm | 未 |
+| 360 | Retriever | fm | v326 |
 | 361 | Model Theft | security | 未 |
 | 362 | Customer Feedback Metric | aiml | 未 |
 | 363 | Cost-Benefit Analysis (AI) | aiml | 未 |

@@ -735,6 +735,10 @@ var VOCAB = [
     choices:['インターネットゲートウェイとパブリック IP アドレスを VPC に追加する', 'AWS PrivateLink による VPC インターフェイスエンドポイントを作成する', 'AWS Shield Advanced を有効にして Bedrock への通信を保護する', 'AWS Config ルールで Bedrock のモデル呼び出しを記録する'],
     correct:1,
     why:['誤り。パブリックなインターネット経路を使う構成で、プライベート接続の目的に反します。','正解。AWS PrivateLink による VPC インターフェイスエンドポイントを作成すると、VPC と Bedrock の間にプライベート接続を確立できます。VPC では VPC フローログでトラフィックを監視することもできます。','誤り。Shield Advanced は DDoS 対策のサービスで、プライベート接続を提供するものではありません。','誤り。AWS Config はリソース構成の記録・評価のサービスで、ネットワーク経路を変えるものではありません。']}},
+  {id:'v326', term:'Retriever', domain:'fm', source:SOURCES.kbRetrieve, q:{text:'RAG において、ユーザーのクエリに関連する文書のチャンクをデータソースから取り出す役割を担うコンポーネントはどれですか？ Amazon Bedrock Knowledge Bases では Retrieve API がこの役割に当たり、応答の生成までは行いません。',
+    choices:['Retriever：クエリに関連するソースチャンクを検索して返す', 'Tokenizer：入力テキストをトークンに分割する', 'Generator：取得した情報を基にモデルが最終的な回答文を作成する', 'Embedder：データをベクトルに変換して学習済みモデルに書き込む'],
+    correct:0,
+    why:['正解。Retriever はクエリに関連するチャンクを検索して返す部分で、Knowledge Bases の Retrieve API は関連チャンクとスコア・メタデータを返します。', '不正解。Tokenizer はテキストをトークンに分割する処理で、関連文書の検索とは別です。', '不正解。回答文の作成は生成側（RetrieveAndGenerate では取得結果を使ってモデルが生成）の役割で、Retrieve API は応答を生成しません。', '不正解。埋め込み（ベクトル化）は検索の前処理で、モデルの重みを書き換えるものではありません。']}},
 ];
 
 var PRACTICE = [
