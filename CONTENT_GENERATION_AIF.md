@@ -974,3 +974,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-02（定期実行・6回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 4件（p1149〜p1152: single、genai、拡散モデルの順拡散・逆拡散・潜在空間・text-to-image）追加。VOCAB・MOCK_POOLの追加は0件。累計 VOCAB=334 / PRACTICE=1152 / MOCK_POOL=500。
   出典: 既存 diffusion（aws.amazon.com/what-is/stable-diffusion/ をWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=0,2,3,1。nodeは未確認。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-02（定期実行・7回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 4件（p1153〜p1156: single、aiml、MLワークフロー3段階・データ前処理の3作業・クリーニングの例・デプロイ後の継続サイクル）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=334 / PRACTICE=1156 / MOCK_POOL=500。
+  出典: 既存 mlWorkflow（how-it-works-mlconcepts ページをWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=1,2,0,3。nodeは未確認。
