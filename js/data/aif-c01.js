@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  euAiAct:{label:'AWS ML Blog: Building trust in AI: The AWS approach to the EU AI Act', url:'https://aws.amazon.com/blogs/machine-learning/building-trust-in-ai-the-aws-approach-to-the-eu-ai-act'},
   transcribeMedical:{label:'Amazon Transcribe Medical', url:'https://docs.aws.amazon.com/transcribe/latest/dg/transcribe-medical.html'},
   whatIsOverfitting:{label:'AWS: 過学習とは (What is Overfitting?)', url:'https://aws.amazon.com/what-is/overfitting/'},
   gtConsolidation:{label:'Amazon SageMaker Ground Truth: アノテーションの統合 (Annotation consolidation)', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html'},
@@ -779,6 +780,10 @@ var VOCAB = [
     choices:['Amazon Comprehend Medical：文字起こし済みの医療テキストから、医療情報を抽出して分析するサービス', 'Amazon Polly：テキストを自然な音声に変換して読み上げるサービス', 'Amazon Textract：スキャンした文書やフォームからテキストと表を抽出するサービス', 'Amazon Transcribe Medical：医療向けの音声を、ストリーミングまたはアップロードしたファイルから文字起こしするサービス'],
     correct:3,
     why:['誤り。Comprehend Medical は文字起こし後のテキストを分析するサービスです。Transcribe Medical の出力を分析する際に組み合わせて使えますが、音声の文字起こし自体は行いません。','誤り。Polly はテキストから音声を生成するサービスで、方向が逆です。','誤り。Textract は文書の画像からの抽出用で、音声は入力にできません。','正しい。医療向けの ASR サービスで、マイクからのリアルタイム（ストリーミング）と、アップロードしたファイルのバッチ文字起こしに対応します。公式ドキュメントでは、診療の判断に使う場合は訓練を受けた専門家による確認が必要とされています。']}},
+  {id:'v336', term:'EU AI Act', domain:'security', source:SOURCES.euAiAct, q:{text:'AIシステムをリスクに応じて分類し、リスクの高いものほど厳しい要件を課す、EU域内のAIに関する規制はどれですか？',
+    choices:['EU AI Act：リスクベースの枠組みで、基本的権利と安全の保護を目的とするEUの規制', 'GDPR：個人データの処理と保護を定めるEUの規則で、AI全般を対象にしたものではない', 'ISO/IEC 27001：情報セキュリティマネジメントシステムに関する国際規格', 'AWS Artifact：AWSのコンプライアンスレポートや契約を取得するためのサービス'],
+    correct:0,
+    why:['正しい。許容できないリスクは禁止、高リスクは文書化・データガバナンス・人間による監督・リスク管理などの厳しい要件、といったリスクベースの枠組みです。','誤り。GDPRは個人データの保護規則で、AIをリスク階層で分類する規制ではありません。','誤り。ISO/IEC 27001は情報セキュリティの管理規格で、AIのリスク分類を定めたものではありません。','誤り。AWS Artifactはレポート取得のサービスで、規制そのものではありません。']}},
 ];
 
 var PRACTICE = [
@@ -4987,6 +4992,15 @@ var PRACTICE = [
     choices:['学習データでは高精度だが、テストデータでは精度が大きく下がる','入力と出力の意味のある関係を捉えられず、学習データでもテストデータでも性能が低い','学習データのノイズまで記憶しており、バリアンスが高い','K 分割交差検証でしか評価できず、テストデータは使えない'],
     correct:[1],
     why:['誤り。これは過学習の特徴です。','正しい。学習不足は学習が不十分またはモデルが単純すぎる場合に起こり、バイアスが高く、両方のデータで性能が低くなります。','誤り。ノイズの記憶は過学習の特徴です。','誤り。学習不足のモデルもテストデータで評価できます。']},
+  {id:'p1178', domain:'security', type:'single', source:SOURCES.euAiAct, text:'EU AI Actの基本的な考え方として正しいものはどれですか？',
+    choices:['すべてのAIシステムに同一の要件を課し、リスクの大小は考慮しない', 'リスクベースの枠組みで、許容できないリスクのAIは禁止し、高リスクのAIにはより厳しい要件を課す', 'EU域内の企業が開発したAIだけを対象とし、EU外の活動には一切適用されない', 'モデルの学習に使うGPUの性能に基づいて、AIシステムを規制する'], correct:[1],
+    why:['誤り。リスクに応じて要件が変わる枠組みです。','正しい。許容できないリスクは禁止、高リスクは文書化・データガバナンス・人間による監督・リスク管理などの厳しい要件の対象です。','誤り。EU外の活動にも適用され得ます。','誤り。規制はハードウェア性能ではなくAIのリスクに基づきます。']},
+  {id:'p1179', domain:'security', type:'single', source:SOURCES.euAiAct, text:'EU AI ActのコンプライアンスにおけるAWSとお客様の責任について、AWSの説明に最も沿っているものはどれですか？',
+    choices:['AWSがすべてのAWSサービスのコンプライアンスを保証するため、お客様の対応は不要である', 'お客様が自社のユースケースがAIActのどこに該当するかを評価し、必要な統制を実装する責任を負う', 'AIActの義務は、モデルを提供するプロバイダーだけに課され、利用者には課されない', 'AWSがお客様のAIアプリケーションごとにAI Act適合性を審査して認定する'], correct:[1],
+    why:['誤り。AWSはコンプライアントなソリューションの部品を提供しますが、お客様側の責任が残ります。','正しい。AWSは「共有の責任」として、お客様が利用方法の評価・統制・ユースケースの適合を担うと説明しています。','誤り。プロバイダー、デプロイヤー、販売者、輸入者などサプライチェーン上の関係者に義務があります。','誤り。AWSが個別のアプリケーションを認定するわけではありません。']},
+  {id:'p1180', domain:'security', type:'single', source:SOURCES.euAiAct, text:'EU AI Actの「許容できないリスク」に分類されるAIシステムの扱いとして正しいものはどれですか？',
+    choices:['人間による監督を付ければ自由に提供できる', '透明性の要件を満たせば提供できる', '禁止される', '提供前に文書化すれば無制限に利用できる'], correct:[2],
+    why:['誤り。人間による監督は高リスクAIの要件の一つです。','誤り。透明性の要件は、人と直接やり取りするような低リスクのシステムなどに課されます。','正しい。許容できないリスクのシステムは禁止されます（禁止される行為は2025年2月1日から執行可能）。','誤り。禁止対象のため、文書化しても許可されません。']},
 ];
 
 

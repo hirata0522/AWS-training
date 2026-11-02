@@ -324,7 +324,7 @@
 | 318 | Amazon Titan | genai | v283 |
 | 319 | Amazon SageMaker Neo | aiml | v257 |
 | 320 | InvokeModel API | fm | v214 |
-| 321 | EU AI Act | security | 未 |
+| 321 | EU AI Act | security | v336 |
 | 322 | Amazon SageMaker Debugger | aiml | v274 |
 | 323 | Human-in-the-loop (A2I) | responsible | v288 |
 | 324 | Amazon Bedrock Marketplace | genai | v290 |

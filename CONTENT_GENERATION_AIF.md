@@ -987,3 +987,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-02（定期実行・11回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 8件（p1170〜p1177: single、responsible 4 = AIバイアスの原因・種類・反事実的公平性、aiml 4 = 過学習の原因・K分割交差検証・データ拡張・学習不足）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=335 / PRACTICE=1177 / MOCK_POOL=500。
   出典: 既存 aiBias（aws.amazon.com/what-is/ai-bias/）、whatIsOverfitting（aws.amazon.com/what-is/overfitting/）をいずれもWebFetchで本文確認（成功）。新規SOURCESなし。正解位置=2,3,0,1,1,3,0,1。nodeで読み込み確認済み。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-02（定期実行・12回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v336 EU AI Act #321）、PRACTICE 3件（p1178〜p1180: single、security、EU AI Actのリスクベース枠組み・共有責任・禁止）追加。MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1180 / MOCK_POOL=500。単語リスト進捗 336/446（除外30）。
+  出典: 新規SOURCES euAiAct（AWS ML Blog記事をWebFetchで本文確認、成功。aws.amazon.com/compliance/eu-ai-act/ は404）。正解位置=VOCAB 0 / PRACTICE 1,1,2。nodeは未確認。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
