@@ -388,7 +388,7 @@
 | 382 | Amazon Kendra | aiml | v270 |
 | 383 | Lower Barrier to Entry | genai | 未 |
 | 384 | Output Format Specification | fm | v330 |
-| 385 | Amazon S3 Bucket Policy | security | 未 |
+| 385 | Amazon S3 Bucket Policy | security | v332 |
 | 386 | Amazon Comprehend Medical | aiml | v281 |
 | 387 | Conversational Capabilities | genai | 未 |
 | 388 | Misinformation | responsible | 未 |
@@ -463,7 +463,7 @@
 | 457 | Amazon Bedrock Intelligent Prompt Routing | fm | v220 |
 | 458 | AI Governance Committee | security | 未 |
 | 459 | Open-weight Model | genai | 未 |
-| 460 | Amazon VPC | aiml | 未 |
+| 460 | Amazon VPC | aiml | v333 |
 | 461 | Disparate Impact | responsible | 未 |
 | 462 | Amazon Bedrock Agents Multi-agent Collaboration | fm | v221 |
 | 463 | Risk Assessment (AI) | security | 未 |

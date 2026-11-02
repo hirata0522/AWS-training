@@ -233,6 +233,8 @@ var SOURCES = {
   inferentia:{label:'AWS Inferentia（推論向けチップ）', url:'https://aws.amazon.com/ai/machine-learning/inferentia/'},
   s3Bpa:{label:'Amazon S3: パブリックアクセスのブロック', url:'https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html'},
   s3ObjectLock:{label:'Amazon S3: Object Lock によるオブジェクトのロック', url:'https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html'},
+  s3BucketPolicy:{label:'Amazon S3: バケットポリシー', url:'https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-policies.html'},
+  vpcWhatIs:{label:'Amazon VPC とは', url:'https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html'},
   comprehendMedical:{label:'Amazon Comprehend Medical とは', url:'https://docs.aws.amazon.com/comprehend-medical/latest/dev/comprehendmedical-welcome.html'},
   iamMfa:{label:'IAM の多要素認証 (MFA)', url:'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html'},
   titan:{label:'Amazon Titan モデルの概要', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/titan-models.html'},
@@ -759,6 +761,14 @@ var VOCAB = [
     choices:['できるだけ長く詳しい背景説明を書き、指示は暗黙のままにする', '指示は曖昧にしておき、モデルに解釈を任せて創造的な回答を得る', 'タスクの期待をシンプルで明確かつ漏れなく記述し、曖昧さを減らす', 'ユーザーの入力はすべて省略し、モデルの既存知識だけに頼る'],
     correct:2,
     why:['誤り。冗長な説明より、シンプルで明確・簡潔な指示がモデルには解釈しやすいとされています。','誤り。曖昧な指示では、選択肢を明示しない分類のように意図と異なる自由形式の回答になりがちです。','正しい。LLMはシンプルで率直な指示で最も良く動作し、期待を明確に述べて曖昧さを減らすことでモデルが正しく解釈できます。','誤り。参考テキストやコンテキストを与えることもプロンプト設計の重要な要素です。']}},
+  {id:'v332', term:'Amazon S3 Bucket Policy', domain:'security', source:SOURCES.s3BucketPolicy, q:{text:'AIの学習データを保存する S3 バケットへのアクセスを、バケット側で許可・拒否したい場合に使う「S3バケットポリシー」の説明として正しいものはどれですか？',
+    choices:['IAMユーザーやロールにアタッチして、そのIDが実行できる操作を定める ID ベースのポリシーである', 'バケットとその中のオブジェクトへのアクセスを許可・拒否する、JSON形式のリソースベースのポリシーである', 'バケット内の機密データを自動的に検出し、個人情報の有無をレポートするマネージド機能である', 'バケットのオブジェクトを一定期間、削除や上書きできないようにロックする機能である'],
+    correct:1,
+    why:['誤り。IAMにアタッチするのはID ベースのポリシーです。バケットポリシーはバケット側にアタッチするリソースベースのポリシーです。','正しい。バケットポリシーはJSON形式のIAMポリシー言語で書くリソースベースのポリシーで、リクエスト元、S3アクション、リソース、IPアドレスなどの条件に基づいて許可・拒否できます。','誤り。機密データの自動検出は Amazon Macie の機能です。','誤り。保持期間中の削除・上書き防止は S3 Object Lock の機能です。']}},
+  {id:'v333', term:'Amazon VPC', domain:'aiml', source:SOURCES.vpcWhatIs, q:{text:'AWSリソースを論理的に分離された自分専用の仮想ネットワーク内で起動できる、Amazon VPC の説明として正しいものはどれですか？',
+    choices:['サブネットやルートテーブル、ゲートウェイを定義して構成する、論理的に分離された仮想ネットワークを作成できる', '機械学習モデルの学習ジョブを自動的に分散させ、GPUインスタンスを割り当てるマネージドサービスである', 'AWS上のユーザーやロールのAPI呼び出しを記録し、操作履歴を監査できるようにするサービスである', 'S3上の大規模データを標準SQLで直接クエリできる、サーバーレスの対話型分析サービスである'],
+    correct:0,
+    why:['正しい。VPCでは、サブネット、IPアドレス、ルートテーブル、ゲートウェイやVPCエンドポイントなどを定義し、自分専用の論理的に分離された仮想ネットワーク内にリソースを起動できます。','誤り。学習ジョブの管理は Amazon SageMaker AI の機能で、VPCはネットワークを提供するサービスです。','誤り。API呼び出しの記録は AWS CloudTrail の機能です。','誤り。S3上のデータをSQLでクエリするのは Amazon Athena です。']}},
 ];
 
 var PRACTICE = [

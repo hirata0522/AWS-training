@@ -965,3 +965,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-02（定期実行・3回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 6件（p1143〜p1148: single×5、multi×1、fm、Bedrockバッチ推論の入出力S3・provisioned非対応、プロンプトキャッシュの目的・プレフィックス構成・TTL・バッチ非対応・適するワークロード）追加。VOCAB・MOCK_POOLの追加は0件。累計 VOCAB=331 / PRACTICE=1148 / MOCK_POOL=500。単語リスト進捗 331/446（除外30）。
   出典: 既存 bedrockBatch（batch-inference ページ）、promptCaching（prompt-caching ページ）をいずれもWebFetchで本文確認（成功）。新規SOURCESなし。正解位置=0,1,3,2,3 / multi {0,2}。
   メモ: nodeは未確認。VOCABの残り `未` は引き続き出典確認が難しく見送り。
+- 2026-11-02（定期実行・4回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 2件（v332 Amazon S3 Bucket Policy #385、v333 Amazon VPC #460）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=333 / PRACTICE=1148 / MOCK_POOL=500。単語リスト進捗 333/446（除外30）。
+  出典: 新規SOURCES s3BucketPolicy（bucket-policies ページ）、vpcWhatIs（what-is-amazon-vpc ページ）をいずれもWebFetchで本文確認（成功）。正解位置=VOCAB 1,0。nodeは未確認。
+  メモ: 残りの `未` はコスト/ビジネス指標系など試験範囲外に近いものが多く、件数は目安より少ない。
