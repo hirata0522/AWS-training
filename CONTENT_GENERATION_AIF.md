@@ -981,3 +981,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   見送り: Amazon CodeGuru (#397) は CodeGuru Reviewer が2025-11-07以降新規関連付け不可（WebFetchで確認）のため `未` のまま。
 - 2026-11-02（定期実行・9回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 4件（p1158〜p1161: single、genai、GANの種類cGAN・SRGAN、合成データ活用、学習の収束）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=335 / PRACTICE=1161 / MOCK_POOL=500。単語リスト進捗 335/446（除外30）。
   出典: 既存 gan（aws.amazon.com/what-is/gan/ をWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=1,3,0,2。nodeは未確認。
+- 2026-11-02（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 8件（p1162〜p1169: single、genai、トランスフォーマーの並列処理・位置エンコーディング・自己注意・用途、LLMの学習・ゼロ/フューショット・パラメータ・限界）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=335 / PRACTICE=1169 / MOCK_POOL=500。単語リスト進捗 335/446（除外30）。
+  出典: 既存 transformers・whatIsLlm（aws.amazon.com/what-is/ の2ページをWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=0,0,1,2,1,0,1,1。nodeは未確認。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
