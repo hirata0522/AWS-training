@@ -387,13 +387,13 @@
 | 381 | Harmful Content | responsible | 未 |
 | 382 | Amazon Kendra | aiml | v270 |
 | 383 | Lower Barrier to Entry | genai | 未 |
-| 384 | Output Format Specification | fm | 未 |
+| 384 | Output Format Specification | fm | v330 |
 | 385 | Amazon S3 Bucket Policy | security | 未 |
 | 386 | Amazon Comprehend Medical | aiml | v281 |
 | 387 | Conversational Capabilities | genai | 未 |
 | 388 | Misinformation | responsible | 未 |
 | 389 | Amazon Transcribe Medical | aiml | 未 |
-| 390 | Specificity and Concision | fm | 未 |
+| 390 | Specificity and Concision | fm | v331 |
 | 391 | S3 Block Public Access | security | v279 |
 | 392 | Amazon Lookout for Metrics | aiml | 未 |
 | 393 | Multiple Comments Prompting | fm | 未 |
