@@ -976,3 +976,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。
 - 2026-11-02（定期実行・7回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 4件（p1153〜p1156: single、aiml、MLワークフロー3段階・データ前処理の3作業・クリーニングの例・デプロイ後の継続サイクル）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=334 / PRACTICE=1156 / MOCK_POOL=500。
   出典: 既存 mlWorkflow（how-it-works-mlconcepts ページをWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=1,2,0,3。nodeは未確認。
+- 2026-11-02（定期実行・8回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v335 Amazon Transcribe Medical #389）、PRACTICE 1件（p1157: single、aiml）追加。MOCK_POOLは0件。累計 VOCAB=335 / PRACTICE=1157 / MOCK_POOL=500。単語リスト進捗 335/446（除外30）。
+  出典: 新規SOURCES transcribeMedical（transcribe-medical ページをWebFetchで本文確認、成功）。正解位置=VOCAB 3 / PRACTICE 3。nodeは未確認。
+  見送り: Amazon CodeGuru (#397) は CodeGuru Reviewer が2025-11-07以降新規関連付け不可（WebFetchで確認）のため `未` のまま。

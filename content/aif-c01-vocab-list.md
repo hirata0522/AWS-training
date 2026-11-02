@@ -392,7 +392,7 @@
 | 386 | Amazon Comprehend Medical | aiml | v281 |
 | 387 | Conversational Capabilities | genai | 未 |
 | 388 | Misinformation | responsible | 未 |
-| 389 | Amazon Transcribe Medical | aiml | 未 |
+| 389 | Amazon Transcribe Medical | aiml | v335 |
 | 390 | Specificity and Concision | fm | v331 |
 | 391 | S3 Block Public Access | security | v279 |
 | 392 | Amazon Lookout for Metrics | aiml | 未 |

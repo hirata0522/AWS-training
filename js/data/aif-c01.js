@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  transcribeMedical:{label:'Amazon Transcribe Medical', url:'https://docs.aws.amazon.com/transcribe/latest/dg/transcribe-medical.html'},
   whatIsOverfitting:{label:'AWS: 過学習とは (What is Overfitting?)', url:'https://aws.amazon.com/what-is/overfitting/'},
   gtConsolidation:{label:'Amazon SageMaker Ground Truth: アノテーションの統合 (Annotation consolidation)', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html'},
   ldaPerplexity:{label:'Amazon SageMaker AI: Latent Dirichlet Allocation (LDA) アルゴリズム（perplexity の説明）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/lda.html'},
@@ -774,6 +775,10 @@ var VOCAB = [
     choices:['バイアスが高いモデルは学習データでも精度が低くなり、バリアンスが高いモデルは学習データでは良好でもテストデータで精度が落ちるため、両者のバランスを取る必要がある', 'バリアンスが高いモデルは学習データでもテストデータでも一貫して精度が低く、学習不足の状態を示す', 'バイアスを下げるほどバリアンスも必ず同時に下がるため、モデルを複雑にするほど汎化性能は向上する', 'バイアスとバリアンスは、モデルの公平性を評価する指標であり、予測精度とは関係しない'],
     correct:0,
     why:['正しい。学習不足のモデルは高バイアスで学習データ・テストデータの両方で不正確になり、過学習したモデルは高バリアンスで学習データでは良好でもテストデータで悪化します。両者のバランスが重要です。','誤り。学習データでもテストデータでも不正確になるのは高バイアス（学習不足）の特徴で、高バリアンスは過学習の特徴です。','誤り。十分に複雑なモデルでは、学習を進めるとバイアスは下がる一方でバリアンスは増える可能性があります。','誤り。ここでのバイアス／バリアンスは、モデルのフィット（学習不足／過学習）に関する概念であり、予測精度に直結します。']}},
+  {id:'v335', term:'Amazon Transcribe Medical', domain:'aiml', source:SOURCES.transcribeMedical, q:{text:'医師の口述メモや遠隔診療、医師と患者の会話といった医療関連の音声を文字起こしするために設計された、自動音声認識（ASR）サービスはどれですか？',
+    choices:['Amazon Comprehend Medical：文字起こし済みの医療テキストから、医療情報を抽出して分析するサービス', 'Amazon Polly：テキストを自然な音声に変換して読み上げるサービス', 'Amazon Textract：スキャンした文書やフォームからテキストと表を抽出するサービス', 'Amazon Transcribe Medical：医療向けの音声を、ストリーミングまたはアップロードしたファイルから文字起こしするサービス'],
+    correct:3,
+    why:['誤り。Comprehend Medical は文字起こし後のテキストを分析するサービスです。Transcribe Medical の出力を分析する際に組み合わせて使えますが、音声の文字起こし自体は行いません。','誤り。Polly はテキストから音声を生成するサービスで、方向が逆です。','誤り。Textract は文書の画像からの抽出用で、音声は入力にできません。','正しい。医療向けの ASR サービスで、マイクからのリアルタイム（ストリーミング）と、アップロードしたファイルのバッチ文字起こしに対応します。公式ドキュメントでは、診療の判断に使う場合は訓練を受けた専門家による確認が必要とされています。']}},
 ];
 
 var PRACTICE = [
@@ -4898,6 +4903,10 @@ var PRACTICE = [
     choices:['デプロイ後は再学習を行わず、同じモデルを使い続ける','デプロイ後はサンプルデータの収集を停止する','デプロイ後は評価を行わず、精度の確認は不要になる','推論を監視し、良質な新データを集めて評価・ドリフトの確認を行い、再学習で精度を高める'],
     correct:[3],
     why:['誤り。ML は継続的なサイクルで、データが増えれば再学習して精度を上げます。','誤り。新たに集めた高品質なデータを学習データに含めて更新します。','誤り。評価してドリフトを見つけることが推奨されています。','正しい。推論を監視し、新データを集め、ドリフトを特定して再学習するサイクルです。']},
+  {id:'p1157', domain:'aiml', type:'single', source:SOURCES.transcribeMedical, text:'医療機関が、医師の口述メモや診察中の会話の音声を文字起こしし、その後の分析に別のAWSサービスを組み合わせたいと考えています。音声の文字起こしに適したサービスはどれですか？',
+    choices:['Amazon Comprehend Medical','Amazon Polly','Amazon Textract','Amazon Transcribe Medical'],
+    correct:[3],
+    why:['誤り。Comprehend Medical は文字起こし後のテキストを分析する側のサービスで、音声は処理できません。','誤り。Polly はテキストを音声にするサービスで、文字起こしとは逆方向です。','誤り。Textract は文書画像からの抽出用で、音声には対応しません。','正しい。Transcribe Medical は医療向けの音声認識サービスで、文字起こし結果は Comprehend Medical などで分析できます。']},
 ];
 
 var MOCK_POOL = [
