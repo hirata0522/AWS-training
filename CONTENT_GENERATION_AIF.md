@@ -984,3 +984,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-02（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 8件（p1162〜p1169: single、genai、トランスフォーマーの並列処理・位置エンコーディング・自己注意・用途、LLMの学習・ゼロ/フューショット・パラメータ・限界）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=335 / PRACTICE=1169 / MOCK_POOL=500。単語リスト進捗 335/446（除外30）。
   出典: 既存 transformers・whatIsLlm（aws.amazon.com/what-is/ の2ページをWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=0,0,1,2,1,0,1,1。nodeは未確認。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-02（定期実行・11回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 8件（p1170〜p1177: single、responsible 4 = AIバイアスの原因・種類・反事実的公平性、aiml 4 = 過学習の原因・K分割交差検証・データ拡張・学習不足）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=335 / PRACTICE=1177 / MOCK_POOL=500。
+  出典: 既存 aiBias（aws.amazon.com/what-is/ai-bias/）、whatIsOverfitting（aws.amazon.com/what-is/overfitting/）をいずれもWebFetchで本文確認（成功）。新規SOURCESなし。正解位置=2,3,0,1,1,3,0,1。nodeで読み込み確認済み。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
