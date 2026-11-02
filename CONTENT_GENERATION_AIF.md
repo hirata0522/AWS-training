@@ -962,3 +962,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-02（定期実行・2回目）: 改訂履歴をWebFetchで確認（成功）。最新はv1.2（2026-10-29）のまま、追加の変更なし。項目の追加は0件。累計 VOCAB=331 / PRACTICE=1142 / MOCK_POOL=500。
   Adversarial Attack / Model Inversion / Model Theft (#351, #356, #361) の出典をWebSearchで探したが、AWS公式ドキュメントはヒットせず（OWASP等の第三者のみ）。未確認の出典は書かない方針のため見送り、`未` のまま。
   メモ: 残りの `未` は出典確認が難しいものが多い。
+- 2026-11-02（定期実行・3回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 6件（p1143〜p1148: single×5、multi×1、fm、Bedrockバッチ推論の入出力S3・provisioned非対応、プロンプトキャッシュの目的・プレフィックス構成・TTL・バッチ非対応・適するワークロード）追加。VOCAB・MOCK_POOLの追加は0件。累計 VOCAB=331 / PRACTICE=1148 / MOCK_POOL=500。単語リスト進捗 331/446（除外30）。
+  出典: 既存 bedrockBatch（batch-inference ページ）、promptCaching（prompt-caching ページ）をいずれもWebFetchで本文確認（成功）。新規SOURCESなし。正解位置=0,1,3,2,3 / multi {0,2}。
+  メモ: nodeは未確認。VOCABの残り `未` は引き続き出典確認が難しく見送り。
