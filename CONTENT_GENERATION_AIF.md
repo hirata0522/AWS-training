@@ -959,3 +959,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-02（定期実行）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 2件（v330 Output Format Specification #384、v331 Specificity and Concision #390）、PRACTICE 4件（p1139〜p1142: single、fm、プロンプト設計: 質問の位置・出力インジケーター・既定出力・few-shotの例数）追加。MOCK_POOLは目標達成済みで0件。累計 VOCAB=331 / PRACTICE=1142 / MOCK_POOL=500。単語リスト進捗 331/446（除外30）。
   出典: 既存 designPrompt（design-a-prompt ページをWebFetchで本文確認、成功）。prompt-engineering-guidelines もWebFetch成功（Role Prompting #379 に相当する記述は無く `未` のまま）。nodeでの読み込み確認済み。正解位置=VOCAB 1,2 / PRACTICE 3,0,1,2。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-02（定期実行・2回目）: 改訂履歴をWebFetchで確認（成功）。最新はv1.2（2026-10-29）のまま、追加の変更なし。項目の追加は0件。累計 VOCAB=331 / PRACTICE=1142 / MOCK_POOL=500。
+  Adversarial Attack / Model Inversion / Model Theft (#351, #356, #361) の出典をWebSearchで探したが、AWS公式ドキュメントはヒットせず（OWASP等の第三者のみ）。未確認の出典は書かない方針のため見送り、`未` のまま。
+  メモ: 残りの `未` は出典確認が難しいものが多い。
