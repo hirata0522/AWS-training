@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  whatIsOverfitting:{label:'AWS: 過学習とは (What is Overfitting?)', url:'https://aws.amazon.com/what-is/overfitting/'},
   gtConsolidation:{label:'Amazon SageMaker Ground Truth: アノテーションの統合 (Annotation consolidation)', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html'},
   ldaPerplexity:{label:'Amazon SageMaker AI: Latent Dirichlet Allocation (LDA) アルゴリズム（perplexity の説明）', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/lda.html'},
   agentcoreEval:{label:'Amazon Bedrock AgentCore: Evaluations の仕組み', url:'https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/how-it-works-evaluations.html'},
@@ -769,6 +770,10 @@ var VOCAB = [
     choices:['サブネットやルートテーブル、ゲートウェイを定義して構成する、論理的に分離された仮想ネットワークを作成できる', '機械学習モデルの学習ジョブを自動的に分散させ、GPUインスタンスを割り当てるマネージドサービスである', 'AWS上のユーザーやロールのAPI呼び出しを記録し、操作履歴を監査できるようにするサービスである', 'S3上の大規模データを標準SQLで直接クエリできる、サーバーレスの対話型分析サービスである'],
     correct:0,
     why:['正しい。VPCでは、サブネット、IPアドレス、ルートテーブル、ゲートウェイやVPCエンドポイントなどを定義し、自分専用の論理的に分離された仮想ネットワーク内にリソースを起動できます。','誤り。学習ジョブの管理は Amazon SageMaker AI の機能で、VPCはネットワークを提供するサービスです。','誤り。API呼び出しの記録は AWS CloudTrail の機能です。','誤り。S3上のデータをSQLでクエリするのは Amazon Athena です。']}},
+  {id:'v334', term:'Bias-variance Tradeoff', domain:'responsible', source:SOURCES.whatIsOverfitting, q:{text:'機械学習における「バイアスとバリアンスのトレードオフ」に関する説明として正しいものはどれですか？',
+    choices:['バイアスが高いモデルは学習データでも精度が低くなり、バリアンスが高いモデルは学習データでは良好でもテストデータで精度が落ちるため、両者のバランスを取る必要がある', 'バリアンスが高いモデルは学習データでもテストデータでも一貫して精度が低く、学習不足の状態を示す', 'バイアスを下げるほどバリアンスも必ず同時に下がるため、モデルを複雑にするほど汎化性能は向上する', 'バイアスとバリアンスは、モデルの公平性を評価する指標であり、予測精度とは関係しない'],
+    correct:0,
+    why:['正しい。学習不足のモデルは高バイアスで学習データ・テストデータの両方で不正確になり、過学習したモデルは高バリアンスで学習データでは良好でもテストデータで悪化します。両者のバランスが重要です。','誤り。学習データでもテストデータでも不正確になるのは高バイアス（学習不足）の特徴で、高バリアンスは過学習の特徴です。','誤り。十分に複雑なモデルでは、学習を進めるとバイアスは下がる一方でバリアンスは増える可能性があります。','誤り。ここでのバイアス／バリアンスは、モデルのフィット（学習不足／過学習）に関する概念であり、予測精度に直結します。']}},
 ];
 
 var PRACTICE = [

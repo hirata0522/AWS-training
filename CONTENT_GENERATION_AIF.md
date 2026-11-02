@@ -968,3 +968,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-02（定期実行・4回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 2件（v332 Amazon S3 Bucket Policy #385、v333 Amazon VPC #460）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=333 / PRACTICE=1148 / MOCK_POOL=500。単語リスト進捗 333/446（除外30）。
   出典: 新規SOURCES s3BucketPolicy（bucket-policies ページ）、vpcWhatIs（what-is-amazon-vpc ページ）をいずれもWebFetchで本文確認（成功）。正解位置=VOCAB 1,0。nodeは未確認。
   メモ: 残りの `未` はコスト/ビジネス指標系など試験範囲外に近いものが多く、件数は目安より少ない。
+- 2026-11-02（定期実行・5回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v334 Bias-variance Tradeoff #359）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=334 / PRACTICE=1148 / MOCK_POOL=500。単語リスト進捗 334/446（除外30）。
+  出典: 新規SOURCES whatIsOverfitting（aws.amazon.com/what-is/overfitting/ をWebFetchで本文確認、成功。「バイアス／バリアンスのトレードオフ」という語自体は無いが、高バイアス=学習不足・高バリアンス=過学習とバランスの記述あり。問題文はその記述の範囲に限定）。正解位置=0。
+  WebFetch失敗: aws.amazon.com/compliance/eu-ai-act/ は404（#321は `未`）。
