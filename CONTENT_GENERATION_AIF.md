@@ -993,3 +993,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-03（定期実行）: 改訂履歴をWebFetchで確認（成功）。v1.2（2026-10-29）が最新で、既に反映済みのため変更なし。PRACTICE 4件（p1181〜p1184: single、fm 3 / genai 1、Knowledge Basesのバイナリ/float32ベクトル、バイナリ対応モデル・ストアの要件、RAG実行時の最初の処理、再学習不要によるコスト面の利点）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1184 / MOCK_POOL=500。
   出典: 既存 bedrockKb（kb-how-it-works ページをWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=0,0,1,1。nodeは未確認。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。RAGのordering問題は既に十分あるため追加せず。
+- 2026-11-03（定期実行・2回目）: 改訂履歴をWebFetchで確認（成功）。v1.2（2026-10-29）が最新で変更なし。PRACTICE 4件（p1185〜p1188: single、security、プロンプト攻撃の種類=インジェクション・リーケージ、入力タグの必要性、検出時のBlock/Detect動作）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1188 / MOCK_POOL=500。単語リスト進捗 336/446（除外30）。
+  出典: 既存 promptAttack（guardrails-prompt-attack ページをWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=2,3,0,1。nodeで読み込み確認済み。
+  WebFetch失敗: aws.amazon.com/what-is/red-teaming/ は404（#370 Red Teaming は `未` のまま）。prompt-engineering ページにはロールプロンプティングの記載がなく（#379は見送り）、プロンプト技法は既存項目で網羅済みのため追加せず。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
