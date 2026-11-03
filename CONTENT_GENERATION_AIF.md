@@ -1014,3 +1014,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
 - 2026-11-03（定期実行・8回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 15件（p1229〜p1243: single 13 / multi 1 / matching 1、genai 7 / aiml 8）追加。題材: Amazon Kendra（質問の種類・Intelligent Ranking・料金・新規顧客受付終了と代替=Bedrock Knowledge Bases・認証認可は顧客責任）、Amazon Forecast（欠損値対応・ユースケース・料金要素・新規顧客非提供）、Amazon Fraud Detector（決定ロジック・準備するデータ・2025-11-07以降新規顧客非提供）。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1243 / MOCK_POOL=500。
   出典: 既存 kendra / forecast / fraudDetector を再利用し、各公式ページをWebFetchで本文確認（すべて成功）。新規SOURCESなし。正解位置=0,3,0,1,2,2,0,0,1,2,2,1(multi),... とローテーション。nodeは未確認。
+- 2026-11-03（定期実行・9回目）: 改訂履歴をWebFetchで確認（最新はv1.2・2026-10-29のまま、新しい版なし）。PRACTICE 15件（p1244〜p1258: single 13 / multi 1 / matching 1、genai 8 / aiml 7）追加。題材: Strands Agents（model-first・Swarm/Graph/Workflow・MCP対応）、Amazon Q Developer（IDE支援・Q Businessとの違い・Free/Proの料金体系）、Bedrockレイテンシ最適化推論（performanceConfig・クォータ超過時は標準で処理）、AWS Glue Data Catalog（メタデータ・クローラー・Athena/Lake Formation/EMR連携）。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1258 / MOCK_POOL=500。
+  出典: 既存 strands / qDeveloper / latencyOpt / glueCatalog を再利用し、各公式ページをWebFetchで本文確認（すべて成功）。新規SOURCESなし。単一選択の正解位置=2,0,3,1,0,2,3,1,2,0,3,0,2 とローテーション。nodeは未確認。
+  メモ: Q DeveloperのIDEプラグインは2027-04-30にサポート終了予定（Kiroを案内）との公式記載があるため、IDE機能の問題は「現在の記載」に限定。正解最長の割合は今回追加分で高め（PRACTICE累計53%）、今後は不正解側を長めにする。
