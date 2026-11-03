@@ -1012,3 +1012,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-03（定期実行・7回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 12件（p1217〜p1228: single 10 / multi 1 / matching 1）追加。題材: Amazon Lex（ASR+NLU・Lambda連携・従量課金）、Amazon Personalize（レコメンド・インタラクションデータ・リアルタイム/バッチ）、AWS Inferentia（推論向けチップ・Inf2・Neuron SDK）。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1228 / MOCK_POOL=500。
   出典: 既存 lex / personalize / inferentia を再利用し、各公式ページをWebFetchで本文確認（すべて成功。Trainiumは学習・推論の両方を対象と記載のため、推論専用の断定問題には使わなかった）。新規SOURCESなし。単一選択の正解位置=1,0,3,2,0,3,2,2,2... とローテーション。nodeは未確認。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-03（定期実行・8回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 15件（p1229〜p1243: single 13 / multi 1 / matching 1、genai 7 / aiml 8）追加。題材: Amazon Kendra（質問の種類・Intelligent Ranking・料金・新規顧客受付終了と代替=Bedrock Knowledge Bases・認証認可は顧客責任）、Amazon Forecast（欠損値対応・ユースケース・料金要素・新規顧客非提供）、Amazon Fraud Detector（決定ロジック・準備するデータ・2025-11-07以降新規顧客非提供）。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1243 / MOCK_POOL=500。
+  出典: 既存 kendra / forecast / fraudDetector を再利用し、各公式ページをWebFetchで本文確認（すべて成功）。新規SOURCESなし。正解位置=0,3,0,1,2,2,0,0,1,2,2,1(multi),... とローテーション。nodeは未確認。
