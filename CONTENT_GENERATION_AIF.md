@@ -1020,3 +1020,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-03（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 4件（p1259〜p1262: single、aiml 2 / security 2、Transcribeのバッチ/ストリーミング、秒単位課金・最低課金時間なし、PII編集・カスタム言語モデルの追加料金、HIPAA適格性とBAA）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1262 / MOCK_POOL=500。
   出典: 既存 transcribe（docs.aws.amazon.com/transcribe/latest/dg/what-is.html をWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=1,1,1,1（今回は同位置に偏った。次回は0,2,3側に寄せる）。nodeは未確認。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-03（定期実行・11回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 17件（p1263〜p1279: single 17、aiml 7 / security 1 / fm 7 / genai 1... 内訳: Comprehend Medical 8、Nova 6、Titan 3）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1279 / MOCK_POOL=500。
+  出典: 既存 comprehendMedical / nova / titan を再利用し、各公式ページをWebFetchで本文確認（すべて成功。Nova Version 1 のドキュメント、Titanは現行Bedrock向けに埋め込み2種と画像生成のみ記載）。新規SOURCESなし。具体的なモデル版・数値は問題に使わず。正解位置=0,2,3,2,0,3,2,3,0,2,3,0,2,3,0,3,0（1を避けて偏り是正）。nodeは未確認。
