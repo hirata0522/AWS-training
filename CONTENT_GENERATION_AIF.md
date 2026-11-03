@@ -990,3 +990,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-02（定期実行・12回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v336 EU AI Act #321）、PRACTICE 3件（p1178〜p1180: single、security、EU AI Actのリスクベース枠組み・共有責任・禁止）追加。MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1180 / MOCK_POOL=500。単語リスト進捗 336/446（除外30）。
   出典: 新規SOURCES euAiAct（AWS ML Blog記事をWebFetchで本文確認、成功。aws.amazon.com/compliance/eu-ai-act/ は404）。正解位置=VOCAB 0 / PRACTICE 1,1,2。nodeは未確認。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-03（定期実行）: 改訂履歴をWebFetchで確認（成功）。v1.2（2026-10-29）が最新で、既に反映済みのため変更なし。PRACTICE 4件（p1181〜p1184: single、fm 3 / genai 1、Knowledge Basesのバイナリ/float32ベクトル、バイナリ対応モデル・ストアの要件、RAG実行時の最初の処理、再学習不要によるコスト面の利点）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1184 / MOCK_POOL=500。
+  出典: 既存 bedrockKb（kb-how-it-works ページをWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=0,0,1,1。nodeは未確認。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。RAGのordering問題は既に十分あるため追加せず。
