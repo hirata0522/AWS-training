@@ -1006,3 +1006,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-03（定期実行・5回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 4件（p1196〜p1199: single、genai 2 / fm 2、k-NNインデックス(HNSW/IVF)、pgvector、ハイブリッド検索(BM25+ベクトル)、Bedrock推奨ベクトルDB=OpenSearch Service）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1199 / MOCK_POOL=500。
   出典: 既存 vectorDb（aws.amazon.com/what-is/vector-databases/ をWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=3,2,0,1。nodeは未確認。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-03（定期実行・6回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 17件（p1200〜p1216: single 14 / multi 1 / matching 2）追加。題材: Bedrockプロンプトキャッシュ（効果・向くワークロード・プレフィックス設計・TTL・バッチ非対応）、バッチ推論（S3入出力・用途・非同期）、モデル呼び出しログ記録（初期無効・送信先S3/CloudWatch Logs・記録内容）、Textract（AnalyzeExpense・Queries）、Translate、Polly（音声キャッシュ再生は追加料金なし）。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1216 / MOCK_POOL=500。
+  出典: 既存の promptCaching / bedrockBatch / invocationLogging / textract / translate / polly を再利用。各公式ページをWebFetchで本文確認（すべて成功）。新規SOURCESなし。単一選択の正解位置は 2,2,1,3,2,3,1,0,1,0(multi)... とローテーション。nodeは未確認。
+  メモ: VOCABの `未` 残り110行は公式の定義ページを確認しづらい用語が中心のため今回は見送り。正解最長の割合は既存分で高止まり（PRACTICE 52%）だが、今回の追加分は不正解側を長めにして調整した。
