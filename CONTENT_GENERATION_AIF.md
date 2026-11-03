@@ -1022,3 +1022,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
 - 2026-11-03（定期実行・11回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 17件（p1263〜p1279: single 17、aiml 7 / security 1 / fm 7 / genai 1... 内訳: Comprehend Medical 8、Nova 6、Titan 3）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1279 / MOCK_POOL=500。
   出典: 既存 comprehendMedical / nova / titan を再利用し、各公式ページをWebFetchで本文確認（すべて成功。Nova Version 1 のドキュメント、Titanは現行Bedrock向けに埋め込み2種と画像生成のみ記載）。新規SOURCESなし。具体的なモデル版・数値は問題に使わず。正解位置=0,2,3,2,0,3,2,3,0,2,3,0,2,3,0,3,0（1を避けて偏り是正）。nodeは未確認。
+- 2026-11-03（定期実行・12回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 12件（p1280〜p1291: single 12、aiml 8 / security 4）追加。題材: SageMaker AI サーバーレス推論（アイドル向け・コールドスタート・Provisioned Concurrency・GPU/VPC/Model Monitor等の未対応）、リアルタイム推論、自動モデルチューニング（目的・前提条件・スポットインスタンス）、責任共有モデル（クラウド“の”/“における”セキュリティ・EC2・S3・共有コントロール）。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1291 / MOCK_POOL=500。
+  出典: 既存 serverlessInf / sagemakerRealtime / amt / sharedResp（これまで問題0件だったもの）を再利用し、各公式ページをWebFetchで本文確認（すべて成功。リアルタイム推論ページは概要のみ）。新規SOURCESなし。正解位置=0,1,2,1,0,0,1,1,2,1,2,0 。正解最長の割合は高め（PRACTICE累計54%）なので次回は不正解側を長めにすること。nodeは未確認。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
