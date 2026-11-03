@@ -1017,3 +1017,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-03（定期実行・9回目）: 改訂履歴をWebFetchで確認（最新はv1.2・2026-10-29のまま、新しい版なし）。PRACTICE 15件（p1244〜p1258: single 13 / multi 1 / matching 1、genai 8 / aiml 7）追加。題材: Strands Agents（model-first・Swarm/Graph/Workflow・MCP対応）、Amazon Q Developer（IDE支援・Q Businessとの違い・Free/Proの料金体系）、Bedrockレイテンシ最適化推論（performanceConfig・クォータ超過時は標準で処理）、AWS Glue Data Catalog（メタデータ・クローラー・Athena/Lake Formation/EMR連携）。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1258 / MOCK_POOL=500。
   出典: 既存 strands / qDeveloper / latencyOpt / glueCatalog を再利用し、各公式ページをWebFetchで本文確認（すべて成功）。新規SOURCESなし。単一選択の正解位置=2,0,3,1,0,2,3,1,2,0,3,0,2 とローテーション。nodeは未確認。
   メモ: Q DeveloperのIDEプラグインは2027-04-30にサポート終了予定（Kiroを案内）との公式記載があるため、IDE機能の問題は「現在の記載」に限定。正解最長の割合は今回追加分で高め（PRACTICE累計53%）、今後は不正解側を長めにする。
+- 2026-11-03（定期実行・10回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 4件（p1259〜p1262: single、aiml 2 / security 2、Transcribeのバッチ/ストリーミング、秒単位課金・最低課金時間なし、PII編集・カスタム言語モデルの追加料金、HIPAA適格性とBAA）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1262 / MOCK_POOL=500。
+  出典: 既存 transcribe（docs.aws.amazon.com/transcribe/latest/dg/what-is.html をWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=1,1,1,1（今回は同位置に偏った。次回は0,2,3側に寄せる）。nodeは未確認。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
