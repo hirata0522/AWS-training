@@ -1003,3 +1003,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-03（定期実行・4回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 3件（p1193〜p1195: single、aiml、SageMaker Ground Truthのプライベート/ベンダーワークフォース・自動データラベリング）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1195 / MOCK_POOL=500。
   出典: 既存 groundTruth（docs.aws.amazon.com/sagemaker/latest/dg/sms.html をWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=1,1,2。nodeで読み込み確認済み。
   メモ: Ground Truth は新規顧客の受付を終了している旨が公式ページにある（既存顧客は継続利用可）。#368 Amazon Mechanical Turk はワークフォース選択肢に載っておらず `未` のまま。件数は目安より少ない。
+- 2026-11-03（定期実行・5回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 4件（p1196〜p1199: single、genai 2 / fm 2、k-NNインデックス(HNSW/IVF)、pgvector、ハイブリッド検索(BM25+ベクトル)、Bedrock推奨ベクトルDB=OpenSearch Service）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1199 / MOCK_POOL=500。
+  出典: 既存 vectorDb（aws.amazon.com/what-is/vector-databases/ をWebFetchで本文確認、成功）。新規SOURCESなし。正解位置=3,2,0,1。nodeは未確認。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。

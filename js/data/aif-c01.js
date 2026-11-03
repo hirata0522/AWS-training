@@ -5061,6 +5061,22 @@ var PRACTICE = [
     choices:['Amazon Rekognition のカスタムラベルを使って、画像を自動で分類する','Amazon Textract を使って、画像内の文字を抽出する','Amazon SageMaker Ground Truth のラベル付けジョブで、ベンダーのワークフォースを選択する','Amazon Comprehend のカスタム分類を使って、画像を分類する'],
     correct:[2],
     why:['誤り。Rekognition は画像分析のサービスで、ラベル付け作業を外部のワークフォースに依頼する仕組みではありません。','誤り。Textract は文書内の文字やデータの抽出を行うサービスです。','正しい。Ground Truth では、作業者として AWS Marketplace のデータラベリング専門ベンダーか、社内のプライベートワークフォースを選べます。','誤り。Comprehend はテキスト分析のサービスで、画像は対象外です。']},
+  {id:'p1196', domain:'genai', type:'single', source:SOURCES.vectorDb, text:'ベクトルデータベースで、埋め込みベクトル同士の近さを基に類似した項目を高速に検索するために使われるインデックスの仕組みはどれですか？',
+    choices:['リレーショナルテーブルの主キーに作成するB木インデックス','結果をアルファベット順に並べ替えるソートキー','キーワードの出現頻度だけを数える転置インデックスの全文検索','HNSWやIVFなどのアルゴリズムで構築するk近傍(k-NN)インデックス'],
+    correct:[3],
+    why:['誤り。B木インデックスは完全一致や範囲検索向けで、意味的な近さの検索には使いません。','誤り。ソートキーは並び順を決めるもので、ベクトル間の類似度検索の仕組みではありません。','誤り。キーワード中心の検索であり、ベクトル間の距離で意味の近さを測る方式ではありません。','正しい。ベクトルデータベースはk-NNインデックス(HNSW、IVFなど)で近傍のベクトルを高速に探します。']},
+  {id:'p1197', domain:'fm', type:'single', source:SOURCES.vectorDb, text:'Amazon Aurora PostgreSQL互換エディションを既存のリレーショナルDBとして使っている企業が、同じデータベースに埋め込みを保存して類似検索も行いたい場合に利用する拡張機能はどれですか？',
+    choices:['pg_stat_statements','PostGIS','pgvector','pg_cron'],
+    correct:[2],
+    why:['誤り。クエリ実行統計を収集する拡張機能で、ベクトル検索はできません。','誤り。地理空間データを扱う拡張機能です。','正しい。AuroraやRDS for PostgreSQLはpgvector拡張機能で埋め込みの保存と類似検索に対応します。','誤り。ジョブのスケジュール実行用の拡張機能です。']},
+  {id:'p1198', domain:'genai', type:'single', source:SOURCES.vectorDb, text:'ベクトルデータベースで、キーワードの出現頻度に基づくBM25のスコアとベクトル検索のスコアを組み合わせて関連度を算出する検索方式はどれですか？',
+    choices:['ハイブリッド検索','フェデレーテッド検索','ファセット検索','ワイルドカード検索'],
+    correct:[0],
+    why:['正しい。ハイブリッド関連度スコアリングは、BM25のようなキーワードベースのスコアとベクトルのスコアを併用します。','誤り。複数のデータソースを横断して検索する方式で、スコアの組み合わせを指すものではありません。','誤り。属性値による絞り込みを提供するUIの仕組みです。','誤り。文字列パターンの一致を使う検索で、ベクトルのスコアとは関係がありません。']},
+  {id:'p1199', domain:'fm', type:'single', source:SOURCES.vectorDb, text:'Amazon Bedrockのナレッジベースで利用するベクトルストアとして、AWSが推奨しているサービスはどれですか？',
+    choices:['Amazon DynamoDB','Amazon OpenSearch Service','Amazon Redshift','Amazon ElastiCache for Memcached'],
+    correct:[1],
+    why:['誤り。キーバリュー型のデータベースで、推奨されるベクトルデータベースとしては挙げられていません。','正しい。公式ページでAmazon OpenSearch ServiceはAmazon Bedrockの推奨ベクトルデータベースとされています。','誤り。データウェアハウスで、Bedrock向けの推奨ベクトルストアではありません。','誤り。インメモリキャッシュで、ベクトル検索用のストアとしては推奨されていません。']},
 ];
 
 
