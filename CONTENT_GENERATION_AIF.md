@@ -1054,3 +1054,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-04（定期実行・21回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v356 Red Teaming）、PRACTICE 1件（p1327 single、security）追加。MOCK_POOLは0件。累計 VOCAB=356 / PRACTICE=1327 / MOCK_POOL=500。単語リスト進捗 356/444（除外32）。
   出典: 新規SOURCES redTeaming（Well-Architected Agentic AI Lens AGENTSEC07-BP05をWebFetchで本文確認、成功）。正解位置=2（v356）,1（p1327）。
   見送り（未のまま）: Role Prompting（design-a-prompt、プロンプト設計ページを確認したがロール付与の記述なし）。Cost per Interaction 等は前回同様、直接触れる公式ページが見つからず。件数は目安より大幅に少ない（確認できた題材に限定）。
+- 2026-11-04（定期実行・22回目）: 改訂履歴を確認し、**ガイドv1.2（2026-10-29公開）が出ていることを確認**（変更履歴表にv1.2。サービス範囲の変更は、対象外リストからElastic Transcoder・Elemental MediaStore・IoT 1-Click・IoT Analytics・IoT Events・Nimble Studioが外れた旨。対象サービスとして問われるかは未確認のため、既存項目は変更せず、次回以降にv1.2のドメインページ・対象サービス一覧を確認して追加方針を決めること）。VOCAB 0件、PRACTICE 5件（p1328〜p1332、fm：single4・ordering1、Model Distillation）、MOCK_POOL 0件。累計 VOCAB=356 / PRACTICE=1332 / MOCK_POOL=500。単語リスト進捗 356/444（除外32）。
+  出典: 新規SOURCES distill（Bedrock Model Distillationページ、WebFetchで本文確認、成功）。正解位置=0,1,2,2。
+  見送り: 単語リストの残り（Technical Debt (ML) 等）は前回同様、直接触れる公式ページが見つからず着手せず。件数は目安より少ない（確認できた題材に限定）。

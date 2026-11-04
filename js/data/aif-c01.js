@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  distill:{label:'Amazon Bedrock: Customize a model with distillation', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/model-distillation.html'},
   redTeaming:{label:'Well-Architected Agentic AI Lens: AGENTSEC07-BP05 定期的なセキュリティ評価とレッドチーミング', url:'https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentsec07-bp05.html'},
   mlSecBlog:{label:'AWS Security Blog: 7 ways to improve security of your machine learning workflows', url:'https://aws.amazon.com/blogs/security/7-ways-to-improve-security-of-your-machine-learning-workflows/'},
   bedrockHp:{label:'Amazon Bedrock: Custom model hyperparameters', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html'},
@@ -5622,6 +5623,21 @@ var PRACTICE = [
     choices:['初回デプロイ時に1回だけ実施すれば、その後は自動スキャンも不要になる','脅威環境の変化に備え、リスクに応じた頻度で定期的に実施し、所見を改善に結びつけて追跡する','一般的なWebアプリケーション向けの診断項目のみを使い、エージェント固有のシナリオは除外する','レッドチームとブルーチームは情報共有せず、互いに独立して活動させる'],
     correct:[1],
     why:['誤り。初回のみの実施はアンチパターンです。手法の進化に伴い定期的な評価が必要で、自動スキャンも継続して実行します。','正しい。評価頻度は各エージェントのリスクレベルに合わせ、所見は修復まで追跡してガードレールや検知ルールの更新に反映します。','誤り。一般的な診断だけでは、プロンプトインジェクションやメモリポイズニングなどエージェント固有の問題を見逃します。','誤り。両チームが協力するパープルチーム活動により、検知と対応の改善につながる知見が共有されます。']},
+  {id:'p1328', domain:'fm', type:'single', source:SOURCES.distill, text:'Amazon Bedrock Model Distillationの目的として最も適切なものはどれですか？',
+    choices:['大規模なモデルの知識を、特定用途向けの小さく高速でコスト効率のよいモデルに移すこと','ラベルなしの大量テキストでモデルを継続的に事前学習し、一般的な言語能力を高めること','応答の生成時にナレッジベースを検索し、外部データを根拠として回答に加えること','入力プロンプトの内容を検査し、不適切なコンテンツを有害度に応じてブロックすること'], correct:[0],
+    why:['正しい。教師（teacher）モデルの知識を生徒（student）モデルに移し、特定ユースケースでの性能を高めます。','誤り。継続事前学習の説明です。蒸留は教師モデルの応答で生徒モデルをファインチューニングします。','誤り。RAG（ナレッジベース）の説明です。','誤り。Guardrailsの説明です。']},
+  {id:'p1329', domain:'fm', type:'single', source:SOURCES.distill, text:'Amazon Bedrock Model Distillationでは、教師モデルの応答をどのように利用して生徒モデルを作りますか？',
+    choices:['教師モデルの重みを直接コピーして生徒モデルを置き換える','教師モデルの応答を合成データとして生徒モデルをファインチューニングする','教師モデルの応答を埋め込みに変換してベクトルデータベースに保存する','教師モデルの応答を人間のレビュアーに採点させ、合格分だけを再利用する'], correct:[1],
+    why:['誤り。重みのコピーではなく、教師の応答を使った学習です。','正しい。Bedrockが教師の応答を生成し、データ合成技術で補強して生徒モデルをファインチューニングします。','誤り。これはRAGの準備手順に近い内容で、蒸留とは異なります。','誤り。蒸留は自動化された単一のワークフローです。']},
+  {id:'p1330', domain:'fm', type:'single', source:SOURCES.distill, text:'Bedrock Model Distillationで、既に本番運用している教師モデルの応答を活用したい場合、どの方法が利用できますか？',
+    choices:['Guardrailsのトレースを学習データとして指定する','Knowledge Basesのデータソースの同期ログを指定する','CloudWatch Logsの呼び出しログ記録を有効にし、S3に保存された呼び出しログを学習データとして使う','Amazon Macieの検出結果を教師データとして指定する'], correct:[2],
+    why:['誤り。学習データの入力元として挙げられていません。','誤り。同期ログは蒸留の入力ではありません。','正しい。呼び出しログのプロンプトのみ、またはプロンプトと応答のペアを使え、requestMetadataで絞り込めます。','誤り。Macieは機密データ検出のサービスです。']},
+  {id:'p1331', domain:'fm', type:'single', source:SOURCES.distill, text:'Bedrock Model Distillationで作成した蒸留モデルのデータの扱いについて、正しい説明はどれですか？',
+    choices:['蒸留モデルには、同じアカウント内でも作成者以外は一切アクセスできない','入力データは他のAWSユーザー向けの公開モデルの学習にも使われる','最終的な蒸留モデルにはあなただけがアクセスでき、データは他の教師・生徒モデルの公開用学習に使われない','蒸留モデルは作成後にAWS Marketplaceで自動的に公開される'], correct:[2],
+    why:['誤り。「作成者以外は一切アクセス不可」という断定は公式の記述にありません。公式は、最終モデルにアクセスできるのは利用者のみと説明しています。','誤り。Bedrockは利用者のデータを公開用モデルの学習に使いません。','正しい。ドキュメントのとおり、最終モデルにアクセスできるのは利用者のみで、データは他モデルの学習に使われません。','誤り。自動公開はされません。']},
+  {id:'p1332', domain:'fm', type:'ordering', source:SOURCES.distill, text:'Amazon Bedrock Model Distillationを使う手順を、正しい順に並べてください。',
+    items:['教師モデルと生徒モデルを選ぶ','蒸留用の学習データ（プロンプトなど）を準備する','蒸留ジョブを作成する'],
+    why:['最初に、知識を渡す教師モデルと、小さく高速な生徒モデルを決めます。','次に、プロンプトを.jsonlで用意するか、呼び出しログを使うなどして学習データを準備します。','最後にジョブを作成し、より小さくコスト効率のよいモデルを得ます。']},
 ];
 
 
