@@ -1031,3 +1031,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-04（定期実行・14回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 4件（v342〜v345: Compliance Reports / Regulatory Compliance (AI) / Model Inversion / Adversarial Attack）追加。PRACTICE・MOCK_POOLは0件（MOCK_POOLは目標500達成済み）。累計 VOCAB=345 / PRACTICE=1291 / MOCK_POOL=500。
   出典: 新規SOURCES `mlSecBlog`（AWS Security Blog「7 ways to improve security of your ML workflows」。model inversion=モデルの特徴量・パラメータのリバースエンジニアリング、敵対的サンプルの記述をWebFetchで確認）。既存 `artifact`・`euAiAct` を再利用しWebFetchで本文確認（成功）。正解位置=0,1,2,0。nodeは未確認。
   メモ: 件数は目安より大幅に少ない（公式出典を確認できた用語に限定）。NIST AI RMF（AWS公式の解説ページが検索で見つからず）、Model Theft・Supply Chain Risk (AI)（公式出典未確認）、Data Lifecycle（dataGovページに定義なし）は見送り（`未`のまま）。残りの`未`は ROI/Cost per User 等ビジネス指標系が多く、公式出典が乏しい。次回は`除外`も検討。正解最長の割合はVOCABで58%と高いままなので、新規は不正解側を長めに書くこと。
+- 2026-11-04（定期実行・15回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 10件（p1292〜p1301: single 10、aiml 2 / security 8）追加。題材: SageMaker Experiments（run追跡・来歴確認）、CloudWatch（アラーム・メトリクスフィルター・CloudWatchエージェント）、AWS KMS（HSM保護・キーポリシー）、S3バケットポリシー（リソースベース・条件指定・ライフサイクルに影響しない）。VOCAB・MOCK_POOLは0件。累計 VOCAB=345 / PRACTICE=1301 / MOCK_POOL=500。
+  出典: 既存 sagemakerExperiments / cloudwatch / kms / s3BucketPolicy を再利用し、各公式ページをWebFetchで本文確認（すべて成功）。新規SOURCESなし。正解位置=2,3,1,0,3,1,0,2,3,1。
+  既存データの修正（明確なバグ）: p1243 末尾のカンマ漏れでJS構文エラー（nodeで検出）だったため、カンマを1つ追加（内容は未変更）。追加後にnodeで読み込み確認済み（345/1301/500）。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。正解最長の割合はPRACTICE累計54%で高止まり、次回は不正解側を長くする。
