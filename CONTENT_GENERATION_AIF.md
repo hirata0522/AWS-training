@@ -1041,3 +1041,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-04（定期実行・17回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 8件（p1309〜p1316: single 8、security 3 / fm 4 / aiml 1）追加。題材: Clean Rooms Differential Privacy（ノイズ付加・Privacy budget）、Amazon Neptune（グラフDB・クエリ言語）、OpenSearch Service（きめ細かいセキュリティ・マネージドの利点）、Aurora PostgreSQL をKBのベクトルストアにする（pgvector・Data API/Secrets Manager）。VOCAB・MOCK_POOLは0件。累計 VOCAB=345 / PRACTICE=1316 / MOCK_POOL=500。
   出典: 既存 cleanRoomsDP / neptune / opensearch / auroraKb（これまで問題0〜1件）を再利用し、各公式ページをWebFetchで本文確認（すべて成功）。新規SOURCESなし。正解位置=3,0,1,2,2,3,2,0。nodeでの読み込み確認済み（345/1316/500）。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。正解最長割合はPRACTICE累計54%で高止まり、次回も不正解側を長くする。
+- 2026-11-04（定期実行・18回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 10件（p1317〜p1326: single 9 / multi 1、responsible 3 / aiml 5 / genai 2）追加。題材: AWS AI Service Cards（目的・含まれる内容・自社データでの再評価）、Ground Truth アノテーション統合（定義・ワーカー数とコスト・NumberOfHumanWorkersPerDataObject・バウンディングボックスのJaccard統合・新規顧客受付終了）、AgentCore Evaluations（評価指標・対象エージェントの範囲）。VOCAB・MOCK_POOLは0件。累計 VOCAB=345 / PRACTICE=1326 / MOCK_POOL=500。
+  出典: 既存 aiServiceCards / gtConsolidation / agentcoreEval を再利用し、各公式ページをWebFetchで本文確認（すべて成功。agentcoreEvalは概要ページのみ）。新規SOURCESなし。正解位置=2,(multi),0,3,1,2,1,1,0,2。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。正解最長割合はPRACTICE累計54%で高止まり、次回も不正解側を長くする。ordering/matchingの比率が低いので次回は優先。
