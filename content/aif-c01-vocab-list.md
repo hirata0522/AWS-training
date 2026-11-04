@@ -310,7 +310,7 @@
 | 304 | Amazon SageMaker Real-Time Inference | aiml | v254 |
 | 305 | Amazon SageMaker JumpStart | genai | v118 |
 | 306 | RAG Evaluation | fm | v296 |
-| 307 | Regulatory Compliance (AI) | security | 未 |
+| 307 | Regulatory Compliance (AI) | security | v343 |
 | 308 | User Feedback Mechanism | responsible | 未 |
 | 309 | Amazon SageMaker Batch Transform | aiml | v255 |
 | 310 | Amazon SageMaker Asynchronous Inference | aiml | v256 |
@@ -344,7 +344,7 @@
 | 338 | Sampling Bias | responsible | 除外 |
 | 339 | AWS Lake Formation | aiml | v180 |
 | 340 | Document Chunking Strategy | fm | v309 |
-| 341 | Compliance Reports | security | 未 |
+| 341 | Compliance Reports | security | v342 |
 | 342 | Amazon Bedrock Playground | genai | v212 |
 | 343 | AWS Data Exchange | aiml | v308 |
 | 344 | Selection Bias | responsible | v313 |
@@ -354,12 +354,12 @@
 | 348 | Amazon Bedrock Cross-Region Inference | genai | v213 |
 | 349 | Amazon Athena | aiml | 除外 |
 | 350 | Amazon Kendra GenAI Index | fm | v271 |
-| 351 | Model Inversion | security | 未 |
+| 351 | Model Inversion | security | v344 |
 | 352 | Measurement Bias | responsible | v314 |
 | 353 | Model Latency | genai | v323 |
 | 354 | Return on Investment (ROI) | aiml | 未 |
 | 355 | Vector Index | fm | v316 |
-| 356 | Adversarial Attack | security | 未 |
+| 356 | Adversarial Attack | security | v345 |
 | 357 | Cost per User | aiml | 未 |
 | 358 | Model Complexity | genai | 未 |
 | 359 | Bias-variance Tradeoff | responsible | v334 |

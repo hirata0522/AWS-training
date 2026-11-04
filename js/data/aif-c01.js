@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  mlSecBlog:{label:'AWS Security Blog: 7 ways to improve security of your machine learning workflows', url:'https://aws.amazon.com/blogs/security/7-ways-to-improve-security-of-your-machine-learning-workflows/'},
   bedrockHp:{label:'Amazon Bedrock: Custom model hyperparameters', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html'},
   deepRacerAws:{label:'DeepRacer on AWS: Overview', url:'https://docs.aws.amazon.com/deepracer/latest/developerguide/what-is-deepracer.html'},
   euAiAct:{label:'AWS ML Blog: Building trust in AI: The AWS approach to the EU AI Act', url:'https://aws.amazon.com/blogs/machine-learning/building-trust-in-ai-the-aws-approach-to-the-eu-ai-act'},
@@ -806,6 +807,22 @@ var VOCAB = [
     choices:['Amazon Lex：音声・テキストの会話型ボットを構築するサービス', 'AWS DeepRacer：強化学習でモデルを訓練し、シミュレーターや実車で走行させる教育向けの仕組み', 'Amazon Rekognition：画像や動画から物体や顔を分析するサービス', 'Amazon Forecast：時系列データから需要などを予測するサービス'],
     correct:1,
     why:['誤り。Lexは会話型インターフェースの構築用で、自律走行車や強化学習の教材ではありません。', '正しい。DeepRacerは1/18スケールの完全自律走行レースカーを強化学習で走らせる教育向けエコシステムで、モデルはSageMaker AIで訓練されます。', '誤り。Rekognitionは画像・動画の分析サービスで、強化学習の教材ではありません。', '誤り。Forecastは時系列予測のサービスで、強化学習によるレースカーとは無関係です。']}},
+  {id:'v342', term:'Compliance Reports', domain:'security', source:SOURCES.artifact, q:{text:'ISO・SOC・PCI などの AWS のセキュリティ・コンプライアンスレポートを、監査人に提出するためにオンデマンドでダウンロードできる AWS のサービスはどれですか？',
+    choices:['AWS Artifact：AWS のコンプライアンスレポートや認証書類をダウンロードできるポータル', 'AWS Config：リソースの構成変更履歴を記録し、ルール適合性を評価するサービス', 'Amazon Inspector：ワークロードの脆弱性を自動でスキャンするサービス', 'AWS CloudTrail：アカウント内の API 呼び出しを記録して監査するサービス'],
+    correct:0,
+    why:['正しい。AWS Artifact は ISO・PCI・SOC などの AWS のセキュリティ／コンプライアンス文書をオンデマンドで提供し、監査人や規制当局への提出に使えます。','誤り。Config は自分のリソースの構成を記録・評価するもので、AWS 自身のコンプライアンスレポートは提供しません。','誤り。Inspector は EC2 やコンテナなどの脆弱性スキャン用です。','誤り。CloudTrail は自分のアカウントの API 操作ログを記録するもので、AWS の認証レポートの入手先ではありません。']}},
+  {id:'v343', term:'Regulatory Compliance (AI)', domain:'security', source:SOURCES.euAiAct, q:{text:'EU AI Act のような AI 規制について、AWS の考え方として正しいものはどれですか？',
+    choices:['AWS がコンプライアンスを一括で引き受けるため、利用者側の対応は不要になる', 'AWS は準拠のための構成要素を提供し、各利用者は自分の AI の用途について遵守状況を評価・管理する責任を負う', 'AI Act はすべての AI システムを同じ要件で規制するので、リスクの区別はない', 'AI 規制は学習用データを扱うモデル提供者だけが対象で、AI を利用するだけの企業には関係しない'],
+    correct:1,
+    why:['誤り。コンプライアンスは「共有された取り組み」で、利用者も自分の利用方法に責任を負います。','正しい。AWS は準拠したソリューションのための構成要素を提供しますが、利用者は自分の利用について評価・管理する責任を負います。','誤り。AI Act はリスクに応じた段階的なアプローチで、許容できないリスクは禁止、高リスクは厳しい要件が課されます。','誤り。AI Act の義務は AI サプライチェーン上のすべての関係者に及び、利用者も自分の役割を確認する必要があります。']}},
+  {id:'v344', term:'Model Inversion', domain:'security', source:SOURCES.mlSecBlog, q:{text:'モデルの予測の仕方を探ってモデルの特徴量やパラメータを逆算して推定する攻撃は、次のうちどれですか？',
+    choices:['プロンプトインジェクション：入力に悪意ある指示を紛れ込ませて挙動を乗っ取る攻撃', 'データポイズニング：学習データに不正なデータを混入させる攻撃', 'モデルインバージョン：モデルの特徴量やパラメータをリバースエンジニアリングする攻撃', 'DDoS 攻撃：大量のリクエストでサービスを利用不能にする攻撃'],
+    correct:2,
+    why:['誤り。プロンプトインジェクションは入力経由でモデルに指示を与える攻撃で、モデルの内部情報を逆算するものではありません。','誤り。ポイズニングは学習時のデータを汚染する攻撃で、既存モデルから情報を引き出す攻撃ではありません。','正しい。モデルインバージョンはモデルの特徴量やパラメータを逆算するリバースエンジニアリングで、敵対的サンプルの生成につながることもあります。','誤り。DDoS は可用性を狙う攻撃です。']}},
+  {id:'v345', term:'Adversarial Attack', domain:'security', source:SOURCES.mlSecBlog, q:{text:'人間には正常に見える入力にわずかな細工を加え、ML モデルに誤った分類をさせる手法を何と呼びますか？',
+    choices:['敵対的サンプルを使った攻撃（Adversarial Attack）：細工した入力でモデルの判断を誤らせる', 'ハルシネーション：モデルが事実と異なる内容をもっともらしく生成する現象', '過学習：学習データに適合しすぎて未知のデータに弱くなる状態', 'データドリフト：運用中に入力データの傾向が変化してしまうこと'],
+    correct:0,
+    why:['正しい。敵対的サンプルは正規の入力に細工を加えたもので、モデルに誤分類させるために使われます。','誤り。ハルシネーションは攻撃ではなく、生成AIが誤った内容を出力してしまう現象です。','誤り。過学習は学習の問題で、攻撃者が入力を細工するものではありません。','誤り。ドリフトは自然なデータの変化で、意図的な攻撃ではありません。']}},
 ];
 
 var PRACTICE = [
