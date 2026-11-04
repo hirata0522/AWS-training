@@ -317,7 +317,7 @@
 | 311 | Agent Evaluation | fm | v298 |
 | 312 | ISO/IEC 42001 | security | v289 |
 | 313 | Amazon Nova | genai | v182 |
-| 314 | AI Decision Transparency | responsible | 未 |
+| 314 | AI Decision Transparency | responsible | v355 |
 | 315 | Amazon SageMaker Serverless Inference | aiml | 除外 |
 | 316 | Amazon Bedrock Converse API | fm | v210 |
 | 317 | NIST AI Risk Management Framework | security | 未 |
@@ -361,7 +361,7 @@
 | 355 | Vector Index | fm | v316 |
 | 356 | Adversarial Attack | security | v345 |
 | 357 | Cost per User | aiml | 未 |
-| 358 | Model Complexity | genai | 未 |
+| 358 | Model Complexity | genai | v354 |
 | 359 | Bias-variance Tradeoff | responsible | v334 |
 | 360 | Retriever | fm | v326 |
 | 361 | Model Theft | security | 未 |

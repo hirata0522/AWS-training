@@ -1048,3 +1048,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   出典: 新規SOURCES codeguru / devopsGuru / lambda / ecs / eks / s3 / dynamodb / rds（各公式ドキュメントをWebFetchで本文確認、すべて成功）。正解位置=0,2,1,3,0,3,1（v346〜v353、うち8件目含め偏りなし）。nodeでの読み込み確認済み（353/1326/500）。
   除外: #368 Amazon Mechanical Turk（公式ホスト www.mturk.com がセッションのネットワーク許可外で確認不能）、#392 Amazon Lookout for Metrics（公式ドキュメントURLが404で提供状況を確認できず）。
   メモ: CodeGuru Reviewerは2025-11-07以降新規リポジトリ関連付け不可、DevOps Guruは2026-10-29以降新規顧客受付終了（公式の通知）。問題文は機能の説明にとどめ、提供状況を正解の根拠にしていない。件数は目安より少ない（確認できた用語に限定）。
+- 2026-11-04（定期実行・20回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 2件（v354 Model Complexity / v355 AI Decision Transparency）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=355 / PRACTICE=1326 / MOCK_POOL=500。単語リスト進捗 355/444（除外32）。
+  出典: 新規SOURCES gencost01Bp01（GENCOST01-BP01をWebFetchで本文確認、成功）、既存 responsibleAi（責任あるAIページをWebFetchで確認、成功）。正解位置=1,0。nodeでの読み込み確認済み（355/1326/500）。
+  見送り（未のまま）: Cost per Interaction / Cost per User / ROI / Model Theft / Human-centered Design / NIST AI RMF / Safety vs Transparency Tradeoff。公式ページ（GENCOST01-BP01, GENCOST02-BP01, GENSEC01-BP02, responsible-ai）に該当用語の記述が確認できず、出典を当て推量しないため。責任あるAIページは「安全性と透明性のトレードオフ」を論じておらずNIST AI RMFにも言及なし。次回は用語に直接触れる公式ページを探せる場合のみ着手。

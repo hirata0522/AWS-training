@@ -254,6 +254,7 @@ var SOURCES = {
   s3:{label:'Amazon S3 とは',url:'https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html'},
   dynamodb:{label:'Amazon DynamoDB とは',url:'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html'},
   rds:{label:'Amazon RDS とは',url:'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html'},
+  gencost01Bp01:{label:'AWS Well-Architected Generative AI Lens: 推論コストを最適化するためにモデルを適切なサイズで選定する (GENCOST01-BP01)',url:'https://docs.aws.amazon.com/wellarchitected/latest/generative-ai-lens/gencost01-bp01.html'},
 };
 
 var VOCAB = [
@@ -863,6 +864,14 @@ var VOCAB = [
     choices:['Amazon DynamoDB：キーバリュー型のNoSQLデータベース','Amazon RDS：エンジンを選んで使えるマネージドなリレーショナルデータベースサービス','Amazon Neptune：グラフデータベース','Amazon S3：オブジェクトストレージ'],
     correct:1,
     why:['誤り。DynamoDBはNoSQLデータベースで、MySQLなどのエンジンは使いません。','正しい。RDSはMySQL、PostgreSQL、MariaDB、SQL Server、Oracle、Db2などのエンジンを選べ、バックアップやパッチ適用、復旧をAWSが担います。','誤り。Neptuneはグラフデータ用のデータベースで、一般的なリレーショナルエンジンを提供するサービスではありません。','誤り。S3はオブジェクトストレージで、リレーショナルデータベースではありません。']}},
+  {id:'v354', term:'Model Complexity', domain:'genai', source:SOURCES.gencost01Bp01, q:{text:'基盤モデルの選定で、モデルの規模や能力（複雑さ）とコストの関係を踏まえ、まず小さいモデルで試し、要件を満たす最小のモデルを選ぶ考え方として最も適切なものはどれですか？',
+    choices:['常に最大のモデルを選んでおけば、コストが最小になる','要件を満たす範囲で小さいモデルから試し、必要に応じて規模を上げて、コスト効率のよいモデルを選ぶ','モデルの規模はコストに影響しないため、精度だけで選ぶ','モデルを一度選んだら、新しいモデルが出ても見直さない'],
+    correct:1,
+    why:['誤り。一般に新しく大きいモデルほど高コストになりやすく、最大のモデルが最安とは限りません。','正しい。最小のモデルから試して、許容できる品質に達するまで段階的に規模を上げることで、トークン単価などの面でコスト効率のよいモデルを選びやすくなります。','誤り。マネージドモデルは入出力トークン数で課金され、モデルごとに単価が異なるため、規模はコストに影響します。','誤り。新しいモデルの登場やワークロードの変化に応じて、適切なサイズの選定は継続的に見直すべきとされています。']}},
+  {id:'v355', term:'AI Decision Transparency', domain:'responsible', source:SOURCES.responsibleAi, q:{text:'責任あるAIの「透明性（transparency）」の説明として、AWSの定義に最も近いものはどれですか？',
+    choices:['AIシステムの出力を理解し評価できるようにすること','AIシステムの利用に関して、関係者が情報に基づいた判断をできるようにすること','AIの学習データを必ず一般公開すること','AIモデルの出力が常に決定的であるようにすること'],
+    correct:0,
+    why:['誤り。出力を理解し評価することは、透明性とは別のディメンションである説明可能性（explainability）の説明です。','正しい。透明性は、関係者がAIシステムとの関わり方について情報に基づいて選択できるようにすることです。AI Service Cards は意図された用途や制約を文書化する手段の1つです。','誤り。透明性は学習データの全面公開を求めるものではありません。','誤り。出力の決定性は透明性の定義ではありません。']}},
 ];
 
 var PRACTICE = [
