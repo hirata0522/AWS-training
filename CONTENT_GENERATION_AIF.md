@@ -1038,3 +1038,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-04（定期実行・16回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 7件（p1302〜p1308: single 7、fm 7）追加。題材: Bedrock バッチ推論（S3入出力・EventBridge通知）、Bedrock 評価（人間ワーカー/審査員モデル/プログラム的/RAG評価）。VOCAB・MOCK_POOLは0件。累計 VOCAB=345 / PRACTICE=1308 / MOCK_POOL=500。
   出典: 既存 bedrockBatch / bedrockEval を再利用し、各公式ページをWebFetchで本文確認（成功）。新規SOURCESなし。正解位置=0,2,1,3,0,1,2。nodeでの読み込み確認済み。
   メモ: 件数は目安より少ない。正解最長割合はPRACTICE累計54%で高止まり、次回も不正解側を長くする。
+- 2026-11-04（定期実行・17回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 8件（p1309〜p1316: single 8、security 3 / fm 4 / aiml 1）追加。題材: Clean Rooms Differential Privacy（ノイズ付加・Privacy budget）、Amazon Neptune（グラフDB・クエリ言語）、OpenSearch Service（きめ細かいセキュリティ・マネージドの利点）、Aurora PostgreSQL をKBのベクトルストアにする（pgvector・Data API/Secrets Manager）。VOCAB・MOCK_POOLは0件。累計 VOCAB=345 / PRACTICE=1316 / MOCK_POOL=500。
+  出典: 既存 cleanRoomsDP / neptune / opensearch / auroraKb（これまで問題0〜1件）を再利用し、各公式ページをWebFetchで本文確認（すべて成功）。新規SOURCESなし。正解位置=3,0,1,2,2,3,2,0。nodeでの読み込み確認済み（345/1316/500）。
+  メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。正解最長割合はPRACTICE累計54%で高止まり、次回も不正解側を長くする。
