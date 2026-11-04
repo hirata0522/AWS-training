@@ -405,24 +405,24 @@
 | 399 | Amazon Bedrock Data Protection | security | 未 |
 | 400 | Amazon DevOps Guru | aiml | 未 |
 | 401 | Conversion Rate | genai | 未 |
-| 402 | AWS DeepRacer | aiml | 未 |
+| 402 | AWS DeepRacer | aiml | v341 |
 | 403 | Feature Importance | responsible | 未 |
-| 404 | Hyperparameter Tuning for FM | fm | 未 |
+| 404 | Hyperparameter Tuning for FM | fm | v337 |
 | 405 | Amazon Bedrock VPC Configuration | security | v325 |
 | 406 | Average Revenue per User (ARPU) | genai | 未 |
 | 407 | AWS Trainium | aiml | v277 |
-| 408 | Epoch | fm | 未 |
+| 408 | Epoch | fm | v338 |
 | 409 | Amazon SageMaker Network Isolation | security | 未 |
 | 410 | AWS Inferentia | aiml | v278 |
 | 411 | SHAP Values | responsible | v206 |
 | 412 | Customer Lifetime Value | genai | 未 |
 | 413 | Amazon EC2 for ML | aiml | 未 |
-| 414 | Learning Rate | fm | 未 |
+| 414 | Learning Rate | fm | v339 |
 | 415 | AWS CloudFormation | security | 未 |
 | 416 | AWS Lambda | aiml | 未 |
 | 417 | Foundation Model Selection Criteria | genai | 未 |
 | 418 | Partial Dependence Plot | responsible | 未 |
-| 419 | Batch Size | fm | 未 |
+| 419 | Batch Size | fm | v340 |
 | 420 | AWS Service Catalog | security | 未 |
 | 421 | Amazon ECS | aiml | 未 |
 | 422 | Data Representativeness | fm | 未 |

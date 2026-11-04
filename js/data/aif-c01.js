@@ -14,6 +14,8 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  bedrockHp:{label:'Amazon Bedrock: Custom model hyperparameters', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html'},
+  deepRacerAws:{label:'DeepRacer on AWS: Overview', url:'https://docs.aws.amazon.com/deepracer/latest/developerguide/what-is-deepracer.html'},
   euAiAct:{label:'AWS ML Blog: Building trust in AI: The AWS approach to the EU AI Act', url:'https://aws.amazon.com/blogs/machine-learning/building-trust-in-ai-the-aws-approach-to-the-eu-ai-act'},
   transcribeMedical:{label:'Amazon Transcribe Medical', url:'https://docs.aws.amazon.com/transcribe/latest/dg/transcribe-medical.html'},
   whatIsOverfitting:{label:'AWS: 過学習とは (What is Overfitting?)', url:'https://aws.amazon.com/what-is/overfitting/'},
@@ -784,6 +786,26 @@ var VOCAB = [
     choices:['EU AI Act：リスクベースの枠組みで、基本的権利と安全の保護を目的とするEUの規制', 'GDPR：個人データの処理と保護を定めるEUの規則で、AI全般を対象にしたものではない', 'ISO/IEC 27001：情報セキュリティマネジメントシステムに関する国際規格', 'AWS Artifact：AWSのコンプライアンスレポートや契約を取得するためのサービス'],
     correct:0,
     why:['正しい。許容できないリスクは禁止、高リスクは文書化・データガバナンス・人間による監督・リスク管理などの厳しい要件、といったリスクベースの枠組みです。','誤り。GDPRは個人データの保護規則で、AIをリスク階層で分類する規制ではありません。','誤り。ISO/IEC 27001は情報セキュリティの管理規格で、AIのリスク分類を定めたものではありません。','誤り。AWS Artifactはレポート取得のサービスで、規制そのものではありません。']}},
+  {id:'v337', term:'Hyperparameter Tuning for FM', domain:'fm', source:SOURCES.bedrockHp, q:{text:'Amazon Bedrockでモデルをカスタマイズ（ファインチューニング）する際に、学習率やエポック数のように「トレーニングの進め方」を制御するために事前に設定する値を、何と呼びますか？',
+    choices:['推論パラメータ：temperatureやtop-pなど、モデルが応答を生成する際の挙動を調整する設定', 'ハイパーパラメータ：学習率やエポック数など、トレーニングプロセスを制御するために設定する値', 'モデルの重み：トレーニングを通じてデータから学習され、更新されていく内部の値', 'プロンプトテンプレート：入力文の構成を定め、モデルへの指示の形式をそろえるひな形'],
+    correct:1,
+    why:['誤り。推論パラメータは生成時の挙動（創造性や長さなど）を制御するもので、トレーニングの進め方を決める設定ではありません。', '正しい。ハイパーパラメータはトレーニングプロセスを制御するパラメータで、ファインチューニングジョブの送信時に設定します。', '誤り。重みはトレーニング中に更新される学習対象であり、人があらかじめ設定する値ではありません。', '誤り。プロンプトテンプレートは入力の書式であり、トレーニングを制御する値ではありません。']}},
+  {id:'v338', term:'Epoch', domain:'fm', source:SOURCES.bedrockHp, q:{text:'モデルのトレーニングで、「学習データセット全体を1回通して処理する」単位を表す用語はどれですか？',
+    choices:['バッチ：パラメータを更新する前に処理されるサンプルのまとまり', 'トークン：モデルが入出力で扱うテキストの最小単位', 'エポック：学習データセット全体を1回処理するトレーニングの単位', 'ステップ：パラメータを1回更新する単位で、データセット全体の処理とは限らない'],
+    correct:2,
+    why:['誤り。バッチはデータセットの一部で、全体を通す単位ではありません。', '誤り。トークンはテキストの分割単位で、トレーニングの反復を数える単位ではありません。', '正しい。1エポックでデータセット全体を1回処理します。Bedrockではエポック数を増やすと処理するトークンが増え、カスタマイズ費用も増えます。', '誤り。ステップは更新回数の単位で、データセット全体を1周する意味ではありません。']}},
+  {id:'v339', term:'Learning Rate', domain:'fm', source:SOURCES.bedrockHp, q:{text:'モデルのファインチューニングで、「各バッチの処理後にモデルのパラメータをどれくらいの大きさで更新するか」を決めるハイパーパラメータはどれですか？',
+    choices:['エポック数：学習データセット全体を何回繰り返して処理するかを指定する値', 'バッチサイズ：パラメータを更新する前に処理するサンプル数を指定する値', 'top-p：推論時にどの確率範囲のトークンから候補を選ぶかを指定する値', '学習率：各バッチの後にモデルのパラメータが更新される速さ（大きさ）を決める値'],
+    correct:3,
+    why:['誤り。エポック数は繰り返しの回数で、1回あたりの更新の大きさではありません。', '誤り。バッチサイズは更新前に処理するサンプル数で、更新の大きさを決めるものではありません。', '誤り。top-pは推論時のサンプリング設定で、トレーニングのハイパーパラメータではありません。', '正しい。学習率は更新の速さを決めます。大きくすると収束が速くなる場合がありますが、公式ドキュメントでは学習が不安定になる可能性があると説明されています。']}},
+  {id:'v340', term:'Batch Size', domain:'fm', source:SOURCES.bedrockHp, q:{text:'トレーニングにおいて、「モデルのパラメータを更新する前に処理するサンプルの数」を指定するハイパーパラメータはどれですか？',
+    choices:['バッチサイズ（Batch size）', 'エポック数（Epochs）', '学習率（Learning rate）', '最大トークン数（Max tokens）'],
+    correct:0,
+    why:['正しい。バッチサイズは、パラメータ更新の前に処理するサンプル数です。', '誤り。エポック数はデータセット全体を何周するかの回数です。', '誤り。学習率は更新の大きさ（速さ）を決める値です。', '誤り。最大トークン数は推論時に生成する長さの上限で、トレーニングの設定ではありません。']}},
+  {id:'v341', term:'AWS DeepRacer', domain:'aiml', source:SOURCES.deepRacerAws, q:{text:'強化学習を使って1/18スケールの自律走行レースカーを走らせる、教育向けのAWSのソリューションはどれですか？',
+    choices:['Amazon Lex：音声・テキストの会話型ボットを構築するサービス', 'AWS DeepRacer：強化学習でモデルを訓練し、シミュレーターや実車で走行させる教育向けの仕組み', 'Amazon Rekognition：画像や動画から物体や顔を分析するサービス', 'Amazon Forecast：時系列データから需要などを予測するサービス'],
+    correct:1,
+    why:['誤り。Lexは会話型インターフェースの構築用で、自律走行車や強化学習の教材ではありません。', '正しい。DeepRacerは1/18スケールの完全自律走行レースカーを強化学習で走らせる教育向けエコシステムで、モデルはSageMaker AIで訓練されます。', '誤り。Rekognitionは画像・動画の分析サービスで、強化学習の教材ではありません。', '誤り。Forecastは時系列予測のサービスで、強化学習によるレースカーとは無関係です。']}},
 ];
 
 var PRACTICE = [

@@ -1025,3 +1025,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-03（定期実行・12回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 12件（p1280〜p1291: single 12、aiml 8 / security 4）追加。題材: SageMaker AI サーバーレス推論（アイドル向け・コールドスタート・Provisioned Concurrency・GPU/VPC/Model Monitor等の未対応）、リアルタイム推論、自動モデルチューニング（目的・前提条件・スポットインスタンス）、責任共有モデル（クラウド“の”/“における”セキュリティ・EC2・S3・共有コントロール）。VOCAB・MOCK_POOLは0件。累計 VOCAB=336 / PRACTICE=1291 / MOCK_POOL=500。
   出典: 既存 serverlessInf / sagemakerRealtime / amt / sharedResp（これまで問題0件だったもの）を再利用し、各公式ページをWebFetchで本文確認（すべて成功。リアルタイム推論ページは概要のみ）。新規SOURCESなし。正解位置=0,1,2,1,0,0,1,1,2,1,2,0 。正解最長の割合は高め（PRACTICE累計54%）なので次回は不正解側を長めにすること。nodeは未確認。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。
+- 2026-11-04（定期実行・13回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 5件（v337〜v341: Hyperparameter Tuning for FM / Epoch / Learning Rate / Batch Size / AWS DeepRacer）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=341 / PRACTICE=1291 / MOCK_POOL=500。
+  出典: 新規SOURCES `bedrockHp`（Bedrock Custom model hyperparameters）と `deepRacerAws`（DeepRacer on AWS Overview）をWebFetchで本文確認（成功）。正解位置=1,2,3,0,1。nodeは未確認。
+  メモ: 件数は目安より少ない（出典を確認できた用語に限定）。Amazon Mechanical Turk（mturk.comがネットワーク制限で取得不可）、Catastrophic Forgetting・Red Teaming・Adversarial ML・Zero Trust（aws.amazon.com/what-is/ の該当URLが404）は公式出典を確認できず今回見送り（状態は `未` のまま。別の公式出典が見つかれば次回）。Role Promptingはdesign-a-promptページに記載がなく見送り。DeepRacerは現行名称が「DeepRacer on AWS」（2026-09版ドキュメント）である点に注意。
