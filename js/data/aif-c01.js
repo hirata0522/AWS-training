@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  redTeaming:{label:'Well-Architected Agentic AI Lens: AGENTSEC07-BP05 定期的なセキュリティ評価とレッドチーミング', url:'https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentsec07-bp05.html'},
   mlSecBlog:{label:'AWS Security Blog: 7 ways to improve security of your machine learning workflows', url:'https://aws.amazon.com/blogs/security/7-ways-to-improve-security-of-your-machine-learning-workflows/'},
   bedrockHp:{label:'Amazon Bedrock: Custom model hyperparameters', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html'},
   deepRacerAws:{label:'DeepRacer on AWS: Overview', url:'https://docs.aws.amazon.com/deepracer/latest/developerguide/what-is-deepracer.html'},
@@ -872,6 +873,10 @@ var VOCAB = [
     choices:['AIシステムの出力を理解し評価できるようにすること','AIシステムの利用に関して、関係者が情報に基づいた判断をできるようにすること','AIの学習データを必ず一般公開すること','AIモデルの出力が常に決定的であるようにすること'],
     correct:0,
     why:['誤り。出力を理解し評価することは、透明性とは別のディメンションである説明可能性（explainability）の説明です。','正しい。透明性は、関係者がAIシステムとの関わり方について情報に基づいて選択できるようにすることです。AI Service Cards は意図された用途や制約を文書化する手段の1つです。','誤り。透明性は学習データの全面公開を求めるものではありません。','誤り。出力の決定性は透明性の定義ではありません。']}},
+  {id:'v356', term:'Red Teaming', domain:'security', source:SOURCES.redTeaming, q:{text:'AIエージェントのセキュリティ評価における「レッドチーミング（red teaming）」の説明として、AWSのWell-Architectedガイダンスに最も近いものはどれですか？',
+    choices:['モデルの出力品質を自動採点するため、評価用データセットを用いて継続的に精度指標を計算すること','学習データに含まれる個人情報を検出し、マスキングまたは削除する処理を行うこと','プロンプトインジェクションやツールの悪用などの攻撃シナリオを想定し、ガードレールや検知ルールが有効かを人手で試す演習','基盤モデルのパラメータを追加データで更新し、特定の用途に適応させる作業'],
+    correct:2,
+    why:['誤り。これはモデル評価（自動評価）の説明で、攻撃者の視点で防御を試すレッドチーミングとは異なります。','誤り。これは機密データの検出・マスキングの説明です。','正しい。レッドチーミングは、プロンプトインジェクション、ゴールのハイジャック、ツールの悪用などを想定した演習で、ガードレール・検知ルール・対応手順が現在の攻撃に有効かを確認します。','誤り。これはファインチューニングの説明です。']}},
 ];
 
 var PRACTICE = [
@@ -5613,6 +5618,10 @@ var PRACTICE = [
     choices:['Amazon Bedrock Agents で作成したエージェントのみ','AgentCore Runtime 上でホストされたエージェントのみ','AgentCore Runtime 上のエージェントに加え、AgentCore の外でホストされたエージェントも評価できる','オンプレミスの従来型ルールベースシステムのみ'],
     correct:[2],
     why:['誤り。対象はそれに限定されません。','誤り。AgentCore の外でホストされたエージェントも評価できます。','正しい。AgentCore Runtime 上と外部でホストされたエージェントの両方が対象です。','誤り。AI エージェントの評価機能であり、ルールベースシステム専用ではありません。']},
+  {id:'p1327', domain:'security', type:'single', source:SOURCES.redTeaming, text:'AIエージェントを本番運用する組織が、AWSのWell-Architectedガイダンスに沿ってレッドチーミングを計画します。推奨される進め方として最も適切なものはどれですか？',
+    choices:['初回デプロイ時に1回だけ実施すれば、その後は自動スキャンも不要になる','脅威環境の変化に備え、リスクに応じた頻度で定期的に実施し、所見を改善に結びつけて追跡する','一般的なWebアプリケーション向けの診断項目のみを使い、エージェント固有のシナリオは除外する','レッドチームとブルーチームは情報共有せず、互いに独立して活動させる'],
+    correct:[1],
+    why:['誤り。初回のみの実施はアンチパターンです。手法の進化に伴い定期的な評価が必要で、自動スキャンも継続して実行します。','正しい。評価頻度は各エージェントのリスクレベルに合わせ、所見は修復まで追跡してガードレールや検知ルールの更新に反映します。','誤り。一般的な診断だけでは、プロンプトインジェクションやメモリポイズニングなどエージェント固有の問題を見逃します。','誤り。両チームが協力するパープルチーム活動により、検知と対応の改善につながる知見が共有されます。']},
 ];
 
 

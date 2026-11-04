@@ -373,7 +373,7 @@
 | 367 | Model Drift Monitoring | responsible | v329 |
 | 368 | Amazon Mechanical Turk | aiml | 除外 |
 | 369 | Prompt Context Injection | fm | 未 |
-| 370 | Red Teaming | security | 未 |
+| 370 | Red Teaming | security | v356 |
 | 371 | Multilingual Support | genai | 未 |
 | 372 | Amazon Augmented AI (A2I) | aiml | v276 |
 | 373 | Toxicity | responsible | v328 |

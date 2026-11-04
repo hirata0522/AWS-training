@@ -1051,3 +1051,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-04（定期実行・20回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 2件（v354 Model Complexity / v355 AI Decision Transparency）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=355 / PRACTICE=1326 / MOCK_POOL=500。単語リスト進捗 355/444（除外32）。
   出典: 新規SOURCES gencost01Bp01（GENCOST01-BP01をWebFetchで本文確認、成功）、既存 responsibleAi（責任あるAIページをWebFetchで確認、成功）。正解位置=1,0。nodeでの読み込み確認済み（355/1326/500）。
   見送り（未のまま）: Cost per Interaction / Cost per User / ROI / Model Theft / Human-centered Design / NIST AI RMF / Safety vs Transparency Tradeoff。公式ページ（GENCOST01-BP01, GENCOST02-BP01, GENSEC01-BP02, responsible-ai）に該当用語の記述が確認できず、出典を当て推量しないため。責任あるAIページは「安全性と透明性のトレードオフ」を論じておらずNIST AI RMFにも言及なし。次回は用語に直接触れる公式ページを探せる場合のみ着手。
+- 2026-11-04（定期実行・21回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v356 Red Teaming）、PRACTICE 1件（p1327 single、security）追加。MOCK_POOLは0件。累計 VOCAB=356 / PRACTICE=1327 / MOCK_POOL=500。単語リスト進捗 356/444（除外32）。
+  出典: 新規SOURCES redTeaming（Well-Architected Agentic AI Lens AGENTSEC07-BP05をWebFetchで本文確認、成功）。正解位置=2（v356）,1（p1327）。
+  見送り（未のまま）: Role Prompting（design-a-prompt、プロンプト設計ページを確認したがロール付与の記述なし）。Cost per Interaction 等は前回同様、直接触れる公式ページが見つからず。件数は目安より大幅に少ない（確認できた題材に限定）。
