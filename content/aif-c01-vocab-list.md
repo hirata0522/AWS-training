@@ -371,7 +371,7 @@
 | 365 | Grounding | fm | v317 |
 | 366 | Supply Chain Risk (AI) | security | 未 |
 | 367 | Model Drift Monitoring | responsible | v329 |
-| 368 | Amazon Mechanical Turk | aiml | 未 |
+| 368 | Amazon Mechanical Turk | aiml | 除外 |
 | 369 | Prompt Context Injection | fm | 未 |
 | 370 | Red Teaming | security | 未 |
 | 371 | Multilingual Support | genai | 未 |
@@ -395,15 +395,15 @@
 | 389 | Amazon Transcribe Medical | aiml | v335 |
 | 390 | Specificity and Concision | fm | v331 |
 | 391 | S3 Block Public Access | security | v279 |
-| 392 | Amazon Lookout for Metrics | aiml | 未 |
+| 392 | Amazon Lookout for Metrics | aiml | 除外 |
 | 393 | Multiple Comments Prompting | fm | 未 |
 | 394 | Amazon S3 Object Lock | security | v280 |
 | 395 | Cross-domain Performance | genai | 未 |
 | 396 | Explainable AI (XAI) | responsible | v234 |
-| 397 | Amazon CodeGuru | aiml | 未 |
+| 397 | Amazon CodeGuru | aiml | v346 |
 | 398 | Experimentation (Prompt) | fm | 未 |
 | 399 | Amazon Bedrock Data Protection | security | 未 |
-| 400 | Amazon DevOps Guru | aiml | 未 |
+| 400 | Amazon DevOps Guru | aiml | v347 |
 | 401 | Conversion Rate | genai | 未 |
 | 402 | AWS DeepRacer | aiml | v341 |
 | 403 | Feature Importance | responsible | 未 |
@@ -419,22 +419,22 @@
 | 413 | Amazon EC2 for ML | aiml | 未 |
 | 414 | Learning Rate | fm | v339 |
 | 415 | AWS CloudFormation | security | 未 |
-| 416 | AWS Lambda | aiml | 未 |
+| 416 | AWS Lambda | aiml | v348 |
 | 417 | Foundation Model Selection Criteria | genai | 未 |
 | 418 | Partial Dependence Plot | responsible | 未 |
 | 419 | Batch Size | fm | v340 |
 | 420 | AWS Service Catalog | security | 未 |
-| 421 | Amazon ECS | aiml | 未 |
+| 421 | Amazon ECS | aiml | v349 |
 | 422 | Data Representativeness | fm | 未 |
 | 423 | Tag-based Access Control | security | 未 |
 | 424 | Regional Coverage | genai | 未 |
-| 425 | Amazon EKS | aiml | 未 |
+| 425 | Amazon EKS | aiml | v350 |
 | 426 | AWS AI Service Cards | responsible | v324 |
 | 427 | Amazon EC2 Accelerated Computing Instances | aiml | 未 |
 | 428 | Catastrophic Forgetting | fm | 未 |
 | 429 | Multi-factor Authentication (MFA) | security | v282 |
 | 430 | Unimodal vs Multimodal | genai | 未 |
-| 431 | Amazon S3 | aiml | 未 |
+| 431 | Amazon S3 | aiml | v351 |
 | 432 | Responsible AI Policy | responsible | 未 |
 | 433 | Model Customization Cost Tradeoffs | fm | 未 |
 | 434 | Federated Identity | security | 未 |
@@ -442,10 +442,10 @@
 | 436 | Text-to-Image | genai | 未 |
 | 437 | Pre-training Cost | fm | 未 |
 | 438 | Zero Trust | security | 未 |
-| 439 | Amazon DynamoDB | aiml | 未 |
+| 439 | Amazon DynamoDB | aiml | v352 |
 | 440 | Ethical AI Guidelines | responsible | 未 |
 | 441 | Speech Synthesis | genai | 未 |
-| 442 | Amazon RDS | aiml | 未 |
+| 442 | Amazon RDS | aiml | v353 |
 | 443 | Foundation Model Evaluation Dataset | fm | 未 |
 | 444 | Amazon Bedrock Guardrails PII Redaction | security | v222 |
 | 445 | Amazon Aurora | aiml | 未 |

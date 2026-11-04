@@ -1044,3 +1044,7 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-04（定期実行・18回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 10件（p1317〜p1326: single 9 / multi 1、responsible 3 / aiml 5 / genai 2）追加。題材: AWS AI Service Cards（目的・含まれる内容・自社データでの再評価）、Ground Truth アノテーション統合（定義・ワーカー数とコスト・NumberOfHumanWorkersPerDataObject・バウンディングボックスのJaccard統合・新規顧客受付終了）、AgentCore Evaluations（評価指標・対象エージェントの範囲）。VOCAB・MOCK_POOLは0件。累計 VOCAB=345 / PRACTICE=1326 / MOCK_POOL=500。
   出典: 既存 aiServiceCards / gtConsolidation / agentcoreEval を再利用し、各公式ページをWebFetchで本文確認（すべて成功。agentcoreEvalは概要ページのみ）。新規SOURCESなし。正解位置=2,(multi),0,3,1,2,1,1,0,2。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。正解最長割合はPRACTICE累計54%で高止まり、次回も不正解側を長くする。ordering/matchingの比率が低いので次回は優先。
+- 2026-11-04（定期実行・19回目）: 改訂履歴を確認（最新は v1.2 / 2026-10-29、変更なし扱い）。VOCAB 8件（v346〜v353: Amazon CodeGuru / DevOps Guru / AWS Lambda / Amazon ECS / EKS / S3 / DynamoDB / RDS、すべて aiml）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=353 / PRACTICE=1326 / MOCK_POOL=500。単語リスト進捗 353/446（除外32）。
+  出典: 新規SOURCES codeguru / devopsGuru / lambda / ecs / eks / s3 / dynamodb / rds（各公式ドキュメントをWebFetchで本文確認、すべて成功）。正解位置=0,2,1,3,0,3,1（v346〜v353、うち8件目含め偏りなし）。nodeでの読み込み確認済み（353/1326/500）。
+  除外: #368 Amazon Mechanical Turk（公式ホスト www.mturk.com がセッションのネットワーク許可外で確認不能）、#392 Amazon Lookout for Metrics（公式ドキュメントURLが404で提供状況を確認できず）。
+  メモ: CodeGuru Reviewerは2025-11-07以降新規リポジトリ関連付け不可、DevOps Guruは2026-10-29以降新規顧客受付終了（公式の通知）。問題文は機能の説明にとどめ、提供状況を正解の根拠にしていない。件数は目安より少ない（確認できた用語に限定）。
