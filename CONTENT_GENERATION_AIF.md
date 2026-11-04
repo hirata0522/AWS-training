@@ -1060,3 +1060,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-04（定期実行・23回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 4件（p1333〜p1336: matching 2 / single 2、responsible 1 / security 3）追加。題材: SageMaker Clarify（SHAP・PDP・ベースライン）、Bedrock データ保護（CloudTrail/Macie/TLS/IAM Identity Center、Model Deployment Account、自由入力フィールドに機密情報を入れない）。VOCAB・MOCK_POOLは0件。累計 VOCAB=356 / PRACTICE=1336 / MOCK_POOL=500。
   出典: 既存 clarifyExplain / bedrockDataProt を再利用し、各公式ページをWebFetchで本文確認（成功。なおClarifyは新規顧客受付終了の注記あり、問題文は機能説明のみ）。新規SOURCESなし。single正解位置=3,0。nodeでの読み込み確認済み（356/1336/500）。
   メモ: 件数は目安（15〜25）より少ない（出典を本文確認できた題材に限定）。単語リストの残り`未`は公式出典が乏しく着手せず。
+- 2026-11-04（定期実行・24回目）: 改訂履歴を確認（最新はv1.2のまま、新しい版なし）。PRACTICE 3件（p1337〜p1339: single 2 / multi 1、fm、AgentCore Memoryの短期・長期メモリ）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=356 / PRACTICE=1339 / MOCK_POOL=500。
+  出典: 既存 agentcoreMemory を再利用し、公式ページをWebFetchで本文確認（成功）。新規SOURCESなし。single正解位置=1,2。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。単語リストの`未`は公式出典が乏しく着手せず。
