@@ -261,6 +261,7 @@ var SOURCES = {
   aurora:{label:'Amazon Aurora とは',url:'https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html'},
   cloudfront:{label:'Amazon CloudFront とは',url:'https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html'},
   budgets:{label:'AWS Budgets によるコスト管理',url:'https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html'},
+  s3Glacier:{label:'S3 Glacier ストレージクラスについて',url:'https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html'},
   costExplorer:{label:'AWS Cost Explorer によるコストと使用状況の分析',url:'https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html'},
   documentdb:{label:'Amazon DocumentDB とは',url:'https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html'},
   serviceCatalog:{label:'Service Catalog とは',url:'https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html'},
@@ -923,6 +924,10 @@ var VOCAB = [
     choices:['予算のしきい値を超えたときにメールで通知するサービス','AWSの利用料金を見積もるために、利用予定のサービスの構成から概算費用を計算するサービス','コストとリソースの使用状況を可視化・分析し、将来の支出を予測できるツール','コスト削減や耐障害性などの観点でアカウントを自動チェックし推奨事項を示すサービス'],
     correct:2,
     why:['誤り。予算に対する通知はAWS Budgetsの役割です。','誤り。事前の費用見積もりはAWS Pricing Calculatorの役割です。','正しい。Cost Explorerはコストと使用状況を表示・分析するツールで、最大13か月分の履歴の表示と、今後18か月の支出予測、リザーブドインスタンスの推奨に対応します。','誤り。アカウントのチェックと推奨事項の提示はAWS Trusted Advisorの役割です。']}},
+  {id:'v366', term:'Amazon S3 Glacier', domain:'aiml', source:SOURCES.s3Glacier, q:{text:'Amazon S3 Glacier ストレージクラスの説明として最も適切なものはどれですか？',
+    choices:['頻繁にアクセスするデータを低レイテンシーで提供するための、S3 Standard よりも高性能なストレージクラス','アクセス頻度の低い長期保存データを低コストで保管するための、Amazon S3 内のストレージクラス群','ブロックストレージとして EC2 インスタンスにアタッチして使う、永続的なストレージボリューム','AI モデルの学習データを自動でラベル付けし、品質を検証するマネージドサービス'],
+    correct:1,
+    why:['誤り。頻繁にアクセスするデータにはS3 Standardなどを使います。Glacier系は低頻度アクセス向けで、保管コストが低い代わりに取り出しの条件があります。','正しい。S3 Glacierは Instant Retrieval・Flexible Retrieval・Deep Archive の3種類で、アクセス頻度と取り出し速度に応じて選びます。Amazon S3 の一部で、S3 Standard と同等の耐久性を持ちます。','誤り。EC2にアタッチするブロックストレージはAmazon EBSです。','誤り。ラベル付けはSageMaker Ground Truthなどの役割で、S3 Glacierはデータを保管するストレージです。']}},
 ];
 
 var PRACTICE = [

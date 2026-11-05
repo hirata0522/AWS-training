@@ -438,7 +438,7 @@
 | 432 | Responsible AI Policy | responsible | 未 |
 | 433 | Model Customization Cost Tradeoffs | fm | 未 |
 | 434 | Federated Identity | security | 未 |
-| 435 | Amazon S3 Glacier | aiml | 未 |
+| 435 | Amazon S3 Glacier | aiml | v366 |
 | 436 | Text-to-Image | genai | 未 |
 | 437 | Pre-training Cost | fm | 未 |
 | 438 | Zero Trust | security | 未 |
@@ -473,10 +473,10 @@
 | 467 | Agent Tool Integration | fm | 未 |
 | 468 | Model Documentation | security | 未 |
 | 469 | Model Transparency Documentation | responsible | 未 |
-| 470 | AWS Trusted Advisor | aiml | 未 |
+| 470 | AWS Trusted Advisor | aiml | 除外 |
 | 471 | Model Hub | genai | 未 |
 | 472 | Agent Orchestration | fm | 未 |
 | 473 | Responsible AI Auditing | security | 未 |
-| 474 | AWS Well-Architected Tool | aiml | 未 |
+| 474 | AWS Well-Architected Tool | aiml | 除外 |
 | 475 | Controllability (Responsible AI) | responsible | v160 |
 | 476 | Prompt Leakage | security | v207 |

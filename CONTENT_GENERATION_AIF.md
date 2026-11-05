@@ -1081,3 +1081,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-05（定期実行・31回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 4件（v362 Amazon Aurora / v363 Amazon CloudFront / v364 AWS Budgets / v365 AWS Cost Explorer、いずれも aiml）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=365 / PRACTICE=1339 / MOCK_POOL=500。単語リスト進捗 365/444（除外32）。
   出典: 新規SOURCES aurora / cloudfront / budgets / costExplorer（各公式ドキュメントをWebFetchで本文確認、成功）。正解位置=1,2,0,2。
   メモ: 残りの候補は S3 Glacier / Trusted Advisor / Well-Architected Tool（未着手）。他の`未`は公式ページが乏しく見送り。
+- 2026-11-05（定期実行・32回目）: 改訂履歴を確認（WebFetch成功。v1.2〔2026-10-29〕のまま新しい版なし）。VOCAB 1件（v366 Amazon S3 Glacier, aiml）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=366 / PRACTICE=1339 / MOCK_POOL=500。
+  出典: 新規SOURCES s3Glacier（公式ドキュメントをWebFetchで本文確認、成功）。正解位置=1。
+  除外: #470 AWS Trusted Advisor（v93 の Governance 項目と実質重複）、#474 AWS Well-Architected Tool（公式ページのfetchで本文が取得できず事実確認不可）。
