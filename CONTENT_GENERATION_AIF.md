@@ -1063,3 +1063,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-04（定期実行・24回目）: 改訂履歴を確認（最新はv1.2のまま、新しい版なし）。PRACTICE 3件（p1337〜p1339: single 2 / multi 1、fm、AgentCore Memoryの短期・長期メモリ）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=356 / PRACTICE=1339 / MOCK_POOL=500。
   出典: 既存 agentcoreMemory を再利用し、公式ページをWebFetchで本文確認（成功）。新規SOURCESなし。single正解位置=1,2。
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。単語リストの`未`は公式出典が乏しく着手せず。
+- 2026-11-05（定期実行・25回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。追加0件。累計 VOCAB=356 / PRACTICE=1339 / MOCK_POOL=500。単語リスト進捗 356/444（除外32）。
+  経緯: Bedrock Knowledge Bases の仕組みページ（kb-how-it-works）をWebFetchで確認（成功）したが、前処理・実行時の並び替え、バイナリ埋め込みはすでに p460/p558/p559/p633/m293/m392/p1181/p1182 で問題化済みのため、重複を避けて追加せず。
+  メモ: 単語リストの`未`は直接触れる公式ページが乏しい。次回は未カバーのサービス機能ページ（例: Guardrails の個別フィルタ、SageMaker 各機能）から新題材を探すこと。
