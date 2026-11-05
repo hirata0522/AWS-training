@@ -1078,3 +1078,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 件数は目安より少ない。次回の候補（公式ドキュメントで確認しやすい）: Amazon Aurora / CloudFront / S3 Glacier / AWS Budgets / Cost Explorer / Trusted Advisor / Well-Architected Tool。
 - 2026-11-05（定期実行・30回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。追加0件。累計 VOCAB=361 / PRACTICE=1339 / MOCK_POOL=500。単語リスト進捗 361/444（除外32）。
   経緯: Model Theft について公式ドキュメントをWebSearchで検索（成功）したが、Generative AI Lens等に「モデル窃取」を直接説明するページは見つからず、出典未確認のため着手せず。残りの`未`も同様。
+- 2026-11-05（定期実行・31回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 4件（v362 Amazon Aurora / v363 Amazon CloudFront / v364 AWS Budgets / v365 AWS Cost Explorer、いずれも aiml）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=365 / PRACTICE=1339 / MOCK_POOL=500。単語リスト進捗 365/444（除外32）。
+  出典: 新規SOURCES aurora / cloudfront / budgets / costExplorer（各公式ドキュメントをWebFetchで本文確認、成功）。正解位置=1,2,0,2。
+  メモ: 残りの候補は S3 Glacier / Trusted Advisor / Well-Architected Tool（未着手）。他の`未`は公式ページが乏しく見送り。

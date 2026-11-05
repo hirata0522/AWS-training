@@ -448,7 +448,7 @@
 | 442 | Amazon RDS | aiml | v353 |
 | 443 | Foundation Model Evaluation Dataset | fm | 未 |
 | 444 | Amazon Bedrock Guardrails PII Redaction | security | v222 |
-| 445 | Amazon Aurora | aiml | 未 |
+| 445 | Amazon Aurora | aiml | v362 |
 | 446 | Large Multimodal Model | genai | 未 |
 | 447 | Data Provenance (Responsible) | responsible | 未 |
 | 448 | Text Classification Metrics | fm | 未 |
@@ -459,7 +459,7 @@
 | 453 | Logging Requirements for AI Interactions | security | 未 |
 | 454 | Small Language Model | genai | 未 |
 | 455 | Fairness Metrics | responsible | v235 |
-| 456 | Amazon CloudFront | aiml | 未 |
+| 456 | Amazon CloudFront | aiml | v363 |
 | 457 | Amazon Bedrock Intelligent Prompt Routing | fm | v220 |
 | 458 | AI Governance Committee | security | 未 |
 | 459 | Open-weight Model | genai | 未 |
@@ -467,9 +467,9 @@
 | 461 | Disparate Impact | responsible | 未 |
 | 462 | Amazon Bedrock Agents Multi-agent Collaboration | fm | v221 |
 | 463 | Risk Assessment (AI) | security | 未 |
-| 464 | AWS Budgets | aiml | 未 |
+| 464 | AWS Budgets | aiml | v364 |
 | 465 | Proprietary Model | genai | 未 |
-| 466 | AWS Cost Explorer | aiml | 未 |
+| 466 | AWS Cost Explorer | aiml | v365 |
 | 467 | Agent Tool Integration | fm | 未 |
 | 468 | Model Documentation | security | 未 |
 | 469 | Model Transparency Documentation | responsible | 未 |
