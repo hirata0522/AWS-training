@@ -256,6 +256,9 @@ var SOURCES = {
   s3:{label:'Amazon S3 とは',url:'https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html'},
   dynamodb:{label:'Amazon DynamoDB とは',url:'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html'},
   rds:{label:'Amazon RDS とは',url:'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html'},
+  cloudformation:{label:'CloudFormation とは',url:'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html'},
+  serviceCatalog:{label:'Service Catalog とは',url:'https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html'},
+  ec2Accel:{label:'Amazon EC2 アクセラレーテッドコンピューティングインスタンス',url:'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/accelerated-computing-instances.html'},
   gencost01Bp01:{label:'AWS Well-Architected Generative AI Lens: 推論コストを最適化するためにモデルを適切なサイズで選定する (GENCOST01-BP01)',url:'https://docs.aws.amazon.com/wellarchitected/latest/generative-ai-lens/gencost01-bp01.html'},
 };
 
@@ -878,6 +881,18 @@ var VOCAB = [
     choices:['モデルの出力品質を自動採点するため、評価用データセットを用いて継続的に精度指標を計算すること','学習データに含まれる個人情報を検出し、マスキングまたは削除する処理を行うこと','プロンプトインジェクションやツールの悪用などの攻撃シナリオを想定し、ガードレールや検知ルールが有効かを人手で試す演習','基盤モデルのパラメータを追加データで更新し、特定の用途に適応させる作業'],
     correct:2,
     why:['誤り。これはモデル評価（自動評価）の説明で、攻撃者の視点で防御を試すレッドチーミングとは異なります。','誤り。これは機密データの検出・マスキングの説明です。','正しい。レッドチーミングは、プロンプトインジェクション、ゴールのハイジャック、ツールの悪用などを想定した演習で、ガードレール・検知ルール・対応手順が現在の攻撃に有効かを確認します。','誤り。これはファインチューニングの説明です。']}},
+  {id:'v357', term:'AWS CloudFormation', domain:'security', source:SOURCES.cloudformation, q:{text:'AWS CloudFormationの説明として最も適切なものはどれですか？',
+    choices:['AIモデルの学習ジョブを自動で分散実行するマネージドサービス','承認済みITサービスのカタログを作成し、利用者がセルフサービスで起動できるようにするサービス','AWSリソースを記述したテンプレートからスタックを作成し、リソースを一貫して繰り返しプロビジョニングできるサービス','AWSアカウント内のAPI呼び出しを記録して監査するサービス'],
+    correct:2,
+    why:['誤り。学習ジョブの実行はAmazon SageMaker AIなどの役割です。','誤り。承認済みサービスのカタログ管理はAWS Service Catalogの説明です。','正しい。CloudFormationはテンプレートにリソースを記述し、スタックとしてまとめて作成・削除できます。複数リージョンへの再現やテンプレートの版管理にも使えます。','誤り。API呼び出しの記録はAWS CloudTrailの役割です。']}},
+  {id:'v358', term:'AWS Service Catalog', domain:'security', source:SOURCES.serviceCatalog, q:{text:'AWS Service Catalogの主な目的として最も適切なものはどれですか？',
+    choices:['組織が承認したITサービスのカタログを管理し、利用者が制約の範囲内でセルフサービス起動できるようにする','テンプレートからAWSリソースを自動作成する仕組みそのものを提供する','基盤モデルへの入力と出力を検査して有害なコンテンツを遮断する','機械学習モデルの学習データにラベルを付与する'],
+    correct:0,
+    why:['正しい。承認済み製品をポートフォリオにまとめ、制約やタグを付けて、IAMで利用を許可することで標準化とガバナンスを実現します。','誤り。テンプレートからのリソース作成はCloudFormationの説明です。','誤り。入出力の検査はAmazon Bedrock Guardrailsの役割です。','誤り。ラベル付けはSageMaker Ground Truthなどの役割です。']}},
+  {id:'v359', term:'Amazon EC2 Accelerated Computing Instances', domain:'aiml', source:SOURCES.ec2Accel, q:{text:'Amazon EC2のアクセラレーテッドコンピューティングインスタンスの特徴として最も適切なものはどれですか？',
+    choices:['ハードウェアアクセラレーターを使い、浮動小数点演算やグラフィックス処理などをCPUのソフトウェア処理より効率よく実行する','オブジェクトを低コストで長期保管するためのストレージ構成','コンテナ化したアプリケーションを管理するオーケストレーションサービス','リレーショナルデータベースを管理するマネージドサービス'],
+    correct:0,
+    why:['正しい。ハードウェアアクセラレーター（コプロセッサー）を使い、浮動小数点演算、グラフィックス処理、データパターンの照合を効率化するため、機械学習の学習・推論にも使われます。','誤り。長期保管用のストレージはAmazon S3 Glacierなどの説明です。','誤り。コンテナの管理はAmazon ECSやEKSの役割です。','誤り。データベース管理はAmazon RDSの役割です。']}},
 ];
 
 var PRACTICE = [

@@ -418,19 +418,19 @@
 | 412 | Customer Lifetime Value | genai | 未 |
 | 413 | Amazon EC2 for ML | aiml | 未 |
 | 414 | Learning Rate | fm | v339 |
-| 415 | AWS CloudFormation | security | 未 |
+| 415 | AWS CloudFormation | security | v357 |
 | 416 | AWS Lambda | aiml | v348 |
 | 417 | Foundation Model Selection Criteria | genai | 未 |
 | 418 | Partial Dependence Plot | responsible | 未 |
 | 419 | Batch Size | fm | v340 |
-| 420 | AWS Service Catalog | security | 未 |
+| 420 | AWS Service Catalog | security | v358 |
 | 421 | Amazon ECS | aiml | v349 |
 | 422 | Data Representativeness | fm | 未 |
 | 423 | Tag-based Access Control | security | 未 |
 | 424 | Regional Coverage | genai | 未 |
 | 425 | Amazon EKS | aiml | v350 |
 | 426 | AWS AI Service Cards | responsible | v324 |
-| 427 | Amazon EC2 Accelerated Computing Instances | aiml | 未 |
+| 427 | Amazon EC2 Accelerated Computing Instances | aiml | v359 |
 | 428 | Catastrophic Forgetting | fm | 未 |
 | 429 | Multi-factor Authentication (MFA) | security | v282 |
 | 430 | Unimodal vs Multimodal | genai | 未 |
