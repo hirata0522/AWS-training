@@ -1073,3 +1073,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 残りの`未`（Technical Debt (ML)、Model Theft 等）は直接触れる公式ページが乏しく、出典未確認のため着手せず。
 - 2026-11-05（定期実行・28回目）: 改訂履歴を確認（最新はv1.2・2026-10-29のまま、新しい版なし。WebFetch成功）。追加0件。累計 VOCAB=359 / PRACTICE=1339 / MOCK_POOL=500。単語リスト進捗 359/444（除外32）。
   メモ: 残りの`未`は直接触れる公式ページが乏しく、出典未確認のため着手せず。
+- 2026-11-05（定期実行・29回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 2件（v360 Amazon ElastiCache / v361 Amazon DocumentDB、ともに aiml）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=361 / PRACTICE=1339 / MOCK_POOL=500。単語リスト進捗 361/444（除外32）。
+  出典: 新規SOURCES elasticache / documentdb（各公式ドキュメントをWebFetchで本文確認、成功）。正解位置=0,1。nodeでの読み込み確認済み。
+  メモ: 件数は目安より少ない。次回の候補（公式ドキュメントで確認しやすい）: Amazon Aurora / CloudFront / S3 Glacier / AWS Budgets / Cost Explorer / Trusted Advisor / Well-Architected Tool。

@@ -453,8 +453,8 @@
 | 447 | Data Provenance (Responsible) | responsible | 未 |
 | 448 | Text Classification Metrics | fm | 未 |
 | 449 | ApplyGuardrail API | security | v223 |
-| 450 | Amazon DocumentDB | aiml | 未 |
-| 451 | Amazon ElastiCache | aiml | 未 |
+| 450 | Amazon DocumentDB | aiml | v361 |
+| 451 | Amazon ElastiCache | aiml | v360 |
 | 452 | Human Evaluation Rubric | fm | 未 |
 | 453 | Logging Requirements for AI Interactions | security | 未 |
 | 454 | Small Language Model | genai | 未 |

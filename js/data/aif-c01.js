@@ -257,6 +257,8 @@ var SOURCES = {
   dynamodb:{label:'Amazon DynamoDB とは',url:'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html'},
   rds:{label:'Amazon RDS とは',url:'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html'},
   cloudformation:{label:'CloudFormation とは',url:'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html'},
+  elasticache:{label:'Amazon ElastiCache とは',url:'https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html'},
+  documentdb:{label:'Amazon DocumentDB とは',url:'https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html'},
   serviceCatalog:{label:'Service Catalog とは',url:'https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html'},
   ec2Accel:{label:'Amazon EC2 アクセラレーテッドコンピューティングインスタンス',url:'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/accelerated-computing-instances.html'},
   gencost01Bp01:{label:'AWS Well-Architected Generative AI Lens: 推論コストを最適化するためにモデルを適切なサイズで選定する (GENCOST01-BP01)',url:'https://docs.aws.amazon.com/wellarchitected/latest/generative-ai-lens/gencost01-bp01.html'},
@@ -893,6 +895,14 @@ var VOCAB = [
     choices:['ハードウェアアクセラレーターを使い、浮動小数点演算やグラフィックス処理などをCPUのソフトウェア処理より効率よく実行する','オブジェクトを低コストで長期保管するためのストレージ構成','コンテナ化したアプリケーションを管理するオーケストレーションサービス','リレーショナルデータベースを管理するマネージドサービス'],
     correct:0,
     why:['正しい。ハードウェアアクセラレーター（コプロセッサー）を使い、浮動小数点演算、グラフィックス処理、データパターンの照合を効率化するため、機械学習の学習・推論にも使われます。','誤り。長期保管用のストレージはAmazon S3 Glacierなどの説明です。','誤り。コンテナの管理はAmazon ECSやEKSの役割です。','誤り。データベース管理はAmazon RDSの役割です。']}},
+  {id:'v360', term:'Amazon ElastiCache', domain:'aiml', source:SOURCES.elasticache, q:{text:'Amazon ElastiCacheの説明として最も適切なものはどれですか？',
+    choices:['Valkey、Memcached、Redis OSSエンジンに対応した、分散インメモリのデータストアやキャッシュをマネージドで提供するサービス','MongoDBと互換性のあるドキュメントデータベースを提供するマネージドサービス','コンテンツをエッジロケーションから配信してレイテンシーを下げるCDNサービス','大規模なデータをオブジェクトとして長期保管するストレージサービス'],
+    correct:0,
+    why:['正しい。ElastiCacheは分散インメモリのキャッシュを簡単に構築・運用・拡張できるサービスで、サーバーレスキャッシュとノードベースのクラスターの2形式があります。','誤り。MongoDB互換のデータベースはAmazon DocumentDBです。','誤り。エッジからの配信はAmazon CloudFrontの役割です。','誤り。オブジェクトの保管はAmazon S3の役割です。']}},
+  {id:'v361', term:'Amazon DocumentDB', domain:'aiml', source:SOURCES.documentdb, q:{text:'Amazon DocumentDB (with MongoDB compatibility) の説明として最も適切なものはどれですか？',
+    choices:['インメモリでデータをキャッシュし、アプリケーションの読み取りを高速化するサービス','MongoDBで使うアプリケーションコードやドライバー、ツールをそのまま使える、フルマネージドのドキュメントデータベース','キーバリュー型のNoSQLデータベースをサーバーレスで提供するサービス','リレーショナルデータベースのエンジンを選んで運用管理するサービス'],
+    correct:1,
+    why:['誤り。インメモリキャッシュはAmazon ElastiCacheの説明です。','正しい。MongoDB互換のデータベースを簡単に構築・運用・拡張でき、ストレージは自動で増加し、最大15個のレプリカで読み取りを拡張できます。','誤り。キーバリュー型のサーバーレスNoSQLはAmazon DynamoDBの説明です。','誤り。リレーショナルデータベースの運用管理はAmazon RDSの役割です。']}},
 ];
 
 var PRACTICE = [
