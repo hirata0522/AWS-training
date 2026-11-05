@@ -1087,3 +1087,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-05（定期実行・33回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 16件（p1340〜p1355、すべて genai。single 12 / multi 1 / ordering 1 / matching 1、概念レベル）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=366 / PRACTICE=1355 / MOCK_POOL=500。単語リスト進捗 366/442。
   出典: 新規SOURCESなし（過去回でWebFetch確認済みの既存SOURCESを再利用）。
   メモ: 今回追加分の単一選択の正解位置が0に偏った（0が7件）。次回以降は1〜3を多めにすること。
+- 2026-11-05（定期実行・34回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 8件（p1356〜p1363、すべて fm。single 6 / multi 1 / matching 1）追加。題材: Bedrockプロンプトキャッシュ（暗黙/明示、TTL、プレフィックス設計、バッチ非対応）、クロスリージョン推論（ジオグラフィ/グローバル、CloudTrailでの確認）。VOCAB・MOCK_POOLは0件。累計 VOCAB=366 / PRACTICE=1363 / MOCK_POOL=500。
+  出典: 既存 promptCaching / crossRegion を再利用し、各公式ページをWebFetchで本文確認（成功）。新規SOURCESなし。single正解位置=1,2,0,1,0,3（p1356〜）。nodeでの読み込み確認済み（366/1363/500）。
+  メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。PRACTICEはgenai・fmが目標比率に対し不足、securityは超過気味。
