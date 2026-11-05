@@ -1084,3 +1084,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-05（定期実行・32回目）: 改訂履歴を確認（WebFetch成功。v1.2〔2026-10-29〕のまま新しい版なし）。VOCAB 1件（v366 Amazon S3 Glacier, aiml）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=366 / PRACTICE=1339 / MOCK_POOL=500。
   出典: 新規SOURCES s3Glacier（公式ドキュメントをWebFetchで本文確認、成功）。正解位置=1。
   除外: #470 AWS Trusted Advisor（v93 の Governance 項目と実質重複）、#474 AWS Well-Architected Tool（公式ページのfetchで本文が取得できず事実確認不可）。
+- 2026-11-05（定期実行・33回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 16件（p1340〜p1355、すべて genai。single 12 / multi 1 / ordering 1 / matching 1、概念レベル）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=366 / PRACTICE=1355 / MOCK_POOL=500。単語リスト進捗 366/442。
+  出典: 新規SOURCESなし（過去回でWebFetch確認済みの既存SOURCESを再利用）。
+  メモ: 今回追加分の単一選択の正解位置が0に偏った（0が7件）。次回以降は1〜3を多めにすること。
