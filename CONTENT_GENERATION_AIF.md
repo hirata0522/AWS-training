@@ -1092,3 +1092,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 件数は目安より少ない（出典を本文確認できた題材に限定）。PRACTICEはgenai・fmが目標比率に対し不足、securityは超過気味。
 - 2026-11-05（定期実行・35回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 8件（p1364〜p1371、すべて genai・single。題材: Amazon Q Business の権限考慮、IAM Identity Center、引用、データ範囲の制御、Kendra連携、コネクタ、課金、プラグイン）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=366 / PRACTICE=1371 / MOCK_POOL=500。
   出典: 新規SOURCES qBusinessUg（公式ユーザーガイド what-is.html をWebFetchで本文確認、成功。新規顧客受付終了の注記あり、問題文は機能説明のみ）。single正解位置=1,3,0,2,0,1,3,1。
+- 2026-11-05（定期実行・36回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。PRACTICE 6件（p1372〜p1377、すべて fm・single。題材: temperature / Top K / Top P / 停止シーケンスの違い）追加。VOCAB・MOCK_POOLは0件。累計 VOCAB=366 / PRACTICE=1377 / MOCK_POOL=500。
+  出典: 新規SOURCES inferenceParams（Bedrock 推論パラメータ公式ページをWebFetchで本文確認、成功）。single正解位置=1,2,3,0,1,2。
+  バグ修正: p1363（前回追加分）の末尾のカンマ抜けで js/data/aif-c01.js が構文エラー（node読み込み不可）になっていたため、カンマのみ追加。内容は不変。nodeでの読み込み確認済み（366/1377/500）。
