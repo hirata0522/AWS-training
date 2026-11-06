@@ -406,7 +406,7 @@
 | 400 | Amazon DevOps Guru | aiml | v347 |
 | 401 | Conversion Rate | genai | 未 |
 | 402 | AWS DeepRacer | aiml | v341 |
-| 403 | Feature Importance | responsible | 未 |
+| 403 | Feature Importance | responsible | v371 |
 | 404 | Hyperparameter Tuning for FM | fm | v337 |
 | 405 | Amazon Bedrock VPC Configuration | security | v325 |
 | 406 | Average Revenue per User (ARPU) | genai | 未 |
@@ -444,7 +444,7 @@
 | 438 | Zero Trust | security | 未 |
 | 439 | Amazon DynamoDB | aiml | v352 |
 | 440 | Ethical AI Guidelines | responsible | 未 |
-| 441 | Speech Synthesis | genai | 未 |
+| 441 | Speech Synthesis | genai | v370 |
 | 442 | Amazon RDS | aiml | v353 |
 | 443 | Foundation Model Evaluation Dataset | fm | 未 |
 | 444 | Amazon Bedrock Guardrails PII Redaction | security | v222 |

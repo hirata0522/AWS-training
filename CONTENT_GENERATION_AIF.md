@@ -1112,3 +1112,6 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   理由: NIST AI RMF はWebSearchでAWS公式の出典が得られず（第三者サイトのみ）見送り。SageMaker AIのデプロイ手順ページ(how-it-works-deployment)とBedrockのカスタマイズページ(custom-models)をWebFetchで確認したが、順序が明示された新規の並び替え題材はなく、蒸留・カスタマイズ手法は既存項目で網羅済み。残りの単語リストはビジネス指標系が中心で公式出典が得にくい。残り72語の `除外` 判断を人間側で検討してほしい。
 - 2026-11-06（定期実行・44回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。追加0件。累計 VOCAB=369 / PRACTICE=1388 / MOCK_POOL=500。検証OK。
   理由: SageMaker Model Registry の公式ページをWebFetchで確認（成功）したが、v148/v239/p60/p61/p375で既に網羅済みのため重複を避けて見送り。主要サービス（Comprehend/Textract/Rekognition/Transcribe/Polly/Lex/Ground Truth/Feature Store等）はいずれも既存項目が多数あり、新規題材の余地が乏しい。単語リスト残りはビジネス指標系で公式出典が得にくい（人間側での `除外` 判断を引き続き要検討）。
+- 2026-11-06（定期実行・45回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 2件（v370 Speech Synthesis / genai、v371 Feature Importance / responsible）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=371 / PRACTICE=1388 / MOCK_POOL=500。単語リスト進捗 371/441（除外35）。
+  出典: 既存 polly / clarifyExplain を再利用し、各公式ページをWebFetchで本文確認（成功）。正解位置=2,1。nodeでの読み込み確認済み（371/1388/500）。
+  メモ: v369末尾のカンマ抜けも補正（内容不変）。残りの`未`はビジネス指標系が中心で公式出典が得にくい。
