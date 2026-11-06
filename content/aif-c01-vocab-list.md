@@ -364,7 +364,7 @@
 | 358 | Model Complexity | genai | v354 |
 | 359 | Bias-variance Tradeoff | responsible | v334 |
 | 360 | Retriever | fm | v326 |
-| 361 | Model Theft | security | 未 |
+| 361 | Model Theft | security | v372 |
 | 362 | Customer Feedback Metric | aiml | 未 |
 | 363 | Cost-Benefit Analysis (AI) | aiml | 未 |
 | 364 | Model Size | genai | 未 |

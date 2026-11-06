@@ -272,6 +272,7 @@ var SOURCES = {
   agentsReturnControl:{label:'Amazon Bedrock Agents: 制御の返却（InvokeAgent レスポンスで開発者に情報を返す）', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/agents-returncontrol.html'},
   ec2Accel:{label:'Amazon EC2 アクセラレーテッドコンピューティングインスタンス',url:'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/accelerated-computing-instances.html'},
   gencost01Bp01:{label:'AWS Well-Architected Generative AI Lens: 推論コストを最適化するためにモデルを適切なサイズで選定する (GENCOST01-BP01)',url:'https://docs.aws.amazon.com/wellarchitected/latest/generative-ai-lens/gencost01-bp01.html'},
+  bedrockCustomEnc:{label:'Amazon Bedrock: カスタムモデルの暗号化',url:'https://docs.aws.amazon.com/bedrock/latest/userguide/encryption-custom-job.html'},
 };
 
 var VOCAB = [
@@ -953,6 +954,9 @@ var VOCAB = [
     choices:['モデルが過去に学習した全データの件数を示す指標','入力データの各特徴量が、モデルの予測にどの程度影響したかを示す値','学習済みモデルが本番環境で応答するまでの待ち時間','モデルの出力に含まれる個人情報を自動的にマスクする機能'],
     correct:1,
     why:['誤り。データ件数はモデルの説明可能性とは関係ありません。','正しい。SageMaker Clarifyは、モデルに依存しない特徴量寄与度の手法（SHAP）で、各特徴量に予測ごとの重要度を割り当て、予測の理由の理解や監査に役立てます。','誤り。これはレイテンシーの説明です。','誤り。これは機密情報のフィルタリング（Guardrailsなど）の説明です。']}},
+  {id:'v372', term:'Model Theft', domain:'security', source:SOURCES.bedrockCustomEnc, q:{text:'ファインチューニングで作成したAmazon Bedrockのカスタムモデルが不正に利用される（Model Theft）リスクを下げるため、利用者側で暗号化と鍵のアクセス制御を管理したい場合の対応として最も適切なものはどれですか？',
+    choices:['カスタムモデルをAWS KMSのカスタマー管理キーで暗号化し、キーポリシーで利用できるロールを絞る','Amazon Macieでカスタムモデルの学習データに含まれる機密情報を検出して削除する','Amazon Inspectorでカスタムモデルを動かす環境の脆弱性をスキャンする','AWS Configでカスタムモデルの構成変更履歴を記録して監査する'], correct:0,
+    why:['正しい。カスタマー管理キーで暗号化すると、キーポリシーでモデルを利用できる主体を制御でき、キーポリシーの変更やグラントの取り消しでBedrockのアクセスも止められます。','誤り。Macieは主にS3内の機密データの検出に使うサービスで、モデルの持ち出しや不正利用を防ぐ仕組みではありません。','誤り。Inspectorは主にEC2やコンテナ、Lambdaなどの脆弱性を検出するサービスで、モデルのアクセス制御には使いません。','誤り。AWS Configはリソースの構成変更の記録と評価に使うもので、モデルの暗号化や鍵のアクセス制御を行うものではありません。']}},
 ];
 
 var PRACTICE = [
@@ -5902,6 +5906,31 @@ var PRACTICE = [
   {id:'p1388', domain:'security', type:'single', source:SOURCES.sagemakerNetIso, text:'悪意あるライブラリがコンテナに混入しても、学習データが外部ホストへ送信されないようにしたい場合、追加のネットワーク設定を最小限にできる方法はどれですか？',
     choices:['すべてのサブネットにネットワーク ACL を手動で設定する','SageMaker AI のネットワーク分離を有効にする','Amazon GuardDuty を有効にして通信を検知する','AWS WAF をコンテナの前段に配置する'], correct:[1],
     why:['誤り。VPC 設定でも制限できますが、設定の手間と設定ミスのリスクがあります。','正しい。外向き通信ができなくなるため、追加のネットワーク構成なしでデータ流出を防げます。','誤り。GuardDuty は脅威検知で、通信を遮断するものではありません。','誤り。WAF は Web アプリケーションへの受信リクエストを保護するもので、コンテナの外向き通信は制御しません。']},
+  {id:'p1389', domain:'security', type:'single', source:SOURCES.bedrockCustomEnc,
+    text:'ある企業がAmazon Bedrockでファインチューニングしたカスタムモデルを作成しました。何も追加設定をしない場合、このカスタムモデルの暗号化はどうなりますか？',
+    choices:['利用者が作成したKMSキーでの暗号化が必須のため、ジョブ作成時にキーの指定が必要になる','暗号化はされず、利用者がS3バケットの設定で暗号化を有効にする必要がある','モデルはAWS Secrets Managerに格納され、シークレットとして暗号化される','AWS所有キーで保存時の暗号化が自動で有効になり、追加料金は発生しない'],
+    correct:[3],
+    why:['誤り。カスタマー管理キーは任意の選択肢で、指定しなければAWS所有キーが使われます。','誤り。Bedrockは既定でAWS所有キーによる保存時の暗号化を有効にします。','誤り。カスタムモデルはSecrets Managerには格納されません。','正しい。既定ではAWS所有キーによる保存時の暗号化が自動で有効になり、料金はかかりません。カスタマー管理キーを使うとKMSの料金が発生します。']},
+  {id:'p1390', domain:'security', type:'single', source:SOURCES.bedrockCustomEnc,
+    text:'Amazon Bedrockのカスタムモデルをカスタマー管理キーで暗号化しています。セキュリティチームが、BedrockがこのモデルにアクセスできないようにKMS側から止めたい場合、最も適切な方法はどれですか？',
+    choices:['キーポリシーを変更してBedrockのアクセスを外す、またはグラントを取り消す','S3バケットのバージョニングを無効にしてモデルのオブジェクトを削除する','CloudTrailのログ記録を一時停止して、Bedrockの呼び出しを停止する','AWS所有キーの無効化をKMSコンソールから実行する'],
+    correct:[0],
+    why:['正しい。カスタマー管理キーはフルアクセスを持つ利用者が管理しており、グラントの取り消しやキーポリシーの変更でBedrockのアクセスを止められます。その場合Bedrockは暗号化されたカスタムモデルにアクセスできなくなります。','誤り。カスタムモデルの成果物はAWSが管理するS3バケットに保存され、利用者のバケット設定では制御できません。','誤り。CloudTrailは操作の記録用で、記録を止めてもアクセスは止まりません。','誤り。AWS所有キーは利用者が表示・管理・無効化できません。']},
+  {id:'p1391', domain:'security', type:'single', source:SOURCES.bedrockCustomEnc,
+    text:'Amazon Bedrockのモデルカスタマイズジョブを実行したとき、ジョブの出力データはどこに保存されますか？',
+    choices:['出力メトリクスファイルとカスタムモデルの成果物の両方が、利用者の指定したS3バケットに保存される','出力メトリクスファイルは利用者が指定したS3バケットに、カスタムモデルの成果物はAWSが管理するS3バケットに保存される','出力メトリクスファイルもカスタムモデルの成果物も、AWSが管理するS3バケットにのみ保存される','出力メトリクスファイルはCloudWatch Logsに、カスタムモデルの成果物は利用者のEBSボリュームに保存される'],
+    correct:[1],
+    why:['誤り。カスタムモデルの成果物は利用者のバケットではなく、AWSが管理するS3バケットに保存されます。','正しい。出力メトリクスファイルは指定したS3バケットに、結果のカスタムモデルの成果物はAWSが管理するS3バケットに保存されます。','誤り。出力メトリクスファイルは利用者が指定したS3バケットに保存されます。','誤り。メトリクスはS3に保存され、モデルの成果物がEBSに置かれることはありません。']},
+  {id:'p1392', domain:'security', type:'single', source:SOURCES.bedrockCustomEnc,
+    text:'カスタマー管理キーで暗号化したBedrockのカスタムモデルについて、BedrockがKMSに対して行うリクエストを追跡したい場合、どのサービスを使いますか？',
+    choices:['Amazon Macie','AWS CloudTrail または Amazon CloudWatch Logs','Amazon GuardDuty の脆弱性スキャン','AWS Trusted Advisor'],
+    correct:[1],
+    why:['誤り。Macieは主にS3内の機密データを検出するサービスです。','正しい。カスタマー管理キーを使うと、BedrockがKMSへ送るCreateGrantなどのリクエストをCloudTrailやCloudWatch Logsで追跡できます。','誤り。GuardDutyは脅威検出のサービスで、KMSキーの利用追跡のために使うものではありません。','誤り。Trusted Advisorはコストやセキュリティなどのベストプラクティス確認用で、KMSリクエストの追跡用ではありません。']},
+  {id:'p1393', domain:'security', type:'single', source:SOURCES.bedrockCustomEnc,
+    text:'Bedrockのカスタムモデルを暗号化するKMSキーのキーポリシーで、キーの利用をBedrockサービス経由のリクエストに限定するために推奨されている条件キーはどれですか？',
+    choices:['aws:SourceIp','aws:MultiFactorAuthPresent','aws:RequestedRegion','kms:ViaService'],
+    correct:[3],
+    why:['誤り。aws:SourceIpは接続元IPアドレスによる制限で、サービス経由かどうかの制限ではありません。','誤り。aws:MultiFactorAuthPresentはMFAで認証されたかを確認する条件キーです。','誤り。aws:RequestedRegionはリクエスト先のリージョンを制限する条件キーです。','正しい。kms:ViaService条件キーを使うと、キーの利用を特定のAWSサービス（ここではBedrock）経由のリクエストに限定できます。']},
 ];
 
 
