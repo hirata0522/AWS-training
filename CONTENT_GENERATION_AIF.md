@@ -1098,3 +1098,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
 - 2026-11-06（定期実行・37回目）: 改訂履歴を確認（WebFetch成功。最新はv1.2・2026-10-29のまま、新しい版なし）。PRACTICE 8件（p1378〜p1385、すべて fm。single 6 / multi 1 / ordering 1）追加。題材: Bedrock Agents の制御の返却（return of control: RETURN_CONTROL、invocationInputs/invocationId、sessionState の returnControlInvocationResults）。VOCAB・MOCK_POOLは0件。累計 VOCAB=366 / PRACTICE=1385 / MOCK_POOL=500。
   出典: 新規SOURCES agentsReturnControl（公式ページをWebFetchで本文確認、成功）。single正解位置=2,1,3,0,0,1。nodeでの読み込み確認済み（366/1385/500）。
   メモ: Guardrails機密情報フィルターは既に網羅済みで見送り。kiro.dev は名前解決できず（ネットワーク許可外）Kiro関連は未着手。件数は目安より少ない。
+- 2026-11-06（定期実行・38回目）: 改訂履歴を確認（WebFetch成功。最新はv1.2・2026-10-29のまま、新しい版なし）。追加0件。累計 VOCAB=366 / PRACTICE=1385 / MOCK_POOL=500。単語リスト進捗 366/442（除外34）。
+  メモ: 新規題材の出典確認まで手が回らず見送り（Guardrails・グラウンディング等は既に網羅済み）。
