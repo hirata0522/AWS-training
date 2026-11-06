@@ -1119,3 +1119,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   理由: 残りの`未`70語はビジネス指標系・一般論が中心で、AWS公式の出典を確認できる題材が乏しく見送り。人間側での`除外`判断を引き続き要検討。
 - 2026-11-06（定期実行・47回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v372 Model Theft、security）、PRACTICE 5件（p1389〜p1393、security・single）追加。MOCK_POOLは0件。累計 VOCAB=372 / PRACTICE=1393 / MOCK_POOL=500。単語リスト進捗 372/441（除外35）。
   出典: 新規SOURCES bedrockCustomEnc（Bedrock「カスタムモデルの暗号化」公式ページをWebFetchで本文確認、成功。prescriptive guidanceのgen-ai-model-customizationページは本文取得できず不使用）。題材: AWS所有キー既定暗号化、カスタマー管理キーとグラント取消、出力の保存先、CloudTrail追跡、kms:ViaService。single正解位置=0(vocab),3,0,1,1,3。nodeでの読み込み確認済み（372/1393/500）。
+- 2026-11-06（定期実行・48回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。追加0件。累計 VOCAB=372 / PRACTICE=1393 / MOCK_POOL=500。検証OK。
+  理由: 単語リスト残り（ビジネス指標系中心）は引き続きAWS公式の出典が得にくく、PRACTICEも新規に出典確認できた題材がなく見送り。人間側での残り`未`の`除外`判断を引き続き要検討。
