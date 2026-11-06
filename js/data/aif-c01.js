@@ -931,6 +931,10 @@ var VOCAB = [
     choices:['頻繁にアクセスするデータを低レイテンシーで提供するための、S3 Standard よりも高性能なストレージクラス','アクセス頻度の低い長期保存データを低コストで保管するための、Amazon S3 内のストレージクラス群','ブロックストレージとして EC2 インスタンスにアタッチして使う、永続的なストレージボリューム','AI モデルの学習データを自動でラベル付けし、品質を検証するマネージドサービス'],
     correct:1,
     why:['誤り。頻繁にアクセスするデータにはS3 Standardなどを使います。Glacier系は低頻度アクセス向けで、保管コストが低い代わりに取り出しの条件があります。','正しい。S3 Glacierは Instant Retrieval・Flexible Retrieval・Deep Archive の3種類で、アクセス頻度と取り出し速度に応じて選びます。Amazon S3 の一部で、S3 Standard と同等の耐久性を持ちます。','誤り。EC2にアタッチするブロックストレージはAmazon EBSです。','誤り。ラベル付けはSageMaker Ground Truthなどの役割で、S3 Glacierはデータを保管するストレージです。']}},
+  {id:'v367', term:'Amazon Bedrock Data Protection', domain:'security', source:SOURCES.bedrockDataProt, q:{text:'Amazon Bedrock のデータ保護に関する説明として最も適切なものはどれですか？',
+    choices:['Bedrock Guardrails の機密情報フィルターだけで、保管中・転送中のデータの暗号化まで自動的に代行される','Bedrock のモデル提供元（プロバイダー）が、顧客のプロンプトと応答ログを閲覧して品質改善に活用できる仕組み','責任共有モデルに基づき、データの保護設定（MFA・TLS・CloudTrail・暗号化など）はAWSと利用者で役割を分担するもの','Amazon Macie が Bedrock の推論リクエストをリアルタイムで検査し、機密データを自動的にブロックする機能'],
+    correct:2,
+    why:['誤り。Guardrailsはコンテンツや機密情報を制御する機能で、暗号化の代行はしません。暗号化はAWS KMSなどで別途設定します。','誤り。モデル提供元はモデルデプロイ用アカウントにアクセスできず、Bedrockのログや顧客のプロンプト・応答にアクセスできません。','正しい。データ保護には責任共有モデルが適用され、AWSはインフラを、利用者はコンテンツやMFA・TLS・CloudTrailログ・暗号化の設定を管理します。','誤り。MacieはS3内の機密データを検出するサービスで、Bedrockの推論リクエストをリアルタイムで検査・ブロックするものではありません。']},
 ];
 
 var PRACTICE = [

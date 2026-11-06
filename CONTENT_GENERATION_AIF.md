@@ -1100,3 +1100,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: Guardrails機密情報フィルターは既に網羅済みで見送り。kiro.dev は名前解決できず（ネットワーク許可外）Kiro関連は未着手。件数は目安より少ない。
 - 2026-11-06（定期実行・38回目）: 改訂履歴を確認（WebFetch成功。最新はv1.2・2026-10-29のまま、新しい版なし）。追加0件。累計 VOCAB=366 / PRACTICE=1385 / MOCK_POOL=500。単語リスト進捗 366/442（除外34）。
   メモ: 新規題材の出典確認まで手が回らず見送り（Guardrails・グラウンディング等は既に網羅済み）。
+- 2026-11-06（定期実行・39回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v367 Amazon Bedrock Data Protection、security）追加、Amazon EC2 for ML は v359 と実質重複のため除外。PRACTICE・MOCK_POOLは0件。累計 VOCAB=367 / PRACTICE=1385 / MOCK_POOL=500。
+  出典: 既存 bedrockDataProt を再利用し公式ページをWebFetchで本文確認（成功）。Role Prompting は prompt-engineering-guidelines ページに記載が見当たらず見送り。単語リスト残りはビジネス指標系が多く、公式出典の確認が難しい。

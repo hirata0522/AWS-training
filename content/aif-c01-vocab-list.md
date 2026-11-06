@@ -402,7 +402,7 @@
 | 396 | Explainable AI (XAI) | responsible | v234 |
 | 397 | Amazon CodeGuru | aiml | v346 |
 | 398 | Experimentation (Prompt) | fm | 未 |
-| 399 | Amazon Bedrock Data Protection | security | 未 |
+| 399 | Amazon Bedrock Data Protection | security | v367 |
 | 400 | Amazon DevOps Guru | aiml | v347 |
 | 401 | Conversion Rate | genai | 未 |
 | 402 | AWS DeepRacer | aiml | v341 |
@@ -416,7 +416,7 @@
 | 410 | AWS Inferentia | aiml | v278 |
 | 411 | SHAP Values | responsible | v206 |
 | 412 | Customer Lifetime Value | genai | 未 |
-| 413 | Amazon EC2 for ML | aiml | 未 |
+| 413 | Amazon EC2 for ML | aiml | 除外 |
 | 414 | Learning Rate | fm | v339 |
 | 415 | AWS CloudFormation | security | v357 |
 | 416 | AWS Lambda | aiml | v348 |
