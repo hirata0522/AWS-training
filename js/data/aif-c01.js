@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  sagemakerNetIso:{label:'Amazon SageMaker AI: Run Training and Inference Containers in Internet-Free Mode', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html'},
   distill:{label:'Amazon Bedrock: Customize a model with distillation', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/model-distillation.html'},
   redTeaming:{label:'Well-Architected Agentic AI Lens: AGENTSEC07-BP05 定期的なセキュリティ評価とレッドチーミング', url:'https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentsec07-bp05.html'},
   mlSecBlog:{label:'AWS Security Blog: 7 ways to improve security of your machine learning workflows', url:'https://aws.amazon.com/blogs/security/7-ways-to-improve-security-of-your-machine-learning-workflows/'},
@@ -935,6 +936,10 @@ var VOCAB = [
     choices:['Bedrock Guardrails の機密情報フィルターだけで、保管中・転送中のデータの暗号化まで自動的に代行される','Bedrock のモデル提供元（プロバイダー）が、顧客のプロンプトと応答ログを閲覧して品質改善に活用できる仕組み','責任共有モデルに基づき、データの保護設定（MFA・TLS・CloudTrail・暗号化など）はAWSと利用者で役割を分担するもの','Amazon Macie が Bedrock の推論リクエストをリアルタイムで検査し、機密データを自動的にブロックする機能'],
     correct:2,
     why:['誤り。Guardrailsはコンテンツや機密情報を制御する機能で、暗号化の代行はしません。暗号化はAWS KMSなどで別途設定します。','誤り。モデル提供元はモデルデプロイ用アカウントにアクセスできず、Bedrockのログや顧客のプロンプト・応答にアクセスできません。','正しい。データ保護には責任共有モデルが適用され、AWSはインフラを、利用者はコンテンツやMFA・TLS・CloudTrailログ・暗号化の設定を管理します。','誤り。MacieはS3内の機密データを検出するサービスで、Bedrockの推論リクエストをリアルタイムで検査・ブロックするものではありません。']}},
+  {id:'v368', term:'Amazon SageMaker Network Isolation', domain:'security', source:SOURCES.sagemakerNetIso, q:{text:'SageMaker AI のネットワーク分離（EnableNetworkIsolation=True）に関する説明として正しいものはどれですか？',
+    choices:['トレーニング／推論コンテナは Amazon S3 を含むあらゆるサービスへ外向き通信ができなくなり、S3 の入出力は SageMaker AI が実行ロールで代行する','コンテナはインターネットへの通信だけが遮断され、同じ VPC 内や S3 とは認証情報を使って自由に通信できる','Amazon Macie がコンテナ内の機密データを自動検出し、検出時にのみ外部への通信を遮断する仕組み','AWS KMS のカスタマー管理キーでトレーニングデータを暗号化し、キーの無効化で通信を止める仕組み'],
+    correct:0,
+    why:['正しい。ネットワーク分離を有効にすると、コンテナは S3 を含むあらゆるサービスへ外向き通信できず、AWS 認証情報も渡されません。S3 のダウンロード／アップロードはコンテナとは別に SageMaker AI が実行ロールで行います。','誤り。VPC 内のリソースやインターネットにもアクセスできなくなり、認証情報も提供されません。','誤り。Macie は S3 の機密データ検出サービスで、コンテナの通信制御とは無関係です。','誤り。KMS は暗号化の仕組みで、コンテナの通信を分離する機能ではありません。']}}
 ];
 
 var PRACTICE = [
@@ -5875,6 +5880,15 @@ var PRACTICE = [
   {id:'p1385', domain:'fm', type:'ordering', source:SOURCES.agentsReturnControl, text:'Bedrock Agents で制御の返却を使い、アプリケーションが天気APIを呼び出して結果をエージェントに戻す流れを、正しい順に並べてください。',
     items:['ユーザーが問い合わせを InvokeAgent で送信する','エージェントが必要な API の情報を invocationInputs と invocationId で返す','アプリケーションがそのAPIを呼び出して結果を得る','結果を sessionState の returnControlInvocationResults に入れて InvokeAgent を再度呼び出す'],
     why:['最初にユーザーの入力がエージェントに送られます。','アクションを呼ぶべきと判断したエージェントは、実行に必要な情報を InvokeAgent のレスポンスで返します。','返された情報を使い、アプリケーション自身が処理を実行します。','最後に同じ invocationId で結果を返すと、エージェントがそれを文脈にして応答を生成します。']},
+  {id:'p1386', domain:'security', type:'single', source:SOURCES.sagemakerNetIso, text:'AWS Marketplace のモデルパッケージを使ってトレーニングジョブを実行する際、SageMaker AI で必ず有効にする必要がある設定はどれですか？',
+    choices:['Amazon Macie によるコンテナの機密データ検出','AWS KMS による出力データの暗号化','AWS CloudTrail のデータイベントログ','ネットワーク分離（EnableNetworkIsolation）'], correct:[3],
+    why:['誤り。Macie は S3 の機密データ検出用で、Marketplace 利用の必須条件ではありません。','誤り。暗号化は推奨されますが、Marketplace 利用の必須条件として示されているのはネットワーク分離です。','誤り。監査ログは有用ですが、必須条件ではありません。','正しい。AWS Marketplace のリソースを使うトレーニングジョブやモデルには、ネットワーク分離が必須です。']},
+  {id:'p1387', domain:'security', type:'single', source:SOURCES.sagemakerNetIso, text:'ネットワーク分離を有効にした SageMaker AI のトレーニングジョブで、S3 上のトレーニングデータをコンテナに渡す仕組みとして正しいものはどれですか？',
+    choices:['コンテナが一時的な AWS 認証情報で S3 から直接ダウンロードする','コンテナが NAT ゲートウェイ経由で S3 にアクセスする','コンテナが S3 VPC ゲートウェイエンドポイント経由で直接取得する','SageMaker AI がコンテナとは別に、実行ロールを使って S3 の入出力を行う'], correct:[3],
+    why:['誤り。ネットワーク分離ではコンテナに AWS 認証情報が渡されません。','誤り。分離されたコンテナは外向き通信自体ができません。','誤り。コンテナ自身は S3 を含むどのサービスにも通信できません。','正しい。S3 のダウンロード／アップロードは SageMaker AI が実行ロールで代行します。']},
+  {id:'p1388', domain:'security', type:'single', source:SOURCES.sagemakerNetIso, text:'悪意あるライブラリがコンテナに混入しても、学習データが外部ホストへ送信されないようにしたい場合、追加のネットワーク設定を最小限にできる方法はどれですか？',
+    choices:['すべてのサブネットにネットワーク ACL を手動で設定する','SageMaker AI のネットワーク分離を有効にする','Amazon GuardDuty を有効にして通信を検知する','AWS WAF をコンテナの前段に配置する'], correct:[1],
+    why:['誤り。VPC 設定でも制限できますが、設定の手間と設定ミスのリスクがあります。','正しい。外向き通信ができなくなるため、追加のネットワーク構成なしでデータ流出を防げます。','誤り。GuardDuty は脅威検知で、通信を遮断するものではありません。','誤り。WAF は Web アプリケーションへの受信リクエストを保護するもので、コンテナの外向き通信は制御しません。']},
 ];
 
 

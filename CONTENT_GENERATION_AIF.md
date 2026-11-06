@@ -1104,3 +1104,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   出典: 既存 bedrockDataProt を再利用し公式ページをWebFetchで本文確認（成功）。Role Prompting は prompt-engineering-guidelines ページに記載が見当たらず見送り。単語リスト残りはビジネス指標系が多く、公式出典の確認が難しい。
 - 2026-11-06（定期実行・40回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。追加0件。累計 VOCAB=367 / PRACTICE=1385 / MOCK_POOL=500。検証OK。
   メモ: 単語リスト残り（Model Context Window Management 等）は公式の根拠ページ（WebSearchは第三者サイトのみ、converseApiページに該当記述なし）を確認できず見送り。残りはビジネス指標系が中心で、AWS公式の出典が得にくい。除外判断は次回以降に検討。
+- 2026-11-06（定期実行・41回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v368 Amazon SageMaker Network Isolation、security）、PRACTICE 3件（p1386〜p1388、security・single）追加。MOCK_POOLは0件。累計 VOCAB=368 / PRACTICE=1388 / MOCK_POOL=500。
+  出典: 新規SOURCES sagemakerNetIso（公式ページ mkt-algo-model-internet-free.html をWebFetchで本文確認、成功）。single正解位置=3,3,1（VOCABは0）。nodeでの読み込み確認済み。件数は目安より少ない（出典確認できた題材のみ）。

@@ -412,7 +412,7 @@
 | 406 | Average Revenue per User (ARPU) | genai | 未 |
 | 407 | AWS Trainium | aiml | v277 |
 | 408 | Epoch | fm | v338 |
-| 409 | Amazon SageMaker Network Isolation | security | 未 |
+| 409 | Amazon SageMaker Network Isolation | security | v368 |
 | 410 | AWS Inferentia | aiml | v278 |
 | 411 | SHAP Values | responsible | v206 |
 | 412 | Customer Lifetime Value | genai | 未 |
