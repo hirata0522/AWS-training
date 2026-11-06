@@ -437,7 +437,7 @@
 | 431 | Amazon S3 | aiml | v351 |
 | 432 | Responsible AI Policy | responsible | 未 |
 | 433 | Model Customization Cost Tradeoffs | fm | 未 |
-| 434 | Federated Identity | security | 未 |
+| 434 | Federated Identity | security | v369 |
 | 435 | Amazon S3 Glacier | aiml | v366 |
 | 436 | Text-to-Image | genai | 未 |
 | 437 | Pre-training Cost | fm | 未 |

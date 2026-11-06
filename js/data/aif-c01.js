@@ -14,6 +14,7 @@ var DOMAINS = {
 
 // 出典（AWS公式ドキュメント・公式ページ）。各単語・問題の source フィールドから参照する。
 var SOURCES = {
+  iamFederation:{label:'IAM: Identity providers and federation into AWS', url:'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html'},
   sagemakerNetIso:{label:'Amazon SageMaker AI: Run Training and Inference Containers in Internet-Free Mode', url:'https://docs.aws.amazon.com/sagemaker/latest/dg/mkt-algo-model-internet-free.html'},
   distill:{label:'Amazon Bedrock: Customize a model with distillation', url:'https://docs.aws.amazon.com/bedrock/latest/userguide/model-distillation.html'},
   redTeaming:{label:'Well-Architected Agentic AI Lens: AGENTSEC07-BP05 定期的なセキュリティ評価とレッドチーミング', url:'https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentsec07-bp05.html'},
@@ -939,7 +940,11 @@ var VOCAB = [
   {id:'v368', term:'Amazon SageMaker Network Isolation', domain:'security', source:SOURCES.sagemakerNetIso, q:{text:'SageMaker AI のネットワーク分離（EnableNetworkIsolation=True）に関する説明として正しいものはどれですか？',
     choices:['トレーニング／推論コンテナは Amazon S3 を含むあらゆるサービスへ外向き通信ができなくなり、S3 の入出力は SageMaker AI が実行ロールで代行する','コンテナはインターネットへの通信だけが遮断され、同じ VPC 内や S3 とは認証情報を使って自由に通信できる','Amazon Macie がコンテナ内の機密データを自動検出し、検出時にのみ外部への通信を遮断する仕組み','AWS KMS のカスタマー管理キーでトレーニングデータを暗号化し、キーの無効化で通信を止める仕組み'],
     correct:0,
-    why:['正しい。ネットワーク分離を有効にすると、コンテナは S3 を含むあらゆるサービスへ外向き通信できず、AWS 認証情報も渡されません。S3 のダウンロード／アップロードはコンテナとは別に SageMaker AI が実行ロールで行います。','誤り。VPC 内のリソースやインターネットにもアクセスできなくなり、認証情報も提供されません。','誤り。Macie は S3 の機密データ検出サービスで、コンテナの通信制御とは無関係です。','誤り。KMS は暗号化の仕組みで、コンテナの通信を分離する機能ではありません。']}}
+    why:['正しい。ネットワーク分離を有効にすると、コンテナは S3 を含むあらゆるサービスへ外向き通信できず、AWS 認証情報も渡されません。S3 のダウンロード／アップロードはコンテナとは別に SageMaker AI が実行ロールで行います。','誤り。VPC 内のリソースやインターネットにもアクセスできなくなり、認証情報も提供されません。','誤り。Macie は S3 の機密データ検出サービスで、コンテナの通信制御とは無関係です。','誤り。KMS は暗号化の仕組みで、コンテナの通信を分離する機能ではありません。']}},
+  {id:'v369', term:'Federated Identity', domain:'security', source:SOURCES.iamFederation, q:{text:'AWS における「フェデレーション（Federated Identity）」を用いた人間ユーザーのアクセス方法として最も適切な説明はどれですか？',
+    choices:['社内の ID プロバイダー（IdP）などで管理する外部ユーザーの ID に、SAML 2.0 や OIDC を通じて AWS リソースへの権限を付与し、長期的なアクセスキーを配布せずに一時的な認証情報で利用させる','各ユーザーごとに IAM ユーザーを作成し、長期的なアクセスキーを発行して利用者に配布する','AWS KMS のキーポリシーでユーザーを識別し、暗号化されたデータへのアクセスだけを許可する','Amazon Macie が S3 内のユーザー情報を検出し、該当ユーザーに自動で権限を割り当てる'],
+    correct:0,
+    why:['正しい。IdP で ID を外部管理し、SAML 2.0／OIDC で信頼関係を築くことで、アプリや端末に長期認証情報を埋め込まずに一時的な認証情報でアクセスできます。複数アカウントの人間ユーザーには IAM Identity Center が推奨されます。','誤り。これはフェデレーションの対極にあるやり方で、AWS は人間ユーザーには IAM ユーザーではなくフェデレーションの利用を推奨しています。','誤り。KMS は暗号鍵の管理サービスで、ユーザー ID のフェデレーションを行うものではありません。','誤り。Macie は機密データの検出サービスで、権限の付与や ID 連携は行いません。']}}
 ];
 
 var PRACTICE = [

@@ -1106,3 +1106,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   メモ: 単語リスト残り（Model Context Window Management 等）は公式の根拠ページ（WebSearchは第三者サイトのみ、converseApiページに該当記述なし）を確認できず見送り。残りはビジネス指標系が中心で、AWS公式の出典が得にくい。除外判断は次回以降に検討。
 - 2026-11-06（定期実行・41回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。VOCAB 1件（v368 Amazon SageMaker Network Isolation、security）、PRACTICE 3件（p1386〜p1388、security・single）追加。MOCK_POOLは0件。累計 VOCAB=368 / PRACTICE=1388 / MOCK_POOL=500。
   出典: 新規SOURCES sagemakerNetIso（公式ページ mkt-algo-model-internet-free.html をWebFetchで本文確認、成功）。single正解位置=3,3,1（VOCABは0）。nodeでの読み込み確認済み。件数は目安より少ない（出典確認できた題材のみ）。
+- 2026-11-06（定期実行・42回目）: 改訂履歴を確認（WebFetch成功。最新はv1.2・2026-10-29のまま）。VOCAB 1件（v369 Federated Identity、security）追加。PRACTICE・MOCK_POOLは0件。累計 VOCAB=369 / PRACTICE=1388 / MOCK_POOL=500。
+  出典: 新規SOURCES iamFederation（IAM公式ページ id_roles_providers.html をWebFetchで本文確認、成功）。aws.amazon.com/what-is/zero-trust/ は404のためZero Trustは見送り。nodeでの読み込み確認済み（369/1388/500）。残りの単語はビジネス指標系が中心で公式出典が得にくい。
