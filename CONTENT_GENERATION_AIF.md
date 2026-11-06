@@ -1110,3 +1110,5 @@ CLF-C02用の `CONTENT_GENERATION.md` と同じ仕組みだが、(1) **単語（
   出典: 新規SOURCES iamFederation（IAM公式ページ id_roles_providers.html をWebFetchで本文確認、成功）。aws.amazon.com/what-is/zero-trust/ は404のためZero Trustは見送り。nodeでの読み込み確認済み（369/1388/500）。残りの単語はビジネス指標系が中心で公式出典が得にくい。
 - 2026-11-06（定期実行・43回目）: 改訂履歴を確認（WebFetch成功。最新はv1.2・2026-10-29のまま）。追加0件。累計 VOCAB=369 / PRACTICE=1388 / MOCK_POOL=500。検証OK。
   理由: NIST AI RMF はWebSearchでAWS公式の出典が得られず（第三者サイトのみ）見送り。SageMaker AIのデプロイ手順ページ(how-it-works-deployment)とBedrockのカスタマイズページ(custom-models)をWebFetchで確認したが、順序が明示された新規の並び替え題材はなく、蒸留・カスタマイズ手法は既存項目で網羅済み。残りの単語リストはビジネス指標系が中心で公式出典が得にくい。残り72語の `除外` 判断を人間側で検討してほしい。
+- 2026-11-06（定期実行・44回目）: 改訂履歴は今回未確認（v1.2のまま扱った）。追加0件。累計 VOCAB=369 / PRACTICE=1388 / MOCK_POOL=500。検証OK。
+  理由: SageMaker Model Registry の公式ページをWebFetchで確認（成功）したが、v148/v239/p60/p61/p375で既に網羅済みのため重複を避けて見送り。主要サービス（Comprehend/Textract/Rekognition/Transcribe/Polly/Lex/Ground Truth/Feature Store等）はいずれも既存項目が多数あり、新規題材の余地が乏しい。単語リスト残りはビジネス指標系で公式出典が得にくい（人間側での `除外` 判断を引き続き要検討）。
